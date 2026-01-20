@@ -98,7 +98,7 @@ class TenantService
 
         $original_conf = config($group);
         $tenant_name = self::getName();
-        
+
 
         $config_name = str_replace('/', '.', $tenant_name).'.'.$group;
         $extra_conf = config($config_name);
@@ -111,7 +111,7 @@ class TenantService
             $extra_conf = [];
         }
 
-        
+
 
         $merge_conf = collect($original_conf)->merge($extra_conf)->all();
         if ($group === null) {
