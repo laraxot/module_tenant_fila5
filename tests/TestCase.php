@@ -12,6 +12,11 @@ use Orchestra\Testbench\TestCase as BaseTestCase;
 
 /**
  * Base test case for Tenant module tests.
+ *
+ * @property \Modules\Tenant\Models\TestSushiModel $model
+ * @property string $testDirectory
+ * @property string $testJsonPath
+ * @property \Closure $createTestData
  */
 abstract class TestCase extends BaseTestCase
 {
