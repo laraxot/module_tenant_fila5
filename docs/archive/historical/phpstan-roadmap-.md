@@ -1,6 +1,5 @@
 # PHPStan Level 10 Roadmap - Tenant Module
 
-**Data**: 2026-01-30
 **Status**: 🟡 In Progress
 **Errori Totali**: 581 (Iniziali)
 

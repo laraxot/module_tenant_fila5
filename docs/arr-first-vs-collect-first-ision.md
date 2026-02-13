@@ -1,6 +1,5 @@
 # Decisione: Arr::first() vs collect()->first()
 
-**Data**: 2025-01-22
 **Metodologia**: Super Mucca - La Litigata Interna
 **File**: `app/Actions/Config/ResolveTenantConfigValueAction.php`
 

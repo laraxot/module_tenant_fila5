@@ -1,6 +1,5 @@
 # Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction
 
-**Data**: 2025-01-22
 **Metodologia**: Super Mucca - La Litigata Interna
 **File**: `app/Actions/Config/ResolveTenantConfigValueAction.php`
 

@@ -1,6 +1,5 @@
 # Rimozione runningInConsole Check - Riepilogo
 
-**Data**: 2025-01-22
 **File**: `app/Actions/Config/ResolveTenantConfigValueAction.php`
 **Status**: ✅ Completato
 
