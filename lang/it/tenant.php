@@ -129,4 +129,29 @@ return [
             'occupation' => 'Occupazione',
         ],
     ],
+    'label' => 'Tenant',
+    'plural_label' => 'Tenant (Plurale)',
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Tenant',
+        ],
+        'edit' => [
+            'label' => 'Modifica Tenant',
+        ],
+        'delete' => [
+            'label' => 'Elimina Tenant',
+        ],
+    ],
 ];
