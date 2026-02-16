@@ -68,4 +68,6 @@ return [
             'label' => 'domain.plural.model',
         ],
     ],
+    'label' => 'Domain',
+    'plural_label' => 'Domain (Plurale)',
 ];
