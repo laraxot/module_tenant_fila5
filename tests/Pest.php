@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Modules\Tenant\Models\Tenant;
+use Modules\Tenant\Models\TenantUser;
 use Modules\Tenant\Tests\TestCase;
-use Webmozart\Assert\Assert;
 
 /*
  * |--------------------------------------------------------------------------
@@ -17,7 +17,7 @@ use Webmozart\Assert\Assert;
  * |
  */
 
-pest()->extend(TestCase::class)->in('Feature', 'Unit', 'Integration', 'Performance');
+pest()->extend(TestCase::class)->in('Feature', 'Unit');
 
 /*
  * |--------------------------------------------------------------------------
@@ -30,8 +30,9 @@ pest()->extend(TestCase::class)->in('Feature', 'Unit', 'Integration', 'Performan
  * |
  */
 
-// NOTE: The 'toBeTenant' expectation was removed as it was not used elsewhere
-// and caused PHPStan errors related to '$this' binding.
+expect()->extend('toBeTenant', fn () => $this->toBeInstanceOf(Tenant::class));
+
+expect()->extend('toBeTenantUser', fn () => $this->toBeInstanceOf(TenantUser::class));
 
 /*
  * |--------------------------------------------------------------------------
@@ -46,20 +47,20 @@ pest()->extend(TestCase::class)->in('Feature', 'Unit', 'Integration', 'Performan
 
 function createTenant(array $attributes = []): Tenant
 {
-    /** @var Tenant $tenant */
-    $tenant = Tenant::factory()->create($attributes);
-    Assert::isInstanceOf($tenant, Tenant::class); // Added for PHPStan
-
-    return $tenant;
+    return Tenant::factory()->create($attributes);
 }
 
 function makeTenant(array $attributes = []): Tenant
 {
-    /** @var Tenant $tenant */
-    $tenant = Tenant::factory()->make($attributes);
-    Assert::isInstanceOf($tenant, Tenant::class); // Added for PHPStan
-
-    return $tenant;
+    return Tenant::factory()->make($attributes);
 }
 
-// Removed TenantUser functions as the model doesn't exist in this module
+function createTenantUser(array $attributes = []): TenantUser
+{
+    return TenantUser::factory()->create($attributes);
+}
+
+function makeTenantUser(array $attributes = []): TenantUser
+{
+    return TenantUser::factory()->make($attributes);
+}
