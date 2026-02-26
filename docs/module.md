@@ -148,7 +148,11 @@ Tenant Detection → Configuration Load → Bootstrap → Response
 - **User**: Tenant-aware user management
 - **Activity**: Tenant-isolated activity logging
 - **Limesurvey**: Tenant-specific survey data
+<<<<<<< .merge_file_mSSWBR
 - **healthcare_app**: Tenant-scoped reporting
+=======
+- **ModuloEsempio**: Tenant-scoped reporting
+>>>>>>> .merge_file_AfFxn6
 - **Notify**: Tenant notification channels
 
 ## Lacune e Funzionalità Mancanti

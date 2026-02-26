@@ -176,7 +176,11 @@ protected function createApplication()
     $app = parent::createApplication();
     
     $app['config']->set([
+<<<<<<< .merge_file_pZ5W8r
         'database.connections.tenant.database' => 'healthcare_app_data_test',
+=======
+        'database.connections.tenant.database' => 'ptvx_data_test',
+>>>>>>> .merge_file_IhE0Sd
     ]);
     
     return $app;

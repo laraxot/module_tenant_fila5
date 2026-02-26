@@ -35,13 +35,21 @@ The Tenant module implements comprehensive multi-tenancy functionality with data
 
 ### 3. Tenant Customers
 **Parent Resource:** TenantResource
+<<<<<<< .merge_file_dcO3Dq
 **Child Resource:** CustomerResource (from healthcare_app module)
+=======
+**Child Resource:** CustomerResource (from ModuloEsempio module)
+>>>>>>> .merge_file_YpLu8V
 **Relationship:** Tenant hasMany Customers (via tenant-customer relationship)
 **Justification:** Organize customers by tenant for better client management in multi-tenant environments.
 
 ### 4. Tenant Surveys
 **Parent Resource:** TenantResource
+<<<<<<< .merge_file_dcO3Dq
 **Child Resource:** SurveyPdfResource (from healthcare_app module)
+=======
+**Child Resource:** SurveyPdfResource (from ModuloEsempio module)
+>>>>>>> .merge_file_YpLu8V
 **Relationship:** Tenant hasMany SurveyPdfs (via customer-tenant relationship)
 **Justification:** Group surveys by tenant for comprehensive tenant-level reporting and management.
 
