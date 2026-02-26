@@ -254,11 +254,7 @@ class Domain extends BaseModel {
 - Usa XotData per user management
 - **Principio**: "Tenant è specializzazione di Xot"
 
-<<<<<<< .merge_file_07woI0
-### Tenant ↔ Business Modules (healthcare_app, Patient, Dental)
-=======
-### Tenant ↔ Business Modules (ModuloEsempio, Patient, Dental)
->>>>>>> .merge_file_1esciV
+### Tenant ↔ Business Modules (Quaeris, Patient, Dental)
 **Relazione**: Enabler
 - Business modules ereditano `$connection = 'tenant'` da BaseModel
 - **Principio**: "Tenant è invisibile ma onnipresente"

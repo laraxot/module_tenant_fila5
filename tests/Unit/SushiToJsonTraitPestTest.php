@@ -10,11 +10,16 @@ use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Services\TenantService;
 use Tests\TestCase;
 
+/**
+ * @property TestSushiModel $model
+ * @property string $testDirectory
+ * @property string $testJsonPath
+ */
 uses(TestCase::class);
 
 beforeEach(function () {
     // Configura il modello di test
-    $this->model = new TestSushiModel();
+    $this->model = new TestSushiModel;
 
     // Configura percorsi di test
     $this->testDirectory = storage_path('tests/sushi-json');

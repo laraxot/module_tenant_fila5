@@ -7,7 +7,6 @@ namespace Modules\Tenant\Actions\Config;
 use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\GetTenantNameAction;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -41,10 +40,6 @@ class ResolveTenantConfigValueAction
 
         $configName = str_replace('/', '.', $tenantName).'.'.$group;
         $extraConf = config($configName);
-        
-        if($originalConf === null){
-            $originalConf = File::getRequire(base_path('config/'.$tenantName.'/'.$group.'.php'));
-        }
 
         if (! \is_array($originalConf)) {
             $originalConf = [];
