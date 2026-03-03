@@ -455,3 +455,509 @@ protected function setUp(): void
 - [ ] Performance overhead <10ms
 - [ ] Cache invalidation funziona
 - [ ] Eventi vengono dispatchati
+
+---
+
+## 14. Multi-Tenancy Architecture Patterns
+
+### 14.1 Pattern Comparison
+
+| Pattern | Database | Schema | Isolation | Complexity | Performance |
+|---------|----------|--------|-----------|------------|-------------|
+| Shared Database, Shared Schema | 1 | 1 | tenant_id column | Basso | Eccellente |
+| Shared Database, Separate Schema | 1 | N | MySQL schemas | Medio | Buono |
+| Separate Database | N | N | database isolation | Alto | Eccellente |
+
+### 14.2 Recommended Pattern: Shared Database
+
+Per la maggior parte dei casi si raccomanda **Shared Database, Shared Schema**:
+- Più semplice da gestire
+- Meno costoso (un database)
+- Performance migliore
+- Backup/restore semplificato
+
+### 14.3 When to Use Separate Databases
+
+- Requisiti legali di isolamento dati
+- Tenant con requisiti di compliance diversi
+- Necessità di scaling indipendente
+- Disaster recovery per singolo tenant
+
+---
+
+## 15. Advanced Tenant Isolation
+
+### 15.1 Query Scope Deep Dive
+
+#### Global Scope Implementation
+```php
+// app/Scopes/TenantScope.php
+class TenantScope implements Scope
+{
+    public function apply(Builder $builder, Model $model): void
+    {
+        $tenantId = app(TenantManager::class)->getCurrentId();
+        
+        if ($tenantId !== null && !$builder->withoutGlobalScopes()) {
+            $builder->where($model->getTable() . '.tenant_id', $tenantId);
+        }
+    }
+}
+```
+
+#### Trait for Automatic Application
+```php
+trait TenantScopeTrait
+{
+    public static function bootTenantScopeTrait(): void
+    {
+        static::addGlobalScope(new TenantScope);
+    }
+    
+    public function getTenantKey(): ?int
+    {
+        return $this->tenant_id ?? app(TenantManager::class)->getCurrentId();
+    }
+    
+    public function tenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+}
+```
+
+### 15.2 Protection Layers
+
+| Layer | Protection | Bypass |
+|-------|-----------|--------|
+| Application | Query scoping | onlyGlobalScope() |
+| Database | FK constraints | None (required) |
+| Middleware | Request validation | None (required) |
+| API | Authorization | Admin only |
+
+#### Database Constraints
+```php
+// Migration
+$table->foreignId('tenant_id')
+    ->constrained('tenants')
+    ->onDelete('restrict')
+    ->onUpdate('cascade');
+
+// Partial unique index for scoped uniqueness
+$table->unique(['tenant_id', 'email'], 'tenant_email_unique');
+```
+
+### 15.3 File Storage Isolation
+
+```
+// storage/app/{tenant_id}/
+//     ├── documents/
+//     ├── avatars/
+//     └── imports/
+```
+
+#### Filesystem Configuration
+```php
+// config/filesystems.php
+'disks' => [
+    'tenant' => [
+        'driver' => 'local',
+        'root' => storage_path('app/' . tenant('id', 'public')),
+    ],
+],
+```
+
+---
+
+## 16. Tenant Data Migration
+
+### 16.1 Bulk Data Migration
+
+```php
+// Migration command per spostare dati a nuovo tenant
+class MigrateDataToTenant
+{
+    public function handle(int $oldTenantId, int $newTenantId): int
+    {
+        $models = [
+            User::class,
+            Document::class,
+            Setting::class,
+        ];
+        
+        $migrated = 0;
+        
+        foreach ($models as $model) {
+            $count = $model::where('tenant_id', $oldTenantId)
+                ->update(['tenant_id' => $newTenantId]);
+                
+            $migrated += $count;
+        }
+        
+        event(new DataMigrated($oldTenantId, $newTenantId, $migrated));
+        
+        return $migrated;
+    }
+}
+```
+
+### 16.2 Tenant Export/Import
+
+#### Export
+```php
+class TenantExporter
+{
+    public function export(int $tenantId): string
+    {
+        $tenant = Tenant::findOrFail($tenantId);
+        
+        $zip = new ZipArchive();
+        $filename = "tenant_{$tenantId}_export_" . now()->format('YmdHis') . '.zip';
+        
+        $zip->open(storage_path($filename), ZipArchive::CREATE);
+        
+        // Export users
+        $users = User::where('tenant_id', $tenantId)->get();
+        $zip->addFromString('users.json', $users->toJson(JSON_PRETTY_PRINT));
+        
+        // Export documents
+        foreach (Document::where('tenant_id', $tenantId)->cursor() as $doc) {
+            $path = storage_path("app/{$tenantId}/documents/{$doc->filename}");
+            if (file_exists($path)) {
+                $zip->addFile($path, "documents/{$doc->filename}");
+            }
+        }
+        
+        $zip->close();
+        
+        return $filename;
+    }
+}
+```
+
+#### Import
+```php
+class TenantImporter
+{
+    public function import(string $filename, int $targetTenantId): array
+    {
+        $zip = new ZipArchive();
+        $zip->open($filename);
+        
+        $results = ['users' => 0, 'documents' => 0, 'errors' => []];
+        
+        // Import users
+        $usersJson = $zip->getFromName('users.json');
+        if ($usersJson) {
+            $users = json_decode($usersJson, true);
+            
+            foreach ($users as $userData) {
+                try {
+                    $userData['tenant_id'] = $targetTenantId;
+                    $userData['id'] = null; // New ID
+                    
+                    User::create($userData);
+                    $results['users']++;
+                } catch (\Exception $e) {
+                    $results['errors'][] = "User import failed: " . $e->getMessage();
+                }
+            }
+        }
+        
+        // Extract documents
+        for ($i = 0; $i < $zip->numFiles; $i++) {
+            $name = $zip->getNameIndex($i);
+            if (str_starts_with($name, 'documents/')) {
+                $content = $zip->getFromIndex($i);
+                Storage::put("app/{$targetTenantId}/{$name}", $content);
+                $results['documents']++;
+            }
+        }
+        
+        $zip->close();
+        
+        return $results;
+    }
+}
+```
+
+---
+
+## 17. Cross-Tenant Collaboration
+
+### 17.1 Shared Resources Pattern
+
+Alcuni dati possono essere condivisi tra tenant:
+- Template di documenti (read-only)
+- Categorie standard
+- Lookup tables
+
+```php
+// Model per risorse condivise
+class SharedCategory extends Model
+{
+    use \Modules\Tenant\Traits\TenantScopeTrait;
+    
+    protected $table = 'shared_categories';
+    
+    // Override per renderlo sempre disponibile
+    public function newQuery()
+    {
+        return parent::newQuery()->withoutGlobalScope(TenantScope::class);
+    }
+}
+```
+
+### 17.2 Tenant-to-Tenant Data Sharing
+
+```php
+// Sharing configuration
+class TenantShare extends Model
+{
+    public function sourceTenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class, 'source_tenant_id');
+    }
+    
+    public function targetTenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class, 'target_tenant_id');
+    }
+    
+    public function scopeAccessibleFor(Builder $query, int $tenantId): Builder
+    {
+        return $query->where(function ($q) use ($tenantId) {
+            $q->where('source_tenant_id', $tenantId)
+              ->orWhere('target_tenant_id', $tenantId);
+        });
+    }
+}
+```
+
+---
+
+## 18. Tenant Billing e Subscription
+
+### 18.1 Subscription Plans
+
+| Plan | Users | Storage | Features | Price |
+|------|-------|---------|----------|-------|
+| Starter | 10 | 1GB | Basic | €29/mo |
+| Professional | 50 | 10GB | Advanced | €99/mo |
+| Business | 200 | 100GB | Full | €299/mo |
+| Enterprise | Unlimited | Unlimited | All + Support | Custom |
+
+### 18.2 Usage Tracking
+
+```php
+class TenantUsage extends Model
+{
+    public function tenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+    
+    public function recordUsage(string $type, int $amount): void
+    {
+        $this->$type += $amount;
+        $this->save();
+        
+        if ($this->isOverLimit($type)) {
+            event(new UsageLimitExceeded($this->tenant, $type));
+        }
+    }
+}
+```
+
+### 18.3 Plan Enforcement
+
+```php
+// Middleware per enforcement
+class CheckPlanLimits
+{
+    public function handle(Request $request, Closure $next): Response
+    {
+        $tenant = tenant();
+        
+        if (!$tenant->subscription?->canUseFeature('api_access')) {
+            return response()->json([
+                'error' => 'API access not included in your plan'
+            ], 403);
+        }
+        
+        if ($tenant->usage->api_calls >= $tenant->subscription->plan->api_limit) {
+            return response()->json([
+                'error' => 'API limit exceeded'
+            ], 429);
+        }
+        
+        return $next($request);
+    }
+}
+```
+
+---
+
+## 19. Tenant Analytics e Reporting
+
+### 19.1 Metrics Collection
+
+```php
+class TenantMetrics
+{
+    public function collect(Tenant $tenant): array
+    {
+        return [
+            'users' => [
+                'total' => $tenant->users()->count(),
+                'active' => $tenant->users()->active()->count(),
+                'inactive' => $tenant->users()->whereNotNull('deactivated_at')->count(),
+            ],
+            'storage' => [
+                'used' => $this->calculateStorageUsage($tenant),
+                'limit' => $tenant->subscription?->plan->storage_limit ?? 0,
+            ],
+            'api' => [
+                'calls_today' => $tenant->apiCalls()->today()->count(),
+                'calls_this_month' => $tenant->apiCalls()->thisMonth()->count(),
+            ],
+            'activity' => [
+                'last_login' => $tenant->users()->max('last_login_at'),
+                'actions_this_week' => $tenant->activities()->thisWeek()->count(),
+            ],
+        ];
+    }
+}
+```
+
+### 19.2 Dashboard Data
+
+| Widget | Dati | Refresh |
+|--------|------|---------|
+| User count | Totale, attivi, nuovi oggi | Real-time |
+| Storage usage | GB usati, limite, % | 1 ora |
+| API calls | Oggi, questa settimana, trend | 5 min |
+| Activity | Ultime 10 azioni | Real-time |
+| Usage chart | Ultimi 30 giorni | 1 ora |
+
+---
+
+## 20. Tenant Security Hardening
+
+### 20.1 IP Allowlisting
+
+```php
+class TenantIPAllowlist extends Model
+{
+    public function tenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+    
+    public function allows(string $ip): bool
+    {
+        if ($this->ips === '*') {
+            return true;
+        }
+        
+        $allowed = explode(',', $this->ips);
+        
+        foreach ($allowed as $range) {
+            if ($this->ipInRange($ip, trim($range))) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+}
+```
+
+### 20.2 SSO Enforcement
+
+```php
+// Configurazione per tenant che richiedono SSO
+class TenantSSOSettings extends Model
+{
+    public function tenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+    
+    public function enforceFor(Request $request): bool
+    {
+        if (!$this->enabled) {
+            return false; // Allow regular login
+        }
+        
+        if (!$request->user()?->hasTenantAccess($this->tenant)) {
+            return true; // Force SSO
+        }
+        
+        return false;
+    }
+}
+```
+
+---
+
+## 21. Disaster Recovery per Tenant
+
+### 21.1 Tenant-Specific Backup
+
+```php
+class TenantBackup
+{
+    public function create(Tenant $tenant): string
+    {
+        $backupId = Str::uuid();
+        
+        // Database dump
+        $dbFile = $this->backupDatabase($tenant);
+        
+        // File storage
+        $filesFile = $this->backupFiles($tenant);
+        
+        // Config
+        $configFile = $this->backupConfig($tenant);
+        
+        // Create manifest
+        $manifest = [
+            'backup_id' => $backupId,
+            'tenant_id' => $tenant->id,
+            'created_at' => now(),
+            'files' => [
+                'database' => $dbFile,
+                'files' => $filesFile,
+                'config' => $configFile,
+            ],
+        ];
+        
+        Storage::put("backups/{$backupId}/manifest.json", json_encode($manifest));
+        
+        return $backupId;
+    }
+    
+    public function restore(string $backupId): void
+    {
+        $manifest = json_decode(
+            Storage::get("backups/{$backupId}/manifest.json")
+        );
+        
+        $this->restoreDatabase($manifest->files->database);
+        $this->restoreFiles($manifest->files->files);
+        $this->restoreConfig($manifest->files->config);
+    }
+}
+```
+
+### 21.2 Point-in-Time Recovery
+
+Per tenant che necessitano di PITR:
+- Binlog retention: 7 giorni
+- Backup frequency: ogni ora
+- Recovery SLA: 4 ore
+
+---
+
+## 22. Changelog
