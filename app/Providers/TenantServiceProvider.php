@@ -125,7 +125,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
         Config::set('database', $data);
 
         // Skip purge/reconnect during testing to preserve test DB mappings
-        if (! // @var mixed app->environment('testing'
+        if (!app()->environment('testing')) {
             // Call to a member function prepare() on null
             // Database connection [mysql] not configured.
             DB::purge('mysql');
