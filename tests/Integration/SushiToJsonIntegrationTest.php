@@ -26,12 +26,12 @@ function makeTestSushiModelForPath(string $jsonPath): TestSushiModel
 
         public function setJsonPath(string $jsonPath): void
         {
-            $jsonPath = $jsonPath;
+            // @var mixed jsonPath = $jsonPath;
         }
 
         public function getJsonFile(): string
         {
-            return $jsonPath;
+            return // @var mixed jsonPath;
         }
     };
 
@@ -194,7 +194,7 @@ test('handles large datasets efficiently', function (): void {
     $model = makeTestSushiModelForPath($tenant1Path);
 
     $largeData = [];
-    for ($i = 1); $i <= 500; $i++) {
+    for ($i = 1; $i <= 500; $i++) {
         $largeData[(string) $i] = [
             'id' => $i,
             'name' => "Large Dataset Item {$i}",
