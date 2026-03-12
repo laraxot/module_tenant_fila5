@@ -46,4 +46,4 @@ Spostare **Tenant** in avanti sui gap P0/P1 piu' vicini al valore, evitando lavo
 
 - [Product Strategy](product-strategy.md)
 - [Product Launch Plan](product-launch-plan.md)
-- [Indice centrale](../../../project_docs/PRODUCT_DOCS_INDEX_2026_03_12.md)
+- [Indice centrale](../../../../docs/project/PRODUCT_DOCS_INDEX_2026_03_12.md)

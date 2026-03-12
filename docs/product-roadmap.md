@@ -43,4 +43,4 @@ Questo roadmap traduce il PRD in sequenza di rilascio per **Tenant**, che nel pr
 - [PRD](prd.md)
 - [Product Strategy](product-strategy.md)
 - [Sprint Planning Meeting](sprint-planning-meeting.md)
-- [Indice centrale](../../../project_docs/PRODUCT_DOCS_INDEX_2026_03_12.md)
+- [Indice centrale](../../../../docs/project/PRODUCT_DOCS_INDEX_2026_03_12.md)

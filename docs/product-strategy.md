@@ -44,7 +44,7 @@ Portare **Tenant** a uno stato in cui il progetto ottiene un vantaggio netto e m
 
 - [PRD](prd.md)
 - [Product Roadmap](product-roadmap.md)
-- [Indice centrale](../../../project_docs/PRODUCT_DOCS_INDEX_2026_03_12.md)
+- [Indice centrale](../../../../docs/project/PRODUCT_DOCS_INDEX_2026_03_12.md)
 
 ## Regola architetturale
 
