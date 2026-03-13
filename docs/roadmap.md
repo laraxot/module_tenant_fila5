@@ -1,77 +1,20 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# Roadmap Modulo Tenant
+# Product Roadmap - Tenant Module
 
-## 🎯 Visione
-Rendere la scalabilità dell'isolamento dei dati un processo immediato e trasparente, permettendo l'onboarding di nuovi tenant in pochi secondi tramite configurazioni dinamiche e automazione delle infrastrutture.
+## 🎯 Vision & Strategy
+Provide absolute data isolation and specialized configuration for multiple organizations (tenants) sharing the same PTVX instance.
 
-## 🏗️ Fasi di Sviluppo
+## 🗓️ Timeline
+### Q1 2026: Isolation (Current)
+- **Database-Level Scoping** - *Status: Shipped*
+- **Tenant-Specific Assets** - *Status: In Progress*
+- **Tenant Onboarding Wizard** - *Status: Planned*
 
-### Fase 1: Stabilità e Standard (In Corso)
-- [x] PHPStan Level 10 Compliance.
-- [x] Implementazione del pattern DRY per i metodi dei trait (2026-03-02)
-- [ ] Implementazione del **Cluster Tenant** per l'amministrazione centralizzata.
-- [ ] Rimozione sistematica dei file obsoleti e pulizia dei docs vuoti.
-- [ ] Supporto completo per i Service Provider di Laravel 12 nella risoluzione dei tenant.
+## 🚦 Status Overview
+| Feature | Status | Owner | Target Date |
+| :--- | :--- | :--- | :--- |
+| Core Multi-tenancy | ✅ Stable | @CoreTeam | Jan 2026 |
+| Custom Domain Support | 🏗️ In Dev | @CoreTeam | Mar 2026 |
 
-### Fase 2: Onboarding Dinamico (Pianificato)
-- [ ] Creazione di un Wizard in Filament per la configurazione semplificata dei nuovi Tenant.
-- [ ] Automazione delle migrazioni specifiche e isolamento del database.
-- [ ] Integrazione con Cloud Storage per l'isolamento degli asset multimediali.
-
-### Fase 3: Performance e AI (Futuro)
-- [ ] **AI-Based Resource Allocation**: Ottimizzazione automatica delle risorse database in base all'uso dei Tenant.
-- [ ] **Cross-Tenant Analytics**: Reporting comparativo anonimizzato per amministratori di sistema.
-- [ ] Zero-Downtime Migration: Spostamento trasparente di tenant tra nodi infrastrutturali diversi.
-
-## ✅ Checklist Qualità
-- [x] PHPStan Level 10.
-- [x] DRY Principle per i metodi dei trait implementato (2026-03-02)
-- [ ] Isolamento dei dati verificato tramite test unitari e di integrazione.
-- [ ] Assenza di dipendenze circolari tra il modulo Tenant e il resto del sistema.
-- [ ] Documentazione agnostica aggiornata in `docs/`.
-
----
-**Ultimo aggiornamento**: 2 Marzo 2026
-# Tenant Module Roadmap
-
-"Espandersi senza confini: la scalabilità dell'isolamento."
-=======
-# Roadmap Modulo Tenant
->>>>>>> 1ec9c62 (Refactor TenantServiceProvider to comment out SQLite error handling and update roadmap documentation with current status, milestones, and prioritized tasks for tenant module development.)
-
-## 🎯 Visione
-Rendere la scalabilità dell'isolamento dei dati un processo immediato e trasparente, permettendo l'onboarding di nuovi tenant in pochi secondi tramite configurazioni dinamiche e automazione delle infrastrutture.
-
-## 🏗️ Fasi di Sviluppo
-
-### Fase 1: Stabilità e Standard (In Corso)
-- [x] PHPStan Level 10 Compliance.
-- [ ] Implementazione del **Cluster Tenant** per l'amministrazione centralizzata.
-- [ ] Rimozione sistematica dei file obsoleti e pulizia dei docs vuoti.
-- [ ] Supporto completo per i Service Provider di Laravel 12 nella risoluzione dei tenant.
-
-### Fase 2: Onboarding Dinamico (Pianificato)
-- [ ] Creazione di un Wizard in Filament per la configurazione semplificata dei nuovi Tenant.
-- [ ] Automazione delle migrazioni specifiche e isolamento del database.
-- [ ] Integrazione con Cloud Storage per l'isolamento degli asset multimediali.
-
-### Fase 3: Performance e AI (Futuro)
-- [ ] **AI-Based Resource Allocation**: Ottimizzazione automatica delle risorse database in base all'uso dei Tenant.
-- [ ] **Cross-Tenant Analytics**: Reporting comparativo anonimizzato per amministratori di sistema.
-- [ ] Zero-Downtime Migration: Spostamento trasparente di tenant tra nodi infrastrutturali diversi.
-
-## ✅ Checklist Qualità
-- [x] PHPStan Level 10.
-<<<<<<< HEAD
-- [ ] Isolamento dei dati verificato con test di unitari al 100%.
-- [ ] Zero dipendenze circolari tra Tenant e altri moduli core.
-
----
-**Ultimo aggiornamento**: 31 Gennaio 2026
->>>>>>> aa416e4 (.)
-=======
-- [ ] Isolamento dei dati verificato tramite test unitari e di integrazione.
-- [ ] Assenza di dipendenze circolari tra il modulo Tenant e il resto del sistema.
-- [ ] Documentazione agnostica aggiornata in `docs/`.
->>>>>>> 1ec9c62 (Refactor TenantServiceProvider to comment out SQLite error handling and update roadmap documentation with current status, milestones, and prioritized tasks for tenant module development.)
+## 📂 Backlog / Future Ideas
+- Cross-tenant data sharing (opt-in).
+- Tenant-specific feature flagging (integration with Pennant).

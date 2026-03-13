@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 uses(\Modules\Tenant\Tests\TestCase::class);
 
+uses(\Modules\Tenant\Tests\TestCase::class);
+
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TenantDomain;
 use Modules\Tenant\Models\TenantSetting;
