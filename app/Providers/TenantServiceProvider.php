@@ -174,6 +174,10 @@ class TenantServiceProvider extends XotBaseServiceProvider
             $connections = array_merge($connections, $testConnections);
         }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         $data = Arr::set($data, 'connections', $connections);
         Config::set('database', $data);
 
