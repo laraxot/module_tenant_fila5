@@ -1,32 +1,30 @@
 # PRD: Tenant Module
 
-## 📋 Executive Summary
-The Tenant module implements multi-tenancy for the PTVX ecosystem, allowing multiple Public Administrations to share the same codebase while maintaining absolute data isolation. It handles tenant detection (domain/subdomain), database scoping, and tenant-specific configuration (theme, language, features).
+## 📋 Overview
+- **Author:** Gemini CLI
+- **Status:** Approved
+- **Target Release:** 1.0.0
 
-## 👥 Target Personas
-- **PA Administrators**: Need full control over their administration's data and users.
-- **Super Administrators**: Need to manage the health and configuration of the entire multi-tenant cluster.
-- **AI Agents**: Need global `tenant_id` scoping to prevent data leaks.
+## ❓ Problem Statement
+Hosting multiple public administrations on one server requires strict data isolation to prevent data leaks and ensure regulatory compliance (GDPR).
 
-## 🎯 Functional Requirements (P0/P1)
-- **P0: Data Isolation**: Automatic, non-bypassable scoping for all `XotBaseModel` queries.
-- **P0: Tenant Resolution**: Dynamic identification based on URL, Header, or Session.
-- **P1: Feature Flags**: Per-tenant activation of specific modules (e.g., Mensa, Europa).
-- **P1: Tenant Dashboards**: Isolated admin panels with custom branding.
+## 🎯 Goals & Success Metrics
+- **Goal 1:** Absolute Isolation -> **Metric:** Zero cross-tenant data leaks.
+- **Goal 2:** Scalability -> **Metric:** Support for 1,000+ tenants on a single cluster.
+- **Goal 3:** Flexibility -> **Metric:** Tenant-specific themes, languages, and settings.
 
-## 🛠️ Technical Specs
-- **Implementation**: Uses `tenant_id` columns on shared tables with global scopes.
-- **Isolation**: Separate storage directories and cache namespaces per tenant.
-- **Extensibility**: Custom `TenantManager` for administration-specific logic.
+## 👤 User Stories
+- As a **Tenant Admin**, I want to manage only my own users and data.
+- As a **Super Admin**, I want to monitor all tenants from a central dashboard.
 
-## 🔌 Service Interface (The Contract)
-- **Querying**: All models MUST use the `HasTenant` trait.
-- **Scoping**: Super-admin bypass must be explicit and audited.
+## 🛠️ Functional Requirements
+1. **Tenant Identification:** Resolve tenants via subdomains or custom domains.
+2. **Data Scoping:** Automatic `tenant_id` filtering on all `XotBaseModel` queries.
+3. **Resource Isolation:** Tenant-specific file storage and cache keys.
 
-## 🛡️ Non-Functional Requirements
-- **Security**: Zero tolerance for cross-tenant data leaks (GDPR requirement).
-- **Compliance**: Supports Italian PA data residency and portability rules.
+## 🎨 Design & User Experience
+Seamless switching for Super Admins; completely isolated experience for Tenant users.
 
-## ✅ Release Criteria
-- Automated regression tests for data isolation.
-- Verification of per-tenant theme and language overrides.
+## 🚫 Out of Scope
+- Inter-tenant communication logic (belongs in specialized modules).
+- Payment/Billing for tenants (handled by Subscription module).
