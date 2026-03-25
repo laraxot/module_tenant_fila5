@@ -162,3 +162,5 @@ Questa documentazione viene aggiornata regolarmente. Prima di apportare modifich
 - Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
 
 *Ultimo aggiornamento: Gennaio 2025*
+
+- [Conflict Resolution](conflict-resolution.md)
