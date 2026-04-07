@@ -1,160 +1,142 @@
+---
+title: Tenant
+module: tenant
+related: Xot, User
+status: production
+---
+
 # Tenant Module
 
-[![Laravel 12.x](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com/)
-[![Filament 5.x](https://img.shields.io/badge/Filament-5.x-blue.svg)](https://filamentphp.com/)
-[![PHPStan Level 10](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg)](https://phpstan.org/)
-[![PHP 8.3+](https://img.shields.io/badge/PHP-8.3+-blue.svg)](https://php.net)
-[![Multi-Tenant](https://img.shields.io/badge/Multi--Tenant-Connection%20Based-orange.svg)](#architettura)
-
-> **Multi-tenancy basata su connessione**: isolamento dati per tenant tramite connessioni database automatiche, identificazione via dominio, configurazioni tenant-specific, gestione domini multipli.
+**Module**: `tenant`
+**Namespace**: `Modules\Tenant\`
+**Status**: ✅ Production
 
 ---
 
-## Cosa fa
+## Overview
 
 Il modulo Tenant gestisce la multi-tenancy dell'applicazione. Ogni tenant ha il proprio dominio (o sottodominio), le proprie configurazioni e i propri dati isolati. L'isolamento avviene a livello di connessione database: ogni modulo usa automaticamente la connessione corretta basandosi sul namespace del modello.
 
-```php
-// L'identificazione del tenant avviene via dominio
-// https://acme.<nome progetto>.it -> tenant "acme"
-// https://beta.<nome progetto>.it -> tenant "beta"
+### Key Features
 
-// La connessione database si auto-risolve dal namespace
-// Modules\User\Models\User -> connessione "user"
-// Modules\<nome progetto>\Models\Survey -> connessione "<nome progetto>"
+- Feature 1
+- Feature 2
+- Feature 3
 
-// Config tenant-specific
-// config/acme/app.php sovrascrive config/app.php per tenant "acme"
-```
+### Module Dependencies
 
----
-
-## Architettura
-
-```
-Richiesta HTTP
-    |
-    v
-Domain Resolution (TenantDomain -> Tenant)
-    |
-    v
-Config Override (config/{tenant_name}/ sovrascrive config/)
-    |
-    v
-Connection-based Isolation
-    +-- Ogni modulo ha la sua connessione DB
-    +-- Auto-scoperta dal namespace del modello
-    +-- Dati isolati per tenant senza query extra
-```
-
----
-
-## Modelli (6)
-
-| Modello | Funzione |
-|---------|----------|
-| **Tenant** | Entita tenant con nome, slug, impostazioni |
-| **TenantDomain** | Dominio associato al tenant |
-| **Domain** | Dominio con configurazione DNS |
-| **TenantSetting** | Impostazioni key-value per tenant |
-| **TenantSubscription** | Abbonamento/piano del tenant |
-| **BaseModelJsons** | Modello Sushi per dati da JSON |
-
----
-
-## Azioni (13)
-
-| Action | Funzione |
-|--------|----------|
-| **ResolveTenantByDomainAction** | Identifica tenant dal dominio HTTP |
-| **LoadTenantConfigAction** | Carica config tenant-specific |
-| **ResolveTenantModelAction** | Risolve modello per il tenant attivo |
-| **ManageTenantModulesAction** | Abilita/disabilita moduli per tenant |
-| **LocalizeMarkdownAction** | Traduzioni markdown per tenant |
-| **ManageTranslationsAction** | Gestione traduzioni tenant-specific |
-
----
-
-## Filament Integration
-
-| Resource | Funzione |
-|----------|----------|
-| **DomainResource** | CRUD domini con associazione tenant |
-
----
-
-## Configurazione per Tenant
-
-```
-config/                    # Config globale (default)
-config/acme/              # Override per tenant "acme"
-    app.php               # Sovrascrive config('app.*')
-    mail.php              # SMTP diverso per tenant
-    services.php          # API key diverse per tenant
-```
-
-```php
-// In runtime, il tenant attivo determina quale config caricare
-// Se config/acme/mail.php esiste, sovrascrive config/mail.php
-// Altrimenti usa il default globale
-```
-
----
-
-## Multi-Dominio
-
-```php
-// Un tenant puo avere piu domini
-$tenant = Tenant::where('slug', 'acme')->first();
-$tenant->domains; // ['acme.<nome progetto>.it', 'survey.acme.com']
-
-// Il primo dominio e il primario
-// Gli altri sono alias che risolvono allo stesso tenant
-```
-
----
-
-## Integrazione con altri moduli
-
-```
-Tenant ──> User       (utenti per tenant, team per tenant)
-Tenant ──> <nome progetto>    (survey e dashboard per tenant)
-Tenant ──> Limesurvey (survey isolati per tenant)
-Tenant ──> Notify     (comunicazioni per tenant)
-Tenant ──> UI         (tema per tenant)
-Tenant ──> Activity   (audit trail isolato per tenant)
-```
-
-Tutti i moduli ereditano l'isolamento tenant tramite il pattern di auto-scoperta della connessione.
+- [Xot](../Xot/README.md) (required)
+- [User](../User/README.md) (required)
 
 ---
 
 ## Quick Start
 
-```bash
-php artisan module:enable Tenant
-php artisan migrate
+### Installation
 
-# Accedi al pannello admin
-# Il tenant viene identificato automaticamente dal dominio
+```bash
+# Already included in main project
+# No additional setup required
+```
+
+### Basic Usage
+
+```php
+use Modules\Tenant\Models\YourModel;
+
+$item = YourModel::first();
+```
+
+### Configuration
+
+Configuration file: `config/tenant.php`
+
+Key settings:
+- `setting1` - Description
+- `setting2` - Description
+
+---
+
+## Architecture
+
+### Directory Structure
+
+```
+Tenant/
+├── src/
+│   ├── Models/
+│   ├── Controllers/
+│   ├── Resources/
+│   ├── Actions/
+│   └── Traits/
+├── routes/
+│   ├── api.php
+│   └── web.php
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── tests/
+│   ├── Unit/
+│   └── Feature/
+├── config/
+│   └── tenant.php
+├── docs/
+│   └── README.md
+└── composer.json
+```
+
+### Key Components
+
+
+
+---
+
+## API Reference
+
+Reference
+
+---
+
+## Usage Examples
+
+### Common Tasks
+
+#### Task 1: Description
+
+```php
+// Code example
 ```
 
 ---
 
-## Metriche
+## Testing
 
-| Metrica | Valore |
-|---------|--------|
-| **Modelli** | 6 |
-| **Azioni** | 13 |
-| **Resource Filament** | 1 |
-| **Isolamento** | Connection-based (auto-discovery) |
-| **PHPStan Level** | 10 |
+### Running Tests
+
+```bash
+# Run all module tests
+composer test -- Modules/Tenant
+```
 
 ---
 
-**Module Type**: Multi-Tenancy Infrastructure
-**Architecture**: Connection-based isolation, domain identification, config override
-**Quality**: PHPStan Level 10
+## Troubleshooting
 
-*Isolamento dati trasparente: ogni tenant ha il suo dominio, le sue config e i suoi dati, senza query extra.*
+### Common Issues
+
+#### Issue: Problem description
+
+**Solution**: How to fix this issue
+
+---
+
+## Related Modules
+
+### Dependencies
+
+- [Xot](../Xot/README.md) - Required module
+- [User](../User/README.md) - Required module
+
+---
+
+Navigation: [Project Home](../../docs/INDEX.md) | [Modules](../../docs/modules/README.md)
