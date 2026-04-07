@@ -71,3 +71,6 @@ class User extends Authenticatable
 ## Backlinks
 
 - [Configurazione Root](../../../docs/TENANT_MODULE.md)
+
+## AI Workflows
+- [AI Methodologies](./ai-methodologies.md)
