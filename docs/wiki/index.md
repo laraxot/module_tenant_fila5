@@ -1,32 +1,25 @@
 ---
-title: "Wiki Index"
-module: "Tenant"
-updated: "2026-04-15T08:28:50Z"
+module: Tenant
+concept: Wiki Index
+last_updated: 2026-04-15
 ---
 
-# Wiki Index — Tenant
+# Tenant Module Wiki
 
-> **Purpose:** Content-oriented catalog of all wiki pages in this module.  
-> **Replaces embedding-based RAG at moderate scale (~100 sources).**
+The foundation for PTVX Multi-Tenancy and Data Isolation.
 
-## Concepts
+## 🏗️ Architecture
+- [[Architecture]]: Overview of the Tenant layer.
+- [[Tenant Identification]]: How the system resolves the current tenant context.
+- [[Configuration Distribution]]: Managing tenant-specific settings and overrides.
 
-_No concepts ingested yet. Drop raw documents in `../raw/articles/` and run ingest._
+## 💾 Data & Isolation
+- [[Database Isolation]]: Ensuring strict boundaries between tenant data.
+- [[Sushi Models]]: Managing static data without database overhead.
 
-## Entities
-
-_No entities tracked yet._
-
-## Sources
-
-_No sources ingested yet._
-
-## Comparisons
-
-_No comparisons synthesized yet._
+## 🔧 Workflow & Lifecycle
+- [[Tenant Onboarding]]: The process of creating and activating new tenants.
+- [[Domain Management]]: Whitelisting and verifying custom domains.
 
 ---
-
-**Last Updated:** 2026-04-15T08:28:50Z  
-**Total Pages:** 0  
-**Total Raw Sources:** 0
+**Main Project Wiki:** [[Project Home]]
