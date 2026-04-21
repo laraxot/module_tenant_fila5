@@ -71,3 +71,10 @@ class User extends Authenticatable
 ## Backlinks
 
 - [Configurazione Root](../../../docs/TENANT_MODULE.md)
+
+
+## Standard Rules & Workflow
+
+- [[BMAD Method](../../../../docs/wiki/concepts/bmad-method.md)]
+- [[Context Engineering](../../../../docs/wiki/concepts/context-engineering.md)]
+- [[LLM Wiki Governance](../../../../docs/wiki/concepts/llm-wiki-governance.md)]
