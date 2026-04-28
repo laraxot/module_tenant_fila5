@@ -21,7 +21,7 @@ it('resolves tenant config value by merging with tenant overrides', function ():
     Config::set('app.timezone', 'UTC');
 
     // Set up tenant override config
-    Config::set('test-tenant.app', [)
+    Config::set('test-tenant.app', [
         'name' => 'Tenant App',
     ]);
 
