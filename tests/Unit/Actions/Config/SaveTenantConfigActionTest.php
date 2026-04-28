@@ -28,7 +28,7 @@ it('saves tenant config by merging with existing data', function (): void {
 
     $this->mock(SaveArrayAction::class)
         ->shouldReceive('execute')
-        ->withArgs(function ($data, $filename) {)
+        ->withArgs(function ($data, $filename) {
             return $filename === '/path/to/tenant/database.php' &&
                    $data['connections']['mysql']['host'] === 'localhost' &&
                    $data['connections']['mysql']['database'] === 'test_db';
