@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TenantDomain;
 use Modules\Tenant\Models\TenantSetting;
 use Modules\Tenant\Models\TenantSubscription;
+use Modules\Tenant\Tests\TestCase;
 use Modules\User\Models\User;
 use Webmozart\Assert\Assert;
 

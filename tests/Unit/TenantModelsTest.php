@@ -4,8 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit;
 
-use Modules\Tenant\Tests\TestCase;
+use Modules\Tenant\Models\Audit;
+use Modules\Tenant\Models\Config;
+use Modules\Tenant\Models\DatabaseConfig;
+use Modules\Tenant\Models\Domain;
+use Modules\Tenant\Models\Setting;
+use Modules\Tenant\Models\Subscription;
 use Modules\Tenant\Models\Tenant;
+use Modules\Tenant\Tests\TestCase;
 use Modules\User\Models\User;
 
 uses(TestCase::class)->in(__DIR__);
@@ -29,7 +35,7 @@ it('can create a tenant with database configuration', function () {
         'domain' => 'enterprise.example.com',
     ]);
 
-    expect($tenant->database_config)->toBeInstanceOf(\Modules\Tenant\Models\DatabaseConfig::class);
+    expect($tenant->database_config)->toBeInstanceOf(DatabaseConfig::class);
     expect($tenant->database_config->host)->toBe('localhost');
 });
 
@@ -44,7 +50,7 @@ it('can create a tenant domain', function () {
         'is_primary' => true,
     ]);
 
-    expect($domain)->toBeInstanceOf(\Modules\Tenant\Models\Domain::class);
+    expect($domain)->toBeInstanceOf(Domain::class);
     expect($domain->is_primary)->toBeTrue();
     expect($domain->tenant_id)->toBe($tenant->id);
 });
@@ -76,7 +82,7 @@ it('can create a tenant subscription', function () {
         'ends_at' => now()->addMonth(),
     ]);
 
-    expect($subscription)->toBeInstanceOf(\Modules\Tenant\Models\Subscription::class);
+    expect($subscription)->toBeInstanceOf(Subscription::class);
     expect($subscription->plan)->toBe('premium');
     expect($subscription->is_active)->toBeTrue();
 });
@@ -92,7 +98,7 @@ it('can create a tenant setting', function () {
         'value' => 'My Application',
     ]);
 
-    expect($setting)->toBeInstanceOf(\Modules\Tenant\Models\Setting::class);
+    expect($setting)->toBeInstanceOf(Setting::class);
     expect($setting->key)->toBe('app_name');
     expect($setting->value)->toBe('My Application');
 });
@@ -110,7 +116,7 @@ it('can create a tenant audit log', function () {
         'auditable_id' => $tenant->id,
     ]);
 
-    expect($audit)->toBeInstanceOf(\Modules\Tenant\Models\Audit::class);
+    expect($audit)->toBeInstanceOf(Audit::class);
     expect($audit->event)->toBe('tenant_created');
     expect($audit->auditable_type)->toBe(Tenant::class);
 });
@@ -138,7 +144,7 @@ it('can create a tenant with custom configuration', function () {
         'value' => json_encode(['theme' => 'dark', 'language' => 'it']),
     ]);
 
-    expect($config)->toBeInstanceOf(\Modules\Tenant\Models\Config::class);
+    expect($config)->toBeInstanceOf(Config::class);
     expect($config->key)->toBe('custom_config');
     expect(json_decode($config->value, true)['theme'])->toBe('dark');
 });
