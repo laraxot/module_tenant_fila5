@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit\Models;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Tenant\Models\BaseModel;
+use Modules\Tenant\Tests\TestCase;
 
 /**
  * @property BaseModel $baseModel

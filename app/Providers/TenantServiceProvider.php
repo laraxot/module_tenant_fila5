@@ -121,7 +121,6 @@ class TenantServiceProvider extends XotBaseServiceProvider
             }
         }
 
-
         $data = Arr::set($data, 'connections', $connections);
         Config::set('database', $data);
 
