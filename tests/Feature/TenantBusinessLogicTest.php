@@ -14,7 +14,7 @@ use Modules\Tenant\Tests\TestCase;
 use Modules\User\Models\User;
 use Webmozart\Assert\Assert;
 
-it('can create and manage tenants', function (): void {
+it('can create and manage tenants', function(): void {
     // Arrange
     $user = User::factory()->create();
     Assert::isInstanceOf($user, User::class);
@@ -39,7 +39,7 @@ it('can create and manage tenants', function (): void {
     expect($tenant->is_active)->toBeTrue();
 });
 
-it('can manage tenant domains', function (): void {
+it('can manage tenant domains', function(): void {
     // Arrange
     $tenant = Tenant::factory()->create();
     Assert::isInstanceOf($tenant, Tenant::class);
@@ -68,7 +68,7 @@ it('can manage tenant domains', function (): void {
     expect($domain->status)->toBe('active');
 });
 
-it('can manage tenant settings', function (): void {
+it('can manage tenant settings', function(): void {
     // Arrange
     $tenant = Tenant::factory()->create();
 
@@ -95,7 +95,7 @@ it('can manage tenant settings', function (): void {
     expect($setting->type)->toBe('string');
 });
 
-it('can manage tenant subscriptions', function (): void {
+it('can manage tenant subscriptions', function(): void {
     // Arrange
     $tenant = Tenant::factory()->create();
 
@@ -127,7 +127,7 @@ it('can manage tenant subscriptions', function (): void {
     expect($subscription->max_storage_gb)->toBe(100);
 });
 
-it('can validate tenant slug uniqueness', function (): void {
+it('can validate tenant slug uniqueness', function(): void {
     // Arrange & Act
     $tenant1 = Tenant::factory()->create([
         'name' => 'Studio A',
@@ -154,7 +154,7 @@ it('can validate tenant slug uniqueness', function (): void {
     expect($tenant2->slug)->toBe('studio-b');
 });
 
-it('can manage tenant status workflow', function (): void {
+it('can manage tenant status workflow', function(): void {
     // Arrange - tenant inattivo
     $tenant = Tenant::factory()->create([
         'is_active' => false,
@@ -179,7 +179,7 @@ it('can manage tenant status workflow', function (): void {
     expect($tenant->fresh()?->is_active)->toBeTrue();
 });
 
-it('can handle tenant domain verification', function (): void {
+it('can handle tenant domain verification', function(): void {
     // Arrange
     $tenant = Tenant::factory()->create();
 
@@ -216,7 +216,7 @@ it('can handle tenant domain verification', function (): void {
     expect($domainFresh->verification_token)->toBeNull();
 });
 
-it('can manage tenant storage limits', function (): void {
+it('can manage tenant storage limits', function(): void {
     // Arrange
     $tenant = Tenant::factory()->create();
     $subscription = TenantSubscription::factory()->create([
@@ -246,7 +246,7 @@ it('can manage tenant storage limits', function (): void {
     expect($subFresh->max_storage_gb - $subFresh->current_storage_gb)->toBe(50);
 });
 
-it('can manage tenant user limits', function (): void {
+it('can manage tenant user limits', function(): void {
     // Arrange
     $tenant = Tenant::factory()->create();
     $subscription = TenantSubscription::factory()->create([
@@ -276,7 +276,7 @@ it('can manage tenant user limits', function (): void {
     expect($subFresh->max_users - $subFresh->current_users)->toBe(25);
 });
 
-it('can handle tenant subscription expiration', function (): void {
+it('can handle tenant subscription expiration', function(): void {
     // Arrange
     $tenant = Tenant::factory()->create();
     $subscription = TenantSubscription::factory()->create([
@@ -302,7 +302,7 @@ it('can handle tenant subscription expiration', function (): void {
     expect($subFresh->status)->toBe('expired');
 });
 
-it('can manage tenant settings hierarchy', function (): void {
+it('can manage tenant settings hierarchy', function(): void {
     // Arrange
     $tenant = Tenant::factory()->create();
 
@@ -349,7 +349,7 @@ it('can manage tenant settings hierarchy', function (): void {
     expect($mailSetting->key)->toBe('mail.driver');
 });
 
-it('can validate tenant domain formats', function (): void {
+it('can validate tenant domain formats', function(): void {
     // Arrange
     $tenant = Tenant::factory()->create();
 
@@ -376,7 +376,7 @@ it('can validate tenant domain formats', function (): void {
     }
 });
 
-it('can track tenant activity', function (): void {
+it('can track tenant activity', function(): void {
     // Arrange
     $tenant = Tenant::factory()->create([
         'created_at' => now()->subMonths(3),
@@ -393,7 +393,7 @@ it('can track tenant activity', function (): void {
     expect($fresh->last_activity_at->isToday())->toBeTrue();
 });
 
-it('can manage tenant billing cycles', function (): void {
+it('can manage tenant billing cycles', function(): void {
     // Arrange
     $tenant = Tenant::factory()->create();
     $subscription = TenantSubscription::factory()->create([

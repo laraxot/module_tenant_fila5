@@ -186,6 +186,7 @@ trait SushiToJsons
         $property->setAccessible(true);
         $schemaValue = $property->getValue($this);
 
+<<<<<<< Updated upstream
         $schema = [];
         foreach ($schemaValue as $key => $value) {
             if (! is_string($key)) {
@@ -195,6 +196,14 @@ trait SushiToJsons
         }
 
         return $schema;
+=======
+        if (! is_array($schemaValue)) {
+            return [];
+        }
+
+        /** @var array<string, mixed> $schemaValue */
+        return $schemaValue;
+>>>>>>> Stashed changes
     }
 
     // end function boot

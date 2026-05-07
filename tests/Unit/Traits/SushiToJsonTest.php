@@ -38,20 +38,20 @@ uses(Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function ()
     Mockery::close();
 });
 
-it('returns correct json file path', function (): void {
+it('returns correct json file path', function(): void {
     $expectedPath = TenantService::filePath('database/content/test_sushi.json');
     $actualPath = $this->model->getJsonFile();
 
     expect($actualPath)->toBe($expectedPath);
 });
 
-it('returns empty array when json file not exists', function (): void {
+it('returns empty array when json file not exists', function(): void {
     $rows = $this->model->getSushiRows();
 
     expect($rows)->toBe([]);
 });
 
-it('throws exception when json data is invalid', function (): void {
+it('throws exception when json data is invalid', function(): void {
     // Crea un file JSON con dati non validi
     $directory = dirname($this->testJsonPath);
     File::makeDirectory($directory, 0755, true, true);
@@ -61,7 +61,7 @@ it('throws exception when json data is invalid', function (): void {
         ->toThrow(Exception::class, 'Data is not array ['.$this->testJsonPath.']');
 });
 
-it('loads valid json data correctly', function (): void {
+it('loads valid json data correctly', function(): void {
     $testData = [
         '1' => [
             'id' => 1,
@@ -89,7 +89,7 @@ it('loads valid json data correctly', function (): void {
     expect($rows)->toBe($testData);
 });
 
-it('normalizes nested arrays in json data', function (): void {
+it('normalizes nested arrays in json data', function(): void {
     $testData = [
         '1' => [
             'id' => 1,
@@ -112,7 +112,7 @@ it('normalizes nested arrays in json data', function (): void {
     expect(json_decode($rows['1']['tags'], true))->toBe(['tag1', 'tag2']);
 });
 
-it('saves data to json file successfully', function (): void {
+it('saves data to json file successfully', function(): void {
     $testData = [
         '1' => ['id' => 1, 'name' => 'Test Item'],
         '2' => ['id' => 2, 'name' => 'Another Item'],
@@ -129,7 +129,7 @@ it('saves data to json file successfully', function (): void {
     expect($savedData)->toBe($testData);
 });
 
-it('creates directory if not exists when saving', function (): void {
+it('creates directory if not exists when saving', function(): void {
     $testData = ['1' => ['id' => 1, 'name' => 'Test']];
 
     $result = $this->model->saveToJson($testData);
@@ -139,7 +139,7 @@ it('creates directory if not exists when saving', function (): void {
     expect(File::exists($this->testJsonPath))->toBeTrue();
 });
 
-it('returns false when saving fails', function (): void {
+it('returns false when saving fails', function(): void {
     // Mock del metodo getJsonFile per simulare un errore
     $mockModel = Mockery::mock(TestSushiModel::class)->makePartial();
     $mockModel->shouldReceive('getJsonFile')->andReturn('/invalid/path/that/cannot/be/created');
@@ -149,7 +149,7 @@ it('returns false when saving fails', function (): void {
     expect($result)->toBeFalse();
 });
 
-it('loads existing data correctly', function (): void {
+it('loads existing data correctly', function(): void {
     $testData = [
         '1' => ['id' => 1, 'name' => 'Existing Item'],
     ];
@@ -164,13 +164,13 @@ it('loads existing data correctly', function (): void {
     expect($existingData)->toBe($testData);
 });
 
-it('returns empty array when no existing data', function (): void {
+it('returns empty array when no existing data', function(): void {
     $existingData = $this->model->loadExistingData();
 
     expect($existingData)->toBe([]);
 });
 
-it('returns next available id correctly', function (): void {
+it('returns next available id correctly', function(): void {
     // Test con dati esistenti
     $testData = [
         '1' => ['id' => 1, 'name' => 'Item 1'],
@@ -187,13 +187,13 @@ it('returns next available id correctly', function (): void {
     expect($nextId)->toBe(11);
 });
 
-it('returns id 1 when no existing data', function (): void {
+it('returns id 1 when no existing data', function(): void {
     $nextId = $this->model->getNextId();
 
     expect($nextId)->toBe(1);
 });
 
-it('returns auth id when user is authenticated', function (): void {
+it('returns auth id when user is authenticated', function(): void {
     $user = Mockery::mock('stdClass');
     $user->id = 123;
 
@@ -204,7 +204,7 @@ it('returns auth id when user is authenticated', function (): void {
     expect($authId)->toBe(123);
 });
 
-it('returns null when user is not authenticated', function (): void {
+it('returns null when user is not authenticated', function(): void {
     Auth::shouldReceive('id')->once()->andReturn(null);
 
     $authId = $this->model->getAuthId();
@@ -212,7 +212,7 @@ it('returns null when user is not authenticated', function (): void {
     expect($authId)->toBeNull();
 });
 
-it('handles creating event correctly', function (): void {
+it('handles creating event correctly', function(): void {
     $testData = [
         '1' => ['id' => 1, 'name' => 'Existing Item'],
     ];
@@ -247,7 +247,7 @@ it('handles creating event correctly', function (): void {
     expect($savedData['2']['updated_by'])->toBe(456);
 });
 
-it('handles updating event correctly', function (): void {
+it('handles updating event correctly', function(): void {
     $testData = [
         '1' => [
             'id' => 1,
@@ -286,7 +286,7 @@ it('handles updating event correctly', function (): void {
     expect($savedData['1']['updated_by'])->toBe(789);
 });
 
-it('handles deleting event correctly', function (): void {
+it('handles deleting event correctly', function(): void {
     $testData = [
         '1' => ['id' => 1, 'name' => 'Item to Delete'],
         '2' => ['id' => 2, 'name' => 'Item to Keep'],
@@ -313,7 +313,7 @@ it('handles deleting event correctly', function (): void {
     expect($savedData['2']['name'])->toBe('Item to Keep');
 });
 
-it('works with sushi package integration', function (): void {
+it('works with sushi package integration', function(): void {
     $testData = [
         '1' => [
             'id' => 1,

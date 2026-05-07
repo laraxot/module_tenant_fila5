@@ -45,7 +45,7 @@ uses(Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function ()
     }
 });
 
-it('creates json file with tenant isolation', function (): void {
+it('creates json file with tenant isolation', function(): void {
     $testData = [
         '1' => [
             'id' => 1,
@@ -72,7 +72,7 @@ it('creates json file with tenant isolation', function (): void {
     expect($savedData['1']['tenant_id'])->toBe($this->tenant->id);
 });
 
-it('loads data with tenant isolation', function (): void {
+it('loads data with tenant isolation', function(): void {
     $testData = [
         '1' => [
             'id' => 1,
@@ -102,7 +102,7 @@ it('loads data with tenant isolation', function (): void {
     }
 });
 
-it('handles complex data structures', function (): void {
+it('handles complex data structures', function(): void {
     $testData = [
         '1' => [
             'id' => 1,
@@ -147,7 +147,7 @@ it('handles complex data structures', function (): void {
     expect($decodedMetadata['nested']['level1']['level2']['level3'])->toBe('deep_value');
 });
 
-it('manages file permissions correctly', function (): void {
+it('manages file permissions correctly', function(): void {
     $testData = ['1' => ['id' => 1, 'name' => 'Permission Test']];
 
     $result = $this->model->saveToJson($testData);
@@ -167,7 +167,7 @@ it('manages file permissions correctly', function (): void {
     expect($content)->not->toBeEmpty();
 });
 
-it('handles concurrent access safely', function (): void {
+it('handles concurrent access safely', function(): void {
     // Simula accesso concorrente creando più istanze del modello
     $model1 = new TestSushiModel;
     $model2 = new TestSushiModel;
@@ -198,7 +198,7 @@ it('handles concurrent access safely', function (): void {
     expect($finalData['3']['name'])->toBe('Concurrent Item 3');
 });
 
-it('handles large datasets efficiently', function (): void {
+it('handles large datasets efficiently', function(): void {
     // Crea un dataset grande per testare le performance
     $largeDataset = [];
     for ($i = 1; $i <= 1000; $i++) {
@@ -242,7 +242,7 @@ it('handles large datasets efficiently', function (): void {
     expect($rows[1000]['name'])->toBe('Large Item 1000');
 });
 
-it('handles unicode and special characters', function (): void {
+it('handles unicode and special characters', function(): void {
     $testData = [
         '1' => [
             'id' => 1,
@@ -277,7 +277,7 @@ it('handles unicode and special characters', function (): void {
     expect($metadata['numbers'])->toBe('1234567890');
 });
 
-it('handles empty and null values', function (): void {
+it('handles empty and null values', function(): void {
     $testData = [
         '1' => [
             'id' => 1,
@@ -317,7 +317,7 @@ it('handles empty and null values', function (): void {
     expect($rows['2']['status'])->toBe('');
 });
 
-it('works with different tenant configurations', function (): void {
+it('works with different tenant configurations', function(): void {
     // Crea un secondo tenant per testare l'isolamento
     $secondTenant = Tenant::factory()->create([
         'name' => 'second-tenant',

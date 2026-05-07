@@ -10,7 +10,7 @@ use Modules\Tenant\Tests\TestCase;
 
 uses(TestCase::class);
 
-it('gets domains array by scanning config directory', function (): void {
+it('gets domains array by scanning config directory', function(): void {
     // This test is a bit tricky because recurse() instantiates Filesystem internally
     // and uses config_path().
 
@@ -35,7 +35,7 @@ it('gets domains array by scanning config directory', function (): void {
         ->and($result)->toContain(['id' => 'tenant2.group1', 'name' => 'tenant2.group1']);
 });
 
-it('collapses nested directory structure into dot notation', function (): void {
+it('collapses nested directory structure into dot notation', function(): void {
     $action = app(GetDomainsArrayAction::class);
     $data = [
         'a' => [

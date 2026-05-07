@@ -11,7 +11,7 @@ use Symfony\Component\Finder\SplFileInfo;
 
 uses(TestCase::class);
 
-it('gets tenant config names', function (): void {
+it('gets tenant config names', function(): void {
     $action = app(GetTenantConfigNamesAction::class);
 
     // We can't easily mock config_path() as it's a global helper,
