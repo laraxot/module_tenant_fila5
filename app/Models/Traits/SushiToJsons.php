@@ -13,9 +13,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use InvalidArgumentException;
 use Modules\Tenant\Services\TenantService;
+use Sushi\Sushi;
+
 use function Safe\json_encode;
 use function Safe\unlink;
-use Sushi\Sushi;
 
 trait SushiToJsons
 {
@@ -186,15 +187,12 @@ trait SushiToJsons
         $property->setAccessible(true);
         $schemaValue = $property->getValue($this);
 
-        $schema = [];
-        foreach ($schemaValue as $key => $value) {
-            if (! is_string($key)) {
-                continue;
-            }
-            $schema[$key] = $value;
+        if (! is_array($schemaValue)) {
+            return [];
         }
 
-        return $schema;
+        /** @var array<string, mixed> $schemaValue */
+        return $schemaValue;
     }
 
     // end function boot
