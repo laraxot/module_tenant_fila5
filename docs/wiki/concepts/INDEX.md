@@ -1,12 +1,12 @@
-# Tenant Module - commands Index
+# Tenant Module - concepts Index
 
 ## Purpose
-Index for Tenant module commands.
+Index for Tenant module concepts.
 
 ## On-Demand Loading
 
 ```bash
-qmd search "Tenant commands" --limit 5
+qmd search "Tenant concepts" --limit 5
 ```
 
 ## See Also
