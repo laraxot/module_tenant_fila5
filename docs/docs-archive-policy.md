@@ -1,7 +1,11 @@
-# Docs archive policy
+---
+title: docs archive policy — puntatore
+type: reference
+updated: 2026-05-21
+---
 
-`docs/archive/` is local-only scratch/history and must not be used as a canonical documentation source.
+# Docs archive policy (puntatore)
 
-Active module knowledge belongs in normal `docs/*.md`, `docs/wiki/**`, or a precise topical subdirectory. This keeps QMD ingestion deterministic and prevents stale duplicates from outranking current documentation.
+Policy globale: [../../../../docs/wiki/concepts/second-brain-continuous-improvement.md](../../../../docs/wiki/concepts/second-brain-continuous-improvement.md).
 
-The module `.gitignore` ignores `docs/archive/`; when a useful archived note is still valid, promote it into a live document outside `archive` and link it from the local docs index.
+`docs/legacy/` è solo scratch locale; non fonte canonica. Vedi [module-docs-deduplication](../../../../docs/wiki/how-to/module-docs-deduplication.md).
