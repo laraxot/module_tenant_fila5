@@ -1,1 +1,7 @@
-https://github.com/InterNACHI/modular
+---
+module: theme
+topic: alternatives
+canonical: ../../../Themes/docs/shared-components/alternatives.md
+---
+
+See canonical documentation: ../../../Themes/docs/shared-components/alternatives.md

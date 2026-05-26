@@ -1,1 +1,7 @@
-https://filamentphp.com/plugins/andrew-wallo-companies
+---
+module: theme
+topic: to-integrate
+canonical: ../../../Themes/docs/shared-components/to-integrate.md
+---
+
+See canonical documentation: ../../../Themes/docs/shared-components/to-integrate.md
