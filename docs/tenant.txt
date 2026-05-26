@@ -1,1 +1,7 @@
-https://gist.github.com/nathandaly/44a83df5e3ea735eae91652c7a4894c9
+---
+module: theme
+topic: tenant
+canonical: ../../../Themes/docs/shared-components/tenant.md
+---
+
+See canonical documentation: ../../../Themes/docs/shared-components/tenant.md
