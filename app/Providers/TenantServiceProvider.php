@@ -71,9 +71,12 @@ class TenantServiceProvider extends XotBaseServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        $preMergeDefaultRaw = Config::get('database.default');
+        $preMergeDefaultConn = \is_string($preMergeDefaultRaw) && $preMergeDefaultRaw !== '' ? $preMergeDefaultRaw : 'mysql';
+
         if (Request::has('act') && Request::input('act') === 'migrate') {
-            DB::purge('mysql'); // Call to a member function prepare() on null
-            DB::reconnect('mysql');
+            DB::purge($preMergeDefaultConn); // Call to a member function prepare() on null
+            DB::reconnect($preMergeDefaultConn);
         }
 
         $raw = TenantService::config('database');
@@ -126,9 +129,10 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
         // Skip purge/reconnect during testing to preserve test DB mappings
         if (! $this->app->environment('testing')) {
-            // Call to a member function prepare() on null
-            // Database connection [mysql] not configured.
-            DB::purge('mysql');
+            // Call to a member function prepare() on null — connessione default da .env (mariadb|mysql ecc.)
+            $purgeConnRaw = Config::get('database.default');
+            $purgeConnName = \is_string($purgeConnRaw) && $purgeConnRaw !== '' ? $purgeConnRaw : 'mysql';
+            DB::purge($purgeConnName);
             DB::reconnect();
         }
     }
