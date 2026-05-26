@@ -6,11 +6,13 @@ updated: 2026-05-21
 
 # Disciplina edit e qualità (puntatore)
 
-Stub **DRY**: policy nella wiki di progetto; discussione in GitHub issue [#124](https://github.com/provtv/base_ptv_fila5_mono/issues/124).
+Stub **DRY**: policy nella wiki di progetto; discussioni GitHub issue [#124](https://github.com/provtv/base_ptv_fila5_mono/issues/124) e [#138](https://github.com/provtv/base_ptv_fila5_mono/issues/138).
 
 ## Link operativi
 
 - Regola canonica: [../../../../docs/wiki/rules/validation-post-edit-rule.md](../../../../docs/wiki/rules/validation-post-edit-rule.md)
 - How-to issue ↔ wiki: [../../../../docs/wiki/how-to/github-issue-agent-discipline.md](../../../../docs/wiki/how-to/github-issue-agent-discipline.md)
+- Context overflow / Autocompact: [./context-overflow-prevention.md](./context-overflow-prevention.md)
 - Deduplica docs: [../../../../docs/wiki/how-to/module-docs-deduplication.md](../../../../docs/wiki/how-to/module-docs-deduplication.md)
 - Prompt LLM: [../../../../bashscripts/tools/prompts/llm-wiki.txt](../../../../bashscripts/tools/prompts/llm-wiki.txt) §2.1
+- Autocompact / contesto Cursor: [../../../../docs/wiki/how-to/kilo-autocompact-thrashing-prevention.md](../../../../docs/wiki/how-to/kilo-autocompact-thrashing-prevention.md)
