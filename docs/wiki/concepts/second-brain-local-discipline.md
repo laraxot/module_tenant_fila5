@@ -1,7 +1,29 @@
 ---
-module: theme
-topic: second-brain-local-discipline
-canonical: ../../../../../Themes/docs/shared-components/second-brain-local-discipline.md
+title: "Second Brain Local Discipline (stub Tenant)"
+type: concept
+module: Tenant
+tags: [second-brain, stub, hackernoon, harness]
+created: 2026-06-05
+updated: 2026-06-05
+qmd: "tenant second brain stub canonical xot harness hackernoon llm-wiki"
+issues:
+  - "https://github.com/laraxot/base_fixcity_fila5/issues/272"
+discussions:
+  - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
+related:
+  - ../../../../Xot/docs/wiki/concepts/second-brain-local-discipline.md
+  - ../../../../docs/wiki/concepts/ai-harness-module-discipline.md
+  - ../../../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md
+  - ../../../../../../bashscripts/tools/prompts/llm-wiki.txt
 ---
 
-See canonical documentation: ../../../../../Themes/docs/shared-components/second-brain-local-discipline.md
+# Contratto wiki locale — stub Tenant
+
+| Risorsa | Link |
+|---------|------|
+| **Canon** | [Xot second-brain-local-discipline.md](../../../../Xot/docs/wiki/concepts/second-brain-local-discipline.md) |
+| **Harness moduli** | [ai-harness-module-discipline.md](../../../../docs/wiki/concepts/ai-harness-module-discipline.md) |
+| **Tips 001–022** | [hackernoon map](../../../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md) |
+| **Prompt router** | [llm-wiki.txt](../../../../../../bashscripts/tools/prompts/llm-wiki.txt) |
+
+Solo decisioni specifiche di **Tenant** in `docs/wiki/`; contratto generico in Xot.
