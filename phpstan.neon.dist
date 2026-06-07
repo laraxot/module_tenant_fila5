@@ -24,6 +24,7 @@ parameters:
         - ./vendor/*
         - ./*/vendor/*
         - ./docs/*
+        - ./Tests/*
         - ./_ide_helper.php
         - ./rector.php
 

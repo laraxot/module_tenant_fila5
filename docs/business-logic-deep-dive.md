@@ -718,5 +718,6 @@ chown www-data:tenant_acme config/tenant_acme/
 ---
 
 **Document Version**: 1.0
+**Last Updated**: 5 Novembre 2025
 
 **Status**: 📘 Authoritative Reference

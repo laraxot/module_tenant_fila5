@@ -45,4 +45,9 @@ public static function getConfigNames(): array
 
 ---
 
+- [Service Locator Pattern](../../Xot/docs/service-locator-pattern.md)
+
+---
+
+*Ultimo aggiornamento: 2025-01-10*
 *Ultimo aggiornamento: 2025-01-10*
