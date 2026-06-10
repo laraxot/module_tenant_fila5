@@ -23,11 +23,18 @@ class DatabaseConfigResolver implements ConfigResolverInterface
      * @param  array<string, mixed>  $extraConf
      * @return array<string, mixed>
      */
+    /**
+     * @param  string|int|array<mixed>|null  $extraConf
+     * @return float|int|string|array<mixed>|null
+     */
     public function resolve(string $key, string|int|array|null $extraConf = null): float|int|string|array|null
     {
         if (! is_array($extraConf)) {
             return null;
         }
+
+        /** @var array<string, mixed> $extraConfTyped */
+        $extraConfTyped = $extraConf;
 
         $originalConf = config('database');
         if (! is_array($originalConf)) {
@@ -42,9 +49,9 @@ class DatabaseConfigResolver implements ConfigResolverInterface
             }
         }
 
-        $default = $this->resolveDefaultConnection($extraConf, $originalConfTyped);
+        $default = $this->resolveDefaultConnection($extraConfTyped, $originalConfTyped);
 
-        return $this->addModuleConnections($extraConf, $default);
+        return $this->addModuleConnections($extraConfTyped, $default);
     }
 
     /**
@@ -76,7 +83,7 @@ class DatabaseConfigResolver implements ConfigResolverInterface
             return $extraConf;
         }
 
-        /** @var Collection<\Nwidart\Modules\Module> */
+        /** @var Collection<int, \Nwidart\Modules\Module> */
         $modules = Module::toCollection();
 
         foreach ($modules as $module) {

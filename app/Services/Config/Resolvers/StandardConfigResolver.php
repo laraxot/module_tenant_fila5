@@ -22,6 +22,10 @@ class StandardConfigResolver implements ConfigResolverInterface
         return true;
     }
 
+    /**
+     * @param  string|int|array<mixed>|null  $default
+     * @return float|int|string|array<mixed>|null
+     */
     public function resolve(string $key, string|int|array|null $default = null): float|int|string|array|null
     {
         $group = $this->extractGroup($key);
@@ -39,13 +43,16 @@ class StandardConfigResolver implements ConfigResolverInterface
             }
         }
 
-        $mergedConf = collect($originalConf)->merge($extraConf)->all();
+        /** @var array<string, mixed> $extraConfTyped */
+        $extraConfTyped = $extraConf;
+
+        $mergedConf = collect($originalConf)->merge($extraConfTyped)->all();
         Config::set($group, $mergedConf);
 
         $result = config($key);
 
         if ($result === null && $default !== null) {
-            $this->handleMissingConfig($key, $group, $extraConf, $default);
+            $this->handleMissingConfig($key, $group, $extraConfTyped, $default);
         }
 
         if (! is_numeric($result) && ! is_string($result) && ! is_array($result) && $result !== null) {
@@ -112,6 +119,7 @@ class StandardConfigResolver implements ConfigResolverInterface
 
     /**
      * @param  array<string, mixed>  $extraConf
+     * @param  string|int|array<mixed>|null  $default
      */
     private function handleMissingConfig(
         string $key,

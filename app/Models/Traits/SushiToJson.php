@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use InvalidArgumentException;
 use Modules\Tenant\Services\TenantService;
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Sushi\Sushi;
 use Throwable;
 
@@ -293,7 +294,7 @@ trait SushiToJson
 
             // Update existing record
             $existingData = $modelWithTrait->loadExistingData();
-            $id = (int) ($modelWithTrait->getAttribute('id') ?? 0);
+            $id = SafeIntCastAction::cast($modelWithTrait->getAttribute('id') ?? 0);
 
             if ($id > 0) {
                 $index = $modelWithTrait->findRowIndexById($existingData, $id);
@@ -310,7 +311,7 @@ trait SushiToJson
         static::deleting(function ($model): void {
             /** @var static $modelWithTrait */
             $modelWithTrait = $model;
-            $id = (int) ($modelWithTrait->getAttribute('id') ?? 0);
+            $id = SafeIntCastAction::cast($modelWithTrait->getAttribute('id') ?? 0);
 
             if ($id > 0) {
                 $existingData = $modelWithTrait->loadExistingData();
@@ -334,8 +335,8 @@ trait SushiToJson
     protected function findRowIndexById(array $rows, int $id): ?int
     {
         foreach ($rows as $index => $row) {
-            if (is_array($row) && ((int) ($row['id'] ?? 0)) === $id) {
-                return (int) $index;
+            if (is_array($row) && SafeIntCastAction::cast($row['id'] ?? 0) === $id) {
+                return is_int($index) ? $index : SafeIntCastAction::cast($index);
             }
         }
 
