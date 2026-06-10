@@ -56,6 +56,8 @@ class TenantDomain extends BaseModel
 
     /**
      * Model Rows.
+     *
+     * @return array<int, array{id: string, name: string}>
      */
     public function getRows(): array
     {
