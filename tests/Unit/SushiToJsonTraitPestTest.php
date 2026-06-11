@@ -2,60 +2,72 @@
 
 declare(strict_types=1);
 
-namespace Modules\Tenant\Tests\Unit;
-
 use Exception;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Services\TenantService;
-use Tests\TestCase;
+use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+use function Safe\json_encode;
+
+uses(TestCase::class);
 
 /**
  * @property TestSushiModel $model
  * @property string $testDirectory
  * @property string $testJsonPath
  */
-uses(TestCase::class);
-
-beforeEach(function () {
-    // Configura il modello di test
-    $this->model = new TestSushiModel;
-
-    // Configura percorsi di test
-    $this->testDirectory = storage_path('tests/sushi-json');
-    $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
-
-    // Crea directory di test
-    if (! File::exists($this->testDirectory)) {
-        File::makeDirectory($this->testDirectory, 0o755, true, true);
-    }
-
-    // Mock TenantService per i test
-    $this->mock(TenantService::class, function ($mock) {
-        $mock->shouldReceive('filePath')->with('database/content/test_sushi.json')->andReturn($this->testJsonPath);
-    });
-});
-
-afterEach(function () {
-    // Cleanup file di test
-    if (File::exists($this->testJsonPath)) {
-        File::delete($this->testJsonPath);
-    }
-
-    if (File::exists($this->testDirectory)) {
-        File::deleteDirectory($this->testDirectory);
-    }
-});
-
 describe('SushiToJson Trait', function () {
-    it('returns correct json file path', function () {
-        $path = $this->model->getJsonFile();
+    beforeEach(function () {
+        /** @var TestCase $this */
 
-        expect($path)->toBe($this->testJsonPath);
-        expect($path)->toEndWith('test_sushi.json');
-    })->group('getJsonFile', 'traits', 'sushi-json');
+        // Configura il modello di test
+        $this->model = new TestSushiModel;
 
-    it('loads existing data from json file', function () {
+        // Configura percorsi di test
+        $this->testDirectory = storage_path('tests/sushi-json');
+        $this->testJsonPath = $this->sushiTestDirectory().'/test_sushi.json';
+
+        // Crea directory di test
+        if (! File::exists($this->sushiTestDirectory())) {
+            File::makeDirectory($this->sushiTestDirectory(), 0o755, true, true);
+        }
+
+        // Mock TenantService per i test
+        $jsonPath = $this->sushiJsonPath();
+        $this->mockService(TenantService::class, function ($mock) use ($jsonPath): void {
+            $mock->allows([
+                'filePath' => static fn (string $path): string => $path === 'database/content/test_sushi.json'
+                    ? $jsonPath
+                    : $jsonPath,
+            ]);
+        });
+    });
+
+    afterEach(function () {
+        /** @var TestCase $this */
+
+        // Cleanup file di test
+        if (File::exists($this->sushiJsonPath())) {
+            File::delete($this->sushiJsonPath());
+        }
+
+        if (File::exists($this->sushiTestDirectory())) {
+            File::deleteDirectory($this->sushiTestDirectory());
+        }
+    });
+
+    test('returns correct json file path', function () {
+        /** @var TestCase $this */
+        $path = $this->sushiModel()->getJsonFile();
+
+        Assert::assertSame($this->sushiJsonPath(), $path);
+        Assert::assertStringEndsWith('test_sushi.json', $path);
+    });
+
+    test('loads existing data from json file', function () {
+        /** @var TestCase $this */
         $testData = [
             '1' => [
                 'id' => 1,
@@ -77,38 +89,42 @@ describe('SushiToJson Trait', function () {
             ],
         ];
 
-        File::put($this->testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
+        File::put($this->sushiJsonPath(), json_encode($testData, JSON_PRETTY_PRINT));
 
-        $rows = $this->model->loadExistingData();
+        $rows = $this->sushiModel()->loadExistingData();
 
-        expect($rows)->toBeArray();
-        expect($rows)->toHaveCount(2);
-        expect($rows['1']['name'])->toBe('Test Item 1');
-        expect($rows['2']['name'])->toBe('Test Item 2');
-    })->group('getSushiRows', 'traits', 'sushi-json');
+        Assert::assertIsArray($rows);
+        Assert::assertCount(2, $rows);
+        Assert::assertSame('Test Item 1', $rows['1']['name']);
+        Assert::assertSame('Test Item 2', $rows['2']['name']);
+    });
 
-    it('returns empty array when file not exists', function () {
-        $rows = $this->model->getSushiRows();
+    test('returns empty array when file not exists', function () {
+        /** @var TestCase $this */
+        $rows = $this->sushiModel()->getSushiRows();
 
-        expect($rows)->toBeArray();
-        expect($rows)->toBeEmpty();
-    })->group('getSushiRows', 'traits', 'sushi-json');
+        Assert::assertIsArray($rows);
+        Assert::assertEmpty($rows);
+    });
 
-    it('throws exception with malformed json', function () {
-        File::put($this->testJsonPath, 'invalid json content');
+    test('throws exception with malformed json', function () {
+        /** @var TestCase $this */
+        File::put($this->sushiJsonPath(), 'invalid json content');
 
-        $this->model->getSushiRows();
-    })
-        ->throws(Exception::class, 'Syntax error')
-        ->group('getSushiRows', 'traits', 'sushi-json');
+        $this->expectAppException(Exception::class);
+        $this->sushiModel()->getSushiRows();
+    });
 
-    it('throws exception with non array data', function () {
-        File::put($this->testJsonPath, json_encode('not an array'));
+    test('throws exception with non array data', function () {
+        /** @var TestCase $this */
+        File::put($this->sushiJsonPath(), json_encode('not an array'));
 
-        expect($this->model->getSushiRows(...))->toThrow(Exception::class, 'JSON file must contain an array');
-    })->group('getSushiRows', 'traits', 'sushi-json');
+        $this->expectAppException(Exception::class);
+        $this->sushiModel()->getSushiRows();
+    });
 
-    it('validates json file structure', function () {
+    test('validates json file structure', function () {
+        /** @var TestCase $this */
         $validData = [
             '1' => [
                 'id' => 1,
@@ -117,20 +133,21 @@ describe('SushiToJson Trait', function () {
             ],
         ];
 
-        File::put($this->testJsonPath, json_encode($validData));
+        File::put($this->sushiJsonPath(), json_encode($validData));
 
-        $rows = $this->model->getSushiRows();
+        $rows = $this->sushiModel()->getSushiRows();
 
-        expect($rows)->toBeArray();
-        expect($rows)->toHaveKey('1');
-        expect($rows['1'])->toHaveKey('id');
-        expect($rows['1'])->toHaveKey('name');
-        expect($rows['1'])->toHaveKey('status');
-    })->group('getSushiRows', 'validation', 'traits', 'sushi-json');
+        Assert::assertIsArray($rows);
+        Assert::assertArrayHasKey('1', $rows);
+        Assert::assertArrayHasKey('id', $rows['1']);
+        Assert::assertArrayHasKey('name', $rows['1']);
+        Assert::assertArrayHasKey('status', $rows['1']);
+    });
 });
 
 describe('Business Logic Tests', function () {
-    it('handles large datasets efficiently', function () {
+    test('handles large datasets efficiently', function () {
+        /** @var TestCase $this */
         $largeData = [];
         for ($i = 1; $i <= 1000; $i++) {
             $largeData[(string) $i] = [
@@ -141,16 +158,17 @@ describe('Business Logic Tests', function () {
             ];
         }
 
-        File::put($this->testJsonPath, json_encode($largeData));
+        File::put($this->sushiJsonPath(), json_encode($largeData));
 
-        $rows = $this->model->getSushiRows();
+        $rows = $this->sushiModel()->getSushiRows();
 
-        expect($rows)->toHaveCount(1000);
-        expect($rows['1']['name'])->toBe('Item 1');
-        expect($rows['1000']['name'])->toBe('Item 1000');
-    })->group('performance', 'traits', 'sushi-json');
+        Assert::assertCount(1000, $rows);
+        Assert::assertSame('Item 1', $rows['1']['name']);
+        Assert::assertSame('Item 1000', $rows['1000']['name']);
+    });
 
-    it('preserves data types correctly', function () {
+    test('preserves data types correctly', function () {
+        /** @var TestCase $this */
         $testData = [
             '1' => [
                 'id' => 1, // integer
@@ -162,15 +180,15 @@ describe('Business Logic Tests', function () {
             ],
         ];
 
-        File::put($this->testJsonPath, json_encode($testData));
+        File::put($this->sushiJsonPath(), json_encode($testData));
 
-        $rows = $this->model->getSushiRows();
+        $rows = $this->sushiModel()->getSushiRows();
 
-        expect($rows['1']['id'])->toBeInt();
-        expect($rows['1']['name'])->toBeString();
-        expect($rows['1']['active'])->toBeBool();
-        expect($rows['1']['price'])->toBeFloat();
-        expect($rows['1']['metadata'])->toBeArray();
-        expect($rows['1']['created_at'])->toBeString();
-    })->group('data-types', 'traits', 'sushi-json');
+        Assert::assertIsInt($rows['1']['id']);
+        Assert::assertIsString($rows['1']['name']);
+        Assert::assertIsBool($rows['1']['active']);
+        Assert::assertIsFloat($rows['1']['price']);
+        Assert::assertIsArray($rows['1']['metadata']);
+        Assert::assertIsString($rows['1']['created_at']);
+    });
 });

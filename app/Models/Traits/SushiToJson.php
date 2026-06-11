@@ -165,7 +165,7 @@ trait SushiToJson
      * Crea la directory se non esiste e salva con formattazione JSON.
      * Utilizza JSON_PRETTY_PRINT e JSON_UNESCAPED_UNICODE per leggibilità.
      *
-     * @param  array<int, array<string, mixed>>  $data  Array di record da salvare
+     * @param  array<int|string, array<string, mixed>>  $data  Array di record da salvare
      * @return bool True se il salvataggio è riuscito, false in caso di errore
      */
     public function saveToJson(array $data): bool
