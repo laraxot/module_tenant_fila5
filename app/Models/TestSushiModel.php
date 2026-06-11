@@ -56,7 +56,7 @@ class TestSushiModel extends BaseModel
      *
      * @var array<string, string>
      */
-    protected array $form = [
+    protected array $schema = [
         'id' => 'integer',
         'name' => 'string',
         'description' => 'string',

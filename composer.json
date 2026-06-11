@@ -55,7 +55,10 @@
   "autoload-dev": {
     "psr-4": {
       "Modules\\Tenant\\Tests\\": "tests/"
-    }
+    },
+    "files": [
+      "tests/Pest.php"
+    ]
   },
   "scripts": {
     "post-autoload-dump1": [

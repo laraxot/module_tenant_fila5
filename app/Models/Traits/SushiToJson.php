@@ -165,7 +165,7 @@ trait SushiToJson
      * Crea la directory se non esiste e salva con formattazione JSON.
      * Utilizza JSON_PRETTY_PRINT e JSON_UNESCAPED_UNICODE per leggibilità.
      *
-     * @param  array<int, array<string, mixed>>  $data  Array di record da salvare
+     * @param  array<int|string, array<string, mixed>>  $data  Array di record da salvare
      * @return bool True se il salvataggio è riuscito, false in caso di errore
      */
     public function saveToJson(array $data): bool
@@ -215,14 +215,19 @@ trait SushiToJson
             return 1;
         }
 
-        $keys = array_keys($existingData);
-        if (empty($keys)) {
-            return 1;
+        $maxId = 0;
+
+        foreach ($existingData as $row) {
+            if (! \is_array($row)) {
+                continue;
+            }
+
+            $rawId = $row['id'] ?? 0;
+            $id = \is_numeric($rawId) ? (int) $rawId : 0;
+            $maxId = max($maxId, $id);
         }
 
-        $maxId = max($keys);
-
-        return is_numeric($maxId) ? ((int) $maxId) + 1 : 1;
+        return $maxId + 1;
     }
 
     /**
