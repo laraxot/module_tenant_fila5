@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Modules\Tenant\Tests\Unit;
-
 use App\Application;
+use PHPUnit\Framework\Assert;
 
-it('returns real path when requested public path exists', function (): void {
+use function Safe\mkdir;
+use function Safe\realpath;
+
+test('returns real path when requested public path exists', function (): void {
     $root = sys_get_temp_dir().'/appcov-'.uniqid('', true);
     $basePath = $root.'/laravel';
     $publicDir = $root.'/public_html';
@@ -18,10 +20,10 @@ it('returns real path when requested public path exists', function (): void {
     $app = new Application($basePath);
     $result = $app->publicPath('assets');
 
-    expect($result)->toBe(realpath($assetDir));
+    Assert::assertSame(realpath($assetDir), $result);
 });
 
-it('returns base real path plus requested segment when segment does not exist', function (): void {
+test('returns base real path plus requested segment when segment does not exist', function (): void {
     $root = sys_get_temp_dir().'/appcov-'.uniqid('', true);
     $basePath = $root.'/laravel';
     $publicDir = $root.'/public_html';
@@ -32,10 +34,10 @@ it('returns base real path plus requested segment when segment does not exist', 
     $app = new Application($basePath);
     $result = $app->publicPath('missing/file.txt');
 
-    expect($result)->toBe(realpath($publicDir).'/missing/file.txt');
+    Assert::assertSame(realpath($publicDir).'/missing/file.txt', $result);
 });
 
-it('returns plain fallback path when public_html base path does not exist', function (): void {
+test('returns plain fallback path when public_html base path does not exist', function (): void {
     $root = sys_get_temp_dir().'/appcov-'.uniqid('', true);
     $basePath = $root.'/laravel';
 
@@ -44,5 +46,5 @@ it('returns plain fallback path when public_html base path does not exist', func
     $app = new Application($basePath);
     $result = $app->publicPath('foo/bar');
 
-    expect($result)->toBe($basePath.'/../public_html/foo/bar');
+    Assert::assertSame($basePath.'/../public_html/foo/bar', $result);
 });

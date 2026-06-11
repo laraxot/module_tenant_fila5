@@ -2,18 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Modules\Tenant\Tests\Unit\Actions\Domains;
-
-use Illuminate\Filesystem\Filesystem;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
-it('gets domains array by scanning config directory', function (): void {
-    // This test is a bit tricky because recurse() instantiates Filesystem internally
-    // and uses config_path().
-
+test('gets domains array by scanning config directory', function (): void {
     $action = new class extends GetDomainsArrayAction
     {
         public function recurse(string $path): array
@@ -29,13 +24,12 @@ it('gets domains array by scanning config directory', function (): void {
 
     $result = $action->execute();
 
-    expect($result)->toBeArray()
-        ->toHaveCount(2)
-        ->and($result)->toContain(['id' => 'tenant1', 'name' => 'tenant1'])
-        ->and($result)->toContain(['id' => 'tenant2.group1', 'name' => 'tenant2.group1']);
+    Assert::assertCount(2, $result);
+    Assert::assertSame(['id' => 'tenant1', 'name' => 'tenant1'], $result[0]);
+    Assert::assertSame(['id' => 'tenant2.group1', 'name' => 'tenant2.group1'], $result[1]);
 });
 
-it('collapses nested directory structure into dot notation', function (): void {
+test('collapses nested directory structure into dot notation', function (): void {
     $action = app(GetDomainsArrayAction::class);
     $data = [
         'a' => [
@@ -49,9 +43,8 @@ it('collapses nested directory structure into dot notation', function (): void {
 
     $result = $action->collapse($data);
 
-    expect($result)->toBeArray()
-        ->toHaveCount(3)
-        ->and($result)->toContain('c.b.a')
-        ->and($result)->toContain('d.a')
-        ->and($result)->toContain('e');
+    Assert::assertCount(3, $result);
+    Assert::assertContains('c.b.a', $result);
+    Assert::assertContains('d.a', $result);
+    Assert::assertContains('e', $result);
 });

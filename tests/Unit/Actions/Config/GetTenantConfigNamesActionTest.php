@@ -2,37 +2,42 @@
 
 declare(strict_types=1);
 
-namespace Modules\Tenant\Tests\Unit\Actions\Config;
-
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
 use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 use Symfony\Component\Finder\SplFileInfo;
 
 uses(TestCase::class);
 
-it('gets tenant config names', function (): void {
+test('gets tenant config names', function (): void {
+    /** @var TestCase $this */
     $action = app(GetTenantConfigNamesAction::class);
 
-    // We can't easily mock config_path() as it's a global helper,
-    // but we can mock File::files()
     $file1 = mock(SplFileInfo::class);
-    $file1->shouldReceive('getExtension')->andReturn('php');
-    $file1->shouldReceive('getFilenameWithoutExtension')->andReturn('database');
+    $file1->allows([
+        'getExtension' => 'php',
+        'getFilenameWithoutExtension' => 'database',
+    ]);
 
     $file2 = mock(SplFileInfo::class);
-    $file2->shouldReceive('getExtension')->andReturn('php');
-    $file2->shouldReceive('getFilenameWithoutExtension')->andReturn('app');
+    $file2->allows([
+        'getExtension' => 'php',
+        'getFilenameWithoutExtension' => 'app',
+    ]);
 
     $file3 = mock(SplFileInfo::class);
-    $file3->shouldReceive('getExtension')->andReturn('txt'); // Should be filtered out
+    $file3->allows([
+        'getExtension' => 'txt',
+    ]);
 
-    File::shouldReceive('files')->andReturn([$file1, $file2, $file3]);
+    File::partialMock()->allows([
+        'files' => [$file1, $file2, $file3],
+    ]);
 
     $result = $action->execute();
 
-    expect($result)->toBeArray()
-        ->toHaveCount(2)
-        ->and($result[0])->toBe(['id' => 1, 'name' => 'database'])
-        ->and($result[1])->toBe(['id' => 2, 'name' => 'app']);
+    Assert::assertCount(2, $result);
+    Assert::assertSame(['id' => 1, 'name' => 'database'], $result[0]);
+    Assert::assertSame(['id' => 2, 'name' => 'app'], $result[1]);
 });
