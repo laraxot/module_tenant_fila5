@@ -87,9 +87,10 @@ class TenantServiceProvider extends XotBaseServiceProvider
         /** @var array<string, mixed> $connections */
         $connections = [];
 
-        $defaultRaw = Arr::get($data, 'default', 'mysql');
+        $defaultRaw = Arr::get($data, 'default', $preMergeDefaultConn);
         /** @var string $default */
         $default = is_string($defaultRaw) ? $defaultRaw : 'mysql';
+        $data = Arr::set($data, 'default', $default);
 
         if (Arr::get($data, 'connections.user', null) === null) {
             Arr::set($data, 'connections.user', Arr::get($data, 'connections.user_'.$default));

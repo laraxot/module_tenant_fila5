@@ -2,58 +2,96 @@
 
 declare(strict_types=1);
 
-namespace Modules\Tenant\Tests\Unit\Actions\Config;
-
-use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\Config\SaveTenantConfigAction;
 use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Arr\SaveArrayAction;
+use PHPUnit\Framework\Assert;
+
+use function Safe\file_put_contents;
+use function Safe\unlink;
 
 uses(TestCase::class);
 
-it('saves tenant config by merging with existing data', function (): void {
-    $this->mock(GetTenantFilePathAction::class)
-        ->shouldReceive('execute')
-        ->with('database.php')
-        ->andReturn('/path/to/tenant/database.php');
+test('saves tenant config by merging with existing data', function (): void {
+    /** @var TestCase $this */
+    $configPath = sys_get_temp_dir().'/tenant-db-'.uniqid('', true).'.php';
+    file_put_contents($configPath, "<?php\nreturn ['connections' => ['mysql' => ['host' => 'localhost']]];\n");
 
-    File::shouldReceive('exists')
-        ->with('/path/to/tenant/database.php')
-        ->andReturn(true);
+    $this->mockService(GetTenantFilePathAction::class, function ($mock) use ($configPath): void {
+        $mock->allows([
+            'execute' => static fn (string $name): string => $name === 'database.php' ? $configPath : $configPath,
+        ]);
+    });
 
-    File::shouldReceive('getRequire')
-        ->with('/path/to/tenant/database.php')
-        ->andReturn(['connections' => ['mysql' => ['host' => 'localhost']]]);
+    $savedData = null;
+    $savedPath = null;
 
-    $this->mock(SaveArrayAction::class)
-        ->shouldReceive('execute')
-        ->withArgs(function ($data, $filename) {
-            return $filename === '/path/to/tenant/database.php' &&
-                   $data['connections']['mysql']['host'] === 'localhost' &&
-                   $data['connections']['mysql']['database'] === 'test_db';
-        })
-        ->once();
+    $this->mockService(SaveArrayAction::class, function ($mock) use (&$savedData, &$savedPath, $configPath): void {
+        $mock->allows([
+            'execute' => static function (mixed $data, mixed $filename) use (&$savedData, &$savedPath, $configPath): bool {
+                if (! is_array($data) || ! is_string($filename)) {
+                    return false;
+                }
+
+                $savedData = $data;
+                $savedPath = $filename;
+
+                return $filename === $configPath;
+            },
+        ]);
+    });
 
     $action = app(SaveTenantConfigAction::class);
     $action->execute('database', ['connections' => ['mysql' => ['database' => 'test_db']]]);
+
+    Assert::assertSame($configPath, $savedPath);
+    Assert::assertIsArray($savedData);
+    $connections = $savedData['connections'] ?? null;
+    Assert::assertIsArray($connections);
+    $mysql = $connections['mysql'] ?? null;
+    Assert::assertIsArray($mysql);
+    Assert::assertSame('localhost', $mysql['host'] ?? null);
+    Assert::assertSame('test_db', $mysql['database'] ?? null);
+
+    unlink($configPath);
 });
 
-it('saves tenant config when file does not exist', function (): void {
-    $this->mock(GetTenantFilePathAction::class)
-        ->shouldReceive('execute')
-        ->with('app.php')
-        ->andReturn('/path/to/tenant/app.php');
+test('saves tenant config when file does not exist', function (): void {
+    /** @var TestCase $this */
+    $configPath = sys_get_temp_dir().'/tenant-app-'.uniqid('', true).'.php';
 
-    File::shouldReceive('exists')
-        ->with('/path/to/tenant/app.php')
-        ->andReturn(false);
+    $this->mockService(GetTenantFilePathAction::class, function ($mock) use ($configPath): void {
+        $mock->allows([
+            'execute' => static fn (string $name): string => $name === 'app.php' ? $configPath : $configPath,
+        ]);
+    });
 
-    $this->mock(SaveArrayAction::class)
-        ->shouldReceive('execute')
-        ->with(['name' => 'Test App'], '/path/to/tenant/app.php')
-        ->once();
+    $savedData = null;
+    $savedPath = null;
+
+    $this->mockService(SaveArrayAction::class, function ($mock) use (&$savedData, &$savedPath, $configPath): void {
+        $mock->allows([
+            'execute' => static function (mixed $data, mixed $filename) use (&$savedData, &$savedPath, $configPath): bool {
+                if (! is_array($data) || ! is_string($filename)) {
+                    return false;
+                }
+
+                $savedData = $data;
+                $savedPath = $filename;
+
+                return $filename === $configPath;
+            },
+        ]);
+    });
 
     $action = app(SaveTenantConfigAction::class);
     $action->execute('app', ['name' => 'Test App']);
+
+    Assert::assertSame($configPath, $savedPath);
+    Assert::assertSame(['name' => 'Test App'], $savedData);
+
+    if (is_file($configPath)) {
+        unlink($configPath);
+    }
 });
