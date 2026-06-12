@@ -10,8 +10,6 @@ use Modules\Tenant\Services\TenantService;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, DatabaseTransactions::class);
-
 /**
  * @return array<int, array<string, mixed>>
  */
@@ -48,9 +46,11 @@ function createTestData(int $recordCount): array
     return $data;
 }
 
-describe('SushiToJson performance', function (): void {
-    beforeEach(function () {
-        /** @var TestCase $this */
+class SushiToJsonPerformanceTest extends TestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
 
         // Configura il modello di test
         $this->model = new TestSushiModel;
@@ -73,11 +73,10 @@ describe('SushiToJson performance', function (): void {
                     : $jsonPath,
             ]);
         });
-    });
+    }
 
-    afterEach(function () {
-        /** @var TestCase $this */
-
+    protected function tearDown(): void
+    {
         // Cleanup file di test
         if (File::exists($this->sushiJsonPath())) {
             File::delete($this->sushiJsonPath());
@@ -86,10 +85,13 @@ describe('SushiToJson performance', function (): void {
         if (File::exists($this->sushiTestDirectory())) {
             File::deleteDirectory($this->sushiTestDirectory());
         }
-    });
 
-    test('handles small datasets efficiently', function (): void {
-        /** @var TestCase $this */
+        parent::tearDown();
+    }
+
+    /** @test */
+    public function testHandlesSmallDatasetsEfficiently(): void
+    {
         $smallData = createTestData(10);
 
         $startTime = microtime(true);
@@ -106,10 +108,11 @@ describe('SushiToJson performance', function (): void {
 
         Assert::assertCount(10, $loadedData);
         Assert::assertLessThan(0.05, $loadTime); // Caricamento dataset piccolo deve essere istantaneo
-    });
+    }
 
-    test('handles medium datasets efficiently', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testHandlesMediumDatasetsEfficiently(): void
+    {
         $mediumData = createTestData(100);
 
         $startTime = microtime(true);
@@ -126,10 +129,11 @@ describe('SushiToJson performance', function (): void {
 
         Assert::assertCount(100, $loadedData);
         Assert::assertLessThan(0.2, $loadTime); // Caricamento dataset medio deve essere veloce
-    });
+    }
 
-    test('handles large datasets efficiently', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testHandlesLargeDatasetsEfficiently(): void
+    {
         $largeData = createTestData(1000);
 
         $startTime = microtime(true);
@@ -146,10 +150,11 @@ describe('SushiToJson performance', function (): void {
 
         Assert::assertCount(1000, $loadedData);
         Assert::assertLessThan(1.0, $loadTime); // Caricamento dataset grande deve essere accettabile
-    });
+    }
 
-    test('manages memory usage efficiently', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testManagesMemoryUsageEfficiently(): void
+    {
         $initialMemory = memory_get_usage();
 
         // Crea dataset grande
@@ -177,10 +182,11 @@ describe('SushiToJson performance', function (): void {
 
         // Verifica che la memoria sia stata liberata
         Assert::assertLessThan($initialMemory + (100 * 1024 * 1024), $finalMemory);
-    });
+    }
 
-    test('handles different file sizes efficiently', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testHandlesDifferentFileSizesEfficiently(): void
+    {
         $sizes = [10, 50, 100, 250, 500];
 
         foreach ($sizes as $size) {
@@ -209,10 +215,11 @@ describe('SushiToJson performance', function (): void {
             $expectedMaxLoadTime = $size * 0.0005; // 0.5ms per record
             Assert::assertLessThan($expectedMaxLoadTime, $loadTime); // Caricamento $size record deve essere veloce
         }
-    });
+    }
 
-    test('handles concurrent access efficiently', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testHandlesConcurrentAccessEfficiently(): void
+    {
         $testData = createTestData(100);
 
         // Salva dati iniziali
@@ -233,10 +240,11 @@ describe('SushiToJson performance', function (): void {
         // Verifica che l'accesso concorrente sia efficiente
         Assert::assertLessThan(0.1, $averageTime); // Accesso concorrente deve essere veloce
         Assert::assertLessThan(1.0, $totalTime); // Tempo totale per operazioni concorrenti deve essere accettabile
-    });
+    }
 
-    test('parses json efficiently', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testParsesJsonEfficiently(): void
+    {
         $testData = createTestData(200);
 
         // Salva dati
@@ -257,10 +265,11 @@ describe('SushiToJson performance', function (): void {
         // Verifica che il tempo sia proporzionale alla dimensione
         $expectedMaxTime = $fileSize * 0.000001; // 1 microsecondo per byte
         Assert::assertLessThan($expectedMaxTime, $parseTime); // Parsing deve essere proporzionale alla dimensione
-    });
+    }
 
-    test('normalizes data efficiently', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testNormalizesDataEfficiently(): void
+    {
         $testData = createTestData(150);
 
         // Salva dati
@@ -281,11 +290,11 @@ describe('SushiToJson performance', function (): void {
             Assert::assertIsString($record['metadata']);
             Assert::assertIsString($record['timestamps']);
         }
-    });
+    }
 
-    test('handles errors efficiently', function (): void {
-        /** @var TestCase $this */
-
+    /** @test */
+    public function testHandlesErrorsEfficiently(): void
+    {
         // Testa con file JSON malformato
         File::put($this->sushiJsonPath(), 'invalid json content');
 
@@ -298,10 +307,11 @@ describe('SushiToJson performance', function (): void {
 
         // Verifica che la gestione degli errori sia veloce
         Assert::assertLessThan(0.1, $errorTime); // Gestione errori deve essere veloce
-    });
+    }
 
-    test('performs file operations efficiently', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testPerformsFileOperationsEfficiently(): void
+    {
         $testData = createTestData(300);
 
         // Testa operazioni di file
@@ -324,10 +334,11 @@ describe('SushiToJson performance', function (): void {
 
         // Verifica che le operazioni siano proporzionali
         Assert::assertLessThan($readTime * 3, $writeTime); // Scrittura non deve essere eccessivamente più lenta della lettura
-    });
+    }
 
-    test('scales efficiently with data size', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testScalesEfficientlyWithDataSize(): void
+    {
         $sizes = [10, 25, 50, 100, 200];
         $results = [];
 
@@ -368,10 +379,11 @@ describe('SushiToJson performance', function (): void {
             Assert::assertLessThan($expectedMaxGrowth, $saveGrowth);
             Assert::assertLessThan($expectedMaxGrowth, $loadGrowth);
         }
-    });
+    }
 
-    test('meets performance benchmarks', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testMeetsPerformanceBenchmarks(): void
+    {
         $benchmarks = [
             'small' => ['size' => 10, 'max_save' => 0.05, 'max_load' => 0.02],
             'medium' => ['size' => 100, 'max_save' => 0.2, 'max_load' => 0.1],
@@ -398,10 +410,11 @@ describe('SushiToJson performance', function (): void {
             Assert::assertCount($benchmark['size'], $loadedData);
             Assert::assertLessThan($benchmark['max_load'], $loadTime); // Caricamento $category dataset deve rispettare il benchmark
         }
-    });
+    }
 
-    test('does not create memory leaks', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testDoesNotCreateMemoryLeaks(): void
+    {
         $initialMemory = memory_get_usage();
 
         // Esegui operazioni multiple
@@ -425,5 +438,5 @@ describe('SushiToJson performance', function (): void {
 
         // Verifica che non ci siano memory leaks significativi
         Assert::assertLessThan(10 * 1024 * 1024, $memoryIncrease); // Non devono esserci memory leaks significativi (>10MB)
-    });
-});
+    }
+}

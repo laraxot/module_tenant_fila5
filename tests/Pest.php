@@ -34,7 +34,7 @@ function makeTenant(array $attributes = []): Tenant
 }
 
 /**
- * @param  array<int, array<string, mixed>>  $rows
+ * @param  array<int|string, array<string, mixed>>  $rows
  * @return array<string, mixed>
  */
 function sushiRowById(array $rows, int $id): array

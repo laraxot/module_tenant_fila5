@@ -14,11 +14,12 @@ use ReflectionMethod;
 
 use function Safe\json_encode;
 
-uses(TestCase::class);
+class SushiToJsonTest extends TestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
 
-describe('SushiToJson trait', function (): void {
-    beforeEach(function () {
-        /** @var TestCase $this */
         $this->model = new TestSushiModel;
         $this->testJsonPath = $this->model->getJsonFile();
 
@@ -32,11 +33,10 @@ describe('SushiToJson trait', function (): void {
         if (File::exists($directory)) {
             File::deleteDirectory($directory);
         }
-    });
+    }
 
-    afterEach(function () {
-        /** @var TestCase $this */
-
+    protected function tearDown(): void
+    {
         // Pulisce i file di test
         if (File::exists($this->sushiJsonPath())) {
             File::delete($this->sushiJsonPath());
@@ -48,26 +48,30 @@ describe('SushiToJson trait', function (): void {
         }
 
         Mockery::close();
-    });
 
-    test('returns correct json file path', function (): void {
-        /** @var TestCase $this */
+        parent::tearDown();
+    }
+
+    /** @test */
+    public function testReturnsCorrectJsonFilePath(): void
+    {
         $expectedPath = storage_path('tests/sushi-json/test_sushi.json');
         $actualPath = $this->sushiModel()->getJsonFile();
 
         Assert::assertSame($expectedPath, $actualPath);
-    });
+    }
 
-    test('returns empty array when json file not exists', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testReturnsEmptyArrayWhenJsonFileNotExists(): void
+    {
         $rows = $this->sushiModel()->getSushiRows();
 
         Assert::assertSame([], $rows);
-    });
+    }
 
-    test('throws exception when json data is invalid', function (): void {
-        /** @var TestCase $this */
-
+    /** @test */
+    public function testThrowsExceptionWhenJsonDataIsInvalid(): void
+    {
         // Crea un file JSON con dati non validi
         $directory = dirname($this->sushiJsonPath());
         File::makeDirectory($directory, 0755, true, true);
@@ -75,10 +79,11 @@ describe('SushiToJson trait', function (): void {
 
         $this->expectAppException(Exception::class);
         $this->sushiModel()->getSushiRows();
-    });
+    }
 
-    test('loads valid json data correctly', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testLoadsValidJsonDataCorrectly(): void
+    {
         $testData = [
             '1' => [
                 'id' => 1,
@@ -106,10 +111,11 @@ describe('SushiToJson trait', function (): void {
         Assert::assertCount(2, $rows);
         Assert::assertSame('Test Item 1', \sushiRowById($rows, 1)['name']);
         Assert::assertSame('Test Item 2', \sushiRowById($rows, 2)['name']);
-    });
+    }
 
-    test('normalizes nested arrays in json data', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testNormalizesNestedArraysInJsonData(): void
+    {
         $testData = [
             '1' => [
                 'id' => 1,
@@ -130,10 +136,11 @@ describe('SushiToJson trait', function (): void {
         Assert::assertIsString(\sushiRowById($rows, 1)['tags']);
         Assert::assertSame(['nested' => ['deep' => 'value']], $this->decodeJsonString(\sushiRowById($rows, 1)['metadata']));
         Assert::assertSame(['tag1', 'tag2'], $this->decodeJsonString(\sushiRowById($rows, 1)['tags']));
-    });
+    }
 
-    test('saves data to json file successfully', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testSavesDataToJsonFileSuccessfully(): void
+    {
         $testData = [
             '1' => ['id' => 1, 'name' => 'Test Item'],
             '2' => ['id' => 2, 'name' => 'Another Item'],
@@ -148,10 +155,11 @@ describe('SushiToJson trait', function (): void {
         Assert::assertCount(2, $savedData);
         Assert::assertSame('Test Item', \sushiRowById($savedData, 1)['name']);
         Assert::assertSame('Another Item', \sushiRowById($savedData, 2)['name']);
-    });
+    }
 
-    test('creates directory if not exists when saving', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testCreatesDirectoryIfNotExistsWhenSaving(): void
+    {
         $testData = ['1' => ['id' => 1, 'name' => 'Test']];
 
         $result = $this->sushiModel()->saveToJson($testData);
@@ -159,11 +167,11 @@ describe('SushiToJson trait', function (): void {
         Assert::assertTrue($result);
         Assert::assertTrue(File::exists(dirname($this->sushiJsonPath())));
         Assert::assertTrue(File::exists($this->sushiJsonPath()));
-    });
+    }
 
-    test('returns false when saving fails', function (): void {
-        /** @var TestCase $this */
-
+    /** @test */
+    public function testReturnsFalseWhenSavingFails(): void
+    {
         // Mock del metodo getJsonFile per simulare un errore
         /** @var TestSushiModel&Mockery\MockInterface $mockModel */
         $mockModel = Mockery::mock(TestSushiModel::class)->makePartial();
@@ -174,10 +182,11 @@ describe('SushiToJson trait', function (): void {
         $result = $mockModel->saveToJson(['1' => ['id' => 1, 'name' => 'test']]);
 
         Assert::assertFalse($result);
-    });
+    }
 
-    test('loads existing data correctly', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testLoadsExistingDataCorrectly(): void
+    {
         $testData = [
             '1' => ['id' => 1, 'name' => 'Existing Item'],
         ];
@@ -191,18 +200,19 @@ describe('SushiToJson trait', function (): void {
 
         Assert::assertCount(1, $existingData);
         Assert::assertSame('Existing Item', \sushiRowById($existingData, 1)['name']);
-    });
+    }
 
-    test('returns empty array when no existing data', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testReturnsEmptyArrayWhenNoExistingData(): void
+    {
         $existingData = $this->sushiModel()->loadExistingData();
 
         Assert::assertSame([], $existingData);
-    });
+    }
 
-    test('returns next available id correctly', function (): void {
-        /** @var TestCase $this */
-
+    /** @test */
+    public function testReturnsNextAvailableIdCorrectly(): void
+    {
         // Test con dati esistenti
         $testData = [
             '1' => ['id' => 1, 'name' => 'Item 1'],
@@ -218,18 +228,20 @@ describe('SushiToJson trait', function (): void {
         $nextId = $getNextId->invoke($this->sushiModel());
 
         Assert::assertSame(11, $nextId);
-    });
+    }
 
-    test('returns id 1 when no existing data', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testReturnsId1WhenNoExistingData(): void
+    {
         $getNextId = new ReflectionMethod(TestSushiModel::class, 'getNextId');
         $nextId = $getNextId->invoke($this->sushiModel());
 
         Assert::assertSame(1, $nextId);
-    });
+    }
 
-    test('handles creating event correctly', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testHandlesCreatingEventCorrectly(): void
+    {
         $testData = [
             '1' => ['id' => 1, 'name' => 'Existing Item'],
         ];
@@ -256,10 +268,11 @@ describe('SushiToJson trait', function (): void {
         Assert::assertSame('New Item', $createdRow['name']);
         Assert::assertSame(456, $createdRow['created_by']);
         Assert::assertSame(456, $createdRow['updated_by']);
-    });
+    }
 
-    test('handles updating event correctly', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testHandlesUpdatingEventCorrectly(): void
+    {
         $testData = [
             '1' => [
                 'id' => 1,
@@ -292,10 +305,11 @@ describe('SushiToJson trait', function (): void {
         Assert::assertSame('Updated Name', $updatedRow['name']);
         Assert::assertSame('Updated Description', $updatedRow['description']);
         Assert::assertSame(789, $updatedRow['updated_by']);
-    });
+    }
 
-    test('handles deleting event correctly', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testHandlesDeletingEventCorrectly(): void
+    {
         $testData = [
             '1' => ['id' => 1, 'name' => 'Item to Delete'],
             '2' => ['id' => 2, 'name' => 'Item to Keep'],
@@ -316,10 +330,11 @@ describe('SushiToJson trait', function (): void {
         Assert::assertNull(collect($savedData)->firstWhere('id', 1));
         $keptRow = \sushiRowById($savedData, 2);
         Assert::assertSame('Item to Keep', $keptRow['name']);
-    });
+    }
 
-    test('works with sushi package integration', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testWorksWithSushiPackageIntegration(): void
+    {
         $testData = [
             '1' => [
                 'id' => 1,
@@ -346,5 +361,5 @@ describe('SushiToJson trait', function (): void {
         Assert::assertCount(2, $rows);
         Assert::assertSame('Sushi Item 1', \sushiRowById($rows, 1)['name']);
         Assert::assertSame('Sushi Item 2', \sushiRowById($rows, 2)['name']);
-    });
-});
+    }
+}
