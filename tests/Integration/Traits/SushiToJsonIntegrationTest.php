@@ -14,11 +14,13 @@ use PHPUnit\Framework\Assert;
 use function Safe\json_decode;
 use function Safe\json_encode;
 
-uses(TestCase::class, DatabaseTransactions::class);
+class SushiToJsonIntegrationTest extends TestCase
+{
+    private Tenant $secondTenant;
 
-describe('SushiToJson integration traits', function (): void {
-    beforeEach(function (): void {
-        /** @var TestCase $this */
+    protected function setUp(): void
+    {
+        parent::setUp();
 
         // Crea un tenant di test
         $this->tenant = TenantFactory::new()->createOne([
@@ -40,10 +42,10 @@ describe('SushiToJson integration traits', function (): void {
         if (File::exists($directory)) {
             File::deleteDirectory($directory);
         }
-    });
+    }
 
-    afterEach(function (): void {
-        /** @var TestCase $this */
+    protected function tearDown(): void
+    {
         if (File::exists($this->sushiJsonPath())) {
             File::delete($this->sushiJsonPath());
         }
@@ -52,10 +54,13 @@ describe('SushiToJson integration traits', function (): void {
         if (File::exists($directory)) {
             File::deleteDirectory($directory);
         }
-    });
 
-    test('creates json file with tenant isolation', function (): void {
-        /** @var TestCase $this */
+        parent::tearDown();
+    }
+
+    /** @test */
+    public function testCreatesJsonFileWithTenantIsolation(): void
+    {
         $testData = [
             '1' => [
                 'id' => 1,
@@ -78,10 +83,11 @@ describe('SushiToJson integration traits', function (): void {
 
         Assert::assertSame($testData, $savedData);
         Assert::assertSame($this->tenantModel()->id, \sushiRowById($savedData, 1)['tenant_id']);
-    });
+    }
 
-    test('loads data with tenant isolation', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testLoadsDataWithTenantIsolation(): void
+    {
         $testData = [
             '1' => [
                 'id' => 1,
@@ -108,10 +114,11 @@ describe('SushiToJson integration traits', function (): void {
         foreach ($rows as $row) {
             Assert::assertSame($this->tenantModel()->id, $row['tenant_id']);
         }
-    });
+    }
 
-    test('handles complex data structures', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testHandlesComplexDataStructures(): void
+    {
         $testData = [
             '1' => [
                 'id' => 1,
@@ -154,10 +161,11 @@ describe('SushiToJson integration traits', function (): void {
         Assert::assertSame($testData['1']['metadata'], $decodedMetadata);
         Assert::assertSame(['tag1', 'tag2', 'tag3'], $decodedMetadata['tags']);
         Assert::assertSame('deep_value', $decodedMetadata['nested']['level1']['level2']['level3']);
-    });
+    }
 
-    test('manages file permissions correctly', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testManagesFilePermissionsCorrectly(): void
+    {
         $testData = ['1' => ['id' => 1, 'name' => 'Permission Test']];
 
         $result = $this->sushiModel()->saveToJson($testData);
@@ -172,11 +180,11 @@ describe('SushiToJson integration traits', function (): void {
         $content = File::get($this->sushiJsonPath());
         Assert::assertIsString($content);
         Assert::assertNotEmpty($content);
-    });
+    }
 
-    test('handles concurrent access safely', function (): void {
-        /** @var TestCase $this */
-
+    /** @test */
+    public function testHandlesConcurrentAccessSafely(): void
+    {
         // Simula accesso concorrente creando più istanze del modello
         $model1 = new TestSushiModel;
         $model2 = new TestSushiModel;
@@ -203,11 +211,11 @@ describe('SushiToJson integration traits', function (): void {
         Assert::assertSame('Concurrent Item 1', $this->jsonRecordAt($finalData, '1')['name']);
         Assert::assertSame('Concurrent Item 2', $this->jsonRecordAt($finalData, '2')['name']);
         Assert::assertSame('Concurrent Item 3', $this->jsonRecordAt($finalData, '3')['name']);
-    });
+    }
 
-    test('handles large datasets efficiently', function (): void {
-        /** @var TestCase $this */
-
+    /** @test */
+    public function testHandlesLargeDatasetsEfficiently(): void
+    {
         // Crea un dataset grande per testare le performance
         $largeDataset = [];
         for ($i = 1; $i <= 1000; $i++) {
@@ -247,10 +255,11 @@ describe('SushiToJson integration traits', function (): void {
         Assert::assertSame('Large Item 1', $this->jsonRecordAt($rows, '1')['name']);
         Assert::assertSame('Large Item 500', $this->jsonRecordAt($rows, '500')['name']);
         Assert::assertSame('Large Item 1000', $this->jsonRecordAt($rows, '1000')['name']);
-    });
+    }
 
-    test('handles unicode and special characters', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testHandlesUnicodeAndSpecialCharacters(): void
+    {
         $testData = [
             '1' => [
                 'id' => 1,
@@ -288,10 +297,11 @@ describe('SushiToJson integration traits', function (): void {
         Assert::assertSame('Caratteri: <>&"\'', $metadata['special_chars']);
         Assert::assertSame('Unicode: 你好世界 🌍', $metadata['unicode']);
         Assert::assertSame('1234567890', $metadata['numbers']);
-    });
+    }
 
-    test('handles empty and null values', function (): void {
-        /** @var TestCase $this */
+    /** @test */
+    public function testHandlesEmptyAndNullValues(): void
+    {
         $testData = [
             '1' => [
                 'id' => 1,
@@ -326,19 +336,19 @@ describe('SushiToJson integration traits', function (): void {
         Assert::assertSame('Valid Description', \sushiRowById($rows, 2)['description']);
         Assert::assertNull(\sushiRowById($rows, 2)['metadata']);
         Assert::assertSame('', \sushiRowById($rows, 2)['status']);
-    });
+    }
 
-    test('works with different tenant configurations', function (): void {
-        /** @var TestCase $this */
-
+    /** @test */
+    public function testWorksWithDifferentTenantConfigurations(): void
+    {
         // Crea un secondo tenant per testare l'isolamento
-        $secondTenant = TenantFactory::new()->createOne([
+        $this->secondTenant = TenantFactory::new()->createOne([
             'name' => 'second-tenant',
             'domain' => 'second.example.com',
         ]);
 
         // Imposta il secondo tenant come corrente
-        $this->setCurrentTenant($secondTenant);
+        $this->setCurrentTenant($this->secondTenant);
 
         $secondModel = new TestSushiModel;
         $secondJsonPath = TenantService::filePath('database/content/test_sushi.json');
@@ -347,7 +357,7 @@ describe('SushiToJson integration traits', function (): void {
             '1' => [
                 'id' => 1,
                 'name' => 'Second Tenant Item',
-                'tenant_id' => $secondTenant->id,
+                'tenant_id' => $this->secondTenant->id,
             ],
         ];
 
@@ -366,5 +376,5 @@ describe('SushiToJson integration traits', function (): void {
         if (File::exists($directory)) {
             File::deleteDirectory($directory);
         }
-    });
-});
+    }
+}

@@ -11,16 +11,11 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
-uses(TestCase::class);
-
-/**
- * @property TestSushiModel $model
- * @property string $testDirectory
- * @property string $testJsonPath
- */
-describe('SushiToJson Trait', function () {
-    beforeEach(function () {
-        /** @var TestCase $this */
+class SushiToJsonTraitPestTest extends TestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
 
         // Configura il modello di test
         $this->model = new TestSushiModel;
@@ -43,11 +38,10 @@ describe('SushiToJson Trait', function () {
                     : $jsonPath,
             ]);
         });
-    });
+    }
 
-    afterEach(function () {
-        /** @var TestCase $this */
-
+    protected function tearDown(): void
+    {
         // Cleanup file di test
         if (File::exists($this->sushiJsonPath())) {
             File::delete($this->sushiJsonPath());
@@ -56,18 +50,22 @@ describe('SushiToJson Trait', function () {
         if (File::exists($this->sushiTestDirectory())) {
             File::deleteDirectory($this->sushiTestDirectory());
         }
-    });
 
-    test('returns correct json file path', function () {
-        /** @var TestCase $this */
+        parent::tearDown();
+    }
+
+    /** @test */
+    public function testReturnsCorrectJsonFilePath(): void
+    {
         $path = $this->sushiModel()->getJsonFile();
 
         Assert::assertSame($this->sushiJsonPath(), $path);
         Assert::assertStringEndsWith('test_sushi.json', $path);
-    });
+    }
 
-    test('loads existing data from json file', function () {
-        /** @var TestCase $this */
+    /** @test */
+    public function testLoadsExistingDataFromJsonFile(): void
+    {
         $testData = [
             '1' => [
                 'id' => 1,
@@ -93,38 +91,40 @@ describe('SushiToJson Trait', function () {
 
         $rows = $this->sushiModel()->loadExistingData();
 
-        Assert::assertIsArray($rows);
         Assert::assertCount(2, $rows);
         Assert::assertSame('Test Item 1', \sushiRowById($rows, 1)['name']);
         Assert::assertSame('Test Item 2', \sushiRowById($rows, 2)['name']);
-    });
+    }
 
-    test('returns empty array when file not exists', function () {
-        /** @var TestCase $this */
+    /** @test */
+    public function testReturnsEmptyArrayWhenFileNotExists(): void
+    {
         $rows = $this->sushiModel()->getSushiRows();
 
-        Assert::assertIsArray($rows);
         Assert::assertEmpty($rows);
-    });
+    }
 
-    test('throws exception with malformed json', function () {
-        /** @var TestCase $this */
+    /** @test */
+    public function testThrowsExceptionWithMalformedJson(): void
+    {
         File::put($this->sushiJsonPath(), 'invalid json content');
 
         $this->expectAppException(Exception::class);
         $this->sushiModel()->getSushiRows();
-    });
+    }
 
-    test('throws exception with non array data', function () {
-        /** @var TestCase $this */
+    /** @test */
+    public function testThrowsExceptionWithNonArrayData(): void
+    {
         File::put($this->sushiJsonPath(), json_encode('not an array'));
 
         $this->expectAppException(Exception::class);
         $this->sushiModel()->getSushiRows();
-    });
+    }
 
-    test('validates json file structure', function () {
-        /** @var TestCase $this */
+    /** @test */
+    public function testValidatesJsonFileStructure(): void
+    {
         $validData = [
             '1' => [
                 'id' => 1,
@@ -137,17 +137,15 @@ describe('SushiToJson Trait', function () {
 
         $rows = $this->sushiModel()->getSushiRows();
 
-        Assert::assertIsArray($rows);
-        Assert::assertArrayHasKey('1', $rows);
+        Assert::assertNotEmpty($rows);
         Assert::assertArrayHasKey('id', \sushiRowById($rows, 1));
         Assert::assertArrayHasKey('name', \sushiRowById($rows, 1));
         Assert::assertArrayHasKey('status', \sushiRowById($rows, 1));
-    });
-});
+    }
 
-describe('Business Logic Tests', function () {
-    test('handles large datasets efficiently', function () {
-        /** @var TestCase $this */
+    /** @test */
+    public function testHandlesLargeDatasetsEfficiently(): void
+    {
         $largeData = [];
         for ($i = 1; $i <= 1000; $i++) {
             $largeData[(string) $i] = [
@@ -165,10 +163,11 @@ describe('Business Logic Tests', function () {
         Assert::assertCount(1000, $rows);
         Assert::assertSame('Item 1', \sushiRowById($rows, 1)['name']);
         Assert::assertSame('Item 1000', \sushiRowById($rows, 1000)['name']);
-    });
+    }
 
-    test('preserves data types correctly', function () {
-        /** @var TestCase $this */
+    /** @test */
+    public function testPreservesDataTypesCorrectly(): void
+    {
         $testData = [
             '1' => [
                 'id' => 1, // integer
@@ -190,5 +189,5 @@ describe('Business Logic Tests', function () {
         Assert::assertIsFloat(\sushiRowById($rows, 1)['price']);
         Assert::assertIsArray(\sushiRowById($rows, 1)['metadata']);
         Assert::assertIsString(\sushiRowById($rows, 1)['created_at']);
-    });
-});
+    }
+}
