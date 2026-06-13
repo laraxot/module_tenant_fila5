@@ -9,15 +9,15 @@ use Modules\Tenant\Actions\Config\SaveTenantConfigAction;
 use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Arr\SaveArrayAction;
 use PHPUnit\Framework\Assert;
-
 use function Safe\file_put_contents;
 use function Safe\unlink;
 
-final class SaveTenantConfigActionTest extends TestCase
-{
-    public function test_saves_tenant_config_by_merging_with_existing_data(): void
-    {
-        $configPath = sys_get_temp_dir().'/tenant-db-'.uniqid('', true).'.php';
+uses(\Modules\Tenant\Tests\TestCase::class);
+
+describe('Save Tenant Config Action', function (): void {
+    test('_saves_tenant_config_by_merging_with_existing_data', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
+$configPath = sys_get_temp_dir().'/tenant-db-'.uniqid('', true).'.php';
         file_put_contents($configPath, "<?php\nreturn ['connections' => ['mysql' => ['host' => 'localhost']]];\n");
 
         $this->mockService(GetTenantFilePathAction::class, function ($mock) use ($configPath): void {
@@ -57,11 +57,10 @@ final class SaveTenantConfigActionTest extends TestCase
         Assert::assertSame('test_db', $mysql['database'] ?? null);
 
         unlink($configPath);
-    }
+    });
 
-    public function test_saves_tenant_config_when_file_does_not_exist(): void
-    {
-        $configPath = sys_get_temp_dir().'/tenant-app-'.uniqid('', true).'.php';
+    test('_saves_tenant_config_when_file_does_not_exist', function (): void {
+$configPath = sys_get_temp_dir().'/tenant-app-'.uniqid('', true).'.php';
 
         $this->mockService(GetTenantFilePathAction::class, function ($mock) use ($configPath): void {
             /** @phpstan-ignore-next-line */
@@ -96,5 +95,5 @@ final class SaveTenantConfigActionTest extends TestCase
         if (is_file($configPath)) {
             unlink($configPath);
         }
-    }
-}
+    });
+});

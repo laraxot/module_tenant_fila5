@@ -9,8 +9,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Modules\Fixcity\Models\User as FixcityUser;
-use Mockery\MockInterface;
-use Modules\Tenant\Models\BaseModel;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Providers\TenantServiceProvider;
@@ -29,7 +27,7 @@ use function Safe\json_decode;
  * DatabaseTransactions handles rollback between tests.
  *
  * @property Tenant|null $tenant
- * @property BaseModel|null $baseModel
+ * @property Tenant|null $secondTenant
  * @property TestSushiModel|null $model
  * @property string|null $testJsonPath
  * @property string|null $testDirectory
@@ -44,9 +42,7 @@ abstract class TestCase extends XotBaseTestCase
 
     public ?Tenant $tenant = null;
 
-    public ?BaseModel $baseModel = null;
-
-    public ?TestSushiModel $model = null;
+    public ?Tenant $secondTenant = null;
 
     public ?string $testJsonPath = null;
 
@@ -61,21 +57,6 @@ abstract class TestCase extends XotBaseTestCase
     public function assertDatabaseHasRow(string $table, array $data, ?string $connection = null): void
     {
         $this->assertDatabaseHas($table, $data, $connection);
-    }
-
-    /**
-     * @template T of object
-     *
-     * @param  class-string<T>  $abstract
-     * @param  (\Closure(MockInterface&T): void)|null  $callback
-     * @return MockInterface&T
-     */
-    public function mockService(string $abstract, ?\Closure $callback = null): MockInterface
-    {
-        /** @var MockInterface&T $mock */
-        $mock = $this->mock($abstract, $callback);
-
-        return $mock;
     }
 
     /**
@@ -160,6 +141,13 @@ abstract class TestCase extends XotBaseTestCase
         Assert::assertNotNull($this->tenant);
 
         return $this->tenant;
+    }
+
+    public function secondTenantModel(): Tenant
+    {
+        Assert::assertNotNull($this->secondTenant);
+
+        return $this->secondTenant;
     }
 
     public function setCurrentTenant(Tenant $tenant): void

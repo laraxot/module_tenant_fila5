@@ -9,11 +9,12 @@ use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-final class GetTenantConfigPathActionTest extends TestCase
-{
-    public function test_gets_tenant_config_path(): void
-    {
-        $this->mockService(GetTenantNameAction::class, function ($mock): void {
+uses(\Modules\Tenant\Tests\TestCase::class);
+
+describe('Get Tenant Config Path Action', function (): void {
+    test('_gets_tenant_config_path', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
+$this->mockService(GetTenantNameAction::class, function ($mock): void {
             $mock->allows([
                 'execute' => 'test-tenant',
             ]);
@@ -23,11 +24,10 @@ final class GetTenantConfigPathActionTest extends TestCase
         $result = $action->execute('database');
 
         Assert::assertSame('test-tenant.database', $result);
-    }
+    });
 
-    public function test_gets_tenant_config_path_with_forward_slashes_replaced(): void
-    {
-        $this->mockService(GetTenantNameAction::class, function ($mock): void {
+    test('_gets_tenant_config_path_with_forward_slashes_replaced', function (): void {
+$this->mockService(GetTenantNameAction::class, function ($mock): void {
             $mock->allows([
                 'execute' => 'tenants/test',
             ]);
@@ -37,5 +37,5 @@ final class GetTenantConfigPathActionTest extends TestCase
         $result = $action->execute('app');
 
         Assert::assertSame('tenants.test.app', $result);
-    }
-}
+    });
+});

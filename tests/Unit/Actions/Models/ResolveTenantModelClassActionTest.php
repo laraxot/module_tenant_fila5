@@ -14,11 +14,12 @@ use Modules\Xot\Actions\Model\GetAllModelsByModuleNameAction;
 use Nwidart\Modules\Facades\Module;
 use PHPUnit\Framework\Assert;
 
-final class ResolveTenantModelClassActionTest extends TestCase
-{
-    public function test_resolves_tenant_model_class_from_config(): void
-    {
-        $this->mockService(ResolveTenantConfigValueAction::class, function ($mock): void {
+uses(\Modules\Tenant\Tests\TestCase::class);
+
+describe('Resolve Tenant Model Class Action', function (): void {
+    test('_resolves_tenant_model_class_from_config', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
+$this->mockService(ResolveTenantConfigValueAction::class, function ($mock): void {
             /** @phpstan-ignore-next-line */
             $mock->shouldReceive('execute')->andReturnUsing(
                 static fn (string $key): ?string => $key === 'morph_map.test_model'
@@ -31,11 +32,10 @@ final class ResolveTenantModelClassActionTest extends TestCase
         $result = $action->execute('test_model');
 
         Assert::assertSame('Modules\Test\Models\TestModel', $result);
-    }
+    });
 
-    public function test_resolves_tenant_model_class_by_scanning_modules_if_not_in_config(): void
-    {
-        $this->mockService(ResolveTenantConfigValueAction::class, function ($mock): void {
+    test('_resolves_tenant_model_class_by_scanning_modules_if_not_in_config', function (): void {
+$this->mockService(ResolveTenantConfigValueAction::class, function ($mock): void {
             /** @phpstan-ignore-next-line */
             $mock->shouldReceive('execute')->andReturnUsing(
                 static fn (string $key): ?string => $key === 'morph_map.event' ? null : null,
@@ -71,11 +71,10 @@ final class ResolveTenantModelClassActionTest extends TestCase
         $result = $action->execute('event');
 
         Assert::assertSame(Tenant::class, $result);
-    }
+    });
 
-    public function test_throws_exception_for_unknown_model(): void
-    {
-    $this->mockService(ResolveTenantConfigValueAction::class, function ($mock): void {
+    test('_throws_exception_for_unknown_model', function (): void {
+$this->mockService(ResolveTenantConfigValueAction::class, function ($mock): void {
         /** @phpstan-ignore-next-line */
         $mock->shouldReceive('execute')->andReturnNull();
         });
@@ -91,5 +90,5 @@ final class ResolveTenantModelClassActionTest extends TestCase
         } catch (Exception $exception) {
             Assert::assertInstanceOf(Exception::class, $exception);
         }
-    }
-}
+    });
+});

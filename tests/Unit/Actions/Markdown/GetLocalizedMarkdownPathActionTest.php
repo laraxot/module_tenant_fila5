@@ -9,15 +9,15 @@ use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\Markdown\GetLocalizedMarkdownPathAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
 use function Safe\file_put_contents;
 use function Safe\unlink;
 
-final class GetLocalizedMarkdownPathActionTest extends TestCase
-{
-    public function test_gets_localized_markdown_path_if_it_exists(): void
-    {
-        App::setLocale('it');
+uses(\Modules\Tenant\Tests\TestCase::class);
+
+describe('Get Localized Markdown Path Action', function (): void {
+    test('_gets_localized_markdown_path_if_it_exists', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
+App::setLocale('it');
 
         $tempDir = sys_get_temp_dir();
         $tempFile = $tempDir.'/test.md';
@@ -40,11 +40,10 @@ final class GetLocalizedMarkdownPathActionTest extends TestCase
 
         Assert::assertSame($tempFile, $result);
         unlink($tempFile);
-    }
+    });
 
-    public function test_gets_fallback_markdown_path_if_localized_does_not_exist(): void
-    {
-        App::setLocale('it');
+    test('_gets_fallback_markdown_path_if_localized_does_not_exist', function (): void {
+App::setLocale('it');
 
         $tempDir = sys_get_temp_dir();
         $tempFile = $tempDir.'/fallback.md';
@@ -68,11 +67,10 @@ final class GetLocalizedMarkdownPathActionTest extends TestCase
 
         Assert::assertSame($tempFile, $result);
         unlink($tempFile);
-    }
+    });
 
-    public function test_returns_hash_if_no_path_exists(): void
-    {
-        $this->mockService(GetTenantFilePathAction::class, function ($mock): void {
+    test('_returns_hash_if_no_path_exists', function (): void {
+$this->mockService(GetTenantFilePathAction::class, function ($mock): void {
             /** @phpstan-ignore-next-line */
             $mock->shouldReceive('execute')->andReturn('/non/existent/path.md');
         });
@@ -81,5 +79,5 @@ final class GetLocalizedMarkdownPathActionTest extends TestCase
         $result = $action->execute('none.md');
 
         Assert::assertSame('#', $result);
-    }
-}
+    });
+});

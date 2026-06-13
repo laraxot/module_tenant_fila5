@@ -12,23 +12,17 @@ use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Services\TenantService;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
 use function Safe\json_decode;
 use function Safe\json_encode;
+use function Pest\Laravel\get;
+use function Pest\Laravel\put;
+use function Pest\Laravel\delete;
 
-/**
- * Test unitari per il trait SushiToJson.
- *
- * Testa tutte le funzionalità del trait in isolamento,
- * utilizzando mock per le dipendenze esterne.
- */
-class SushiToJsonTraitTest extends TestCase
-{
-    protected function setUp(): void
-    {
-        parent::setUp();
+uses(\Modules\Tenant\Tests\TestCase::class);
 
-        // Configura il modello di test
+beforeEach(function (): void {
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+// Configura il modello di test
         $this->model = new TestSushiModel;
 
         // Configura percorsi di test
@@ -73,11 +67,10 @@ class SushiToJsonTraitTest extends TestCase
                 ],
             ];
         };
-    }
+});
 
-    protected function tearDown(): void
-    {
-        // Cleanup file di test
+afterEach(function (): void {
+// Cleanup file di test
         if (File::exists($this->sushiJsonPath())) {
             File::delete($this->sushiJsonPath());
         }
@@ -86,22 +79,19 @@ class SushiToJsonTraitTest extends TestCase
             File::deleteDirectory($this->sushiTestDirectory());
         }
 
-        parent::tearDown();
-    }
+});
 
-    /** @test */
-    public function testReturnsCorrectJsonFilePath(): void
-    {
-        $path = $this->sushiModel()->getJsonFile();
+describe('Sushi To Json Trait', function (): void {
+    test('returns correct json file path', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
+$path = $this->sushiModel()->getJsonFile();
 
         Assert::assertSame($this->sushiJsonPath(), $path);
         Assert::assertStringEndsWith('test_sushi.json', $path);
-    }
+    });
 
-    /** @test */
-    public function testLoadsExistingDataFromJsonFile(): void
-    {
-        $testData = $this->sushiTestData();
+    test('loads existing data from json file', function (): void {
+$testData = $this->sushiTestData();
         File::put($this->sushiJsonPath(), json_encode($testData, JSON_PRETTY_PRINT));
 
         $rows = $this->sushiModel()->loadExistingData();
@@ -109,38 +99,30 @@ class SushiToJsonTraitTest extends TestCase
         Assert::assertCount(2, $rows);
         Assert::assertSame('Test Item 1', \sushiRowById($rows, 1)['name']);
         Assert::assertSame('Test Item 2', \sushiRowById($rows, 2)['name']);
-    }
+    });
 
-    /** @test */
-    public function testReturnsEmptyArrayWhenFileNotExists(): void
-    {
-        $rows = $this->sushiModel()->getSushiRows();
+    test('returns empty array when file not exists', function (): void {
+$rows = $this->sushiModel()->getSushiRows();
 
         Assert::assertEmpty($rows);
-    }
+    });
 
-    /** @test */
-    public function testThrowsExceptionWithMalformedJson(): void
-    {
-        File::put($this->sushiJsonPath(), 'invalid json content');
+    test('throws exception with malformed json', function (): void {
+File::put($this->sushiJsonPath(), 'invalid json content');
 
         $this->expectAppException(Exception::class);
         $this->sushiModel()->getSushiRows();
-    }
+    });
 
-    /** @test */
-    public function testThrowsExceptionWithNonArrayData(): void
-    {
-        File::put($this->sushiJsonPath(), '"string data"');
+    test('throws exception with non array data', function (): void {
+File::put($this->sushiJsonPath(), '"string data"');
 
         $this->expectAppException(Exception::class);
         $this->sushiModel()->getSushiRows();
-    }
+    });
 
-    /** @test */
-    public function testNormalizesNestedArraysToJsonStrings(): void
-    {
-        $testData = [
+    test('normalizes nested arrays to json strings', function (): void {
+$testData = [
             '1' => [
                 'id' => 1,
                 'name' => 'Test',
@@ -157,12 +139,10 @@ class SushiToJsonTraitTest extends TestCase
         Assert::assertSame('{"nested":"value"}', \sushiRowById($rows, 1)['metadata']);
         Assert::assertIsString(\sushiRowById($rows, 1)['tags']);
         Assert::assertSame('["tag1","tag2"]', \sushiRowById($rows, 1)['tags']);
-    }
+    });
 
-    /** @test */
-    public function testSavesDataSuccessfullyToJsonFile(): void
-    {
-        $testData = $this->sushiTestData();
+    test('saves data successfully to json file', function (): void {
+$testData = $this->sushiTestData();
 
         $result = $this->sushiModel()->saveToJson($testData);
 
@@ -172,12 +152,10 @@ class SushiToJsonTraitTest extends TestCase
         $savedData = json_decode(File::get($this->sushiJsonPath()), true);
         Assert::assertIsArray($savedData);
         Assert::assertSame($testData, $savedData);
-    }
+    });
 
-    /** @test */
-    public function testCreatesDirectoryIfNotExists(): void
-    {
-        // Rimuovi directory di test
+    test('creates directory if not exists', function (): void {
+// Rimuovi directory di test
         if (File::exists($this->sushiTestDirectory())) {
             File::deleteDirectory($this->sushiTestDirectory());
         }
@@ -189,12 +167,10 @@ class SushiToJsonTraitTest extends TestCase
         Assert::assertTrue($result);
         Assert::assertDirectoryExists($this->sushiTestDirectory());
         Assert::assertFileExists($this->sushiJsonPath());
-    }
+    });
 
-    /** @test */
-    public function testHandlesSaveErrorsGracefully(): void
-    {
-        /** @var TestSushiModel&Mockery\MockInterface $mockModel */
+    test('handles save errors gracefully', function (): void {
+/** @var TestSushiModel&Mockery\MockInterface $mockModel */
         $mockModel = Mockery::mock(TestSushiModel::class)->makePartial();
         $mockModel->allows([
             'getJsonFile' => '/invalid/path/that/cannot/be/created/test.json',
@@ -204,12 +180,10 @@ class SushiToJsonTraitTest extends TestCase
         $result = $mockModel->saveToJson($testData);
 
         Assert::assertFalse($result);
-    }
+    });
 
-    /** @test */
-    public function testHandlesCreatingEventCorrectly(): void
-    {
-        // Mock Auth per simulare utente autenticato
+    test('handles creating event correctly', function (): void {
+// Mock Auth per simulare utente autenticato
         Auth::partialMock()->allows([
             'id' => 1,
         ]);
@@ -226,12 +200,10 @@ class SushiToJsonTraitTest extends TestCase
         Assert::assertSame('New Item', $model->name);
         Assert::assertSame('New Description', $model->description);
         Assert::assertStringEndsWith('test_sushi.json', $model->getJsonFile());
-    }
+    });
 
-    /** @test */
-    public function testHandlesUpdatingEventCorrectly(): void
-    {
-        // Mock Auth per simulare utente autenticato
+    test('handles updating event correctly', function (): void {
+// Mock Auth per simulare utente autenticato
         Auth::partialMock()->allows([
             'id' => 1,
         ]);
@@ -249,12 +221,10 @@ class SushiToJsonTraitTest extends TestCase
         $existingData = $model->loadExistingData();
         Assert::assertSame('Test Item 1', \sushiRowById($existingData, 1)['name']);
         Assert::assertArrayHasKey('1', $existingData);
-    }
+    });
 
-    /** @test */
-    public function testHandlesDeletingEventCorrectly(): void
-    {
-        $testData = $this->sushiTestData();
+    test('handles deleting event correctly', function (): void {
+$testData = $this->sushiTestData();
         File::put($this->sushiJsonPath(), json_encode($testData, JSON_PRETTY_PRINT));
 
         $model = new TestSushiModel;
@@ -269,23 +239,19 @@ class SushiToJsonTraitTest extends TestCase
         // Test che il metodo saveToJson funziona
         $result = $model->saveToJson($existingData);
         Assert::assertTrue($result);
-    }
+    });
 
-    /** @test */
-    public function testIntegratesWithTenantServiceCorrectly(): void
-    {
-        $tenantService = app(TenantService::class);
+    test('integrates with tenant service correctly', function (): void {
+$tenantService = app(TenantService::class);
 
         Assert::assertInstanceOf(TenantService::class, $tenantService);
         // Verifica che il mock funzioni correttamente
         $path = $this->sushiModel()->getJsonFile();
         Assert::assertSame($this->sushiJsonPath(), $path);
-    }
+    });
 
-    /** @test */
-    public function testHandlesLargeDatasetsEfficiently(): void
-    {
-        // Crea dataset grande (1000 record)
+    test('handles large datasets efficiently', function (): void {
+// Crea dataset grande (1000 record)
         $largeData = [];
         for ($i = 1; $i <= 1000; $i++) {
             $largeData[$i] = [
@@ -315,12 +281,10 @@ class SushiToJsonTraitTest extends TestCase
 
         Assert::assertCount(1000, $rows);
         Assert::assertLessThan(0.5, $loadTime);
-    }
+    });
 
-    /** @test */
-    public function testLogsErrorsAppropriately(): void
-    {
-        /** @var TestSushiModel&Mockery\MockInterface $mockModel */
+    test('logs errors appropriately', function (): void {
+/** @var TestSushiModel&Mockery\MockInterface $mockModel */
         $mockModel = Mockery::mock(TestSushiModel::class)->makePartial();
         $mockModel->allows([
             'getJsonFile' => '/invalid/path/that/cannot/be/created/test.json',
@@ -330,12 +294,10 @@ class SushiToJsonTraitTest extends TestCase
         $result = $mockModel->saveToJson($testData);
 
         Assert::assertFalse($result);
-    }
+    });
 
-    /** @test */
-    public function testMaintainsDataIntegrityDuringOperations(): void
-    {
-        $originalData = $this->sushiTestData();
+    test('maintains data integrity during operations', function (): void {
+$originalData = $this->sushiTestData();
         File::put($this->sushiJsonPath(), json_encode($originalData, JSON_PRETTY_PRINT));
 
         // Verifica che i dati originali siano preservati
@@ -351,12 +313,10 @@ class SushiToJsonTraitTest extends TestCase
         $finalData = $this->sushiModel()->loadExistingData();
         Assert::assertSame('Updated Name', $finalData['1']['name']);
         Assert::assertSame('Test Item 2', $finalData['2']['name']);
-    }
+    });
 
-    /** @test */
-    public function testHandlesEmptyAndNullValuesCorrectly(): void
-    {
-        $testData = [
+    test('handles empty and null values correctly', function (): void {
+$testData = [
             '1' => [
                 'id' => 1,
                 'name' => '',
@@ -373,12 +333,10 @@ class SushiToJsonTraitTest extends TestCase
         Assert::assertNull($loadedData['1']['description']);
         Assert::assertSame('[]', $loadedData['1']['metadata']);
         Assert::assertFalse($loadedData['1']['status']);
-    }
+    });
 
-    /** @test */
-    public function testHandlesUnicodeAndSpecialCharacters(): void
-    {
-        $testData = [
+    test('handles unicode and special characters', function (): void {
+$testData = [
             '1' => [
                 'id' => 1,
                 'name' => 'Café & Résumé 🚀',
@@ -393,5 +351,5 @@ class SushiToJsonTraitTest extends TestCase
         Assert::assertSame('Café & Résumé 🚀', $loadedData['1']['name']);
         Assert::assertSame('Test con caratteri speciali: é, è, ñ, 中文, 🎉', $loadedData['1']['description']);
         Assert::assertSame('["tag-é","tag-è","tag-ñ"]', $loadedData['1']['tags']);
-    }
-}
+    });
+});

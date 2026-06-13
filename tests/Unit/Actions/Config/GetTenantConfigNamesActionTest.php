@@ -10,11 +10,11 @@ use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 use Symfony\Component\Finder\SplFileInfo;
 
-final class GetTenantConfigNamesActionTest extends TestCase
-{
-    public function test_gets_tenant_config_names(): void
-    {
-        $action = app(GetTenantConfigNamesAction::class);
+uses(\Modules\Tenant\Tests\TestCase::class);
+
+describe('Get Tenant Config Names Action', function (): void {
+    test('_gets_tenant_config_names', function (): void {
+$action = app(GetTenantConfigNamesAction::class);
 
         $file1 = mock(SplFileInfo::class);
         $file1->allows([
@@ -42,5 +42,5 @@ final class GetTenantConfigNamesActionTest extends TestCase
         Assert::assertCount(2, $result);
         Assert::assertSame(['id' => 1, 'name' => 'database'], $result[0]);
         Assert::assertSame(['id' => 2, 'name' => 'app'], $result[1]);
-    }
-}
+    });
+});
