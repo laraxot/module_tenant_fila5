@@ -9,18 +9,18 @@ use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-final class DomainModelTest extends TestCase
-{
-    public function test_domain_model_can_be_instantiated(): void
-    {
-        $domain = new Domain;
+uses(\Modules\Tenant\Tests\TestCase::class);
+
+describe('Domain Model', function (): void {
+    test('_domain_model_can_be_instantiated', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
+$domain = new Domain;
 
         Assert::assertInstanceOf(Domain::class, $domain);
-    }
+    });
 
-    public function test_get_rows_method_works_correctly(): void
-    {
-        $this->mockService(GetDomainsArrayAction::class, function ($mock): void {
+    test('_get_rows_method_works_correctly', function (): void {
+$this->mockService(GetDomainsArrayAction::class, function ($mock): void {
             $mock->allows([
                 'execute' => [
                     ['id' => 1, 'name' => 'test-domain.com'],
@@ -35,5 +35,5 @@ final class DomainModelTest extends TestCase
         Assert::assertCount(2, $rows);
         Assert::assertSame('test-domain.com', $rows[0]['name']);
         Assert::assertSame('example.org', $rows[1]['name']);
-    }
-}
+    });
+});

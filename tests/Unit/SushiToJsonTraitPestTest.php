@@ -10,16 +10,15 @@ use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Services\TenantService;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
 use function Safe\json_encode;
+use function Pest\Laravel\put;
+use function Pest\Laravel\delete;
 
-class SushiToJsonTraitPestTest extends TestCase
-{
-    protected function setUp(): void
-    {
-        parent::setUp();
+uses(\Modules\Tenant\Tests\TestCase::class);
 
-        // Configura il modello di test
+beforeEach(function (): void {
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+// Configura il modello di test
         $this->model = new TestSushiModel;
 
         // Configura percorsi di test
@@ -40,11 +39,10 @@ class SushiToJsonTraitPestTest extends TestCase
                     : $jsonPath,
             ]);
         });
-    }
+});
 
-    protected function tearDown(): void
-    {
-        // Cleanup file di test
+afterEach(function (): void {
+// Cleanup file di test
         if (File::exists($this->sushiJsonPath())) {
             File::delete($this->sushiJsonPath());
         }
@@ -53,22 +51,19 @@ class SushiToJsonTraitPestTest extends TestCase
             File::deleteDirectory($this->sushiTestDirectory());
         }
 
-        parent::tearDown();
-    }
+});
 
-    /** @test */
-    public function testReturnsCorrectJsonFilePath(): void
-    {
-        $path = $this->sushiModel()->getJsonFile();
+describe('Sushi To Json Trait Pest', function (): void {
+    test('returns correct json file path', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
+$path = $this->sushiModel()->getJsonFile();
 
         Assert::assertSame($this->sushiJsonPath(), $path);
         Assert::assertStringEndsWith('test_sushi.json', $path);
-    }
+    });
 
-    /** @test */
-    public function testLoadsExistingDataFromJsonFile(): void
-    {
-        $testData = [
+    test('loads existing data from json file', function (): void {
+$testData = [
             '1' => [
                 'id' => 1,
                 'name' => 'Test Item 1',
@@ -96,38 +91,30 @@ class SushiToJsonTraitPestTest extends TestCase
         Assert::assertCount(2, $rows);
         Assert::assertSame('Test Item 1', \sushiRowById($rows, 1)['name']);
         Assert::assertSame('Test Item 2', \sushiRowById($rows, 2)['name']);
-    }
+    });
 
-    /** @test */
-    public function testReturnsEmptyArrayWhenFileNotExists(): void
-    {
-        $rows = $this->sushiModel()->getSushiRows();
+    test('returns empty array when file not exists', function (): void {
+$rows = $this->sushiModel()->getSushiRows();
 
         Assert::assertEmpty($rows);
-    }
+    });
 
-    /** @test */
-    public function testThrowsExceptionWithMalformedJson(): void
-    {
-        File::put($this->sushiJsonPath(), 'invalid json content');
+    test('throws exception with malformed json', function (): void {
+File::put($this->sushiJsonPath(), 'invalid json content');
 
         $this->expectAppException(Exception::class);
         $this->sushiModel()->getSushiRows();
-    }
+    });
 
-    /** @test */
-    public function testThrowsExceptionWithNonArrayData(): void
-    {
-        File::put($this->sushiJsonPath(), json_encode('not an array'));
+    test('throws exception with non array data', function (): void {
+File::put($this->sushiJsonPath(), json_encode('not an array'));
 
         $this->expectAppException(Exception::class);
         $this->sushiModel()->getSushiRows();
-    }
+    });
 
-    /** @test */
-    public function testValidatesJsonFileStructure(): void
-    {
-        $validData = [
+    test('validates json file structure', function (): void {
+$validData = [
             '1' => [
                 'id' => 1,
                 'name' => 'Test Item',
@@ -143,12 +130,10 @@ class SushiToJsonTraitPestTest extends TestCase
         Assert::assertArrayHasKey('id', \sushiRowById($rows, 1));
         Assert::assertArrayHasKey('name', \sushiRowById($rows, 1));
         Assert::assertArrayHasKey('status', \sushiRowById($rows, 1));
-    }
+    });
 
-    /** @test */
-    public function testHandlesLargeDatasetsEfficiently(): void
-    {
-        $largeData = [];
+    test('handles large datasets efficiently', function (): void {
+$largeData = [];
         for ($i = 1; $i <= 1000; $i++) {
             $largeData[(string) $i] = [
                 'id' => $i,
@@ -165,12 +150,10 @@ class SushiToJsonTraitPestTest extends TestCase
         Assert::assertCount(1000, $rows);
         Assert::assertSame('Item 1', \sushiRowById($rows, 1)['name']);
         Assert::assertSame('Item 1000', \sushiRowById($rows, 1000)['name']);
-    }
+    });
 
-    /** @test */
-    public function testPreservesDataTypesCorrectly(): void
-    {
-        $testData = [
+    test('preserves data types correctly', function (): void {
+$testData = [
             '1' => [
                 'id' => 1, // integer
                 'name' => 'Test Item', // string
@@ -191,5 +174,5 @@ class SushiToJsonTraitPestTest extends TestCase
         Assert::assertIsFloat(\sushiRowById($rows, 1)['price']);
         Assert::assertIsArray(\sushiRowById($rows, 1)['metadata']);
         Assert::assertIsString(\sushiRowById($rows, 1)['created_at']);
-    }
-}
+    });
+});
