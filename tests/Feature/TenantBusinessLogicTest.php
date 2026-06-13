@@ -16,11 +16,12 @@ use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\User;
 use PHPUnit\Framework\Assert;
 
-final class TenantBusinessLogicTest extends TestCase
-{
-    public function test_can_create_and_manage_tenants(): void
-    {
-        $user = UserFactory::new()->createOne();
+uses(\Modules\Tenant\Tests\TestCase::class);
+
+describe('Tenant Business Logic', function (): void {
+    test('_can_create_and_manage_tenants', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
+$user = UserFactory::new()->createOne();
         Assert::assertInstanceOf(User::class, $user);
 
         $tenant = TenantFactory::new()->createOne([
@@ -39,11 +40,10 @@ final class TenantBusinessLogicTest extends TestCase
         Assert::assertSame('Test Studio', $tenant->name);
         Assert::assertSame('test-studio', $tenant->slug);
         Assert::assertTrue($tenant->is_active);
-    }
+    });
 
-    public function test_can_manage_tenant_domains(): void
-    {
-        $tenant = TenantFactory::new()->createOne();
+    test('_can_manage_tenant_domains', function (): void {
+$tenant = TenantFactory::new()->createOne();
         Assert::assertInstanceOf(Tenant::class, $tenant);
 
         $domain = TenantDomainFactory::new()->createOne([
@@ -66,11 +66,10 @@ final class TenantBusinessLogicTest extends TestCase
         Assert::assertSame('test.example.com', $domain->domain);
         Assert::assertTrue($domain->is_primary);
         Assert::assertSame('active', $domain->status);
-    }
+    });
 
-    public function test_can_manage_tenant_settings(): void
-    {
-        $tenant = TenantFactory::new()->createOne();
+    test('_can_manage_tenant_settings', function (): void {
+$tenant = TenantFactory::new()->createOne();
 
         $setting = TenantSettingFactory::new()->createOne([
             'tenant_id' => $tenant->id,
@@ -91,11 +90,10 @@ final class TenantBusinessLogicTest extends TestCase
         Assert::assertSame('app.name', $setting->key);
         Assert::assertSame('Test Studio Application', $setting->value);
         Assert::assertSame('string', $setting->type);
-    }
+    });
 
-    public function test_can_manage_tenant_subscriptions(): void
-    {
-        $tenant = TenantFactory::new()->createOne();
+    test('_can_manage_tenant_subscriptions', function (): void {
+$tenant = TenantFactory::new()->createOne();
 
         $subscription = TenantSubscriptionFactory::new()->createOne([
             'tenant_id' => $tenant->id,
@@ -121,11 +119,10 @@ final class TenantBusinessLogicTest extends TestCase
         Assert::assertSame('active', $subscription->status);
         Assert::assertSame(50, $subscription->max_users);
         Assert::assertSame(100, $subscription->max_storage_gb);
-    }
+    });
 
-    public function test_can_validate_tenant_slug_uniqueness(): void
-    {
-        $tenant1 = TenantFactory::new()->createOne([
+    test('_can_validate_tenant_slug_uniqueness', function (): void {
+$tenant1 = TenantFactory::new()->createOne([
             'name' => 'Studio A',
             'slug' => 'studio-a',
         ]);
@@ -147,11 +144,10 @@ final class TenantBusinessLogicTest extends TestCase
         Assert::assertNotSame($tenant1->slug, $tenant2->slug);
         Assert::assertSame('studio-a', $tenant1->slug);
         Assert::assertSame('studio-b', $tenant2->slug);
-    }
+    });
 
-    public function test_can_manage_tenant_status_workflow(): void
-    {
-        $tenant = TenantFactory::new()->createOne([
+    test('_can_manage_tenant_status_workflow', function (): void {
+$tenant = TenantFactory::new()->createOne([
             'is_active' => false,
         ]);
 
@@ -172,11 +168,10 @@ final class TenantBusinessLogicTest extends TestCase
         $tenantFresh = $tenant->fresh();
         Assert::assertInstanceOf(Tenant::class, $tenantFresh);
         Assert::assertTrue($tenantFresh->is_active);
-    }
+    });
 
-    public function test_can_handle_tenant_domain_verification(): void
-    {
-        $tenant = TenantFactory::new()->createOne();
+    test('_can_handle_tenant_domain_verification', function (): void {
+$tenant = TenantFactory::new()->createOne();
 
         $domain = TenantDomainFactory::new()->createOne([
             'tenant_id' => $tenant->id,
@@ -205,11 +200,10 @@ final class TenantBusinessLogicTest extends TestCase
         Assert::assertSame('active', $domainFresh->status);
         Assert::assertNotNull($domainFresh->verified_at);
         Assert::assertNull($domainFresh->verification_token);
-    }
+    });
 
-    public function test_can_manage_tenant_storage_limits(): void
-    {
-        $tenant = TenantFactory::new()->createOne();
+    test('_can_manage_tenant_storage_limits', function (): void {
+$tenant = TenantFactory::new()->createOne();
         $subscription = TenantSubscriptionFactory::new()->createOne([
             'tenant_id' => $tenant->id,
             'max_storage_gb' => 100,
@@ -232,11 +226,10 @@ final class TenantBusinessLogicTest extends TestCase
         Assert::assertInstanceOf(TenantSubscription::class, $subFresh);
         Assert::assertSame(50, $subFresh->current_storage_gb);
         Assert::assertSame(50, $subFresh->max_storage_gb - $subFresh->current_storage_gb);
-    }
+    });
 
-    public function test_can_manage_tenant_user_limits(): void
-    {
-        $tenant = TenantFactory::new()->createOne();
+    test('_can_manage_tenant_user_limits', function (): void {
+$tenant = TenantFactory::new()->createOne();
         $subscription = TenantSubscriptionFactory::new()->createOne([
             'tenant_id' => $tenant->id,
             'max_users' => 50,
@@ -259,11 +252,10 @@ final class TenantBusinessLogicTest extends TestCase
         Assert::assertInstanceOf(TenantSubscription::class, $subFresh);
         Assert::assertSame(25, $subFresh->current_users);
         Assert::assertSame(25, $subFresh->max_users - $subFresh->current_users);
-    }
+    });
 
-    public function test_can_handle_tenant_subscription_expiration(): void
-    {
-        $tenant = TenantFactory::new()->createOne();
+    test('_can_handle_tenant_subscription_expiration', function (): void {
+$tenant = TenantFactory::new()->createOne();
         $subscription = TenantSubscriptionFactory::new()->createOne([
             'tenant_id' => $tenant->id,
             'status' => 'active',
@@ -283,11 +275,10 @@ final class TenantBusinessLogicTest extends TestCase
         $subFresh = $subscription->fresh();
         Assert::assertInstanceOf(TenantSubscription::class, $subFresh);
         Assert::assertSame('expired', $subFresh->status);
-    }
+    });
 
-    public function test_can_manage_tenant_settings_hierarchy(): void
-    {
-        $tenant = TenantFactory::new()->createOne();
+    test('_can_manage_tenant_settings_hierarchy', function (): void {
+$tenant = TenantFactory::new()->createOne();
 
         $appSetting = TenantSettingFactory::new()->createOne([
             'tenant_id' => $tenant->id,
@@ -328,11 +319,10 @@ final class TenantBusinessLogicTest extends TestCase
         Assert::assertSame('app.name', $appSetting->key);
         Assert::assertSame('database.connection', $databaseSetting->key);
         Assert::assertSame('mail.driver', $mailSetting->key);
-    }
+    });
 
-    public function test_can_validate_tenant_domain_formats(): void
-    {
-        $tenant = TenantFactory::new()->createOne();
+    test('_can_validate_tenant_domain_formats', function (): void {
+$tenant = TenantFactory::new()->createOne();
 
         $validDomains = [
             'example.com',
@@ -354,11 +344,10 @@ final class TenantBusinessLogicTest extends TestCase
                 'domain' => $domain,
             ]);
         }
-    }
+    });
 
-    public function test_can_track_tenant_activity(): void
-    {
-        $tenant = TenantFactory::new()->createOne([
+    test('_can_track_tenant_activity', function (): void {
+$tenant = TenantFactory::new()->createOne([
             'created_at' => now()->subMonths(3),
             'last_activity_at' => now()->subDays(5),
         ]);
@@ -369,11 +358,10 @@ final class TenantBusinessLogicTest extends TestCase
         Assert::assertInstanceOf(Tenant::class, $fresh);
         Assert::assertNotNull($fresh->last_activity_at);
         Assert::assertTrue($fresh->last_activity_at->isToday());
-    }
+    });
 
-    public function test_can_manage_tenant_billing_cycles(): void
-    {
-        $tenant = TenantFactory::new()->createOne();
+    test('_can_manage_tenant_billing_cycles', function (): void {
+$tenant = TenantFactory::new()->createOne();
         $subscription = TenantSubscriptionFactory::new()->createOne([
             'tenant_id' => $tenant->id,
             'billing_cycle' => 'monthly',
@@ -404,5 +392,5 @@ final class TenantBusinessLogicTest extends TestCase
         Assert::assertSame(999.99, $subFresh->billing_amount);
         Assert::assertNotNull($subFresh->next_billing_date);
         Assert::assertTrue($subFresh->next_billing_date->isFuture());
-    }
-}
+    });
+});

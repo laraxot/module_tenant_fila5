@@ -11,11 +11,12 @@ use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-final class ResolveTenantConfigValueActionTest extends TestCase
-{
-    public function test_resolves_tenant_config_value_by_merging_with_tenant_overrides(): void
-    {
-        $this->mockService(GetTenantNameAction::class, function ($mock): void {
+uses(\Modules\Tenant\Tests\TestCase::class);
+
+describe('Resolve Tenant Config Value Action', function (): void {
+    test('_resolves_tenant_config_value_by_merging_with_tenant_overrides', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
+$this->mockService(GetTenantNameAction::class, function ($mock): void {
             $mock->allows([
                 'execute' => 'test-tenant',
             ]);
@@ -34,18 +35,16 @@ final class ResolveTenantConfigValueActionTest extends TestCase
 
         $result = $action->execute('app.timezone');
         Assert::assertSame('UTC', $result);
-    }
+    });
 
-    public function test_throws_exception_for_empty_config_key(): void
-    {
-        $this->expectAppException(Exception::class);
+    test('_throws_exception_for_empty_config_key', function (): void {
+$this->expectAppException(Exception::class);
         $action = app(ResolveTenantConfigValueAction::class);
         $action->execute('');
-    }
+    });
 
-    public function test_returns_default_value_if_config_not_found(): void
-    {
-        $this->mockService(GetTenantNameAction::class, function ($mock): void {
+    test('_returns_default_value_if_config_not_found', function (): void {
+$this->mockService(GetTenantNameAction::class, function ($mock): void {
             $mock->allows([
                 'execute' => 'test-tenant',
             ]);
@@ -55,5 +54,5 @@ final class ResolveTenantConfigValueActionTest extends TestCase
         $result = $action->execute('nonexistent.key', 'default');
 
         Assert::assertSame('default', $result);
-    }
-}
+    });
+});
