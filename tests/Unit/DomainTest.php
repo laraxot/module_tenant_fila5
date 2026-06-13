@@ -9,7 +9,7 @@ use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-final class DomainModelTest extends TestCase
+final class DomainTest extends TestCase
 {
     public function test_domain_model_can_be_instantiated(): void
     {

@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Modules\Tenant\Tests\Integration\Traits;
+
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Database\Factories\TenantFactory;
@@ -14,7 +16,7 @@ use PHPUnit\Framework\Assert;
 use function Safe\json_decode;
 use function Safe\json_encode;
 
-class SushiToJsonIntegrationTest extends TestCase
+class SushiToJsonTraitIntegrationTest extends TestCase
 {
     private Tenant $secondTenant;
 
