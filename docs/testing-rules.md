@@ -27,6 +27,11 @@
 - **MAI** usare `property_exists()` con modelli Eloquent
 - Usare `isset()` per proprietà magiche
 
+### 6. **`tests/Pest.php` in `composer.json > autoload-dev.files`: SOLO helper puri**
+- `tests/Pest.php` resta in `autoload-dev.files` per esporre gli helper globali (`createTenant()`, `makeTenant()`) anche quando CI lancia `pest Modules/Tenant/tests` (Pest non auto-carica il `Pest.php` di un modulo fuori dai testsuite di `phpunit.xml`).
+- **VIETATO** dentro quel file: `pest()->extend(...)->in(...)` e `expect()->extend(...)`. Sono pending call il cui `__destruct` invoca `TestSuite::getInstance()`: in eager-autoload fuori dal runner Pest (PHPStan, artisan) lanciano `InvalidPestCommand` → **crash** di `phpstan analyse Modules`.
+- Il binding del TestCase va **per file** con `uses(\Modules\Tenant\Tests\TestCase::class);` (come `User`/`Notify`). Vedi [reflective](../../../../docs/wiki/reflective.md).
+
 ## Struttura dei Test
 
 ### File di Configurazione

@@ -2,10 +2,6 @@
 
 declare(strict_types=1);
 
-uses(TestCase::class);
-
-uses(TestCase::class);
-
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TenantDomain;
 use Modules\Tenant\Models\TenantSetting;
@@ -13,6 +9,8 @@ use Modules\Tenant\Models\TenantSubscription;
 use Modules\Tenant\Tests\TestCase;
 use Modules\User\Models\User;
 use Webmozart\Assert\Assert;
+
+uses(TestCase::class);
 
 it('can create and manage tenants', function (): void {
     // Arrange
