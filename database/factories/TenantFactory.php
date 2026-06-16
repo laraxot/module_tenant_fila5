@@ -26,8 +26,12 @@ class TenantFactory extends Factory
      */
     public function definition(): array
     {
+        $name = $this->faker->company();
+
         return [
-            'name' => $this->faker->company(),
+            'id' => $this->faker->uuid(),
+            'name' => $name,
+            'slug' => $this->faker->unique()->slug(),
             'domain' => $this->faker->domainName(),
             'database' => 'tenant_'.$this->faker->unique()->slug(),
             'is_active' => $this->faker->boolean(80),
