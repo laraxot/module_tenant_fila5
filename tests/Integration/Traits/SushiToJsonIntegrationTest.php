@@ -10,7 +10,7 @@ use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Services\TenantService;
 
-uses(Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function () {
+uses(\Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function () {
     // Crea un tenant di test
     $this->tenant = Tenant::factory()->create([
         'name' => 'test-tenant',
