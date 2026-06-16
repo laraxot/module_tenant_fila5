@@ -214,14 +214,19 @@ trait SushiToJson
             return 1;
         }
 
-        $keys = array_keys($existingData);
-        if (empty($keys)) {
-            return 1;
+        $maxId = 0;
+
+        foreach ($existingData as $row) {
+            if (! \is_array($row)) {
+                continue;
+            }
+
+            $rawId = $row['id'] ?? 0;
+            $id = \is_numeric($rawId) ? (int) $rawId : 0;
+            $maxId = max($maxId, $id);
         }
 
-        $maxId = max($keys);
-
-        return is_numeric($maxId) ? ((int) $maxId) + 1 : 1;
+        return $maxId + 1;
     }
 
     /**
