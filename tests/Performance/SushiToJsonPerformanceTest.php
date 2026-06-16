@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Services\TenantService;
 
-uses(Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function () {
+uses(\Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function () {
     // Configura il modello di test
     $this->model = new TestSushiModel;
 

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Services\TenantService;
 
-uses(Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function () {
+uses(\Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function () {
     $this->model = new TestSushiModel;
     $this->testJsonPath = TenantService::filePath('database/content/test_sushi.json');
 
