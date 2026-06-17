@@ -25,6 +25,8 @@ use Sushi\Sushi;
  *
  * @method static DomainFactory factory($count = null, $state = [])
  *
+ * @mixin IdeHelperDomain
+ *
  * @property ProfileContract|null $deleter
  *
  * @mixin \Eloquent
@@ -35,8 +37,6 @@ class Domain extends BaseModel
 
     /**
      * Model Rows.
-     *
-     * @return array<int, array{id: string, name: string}>
      */
     public function getRows(): array
     {

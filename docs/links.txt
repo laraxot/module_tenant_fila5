@@ -1,7 +1,6 @@
----
-module: theme
-topic: links
-canonical: ../../../Themes/docs/shared-components/links-Modules.md
----
+Laravel Multi-Tenant Applications with Ecotone
 
-See canonical documentation: ../../../Themes/docs/shared-components/links-Modules.md
+https://blog.devgenius.io/laravel-multi-tenant-systems-with-ecotone-e3e5a4751a55
+
+------------------
+

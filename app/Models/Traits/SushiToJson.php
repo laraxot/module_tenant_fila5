@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use InvalidArgumentException;
 use Modules\Tenant\Services\TenantService;
-use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Sushi\Sushi;
 use Throwable;
 
@@ -165,7 +164,7 @@ trait SushiToJson
      * Crea la directory se non esiste e salva con formattazione JSON.
      * Utilizza JSON_PRETTY_PRINT e JSON_UNESCAPED_UNICODE per leggibilità.
      *
-     * @param  array<int|string, array<string, mixed>>  $data  Array di record da salvare
+     * @param  array<int, array<string, mixed>>  $data  Array di record da salvare
      * @return bool True se il salvataggio è riuscito, false in caso di errore
      */
     public function saveToJson(array $data): bool
@@ -299,7 +298,7 @@ trait SushiToJson
 
             // Update existing record
             $existingData = $modelWithTrait->loadExistingData();
-            $id = SafeIntCastAction::cast($modelWithTrait->getAttribute('id') ?? 0);
+            $id = (int) ($modelWithTrait->getAttribute('id') ?? 0);
 
             if ($id > 0) {
                 $index = $modelWithTrait->findRowIndexById($existingData, $id);
@@ -316,7 +315,7 @@ trait SushiToJson
         static::deleting(function ($model): void {
             /** @var static $modelWithTrait */
             $modelWithTrait = $model;
-            $id = SafeIntCastAction::cast($modelWithTrait->getAttribute('id') ?? 0);
+            $id = (int) ($modelWithTrait->getAttribute('id') ?? 0);
 
             if ($id > 0) {
                 $existingData = $modelWithTrait->loadExistingData();
@@ -340,8 +339,8 @@ trait SushiToJson
     protected function findRowIndexById(array $rows, int $id): ?int
     {
         foreach ($rows as $index => $row) {
-            if (is_array($row) && SafeIntCastAction::cast($row['id'] ?? 0) === $id) {
-                return is_int($index) ? $index : SafeIntCastAction::cast($index);
+            if (is_array($row) && ((int) ($row['id'] ?? 0)) === $id) {
+                return (int) $index;
             }
         }
 
