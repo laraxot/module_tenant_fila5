@@ -33,7 +33,11 @@ $this->mockService(GetDomainsArrayAction::class, function ($mock): void {
         $rows = $domain->getRows();
 
         Assert::assertCount(2, $rows);
-        Assert::assertSame('test-domain.com', $rows[0]['name']);
-        Assert::assertSame('example.org', $rows[1]['name']);
+        $firstRow = $rows[0];
+        $secondRow = $rows[1];
+        Assert::assertIsArray($firstRow);
+        Assert::assertIsArray($secondRow);
+        Assert::assertSame('test-domain.com', $firstRow['name']);
+        Assert::assertSame('example.org', $secondRow['name']);
     });
 });
