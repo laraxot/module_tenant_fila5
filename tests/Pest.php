@@ -17,7 +17,12 @@ use PHPUnit\Framework\Assert;
  */
 function createTenant(array $attributes = []): Tenant
 {
-    return TenantFactory::new()->createOne($attributes);
+    $tenant = TenantFactory::new()->createOne($attributes);
+    if (! $tenant instanceof Tenant) {
+        throw new RuntimeException('Expected Tenant model from factory');
+    }
+
+    return $tenant;
 }
 
 /**

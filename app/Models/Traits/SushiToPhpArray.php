@@ -17,13 +17,26 @@ trait SushiToPhpArray
 {
     use Sushi;
 
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     public function getSushiRows(): array
     {
         $name = Str::of($this->getTable())->replace('_', '-')->toString();
 
         $rows = TenantService::getConfig($name);
 
-        return array_values($rows);
+        $normalized = [];
+        foreach (array_values($rows) as $row) {
+            if (! is_array($row)) {
+                continue;
+            }
+
+            /** @var array<string, mixed> $row */
+            $normalized[] = $row;
+        }
+
+        return $normalized;
 
         /*
          * $files = File::glob($path.'/*.json');

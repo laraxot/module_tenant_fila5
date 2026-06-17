@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Feature;
 
+use Illuminate\Support\Carbon;
 use Modules\Tenant\Database\Factories\TenantDomainFactory;
 use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Database\Factories\TenantSettingFactory;
@@ -356,8 +357,9 @@ $tenant = TenantFactory::new()->createOne([
 
         $fresh = $tenant->fresh();
         Assert::assertInstanceOf(Tenant::class, $fresh);
-        Assert::assertNotNull($fresh->last_activity_at);
-        Assert::assertTrue($fresh->last_activity_at->isToday());
+        $lastActivity = $fresh->last_activity_at;
+        Assert::assertInstanceOf(Carbon::class, $lastActivity);
+        Assert::assertTrue($lastActivity->isToday());
     });
 
     test('_can_manage_tenant_billing_cycles', function (): void {

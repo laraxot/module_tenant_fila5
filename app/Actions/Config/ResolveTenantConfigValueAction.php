@@ -21,8 +21,8 @@ class ResolveTenantConfigValueAction
      * Works consistently in web, console, queue, and scheduler contexts.
      *
      * @param  string  $key  Config key (e.g., 'app.name', 'mail.driver')
-     * @param  string|int|array<mixed>|null  $_default  Default value if config not found
-     * @return float|int|string|array<mixed>|null Resolved configuration value
+     * @param  string|int|array<string, mixed>|null  $_default  Default value if config not found
+     * @return float|int|string|array<string, mixed>|null Resolved configuration value
      *
      * @throws Exception If config key is invalid or value type is unexpected
      *
@@ -55,7 +55,19 @@ class ResolveTenantConfigValueAction
 
         $res = config($key, $_default);
 
-        if (is_numeric($res) || \is_string($res) || \is_array($res) || $res === null) {
+        if (is_array($res)) {
+            /** @var array<string, mixed> $typed */
+            $typed = [];
+            foreach ($res as $configKey => $value) {
+                if (is_string($configKey)) {
+                    $typed[$configKey] = $value;
+                }
+            }
+
+            return $typed;
+        }
+
+        if (is_numeric($res) || \is_string($res) || $res === null) {
             return $res;
         }
 

@@ -39,7 +39,7 @@ interface SushiToJsonContract
     /**
      * Salva i dati nel file JSON.
      *
-     * @param  array<int, array<string, mixed>>  $data
+     * @param  array<int|string, array<string, mixed>>  $data
      */
     public function saveToJson(array $data): bool;
 

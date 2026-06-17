@@ -6,11 +6,14 @@ use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
+uses(\Modules\Tenant\Tests\TestCase::class);
 
 test('gets domains array by scanning config directory', function (): void {
     $action = new class extends GetDomainsArrayAction
     {
+        /**
+         * @return array<string, array<string, mixed>>
+         */
         public function recurse(string $path): array
         {
             return [

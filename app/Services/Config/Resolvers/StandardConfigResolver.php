@@ -22,6 +22,9 @@ class StandardConfigResolver implements ConfigResolverInterface
         return true;
     }
 
+    /**
+     * @param  string|int|array<string, mixed>|null  $default
+     */
     public function resolve(string $key, string|int|array|null $default = null): float|int|string|array|null
     {
         $group = $this->extractGroup($key);
@@ -50,6 +53,18 @@ class StandardConfigResolver implements ConfigResolverInterface
 
         if (! is_numeric($result) && ! is_string($result) && ! is_array($result) && $result !== null) {
             throw new Exception('Invalid configuration type for key: '.$key);
+        }
+
+        if (is_array($result)) {
+            /** @var array<string, mixed> $typed */
+            $typed = [];
+            foreach ($result as $configKey => $value) {
+                if (is_string($configKey)) {
+                    $typed[$configKey] = $value;
+                }
+            }
+
+            return $typed;
         }
 
         return $result;
@@ -112,6 +127,7 @@ class StandardConfigResolver implements ConfigResolverInterface
 
     /**
      * @param  array<string, mixed>  $extraConf
+     * @param  string|int|array<string, mixed>|null  $default
      */
     private function handleMissingConfig(
         string $key,
