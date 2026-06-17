@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Tenant\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Tenant\Models\Tenant;
+use Modules\User\Models\Tenant;
 
 /**
  * @extends Factory<Tenant>

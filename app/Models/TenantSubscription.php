@@ -66,9 +66,6 @@ class TenantSubscription extends BaseModel
         'expires_at',
     ];
 
-    /**
-     * @return BelongsTo<Tenant, $this>
-     */
     public function tenant(): BelongsTo
     {
         return $this->belongsTo(Tenant::class);
