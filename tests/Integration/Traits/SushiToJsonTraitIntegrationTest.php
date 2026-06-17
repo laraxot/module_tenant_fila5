@@ -6,7 +6,6 @@ namespace Modules\Tenant\Tests\Integration\Traits;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
-use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Services\TenantService;
@@ -22,8 +21,7 @@ uses(\Modules\Tenant\Tests\TestCase::class);
 
 beforeEach(function (): void {
     /** @var \Modules\Tenant\Tests\TestCase $this */
-// Crea un tenant di test
-        $this->tenant = TenantFactory::new()->createOne([
+        $this->tenant = createTenant([
             'name' => 'test-tenant',
             'domain' => 'test.example.com',
         ]);
@@ -325,7 +323,7 @@ $testData = [
     test('works with different tenant configurations', function (): void {
         /** @var \Modules\Tenant\Tests\TestCase $this */
 // Crea un secondo tenant per testare l'isolamento
-        $this->secondTenant = TenantFactory::new()->createOne([
+        $this->secondTenant = createTenant([
             'name' => 'second-tenant',
             'domain' => 'second.example.com',
         ]);

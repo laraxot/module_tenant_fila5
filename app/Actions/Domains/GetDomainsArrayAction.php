@@ -15,17 +15,26 @@ class GetDomainsArrayAction
 {
     use QueueableAction;
 
+    /**
+     * @return list<array{id: string, name: string}>
+     */
     public function execute(): array
     {
         $res = $this->recurse(config_path());
         $res1 = $this->collapse($res);
 
-        return Arr::map($res1, fn (string $value) => [
+        /** @var list<array{id: string, name: string}> $mapped */
+        $mapped = array_values(Arr::map($res1, fn (string $value): array => [
             'id' => $value,
             'name' => $value,
-        ]);
+        ]));
+
+        return $mapped;
     }
 
+    /**
+     * @return array<string, array<string, mixed>>
+     */
     public function recurse(string $path): array
     {
         $filesystem = new Filesystem;
@@ -46,6 +55,10 @@ class GetDomainsArrayAction
         return $res;
     }
 
+    /**
+     * @param  array<mixed, mixed>  $data
+     * @return list<string>
+     */
     public function collapse(array $data, string $k = ''): array
     {
         $res = [];
