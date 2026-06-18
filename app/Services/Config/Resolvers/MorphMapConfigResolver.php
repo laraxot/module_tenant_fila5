@@ -26,6 +26,9 @@ class MorphMapConfigResolver implements ConfigResolverInterface
             && Request::segment(2) !== null;
     }
 
+    /**
+     * @param  string|int|array<string, mixed>|null  $default
+     */
     public function resolve(string $key, string|int|array|null $default = null): float|int|string|array|null
     {
         $moduleName = Request::segment(2);
@@ -51,6 +54,18 @@ class MorphMapConfigResolver implements ConfigResolverInterface
 
         if (! is_numeric($result) && ! is_string($result) && ! is_array($result)) {
             throw new Exception('Invalid morph_map configuration type');
+        }
+
+        if (is_array($result)) {
+            /** @var array<string, mixed> $typed */
+            $typed = [];
+            foreach ($result as $configKey => $value) {
+                if (is_string($configKey)) {
+                    $typed[$configKey] = $value;
+                }
+            }
+
+            return $typed;
         }
 
         return $result;

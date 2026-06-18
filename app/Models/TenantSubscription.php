@@ -47,8 +47,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static TenantSubscriptionFactory factory($count = null, $state = [])
  *
  * @property-read Tenant|null $tenant
- *
- * @mixin \Eloquent
  */
 class TenantSubscription extends BaseModel
 {
@@ -66,9 +64,13 @@ class TenantSubscription extends BaseModel
         'expires_at',
     ];
 
+    /** @return BelongsTo<Tenant, $this> */
     public function tenant(): BelongsTo
     {
-        return $this->belongsTo(Tenant::class);
+        /** @var class-string<Tenant> $tenantClass */
+        $tenantClass = Tenant::class;
+
+        return $this->belongsTo($tenantClass, 'tenant_id', 'id');
     }
 
     /**

@@ -32,8 +32,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static TenantSettingFactory factory($count = null, $state = [])
  *
  * @property-read Tenant|null $tenant
- *
- * @mixin \Eloquent
  */
 class TenantSetting extends BaseModel
 {
@@ -44,8 +42,9 @@ class TenantSetting extends BaseModel
         'type',
     ];
 
+    /** @return BelongsTo<Tenant, $this> */
     public function tenant(): BelongsTo
     {
-        return $this->belongsTo(Tenant::class);
+        return $this->belongsTo(Tenant::class, 'tenant_id', 'id');
     }
 }
