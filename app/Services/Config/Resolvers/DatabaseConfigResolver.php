@@ -76,7 +76,7 @@ class DatabaseConfigResolver implements ConfigResolverInterface
             return $extraConf;
         }
 
-        /** @var Collection<\Nwidart\Modules\Module> */
+        /** @var \Illuminate\Support\Collection<int, \Nwidart\Modules\Module> $modules */
         $modules = Module::toCollection();
 
         foreach ($modules as $module) {

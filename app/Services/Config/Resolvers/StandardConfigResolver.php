@@ -22,6 +22,10 @@ class StandardConfigResolver implements ConfigResolverInterface
         return true;
     }
 
+    /**
+     * @param  string|int|array<mixed>|null  $default
+     * @return float|int|string|array<mixed>|null
+     */
     public function resolve(string $key, string|int|array|null $default = null): float|int|string|array|null
     {
         $group = $this->extractGroup($key);
@@ -112,6 +116,7 @@ class StandardConfigResolver implements ConfigResolverInterface
 
     /**
      * @param  array<string, mixed>  $extraConf
+     * @param  string|int|array<mixed>|null  $default
      */
     private function handleMissingConfig(
         string $key,
@@ -119,11 +124,6 @@ class StandardConfigResolver implements ConfigResolverInterface
         array $extraConf,
         string|int|array|null $default
     ): void {
-        $index = Str::after($key, $group.'.');
-        $data = Arr::set($extraConf, $index, $default);
-
-        // In production, we might want to save this default
-        // For now, we just throw an exception to maintain backward compatibility
         throw new Exception('Configuration key not found: '.$key);
     }
 }
