@@ -60,8 +60,8 @@ class TenantService
      * Merge tra configurazione globale e tenant-specific, con supporto per default.
      *
      * @param  string  $key  Chiave di configurazione (es. 'app.name')
-     * @param  string|int|array|null  $default  Valore di default se la chiave non esiste
-     * @return float|int|string|array|null Valore risolto della configurazione
+     * @param  string|int|array<mixed>|null  $default
+     * @return float|int|string|array<mixed>|null
      */
     public static function config(string $key, string|int|array|null $default = null): float|int|string|array|null
     {
