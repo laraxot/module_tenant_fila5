@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit\Actions;
 
+use PHPUnit\Framework\Assert;
+
 use Modules\Tenant\Actions\GetTenantNameAction;
-use Tests\TestCase;
+use Modules\Tenant\Tests\TestCase;
 
 uses(TestCase::class);
 
@@ -15,7 +17,7 @@ test('get tenant name action returns correct tenant name from server name', func
     $action = new GetTenantNameAction;
     $result = $action->execute();
 
-    expect($result)->toBe('com/example/myapp');
+    Assert::assertSame('com/example/myapp', $result);
 });
 
 test('get tenant name action handles www prefix correctly', function () {
@@ -24,7 +26,7 @@ test('get tenant name action handles www prefix correctly', function () {
     $action = new GetTenantNameAction;
     $result = $action->execute();
 
-    expect($result)->toBe('com/example/myapp');
+    Assert::assertSame('com/example/myapp', $result);
 });
 
 test('get tenant name action falls back to default when server name is localhost', function () {
@@ -33,7 +35,7 @@ test('get tenant name action falls back to default when server name is localhost
     $action = new GetTenantNameAction;
     $result = $action->execute();
 
-    expect($result)->toBe('localhost');
+    Assert::assertSame('localhost', $result);
 });
 
 test('get tenant name action uses app url config when server name not set', function () {
@@ -43,7 +45,7 @@ test('get tenant name action uses app url config when server name not set', func
     $action = new GetTenantNameAction;
     $result = $action->execute();
 
-    expect($result)->toBe('test/myapp');
+    Assert::assertSame('test/myapp', $result);
 });
 
 test('get tenant name action handles empty app url config', function () {
@@ -53,5 +55,5 @@ test('get tenant name action handles empty app url config', function () {
     $action = new GetTenantNameAction;
     $result = $action->execute();
 
-    expect($result)->toBe('localhost');
+    Assert::assertSame('localhost', $result);
 });

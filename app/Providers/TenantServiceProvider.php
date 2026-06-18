@@ -81,11 +81,8 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
         $raw = TenantService::config('database');
 
-        /** @var array<string, array|float|int|string|null> $data */
+        /** @var array<string, mixed> $data */
         $data = is_array($raw) ? $raw : [];
-
-        /** @var array<string, array|float|int|string|null> $connections */
-        $connections = [];
 
         $defaultRaw = Arr::get($data, 'default', $preMergeDefaultConn);
         /** @var string $default */
@@ -96,8 +93,9 @@ class TenantServiceProvider extends XotBaseServiceProvider
             Arr::set($data, 'connections.user', Arr::get($data, 'connections.user_'.$default));
         }
 
-        /** @var array|float|int|string|null $connectionsRaw */
+        /** @var array<string, mixed> $connectionsRaw */
         $connectionsRaw = Arr::get($data, 'connections', []);
+        /** @var array<string, mixed> $connections */
         $connections = is_array($connectionsRaw) ? $connectionsRaw : [];
 
         $modules = Module::getOrdered();
