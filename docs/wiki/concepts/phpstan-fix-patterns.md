@@ -13,9 +13,30 @@ related:
 
 # PHPStan fix patterns — Tenant
 
+## Stato (2026-06-18, aggiornamento)
+
+`./vendor/bin/phpstan analyse Modules/Tenant` → **0 errori**, exit 0.
+
+Fix sessione corrente:
+
+| File | Fix |
+|------|-----|
+| `EventServiceProvider.php` | Rimosso type hint `array` su `$listen` (Laravel parent untyped) |
+| `GetTenantNameAction.php` | `$_SERVER['SERVER_NAME']` al posto di `Request` facade durante LoadConfiguration |
+| `SushiToJsons.php` | Boot handlers tipizzati `self` + `getRows()` + `@phpstan-return` |
+| `SushiToCsv.php` | `@var` prima di `Arr::keyBy()` |
+
 ## Stato (2026-06-18)
 
-`./vendor/bin/phpstan analyse Modules/Tenant` → **0 errori** (da 655).
+`./vendor/bin/phpstan analyse Modules/Tenant` → **0 errori** (da 655, poi 397 dopo restore test duplicati).
+
+## Trait cross-module (probe PHPStan)
+
+Trait usati fuori Tenant (`SushiToPhpArray` in User) non risultano «used» in scan isolato. Pattern Geo:
+
+`tests/Fixtures/Traits/TenantPhpstanTraitProbes.php` — host `SushiToCsvPhpstanProbe`, `SushiToPhpArrayPhpstanProbe`.
+
+Fix trait associati: return type `getSushiRows()` / `getCsvHeader()` in `SushiToCsv`; `array_values` tipizzato in `SushiToPhpArray`.
 
 ## Codice produzione
 
@@ -65,7 +86,11 @@ related:
 ```bash
 cd laravel
 ./vendor/bin/phpstan analyse Modules/Tenant
-./tools/phpmd.sh Modules/Tenant/app text Modules/Tenant/phpmd.ruleset.xml
-./tools/phpinsights.sh analyse Modules/Tenant/app --no-interaction
+php -d error_reporting=22527 /home/zorin/.local/bin/phpmd.phar Modules/Tenant/app,Modules/Tenant/tests text Modules/Tenant/phpmd.ruleset.xml
+vendor/bin/phpinsights analyse Modules/Tenant/app Modules/Tenant/tests --config-path=Modules/Tenant/phpinsights.php --no-interaction -n
 ./vendor/bin/pest Modules/Tenant/tests
 ```
+
+Regole PHPMD modulo: `Modules/Tenant/phpmd.ruleset.xml` (soglie Laraxot, exclude Providers/GetTenantNameAction per `module_*` e `$_SERVER` in bootstrap).
+
+Config PHPInsights: `Modules/Tenant/phpinsights.php` (preset laravel + remove regole incompatibili con Pest/traits).

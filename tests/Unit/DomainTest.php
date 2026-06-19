@@ -13,14 +13,14 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 test('domain model can be instantiated', function (): void {
-    $domain = new Domain;
+    $domain = new Domain();
 
     Assert::assertInstanceOf(Domain::class, $domain);
 });
 
 test('get rows method works correctly', function (): void {
     /** @var TestCase $this */
-    $this->mockService(GetDomainsArrayAction::class, function (MockInterface $mock): void {
+    $this->mockService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
         $mock->allows([
             'execute' => [
                 ['id' => 'test-domain.com', 'name' => 'test-domain.com'],
@@ -29,7 +29,7 @@ test('get rows method works correctly', function (): void {
         ]);
     });
 
-    $domain = new Domain;
+    $domain = new Domain();
     $rows = $domain->getRows();
 
     Assert::assertCount(2, $rows);
