@@ -14,7 +14,7 @@ uses(TestCase::class);
 
 it('gets tenant file path', function (): void {
     /** @var TestCase $this */
-    $this->mockService(GetTenantNameAction::class, function (MockInterface $mock): void {
+    $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'test-tenant']);
     });
 

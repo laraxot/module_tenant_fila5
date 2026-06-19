@@ -7,9 +7,8 @@ use Modules\Tenant\Models\Tenant;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
-use Webmozart\Assert\Assert as WebmozartAssert;
-
 use function Safe\json_decode;
+use Webmozart\Assert\Assert as WebmozartAssert;
 
 /*
  * Bootstrap Pest — modulo Tenant.
@@ -19,6 +18,7 @@ use function Safe\json_decode;
 
 /**
  * @param  array<array-key, mixed>  $rows
+ *
  * @return array<string, mixed>
  */
 function sushiRowById(array $rows, int|string $id): array
@@ -73,6 +73,7 @@ function assertTenantThrows(callable $callback, string $exceptionClass, ?string 
  *
  * @param  T  $model
  * @param  class-string<T>  $class
+ *
  * @return T
  */
 function assertFreshModel(Model $model, string $class)

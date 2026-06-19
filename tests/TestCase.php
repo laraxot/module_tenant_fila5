@@ -18,10 +18,8 @@ use Modules\Tenant\Providers\TenantServiceProvider;
 use Modules\Tenant\Services\TenantService;
 use Modules\User\Providers\UserServiceProvider;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
-use Modules\Xot\Providers\XotServiceProvider;
 use Modules\Xot\Tests\XotBaseTestCase;
 use PHPUnit\Framework\Assert;
-
 use function Safe\json_decode;
 
 /**
@@ -52,21 +50,11 @@ abstract class TestCase extends XotBaseTestCase
     /** @var Closure(): array<array-key, array<string, mixed>> */
     public Closure $createTestData;
 
-    /** @return array<int, class-string<ServiceProvider>> */
-    protected function getPackageProviders(Application $app): array
-    {
-        return [
-            ...parent::getPackageProviders($app),
-            UserServiceProvider::class,
-            TenantServiceProvider::class,
-        ];
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->model = new TestSushiModel;
+        $this->model = new TestSushiModel();
         $this->createTestData = static fn (): array => [];
     }
 
@@ -101,7 +89,7 @@ abstract class TestCase extends XotBaseTestCase
 
     public function sushiJsonPath(): string
     {
-        if ('' !== $this->testJsonPath) {
+        if ($this->testJsonPath !== '') {
             return $this->testJsonPath;
         }
 
@@ -110,7 +98,7 @@ abstract class TestCase extends XotBaseTestCase
 
     public function sushiTestDirectory(): string
     {
-        if ('' !== $this->testDirectory) {
+        if ($this->testDirectory !== '') {
             return $this->testDirectory;
         }
 
@@ -133,6 +121,7 @@ abstract class TestCase extends XotBaseTestCase
 
     /**
      * @param  array<array-key, mixed>  $rows
+     *
      * @return array<string, mixed>
      */
     public function sushiRowById(array $rows, int|string $key): array
@@ -151,11 +140,12 @@ abstract class TestCase extends XotBaseTestCase
             }
         }
 
-        if (is_string($key) && array_key_exists($key, $rows) && is_array($rows[$key])) {
-            /** @var array<string, mixed> $row */
-            $row = $rows[$key];
-
-            return $row;
+        if (is_string($key) && array_key_exists($key, $rows)) {
+            $candidate = $rows[$key];
+            if (is_array($candidate)) {
+                /** @var array<string, mixed> $candidate */
+                return $candidate;
+            }
         }
 
         return [];
@@ -189,6 +179,7 @@ abstract class TestCase extends XotBaseTestCase
 
     /**
      * @param  array<array-key, mixed>  $rows
+     *
      * @return array<string, mixed>
      */
     public function jsonRecordAt(array $rows, int|string $key): array
@@ -206,5 +197,15 @@ abstract class TestCase extends XotBaseTestCase
 
         /** @var array<string, mixed> $decoded */
         return $decoded;
+    }
+
+    /** @return array<int, class-string<ServiceProvider>> */
+    protected function getPackageProviders(Application $app): array
+    {
+        return [
+            ...parent::getPackageProviders($app),
+            UserServiceProvider::class,
+            TenantServiceProvider::class,
+        ];
     }
 }

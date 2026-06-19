@@ -80,8 +80,6 @@ class TestSushiModel extends BaseModel
 
     /**
      * Gli attributi che sono assegnabili in massa.
-     *
-     * @var list<string>
      */
     protected $fillable = [
         'name',

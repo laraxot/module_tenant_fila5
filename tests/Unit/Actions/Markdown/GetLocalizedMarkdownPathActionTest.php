@@ -10,7 +10,6 @@ use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\Markdown\GetLocalizedMarkdownPathAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
 use function Safe\file_put_contents;
 use function Safe\unlink;
 
@@ -24,7 +23,7 @@ it('gets localized markdown path if it exists', function (): void {
     file_put_contents($tempFile, 'test');
 
     /** @var TestCase $this */
-    $this->mockService(GetTenantFilePathAction::class, function (MockInterface $mock) use ($tempFile): void {
+    $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($tempFile): void {
         $mock->allows([
             'execute' => static function (string $path) use ($tempFile): string {
                 return $path === 'lang/it/test.md' ? $tempFile : '/non/existent/path.md';
@@ -47,7 +46,7 @@ it('gets fallback markdown path if localized does not exist', function (): void 
     file_put_contents($tempFile, 'test');
 
     /** @var TestCase $this */
-    $this->mockService(GetTenantFilePathAction::class, function (MockInterface $mock) use ($tempFile): void {
+    $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($tempFile): void {
         $mock->allows([
             'execute' => static function (string $path) use ($tempFile): string {
                 return $path === 'fallback.md' ? $tempFile : '/non/existent/path.md';
@@ -64,7 +63,7 @@ it('gets fallback markdown path if localized does not exist', function (): void 
 
 it('returns hash if no path exists', function (): void {
     /** @var TestCase $this */
-    $this->mockService(GetTenantFilePathAction::class, function (MockInterface $mock): void {
+    $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => '/non/existent/path.md']);
     });
 

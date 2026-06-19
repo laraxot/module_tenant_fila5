@@ -10,6 +10,7 @@ namespace Modules\Tenant\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
 use Modules\Tenant\Services\TenantService;
 use Sushi\Sushi;
 
@@ -19,6 +20,8 @@ trait SushiToPhpArray
 
     /**
      * @return array<int, array<string, mixed>>
+     *
+     * @phpstan-return array<int, array<string, mixed>>
      */
     public function getSushiRows(): array
     {
@@ -26,12 +29,23 @@ trait SushiToPhpArray
 
         $rows = TenantService::getConfig($name);
 
-        return array_values($rows);
+        /** @var array<int, array<string, mixed>> $normalized */
+        $normalized = [];
+
+        foreach (array_values($rows) as $item) {
+            if (! is_array($item)) {
+                continue;
+            }
+
+            $normalized[] = ConfigStringKeyFilter::onlyStringKeys($item);
+        }
+
+        return $normalized;
     }
 
     protected static function bootSushiToPhpArray(): void
     {
-        static::creating(function ($model): void {
+        static::creating(static function ($model): void {
             if (! $model instanceof Model) {
                 return;
             }
@@ -39,7 +53,7 @@ trait SushiToPhpArray
             $model->toArray();
         });
 
-        static::updating(function ($model): void {
+        static::updating(static function ($model): void {
             if (! $model instanceof Model) {
                 return;
             }
@@ -47,7 +61,7 @@ trait SushiToPhpArray
             $model->toArray();
         });
 
-        static::deleting(function ($model): void {
+        static::deleting(static function ($model): void {
             if (! $model instanceof Model) {
                 return;
             }
