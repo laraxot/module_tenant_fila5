@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Tenant\Tests\Unit\Actions\Config;
 
 use Illuminate\Support\Facades\File;
-use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;

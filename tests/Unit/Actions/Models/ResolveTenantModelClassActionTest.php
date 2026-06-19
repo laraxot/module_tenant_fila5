@@ -17,7 +17,7 @@ uses(TestCase::class);
 
 it('resolves tenant model class from config', function (): void {
     /** @var TestCase $this */
-    $this->mockService(ResolveTenantConfigValueAction::class, function (MockInterface $mock): void {
+    $this->mockService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'Modules\Test\Models\TestModel']);
     });
 
@@ -28,12 +28,11 @@ it('resolves tenant model class from config', function (): void {
 
 it('resolves tenant model class by scanning modules if not in config', function (): void {
     /** @var TestCase $this */
-    $this->mockService(ResolveTenantConfigValueAction::class, function (MockInterface $mock): void {
+    $this->mockService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => null]);
     });
 
-    $module = new class
-    {
+    $module = new class() {
         public function getName(): string
         {
             return 'Meetup';
@@ -42,11 +41,11 @@ it('resolves tenant model class by scanning modules if not in config', function 
 
     Module::shouldReceive('allEnabled')->andReturn([$module]);
 
-    $this->mockService(GetAllModelsByModuleNameAction::class, function (MockInterface $mock): void {
+    $this->mockService(GetAllModelsByModuleNameAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => ['event' => 'Modules\Meetup\Models\Event']]);
     });
 
-    $this->mockService(SaveTenantConfigAction::class, function (MockInterface $mock): void {
+    $this->mockService(SaveTenantConfigAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => true]);
     });
 
@@ -57,7 +56,7 @@ it('resolves tenant model class by scanning modules if not in config', function 
 
 it('throws exception for unknown model', function (): void {
     /** @var TestCase $this */
-    $this->mockService(ResolveTenantConfigValueAction::class, function (MockInterface $mock): void {
+    $this->mockService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => null]);
     });
 

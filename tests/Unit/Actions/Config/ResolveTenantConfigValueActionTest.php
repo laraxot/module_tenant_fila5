@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit\Actions\Config;
 
+use Illuminate\Support\Facades\Config;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
 use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use Illuminate\Support\Facades\Config;
 
 uses(TestCase::class);
 
 it('resolves tenant config value by merging with tenant overrides', function (): void {
     /** @var TestCase $this */
-    $this->mockService(GetTenantNameAction::class, function (MockInterface $mock): void {
+    $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'test-tenant']);
     });
 
@@ -40,7 +40,7 @@ it('throws exception for empty config key', function (): void {
 
 it('returns default value if config not found', function (): void {
     /** @var TestCase $this */
-    $this->mockService(GetTenantNameAction::class, function (MockInterface $mock): void {
+    $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'test-tenant']);
     });
 

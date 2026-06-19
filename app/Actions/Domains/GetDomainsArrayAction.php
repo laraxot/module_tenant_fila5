@@ -39,7 +39,7 @@ class GetDomainsArrayAction
      */
     public function recurse(string $path): array
     {
-        $filesystem = new Filesystem;
+        $filesystem = new Filesystem();
         $directories = $filesystem->directories($path);
         $res = [];
         foreach ($directories as $dir) {
@@ -59,13 +59,14 @@ class GetDomainsArrayAction
 
     /**
      * @param array<string, mixed> $data
+     *
      * @return array<int, string>
      */
-    public function collapse(array $data, string $k = ''): array
+    public function collapse(array $data, string $keyPrefix = ''): array
     {
         $res = [];
         foreach ($data as $k0 => $v0) {
-            $newkey = $k === '' ? $k0 : ($k0.'.'.$k);
+            $newkey = $keyPrefix === '' ? $k0 : ($k0.'.'.$keyPrefix);
             if ($v0 === []) {
                 $res[] = $newkey;
             }

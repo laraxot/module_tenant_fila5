@@ -14,7 +14,7 @@ uses(TestCase::class);
 
 it('gets tenant config path', function (): void {
     /** @var TestCase $this */
-    $this->mockService(GetTenantNameAction::class, function (MockInterface $mock): void {
+    $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'test-tenant']);
     });
 
@@ -25,7 +25,7 @@ it('gets tenant config path', function (): void {
 
 it('gets tenant config path with forward slashes replaced', function (): void {
     /** @var TestCase $this */
-    $this->mockService(GetTenantNameAction::class, function (MockInterface $mock): void {
+    $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'tenants/test']);
     });
 
