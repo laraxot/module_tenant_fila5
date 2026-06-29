@@ -91,6 +91,6 @@ vendor/bin/phpinsights analyse Modules/Tenant/app Modules/Tenant/tests --config-
 ./vendor/bin/pest Modules/Tenant/tests
 ```
 
-Regole PHPMD modulo: `Modules/Tenant/phpmd.ruleset.xml` (soglie Laraxot, exclude Providers/GetTenantNameAction per `module_*` e `$_SERVER` in bootstrap).
+Regole PHPMD modulo: `Modules/Tenant/phpmd.ruleset.xml` — allineato al [canon Laraxot](../../../../docs/wiki/concepts/phpmd-laraxot-conventions.md) (exclude aggiuntivo `GetTenantNameAction` per bootstrap `$_SERVER`).
 
 Config PHPInsights: `Modules/Tenant/phpinsights.php` (preset laravel + remove regole incompatibili con Pest/traits).

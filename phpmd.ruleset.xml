@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ruleset name="Tenant phpmd ruleset"
+<ruleset name="Laraxot PHPMD ruleset"
     xmlns="http://pmd.sf.net/ruleset/1.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
     xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
-  <description>Tenant module — allineato a Comment con soglie Laraxot.</description>
+  <description>
+    Laraxot standard PHPMD ruleset (SSoT).
+    Canon: docs/wiki/concepts/phpmd-laraxot-conventions.md
+    Copy: Modules/&lt;Module&gt;/phpmd.ruleset.xml (keep in sync).
+  </description>
   <exclude-pattern>*/Providers/*</exclude-pattern>
   <exclude-pattern>*/GetTenantNameAction.php</exclude-pattern>
   <rule ref="rulesets/cleancode.xml">
@@ -41,7 +45,7 @@
   </rule>
   <rule ref="rulesets/design.xml/CouplingBetweenObjects">
       <properties>
-          <property name="maximum" value="20"/>
+          <property name="minimum" value="20"/>
       </properties>
   </rule>
   <rule ref="rulesets/naming.xml">
