@@ -26,6 +26,7 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @property array<array-key, mixed>|null $metadata
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
  * @method static TestSushiModelFactory factory($count = null, $state = [])
  * @method static Builder<static>|TestSushiModel newModelQuery()
  * @method static Builder<static>|TestSushiModel newQuery()
@@ -37,13 +38,16 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @method static Builder<static>|TestSushiModel whereName($value)
  * @method static Builder<static>|TestSushiModel whereStatus($value)
  * @method static Builder<static>|TestSushiModel whereUpdatedAt($value)
+ *
  * @property-read ProfileContract|null $creator
  * @property-read ProfileContract|null $deleter
  * @property-read ProfileContract|null $updater
+ *
  * @mixin \Eloquent
  */
 class TestSushiModel extends BaseModel
 {
+    /** @phpstan-use HasXotFactory<TestSushiModelFactory> */
     use HasXotFactory;
     use SushiToJson;
 
@@ -52,7 +56,7 @@ class TestSushiModel extends BaseModel
      *
      * @var array<string, string>
      */
-    protected $form = [
+    protected array $schema = [
         'id' => 'integer',
         'name' => 'string',
         'description' => 'string',
@@ -76,8 +80,6 @@ class TestSushiModel extends BaseModel
 
     /**
      * Gli attributi che sono assegnabili in massa.
-     *
-     * @var list<string>
      */
     protected $fillable = [
         'name',
