@@ -17,6 +17,7 @@ use Modules\Tenant\Actions\Models\ResolveTenantModelInstanceAction;
 use Modules\Tenant\Actions\Modules\GetTenantModulesAction;
 use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use ReflectionException;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * TenantService - Facade sottile per operazioni tenant-aware.
@@ -33,6 +34,8 @@ use ReflectionException;
  */
 class TenantService
 {
+    use QueueableAction;
+
     /**
      * Ottiene il nome del tenant corrente basato sul server name.
      *
@@ -47,7 +50,6 @@ class TenantService
      * Costruisce il percorso completo per un file tenant-specific.
      *
      * @param  string  $filename  Nome del file relativo alla directory tenant
-     *
      * @return string Percorso completo del file
      */
     public static function filePath(string $filename): string
@@ -62,7 +64,6 @@ class TenantService
      *
      * @param  string  $key  Chiave di configurazione (es. 'app.name')
      * @param  string|int|array<mixed>|null  $default
-     *
      * @return float|int|string|array<mixed>|null
      */
     public static function config(string $key, string|int|array|null $default = null): float|int|string|array|null
@@ -74,7 +75,6 @@ class TenantService
      * Ottiene il percorso del file di configurazione per una chiave specifica.
      *
      * @param  string  $key  Chiave di configurazione
-     *
      * @return string Percorso completo del file di configurazione
      */
     public static function getConfigPath(string $key): string
@@ -86,7 +86,6 @@ class TenantService
      * Carica un intero array di configurazione tenant-specific.
      *
      * @param  string  $name  Nome del file di configurazione (senza estensione)
-     *
      * @return array<string, mixed> Array di configurazione completo
      */
     public static function getConfig(string $name): array
@@ -120,7 +119,6 @@ class TenantService
      * Risolve il nome completo della classe di un modello tenant-aware.
      *
      * @param  string  $name  Nome breve del modello (es. 'user', 'patient')
-     *
      * @return string|null Nome completo della classe o null se non trovato
      */
     public static function modelClass(string $name): ?string
@@ -132,7 +130,6 @@ class TenantService
      * Risolve e restituisce un'istanza di modello tenant-aware.
      *
      * @param  string  $name  Nome breve del modello (es. 'user', 'patient')
-     *
      * @return Model Istanza del modello risolto
      *
      * @throws ReflectionException Se la classe del modello non può essere istanziata
@@ -146,7 +143,6 @@ class TenantService
      * Traduce una chiave di traduzione nel contesto tenant corrente.
      *
      * @param  string  $key  Chiave di traduzione (es. 'common.welcome')
-     *
      * @return string Stringa tradotta o la chiave stessa se la traduzione non esiste
      */
     public static function trans(string $key): string
@@ -163,4 +159,6 @@ class TenantService
     {
         return app(GetTenantModulesAction::class)->execute();
     }
+
+    public function execute(): void {}
 }
