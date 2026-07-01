@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Modules\Tenant\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Tenant\Models\Domain;
 
-/** Stub parità entità — regola 1 modello = 1 seeder. Dati da factory/test/runtime. */
 class DomainSeeder extends Seeder
 {
     public function run(): void
     {
+        xotSeedModelOnce(Domain::class);
     }
 }

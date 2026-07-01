@@ -19,7 +19,7 @@ use PHPUnit\Framework\Assert;
 
 class TenantBusinessLogicTest extends TestCase
 {
-    public function testCanCreateAndManageTenants(): void
+    public function test_can_create_and_manage_tenants(): void
     {
         $user = UserFactory::new()->createOne();
         Assert::assertInstanceOf(User::class, $user);
@@ -31,7 +31,7 @@ class TenantBusinessLogicTest extends TestCase
         ]);
         Assert::assertInstanceOf(Tenant::class, $tenant);
 
-        $this->assertDatabaseHas('tenants', [
+        $this->assertDatabaseHasRow('tenants', [
             'id' => $tenant->id,
             'name' => 'Test Studio',
             'slug' => 'test-studio',
@@ -41,7 +41,7 @@ class TenantBusinessLogicTest extends TestCase
         Assert::assertTrue($tenant->is_active);
     }
 
-    public function testCanManageTenantDomains(): void
+    public function test_can_manage_tenant_domains(): void
     {
         $tenant = $this->createTenantRecord();
         Assert::assertInstanceOf(Tenant::class, $tenant);
@@ -54,7 +54,7 @@ class TenantBusinessLogicTest extends TestCase
         ]);
         Assert::assertInstanceOf(TenantDomain::class, $domain);
 
-        $this->assertDatabaseHas('tenant_domains', [
+        $this->assertDatabaseHasRow('tenant_domains', [
             'id' => $domain->id,
             'tenant_id' => $tenant->id,
             'domain' => 'test.example.com',
@@ -67,7 +67,7 @@ class TenantBusinessLogicTest extends TestCase
         Assert::assertSame('active', $domain->status);
     }
 
-    public function testCanManageTenantSettings(): void
+    public function test_can_manage_tenant_settings(): void
     {
         $tenant = $this->createTenantRecord();
 
@@ -78,7 +78,7 @@ class TenantBusinessLogicTest extends TestCase
             'type' => 'string',
         ]);
 
-        $this->assertDatabaseHas('tenant_settings', [
+        $this->assertDatabaseHasRow('tenant_settings', [
             'id' => $setting->id,
             'tenant_id' => $tenant->id,
             'key' => 'app.name',
@@ -91,7 +91,7 @@ class TenantBusinessLogicTest extends TestCase
         Assert::assertSame('string', $setting->type);
     }
 
-    public function testCanManageTenantSubscriptions(): void
+    public function test_can_manage_tenant_subscriptions(): void
     {
         $tenant = $this->createTenantRecord();
 
@@ -105,7 +105,7 @@ class TenantBusinessLogicTest extends TestCase
             'max_storage_gb' => 100,
         ]);
 
-        $this->assertDatabaseHas('tenant_subscriptions', [
+        $this->assertDatabaseHasRow('tenant_subscriptions', [
             'id' => $subscription->id,
             'tenant_id' => $tenant->id,
             'plan_name' => 'Professional',
@@ -120,7 +120,7 @@ class TenantBusinessLogicTest extends TestCase
         Assert::assertSame(100, $subscription->max_storage_gb);
     }
 
-    public function testCanValidateTenantSlugUniqueness(): void
+    public function test_can_validate_tenant_slug_uniqueness(): void
     {
         $tenant1 = $this->createTenantRecord([
             'name' => 'Studio A',
@@ -131,11 +131,11 @@ class TenantBusinessLogicTest extends TestCase
             'slug' => 'studio-b',
         ]);
 
-        $this->assertDatabaseHas('tenants', [
+        $this->assertDatabaseHasRow('tenants', [
             'id' => $tenant1->id,
             'slug' => 'studio-a',
         ]);
-        $this->assertDatabaseHas('tenants', [
+        $this->assertDatabaseHasRow('tenants', [
             'id' => $tenant2->id,
             'slug' => 'studio-b',
         ]);
@@ -144,7 +144,7 @@ class TenantBusinessLogicTest extends TestCase
         Assert::assertSame('studio-b', $tenant2->slug);
     }
 
-    public function testCanManageTenantStatusWorkflow(): void
+    public function test_can_manage_tenant_status_workflow(): void
     {
         /** @var Tenant $tenant */
         $tenant = $this->createTenantRecord([
@@ -167,7 +167,7 @@ class TenantBusinessLogicTest extends TestCase
         Assert::assertTrue($freshActiveAgain->is_active);
     }
 
-    public function testCanHandleTenantDomainVerification(): void
+    public function test_can_handle_tenant_domain_verification(): void
     {
         $tenant = $this->createTenantRecord();
 
@@ -179,7 +179,7 @@ class TenantBusinessLogicTest extends TestCase
             'verification_token' => 'abc123',
         ]);
 
-        $this->assertDatabaseHas('tenant_domains', [
+        $this->assertDatabaseHasRow('tenant_domains', [
             'id' => $domain->id,
             'status' => 'pending_verification',
         ]);
@@ -199,7 +199,7 @@ class TenantBusinessLogicTest extends TestCase
         Assert::assertNull($domainFresh->verification_token);
     }
 
-    public function testCanManageTenantStorageLimits(): void
+    public function test_can_manage_tenant_storage_limits(): void
     {
         $tenant = $this->createTenantRecord();
         $subscription = $this->createTenantSubscriptionRecord([
@@ -208,7 +208,7 @@ class TenantBusinessLogicTest extends TestCase
             'current_storage_gb' => 25,
         ]);
 
-        $this->assertDatabaseHas('tenant_subscriptions', [
+        $this->assertDatabaseHasRow('tenant_subscriptions', [
             'id' => $subscription->id,
             'max_storage_gb' => 100,
             'current_storage_gb' => 25,
@@ -225,7 +225,7 @@ class TenantBusinessLogicTest extends TestCase
         Assert::assertSame(50, $subFresh->max_storage_gb - $subFresh->current_storage_gb);
     }
 
-    public function testCanManageTenantUserLimits(): void
+    public function test_can_manage_tenant_user_limits(): void
     {
         $tenant = $this->createTenantRecord();
         $subscription = $this->createTenantSubscriptionRecord([
@@ -234,7 +234,7 @@ class TenantBusinessLogicTest extends TestCase
             'current_users' => 10,
         ]);
 
-        $this->assertDatabaseHas('tenant_subscriptions', [
+        $this->assertDatabaseHasRow('tenant_subscriptions', [
             'id' => $subscription->id,
             'max_users' => 50,
             'current_users' => 10,
@@ -251,7 +251,7 @@ class TenantBusinessLogicTest extends TestCase
         Assert::assertSame(25, $subFresh->max_users - $subFresh->current_users);
     }
 
-    public function testCanHandleTenantSubscriptionExpiration(): void
+    public function test_can_handle_tenant_subscription_expiration(): void
     {
         $tenant = $this->createTenantRecord();
         $subscription = $this->createTenantSubscriptionRecord([
@@ -260,7 +260,7 @@ class TenantBusinessLogicTest extends TestCase
             'expires_at' => now()->subDays(1),
         ]);
 
-        $this->assertDatabaseHas('tenant_subscriptions', [
+        $this->assertDatabaseHasRow('tenant_subscriptions', [
             'id' => $subscription->id,
             'status' => 'active',
         ]);
@@ -274,7 +274,7 @@ class TenantBusinessLogicTest extends TestCase
         Assert::assertSame('expired', $subFresh->status);
     }
 
-    public function testCanManageTenantSettingsHierarchy(): void
+    public function test_can_manage_tenant_settings_hierarchy(): void
     {
         $tenant = $this->createTenantRecord();
 
@@ -297,15 +297,15 @@ class TenantBusinessLogicTest extends TestCase
             'type' => 'string',
         ]);
 
-        $this->assertDatabaseHas('tenant_settings', [
+        $this->assertDatabaseHasRow('tenant_settings', [
             'id' => $appSetting->id,
             'key' => 'app.name',
         ]);
-        $this->assertDatabaseHas('tenant_settings', [
+        $this->assertDatabaseHasRow('tenant_settings', [
             'id' => $databaseSetting->id,
             'key' => 'database.connection',
         ]);
-        $this->assertDatabaseHas('tenant_settings', [
+        $this->assertDatabaseHasRow('tenant_settings', [
             'id' => $mailSetting->id,
             'key' => 'mail.driver',
         ]);
@@ -314,7 +314,7 @@ class TenantBusinessLogicTest extends TestCase
         Assert::assertSame('mail.driver', $mailSetting->key);
     }
 
-    public function testCanValidateTenantDomainFormats(): void
+    public function test_can_validate_tenant_domain_formats(): void
     {
         $tenant = $this->createTenantRecord();
 
@@ -332,14 +332,14 @@ class TenantBusinessLogicTest extends TestCase
                 'status' => 'active',
             ]);
             Assert::assertSame($domain, $tenantDomain->domain);
-            $this->assertDatabaseHas('tenant_domains', [
+            $this->assertDatabaseHasRow('tenant_domains', [
                 'id' => $tenantDomain->id,
                 'domain' => $domain,
             ]);
         }
     }
 
-    public function testCanTrackTenantActivity(): void
+    public function test_can_track_tenant_activity(): void
     {
         $tenant = $this->createTenantRecord([
             'created_at' => now()->subMonths(3),
@@ -354,7 +354,7 @@ class TenantBusinessLogicTest extends TestCase
         Assert::assertTrue($fresh->last_activity_at->isToday());
     }
 
-    public function testCanManageTenantBillingCycles(): void
+    public function test_can_manage_tenant_billing_cycles(): void
     {
         $tenant = $this->createTenantRecord();
         $subscription = $this->createTenantSubscriptionRecord([
@@ -364,7 +364,7 @@ class TenantBusinessLogicTest extends TestCase
             'next_billing_date' => now()->addMonth(),
         ]);
 
-        $this->assertDatabaseHas('tenant_subscriptions', [
+        $this->assertDatabaseHasRow('tenant_subscriptions', [
             'id' => $subscription->id,
             'billing_cycle' => 'monthly',
             'billing_amount' => 99.99,
@@ -386,6 +386,7 @@ class TenantBusinessLogicTest extends TestCase
         Assert::assertSame(999.99, $subFresh->billing_amount);
         Assert::assertTrue($subFresh->next_billing_date?->isFuture());
     }
+
     /** @param array<string, mixed> $attributes */
     private function createTenantRecord(array $attributes = []): Tenant
     {

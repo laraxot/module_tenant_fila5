@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
+
 use function Safe\json_encode;
 
 uses(TestCase::class);

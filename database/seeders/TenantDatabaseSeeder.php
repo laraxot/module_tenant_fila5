@@ -13,7 +13,11 @@ class TenantDatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->command?->info('TenantDatabaseSeeder: entity seeders…');
+        if ($this->command !== null) {
+
+            $this->command->info('TenantDatabaseSeeder: entity seeders…');
+
+        }
 
         $this->call([
             DatabaseConfigSeeder::class,
@@ -24,6 +28,10 @@ class TenantDatabaseSeeder extends Seeder
             TenantSubscriptionSeeder::class,
         ]);
 
-        $this->command?->info('TenantDatabaseSeeder: completato.');
+        if ($this->command !== null) {
+
+            $this->command->info('TenantDatabaseSeeder: completato.');
+
+        }
     }
 }
