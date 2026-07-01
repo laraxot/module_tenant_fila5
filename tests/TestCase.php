@@ -20,13 +20,14 @@ use Modules\User\Providers\UserServiceProvider;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Modules\Xot\Tests\XotBaseTestCase;
 use PHPUnit\Framework\Assert;
+
 use function Safe\json_decode;
 
 /**
  * @property TestSushiModel|null $model
- * @property BaseModel|null      $baseModel
- * @property string              $testJsonPath
- * @property string              $testDirectory
+ * @property BaseModel|null $baseModel
+ * @property string $testJsonPath
+ * @property string $testDirectory
  * @property Closure(): array<array-key, array<string, mixed>>|null $createTestData
  */
 abstract class TestCase extends XotBaseTestCase
@@ -36,8 +37,8 @@ abstract class TestCase extends XotBaseTestCase
     /** @var TestSushiModel */
     public mixed $model;
 
-    /** @var BaseModel */
-    public mixed $baseModel;
+    /** @var BaseModel|null */
+    public mixed $baseModel = null;
 
     public ?Tenant $tenant = null;
 
@@ -54,7 +55,7 @@ abstract class TestCase extends XotBaseTestCase
     {
         parent::setUp();
 
-        $this->model = new TestSushiModel();
+        $this->model = new TestSushiModel;
         $this->createTestData = static fn (): array => [];
     }
 
@@ -121,7 +122,6 @@ abstract class TestCase extends XotBaseTestCase
 
     /**
      * @param  array<array-key, mixed>  $rows
-     *
      * @return array<string, mixed>
      */
     public function sushiRowById(array $rows, int|string $key): array
@@ -179,7 +179,6 @@ abstract class TestCase extends XotBaseTestCase
 
     /**
      * @param  array<array-key, mixed>  $rows
-     *
      * @return array<string, mixed>
      */
     public function jsonRecordAt(array $rows, int|string $key): array
