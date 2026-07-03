@@ -1,0 +1,7 @@
+---
+module: theme
+topic: tenant
+canonical: ../../../Themes/docs/shared-components/tenant.md
+---
+
+See canonical documentation: ../../../Themes/docs/shared-components/tenant.md
