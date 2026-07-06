@@ -20,6 +20,7 @@ describe('Domain Model', function (): void {
     });
 
     test('_get_rows_method_works_correctly', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
         $this->mockService(GetDomainsArrayAction::class, function ($mock): void {
             $mock->allows([
                 'execute' => [
