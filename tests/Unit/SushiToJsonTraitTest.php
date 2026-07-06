@@ -17,7 +17,8 @@ use function Safe\json_encode;
 uses(TestCase::class);
 
 beforeEach(function (): void {
-    $this->model = new TestSushiModel;
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $this->model = new TestSushiModel;
     $this->testDirectory = storage_path('tests/sushi-json');
     $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 
@@ -55,7 +56,8 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
-    if (File::exists($this->testJsonPath)) {
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
     }
 
@@ -68,11 +70,13 @@ afterEach(function (): void {
 
 describe('SushiToJson Trait', function (): void {
     it('returns correct json file path', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
         expect($this->sushiModel()->getJsonFile())->toBe($this->testJsonPath);
     });
 
     it('loads existing data from json file', function (): void {
         /** @var array<int, array<string, mixed>> $testData */
+        /** @var \Modules\Tenant\Tests\TestCase $this */
         $testData = $this->sushiTestData();
         File::put($this->testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
 
@@ -84,10 +88,12 @@ describe('SushiToJson Trait', function (): void {
     });
 
     it('returns empty array when file not exists', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
         expect($this->sushiModel()->getSushiRows())->toBeArray()->toBeEmpty();
     });
 
     it('throws exception with malformed json', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
         File::put($this->testJsonPath, 'invalid json content');
 
         expect(fn () => $this->sushiModel()->getSushiRows())
@@ -95,6 +101,7 @@ describe('SushiToJson Trait', function (): void {
     });
 
     it('throws exception with non array data', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
         File::put($this->testJsonPath, '"string data"');
 
         expect(fn () => $this->sushiModel()->getSushiRows())
@@ -102,6 +109,7 @@ describe('SushiToJson Trait', function (): void {
     });
 
     it('normalizes nested arrays to json strings', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
         $testData = [
             '1' => [
                 'id' => 1,
@@ -122,6 +130,7 @@ describe('SushiToJson Trait', function (): void {
 
     it('saves data successfully to json file', function (): void {
         /** @var array<int, array<string, mixed>> $testData */
+        /** @var \Modules\Tenant\Tests\TestCase $this */
         $testData = $this->sushiTestData();
 
         expect($this->sushiModel()->saveToJson($testData))->toBeTrue();
@@ -131,6 +140,7 @@ describe('SushiToJson Trait', function (): void {
     });
 
     it('creates directory if not exists', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
         if (File::exists($this->testDirectory)) {
             File::deleteDirectory($this->testDirectory);
         }
@@ -144,6 +154,7 @@ describe('SushiToJson Trait', function (): void {
     });
 
     it('handles save errors gracefully', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
         File::shouldReceive('put')->once()->andReturn(false);
 
         /** @var array<int, array<string, mixed>> $testData */
@@ -163,11 +174,13 @@ describe('SushiToJson Trait', function (): void {
     });
 
     it('integrates with tenant service correctly', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
         expect(app(TenantService::class))->toBeInstanceOf(TenantService::class);
         expect($this->sushiModel()->getJsonFile())->toBe($this->testJsonPath);
     });
 
     it('handles large datasets efficiently', function (): void {
+        /** @var \Modules\Tenant\Tests\TestCase $this */
         $largeData = [];
         for ($i = 1; $i <= 1000; $i++) {
             $largeData[$i] = [
@@ -192,6 +205,7 @@ describe('SushiToJson Trait', function (): void {
 
     it('maintains data integrity during operations', function (): void {
         /** @var array<int, array<string, mixed>> $originalData */
+        /** @var \Modules\Tenant\Tests\TestCase $this */
         $originalData = $this->sushiTestData();
         File::put($this->testJsonPath, json_encode($originalData, JSON_PRETTY_PRINT));
 
