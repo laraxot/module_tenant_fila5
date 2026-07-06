@@ -17,8 +17,8 @@ use function Safe\unlink;
 uses(TestCase::class);
 
 it('gets localized markdown path if it exists', function (): void {
-    /** @var \Modules\Tenant\Tests\TestCase $this */
-        App::setLocale('it');
+    /** @var TestCase $this */
+    App::setLocale('it');
 
     $tempDir = sys_get_temp_dir();
     $tempFile = $tempDir.'/test.md';
@@ -41,8 +41,8 @@ it('gets localized markdown path if it exists', function (): void {
 });
 
 it('gets fallback markdown path if localized does not exist', function (): void {
-    /** @var \Modules\Tenant\Tests\TestCase $this */
-        App::setLocale('it');
+    /** @var TestCase $this */
+    App::setLocale('it');
 
     $tempDir = sys_get_temp_dir();
     $tempFile = $tempDir.'/fallback.md';
