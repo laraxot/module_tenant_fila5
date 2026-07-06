@@ -28,7 +28,8 @@ function writeSushiJsonFile(string $path, array $data): void
 }
 
 beforeEach(function (): void {
-    $this->model = new TestSushiModel;
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $this->model = new TestSushiModel;
     $this->testJsonPath = TenantService::filePath('database/content/test_sushi.json');
 
     if (File::exists($this->testJsonPath)) {
@@ -42,7 +43,8 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
-    if (File::exists($this->testJsonPath)) {
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
     }
 
@@ -55,20 +57,23 @@ afterEach(function (): void {
 });
 
 it('returns correct json file path', function (): void {
-    $expectedPath = TenantService::filePath('database/content/test_sushi.json');
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $expectedPath = TenantService::filePath('database/content/test_sushi.json');
     $actualPath = $this->sushiModel()->getJsonFile();
 
     expect($actualPath)->toBe($expectedPath);
 });
 
 it('returns empty array when json file not exists', function (): void {
-    $rows = $this->sushiModel()->getSushiRows();
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $rows = $this->sushiModel()->getSushiRows();
 
     expect($rows)->toBe([]);
 });
 
 it('throws exception when json data is invalid', function (): void {
-    writeSushiJsonFile($this->sushiJsonPath(), []);
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        writeSushiJsonFile($this->sushiJsonPath(), []);
 
     File::put($this->sushiJsonPath(), 'invalid json content');
 
@@ -77,7 +82,8 @@ it('throws exception when json data is invalid', function (): void {
 });
 
 it('loads valid json data correctly', function (): void {
-    $testData = [
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $testData = [
         '1' => [
             'id' => 1,
             'name' => 'Test Item 1',
@@ -102,7 +108,8 @@ it('loads valid json data correctly', function (): void {
 });
 
 it('normalizes nested arrays in json data', function (): void {
-    $testData = [
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $testData = [
         '1' => [
             'id' => 1,
             'name' => 'Test Item',
@@ -123,7 +130,8 @@ it('normalizes nested arrays in json data', function (): void {
 });
 
 it('saves data to json file successfully', function (): void {
-    $testData = [
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $testData = [
         '1' => ['id' => 1, 'name' => 'Test Item'],
         '2' => ['id' => 2, 'name' => 'Another Item'],
     ];
@@ -139,7 +147,8 @@ it('saves data to json file successfully', function (): void {
 });
 
 it('creates directory if not exists when saving', function (): void {
-    $testData = ['1' => ['id' => 1, 'name' => 'Test']];
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $testData = ['1' => ['id' => 1, 'name' => 'Test']];
 
     $result = $this->sushiModel()->saveToJson($testData);
 
@@ -149,7 +158,8 @@ it('creates directory if not exists when saving', function (): void {
 });
 
 it('returns false when saving fails', function (): void {
-    File::shouldReceive('put')->once()->andReturn(false);
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        File::shouldReceive('put')->once()->andReturn(false);
 
     $result = $this->sushiModel()->saveToJson(['1' => ['id' => 1, 'name' => 'Test']]);
 
@@ -157,7 +167,8 @@ it('returns false when saving fails', function (): void {
 });
 
 it('loads existing data correctly', function (): void {
-    $testData = [
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $testData = [
         '1' => ['id' => 1, 'name' => 'Existing Item'],
     ];
 
@@ -169,13 +180,15 @@ it('loads existing data correctly', function (): void {
 });
 
 it('returns empty array when no existing data', function (): void {
-    $existingData = $this->sushiModel()->loadExistingData();
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $existingData = $this->sushiModel()->loadExistingData();
 
     expect($existingData)->toBe([]);
 });
 
 it('works with sushi package integration', function (): void {
-    $testData = [
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $testData = [
         '1' => [
             'id' => 1,
             'name' => 'Sushi Item 1',

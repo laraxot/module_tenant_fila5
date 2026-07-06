@@ -25,7 +25,8 @@ function writeTraitIntegrationJson(string $path, array $data): void
 }
 
 beforeEach(function (): void {
-    $this->tenant = createTenant([
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $this->tenant = createTenant([
         'name' => 'test-tenant',
         'domain' => 'test.example.com',
     ]);
@@ -46,7 +47,8 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
-    if (File::exists($this->testJsonPath)) {
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
     }
 
@@ -57,7 +59,8 @@ afterEach(function (): void {
 });
 
 it('creates json file with tenant isolation', function (): void {
-    $testData = [
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $testData = [
         '1' => [
             'id' => 1,
             'name' => 'Tenant Specific Item',
@@ -75,7 +78,8 @@ it('creates json file with tenant isolation', function (): void {
 });
 
 it('loads data with tenant isolation', function (): void {
-    $tenantId = $this->tenantId();
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $tenantId = $this->tenantId();
     $testData = [
         '1' => ['id' => 1, 'name' => 'Item 1', 'tenant_id' => $tenantId],
         '2' => ['id' => 2, 'name' => 'Item 2', 'tenant_id' => $tenantId],
@@ -96,7 +100,8 @@ it('loads data with tenant isolation', function (): void {
 });
 
 it('handles large datasets efficiently', function (): void {
-    $largeDataset = [];
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $largeDataset = [];
     for ($i = 1; $i <= 1000; $i++) {
         $largeDataset[$i] = [
             'id' => $i,
@@ -114,7 +119,8 @@ it('handles large datasets efficiently', function (): void {
 });
 
 it('works with different tenant configurations', function (): void {
-    $secondTenant = createTenant([
+    /** @var \Modules\Tenant\Tests\TestCase $this */
+        $secondTenant = createTenant([
         'name' => 'second-tenant',
         'domain' => 'second.example.com',
     ]);
