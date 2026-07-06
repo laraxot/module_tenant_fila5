@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateDomain extends XotBaseCreateRecord
 {
-    public static string $resource = DomainResource::class;
+    protected static string $resource = DomainResource::class;
 }
