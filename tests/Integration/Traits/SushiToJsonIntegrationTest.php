@@ -25,15 +25,15 @@ function writeTraitIntegrationJson(string $path, array $data): void
 }
 
 beforeEach(function (): void {
-    /** @var \Modules\Tenant\Tests\TestCase $this */
-        $this->tenant = createTenant([
+    /** @var TestCase $this */
+    $this->tenant = createTenant([
         'name' => 'test-tenant',
         'domain' => 'test.example.com',
     ]);
 
     $this->setCurrentTenant($this->tenantModel());
 
-    $this->model = new TestSushiModel;
+    $this->model = new TestSushiModel();
     $this->testJsonPath = TenantService::filePath('database/content/test_sushi.json');
 
     if (File::exists($this->testJsonPath)) {
@@ -47,8 +47,8 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
-    /** @var \Modules\Tenant\Tests\TestCase $this */
-        if (File::exists($this->testJsonPath)) {
+    /** @var TestCase $this */
+    if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
     }
 
@@ -59,8 +59,8 @@ afterEach(function (): void {
 });
 
 it('creates json file with tenant isolation', function (): void {
-    /** @var \Modules\Tenant\Tests\TestCase $this */
-        $testData = [
+    /** @var TestCase $this */
+    $testData = [
         '1' => [
             'id' => 1,
             'name' => 'Tenant Specific Item',
@@ -78,8 +78,8 @@ it('creates json file with tenant isolation', function (): void {
 });
 
 it('loads data with tenant isolation', function (): void {
-    /** @var \Modules\Tenant\Tests\TestCase $this */
-        $tenantId = $this->tenantId();
+    /** @var TestCase $this */
+    $tenantId = $this->tenantId();
     $testData = [
         '1' => ['id' => 1, 'name' => 'Item 1', 'tenant_id' => $tenantId],
         '2' => ['id' => 2, 'name' => 'Item 2', 'tenant_id' => $tenantId],
@@ -100,8 +100,8 @@ it('loads data with tenant isolation', function (): void {
 });
 
 it('handles large datasets efficiently', function (): void {
-    /** @var \Modules\Tenant\Tests\TestCase $this */
-        $largeDataset = [];
+    /** @var TestCase $this */
+    $largeDataset = [];
     for ($i = 1; $i <= 1000; $i++) {
         $largeDataset[$i] = [
             'id' => $i,
@@ -119,15 +119,15 @@ it('handles large datasets efficiently', function (): void {
 });
 
 it('works with different tenant configurations', function (): void {
-    /** @var \Modules\Tenant\Tests\TestCase $this */
-        $secondTenant = createTenant([
+    /** @var TestCase $this */
+    $secondTenant = createTenant([
         'name' => 'second-tenant',
         'domain' => 'second.example.com',
     ]);
 
     $this->setCurrentTenant($secondTenant);
 
-    $secondModel = new TestSushiModel;
+    $secondModel = new TestSushiModel();
     $secondJsonPath = TenantService::filePath('database/content/test_sushi.json');
 
     expect($secondModel->saveToJson([
