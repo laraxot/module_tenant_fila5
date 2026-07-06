@@ -53,3 +53,10 @@ To maintain PHPStan compliance:
 - [Tenant Isolation Patterns](tenant-isolation-patterns.md)
 - [Configuration Management](configuration-management.md)
 - [Tenant Services](tenant-services.md)
+
+## Aggiornamento 2026-07-06
+
+Rimossi 4 probe PHPStan morti in `tests/Fixtures/Traits/`
+(`SushiToCsvPhpstanProbe`, `SushiToJsonsPhpstanProbe`,
+`SushiToPhpArrayPhpstanProbe`, `TenantPhpstanProbeModel`) — nessuna
+registry PHPStan li referenziava. Ri-verificato a zero errori.
