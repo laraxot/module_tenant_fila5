@@ -39,4 +39,3 @@ Documentazione della risoluzione dei conflitti Git nel modulo Tenant che bloccav
 - [Report Completo PHPStan Fixes](../../../bashscripts/docs/phpstan_fixes_comprehensive_report.md)
 
 *Ultimo aggiornamento: Dicembre 2024*
-*Ultimo aggiornamento: Dicembre 2024*

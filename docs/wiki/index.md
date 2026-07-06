@@ -1,32 +1,4 @@
----
-title: "Tenant Module Wiki Index"
-type: index
-module: Tenant
-tags: [tenant, wiki, index, multitenancy]
-created: 2026-04-15
-updated: 2026-06-05
-qmd: "tenant module wiki index multitenancy second brain"
-issues:
-  - "https://github.com/laraxot/base_fixcity_fila5/issues/272"
-discussions:
-  - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
-related:
-  - ../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md
-  - ../../../../docs/wiki/bmad/architecture.md
-  - ../../../../docs/wiki/rules/wiki-markdown-frontmatter-mandatory.md
-  - ../../docs/wiki/concepts/ai-harness-module-discipline.md
----
-
 # Tenant Module LLM Wiki
-
-## AI / second brain
-
-- [hackernoon-ai-coding-tips-fixcity-map](../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md)
-- [bmad/architecture](../../../../docs/wiki/bmad/architecture.md)
-- [frontmatter + GitHub](../../../../docs/wiki/rules/wiki-markdown-frontmatter-mandatory.md)
-- [ai-harness-module-discipline](../../docs/wiki/concepts/ai-harness-module-discipline.md)
-- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) → canon Xot
-
 
 Indice operativo del wiki Tenant.
 
@@ -46,6 +18,9 @@ Indice operativo del wiki Tenant.
 - [forbidden-folders-rule](../../../../docs/wiki/concepts/forbidden-folders.md): Vincoli strutturali strict.
 - [llm-wiki-standard](../../../../docs/project/karpathy-llm-wiki-adoption.md): Mapping repository e ciclo di vita conoscenza.
 - [laravel-multi-tenancy](../../../../docs/wiki/concepts/laravel-multi-tenancy.md): Multi-tenancy patterns.
+- [lowercase-tests-directory](./concepts/lowercase-tests-directory.md): solo `tests/`, mai `Tests/`.
+- [lowercase-database-factories-directory](./concepts/lowercase-database-factories-directory.md): solo `database/factories|seeders|migrations` minuscolo; mai `Factories_/`.
+- [database-folder-lowercase-rule](../../../../docs/wiki/concepts/database-folder-lowercase-rule.md): regola generica progetto.
 
 ## Scopo Tenant Module
 
@@ -56,6 +31,9 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 | Pagina | Tipo | Argomento | Data |
 |--------|------|-----------|------|
 | [.gitkeep](./concepts/.gitkeep) | Concept | - | 2026-04-21 |
+| [tenant-config-restoration-incident](./concepts/tenant-config-restoration-incident.md) | Troubleshooting | Ripristino config tenant 2026-07-01 | 2026-07-01 |
+| [lowercase-database-factories-directory](./concepts/lowercase-database-factories-directory.md) | Concept | `database/factories/` canonico; `Factories_` vietata | 2026-07-01 |
+| [lowercase-tests-directory](./concepts/lowercase-tests-directory.md) | Concept | Cartella test canonica minuscola | 2026-06-30 |
 | [xotbase-table-columns-enforcement](./concepts/xotbase-table-columns-enforcement.md) | Concept | 1 Table file — DomainsTable populated | 2026-05-07 |
 
 ## Best Practices
@@ -81,7 +59,7 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 |--------|------|-----------|
 | [.gitkeep](./concepts/.gitkeep) | Concept | Template iniziale |
 
-Aggiornato: 2026-04-28
+Aggiornato: 2026-07-01
 
 ## Shared Second Brain Discipline
 

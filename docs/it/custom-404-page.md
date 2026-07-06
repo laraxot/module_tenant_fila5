@@ -36,11 +36,6 @@ Depending on where your site is hosted, you may need to configure your server to
 * [custom-404-page.md](../../../ui/docs/custom-404-page.md)
 * [custom-404-page.md](../../../tenant/docs/it/custom-404-page.md)
 * [custom-404-page.md](../../../cms/docs/custom-404-page.md)
-* [custom-404-page.md](../../../Gdpr/docs/custom-404-page.md)
-* [custom-404-page.md](../../../Xot/docs/custom-404-page.md)
-* [custom-404-page.md](../../../UI/docs/custom-404-page.md)
-* [custom-404-page.md](../../../Tenant/docs/it/custom-404-page.md)
-* [custom-404-page.md](../../../Cms/docs/custom-404-page.md)
 
 ### Versione Incoming
 
