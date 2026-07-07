@@ -1,11 +1,11 @@
 # 📚 **Indice Documentazione Modulo Tenant**
 
-**
+**Last Update**: 31 Gennaio 2026
 **Status**: ✅ PHPStan Level 10 Compliant
 **Module Version**: 1.8.0
 
 ## 🎯 **Lettura Essenziale**
-1. [README.md](./readme.md) - Panoramica del sistema Multi-tenancy.
+1. [README.md](./README.md) - Panoramica del sistema Multi-tenancy.
 2. [roadmap.md](./roadmap.md) - Evoluzione 2026: Dinamismo estremo e performance.
 3. [philosophy.md](./philosophy.md) - "Ognuno nel suo spazio": filosofia dell'isolamento.
 
@@ -33,8 +33,8 @@
 - [Package Dependency Chaos Map](./package-dependency-chaos-map.md)
 
 ## 🔗 **Moduli Correlati**
-- [Xot](../../xot/docs/readme.md) - Base framework per i Service Provider.
-- [User](../../user/docs/readme.md) - Associazione Utente-Tenant e permessi.
+- [Xot](../../Xot/docs/README.md) - Base framework per i Service Provider.
+- [User](../../User/docs/README.md) - Associazione Utente-Tenant e permessi.
 
 ---
 *Documentazione conforme agli standard Laraxot - DRY + KISS + SOLID*
