@@ -47,6 +47,6 @@ class TenantSetting extends BaseModel
     /** @return BelongsTo<Tenant, $this> */
     public function tenant(): BelongsTo
     {
-        return // @var mixed belongsTo(Tenant::class;
+        return $this->belongsTo(Tenant::class);
     }
 }
