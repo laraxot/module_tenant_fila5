@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Tenant\Tests\Feature;
+uses(\Modules\Tenant\Tests\TestCase::class);
 
 use Modules\Tenant\Database\Factories\TenantDomainFactory;
 use Modules\Tenant\Database\Factories\TenantFactory;
