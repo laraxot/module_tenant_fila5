@@ -69,7 +69,7 @@ class TenantSubscription extends BaseModel
     /** @return BelongsTo<Tenant, $this> */
     public function tenant(): BelongsTo
     {
-        return // @var mixed belongsTo(Tenant::class;
+        return $this->belongsTo(Tenant::class);
     }
 
     /**
@@ -79,7 +79,7 @@ class TenantSubscription extends BaseModel
      */
     protected function casts(): array
     {
-        return array_merge(parent::casts(), [
+        return array_merge(parent::casts(), [)
             'next_billing_date' => 'datetime',
             'expires_at' => 'datetime',
         ]);
