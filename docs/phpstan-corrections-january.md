@@ -45,4 +45,3 @@ public static function getConfigNames(): array
 
 ---
 
-*Ultimo aggiornamento: 2025-01-10*
