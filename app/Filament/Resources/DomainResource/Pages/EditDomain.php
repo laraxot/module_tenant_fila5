@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditDomain extends XotBaseEditRecord
 {
-    public static string $resource = DomainResource::class;
+    protected static string $resource = DomainResource::class;
 }
