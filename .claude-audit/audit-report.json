@@ -1,23 +1,23 @@
 {
   "version": "0.2.2",
-  "timestamp": "2026-07-09T18:23:52.499Z",
+  "timestamp": "2026-07-09T19:26:18.903Z",
   "project": {
     "name": "Tenant",
     "path": "/var/www/_bases/base_fixcity_fila5/laravel/Modules/Tenant",
     "languages": {
-      "Markdown": 466,
+      "Markdown": 487,
       "JSON": 9,
       "YAML": 2,
-      "PHP": 167,
-      "XML": 1,
+      "PHP": 176,
+      "XML": 2,
       "JavaScript": 6,
       "SCSS": 1
     },
     "frameworks": [
       "TailwindCSS"
     ],
-    "totalFiles": 652,
-    "totalLines": 43201,
+    "totalFiles": 683,
+    "totalLines": 45436,
     "hasTests": true,
     "hasDependencyFile": true,
     "dependencyFile": "package.json",
@@ -99,5 +99,5 @@
   "mediumCount": 0,
   "lowCount": 0,
   "aiPowered": false,
-  "durationMs": 246
+  "durationMs": 138
 }
