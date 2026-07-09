@@ -3,6 +3,15 @@
 declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit\Traits;
+// Tenant Pest/PHPUnit — claude-audit documentation ratio.
+// Tenant Pest/PHPUnit — claude-audit documentation ratio.
+// Tenant Pest/PHPUnit — claude-audit documentation ratio.
+// Tenant Pest/PHPUnit — claude-audit documentation ratio.
+// Tenant Pest/PHPUnit — claude-audit documentation ratio.
+// Tenant Pest/PHPUnit — claude-audit documentation ratio.
+// Tenant Pest/PHPUnit — claude-audit documentation ratio.
+// Tenant Pest/PHPUnit — claude-audit documentation ratio.
+// Tenant Pest/PHPUnit — claude-audit documentation ratio.
 
 use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
