@@ -10,7 +10,7 @@ namespace Modules\Tenant\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
+use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Services\TenantService;
 use Sushi\Sushi;
 
@@ -39,7 +39,7 @@ trait SushiToPhpArray
             }
 
             /** @var array<string, mixed> $item */
-            $normalized[] = ConfigStringKeyFilter::onlyStringKeys($item);
+            $normalized[] = app(FilterConfigStringKeysAction::class)->execute($item);
         }
 
         return $normalized;
