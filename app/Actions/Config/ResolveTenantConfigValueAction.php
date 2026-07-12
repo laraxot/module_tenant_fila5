@@ -8,7 +8,8 @@ use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
 use Modules\Tenant\Actions\GetTenantNameAction;
-use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
+use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
+use Modules\Tenant\Actions\Config\MergeRecursiveStringKeyConfigAction;
 use Spatie\QueueableAction\QueueableAction;
 
 class ResolveTenantConfigValueAction
@@ -60,10 +61,11 @@ class ResolveTenantConfigValueAction
         /** @var array<string, mixed> $originalConfArray */
         /** @var array<string, mixed> $extraConfArray */
 
-        $originalConfTyped = ConfigStringKeyFilter::onlyStringKeys($originalConfArray);
-        $extraConfTyped = ConfigStringKeyFilter::onlyStringKeys($extraConfArray);
+        $filter = app(FilterConfigStringKeysAction::class);
+        $originalConfTyped = $filter->execute($originalConfArray);
+        $extraConfTyped = $filter->execute($extraConfArray);
 
-        return ConfigStringKeyFilter::mergeRecursive($originalConfTyped, $extraConfTyped);
+        return app(MergeRecursiveStringKeyConfigAction::class)->execute($originalConfTyped, $extraConfTyped);
     }
 
     /**

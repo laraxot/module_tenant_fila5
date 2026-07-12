@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Schema;
 use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
-use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
+use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Services\TenantService;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 use Nwidart\Modules\Facades\Module;
@@ -55,7 +55,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
         }
 
         /** @var array<string, mixed> $map */
-        Relation::morphMap($this->buildMorphMap(ConfigStringKeyFilter::onlyStringKeys($map)));
+        Relation::morphMap($this->buildMorphMap(app(FilterConfigStringKeysAction::class)->execute($map)));
     }
 
     public function registerDB(): void
@@ -71,13 +71,6 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
         Config::set('database', $data);
         $this->reconnectDatabaseUnlessTesting();
-    }
-
-    #[Override]
-    public function register(): void
-    {
-        parent::register();
-        // $this->app->register(AdminPanelProvider::class);
     }
 
     public function mergeConfigs(): void
@@ -129,7 +122,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
         }
 
         /** @var array<string, mixed> $data */
-        return ConfigStringKeyFilter::onlyStringKeys($data);
+        return app(FilterConfigStringKeysAction::class)->execute($data);
     }
 
     /**

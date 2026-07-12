@@ -22,14 +22,33 @@ class GetTenantNameAction
      */
     public function execute(): string
     {
+        if (app()->bound('tenant.resolved_name')) {
+            /** @var string $cached */
+            $cached = app('tenant.resolved_name');
+
+            return $cached;
+        }
+
         $default = $this->resolveDefaultHost();
 
         /** @var Collection<int, string> $parts */
         $parts = $this->buildServerParts($default);
 
-        return $this->resolveFromParts($parts)
+        $tenantName = $this->resolveFromParts($parts)
             ?? $this->resolveFromDefaultHost($default)
             ?? 'localhost';
+
+        if ($this->containsUnsafePathCharacters($tenantName)) {
+            $tenantName = 'localhost';
+        }
+
+        if ($tenantName !== 'localhost' && ! $this->tenantConfigExists($tenantName)) {
+            $tenantName = 'localhost';
+        }
+
+        app()->instance('tenant.resolved_name', $tenantName);
+
+        return $tenantName;
     }
 
     private function resolveDefaultHost(): string
@@ -99,10 +118,22 @@ class GetTenantNameAction
     {
         $serverName = getenv('SERVER_NAME');
         if (is_string($serverName) && $serverName !== '' && $serverName !== '127.0.0.1') {
+            if ($this->containsUnsafePathCharacters($serverName)) {
+                return $default;
+            }
+
             return $serverName;
         }
 
         return $default;
+    }
+
+    private function containsUnsafePathCharacters(string $value): bool
+    {
+        return str_contains($value, '..')
+            || str_contains($value, '/')
+            || str_contains($value, '\\')
+            || str_contains($value, "\0");
     }
 
     /**
@@ -115,5 +146,12 @@ class GetTenantNameAction
     private function buildConfigPath(Collection $parts): string
     {
         return config_path($parts->implode(DIRECTORY_SEPARATOR));
+    }
+
+    private function tenantConfigExists(string $tenantName): bool
+    {
+        $path = config_path(str_replace('/', DIRECTORY_SEPARATOR, $tenantName));
+
+        return is_dir($path);
     }
 }

@@ -14,6 +14,10 @@ class GetTenantFilePathAction
 
     public function execute(string $filename): string
     {
+        if ($this->containsUnsafePathCharacters($filename)) {
+            throw new \InvalidArgumentException('Unsafe filename in tenant path');
+        }
+
         if (isRunningTestBench()) {
             $basePath = realpath(__DIR__.'/../../Config');
 
@@ -21,8 +25,29 @@ class GetTenantFilePathAction
         }
 
         $tenantName = app(GetTenantNameAction::class)->execute();
-        $path = base_path('config/'.$tenantName.'/'.$filename);
+        if ($this->containsUnsafePathCharacters($tenantName)) {
+            throw new \RuntimeException('Path traversal detected in tenant name');
+        }
 
-        return str_replace(['/', '\\'], [\DIRECTORY_SEPARATOR, \DIRECTORY_SEPARATOR], $path);
+        $path = base_path('config/'.$tenantName.'/'.$filename);
+        $normalized = str_replace(['/', '\\'], [\DIRECTORY_SEPARATOR, \DIRECTORY_SEPARATOR], $path);
+        $this->assertPathWithinConfigRoot($normalized);
+
+        return $normalized;
+    }
+
+    private function containsUnsafePathCharacters(string $value): bool
+    {
+        return str_contains($value, '..')
+            || str_contains($value, "\0");
+    }
+
+    private function assertPathWithinConfigRoot(string $path): void
+    {
+        $configRoot = str_replace(['/', '\\'], [\DIRECTORY_SEPARATOR, \DIRECTORY_SEPARATOR], config_path());
+
+        if (! str_starts_with($path, $configRoot)) {
+            throw new \RuntimeException('Path traversal detected in tenant file path');
+        }
     }
 }

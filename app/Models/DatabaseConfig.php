@@ -53,6 +53,7 @@ class DatabaseConfig extends BaseModel
     {
         return array_merge(parent::casts(), [
             'port' => 'integer',
+            'password' => 'encrypted',
             'prefix_indexes' => 'boolean',
             'strict' => 'boolean',
             'options' => 'array',
