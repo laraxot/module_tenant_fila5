@@ -8,7 +8,7 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use InvalidArgumentException;
-use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
+use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Services\TenantService;
 use Sushi\Sushi;
 use Throwable;
@@ -86,7 +86,7 @@ trait SushiToJson
             }
 
             /** @var array<string, mixed> $item */
-            $typedData[] = ConfigStringKeyFilter::onlyStringKeys($item);
+            $typedData[] = app(FilterConfigStringKeysAction::class)->execute($item);
         }
 
         $normalizedData = $this->normalizeJsonItems($typedData);
@@ -415,7 +415,7 @@ trait SushiToJson
                 $normalizedItem[$stringKey] = $value;
             }
 
-            $normalizedData[] = ConfigStringKeyFilter::onlyStringKeys($normalizedItem);
+            $normalizedData[] = app(FilterConfigStringKeysAction::class)->execute($normalizedItem);
         }
 
         return $normalizedData;
@@ -427,7 +427,7 @@ trait SushiToJson
      */
     protected function normalizeSchemaFields(array $schema): array
     {
-        return ConfigStringKeyFilter::onlyStringKeys($schema);
+        return app(FilterConfigStringKeysAction::class)->execute($schema);
     }
 
     /**

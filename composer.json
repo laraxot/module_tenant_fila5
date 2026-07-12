@@ -20,7 +20,14 @@
       "role": "Developer"
     }
   ],
-  "require": {},
+  "require": {
+    "php": "^8.3",
+    "calebporzio/sushi": "^2.5",
+    "league/csv": "^9.0",
+    "spatie/laravel-queueable-action": "^2.16",
+    "thecodingmachine/safe": "^2.0",
+    "webmozart/assert": "^1.11"
+  },
   "require-dev": {},
   "repositories_comment": [
     {
