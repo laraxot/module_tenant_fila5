@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Mockery;
 use Modules\Tenant\Models\TestSushiModel;
-use Modules\Tenant\Services\TenantService;
 use Modules\Tenant\Tests\TestCase;
 
 use function Safe\json_encode;
@@ -33,11 +32,11 @@ beforeEach(function (): void {
     }
 
     $jsonPath = $this->testJsonPath;
-    $mock = Mockery::mock(TenantService::class);
-    tenantMockExpectation($mock, 'filePath')
+    $mock = Mockery::mock(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class);
+    $mock->shouldReceive('execute')
         ->with('database/content/test_sushi.json')
         ->andReturn($jsonPath);
-    app()->instance(TenantService::class, $mock);
+    app()->instance(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class, $mock);
 
     $this->createTestData = static fn (): array => [
         1 => [
@@ -170,7 +169,7 @@ describe('SushiToJson Trait', function (): void {
     });
 
     it('integrates with tenant service correctly', function (): void {
-        expect(app(TenantService::class))->toBeInstanceOf(TenantService::class);
+        expect(app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class))->toBeInstanceOf(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class);
         expect($this->sushiModel()->getJsonFile())->toBe($this->testJsonPath);
     });
 

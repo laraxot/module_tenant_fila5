@@ -10,7 +10,6 @@ namespace Modules\Tenant\Models\Traits;
 
 use Exception;
 use Illuminate\Support\Facades\File;
-use Modules\Tenant\Services\TenantService;
 use ReflectionObject;
 use function Safe\json_encode;
 use function Safe\unlink;
@@ -54,7 +53,7 @@ trait SushiToJsons
         $stringId = is_string($id) || is_numeric($id) ? (string) $id : 'unknown';
         $stringTbl = is_string($tbl) ? $tbl : 'unknown';
 
-        return TenantService::filePath('database/content/'.$stringTbl.'/'.$stringId.'.json');
+        return app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/'.$stringTbl.'/'.$stringId.'.json');
     }
 
     protected static function bootSushiToJsons(): void
@@ -104,7 +103,7 @@ trait SushiToJsons
      */
     private function collectRowsFromJsonFiles(string $tbl): array
     {
-        $files = File::glob(TenantService::filePath('database/content/'.$tbl).'/*.json');
+        $files = File::glob(app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/'.$tbl).'/*.json');
         if ($files === false) {
             return [];
         }
