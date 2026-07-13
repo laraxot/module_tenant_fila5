@@ -15,7 +15,6 @@ use Modules\Tenant\Models\BaseModel;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Providers\TenantServiceProvider;
-use Modules\Tenant\Services\TenantService;
 use Modules\User\Providers\UserServiceProvider;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Modules\Xot\Tests\XotBaseTestCase;
@@ -93,7 +92,7 @@ abstract class TestCase extends XotBaseTestCase
             return $this->testJsonPath;
         }
 
-        return TenantService::filePath('database/content/test_sushi.json');
+        return app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
     }
 
     public function sushiTestDirectory(): string

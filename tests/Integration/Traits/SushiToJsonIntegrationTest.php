@@ -13,7 +13,6 @@ namespace Modules\Tenant\Tests\Integration\Traits;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\TestSushiModel;
-use Modules\Tenant\Services\TenantService;
 use Modules\Tenant\Tests\TestCase;
 
 use function Safe\json_encode;
@@ -39,7 +38,7 @@ beforeEach(function (): void {
     $this->setCurrentTenant($this->tenantModel());
 
     $this->model = new TestSushiModel;
-    $this->testJsonPath = TenantService::filePath('database/content/test_sushi.json');
+    $this->testJsonPath = app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
@@ -73,7 +72,7 @@ it('creates json file with tenant isolation', function (): void {
 
     expect($this->sushiModel()->saveToJson($testData))->toBeTrue();
     expect(File::exists($this->sushiJsonPath()))->toBeTrue();
-    expect($this->sushiJsonPath())->toBe(TenantService::filePath('database/content/test_sushi.json'));
+    expect($this->sushiJsonPath())->toBe(app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json'));
 
     $savedData = $this->readJsonFileAsArray($this->sushiJsonPath());
     expect($savedData)->toBe($testData);
@@ -128,7 +127,7 @@ it('works with different tenant configurations', function (): void {
     $this->setCurrentTenant($secondTenant);
 
     $secondModel = new TestSushiModel;
-    $secondJsonPath = TenantService::filePath('database/content/test_sushi.json');
+    $secondJsonPath = app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     expect($secondModel->saveToJson([
         '1' => ['id' => 1, 'name' => 'Second Tenant Item', 'tenant_id' => $secondTenant->id],

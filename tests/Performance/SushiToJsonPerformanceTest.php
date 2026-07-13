@@ -9,7 +9,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
 use Mockery;
 use Modules\Tenant\Models\TestSushiModel;
-use Modules\Tenant\Services\TenantService;
 use Modules\Tenant\Tests\TestCase;
 
 use function Safe\json_decode;
@@ -26,11 +25,11 @@ beforeEach(function (): void {
     }
 
     $jsonPath = $this->testJsonPath;
-    $mock = Mockery::mock(TenantService::class);
-    tenantMockExpectation($mock, 'filePath')
+    $mock = Mockery::mock(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class);
+    $mock->shouldReceive('execute')
         ->with('database/content/test_sushi.json')
         ->andReturn($jsonPath);
-    app()->instance(TenantService::class, $mock);
+    app()->instance(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class, $mock);
 });
 
 afterEach(function (): void {
