@@ -30,16 +30,11 @@ class GetTenantModulesAction
             throw new Exception($e->getMessage().'['.$filePath.']['.__LINE__.']['.basename(__FILE__).']');
         }
 
-        if (! \is_array($json)) {
-            return [];
-        }
-
-        /** @var array<string, bool> $json */
-        return $this->collectEnabledModules($json);
+        return \is_array($json) ? $this->collectEnabledModules($json) : [];
     }
 
     /**
-     * @param  array<string, bool>  $json
+     * @param  array<mixed, mixed>  $json
      *
      * @return array<int, string>
      */

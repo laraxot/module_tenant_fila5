@@ -3,14 +3,6 @@
 declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Integration;
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
 
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\TestSushiModel;

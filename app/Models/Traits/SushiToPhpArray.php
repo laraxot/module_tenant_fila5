@@ -11,9 +11,9 @@ namespace Modules\Tenant\Models\Traits;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
+use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
 use Sushi\Sushi;
 
-/** @phpstan-ignore trait.unused */
 trait SushiToPhpArray
 {
     use Sushi;
@@ -27,7 +27,7 @@ trait SushiToPhpArray
     {
         $name = Str::of($this->getTable())->replace('_', '-')->toString();
 
-        $rows = app(\Modules\Tenant\Actions\Config\GetTenantConfigArrayAction::class)->execute($name);
+        $rows = app(GetTenantConfigArrayAction::class)->execute($name);
 
         /** @var array<int, array<string, mixed>> $normalized */
         $normalized = [];
@@ -37,7 +37,6 @@ trait SushiToPhpArray
                 continue;
             }
 
-            /** @var array<string, mixed> $item */
             $normalized[] = app(FilterConfigStringKeysAction::class)->execute($item);
         }
 

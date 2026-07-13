@@ -55,15 +55,13 @@ class ResolveTenantConfigValueAction
         /** @var mixed $extraConf */
         $extraConf = config($configName);
 
-        $originalConfArray = is_array($originalConf) ? $originalConf : [];
-        $extraConfArray = is_array($extraConf) ? $extraConf : [];
+        $originalConfTyped = is_array($originalConf)
+            ? app(FilterConfigStringKeysAction::class)->execute($originalConf)
+            : [];
 
-        /** @var array<string, mixed> $originalConfArray */
-        /** @var array<string, mixed> $extraConfArray */
-
-        $filter = app(FilterConfigStringKeysAction::class);
-        $originalConfTyped = $filter->execute($originalConfArray);
-        $extraConfTyped = $filter->execute($extraConfArray);
+        $extraConfTyped = is_array($extraConf)
+            ? app(FilterConfigStringKeysAction::class)->execute($extraConf)
+            : [];
 
         return app(MergeRecursiveStringKeyConfigAction::class)->execute($originalConfTyped, $extraConfTyped);
     }

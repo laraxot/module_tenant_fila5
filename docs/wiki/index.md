@@ -20,6 +20,7 @@ Indice operativo del wiki Tenant.
 - [laravel-multi-tenancy](../../../../docs/wiki/concepts/laravel-multi-tenancy.md): Multi-tenancy patterns.
 - [lowercase-tests-directory](./concepts/lowercase-tests-directory.md): solo `tests/`, mai `Tests/`.
 - [lowercase-database-factories-directory](./concepts/lowercase-database-factories-directory.md): solo `database/factories|seeders|migrations` minuscolo; mai `Factories_/`.
+- [services-to-queueable-actions](./concepts/no-app-support-queueable-actions.md): mapping completo `TenantService` → `app(...)->execute()` e regola no injection tra Actions.
 - [database-folder-lowercase-rule](../../../../docs/wiki/concepts/database-folder-lowercase-rule.md): regola generica progetto.
 
 ## Scopo Tenant Module

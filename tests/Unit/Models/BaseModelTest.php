@@ -12,7 +12,8 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 beforeEach(function (): void {
-    $this->baseModel = new class() extends BaseModel {
+    $this->baseModel = new class extends BaseModel
+    {
         protected $table = 'test_tenant_table';
     };
 });
