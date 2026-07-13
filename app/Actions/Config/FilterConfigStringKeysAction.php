@@ -11,7 +11,7 @@ final class FilterConfigStringKeysAction
     use QueueableAction;
 
     /**
-     * @param  array<string, mixed>  $config
+     * @param  array<mixed, mixed>  $config
      * @return array<string, mixed>
      */
     public function execute(array $config): array

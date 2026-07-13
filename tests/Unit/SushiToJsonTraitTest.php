@@ -3,18 +3,12 @@
 declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit;
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
 
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Mockery;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Tests\TestCase;
 
@@ -32,11 +26,11 @@ beforeEach(function (): void {
     }
 
     $jsonPath = $this->testJsonPath;
-    $mock = Mockery::mock(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class);
-    $mock->shouldReceive('execute')
+    $mock = Mockery::mock(GetTenantFilePathAction::class);
+    tenantMockExpectation($mock, 'execute')
         ->with('database/content/test_sushi.json')
         ->andReturn($jsonPath);
-    app()->instance(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class, $mock);
+    app()->instance(GetTenantFilePathAction::class, $mock);
 
     $this->createTestData = static fn (): array => [
         1 => [
@@ -169,7 +163,7 @@ describe('SushiToJson Trait', function (): void {
     });
 
     it('integrates with tenant service correctly', function (): void {
-        expect(app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class))->toBeInstanceOf(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class);
+        expect(app(GetTenantFilePathAction::class))->toBeInstanceOf(GetTenantFilePathAction::class);
         expect($this->sushiModel()->getJsonFile())->toBe($this->testJsonPath);
     });
 

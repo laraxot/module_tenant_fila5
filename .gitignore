@@ -163,14 +163,7 @@ public_html
 lang/lang/
 _docs/
 _docs/
-# Legacy PHPUnit (solo cartella maiuscola Tests/ — non confondere con Pest tests/)
-/Tests/
-
-# Pest + audit-coverage bridge (claude-audit legge .gitignore case-insensitive su WSL)
-!tests/
-!tests/**
-!audit-coverage/
-!audit-coverage/**
+Tests/
 
 # -----------------------------------------------------------------------------
 # Copie residue da merge/rebase o editor (mai committare — es. `.agent~HEAD`, `*.md~head`)
@@ -186,4 +179,4 @@ _docs/
 
 # Second brain: no-docs-archive (wiki) — non tracciare albero legacy docs/archive/
 docs/archive/agentdb.rvf
-audit-coverage/
+tests/AuditCoverage/

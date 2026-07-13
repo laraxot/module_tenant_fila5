@@ -10,6 +10,7 @@ namespace Modules\Tenant\Models\Traits;
 
 use Exception;
 use Illuminate\Support\Facades\File;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use ReflectionObject;
 use function Safe\json_encode;
 use function Safe\unlink;
@@ -53,7 +54,7 @@ trait SushiToJsons
         $stringId = is_string($id) || is_numeric($id) ? (string) $id : 'unknown';
         $stringTbl = is_string($tbl) ? $tbl : 'unknown';
 
-        return app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/'.$stringTbl.'/'.$stringId.'.json');
+        return app(GetTenantFilePathAction::class)->execute('database/content/'.$stringTbl.'/'.$stringId.'.json');
     }
 
     protected static function bootSushiToJsons(): void
@@ -103,7 +104,7 @@ trait SushiToJsons
      */
     private function collectRowsFromJsonFiles(string $tbl): array
     {
-        $files = File::glob(app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/'.$tbl).'/*.json');
+        $files = File::glob(app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl).'/*.json');
         if ($files === false) {
             return [];
         }
@@ -140,13 +141,12 @@ trait SushiToJsons
             return null;
         }
 
-        /** @var array<string, mixed> $json */
         return $this->buildRowFromSchema($schema, $json);
     }
 
     /**
      * @param  array<string, mixed>  $schema
-     * @param  array<string, mixed>  $json
+     * @param  array<mixed, mixed>  $json
      *
      * @return array<string, mixed>
      */
