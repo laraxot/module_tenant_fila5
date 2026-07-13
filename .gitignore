@@ -181,3 +181,4 @@ Tests/
 docs/archive/agentdb.rvf
 tests/AuditCoverage/
 audit-coverage/
+.claude-audit/
