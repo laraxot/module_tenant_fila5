@@ -1,10 +1,10 @@
 ---
 title: "no app/Support — Tenant QueueableAction"
 type: concept
-tags: [tenant, actions, queueable-action, support, config]
+tags: [tenant, actions, queueable-action, support, config, migration]
 created: 2026-07-12
-updated: 2026-07-12
-qmd: "Tenant module no Support ConfigStringKeyFilter morph map merge config"
+updated: 2026-07-13
+qmd: "Tenant module no Support ConfigStringKeyFilter morph map merge config TenantService migration"
 issues:
   - "https://github.com/laraxot/base_fixcity_fila5/issues/372"
 discussions:
@@ -20,6 +20,28 @@ related:
 |--------|--------|
 | `ConfigStringKeyFilter::onlyStringKeys` | `Actions/Config/FilterConfigStringKeysAction` |
 | `ConfigStringKeyFilter::mergeRecursive` | `Actions/Config/MergeRecursiveStringKeyConfigAction` |
+
+## TenantService → Action dirette (2026-07)
+
+`TenantService` (facade statica) **eliminata**. I caller usano `app(SomeAction::class)->execute(...)` — **non** `handle()`.
+
+| Ex `TenantService::` | Action |
+|----------------------|--------|
+| `getName()` | `GetTenantNameAction` |
+| `filePath($f)` | `GetTenantFilePathAction` |
+| `config($k,$d)` | `ResolveTenantConfigValueAction` |
+| `getConfigPath($k)` | `GetTenantConfigPathAction` |
+| `getConfig($n)` | `GetTenantConfigArrayAction` |
+| `saveConfig($n,$d)` | `SaveTenantConfigAction` |
+| `getConfigNames()` | `GetTenantConfigNamesAction` |
+| `modelClass($n)` | `ResolveTenantModelClassAction` |
+| `model($n)` | `ResolveTenantModelInstanceAction` |
+| `trans($k)` | `TranslateTenantKeyAction` |
+| `allModules()` | `GetTenantModulesAction` |
+
+Config tenant (`config/{tenant}/*.php`): `app(GetTenantFilePathAction::class)->execute('…')`.
+
+Test: mockare l'Action rilevante (`app()->instance(GetTenantFilePathAction::class, $mock)`), non più `TenantService`.
 
 ## Perché
 

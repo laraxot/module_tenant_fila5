@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\File;
 use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
-use Modules\Tenant\Services\TenantService;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 use function Safe\json_decode;
@@ -32,7 +31,7 @@ beforeEach(function (): void {
         $this->setCurrentTenant($this->tenantModel());
 
         $this->model = new TestSushiModel;
-        $this->testJsonPath = TenantService::filePath('database/content/test_sushi.json');
+        $this->testJsonPath = app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
         if (File::exists($this->sushiJsonPath())) {
             File::delete($this->sushiJsonPath());
@@ -73,7 +72,7 @@ $testData = [
         Assert::assertTrue($result);
         Assert::assertTrue(File::exists($this->sushiJsonPath()));
         // Verifica che il file sia nella directory del tenant corretto
-        $expectedPath = TenantService::filePath('database/content/test_sushi.json');
+        $expectedPath = app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
         Assert::assertSame($expectedPath, $this->sushiJsonPath());
         // Verifica che il contenuto sia corretto
         $savedContent = File::get($this->sushiJsonPath());
@@ -334,7 +333,7 @@ $testData = [
         $this->setCurrentTenant($this->secondTenantModel());
 
         $secondModel = new TestSushiModel;
-        $secondJsonPath = TenantService::filePath('database/content/test_sushi.json');
+        $secondJsonPath = app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
         $testData = [
             '1' => [
