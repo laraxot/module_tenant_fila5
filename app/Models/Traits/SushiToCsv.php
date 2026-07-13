@@ -7,6 +7,7 @@ namespace Modules\Tenant\Models\Traits;
 use Illuminate\Support\Arr;
 use League\Csv\Reader;
 use League\Csv\Writer;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use RuntimeException;
 use Stringable;
 use Sushi\Sushi;
@@ -51,7 +52,7 @@ trait SushiToCsv
             throw new RuntimeException('Table name must be a string');
         }
 
-        return app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute($tbl.'.csv');
+        return app(GetTenantFilePathAction::class)->execute($tbl.'.csv');
     }
 
     /**

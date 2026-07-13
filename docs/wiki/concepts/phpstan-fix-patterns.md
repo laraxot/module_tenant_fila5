@@ -34,7 +34,7 @@ Fix sessione corrente:
 
 Trait usati fuori Tenant (`SushiToPhpArray` in User) non risultano «used» in scan isolato. Pattern Geo:
 
-I probe `SushiToCsvPhpstanProbe` e `SushiToPhpArrayPhpstanProbe` (in `tests/Fixtures/Traits/`) coprono i trait cross-module usati fuori Tenant.
+`tests/Fixtures/Traits/TenantPhpstanTraitProbes.php` — host `SushiToCsvPhpstanProbe`, `SushiToPhpArrayPhpstanProbe`.
 
 Fix trait associati: return type `getSushiRows()` / `getCsvHeader()` in `SushiToCsv`; `array_values` tipizzato in `SushiToPhpArray`.
 

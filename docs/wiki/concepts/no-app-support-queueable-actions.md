@@ -14,7 +14,7 @@ related:
   - config-merge-philosophy.md
 ---
 
-# Tenant — `app/Support/` eliminato
+# Tenant — `app/Services/` senza PHP attivo
 
 | Legacy | Action |
 |--------|--------|
@@ -42,6 +42,12 @@ related:
 Config tenant (`config/{tenant}/*.php`): `app(GetTenantFilePathAction::class)->execute('…')`.
 
 Test: mockare l'Action rilevante (`app()->instance(GetTenantFilePathAction::class, $mock)`), non più `TenantService`.
+
+## Composizione e confini
+
+Le Actions non ricevono altre Actions nel costruttore: quando un use case ne compone un altro usa `app(AltraAction::class)->execute(...)`. Questo mantiene identica la risoluzione sync/queue, evita grafi di injection inutili e rende ogni chiamante rintracciabile con `rg`.
+
+I vecchi resolver e `TenantService` restano soltanto come file `.bak` per studio forward-only; non sono autoloadabili. Il contratto resolver vivo, se necessario, appartiene a `app/Contracts`, mai a `app/Services`.
 
 ## Perché
 

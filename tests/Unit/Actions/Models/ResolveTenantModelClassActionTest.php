@@ -32,7 +32,8 @@ it('resolves tenant model class by scanning modules if not in config', function 
         $mock->allows(['execute' => null]);
     });
 
-    $module = new class() {
+    $module = new class
+    {
         public function getName(): string
         {
             return 'Meetup';

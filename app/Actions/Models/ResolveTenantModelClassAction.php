@@ -82,7 +82,7 @@ class ResolveTenantModelClassAction
     }
 
     /**
-     * @param  array<string, class-string>  $moduleModels
+     * @param  array<mixed, mixed>  $moduleModels
      * @return array<string, class-string>
      */
     private function filterValidModelClasses(array $moduleModels): array

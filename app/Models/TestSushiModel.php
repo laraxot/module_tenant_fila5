@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use InvalidArgumentException;
 use Modules\Tenant\Database\Factories\TestSushiModelFactory;
 use Modules\Tenant\Models\Traits\SushiToJson;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 
@@ -105,7 +106,7 @@ class TestSushiModel extends BaseModel
 
         // fallback: usa il comportamento del trait (replicato qui)
         $tbl = $this->getTable();
-        $filePath = app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
+        $filePath = app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
         if (! is_string($filePath)) {
             throw new InvalidArgumentException('File path must be string');
         }

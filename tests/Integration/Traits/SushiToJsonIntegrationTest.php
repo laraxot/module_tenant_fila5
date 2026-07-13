@@ -3,16 +3,11 @@
 declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Integration\Traits;
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\TestSushiModel;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Tests\TestCase;
 
 use function Safe\json_encode;
@@ -38,7 +33,7 @@ beforeEach(function (): void {
     $this->setCurrentTenant($this->tenantModel());
 
     $this->model = new TestSushiModel;
-    $this->testJsonPath = app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
+    $this->testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
@@ -72,7 +67,7 @@ it('creates json file with tenant isolation', function (): void {
 
     expect($this->sushiModel()->saveToJson($testData))->toBeTrue();
     expect(File::exists($this->sushiJsonPath()))->toBeTrue();
-    expect($this->sushiJsonPath())->toBe(app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json'));
+    expect($this->sushiJsonPath())->toBe(app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json'));
 
     $savedData = $this->readJsonFileAsArray($this->sushiJsonPath());
     expect($savedData)->toBe($testData);
@@ -127,7 +122,7 @@ it('works with different tenant configurations', function (): void {
     $this->setCurrentTenant($secondTenant);
 
     $secondModel = new TestSushiModel;
-    $secondJsonPath = app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
+    $secondJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     expect($secondModel->saveToJson([
         '1' => ['id' => 1, 'name' => 'Second Tenant Item', 'tenant_id' => $secondTenant->id],

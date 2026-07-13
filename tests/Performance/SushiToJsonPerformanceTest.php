@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
 use Mockery;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Tests\TestCase;
 
@@ -25,11 +26,11 @@ beforeEach(function (): void {
     }
 
     $jsonPath = $this->testJsonPath;
-    $mock = Mockery::mock(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class);
-    $mock->shouldReceive('execute')
+    $mock = Mockery::mock(GetTenantFilePathAction::class);
+    tenantMockExpectation($mock, 'execute')
         ->with('database/content/test_sushi.json')
         ->andReturn($jsonPath);
-    app()->instance(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class, $mock);
+    app()->instance(GetTenantFilePathAction::class, $mock);
 });
 
 afterEach(function (): void {

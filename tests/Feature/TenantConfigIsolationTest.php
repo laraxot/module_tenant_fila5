@@ -38,16 +38,21 @@ it('rejects path traversal in tenant filename', function (): void {
         $mock->allows(['execute' => 'tenant-a']);
     });
 
-    $this->expectException(InvalidArgumentException::class);
+    try {
+        app(GetTenantFilePathAction::class)->execute('../../etc/passwd');
+    } catch (InvalidArgumentException $exception) {
+        Assert::assertSame('Tenant filename must be a relative path without traversal segments.', $exception->getMessage());
 
-    app(GetTenantFilePathAction::class)->execute('../../etc/passwd');
+        return;
+    }
+
+    Assert::fail('Expected path traversal to be rejected.');
 });
 
 it('rejects malicious server name with path traversal', function (): void {
     $_SERVER['SERVER_NAME'] = '../../evil.com';
 
-    $action = new GetTenantNameAction();
-    $result = $action->execute();
+    $result = app(GetTenantNameAction::class)->execute();
 
     Assert::assertSame('localhost', $result);
 });
