@@ -62,9 +62,9 @@ trait SushiToJson
      * Ottiene i dati dal file JSON per il modello Sushi.
      * I dati vengono normalizzati per garantire compatibilità con Eloquent.
      *
-     * @return array<int, array<string, mixed>> Array di record per Sushi
+     * @return array<int, array<string, mixed>>
      *
-     * @throws Exception Se i dati non sono in formato array valido
+     * @phpstan-return array<int, array<string, mixed>>
      */
     public function getSushiRows(): array
     {
@@ -85,12 +85,7 @@ trait SushiToJson
                 continue;
             }
 
-<<<<<<< HEAD
             $typedData[] = app(FilterConfigStringKeysAction::class)->execute($item);
-=======
-            /** @var array<string, mixed> $item */
-            $typedData[] = ConfigStringKeyFilter::onlyStringKeys($item);
->>>>>>> c83b36c (.)
         }
 
         $normalizedData = $this->normalizeJsonItems($typedData);
@@ -445,16 +440,18 @@ trait SushiToJson
         $completedData = [];
 
         foreach ($normalizedData as $item) {
+            /** @var array<string, mixed> $row */
+            $row = $item;
             foreach (array_keys($form) as $safeKey) {
-                if (! array_key_exists($safeKey, $item)) {
-                    $item[$safeKey] = null;
+                if (! array_key_exists($safeKey, $row)) {
+                    $row[$safeKey] = null;
                 }
             }
 
-            ksort($item);
-            $completedData[] = $item;
+            ksort($row);
+            $completedData[] = $row;
         }
 
-        return array_values($completedData);
+        return $completedData;
     }
 }

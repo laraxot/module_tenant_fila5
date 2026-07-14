@@ -38,12 +38,7 @@ trait SushiToPhpArray
                 continue;
             }
 
-<<<<<<< HEAD
             $normalized[] = app(FilterConfigStringKeysAction::class)->execute($item);
-=======
-            /** @var array<string, mixed> $item */
-            $normalized[] = ConfigStringKeyFilter::onlyStringKeys($item);
->>>>>>> c83b36c (.)
         }
 
         return $normalized;
