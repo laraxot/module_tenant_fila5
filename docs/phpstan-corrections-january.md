@@ -1,3 +1,14 @@
+---
+title: "PHPStan Corrections - Tenant Module - Gennaio 2025"
+module: "Tenant"
+type: concept
+tags: [phpstan, corrections, january]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "phpstan corrections january"
+related:
+  - "./metodiuplicati-analisi.md"
+---
 # PHPStan Corrections - Tenant Module - Gennaio 2025
 
 **Data**: 2025-01-10

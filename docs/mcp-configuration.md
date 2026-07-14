@@ -1,3 +1,14 @@
+---
+title: "MCP Server Configuration - Tenant Module"
+module: "Tenant"
+type: concept
+tags: [mcp, configuration]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "mcp configuration"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # MCP Server Configuration - Tenant Module
 
 

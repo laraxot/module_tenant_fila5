@@ -1,3 +1,14 @@
+---
+title: "Tenant Configuration (source of truth)"
+module: "Tenant"
+type: concept
+tags: [configuration]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "configuration"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Tenant Configuration (source of truth)
 
  ## Scopo

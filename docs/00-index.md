@@ -1,3 +1,14 @@
+---
+title: "📚 **Indice Documentazione Modulo Tenant**"
+module: "Tenant"
+type: concept
+tags: [00, index]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "00 index"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # 📚 **Indice Documentazione Modulo Tenant**
 
 **Last Update**: 31 Gennaio 2026

@@ -1,3 +1,14 @@
+---
+title: "Upgrade Laravel 13 - Tenant 🐄✨"
+module: "Tenant"
+type: concept
+tags: [laravel, 13, upgrade]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "laravel 13 upgrade"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Upgrade Laravel 13 - Tenant 🐄✨
 
 ## 🎯 Visione Architetturale

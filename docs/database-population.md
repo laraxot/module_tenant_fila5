@@ -1,3 +1,14 @@
+---
+title: "Popolamento Database - Modulo Tenant"
+module: "Tenant"
+type: concept
+tags: [database, population]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "database population"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Popolamento Database - Modulo Tenant
 
 ## Aggiornamento [DATE] – Test Sushi Seeder

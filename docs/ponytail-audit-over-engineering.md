@@ -1,3 +1,14 @@
+---
+title: "Ponytail audit — Tenant (over-engineering)"
+module: "Tenant"
+type: concept
+tags: [ponytail, audit, over, engineering]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "ponytail audit over engineering"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Ponytail audit — Tenant (over-engineering)
 
 **Ultimo run:** 2026-06-30  

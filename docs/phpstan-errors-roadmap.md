@@ -1,3 +1,14 @@
+---
+title: "PHPStan Level 10 Errors Roadmap - Tenant Module"
+module: "Tenant"
+type: concept
+tags: [phpstan, errors, roadmap]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "phpstan errors roadmap"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # PHPStan Level 10 Errors Roadmap - Tenant Module
 
 **Modulo**: Tenant  

@@ -1,3 +1,14 @@
+---
+title: "Collegamento alle Traduzioni del Modulo Tenant"
+module: "Tenant"
+type: concept
+tags: [lang, link, 1]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "lang link 1"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Collegamento alle Traduzioni del Modulo Tenant
 
 Questo modulo utilizza le traduzioni centralizzate nella cartella [Lang](../../Lang/docs/).

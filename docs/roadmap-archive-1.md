@@ -1,3 +1,14 @@
+---
+title: "🎯 TENANT MODULE - ROADMAP 2025"
+module: "Tenant"
+type: concept
+tags: [roadmap, archive, 1]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "roadmap archive 1"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # 🎯 TENANT MODULE - ROADMAP 2025
 
 **Modulo**: Tenant ([Description])  

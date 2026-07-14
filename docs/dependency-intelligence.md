@@ -1,3 +1,14 @@
+---
+title: "Dependency Intelligence - Module Tenant"
+module: "Tenant"
+type: concept
+tags: [dependency, intelligence]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "dependency intelligence"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Dependency Intelligence - Module Tenant
 
 

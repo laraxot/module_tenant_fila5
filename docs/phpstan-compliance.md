@@ -1,3 +1,14 @@
+---
+title: "PHPStan Compliance - Tenant Module"
+module: "Tenant"
+type: concept
+tags: [phpstan, compliance]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "phpstan compliance"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # PHPStan Compliance - Tenant Module
 
 ## Status: ✅ FULLY COMPLIANT

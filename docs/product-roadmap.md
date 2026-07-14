@@ -1,3 +1,14 @@
+---
+title: "Tenant Module - Product Roadmap"
+module: "Tenant"
+type: concept
+tags: [product, roadmap]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "product roadmap"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Tenant Module - Product Roadmap
 
 **Module:** Tenant  

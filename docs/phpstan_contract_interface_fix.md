@@ -1,3 +1,14 @@
+---
+title: "PHPStan Contract Interface Fix"
+module: "Tenant"
+type: concept
+tags: [phpstan, contract, interface, fix]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "phpstan contract interface fix"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # PHPStan Contract Interface Fix
 
 ## Problem
