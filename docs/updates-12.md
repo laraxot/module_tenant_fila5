@@ -1,3 +1,14 @@
+---
+title: "Tenant Module Updates - December 2025"
+module: "Tenant"
+type: concept
+tags: [updates, 12]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "updates 12"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Tenant Module Updates - December 2025
 
 ## PHPStan Fixes

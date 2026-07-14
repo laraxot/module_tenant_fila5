@@ -1,3 +1,14 @@
+---
+title: "Modular Monolith Guidelines for Laravel"
+module: "Tenant"
+type: how-to
+tags: [modular, monolith, guidelines, 1]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "modular monolith guidelines 1"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Modular Monolith Guidelines for Laravel
 
 ## Overview

@@ -1,3 +1,14 @@
+---
+title: "Filosofia del Modulo Tenant"
+module: "Tenant"
+type: concept
+tags: [philosophy]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "philosophy"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Filosofia del Modulo Tenant
 
 ## 🏛️ Politica

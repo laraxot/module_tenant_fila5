@@ -1,3 +1,14 @@
+---
+title: "PHPStan Cluster - 2026-03-10"
+module: "Tenant"
+type: concept
+tags: [phpstan, cluster]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "phpstan cluster"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # PHPStan Cluster - 2026-03-10
 
 ## Stato attuale

@@ -1,3 +1,14 @@
+---
+title: "PHPStan Level 10 Roadmap - Tenant Module"
+module: "Tenant"
+type: concept
+tags: [phpstan, roadmap, 2026, 01]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "phpstan roadmap 2026 01 30"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # PHPStan Level 10 Roadmap - Tenant Module
 
 **Data**: 2026-01-30

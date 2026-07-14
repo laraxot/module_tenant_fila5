@@ -1,3 +1,14 @@
+---
+title: "SushiToJson/SushiToJsons PHPStan Level 10 Fixes"
+module: "Tenant"
+type: concept
+tags: [sushi, json, phpstan, fixes]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "sushi to json phpstan fixes"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # SushiToJson/SushiToJsons PHPStan Level 10 Fixes
 
 ## Problem Overview

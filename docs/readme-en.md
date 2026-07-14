@@ -1,3 +1,14 @@
+---
+title: "🏢 Tenant — English presentation"
+module: "Tenant"
+type: concept
+tags: [readme, en]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "readme en"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # 🏢 Tenant — English presentation
 
 [![Domain-Multi-Tenant](https://img.shields.io/badge/Domain-Multi--Tenant-283593.svg)](#)

@@ -1,3 +1,14 @@
+---
+title: "PHPStan Fixes - Tenant Module - 2025-10-13"
+module: "Tenant"
+type: concept
+tags: [phpstan, fixes, 2025, 10]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "phpstan fixes 2025 10 13"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # PHPStan Fixes - Tenant Module - 2025-10-13
 
 ## Summary

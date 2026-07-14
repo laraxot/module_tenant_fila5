@@ -1,3 +1,14 @@
+---
+title: "Docs archive policy"
+module: "Tenant"
+type: rule
+tags: [docs, archive, policy]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "docs archive policy"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Docs archive policy
 
 `docs/legacy/` is local-only scratch/history and must not be used as a canonical documentation source.
