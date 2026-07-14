@@ -1,3 +1,14 @@
+---
+title: "Root file policy"
+module: "Tenant"
+type: rule
+tags: [root, file, policy]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "root file policy"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Root file policy
 
 Updated: 2026-07-08

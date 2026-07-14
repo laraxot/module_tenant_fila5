@@ -1,3 +1,14 @@
+---
+title: "Correzioni PHPStan - Gennaio 2025"
+module: "Tenant"
+type: concept
+tags: [phpstan, fixes, gennaio, 2025]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "phpstan fixes gennaio 2025"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Correzioni PHPStan - Gennaio 2025
 
 ## Panoramica

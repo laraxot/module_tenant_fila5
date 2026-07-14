@@ -1,3 +1,14 @@
+---
+title: "Correzioni Trait Sushi - PHPStan Level 10"
+module: "Tenant"
+type: pattern
+tags: [sushi, traits, phpstan, fixes]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "sushi traits phpstan fixes"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Correzioni Trait Sushi - PHPStan Level 10
 
 ## Obiettivo

@@ -1,3 +1,14 @@
+---
+title: "Roadmap Tenant"
+module: "Tenant"
+type: concept
+tags: [legacy, roadmap, 2]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "legacy roadmap 2"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Roadmap Tenant
 
 Roadmap operativo del module **Tenant**, suddiviso in file tematici.

@@ -1,3 +1,14 @@
+---
+title: "Tenant Module - Comprehensive Analysis"
+module: "Tenant"
+type: concept
+tags: [module, analysis]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "module analysis"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Tenant Module - Comprehensive Analysis
 
 ## Module Overview

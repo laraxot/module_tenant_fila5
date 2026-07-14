@@ -1,3 +1,14 @@
+---
+title: "Task: Tenant Analytics"
+module: "Tenant"
+type: concept
+tags: [tenant, analytics]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "tenant analytics"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Task: Tenant Analytics
 
 **Modulo**: Tenant  

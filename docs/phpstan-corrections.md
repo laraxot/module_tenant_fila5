@@ -1,3 +1,14 @@
+---
+title: "Correzioni PHPStan - Modulo Tenant"
+module: "Tenant"
+type: concept
+tags: [phpstan, corrections]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "phpstan corrections"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Correzioni PHPStan - Modulo Tenant
 
 ## Panoramica

@@ -1,3 +1,14 @@
+---
+title: "Organizzativa Money"
+module: "Tenant"
+type: concept
+tags: [organizzativa, money]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "organizzativa money"
+related:
+  - "./phpstan-corrections-january.md"
+---
 ## Organizzativa Money
 
 ### URL

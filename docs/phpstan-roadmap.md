@@ -1,3 +1,14 @@
+---
+title: "PHPStan Roadmap - Tenant Module"
+module: "Tenant"
+type: concept
+tags: [phpstan, roadmap]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "phpstan roadmap"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # PHPStan Roadmap - Tenant Module
 
 > **Date**: [DATE]

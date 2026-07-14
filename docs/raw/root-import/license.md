@@ -1,3 +1,14 @@
+---
+title: "License"
+module: "Tenant"
+type: concept
+tags: [license]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "license"
+related:
+  - "./phpstan-corrections-january.md"
+---
 The MIT License (MIT)
 
 Copyright (c) :vendor_name <author@domain.com>

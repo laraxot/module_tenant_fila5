@@ -1,3 +1,14 @@
+---
+title: "Tenant Module — Documentation Index"
+module: "Tenant"
+type: concept
+tags: [00, INDEX]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "00 index"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Tenant Module — Documentation Index
 
 **Path**: `laravel/Modules/Tenant/docs/`  

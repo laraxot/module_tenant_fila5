@@ -1,3 +1,14 @@
+---
+title: "Risoluzione conflitto git su rector.php"
+module: "Tenant"
+type: concept
+tags: [rector, conflict, resolution, 1]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "rector conflict resolution 1"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Risoluzione conflitto git su rector.php
 
 ## Problema

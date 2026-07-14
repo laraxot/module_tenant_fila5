@@ -1,3 +1,14 @@
+---
+title: "Tenant Module LLM Wiki"
+module: "Tenant"
+type: concept
+tags: [index]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "index"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Tenant Module LLM Wiki
 
 Indice operativo del wiki Tenant.

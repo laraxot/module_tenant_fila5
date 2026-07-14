@@ -1,3 +1,14 @@
+---
+title: "PHPStan Level 10 Compliance Status"
+module: "Tenant"
+type: concept
+tags: [phpstan, compliance, status]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "phpstan compliance status"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # PHPStan Level 10 Compliance Status
 
 

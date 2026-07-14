@@ -1,3 +1,14 @@
+---
+title: "Merge Conflict Files List"
+module: "Tenant"
+type: concept
+tags: [merge, conflict, files, list]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "merge conflict files list"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Merge Conflict Files List
 
 This file contains a comprehensive list of files with merge conflict markers (`<<<< HEAD` or `<<<< .merge_file`) that need to be resolved.

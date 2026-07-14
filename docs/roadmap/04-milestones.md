@@ -1,3 +1,14 @@
+---
+title: "Milestones - Tenant"
+module: "Tenant"
+type: concept
+tags: [04, milestones]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "04 milestones"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Milestones - Tenant
 
 ## M1 Documentation Baseline

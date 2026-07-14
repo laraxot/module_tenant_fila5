@@ -1,3 +1,14 @@
+---
+title: "Modulo Tenant - Multi-Tenancy Management"
+module: "Tenant"
+type: concept
+tags: [module]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "module"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Modulo Tenant - Multi-Tenancy Management
 
 ## Scopo Principale

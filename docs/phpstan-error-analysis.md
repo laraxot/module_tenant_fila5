@@ -1,3 +1,14 @@
+---
+title: "PHPStan Error Analysis for Tenant Module"
+module: "Tenant"
+type: concept
+tags: [phpstan, error, analysis]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "phpstan error analysis"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # PHPStan Error Analysis for Tenant Module
 
 ## Overview
