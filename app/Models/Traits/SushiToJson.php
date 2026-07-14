@@ -85,12 +85,19 @@ trait SushiToJson
                 continue;
             }
 
+<<<<<<< HEAD
             $typedData[] = app(FilterConfigStringKeysAction::class)->execute($item);
+=======
+            /** @var array<string, mixed> $item */
+            $typedData[] = ConfigStringKeyFilter::onlyStringKeys($item);
+>>>>>>> c83b36c (.)
         }
 
         $normalizedData = $this->normalizeJsonItems($typedData);
         $schema = $this->getSchema();
-        $form = $this->normalizeSchemaFields(is_array($schema) ? $schema : []);
+        /** @var array<string, mixed> $schemaArray */
+        $schemaArray = $schema;
+        $form = $this->normalizeSchemaFields($schemaArray);
 
         return $this->completeSchemaFields($normalizedData, $form);
     }
@@ -419,7 +426,7 @@ trait SushiToJson
     }
 
     /**
-     * @param  array<mixed, mixed>  $schema
+     * @param  array<string, mixed> $schema
      * @return array<string, mixed>
      */
     protected function normalizeSchemaFields(array $schema): array
@@ -429,7 +436,7 @@ trait SushiToJson
 
     /**
      * @param  array<int, array<string, mixed>>  $normalizedData
-     * @param  array<string, mixed>  $form
+     * @param  array<string, mixed> $form
      * @return array<int, array<string, mixed>>
      */
     protected function completeSchemaFields(array $normalizedData, array $form): array
