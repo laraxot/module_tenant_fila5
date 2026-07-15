@@ -18,16 +18,13 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property bool|null $prefix_indexes
  * @property bool|null $strict
  * @property array<string, mixed>|null $options
- *
  * @property-read ProfileContract|null $creator
  * @property-read ProfileContract|null $deleter
  * @property-read ProfileContract|null $updater
- *
  * @method static \Modules\Tenant\Database\Factories\DatabaseConfigFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConfig newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConfig newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConfig query()
- *
  * @mixin \Eloquent
  */
 class DatabaseConfig extends BaseModel
