@@ -20,7 +20,6 @@ use Sushi\Sushi;
  * @property string|null $status
  * @property string|null $verification_token
  * @property Carbon|null $verified_at
- *
  * @method static Builder|TenantDomain newModelQuery()
  * @method static Builder|TenantDomain newQuery()
  * @method static Builder|TenantDomain query()
@@ -31,13 +30,10 @@ use Sushi\Sushi;
  * @method static Builder|TenantDomain whereStatus($value)
  * @method static Builder|TenantDomain whereVerificationToken($value)
  * @method static Builder|TenantDomain whereVerifiedAt($value)
- *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  * @property ProfileContract|null $deleter
- *
  * @method static TenantDomainFactory factory($count = null, $state = [])
- *
  * @mixin \Eloquent
  */
 class TenantDomain extends BaseModel
