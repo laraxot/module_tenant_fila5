@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit;
 
+use Mockery;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\Domain;
 use Tests\TestCase;
@@ -18,7 +19,7 @@ test('domain model can be instantiated', function (): void {
 
 test('get rows method works correctly', function (): void {
     // Mock della Action GetDomainsArrayAction
-    $this->mock(GetDomainsArrayAction::class, function ($mock) {
+    Mockery::mock(GetDomainsArrayAction::class, function ($mock) {
         $mock->shouldReceive('execute')
             ->once()
             ->andReturn([
