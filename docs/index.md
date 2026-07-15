@@ -40,7 +40,7 @@ Questo documento serve come indice centrale per il modulo Tenant, fornendo una g
 ## Categorie Principali
 
 ### Architettura e Struttura
-- [README](./readme.md) - Panoramica generale del modulo
+- [README](README.md) - Panoramica generale del modulo
 - [Architettura](./architecture/readme.md) - Architettura generale del modulo
 - [Struttura](./structure.md) - Struttura delle directory e dei componenti
 - [Modelli](./models/readme.md) - Documentazione dei modelli Eloquent
@@ -60,7 +60,7 @@ Questo documento serve come indice centrale per il modulo Tenant, fornendo una g
 - [Convenzioni Filament](./filament_extension_pattern.md) - Pattern di estensione per Filament
 
 ### API e Integrazione
-- [API RESTful](./api.md) - API per la gestione dei tenant
+- [API RESTful](API.md) - API per la gestione dei tenant
 - [Integrazione Servizi Esterni](./external-services.md) - Integrazione con servizi esterni
 - [Webhooks](./webhooks.md) - Sistema di webhook per eventi tenant
 
@@ -156,7 +156,7 @@ Implementare una gestione robusta degli errori per gestire i fallimenti nell'acc
 - [Index](./traits/index.md) - Indice della documentazione sui traits
 
 ## Collegamenti alla Documentazione Correlata
-- [Panoramica Architettura](./architecture.md)
+- [Panoramica Architettura](ARCHITECTURE.md)
 - [Funzionalità Core](./core-functionality.md)
 - [Gestione Domini](./domain-management.md)
 - [Isolamento Dati](./data-isolation.md)

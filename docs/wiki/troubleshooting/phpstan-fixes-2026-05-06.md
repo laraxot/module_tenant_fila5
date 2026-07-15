@@ -1,26 +1,16 @@
 ---
-title: "PHPStan Fixes 2026-05-06"
-type: troubleshooting
-sources: ["phpstan_modules_initial.json"]
-confidence: verified
-created: 2026-05-06
-updated: 2026-05-06
-tags: [phpstan, tenant, trait, sushi]
+title: "Phpstan Fixes"
+type: concept
+status: deprecated
+module: "Tenant"
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "deprecated phpstan-fixes"
+related:
+  - "./phpstan-fixes.md"
 ---
+# Phpstan Fixes
 
-# PHPStan Fixes - 2026-05-06
+> Deprecated: non aggiungere date nel filename; usare `created/updated` nel front matter.
 
-## Issue: Modules\Tenant\Models\Traits\SushiToJsons
-
-PHPStan reported:
-- `foreach.nonIterable`: `Argument of an invalid type mixed supplied for foreach` in `resolveSchema()`.
-
-## Root Cause
-Reflection `getValue()` returns `mixed`. Even after `is_iterable()` check, PHPStan might still complain if the type is not explicitly narrowed to `array` or `Traversable` in a way it understands for `foreach`.
-
-## Fix Strategy
-1. Use `is_array()` check and explicit return type.
-2. Use `Webmozart\Assert\Assert` for additional safety.
-
-## Learning
-When using Reflection to get property values, always validate and cast to the expected type before iterating.
+Vedi il file canonico: [phpstan-fixes.md](./phpstan-fixes.md)

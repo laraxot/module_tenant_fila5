@@ -1,7 +1,16 @@
 ---
-module: theme
-topic: updates-2025-12
-canonical: ../../../Themes/docs/shared-components/updates-12.md
+title: "Updates 12"
+type: concept
+status: deprecated
+module: "Tenant"
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "deprecated updates-12"
+related:
+  - "./updates-12.md"
 ---
+# Updates 12
 
-See canonical documentation: ../../../Themes/docs/shared-components/updates-12.md
+> Deprecated: non aggiungere date nel filename; usare `created/updated` nel front matter.
+
+Vedi il file canonico: [updates-12.md](./updates-12.md)

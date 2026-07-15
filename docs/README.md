@@ -210,7 +210,7 @@ php -d memory_limit=-1 ./vendor/bin/phpstan analyse --level=max Modules/Tenant
 
 ## Documentation Index
 
-- [Architecture Details](./architecture.md) — Multi-tenancy design patterns
+- [Architecture Details](ARCHITECTURE.md) — Multi-tenancy design patterns
 - [Isolation Strategy](./isolation-strategy.md) — Data isolation approaches
 - [Configuration](./configuration.md) — Environment setup per tenant
 - [Troubleshooting](./troubleshooting.md) — Common isolation issues

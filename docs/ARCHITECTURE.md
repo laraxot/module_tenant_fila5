@@ -247,6 +247,6 @@ Per-tenant configuration files override system defaults, enabling customization 
 
 - [API Reference](./API.md)
 - [Setup Guide](./SETUP.md)
-- [Troubleshooting](./TROUBLESHOOTING.md)
+- [Troubleshooting](troubleshooting.md)
 - [Best Practices](./BEST_PRACTICES.md)
 - Module Tests: `tests/Feature/TenantBusinessLogicTest.php`, `tests/Unit/Actions/`
