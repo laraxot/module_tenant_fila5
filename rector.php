@@ -26,7 +26,7 @@ return static function ($rectorConfig): void {
 
     // Rule sets
     $rectorConfig->sets([
-        __DIR__ . '/../../vendor/rector/rector/config/set/level/up-to-php81.php',
+        __DIR__.'/../../vendor/rector/rector/config/set/level/up-to-php81.php',
         'code-quality',
         'dead-code',
         'early-return',

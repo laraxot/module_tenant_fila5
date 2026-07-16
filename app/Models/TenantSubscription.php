@@ -23,6 +23,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property float|null $billing_amount
  * @property Carbon|null $next_billing_date
  * @property Carbon|null $expires_at
+ *
  * @method static Builder|TenantSubscription newModelQuery()
  * @method static Builder|TenantSubscription newQuery()
  * @method static Builder|TenantSubscription query()
@@ -38,11 +39,15 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder|TenantSubscription whereBillingAmount($value)
  * @method static Builder|TenantSubscription whereNextBillingDate($value)
  * @method static Builder|TenantSubscription whereExpiresAt($value)
+ *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  * @property ProfileContract|null $deleter
+ *
  * @method static TenantSubscriptionFactory factory($count = null, $state = [])
+ *
  * @property-read Tenant|null $tenant
+ *
  * @mixin \Eloquent
  */
 class TenantSubscription extends BaseModel
