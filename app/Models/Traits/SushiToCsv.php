@@ -84,9 +84,6 @@ trait SushiToCsv
         });
     }
 
-    /**
-     * @param  self  $model
-     */
     private static function handleCsvCreating(self $model): void
     {
         /** @var int $maxId */
@@ -104,9 +101,6 @@ trait SushiToCsv
         $writer->insertOne(self::buildCsvItemFromData($modelData, $model->getCsvHeader()));
     }
 
-    /**
-     * @param  self  $model
-     */
     private static function handleCsvUpdating(self $model): void
     {
         $rowsByKey = self::keyRowsById($model->getSushiRows());
@@ -127,9 +121,6 @@ trait SushiToCsv
         self::writeCsvFromRows($model, $typedRowsByKey, array_keys($mergedRow));
     }
 
-    /**
-     * @param  self  $model
-     */
     private static function handleCsvDeleting(self $model): void
     {
         $rowsByKey = self::keyRowsById($model->getSushiRows());
@@ -142,7 +133,6 @@ trait SushiToCsv
 
     /**
      * @param  array<int, array<string, mixed>>  $rows
-     *
      * @return array<int|string, array<string, mixed>>
      */
     private static function keyRowsById(array $rows): array
@@ -187,7 +177,6 @@ trait SushiToCsv
     /**
      * @param  array<string, mixed>  $data
      * @param  list<string>  $header
-     *
      * @return array<string, float|int|string|null>
      */
     private static function buildCsvItemFromData(array $data, array $header): array
@@ -221,7 +210,6 @@ trait SushiToCsv
 
     /**
      * @param  array<int|string, array<string, mixed>>  $rowsByKey
-     *
      * @return list<array<string, float|int|string|Stringable|null>>
      */
     private static function normalizeRowsForCsv(array $rowsByKey): array

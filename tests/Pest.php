@@ -3,12 +3,15 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
+use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Models\Tenant;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
-use function Safe\json_decode;
 use Webmozart\Assert\Assert as WebmozartAssert;
+
+use function Safe\json_decode;
 
 /*
  * Bootstrap Pest — modulo Tenant.
@@ -18,7 +21,6 @@ use Webmozart\Assert\Assert as WebmozartAssert;
 
 /**
  * @param  array<array-key, mixed>  $rows
- *
  * @return array<string, mixed>
  */
 function sushiRowById(array $rows, int|string $id): array
@@ -50,13 +52,13 @@ function assertTenantArray(mixed $value): array
 }
 
 /**
- * @param  class-string<\Throwable>  $exceptionClass
+ * @param  class-string<Throwable>  $exceptionClass
  */
 function assertTenantThrows(callable $callback, string $exceptionClass, ?string $messageContains = null): void
 {
     try {
         $callback();
-    } catch (\Throwable $exception) {
+    } catch (Throwable $exception) {
         Assert::assertInstanceOf($exceptionClass, $exception);
         if ($messageContains !== null) {
             Assert::assertStringContainsString($messageContains, $exception->getMessage());
@@ -73,7 +75,6 @@ function assertTenantThrows(callable $callback, string $exceptionClass, ?string 
  *
  * @param  T  $model
  * @param  class-string<T>  $class
- *
  * @return T
  */
 function assertFreshModel(Model $model, string $class)
@@ -87,7 +88,7 @@ function assertFreshModel(Model $model, string $class)
 /** @param array<string, mixed> $attributes */
 function createTenant(array $attributes = []): Tenant
 {
-    /** @var \Modules\Tenant\Database\Factories\TenantFactory $factory */
+    /** @var TenantFactory $factory */
     $factory = Tenant::factory();
     $tenant = $factory->create($attributes);
     WebmozartAssert::isInstanceOf($tenant, Tenant::class);
@@ -98,7 +99,7 @@ function createTenant(array $attributes = []): Tenant
 /** @param array<string, mixed> $attributes */
 function makeTenant(array $attributes = []): Tenant
 {
-    /** @var \Modules\Tenant\Database\Factories\TenantFactory $factory */
+    /** @var TenantFactory $factory */
     $factory = Tenant::factory();
     $tenant = $factory->make($attributes);
     WebmozartAssert::isInstanceOf($tenant, Tenant::class);
@@ -111,7 +112,7 @@ function makeTenant(array $attributes = []): Tenant
  */
 function decodeTenantJsonFile(string $path): array
 {
-    $content = \Illuminate\Support\Facades\File::get($path);
+    $content = File::get($path);
     $decoded = json_decode($content, true);
     Assert::assertIsArray($decoded);
 

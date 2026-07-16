@@ -8,8 +8,8 @@ use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
 use Mockery;
-use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Tests\TestCase;
 
 use function Safe\json_decode;
@@ -28,7 +28,7 @@ function writeSushiJsonFile(string $path, array $data): void
 }
 
 beforeEach(function (): void {
-    $this->model = new TestSushiModel;
+    $this->model = new TestSushiModel();
     $this->testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     if (File::exists($this->testJsonPath)) {

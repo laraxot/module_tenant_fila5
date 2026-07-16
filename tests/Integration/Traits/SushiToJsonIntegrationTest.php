@@ -6,8 +6,8 @@ namespace Modules\Tenant\Tests\Integration\Traits;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
-use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Tests\TestCase;
 
 use function Safe\json_encode;
@@ -32,7 +32,7 @@ beforeEach(function (): void {
 
     $this->setCurrentTenant($this->tenantModel());
 
-    $this->model = new TestSushiModel;
+    $this->model = new TestSushiModel();
     $this->testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     if (File::exists($this->testJsonPath)) {
@@ -121,7 +121,7 @@ it('works with different tenant configurations', function (): void {
 
     $this->setCurrentTenant($secondTenant);
 
-    $secondModel = new TestSushiModel;
+    $secondModel = new TestSushiModel();
     $secondJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     expect($secondModel->saveToJson([

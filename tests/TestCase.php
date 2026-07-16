@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Mockery\Expectation;
 use Mockery\MockInterface;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Models\BaseModel;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Providers\TenantServiceProvider;
-use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\User\Providers\UserServiceProvider;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Modules\Xot\Tests\XotBaseTestCase;
@@ -55,7 +55,7 @@ abstract class TestCase extends XotBaseTestCase
     {
         parent::setUp();
 
-        $this->model = new TestSushiModel;
+        $this->model = new TestSushiModel();
         $this->createTestData = static fn (): array => [];
     }
 
