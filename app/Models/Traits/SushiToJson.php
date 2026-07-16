@@ -421,7 +421,7 @@ trait SushiToJson
     }
 
     /**
-     * @param  array<string, mixed> $schema
+     * @param  array<string, mixed>  $schema
      * @return array<string, mixed>
      */
     protected function normalizeSchemaFields(array $schema): array
@@ -431,7 +431,7 @@ trait SushiToJson
 
     /**
      * @param  array<int, array<string, mixed>>  $normalizedData
-     * @param  array<string, mixed> $form
+     * @param  array<string, mixed>  $form
      * @return array<int, array<string, mixed>>
      */
     protected function completeSchemaFields(array $normalizedData, array $form): array

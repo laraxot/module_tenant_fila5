@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Schema;
-use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
+use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
 use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 use Nwidart\Modules\Facades\Module;
@@ -133,7 +133,6 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
     /**
      * @param  array<string, mixed>  $data
-     *
      * @return array<string, mixed>
      */
     private function mergeModuleConnections(array $data, string $defaultConnection): array
@@ -173,7 +172,6 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
     /**
      * @param  array<string, mixed>  $map
-     *
      * @return array<string, class-string<Model>>
      */
     private function buildMorphMap(array $map): array
