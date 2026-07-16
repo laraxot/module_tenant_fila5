@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Modules\Tenant\Tests\Feature;
+
 use Modules\Tenant\Database\Factories\TenantDomainFactory;
 use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Database\Factories\TenantSettingFactory;
@@ -64,6 +66,7 @@ it('can create and manage tenants', function (): void {
     ]);
     Assert::assertInstanceOf(Tenant::class, $tenant);
 
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenants', [
         'id' => $tenant->id,
         'name' => 'Test Studio',
@@ -86,6 +89,7 @@ it('can manage tenant domains', function (): void {
     ]);
     Assert::assertInstanceOf(TenantDomain::class, $domain);
 
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenant_domains', [
         'id' => $domain->id,
         'tenant_id' => $tenant->id,
@@ -109,6 +113,7 @@ it('can manage tenant settings', function (): void {
         'type' => 'string',
     ]);
 
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenant_settings', [
         'id' => $setting->id,
         'tenant_id' => $tenant->id,
@@ -135,6 +140,7 @@ it('can manage tenant subscriptions', function (): void {
         'max_storage_gb' => 100,
     ]);
 
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenant_subscriptions', [
         'id' => $subscription->id,
         'tenant_id' => $tenant->id,
@@ -160,10 +166,12 @@ it('can validate tenant slug uniqueness', function (): void {
         'slug' => 'studio-b',
     ]);
 
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenants', [
         'id' => $tenant1->id,
         'slug' => 'studio-a',
     ]);
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenants', [
         'id' => $tenant2->id,
         'slug' => 'studio-b',
@@ -206,6 +214,7 @@ it('can handle tenant domain verification', function (): void {
         'verification_token' => 'abc123',
     ]);
 
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenant_domains', [
         'id' => $domain->id,
         'status' => 'pending_verification',
@@ -234,6 +243,7 @@ it('can manage tenant storage limits', function (): void {
         'current_storage_gb' => 25,
     ]);
 
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenant_subscriptions', [
         'id' => $subscription->id,
         'max_storage_gb' => 100,
@@ -259,6 +269,7 @@ it('can manage tenant user limits', function (): void {
         'current_users' => 10,
     ]);
 
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenant_subscriptions', [
         'id' => $subscription->id,
         'max_users' => 50,
@@ -284,6 +295,7 @@ it('can handle tenant subscription expiration', function (): void {
         'expires_at' => now()->subDays(1),
     ]);
 
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenant_subscriptions', [
         'id' => $subscription->id,
         'status' => 'active',
@@ -320,14 +332,17 @@ it('can manage tenant settings hierarchy', function (): void {
         'type' => 'string',
     ]);
 
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenant_settings', [
         'id' => $appSetting->id,
         'key' => 'app.name',
     ]);
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenant_settings', [
         'id' => $databaseSetting->id,
         'key' => 'database.connection',
     ]);
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenant_settings', [
         'id' => $mailSetting->id,
         'key' => 'mail.driver',
@@ -354,6 +369,7 @@ it('can validate tenant domain formats', function (): void {
             'status' => 'active',
         ]);
         Assert::assertSame($domain, $tenantDomain->domain);
+        /** @var TestCase $this */
         $this->assertDatabaseHasRow('tenant_domains', [
             'id' => $tenantDomain->id,
             'domain' => $domain,
@@ -384,6 +400,7 @@ it('can manage tenant billing cycles', function (): void {
         'next_billing_date' => now()->addMonth(),
     ]);
 
+    /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenant_subscriptions', [
         'id' => $subscription->id,
         'billing_cycle' => 'monthly',
