@@ -99,7 +99,7 @@ jobs:
           echo "![contributors](charts/contributors.svg)" >> "$OUT/README.md"
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: contributor-analytics
           path: docs/outputs/contributor-analytics/
