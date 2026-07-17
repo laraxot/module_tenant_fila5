@@ -20,10 +20,12 @@ uses(TestCase::class);
 beforeEach(function (): void {
     /** @var TestCase $this */
     // Crea un tenant di test
-    $this->tenant = TenantFactory::new()->createOne([
+    $createdTenant = TenantFactory::new()->createOne([
         'name' => 'test-tenant',
         'domain' => 'test.example.com',
     ]);
+    Assert::assertInstanceOf(Tenant::class, $createdTenant);
+    $this->tenant = $createdTenant;
 
     // Imposta il tenant corrente
     $this->setCurrentTenant($this->tenantModel());
@@ -322,10 +324,12 @@ describe('Sushi To Json Trait Integration', function (): void {
     test('works with different tenant configurations', function (): void {
         /** @var TestCase $this */
         // Crea un secondo tenant per testare l'isolamento
-        $this->secondTenant = TenantFactory::new()->createOne([
+        $createdSecondTenant = TenantFactory::new()->createOne([
             'name' => 'second-tenant',
             'domain' => 'second.example.com',
         ]);
+        Assert::assertInstanceOf(Tenant::class, $createdSecondTenant);
+        $this->secondTenant = $createdSecondTenant;
 
         // Imposta il secondo tenant come corrente
         $this->setCurrentTenant($this->secondTenantModel());
