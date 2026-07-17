@@ -3,7 +3,7 @@ title: "PHPStan fix patterns for Tenant module"
 type: troubleshooting
 tags: [phpstan, static-analysis, pest, mockery, tenant]
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-07-16
 qmd: "phpstan fix patterns tenant module mockService allows factory WebmozartAssert"
 related:
   - ../../../../../docs/wiki/PHPSTAN-INDEX.md
@@ -66,6 +66,7 @@ Fix trait associati: return type `getSushiRows()` / `getCsvHeader()` in `SushiTo
 | `Tenant::factory()->create()` → `mixed` | `@var TenantFactory $factory` + `WebmozartAssert::isInstanceOf()` |
 | `Tests\TestCase` (root Laravel) | `Modules\Tenant\Tests\TestCase` |
 | `assertDatabaseHas()` protetto | `$this->assertDatabaseHasRow()` |
+| Helper generic su `Model::fresh()` | `@template T of Model`, `class-string<T>`, `@return T`; return nativo `Model` |
 
 ### Test rimossi (ridondanti / rotti)
 
