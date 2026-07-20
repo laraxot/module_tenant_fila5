@@ -27,9 +27,6 @@ final class MergeRecursiveStringKeyConfigAction
             );
         }
 
-        /** @var array<string, mixed> $filtered */
-        $filtered = app(FilterConfigStringKeysAction::class)->execute($merged);
-
-        return $filtered;
+        return app(FilterConfigStringKeysAction::class)->execute($merged);
     }
 }

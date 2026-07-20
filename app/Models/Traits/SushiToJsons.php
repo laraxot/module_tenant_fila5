@@ -12,11 +12,12 @@ use Exception;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use ReflectionObject;
-use Sushi\Sushi;
-use Webmozart\Assert\Assert;
 
 use function Safe\json_encode;
 use function Safe\unlink;
+
+use Sushi\Sushi;
+use Webmozart\Assert\Assert;
 
 trait SushiToJsons
 {

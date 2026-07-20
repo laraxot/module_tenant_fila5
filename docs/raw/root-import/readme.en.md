@@ -2,10 +2,10 @@
 title: "Tenant"
 module: "Tenant"
 type: concept
-tags: [readme.en]
+tags: [readme.en, renamed]
 created: 2026-07-14
 updated: 2026-07-14
-qmd: "readme.en"
+qmd: "readme.en renamed"
 related:
   - "./phpstan-corrections-january.md"
 ---
