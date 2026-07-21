@@ -35,26 +35,7 @@ class ResolveTenantConfigValueAction
             throw new Exception('['.__LINE__.']['.class_basename(self::class).']');
         }
 
-<<<<<<< HEAD
         $mergeConf = $this->buildMergedGroupConfig($group);
-=======
-        $originalConf = config($group);
-        $tenantName = app(GetTenantNameAction::class)->execute();
-
-        $configName = str_replace('/', '.', $tenantName).'.'.$group;
-        $extraConf = config($configName);
-
-        if (! \is_array($originalConf)) {
-            $originalConf = [];
-        }
-
-        if (! \is_array($extraConf)) {
-            $extraConf = [];
-        }
-
-        $mergeConf = array_replace_recursive($originalConf, $extraConf);
-
->>>>>>> provtv/dev
         Config::set($group, $mergeConf);
 
         return $this->assertValidConfigValue(config($key, $defaultValue));
