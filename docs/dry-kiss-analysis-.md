@@ -29,4 +29,8 @@ abstract class BaseModel extends XotBaseModel
 - 🔄 ServiceProvider: Auto-detect nome
 
 ---
+<<<<<<< HEAD
 [DRY/KISS Global](../../docs/DRY_KISS_ANALYSIS_2025-10-15.md)
+=======
+[DRY/KISS Global](../../../docs/dry_kiss_analysis_2025-10-15.md)
+>>>>>>> provtv/dev

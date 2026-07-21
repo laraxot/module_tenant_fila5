@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Laravel Passport Configuration (Version 13.4.x)"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "passport"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> provtv/dev
 # Laravel Passport Configuration (Version 13.4.x)
 
 ## Overview

@@ -12,7 +12,15 @@ use Symfony\Component\Finder\SplFileInfo;
 
 uses(TestCase::class);
 
+<<<<<<< HEAD
 it('gets tenant config names', function (): void {
+=======
+it('gets tenant config names', function(): void {
+    $action = app(GetTenantConfigNamesAction::class);
+
+    // We can't easily mock config_path() as it's a global helper,
+    // but we can mock File::files()
+>>>>>>> provtv/dev
     $file1 = mock(SplFileInfo::class);
     $file1->allows([
         'getExtension' => 'php',

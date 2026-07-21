@@ -12,11 +12,18 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
+<<<<<<< HEAD
 it('gets tenant file path', function (): void {
     /** @var TestCase $this */
     $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'test-tenant']);
     });
+=======
+it('gets tenant file path', function(): void {
+    $this->mock(GetTenantNameAction::class)
+        ->shouldReceive('execute')
+        ->andReturn('test-tenant');
+>>>>>>> provtv/dev
 
     $result = app(GetTenantFilePathAction::class)->execute('database.php');
 

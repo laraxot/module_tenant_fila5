@@ -2,7 +2,13 @@
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 namespace Modules\Tenant\Tests\Feature;
+=======
+uses(TestCase::class);
+
+uses(TestCase::class);
+>>>>>>> provtv/dev
 
 use Modules\Tenant\Database\Factories\TenantDomainFactory;
 use Modules\Tenant\Database\Factories\TenantFactory;
@@ -13,7 +19,10 @@ use Modules\Tenant\Models\TenantDomain;
 use Modules\Tenant\Models\TenantSetting;
 use Modules\Tenant\Models\TenantSubscription;
 use Modules\Tenant\Tests\TestCase;
+<<<<<<< HEAD
 use Modules\User\Database\Factories\UserFactory;
+=======
+>>>>>>> provtv/dev
 use Modules\User\Models\User;
 use PHPUnit\Framework\Assert;
 
@@ -55,9 +64,16 @@ function createTenantSubscriptionRecord(array $attributes = []): TenantSubscript
     return $subscription;
 }
 
+<<<<<<< HEAD
 it('can create and manage tenants', function (): void {
     $user = UserFactory::new()->createOne();
     Assert::assertInstanceOf(User::class, $user);
+=======
+it('can create and manage tenants', function(): void {
+    // Arrange
+    $user = User::factory()->create();
+    Assert::isInstanceOf($user, User::class);
+>>>>>>> provtv/dev
 
     $tenant = TenantFactory::new()->createOne([
         'name' => 'Test Studio',
@@ -77,9 +93,16 @@ it('can create and manage tenants', function (): void {
     Assert::assertTrue($tenant->is_active);
 });
 
+<<<<<<< HEAD
 it('can manage tenant domains', function (): void {
     $tenant = createTenantRecord();
     Assert::assertInstanceOf(Tenant::class, $tenant);
+=======
+it('can manage tenant domains', function(): void {
+    // Arrange
+    $tenant = Tenant::factory()->create();
+    Assert::isInstanceOf($tenant, Tenant::class);
+>>>>>>> provtv/dev
 
     $domain = createTenantDomainRecord([
         'tenant_id' => $tenant->id,
@@ -103,8 +126,14 @@ it('can manage tenant domains', function (): void {
     Assert::assertSame('active', $domain->status);
 });
 
+<<<<<<< HEAD
 it('can manage tenant settings', function (): void {
     $tenant = createTenantRecord();
+=======
+it('can manage tenant settings', function(): void {
+    // Arrange
+    $tenant = Tenant::factory()->create();
+>>>>>>> provtv/dev
 
     $setting = createTenantSettingRecord([
         'tenant_id' => $tenant->id,
@@ -127,8 +156,14 @@ it('can manage tenant settings', function (): void {
     Assert::assertSame('string', $setting->type);
 });
 
+<<<<<<< HEAD
 it('can manage tenant subscriptions', function (): void {
     $tenant = createTenantRecord();
+=======
+it('can manage tenant subscriptions', function(): void {
+    // Arrange
+    $tenant = Tenant::factory()->create();
+>>>>>>> provtv/dev
 
     $subscription = createTenantSubscriptionRecord([
         'tenant_id' => $tenant->id,
@@ -156,8 +191,14 @@ it('can manage tenant subscriptions', function (): void {
     Assert::assertSame(100, $subscription->max_storage_gb);
 });
 
+<<<<<<< HEAD
 it('can validate tenant slug uniqueness', function (): void {
     $tenant1 = createTenantRecord([
+=======
+it('can validate tenant slug uniqueness', function(): void {
+    // Arrange & Act
+    $tenant1 = Tenant::factory()->create([
+>>>>>>> provtv/dev
         'name' => 'Studio A',
         'slug' => 'studio-a',
     ]);
@@ -181,9 +222,15 @@ it('can validate tenant slug uniqueness', function (): void {
     Assert::assertSame('studio-b', $tenant2->slug);
 });
 
+<<<<<<< HEAD
 it('can manage tenant status workflow', function (): void {
     /** @var Tenant $tenant */
     $tenant = createTenantRecord([
+=======
+it('can manage tenant status workflow', function(): void {
+    // Arrange - tenant inattivo
+    $tenant = Tenant::factory()->create([
+>>>>>>> provtv/dev
         'is_active' => false,
     ]);
 
@@ -203,8 +250,14 @@ it('can manage tenant status workflow', function (): void {
     Assert::assertTrue($freshActiveAgain->is_active);
 });
 
+<<<<<<< HEAD
 it('can handle tenant domain verification', function (): void {
     $tenant = createTenantRecord();
+=======
+it('can handle tenant domain verification', function(): void {
+    // Arrange
+    $tenant = Tenant::factory()->create();
+>>>>>>> provtv/dev
 
     $domain = createTenantDomainRecord([
         'tenant_id' => $tenant->id,
@@ -235,9 +288,16 @@ it('can handle tenant domain verification', function (): void {
     Assert::assertNull($domainFresh->verification_token);
 });
 
+<<<<<<< HEAD
 it('can manage tenant storage limits', function (): void {
     $tenant = createTenantRecord();
     $subscription = createTenantSubscriptionRecord([
+=======
+it('can manage tenant storage limits', function(): void {
+    // Arrange
+    $tenant = Tenant::factory()->create();
+    $subscription = TenantSubscription::factory()->create([
+>>>>>>> provtv/dev
         'tenant_id' => $tenant->id,
         'max_storage_gb' => 100,
         'current_storage_gb' => 25,
@@ -261,9 +321,16 @@ it('can manage tenant storage limits', function (): void {
     Assert::assertSame(50, $subFresh->max_storage_gb - $subFresh->current_storage_gb);
 });
 
+<<<<<<< HEAD
 it('can manage tenant user limits', function (): void {
     $tenant = createTenantRecord();
     $subscription = createTenantSubscriptionRecord([
+=======
+it('can manage tenant user limits', function(): void {
+    // Arrange
+    $tenant = Tenant::factory()->create();
+    $subscription = TenantSubscription::factory()->create([
+>>>>>>> provtv/dev
         'tenant_id' => $tenant->id,
         'max_users' => 50,
         'current_users' => 10,
@@ -287,9 +354,16 @@ it('can manage tenant user limits', function (): void {
     Assert::assertSame(25, $subFresh->max_users - $subFresh->current_users);
 });
 
+<<<<<<< HEAD
 it('can handle tenant subscription expiration', function (): void {
     $tenant = createTenantRecord();
     $subscription = createTenantSubscriptionRecord([
+=======
+it('can handle tenant subscription expiration', function(): void {
+    // Arrange
+    $tenant = Tenant::factory()->create();
+    $subscription = TenantSubscription::factory()->create([
+>>>>>>> provtv/dev
         'tenant_id' => $tenant->id,
         'status' => 'active',
         'expires_at' => now()->subDays(1),
@@ -310,8 +384,14 @@ it('can handle tenant subscription expiration', function (): void {
     Assert::assertSame('expired', $subFresh->status);
 });
 
+<<<<<<< HEAD
 it('can manage tenant settings hierarchy', function (): void {
     $tenant = createTenantRecord();
+=======
+it('can manage tenant settings hierarchy', function(): void {
+    // Arrange
+    $tenant = Tenant::factory()->create();
+>>>>>>> provtv/dev
 
     $appSetting = createTenantSettingRecord([
         'tenant_id' => $tenant->id,
@@ -352,8 +432,14 @@ it('can manage tenant settings hierarchy', function (): void {
     Assert::assertSame('mail.driver', $mailSetting->key);
 });
 
+<<<<<<< HEAD
 it('can validate tenant domain formats', function (): void {
     $tenant = createTenantRecord();
+=======
+it('can validate tenant domain formats', function(): void {
+    // Arrange
+    $tenant = Tenant::factory()->create();
+>>>>>>> provtv/dev
 
     $validDomains = [
         'example.com',
@@ -377,8 +463,14 @@ it('can validate tenant domain formats', function (): void {
     }
 });
 
+<<<<<<< HEAD
 it('can track tenant activity', function (): void {
     $tenant = createTenantRecord([
+=======
+it('can track tenant activity', function(): void {
+    // Arrange
+    $tenant = Tenant::factory()->create([
+>>>>>>> provtv/dev
         'created_at' => now()->subMonths(3),
         'last_activity_at' => now()->subDays(5),
     ]);
@@ -391,9 +483,16 @@ it('can track tenant activity', function (): void {
     Assert::assertTrue($fresh->last_activity_at->isToday());
 });
 
+<<<<<<< HEAD
 it('can manage tenant billing cycles', function (): void {
     $tenant = createTenantRecord();
     $subscription = createTenantSubscriptionRecord([
+=======
+it('can manage tenant billing cycles', function(): void {
+    // Arrange
+    $tenant = Tenant::factory()->create();
+    $subscription = TenantSubscription::factory()->create([
+>>>>>>> provtv/dev
         'tenant_id' => $tenant->id,
         'billing_cycle' => 'monthly',
         'billing_amount' => 99.99,

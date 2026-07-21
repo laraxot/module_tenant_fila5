@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Skills Index"
 type: index
@@ -43,3 +44,22 @@ Le Skills progettuali vivono qui, nel wiki del Module **Tenant**, e vengono cari
 3. Aggiorna questo indice se la Skills e' ricorrente
 4. Committa: `docs: add skills <nome>`
 
+=======
+# Tenant Module - skills Index
+
+## Purpose
+Index for Tenant module skills.
+
+## On-Demand Loading
+
+```bash
+qmd search "Tenant skills" --limit 5
+```
+
+## See Also
+- [Root Trigger Map](../../../../../docs/wiki/rules/00-TRIGGER_MAP.md)
+- [Root Wiki](../../../docs/wiki/)
+
+---
+*Updated: 2026-05-11*
+>>>>>>> provtv/dev

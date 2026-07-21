@@ -1,14 +1,18 @@
 ---
-title: "Activity Log"
+title: "Tenant Wiki Activity Log"
 module: "Tenant"
 ---
 
-# Activity Log — Tenant
+# Tenant - Wiki Activity Log
 
-> **Purpose:** Append-only chronological activity record tracking ingests, queries, and lint passes.
+## [2026-05-11] Wiki Structure Created
 
-## Log Entries
+- Created wiki structure: rules/, skills/, commands/, memories/, concepts/
+- Created INDEX.md for each section
+- Created module index.md
+- Ready for on-demand loading via QMD
 
+<<<<<<< HEAD
 ## [2026-07-01] [INGEST] Database factories — rimossa `Factories_/`
 
 - Regola generica: [database-folder-lowercase-rule.md](../../../../../docs/wiki/concepts/database-folder-lowercase-rule.md)
@@ -39,3 +43,5 @@ module: "Tenant"
 
 **Last Activity:** 2026-07-01  
 **Total Operations:** 2
+=======
+>>>>>>> provtv/dev

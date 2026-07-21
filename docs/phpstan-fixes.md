@@ -139,6 +139,7 @@ beforeEach(function (): void {
 *Last Updated: 2025-10-13*
 *Progress: 71% complete (24 errors remaining)*
 *Module Status: Partial completion - major issues resolved*
+<<<<<<< HEAD
 # PHPStan Analysis Report and Fix Plan for Tenant Module
 
 **Date:** December 23, 2025
@@ -210,3 +211,5 @@ The `Tenant` module currently has 689 PHPStan errors spread across several test 
 5.  **Commit:** Once a file/logical set of files is completely clean, commit the changes.
 
 This systematic approach will ensure that all PHPStan errors in the `Tenant` module are addressed while maintaining code quality standards.
+=======
+>>>>>>> provtv/dev

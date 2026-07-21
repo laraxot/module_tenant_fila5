@@ -8,8 +8,14 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use InvalidArgumentException;
+<<<<<<< HEAD
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+=======
+use Modules\Tenant\Services\TenantService;
+use Sushi\Sushi;
+use Throwable;
+>>>>>>> provtv/dev
 
 use function Safe\file_get_contents;
 use function Safe\json_decode;
@@ -193,6 +199,7 @@ trait SushiToJson
      */
     protected static function bootSushiToJson(): void
     {
+<<<<<<< HEAD
         static::creating(static function ($model): void {
             Assert::isInstanceOf($model, static::class);
             self::handleSingleJsonCreating($model);
@@ -206,6 +213,99 @@ trait SushiToJson
         static::deleting(static function ($model): void {
             Assert::isInstanceOf($model, static::class);
             self::handleSingleJsonDeleting($model);
+=======
+        static::creating(function ($model): void {
+            /** @var static $modelWithTrait */
+            $modelWithTrait = $model;
+            $file = $modelWithTrait->getJsonFile();
+
+            // Load existing data and compute next ID
+            $existingData = $modelWithTrait->loadExistingData();
+            $rows = $existingData;
+            $maxIdFromFile = 0;
+            foreach ($rows as $r) {
+                if (! \is_array($r)) {
+                    continue;
+                }
+                $rawId = $r['id'] ?? 0;
+                $id = \is_numeric($rawId) ? ((int) $rawId) : 0;
+                $maxIdFromFile = max($maxIdFromFile, $id);
+            }
+            // Safely read current max id from table (Sushi in-memory)
+            $maxIdFromDb = 0;
+            try {
+                /** @var int|null $dbMax */
+                $dbMax = static::query()->max('id');
+                if (\is_int($dbMax)) {
+                    $maxIdFromDb = $dbMax;
+                }
+            } catch (Throwable) {
+                // ignore if table not initialized yet
+            }
+
+            $nextId = max($maxIdFromFile, $maxIdFromDb) + 1;
+            $modelWithTrait->setAttribute('id', $nextId);
+            $modelWithTrait->setAttribute('updated_at', now());
+            $modelWithTrait->setAttribute('created_at', now());
+
+            // Set audit fields if available via helper
+            $authId = $modelWithTrait->authId();
+            if ($authId !== null) {
+                $modelWithTrait->setAttribute('updated_by', $authId);
+                $modelWithTrait->setAttribute('created_by', $authId);
+            }
+
+            // Add new record to existing data
+            $existingData[] = $modelWithTrait->getAttributes();
+
+            // Ensure directory exists and save
+            $modelWithTrait->ensureDirectoryExists($file);
+            $modelWithTrait->saveToJson($existingData);
+        });
+
+        static::updating(function ($model): void {
+            /** @var static $modelWithTrait */
+            $modelWithTrait = $model;
+            $modelWithTrait->setAttribute('updated_at', now());
+
+            // Set audit fields if available via helper
+            $authId = $modelWithTrait->authId();
+            if ($authId !== null) {
+                $modelWithTrait->setAttribute('updated_by', $authId);
+            }
+
+            // Update existing record
+            $existingData = $modelWithTrait->loadExistingData();
+            $id = (int) ($modelWithTrait->getAttribute('id') ?? 0);
+
+            if ($id > 0) {
+                $index = $modelWithTrait->findRowIndexById($existingData, $id);
+                if ($index !== null) {
+                    /** @var array<string, mixed> $modelArray */
+                    $modelArray = $modelWithTrait->toArray();
+                    $existingData[$index] = $modelArray;
+
+                    $modelWithTrait->saveToJson($existingData);
+                }
+            }
+        });
+
+        static::deleting(function ($model): void {
+            /** @var static $modelWithTrait */
+            $modelWithTrait = $model;
+            $id = (int) ($modelWithTrait->getAttribute('id') ?? 0);
+
+            if ($id > 0) {
+                $existingData = $modelWithTrait->loadExistingData();
+                $index = $modelWithTrait->findRowIndexById($existingData, $id);
+
+                if ($index !== null) {
+                    unset($existingData[$index]);
+                    $existingData = array_values($existingData);
+                    $modelWithTrait->saveToJson($existingData);
+                }
+            }
+>>>>>>> provtv/dev
         });
     }
 

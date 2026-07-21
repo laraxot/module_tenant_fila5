@@ -126,7 +126,7 @@ nwidart/laravel-modules (Module facade)
 
 **Order garantito**:
 1. Xot service provider registrato
-2. Xot Helpers/Helper.php autoloaded (via `files` in composer.json)
+2. Xot helpers/Helper.php autoloaded (via `files` in composer.json)
 3. Tenant service provider registrato
 4. Tenant può usare helper functions
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module Documentation"
 type: documentation
@@ -254,11 +255,89 @@ php -d memory_limit=-1 ./vendor/bin/phpstan analyse --level=max Modules/Tenant
 - [[BMAD Method](../../../docs/wiki/concepts/bmad-method.md)]
 - [[Context Engineering](../../../docs/wiki/concepts/context-engineering.md)]
 - [[LLM Wiki Governance](../../../docs/wiki/concepts/llm-wiki-governance.md)]
+=======
+# Modulo Tenant - Multi-Tenancy
 
----
+## Overview
 
+Il modulo **Tenant** implementa l'architettura multi-tenant per isolamento completo dei dati tra diversi tenant/organizzazioni.
+
+## Architettura Multi-Tenant
+
+### Approccio: Database-per-Tenant
+
+Ogni tenant ha il proprio database isolato con naming convenzioni standardizzate.
+
+### Modelli Principali
+
+```php
+// Tenant model
+Modules\Tenant\Models\Tenant
+
+// TenantUser pivot
+Modules\Tenant\Models\TenantUser
+
+// BaseModel con scope tenant
+Modules\Tenant\Models\BaseModel extends XotBaseModel
+```
+
+## Configurazione Database
+
+### Connessioni Dinamiche
+
+```php
+// TenantServiceProvider gestisce switch automatico
+Tenant::configureConnection($tenantId);
+```
+
+### Migrations
+
+- Migrations tenant-specifiche in `database/migrations/tenant/`
+- Override `XotBaseMigration` per context switching
+
+## Filament Integration
+
+```php
+class AdminPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ->tenant(Tenant::class)
+            ->tenantRoutePrefix('admin');
+    }
+}
+```
+
+## Trait HasTenants
+
+```php
+use Modules\User\Models\Traits\HasTenants;
+
+class User extends Authenticatable
+{
+    use HasTenants;
+}
+```
+
+## Collegamenti
+
+- [Xot Base](../Xot/docs/)
+- [User Module](../User/docs/)
+- [Database Switching](./database-switching.md)
+>>>>>>> provtv/dev
+
+## Backlinks
+
+<<<<<<< HEAD
 **Status**: ✅ Production  
 **Last Updated**: 2026-07-14  
 **Requirements**: PHP 8.3+, Laravel 12  
 **PHPStan Level**: 10 (Target)
 **Security Review**: Completed 2026-Q2
+=======
+- [Configurazione Root](../../../docs/TENANT_MODULE.md)
+
+## AI Workflows
+- [AI Methodologies](./ai-methodologies.md)
+>>>>>>> provtv/dev

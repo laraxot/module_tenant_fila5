@@ -176,7 +176,7 @@ protected function createApplication()
     $app = parent::createApplication();
     
     $app['config']->set([
-        'database.connections.tenant.database' => 'quaeris_data_test',
+        'database.connections.tenant.database' => '<nome progetto>_data_test',
     ]);
     
     return $app;
@@ -262,9 +262,9 @@ protected function createApplication()
 
 ### Internal Resources
 
-- [Testing Setup Guide](../../docs/testing-setup.md)
-- [Testing Best Practices](../../docs/testing-best-practices.md)
-- [Troubleshooting Guide](../../docs/troubleshooting.md)
+- [Testing Setup Guide](../../../docs/testing-setup.md)
+- [Testing Best Practices](../../../docs/testing-best-practices.md)
+- [Troubleshooting Guide](../../../docs/troubleshooting.md)
 
 ## Testing Examples
 

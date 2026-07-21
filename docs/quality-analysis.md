@@ -1,6 +1,10 @@
 # Analisi Qualità - Modulo Tenant
 
+<<<<<<< HEAD
 **Ultimo aggiornamento**: 2025-01-27
+=======
+**Ultimo aggiornamento**: [DATE]
+>>>>>>> provtv/dev
 **Tool utilizzati**: PHPStan (Level 9), PHPMD, PHPInsights, Pint
 
 ---

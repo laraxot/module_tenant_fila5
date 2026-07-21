@@ -12,7 +12,7 @@ use function Safe\realpath;
 
 uses(TestCase::class);
 
-it('returns real path when requested public path exists', function (): void {
+it('returns real path when requested public path exists', function(): void {
     $root = sys_get_temp_dir().'/appcov-'.uniqid('', true);
     $basePath = $root.'/laravel';
     $publicDir = $root.'/public_html';
@@ -27,7 +27,7 @@ it('returns real path when requested public path exists', function (): void {
     expect($result)->toBe(realpath($assetDir));
 });
 
-it('returns base real path plus requested segment when segment does not exist', function (): void {
+it('returns base real path plus requested segment when segment does not exist', function(): void {
     $root = sys_get_temp_dir().'/appcov-'.uniqid('', true);
     $basePath = $root.'/laravel';
     $publicDir = $root.'/public_html';
@@ -41,7 +41,7 @@ it('returns base real path plus requested segment when segment does not exist', 
     expect($result)->toBe(realpath($publicDir).'/missing/file.txt');
 });
 
-it('returns plain fallback path when public_html base path does not exist', function (): void {
+it('returns plain fallback path when public_html base path does not exist', function(): void {
     $root = sys_get_temp_dir().'/appcov-'.uniqid('', true);
     $basePath = $root.'/laravel';
 

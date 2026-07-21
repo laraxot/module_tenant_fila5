@@ -12,6 +12,7 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
+<<<<<<< HEAD
 describe('Tenant Additional Actions Coverage', function (): void {
     test('GetTenantModulesAction is accessible', function (): void {
         Assert::assertInstanceOf(GetTenantModulesAction::class, app(GetTenantModulesAction::class));
@@ -35,5 +36,30 @@ describe('Tenant Additional Actions Coverage', function (): void {
 
     test('ResolveTenantModelInstanceAction has execute method', function (): void {
         Assert::assertTrue(method_exists(app(ResolveTenantModelInstanceAction::class), 'execute'));
+=======
+describe('Tenant Additional Actions Coverage', function(): void {
+    test('GetTenantModulesAction is accessible', function(): void {
+        expect(app(GetTenantModulesAction::class))->toBeInstanceOf(GetTenantModulesAction::class);
+    });
+
+    test('TranslateTenantKeyAction is accessible', function(): void {
+        expect(app(TranslateTenantKeyAction::class))->toBeInstanceOf(TranslateTenantKeyAction::class);
+    });
+
+    test('ResolveTenantModelInstanceAction is accessible', function(): void {
+        expect(app(ResolveTenantModelInstanceAction::class))->toBeInstanceOf(ResolveTenantModelInstanceAction::class);
+    });
+
+    test('GetTenantModulesAction has execute method', function(): void {
+        expect(method_exists(app(GetTenantModulesAction::class), 'execute'))->toBeTrue();
+    });
+
+    test('TranslateTenantKeyAction has execute method', function(): void {
+        expect(method_exists(app(TranslateTenantKeyAction::class), 'execute'))->toBeTrue();
+    });
+
+    test('ResolveTenantModelInstanceAction has execute method', function(): void {
+        expect(method_exists(app(ResolveTenantModelInstanceAction::class), 'execute'))->toBeTrue();
+>>>>>>> provtv/dev
     });
 });

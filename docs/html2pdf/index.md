@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: "Html2Pdf - Panoramica e Installazione"
 module: "Tenant"
 type: concept
@@ -20,12 +21,20 @@ Questa sezione fornisce una panoramica generale della libreria Html2Pdf, le novi
 *   [Integrazione con Laravel e Best Practices](./laravel.md)
 *   [Configurazione della Sicurezza](./security.md)
 
+=======
+title: "html2pdf index — puntatore"
+type: reference
+updated: 2026-05-21
+related:
+  - "../../../Media/docs/html2pdf/index.md"
+>>>>>>> provtv/dev
 ---
 
-## 📋 Panoramica
+# Html2Pdf — index
 
-**Html2Pdf** è una libreria PHP per convertire HTML in PDF, utilizzata in Laraxot/PTVX per generare documenti PDF da template Blade. Basata su TCPDF, supporta PHP 7.2-8.4.
+Stub **DRY**. Documentazione canonica nel modulo **Media** (issue [#124](https://github.com/provtv/base_ptv_fila5_mono/issues/124)).
 
+<<<<<<< HEAD
 **Repository:** https://github.com/spipu/html2pdf
 **Licenza:** OSL-3.0
 
@@ -108,3 +117,6 @@ enum PdfEngineEnum
     case SPATIE;   // spatie/laravel-pdf (alternative)
 }
 ```
+=======
+→ [index.md](../../../Media/docs/html2pdf/index.md)
+>>>>>>> provtv/dev

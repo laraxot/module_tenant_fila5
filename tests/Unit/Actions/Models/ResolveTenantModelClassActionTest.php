@@ -15,22 +15,38 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
+<<<<<<< HEAD
 it('resolves tenant model class from config', function (): void {
     /** @var TestCase $this */
     $this->mockService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'Modules\Test\Models\TestModel']);
     });
+=======
+it('resolves tenant model class from config', function(): void {
+    $this->mock(ResolveTenantConfigValueAction::class)
+        ->shouldReceive('execute')
+        ->with('morph_map.test_model')
+        ->andReturn('Modules\Test\Models\TestModel');
+>>>>>>> provtv/dev
 
     $result = app(ResolveTenantModelClassAction::class)->execute('test_model');
 
     Assert::assertSame('Modules\Test\Models\TestModel', $result);
 });
 
+<<<<<<< HEAD
 it('resolves tenant model class by scanning modules if not in config', function (): void {
     /** @var TestCase $this */
     $this->mockService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => null]);
     });
+=======
+it('resolves tenant model class by scanning modules if not in config', function(): void {
+    $this->mock(ResolveTenantConfigValueAction::class)
+        ->shouldReceive('execute')
+        ->with('morph_map.event')
+        ->andReturn(null);
+>>>>>>> provtv/dev
 
     $module = new class
     {
@@ -55,11 +71,18 @@ it('resolves tenant model class by scanning modules if not in config', function 
     Assert::assertSame('Modules\Meetup\Models\Event', $result);
 });
 
+<<<<<<< HEAD
 it('throws exception for unknown model', function (): void {
     /** @var TestCase $this */
     $this->mockService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => null]);
     });
+=======
+it('throws exception for unknown model', function(): void {
+    $this->mock(ResolveTenantConfigValueAction::class)
+        ->shouldReceive('execute')
+        ->andReturn(null);
+>>>>>>> provtv/dev
 
     Module::shouldReceive('allEnabled')->andReturn([]);
 
