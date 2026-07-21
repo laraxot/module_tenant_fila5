@@ -7,8 +7,11 @@ namespace Modules\Tenant\Actions\Modules;
 use Exception;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+
 use function Safe\json_decode;
+
 use Spatie\QueueableAction\QueueableAction;
+
 use Throwable;
 
 class GetTenantModulesAction
@@ -40,7 +43,6 @@ class GetTenantModulesAction
 
     /**
      * @param  array<string, bool>  $json
-     *
      * @return array<int, string>
      */
     private function collectEnabledModules(array $json): array

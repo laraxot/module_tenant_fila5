@@ -17,7 +17,7 @@ use function Safe\json_encode;
 uses(TestCase::class);
 
 beforeEach(function (): void {
-    $this->model = new TestSushiModel;
+    $this->model = new TestSushiModel();
     $this->testDirectory = storage_path('tests/sushi-json');
     $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 
@@ -155,7 +155,7 @@ describe('SushiToJson Trait', function (): void {
     it('handles creating event correctly', function (): void {
         Auth::shouldReceive('id')->andReturn(1);
 
-        $model = new TestSushiModel;
+        $model = new TestSushiModel();
         $model->fill(['name' => 'New Item', 'description' => 'New Description']);
 
         expect($model->name)->toBe('New Item');

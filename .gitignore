@@ -1,37 +1,41 @@
-# ==============================================
-# LARAXOT MODULE TENANT - .GITIGNORE
-# ==============================================
-# Modulo Tenant Laraxot - Template standardizzato
-# Ultimo aggiornamento: 2025-01-06
-# ==============================================
+# Auto-generated forbidden paths — do not edit manually
+# Reason: root cleanup policy (see docs/wiki/rules/root-cleanup-policy.md)
 
+bashscripts
+_bmad-output
+.circleci
+.claude-audit
+.devcontainer
+_docs
+docs/archive
+docs/archived
+docs/legacy
+docs/workbench
+.kilocode
+.kiro
+.ralph
+scripts
+test-results
+tests/.claude-audit
 # ==============================================
-# DEPENDENCIES & PACKAGES
-# ==============================================
-vendor/
+# LARAXOT MODULE: TENANT — .gitignore
+# Grouped, deduped. See docs/wiki/rules/module-theme-root-cleanup.md
+# --- Dependencies & packages ---
 /vendor/
-node_modules/
 /node_modules/
 /docs/vendor/
 package-lock.json
 /docs/package-lock.json
 yarn.lock
-yarn-error.log
 composer.lock
-
-# ==============================================
-# BUILD & COMPILED FILES
-# ==============================================
-/build
+# --- Build & compiled ---
 /build/
-build/
 dist/
+bootstrap/compiled.php
 docs/cache/
 cache/
-
-# ==============================================
-# CACHE & TEMPORARY FILES
-# ==============================================
+docs/phpstan/
+# --- Cache & temporary ---
 *.cache
 *.lock
 *.phar
@@ -45,21 +49,13 @@ cache/
 v8-compile-cache-*
 .php-cs-fixer.cache
 .phpunit.result.cache
-
-# ==============================================
-# LOG FILES
-# ==============================================
+# --- Logs ---
 *.log
 error_log
 npm-debug.log*
-npm-debug.log
 yarn-error.log*
 lerna-debug.log*
-
-# ==============================================
-# LARAVEL SPECIFIC
-# ==============================================
-bootstrap/compiled.php
+# --- Laravel runtime ---
 app/storage/
 public/storage
 public/hot
@@ -69,26 +65,27 @@ storage/*.key
 .env
 .env.*
 !.env.example
-
-# ==============================================
-# ENVIRONMENT & CONFIGURATION
-# ==============================================
+# --- Environment & IDE ---
 Homestead.yaml
 Homestead.json
 /.vagrant
 /.idea
 .phpintel
-
-# ==============================================
-# GIT SPECIFIC
-# ==============================================
+.phpstorm.meta.php
+.windsurf/
+.cursor/
+.vscode/
+# --- Git leftovers (merge/rebase/editor) ---
 .git-rewrite/
-.git-rewrite
 .git-blame-ignore-revs
-
-# ==============================================
-# SYSTEM FILES
-# ==============================================
+*~HEAD
+*~BASE
+*~LOCAL
+*~REMOTE
+*~head
+*.orig
+*.rej
+# --- System files ---
 .DS_Store
 .DS_Store?
 ._*
@@ -96,10 +93,7 @@ Homestead.json
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# ==============================================
-# BACKUP FILES
-# ==============================================
+# --- Backup / old files ---
 *.old
 *.old1
 *.old2
@@ -108,79 +102,36 @@ Thumbs.db
 *.bak
 *.bakcup
 *.new
-
-# ==============================================
-# DEVELOPMENT TOOLS
-# ==============================================
-.windsurf/
-.cursor/
-.phpstorm.meta.php
-
-# ==============================================
-# DOCUMENTATION CACHE
-# ==============================================
-docs/phpstan/
-docs/cache/
-
-# ==============================================
-# OLD DIRECTORIES (LEGACY CLEANUP)
-# ==============================================
+# --- Legacy directories (historic cleanup) ---
 resources/views/Components_old/
-resources/views/Components_old
 database/Migrations_old/
-database/Migrations_old
 database/Seeders_old/
-database/Seeders_old
 database/Factories_old/
-database/Factories_old
 database/Factories_
 database_old/
-database_old
-
-# ==============================================
-# MODULE SPECIFIC - TENANT
-# ==============================================
-# File di configurazione locale
-config/local.php
-config/development.php
-
-# Cache tenant
-storage/tenant/
-storage/multi-tenant/
-
-# File di test tenant
-tenant_test_data.json
-test_tenants.sql
-
-# ==============================================
-# END OF TENANT .GITIGNORE
-# ==============================================
-
-# 🚫 File specifici del progetto
+Tests/
+# --- Project-specific (Tenant) ---
 *.fila2
 laravel
 public_html
 lang/lang/
-_docs/
-_docs/
-Tests/
-
-# -----------------------------------------------------------------------------
-# Copie residue da merge/rebase o editor (mai committare — es. `.agent~HEAD`, `*.md~head`)
-# -----------------------------------------------------------------------------
-*~HEAD
-*~BASE
-*~LOCAL
-*~REMOTE
-*.orig
-*.rej
-*~head
-
-
-# Second brain: no-docs-archive (wiki) — non tracciare albero legacy docs/archive/
-docs/archive/agentdb.rvf
-tests/AuditCoverage/
+config/local.php
+config/development.php
+storage/tenant/
+storage/multi-tenant/
+tenant_test_data.json
+test_tenants.sql
+# AI/TOOL SCAFFOLD — must never exist in the module tree.
+# Generated by AI agents / external CI, never part of the module domain.
+# See docs/wiki/rules/module-theme-root-cleanup.md
+# Patterns cover both module root and nested occurrences (docs/**).
 audit-coverage/
-.claude-audit/
-.vscode/
-.devcontainer/
+tests/AuditCoverage/
+docs/scripts/
+docs/bashscripts/
+docs/**/archive/
+docs/**/archived/
+docs/**/legacy/
+docs/**/workbench/
+docs/**/scripts/
+docs/**/bashscripts/

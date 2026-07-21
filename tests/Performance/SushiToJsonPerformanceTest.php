@@ -17,7 +17,7 @@ use function Safe\json_decode;
 uses(TestCase::class, DatabaseTransactions::class);
 
 beforeEach(function (): void {
-    $this->model = new TestSushiModel;
+    $this->model = new TestSushiModel();
     $this->testDirectory = storage_path('tests/sushi-json-performance');
     $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 

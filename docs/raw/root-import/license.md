@@ -1,11 +1,11 @@
 ---
-title: "License"
+title: "License Renamed"
 module: "Tenant"
 type: concept
-tags: [license]
+tags: [license, renamed]
 created: 2026-07-14
 updated: 2026-07-14
-qmd: "license"
+qmd: "license renamed"
 related:
   - "./phpstan-corrections-january.md"
 ---
