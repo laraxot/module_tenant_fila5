@@ -1,40 +1,20 @@
-# Roadmap (Module Tenant)
+# Product Roadmap - Tenant Module
 
-## Current roadmap
+## 🎯 Vision & Strategy
+Provide absolute data isolation and specialized configuration for multiple organizations (tenants) sharing the same PTVX instance.
 
-- [Overview](roadmap/00-overview.md)
-- [Now](roadmap/01-now.md)
-- [Next](roadmap/02-next.md)
-- [Later](roadmap/03-later.md)
-- [Risks and dependencies](roadmap/04-risks.md)
+## 🗓️ Timeline
+### Q1 2026: Isolation (Current)
+- **Database-Level Scoping** - *Status: Shipped*
+- **Tenant-Specific Assets** - *Status: In Progress*
+- **Tenant Onboarding Wizard** - *Status: Planned*
 
-## Legacy / existing roadmap docs
+## 🚦 Status Overview
+| Feature | Status | Owner | Target Date |
+| :--- | :--- | :--- | :--- |
+| Core Multi-tenancy | ✅ Stable | @CoreTeam | Jan 2026 |
+| Custom Domain Support | 🏗️ In Dev | @CoreTeam | Mar 2026 |
 
-- [phpstan-errors-roadmap.md](phpstan-errors-roadmap.md)
-- [phpstan-roadmap.md](phpstan-roadmap.md)
-- [roadmap/00-index.md](roadmap/00-index.md)
-- [roadmap/00-overview.md](roadmap/00-overview.md)
-- [roadmap/01-current-state.md](roadmap/01-current-state.md)
-- [roadmap/01-now.md](roadmap/01-now.md)
-- [roadmap/02-goals.md](roadmap/02-goals.md)
-- [roadmap/02-next.md](roadmap/02-next.md)
-- [roadmap/03-later.md](roadmap/03-later.md)
-- [roadmap/03-workstreams.md](roadmap/03-workstreams.md)
-- [roadmap/04-milestones.md](roadmap/04-milestones.md)
-- [roadmap/04-risks.md](roadmap/04-risks.md)
-- [roadmap/05-risks.md](roadmap/05-risks.md)
-- [roadmap/2025-q4-roadmap.md](roadmap/2025-q4-roadmap.md)
-- [roadmap/documentation-consolidation.md](roadmap/documentation-consolidation.md)
-- [roadmap/legacy-roadmap-2.md](roadmap/legacy-roadmap-2.md)
-- [roadmap/legacy-roadmap.md](roadmap/legacy-roadmap.md)
-- [roadmap/legacy/legacy-roadmap-x.md](roadmap/legacy/legacy-roadmap-x.md)
-- [roadmap/legacy/legacy-roadmap.md](roadmap/legacy/legacy-roadmap.md)
-- [roadmap/missing-models.md](roadmap/missing-models.md)
-- [roadmap/performance-optimization.md](roadmap/performance-optimization.md)
-- [roadmap/phases.md](roadmap/phases.md)
-- [roadmap/q4-roadmap.md](roadmap/q4-roadmap.md)
-- [roadmap/quality.md](roadmap/quality.md)
-- [roadmap/roadmap.md](roadmap/roadmap.md)
-- [roadmap/tenant-isolation.md](roadmap/tenant-isolation.md)
-- [roadmap/test-coverage.md](roadmap/test-coverage.md)
-- [roadmap/vision.md](roadmap/vision.md)
+## 📂 Backlog / Future Ideas
+- Cross-tenant data sharing (opt-in).
+- Tenant-specific feature flagging (integration with Pennant).
