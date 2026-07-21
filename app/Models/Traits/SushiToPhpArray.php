@@ -19,7 +19,7 @@ trait SushiToPhpArray
 
     public function getSushiRows(): array
     {
-        $name = Str::of($getTable());
+        $name = Str::of(// @var mixed getTable(;
 
         $rows = TenantService::getConfig($name);
 
@@ -31,7 +31,7 @@ trait SushiToPhpArray
          * foreach ($files as $id => $file) {
          * $json = File::json($file);
          * $item = [];
-         * foreach ($schema as $name => $type
+         * foreach (// @var mixed schema as $name => $type
          * $value = $json[$name] ?? null;
          * if (is_array($value)) {
          * $value = json_encode($value, JSON_PRETTY_PRINT);
