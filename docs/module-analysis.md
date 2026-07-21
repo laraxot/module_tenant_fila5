@@ -57,7 +57,11 @@ The Tenant module provides comprehensive multi-tenancy functionality:
 ## Integration with Other Modules
 - **User**: Tenant-user relationships
 - **Xot**: Base tenant infrastructure
+<<<<<<< .merge_file_VnQHhd
 - **healthcare_app**: Survey data per-tenant isolation
+=======
+- **ModuloEsempio**: Survey data per-tenant isolation
+>>>>>>> .merge_file_dNCcBm
 - **Limesurvey**: Tenant-specific survey access
 - **Filament**: Tenant administration interface
 
