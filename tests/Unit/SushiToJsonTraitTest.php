@@ -18,7 +18,7 @@ uses(TestCase::class);
  * Testa tutte le funzionalità del trait in isolamento,
  * utilizzando mock per le dipendenze esterne.
  */
-beforeEach(function (): void {
+beforeEach(function(): void {
     // Configura il modello di test
     $this->model = new TestSushiModel;
 
@@ -59,7 +59,7 @@ beforeEach(function (): void {
     ];
 });
 
-afterEach(function (): void {
+afterEach(function(): void {
     // Cleanup file di test
     if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
@@ -70,14 +70,23 @@ afterEach(function (): void {
     }
 });
 
+<<<<<<< Updated upstream
 describe('SushiToJson Trait', function (): void {
     it('returns correct json file path', function (): void {
+=======
+describe('SushiToJson Trait', function(): void {
+    it('returns correct json file path', function(): void {
+>>>>>>> Stashed changes
         $path = $this->model->getJsonFile();
 
         expect($path)->toBe($this->testJsonPath)->and($path)->toEndWith('test_sushi.json');
     });
 
+<<<<<<< Updated upstream
     it('loads existing data from json file', function (): void {
+=======
+    it('loads existing data from json file', function(): void {
+>>>>>>> Stashed changes
         $testData = ($this->createTestData)();
         File::put($this->testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
 
@@ -92,25 +101,37 @@ describe('SushiToJson Trait', function (): void {
             ->toBe('Test Item 2');
     });
 
+<<<<<<< Updated upstream
     it('returns empty array when file not exists', function (): void {
+=======
+    it('returns empty array when file not exists', function(): void {
+>>>>>>> Stashed changes
         $rows = $this->model->getSushiRows();
 
         expect($rows)->toBeArray()->toBeEmpty();
     });
 
+<<<<<<< Updated upstream
     it('throws exception with malformed json', function (): void {
+=======
+    it('throws exception with malformed json', function(): void {
+>>>>>>> Stashed changes
         File::put($this->testJsonPath, 'invalid json content');
 
         expect($this->model->getSushiRows(...))->toThrow(Exception::class, 'Syntax error');
     });
 
+<<<<<<< Updated upstream
     it('throws exception with non array data', function (): void {
+=======
+    it('throws exception with non array data', function(): void {
+>>>>>>> Stashed changes
         File::put($this->testJsonPath, '"string data"');
 
         expect($this->model->getSushiRows(...))->toThrow(Exception::class, 'Data is not array');
     });
 
-    it('normalizes nested arrays to json strings', function (): void {
+    it('normalizes nested arrays to json strings', function(): void {
         $testData = [
             '1' => [
                 'id' => 1,
@@ -132,7 +153,11 @@ describe('SushiToJson Trait', function (): void {
             ->toBe('["tag1","tag2"]');
     });
 
+<<<<<<< Updated upstream
     it('saves data successfully to json file', function (): void {
+=======
+    it('saves data successfully to json file', function(): void {
+>>>>>>> Stashed changes
         $testData = ($this->createTestData)();
 
         $result = $this->model->saveToJson($testData);
@@ -144,7 +169,7 @@ describe('SushiToJson Trait', function (): void {
         expect($savedData)->toBe($testData);
     });
 
-    it('creates directory if not exists', function (): void {
+    it('creates directory if not exists', function(): void {
         // Rimuovi directory di test
         if (File::exists($this->testDirectory)) {
             File::deleteDirectory($this->testDirectory);
@@ -159,7 +184,7 @@ describe('SushiToJson Trait', function (): void {
         expect($this->testJsonPath)->toBeFile();
     });
 
-    it('handles save errors gracefully', function (): void {
+    it('handles save errors gracefully', function(): void {
         // Mock File facade per simulare errore di scrittura
         File::shouldReceive('put')->once()->andReturn(false);
 
@@ -170,7 +195,7 @@ describe('SushiToJson Trait', function (): void {
         expect($result)->toBeFalse();
     });
 
-    it('handles creating event correctly', function (): void {
+    it('handles creating event correctly', function(): void {
         // Mock Auth per simulare utente autenticato
         Auth::shouldReceive('id')->andReturn(1);
 
@@ -189,7 +214,7 @@ describe('SushiToJson Trait', function (): void {
         expect($model->getJsonFile())->toBeString()->toEndWith('test_sushi.json');
     });
 
-    it('handles updating event correctly', function (): void {
+    it('handles updating event correctly', function(): void {
         // Mock Auth per simulare utente autenticato
         Auth::shouldReceive('id')->andReturn(1);
 
@@ -208,7 +233,11 @@ describe('SushiToJson Trait', function (): void {
         expect($existingData)->toHaveKey('1')->and($existingData['1']['name'])->toBe('Test Item 1');
     });
 
+<<<<<<< Updated upstream
     it('handles deleting event correctly', function (): void {
+=======
+    it('handles deleting event correctly', function(): void {
+>>>>>>> Stashed changes
         $testData = ($this->createTestData)();
         File::put($this->testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
 
@@ -227,7 +256,7 @@ describe('SushiToJson Trait', function (): void {
         expect($result)->toBeTrue();
     });
 
-    it('integrates with tenant service correctly', function (): void {
+    it('integrates with tenant service correctly', function(): void {
         $tenantService = app(TenantService::class);
 
         expect($tenantService)->toBeInstanceOf(TenantService::class);
@@ -237,7 +266,7 @@ describe('SushiToJson Trait', function (): void {
         expect($path)->toBe($this->testJsonPath);
     });
 
-    it('handles large datasets efficiently', function (): void {
+    it('handles large datasets efficiently', function(): void {
         // Crea dataset grande (1000 record)
         $largeData = [];
         for ($i = 1; $i <= 1000; $i++) {
@@ -271,7 +300,7 @@ describe('SushiToJson Trait', function (): void {
         expect($loadTime)->toBeLessThan(0.5);
     });
 
-    it('logs errors appropriately', function (): void {
+    it('logs errors appropriately', function(): void {
         // Mock Log facade per verificare logging
         $this->mock('log', function ($mock): void {
             $mock->shouldReceive('error')->once()->with('Failed to save data to JSON file', Mockery::any());
@@ -286,7 +315,11 @@ describe('SushiToJson Trait', function (): void {
         expect($result)->toBeFalse();
     });
 
+<<<<<<< Updated upstream
     it('maintains data integrity during operations', function (): void {
+=======
+    it('maintains data integrity during operations', function(): void {
+>>>>>>> Stashed changes
         $originalData = ($this->createTestData)();
         File::put($this->testJsonPath, json_encode($originalData, JSON_PRETTY_PRINT));
 
@@ -306,7 +339,7 @@ describe('SushiToJson Trait', function (): void {
         expect($finalData['1']['name'])->toBe('Updated Name')->and($finalData['2']['name'])->toBe('Test Item 2'); // Non modificato
     });
 
-    it('handles empty and null values correctly', function (): void {
+    it('handles empty and null values correctly', function(): void {
         $testData = [
             '1' => [
                 'id' => 1,
@@ -331,7 +364,7 @@ describe('SushiToJson Trait', function (): void {
             ->toBeFalse();
     });
 
-    it('handles unicode and special characters', function (): void {
+    it('handles unicode and special characters', function(): void {
         $testData = [
             '1' => [
                 'id' => 1,

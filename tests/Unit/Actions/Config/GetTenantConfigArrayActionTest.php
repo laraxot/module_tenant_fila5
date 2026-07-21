@@ -9,14 +9,14 @@ use Tests\TestCase;
 
 uses(TestCase::class);
 
-it('returns empty array for non-existent config', function (): void {
+it('returns empty array for non-existent config', function(): void {
     $action = app(GetTenantConfigArrayAction::class);
     $result = $action->execute('non_existent_config');
 
     expect($result)->toBeArray();
 });
 
-it('returns array with string keys', function (): void {
+it('returns array with string keys', function(): void {
     $action = app(GetTenantConfigArrayAction::class);
     $result = $action->execute('app');
 

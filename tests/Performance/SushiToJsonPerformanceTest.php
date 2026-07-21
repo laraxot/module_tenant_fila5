@@ -73,7 +73,7 @@ function createTestData(int $recordCount): array
     return $data;
 }
 
-it('handles small datasets efficiently', function (): void {
+it('handles small datasets efficiently', function(): void {
     $smallData = createTestData(10);
 
     $startTime = microtime(true);
@@ -92,7 +92,7 @@ it('handles small datasets efficiently', function (): void {
     expect($loadTime)->toBeLessThan(0.05); // Caricamento dataset piccolo deve essere istantaneo
 })->group('small-dataset');
 
-it('handles medium datasets efficiently', function (): void {
+it('handles medium datasets efficiently', function(): void {
     $mediumData = createTestData(100);
 
     $startTime = microtime(true);
@@ -111,7 +111,7 @@ it('handles medium datasets efficiently', function (): void {
     expect($loadTime)->toBeLessThan(0.2); // Caricamento dataset medio deve essere veloce
 })->group('medium-dataset');
 
-it('handles large datasets efficiently', function (): void {
+it('handles large datasets efficiently', function(): void {
     $largeData = createTestData(1000);
 
     $startTime = microtime(true);
@@ -130,7 +130,7 @@ it('handles large datasets efficiently', function (): void {
     expect($loadTime)->toBeLessThan(1.0); // Caricamento dataset grande deve essere accettabile
 })->group('large-dataset');
 
-it('manages memory usage efficiently', function (): void {
+it('manages memory usage efficiently', function(): void {
     $initialMemory = memory_get_usage();
 
     // Crea dataset grande
@@ -162,7 +162,7 @@ it('manages memory usage efficiently', function (): void {
     expect($finalMemory)->toBeLessThan($initialMemory + (100 * 1024 * 1024)); // Memoria finale non deve essere eccessiva
 })->group('memory-usage');
 
-it('handles different file sizes efficiently', function (): void {
+it('handles different file sizes efficiently', function(): void {
     $sizes = [10, 50, 100, 250, 500];
 
     foreach ($sizes as $size) {
@@ -195,7 +195,7 @@ it('handles different file sizes efficiently', function (): void {
     }
 })->group('file-size');
 
-it('handles concurrent access efficiently', function (): void {
+it('handles concurrent access efficiently', function(): void {
     $testData = createTestData(100);
 
     // Salva dati iniziali
@@ -219,7 +219,7 @@ it('handles concurrent access efficiently', function (): void {
     expect($totalTime)->toBeLessThan(1.0); // Tempo totale per operazioni concorrenti deve essere accettabile
 })->group('concurrent-access');
 
-it('parses json efficiently', function (): void {
+it('parses json efficiently', function(): void {
     $testData = createTestData(200);
 
     // Salva dati
@@ -245,7 +245,7 @@ it('parses json efficiently', function (): void {
     expect($parseTime)->toBeLessThan($expectedMaxTime); // Parsing deve essere proporzionale alla dimensione
 })->group('json-parsing');
 
-it('normalizes data efficiently', function (): void {
+it('normalizes data efficiently', function(): void {
     $testData = createTestData(150);
 
     // Salva dati
@@ -270,7 +270,7 @@ it('normalizes data efficiently', function (): void {
     }
 })->group('data-normalization');
 
-it('handles errors efficiently', function (): void {
+it('handles errors efficiently', function(): void {
     // Testa con file JSON malformato
     File::put($this->testJsonPath, 'invalid json content');
 
@@ -285,7 +285,7 @@ it('handles errors efficiently', function (): void {
     expect($errorTime)->toBeLessThan(0.1); // Gestione errori deve essere veloce
 })->group('error-handling');
 
-it('performs file operations efficiently', function (): void {
+it('performs file operations efficiently', function(): void {
     $testData = createTestData(300);
 
     // Testa operazioni di file
@@ -310,7 +310,7 @@ it('performs file operations efficiently', function (): void {
     expect($writeTime)->toBeLessThan($readTime * 3); // Scrittura non deve essere eccessivamente più lenta della lettura
 })->group('file-operations');
 
-it('scales efficiently with data size', function (): void {
+it('scales efficiently with data size', function(): void {
     $sizes = [10, 25, 50, 100, 200];
     $results = [];
 
@@ -357,7 +357,7 @@ it('scales efficiently with data size', function (): void {
     }
 })->group('scalability');
 
-it('meets performance benchmarks', function (): void {
+it('meets performance benchmarks', function(): void {
     $benchmarks = [
         'small' => ['size' => 10, 'max_save' => 0.05, 'max_load' => 0.02],
         'medium' => ['size' => 100, 'max_save' => 0.2, 'max_load' => 0.1],
@@ -386,7 +386,7 @@ it('meets performance benchmarks', function (): void {
     }
 })->group('benchmark');
 
-it('does not create memory leaks', function (): void {
+it('does not create memory leaks', function(): void {
     $initialMemory = memory_get_usage();
 
     // Esegui operazioni multiple
