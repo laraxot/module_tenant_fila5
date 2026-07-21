@@ -70,23 +70,14 @@ afterEach(function(): void {
     }
 });
 
-<<<<<<< Updated upstream
 describe('SushiToJson Trait', function (): void {
     it('returns correct json file path', function (): void {
-=======
-describe('SushiToJson Trait', function(): void {
-    it('returns correct json file path', function(): void {
->>>>>>> Stashed changes
         $path = $this->model->getJsonFile();
 
         expect($path)->toBe($this->testJsonPath)->and($path)->toEndWith('test_sushi.json');
     });
 
-<<<<<<< Updated upstream
     it('loads existing data from json file', function (): void {
-=======
-    it('loads existing data from json file', function(): void {
->>>>>>> Stashed changes
         $testData = ($this->createTestData)();
         File::put($this->testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
 
@@ -101,31 +92,19 @@ describe('SushiToJson Trait', function(): void {
             ->toBe('Test Item 2');
     });
 
-<<<<<<< Updated upstream
     it('returns empty array when file not exists', function (): void {
-=======
-    it('returns empty array when file not exists', function(): void {
->>>>>>> Stashed changes
         $rows = $this->model->getSushiRows();
 
         expect($rows)->toBeArray()->toBeEmpty();
     });
 
-<<<<<<< Updated upstream
     it('throws exception with malformed json', function (): void {
-=======
-    it('throws exception with malformed json', function(): void {
->>>>>>> Stashed changes
         File::put($this->testJsonPath, 'invalid json content');
 
         expect($this->model->getSushiRows(...))->toThrow(Exception::class, 'Syntax error');
     });
 
-<<<<<<< Updated upstream
     it('throws exception with non array data', function (): void {
-=======
-    it('throws exception with non array data', function(): void {
->>>>>>> Stashed changes
         File::put($this->testJsonPath, '"string data"');
 
         expect($this->model->getSushiRows(...))->toThrow(Exception::class, 'Data is not array');
@@ -153,11 +132,7 @@ describe('SushiToJson Trait', function(): void {
             ->toBe('["tag1","tag2"]');
     });
 
-<<<<<<< Updated upstream
     it('saves data successfully to json file', function (): void {
-=======
-    it('saves data successfully to json file', function(): void {
->>>>>>> Stashed changes
         $testData = ($this->createTestData)();
 
         $result = $this->model->saveToJson($testData);
@@ -233,11 +208,7 @@ describe('SushiToJson Trait', function(): void {
         expect($existingData)->toHaveKey('1')->and($existingData['1']['name'])->toBe('Test Item 1');
     });
 
-<<<<<<< Updated upstream
     it('handles deleting event correctly', function (): void {
-=======
-    it('handles deleting event correctly', function(): void {
->>>>>>> Stashed changes
         $testData = ($this->createTestData)();
         File::put($this->testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
 
@@ -315,11 +286,7 @@ describe('SushiToJson Trait', function(): void {
         expect($result)->toBeFalse();
     });
 
-<<<<<<< Updated upstream
     it('maintains data integrity during operations', function (): void {
-=======
-    it('maintains data integrity during operations', function(): void {
->>>>>>> Stashed changes
         $originalData = ($this->createTestData)();
         File::put($this->testJsonPath, json_encode($originalData, JSON_PRETTY_PRINT));
 
