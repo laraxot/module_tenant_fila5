@@ -13,19 +13,11 @@ use Modules\Xot\Actions\Arr\SaveArrayAction;
 
 uses(TestCase::class);
 
-<<<<<<< HEAD
 it('saves tenant config by merging with existing data', function (): void {
     /** @var TestCase $this */
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => '/path/to/tenant/database.php']);
     });
-=======
-it('saves tenant config by merging with existing data', function(): void {
-    $this->mock(GetTenantFilePathAction::class)
-        ->shouldReceive('execute')
-        ->with('database.php')
-        ->andReturn('/path/to/tenant/database.php');
->>>>>>> provtv/dev
 
     File::shouldReceive('exists')
         ->with('/path/to/tenant/database.php')
@@ -43,19 +35,11 @@ it('saves tenant config by merging with existing data', function(): void {
     $action->execute('database', ['connections' => ['mysql' => ['database' => 'test_db']]]);
 });
 
-<<<<<<< HEAD
 it('saves tenant config when file does not exist', function (): void {
     /** @var TestCase $this */
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => '/path/to/tenant/app.php']);
     });
-=======
-it('saves tenant config when file does not exist', function(): void {
-    $this->mock(GetTenantFilePathAction::class)
-        ->shouldReceive('execute')
-        ->with('app.php')
-        ->andReturn('/path/to/tenant/app.php');
->>>>>>> provtv/dev
 
     File::shouldReceive('exists')
         ->with('/path/to/tenant/app.php')

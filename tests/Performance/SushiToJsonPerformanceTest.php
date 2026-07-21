@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Performance;
 
-<<<<<<< HEAD
 use Exception;
-=======
->>>>>>> provtv/dev
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
 use Mockery;

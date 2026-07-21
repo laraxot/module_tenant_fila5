@@ -62,18 +62,11 @@ it('gets fallback markdown path if localized does not exist', function(): void {
     unlink($tempFile);
 });
 
-<<<<<<< HEAD
 it('returns hash if no path exists', function (): void {
     /** @var TestCase $this */
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => '/non/existent/path.md']);
     });
-=======
-it('returns hash if no path exists', function(): void {
-    $this->mock(GetTenantFilePathAction::class)
-        ->shouldReceive('execute')
-        ->andReturn('/non/existent/path.md');
->>>>>>> provtv/dev
 
     $result = app(GetLocalizedMarkdownPathAction::class)->execute('none.md');
 

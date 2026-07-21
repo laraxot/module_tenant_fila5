@@ -25,11 +25,8 @@ use Sushi\Sushi;
  *
  * @method static DomainFactory factory($count = null, $state = [])
  *
-<<<<<<< HEAD
-=======
  * @mixin IdeHelperDomain
  *
->>>>>>> provtv/dev
  * @property ProfileContract|null $deleter
  *
  * @mixin \Eloquent

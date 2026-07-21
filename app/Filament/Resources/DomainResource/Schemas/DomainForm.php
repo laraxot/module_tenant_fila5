@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 class DomainForm extends XotBaseResourceForm
 {
     /**
-     * @return array<int|string, \Filament\Forms\Components\Component>
+     * @return array<string, \Filament\Schemas\Components\Component>
      */
     public static function getFormSchema(): array
     {

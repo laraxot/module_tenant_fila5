@@ -36,11 +36,7 @@ use Sushi\Sushi;
  * @property ProfileContract|null $updater
  * @property ProfileContract|null $deleter
  *
-<<<<<<< HEAD
  * @method static TenantDomainFactory factory($count = null, $state = [])
-=======
- * @method static DomainFactory factory($count = null, $state = [])
->>>>>>> provtv/dev
  *
  * @mixin \Eloquent
  */

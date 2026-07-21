@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use InvalidArgumentException;
-<<<<<<< HEAD
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
-=======
->>>>>>> provtv/dev
 use Modules\Tenant\Database\Factories\TestSushiModelFactory;
 use Modules\Tenant\Models\Traits\SushiToJson;
 use Modules\Xot\Contracts\ProfileContract;
@@ -45,14 +42,11 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @property-read ProfileContract|null $creator
  * @property-read ProfileContract|null $deleter
  * @property-read ProfileContract|null $updater
-<<<<<<< HEAD
  * @property int|null $created_by
  * @property int|null $updated_by
  *
  * @method static Builder<static>|TestSushiModel whereCreatedBy($value)
  * @method static Builder<static>|TestSushiModel whereUpdatedBy($value)
-=======
->>>>>>> provtv/dev
  *
  * @mixin \Eloquent
  */
@@ -68,11 +62,7 @@ class TestSushiModel extends BaseModel
      *
      * @var array<string, string>
      */
-<<<<<<< HEAD
     protected array $schema = [
-=======
-    protected array $form = [
->>>>>>> provtv/dev
         'id' => 'integer',
         'name' => 'string',
         'description' => 'string',

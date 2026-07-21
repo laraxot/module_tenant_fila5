@@ -29,13 +29,9 @@ class TenantFactory extends Factory
         $name = $this->faker->company();
 
         return [
-<<<<<<< HEAD
             'id' => $this->faker->uuid(),
             'name' => $name,
             'slug' => $this->faker->unique()->slug(),
-=======
-            'name' => $this->faker->company(),
->>>>>>> provtv/dev
             'domain' => $this->faker->domainName(),
             'database' => 'tenant_'.$this->faker->unique()->slug(),
             'is_active' => $this->faker->boolean(80),
