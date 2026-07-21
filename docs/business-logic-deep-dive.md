@@ -121,7 +121,11 @@ public static function config(string $key): mixed
 if ($key === 'database') {
     // Per ogni modulo enabled
     foreach (Module::all() as $module) {
+<<<<<<< .merge_file_METk5Q
         $name = $module->getSnakeName();  // 'user', 'healthcare_app', etc.
+=======
+        $name = $module->getSnakeName();  // 'user', 'ptvx', etc.
+>>>>>>> .merge_file_SYqplu
 
         // Se tenant non ha config per questo modulo
         if (!isset($extra_conf['connections'][$name])) {
@@ -160,7 +164,11 @@ if (Str::endsWith($serverName, '.<nome progetto>.it')) {
 }
 
 // Step 3: Config file lookup
+<<<<<<< .merge_file_METk5Q
 $configFile = '/etc/healthcare_app/server_names.php';
+=======
+$configFile = '/etc/ptvx/server_names.php';
+>>>>>>> .merge_file_SYqplu
 if (File::exists($configFile)) {
     $mapping = File::getRequire($configFile);
     // ['acme-custom-domain.com' => 'tenant_acme']
@@ -615,7 +623,11 @@ chown www-data:tenant_acme config/tenant_acme/
    ↓
 4. Load merged config → config/app + config/tenant_acme/app
    ↓
+<<<<<<< .merge_file_METk5Q
 5. Execute business logic (User, healthcare_app, etc.)
+=======
+5. Execute business logic (User, ModuloEsempio, etc.)
+>>>>>>> .merge_file_SYqplu
    ↓
 6. Response (tutto isolato nel contesto tenant_acme)
 ```
@@ -647,7 +659,11 @@ chown www-data:tenant_acme config/tenant_acme/
 
 ### Provides To
 - **User Module**: Connection isolation
+<<<<<<< .merge_file_METk5Q
 - **healthcare_app Module**: Tenant-aware queries
+=======
+- **ModuloEsempio Module**: Tenant-aware queries
+>>>>>>> .merge_file_SYqplu
 - **Patient/Dental Modules**: Multi-clinic support
 - **ALL Business Modules**: Automatic data isolation
 

@@ -16,12 +16,21 @@ Il modulo Tenant gestisce la multi-tenancy dell'applicazione. Ogni tenant ha il 
 
 ```php
 // L'identificazione del tenant avviene via dominio
+<<<<<<< .merge_file_tzfdQA
 // https://acme.healthcare_app.it -> tenant "acme"
 // https://beta.healthcare_app.it -> tenant "beta"
 
 // La connessione database si auto-risolve dal namespace
 // Modules\User\Models\User -> connessione "user"
 // Modules\healthcare_app\Models\Survey -> connessione "healthcare_app"
+=======
+// https://acme.ptvx.it -> tenant "acme"
+// https://beta.ptvx.it -> tenant "beta"
+
+// La connessione database si auto-risolve dal namespace
+// Modules\User\Models\User -> connessione "user"
+// Modules\ModuloEsempio\Models\Survey -> connessione "ptvx"
+>>>>>>> .merge_file_4OGZ1E
 
 // Config tenant-specific
 // config/acme/app.php sovrascrive config/app.php per tenant "acme"
@@ -106,7 +115,11 @@ config/acme/              # Override per tenant "acme"
 ```php
 // Un tenant puo avere piu domini
 $tenant = Tenant::where('slug', 'acme')->first();
+<<<<<<< .merge_file_tzfdQA
 $tenant->domains; // ['acme.healthcare_app.it', 'survey.acme.com']
+=======
+$tenant->domains; // ['acme.ptvx.it', 'survey.acme.com']
+>>>>>>> .merge_file_4OGZ1E
 
 // Il primo dominio e il primario
 // Gli altri sono alias che risolvono allo stesso tenant
@@ -118,7 +131,11 @@ $tenant->domains; // ['acme.healthcare_app.it', 'survey.acme.com']
 
 ```
 Tenant ──> User       (utenti per tenant, team per tenant)
+<<<<<<< .merge_file_tzfdQA
 Tenant ──> healthcare_app    (survey e dashboard per tenant)
+=======
+Tenant ──> ModuloEsempio    (survey e dashboard per tenant)
+>>>>>>> .merge_file_4OGZ1E
 Tenant ──> Limesurvey (survey isolati per tenant)
 Tenant ──> Notify     (comunicazioni per tenant)
 Tenant ──> UI         (tema per tenant)
