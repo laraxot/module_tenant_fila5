@@ -19,21 +19,12 @@ Questo documento serve come indice centrale per il modulo Tenant, fornendo una g
 - **Migrazioni Automatiche**: Migrazioni automatiche per nuovi tenant
 
 ## Collegamenti Correlati
-<<<<<<< HEAD
-- [Documentazione Generale <nome progetto>](../../../../docs/README.md)
-- [Collegamenti Documentazione](../../../../docs/collegamenti-documentazione.md)
-- [Standard di Documentazione](../../../../docs/DOCUMENTATION_STANDARDS.md)
-- [Modulo Xot](../../Xot/docs/README.md)
-- [Modulo Lang](../../Lang/docs/README.md)
-- [Modulo UI](../../UI/docs/README.md)
-=======
 - [Documentazione Generale <nome progetto>](../../../../../docs/readme.md)
 - [Collegamenti Documentazione](../../../../../docs/collegamenti-documentazione.md)
 - [Standard di Documentazione](../../../../../docs/documentation_standards.md)
 - [Modulo Xot](../../xot/docs/readme.md)
 - [Modulo Lang](../../lang/docs/readme.md)
 - [Modulo UI](../../ui/docs/readme.md)
->>>>>>> provtv/dev
 
 ## Categorie Principali
 
@@ -78,14 +69,9 @@ Questo documento serve come indice centrale per il modulo Tenant, fornendo una g
 - [Standard Traduzioni](./TRANSLATION_STANDARDS.md) - Standard per le chiavi di traduzione
 
 ### Testing e Qualità
-<<<<<<< HEAD
-- [PHPStan Level 10](./phpstan/INDEX.md) - Correzioni per PHPStan Level 10
-- [Testing](./TESTING.md) - Strategie e approcci per il testing
-=======
 - [PHPStan Level 10](./phpstan/index.md) - Correzioni per PHPStan Level 10
 - [PHPStan Cluster 2026-03-10](./phpstan-cluster-2026-03-10.md) - Factory `DatabaseConfig` e modello canonico mancante
 - [Testing](./testing.md) - Strategie e approcci per il testing
->>>>>>> provtv/dev
 - [Test Multi-Tenant](./multi-tenant-testing.md) - Test specifici per ambiente multi-tenant
 
 ## Linee Guida per l'Implementazione
@@ -172,16 +158,9 @@ Questa documentazione viene aggiornata regolarmente. Prima di apportare modifich
 - **Gennaio 2025**: Risoluzione sistematica di tutti i conflitti Git nei file di documentazione
 - Il file `lang/it/tenant_theme.php` è stato risolto manualmente mantenendo PSR-12, strict_types, array short syntax e solo chiavi effettive, come richiesto dagli standard PHPStan livello 10
 - **Filosofia di risoluzione**: Approccio olistico con analisi manuale approfondita, mantenimento integrità architetturale, documentazione bidirezionale aggiornata
-<<<<<<< HEAD
-- Vedi anche: [../../../../docs/README.md](../../../../docs/README.md)
-- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
-
-*Ultimo aggiornamento: Gennaio 2025*
-=======
 - Vedi anche: [../../../../../docs/README.md](../../../../../docs/readme.md)
 - Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
 
 *Ultimo aggiornamento: Gennaio 2025*
 
 - [Conflict Resolution](conflict-resolution.md)
->>>>>>> provtv/dev

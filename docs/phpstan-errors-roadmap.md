@@ -116,8 +116,4 @@ return $dataArray;
 
 **Status**: 🧘 **IN ANALISI**
 
-<<<<<<< HEAD
-**Ultimo aggiornamento**: 2026-01-12
-=======
 **Ultimo aggiornamento**: [DATE]
->>>>>>> provtv/dev

@@ -111,17 +111,10 @@ The Tenant module's MCP configuration enables AI assistants to interact with:
 
 ## 📚 Related Documentation
 
-<<<<<<< HEAD
-- [Asana MCP Configuration](../../../docs/mcp-asana-configuration.md)
-- [ClickUp MCP Configuration](../../../docs/mcp-clickup-configuration.md)
-- [Redmine MCP Configuration](../../../docs/mcp-redmine-configuration.md)
-- [Tenant Module Roadmap](./roadmap-2026-01-31.md)
-=======
 - [Asana MCP Configuration](../../../../docs/mcp-asana-configuration.md)
 - [ClickUp MCP Configuration](../../../../docs/mcp-clickup-configuration.md)
 - [Redmine MCP Configuration](../../../../docs/mcp-redmine-configuration.md)
 - [Tenant Module Roadmap](./roadmap-[date].md)
->>>>>>> provtv/dev
 
 ---
 

@@ -1,15 +1,4 @@
 ---
-<<<<<<< HEAD
-title: "Guida agli Stili, Tabelle e Immagini"
-module: "Tenant"
-type: concept
-tags: [styling]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "styling"
-related:
-  - "./phpstan-corrections-january.md"
----
 # Guida agli Stili, Tabelle e Immagini
 
 Questa guida illustra come applicare stili CSS, creare layout con tabelle e gestire le immagini nei PDF generati con Html2Pdf.
@@ -21,13 +10,11 @@ Questa guida illustra come applicare stili CSS, creare layout con tabelle e gest
 *   [Integrazione con Laravel e Best Practices](./laravel.md)
 *   [Configurazione della Sicurezza](./security.md)
 
-=======
 title: "html2pdf styling — puntatore"
 type: reference
 updated: 2026-05-21
 related:
   - "../../../Media/docs/html2pdf/styling.md"
->>>>>>> provtv/dev
 ---
 
 # Html2Pdf — styling

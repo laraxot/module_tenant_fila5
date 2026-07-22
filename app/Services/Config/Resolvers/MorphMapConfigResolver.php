@@ -12,7 +12,6 @@ use Illuminate\Support\Str;
 use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
 use Modules\Tenant\Services\TenantService;
 use Modules\Xot\Actions\Model\GetAllModelsByModuleNameAction;
-use Modules\Xot\Services\RouteService;
 
 /**
  * Resolves morph_map configuration for admin panel.
@@ -21,7 +20,13 @@ class MorphMapConfigResolver implements ConfigResolverInterface
 {
     public function canResolve(string $key): bool
     {
-        return RouteService::inAdmin()
+        // Ex RouteService::inAdmin() (Services archiviato): main panel `/admin/...`.
+        // NB: semantica diversa dall'helper globale inAdmin() (module panel `/{module}/admin`).
+        $segments = Request::segments();
+        $inMainAdmin = 'admin' === Request::segment(1)
+            || (\count($segments) > 0 && 'livewire' === $segments[0] && true === session('in_admin', false));
+
+        return $inMainAdmin
             && Str::startsWith($key, 'morph_map')
             && Request::segment(2) !== null;
     }

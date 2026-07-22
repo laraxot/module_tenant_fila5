@@ -12,7 +12,6 @@ module: "Tenant"
 - Created module index.md
 - Ready for on-demand loading via QMD
 
-<<<<<<< HEAD
 ## [2026-07-01] [INGEST] Database factories — rimossa `Factories_/`
 
 - Regola generica: [database-folder-lowercase-rule.md](../../../../../docs/wiki/concepts/database-folder-lowercase-rule.md)
@@ -43,5 +42,3 @@ module: "Tenant"
 
 **Last Activity:** 2026-07-01  
 **Total Operations:** 2
-=======
->>>>>>> provtv/dev

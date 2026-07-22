@@ -1,10 +1,6 @@
 # Configuration System Architecture - Tenant Module
 
-<<<<<<< HEAD
-## Data: 2026-01-08
-=======
 ## Data: [DATE]
->>>>>>> provtv/dev
 ## Metodologia: Super Mucca - La Litigata Interna
 ## File: `Modules/Tenant/app/Services/TenantService.php` e `app/Actions/Config/GetTenantFilePathAction.php`
 
@@ -228,10 +224,6 @@ I contenuti delle pagine sono memorizzati in JSON:
 
 ---
 
-<<<<<<< HEAD
-**Ultimo aggiornamento**: 2026-01-08
-=======
 **Ultimo aggiornamento**: [DATE]
->>>>>>> provtv/dev
 **Versione**: 1.0.0
 **Status**: ✅ Completato

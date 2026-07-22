@@ -1,12 +1,8 @@
 # DRY & KISS Analysis - Modulo Tenant
 
-<<<<<<< HEAD
-**Data:** 2025-10-15 | **Status:** ✅
-=======
 **Data:** 15 Ottobre 2025  
 **DRY Score:** ✅ 94%  
 **KISS Score:** ✅ 90%
->>>>>>> provtv/dev
 
 ## ✅ Stato Attuale
 

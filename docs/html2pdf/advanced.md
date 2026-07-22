@@ -1,15 +1,4 @@
 ---
-<<<<<<< HEAD
-title: "Funzionalità Avanzate"
-module: "Tenant"
-type: concept
-tags: [advanced]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "advanced"
-related:
-  - "./phpstan-corrections-january.md"
----
 # Funzionalità Avanzate
 
 Questa sezione copre funzionalità avanzate come la generazione di codici a barre, QR code, la creazione di segnalibri (bookmark), indici e altri metodi utili della libreria.
@@ -21,13 +10,11 @@ Questa sezione copre funzionalità avanzate come la generazione di codici a barr
 *   [Integrazione con Laravel e Best Practices](./laravel.md)
 *   [Configurazione della Sicurezza](./security.md)
 
-=======
 title: "html2pdf advanced — puntatore"
 type: reference
 updated: 2026-05-21
 related:
   - "../../../Media/docs/html2pdf/advanced.md"
->>>>>>> provtv/dev
 ---
 
 # Html2Pdf — advanced
