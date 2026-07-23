@@ -52,3 +52,11 @@ Niente reset/squash/force per aggirare LFS.
 `module_user_fila5`: `laraxot` tip `3ea7273a` (`0 0`); `provtv` **merge-base vuoto** → STOP (no merge/force).
 Canon: [../User/docs/wiki/troubleshooting/git-push-dual-remote-unrelated.md](../User/docs/wiki/troubleshooting/git-push-dual-remote-unrelated.md).
 
+### Caso Tenant 2026-07-23 (allineato)
+
+Working tree dirty: 1 file (`docs/multi-org-sync-laraxot-provtv.md`, aggiornamento
+sezione "Caso User" di un'altra sessione) → committato (`2136445`). Storie
+correlate, nessuna divergenza: solo 1 commit locale non ancora pushato su entrambi
+i remote. Push riuscito senza conflitti: `laraxot dev` e `provtv dev`
+(`8ff7642..2136445`). Stato finale: `0 0` su entrambi i remote, working tree pulito.
+
