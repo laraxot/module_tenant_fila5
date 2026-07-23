@@ -3,7 +3,7 @@ title: "Sincronizzazione multi-organizzazione (laraxot + provtv)"
 type: concept
 tags: [git, sync, multi-org, laraxot, provtv, quality-gates]
 created: "2026-07-21"
-updated: "2026-07-22"
+updated: "2026-07-23"
 related:
   - "../../../bashscripts/tools/prompts/02-gitmodules-sync.md"
 ---
@@ -46,3 +46,9 @@ Se `GH008` / LFS missing su un org e l’altro ha già accettato il tip →
 `git lfs fetch <sibling> --all` poi `git lfs push <target> --all`, poi push.
 Dettaglio (SSoT): [../UI/docs/wiki/troubleshooting/git-push-lfs-missing-objects.md](../UI/docs/wiki/troubleshooting/git-push-lfs-missing-objects.md).
 Niente reset/squash/force per aggirare LFS.
+
+### Caso User 2026-07-23 (unrelated)
+
+`module_user_fila5`: `laraxot` tip `3ea7273a` (`0 0`); `provtv` **merge-base vuoto** → STOP (no merge/force).
+Canon: [../User/docs/wiki/troubleshooting/git-push-dual-remote-unrelated.md](../User/docs/wiki/troubleshooting/git-push-dual-remote-unrelated.md).
+
