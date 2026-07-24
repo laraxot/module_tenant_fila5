@@ -4,29 +4,33 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit;
 
+use Mockery;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Tests\TestCase;
 
 uses(TestCase::class);
 
-test('domain model can be instantiated', function(): void {
+afterEach(function (): void {
+    Mockery::close();
+});
+
+test('domain model can be instantiated', function (): void {
     $domain = new Domain;
 
     expect($domain)->toBeInstanceOf(Domain::class);
 });
 
-test('get rows method works correctly', function(): void {
-    // Mock della Action GetDomainsArrayAction
-    $this->mock(GetDomainsArrayAction::class, function ($mock): void {
-        $mock
-            ->shouldReceive('execute')
-            ->once()
-            ->andReturn([
-                ['id' => 1, 'name' => 'test-domain.com'],
-                ['id' => 2, 'name' => 'example.org'],
-            ]);
-    });
+test('get rows method works correctly', function (): void {
+    $mock = Mockery::mock(GetDomainsArrayAction::class);
+    $expectation = $mock->shouldReceive('execute');
+    assert($expectation instanceof \Mockery\Expectation);
+    $expectation->once()->andReturn([
+        ['id' => 1, 'name' => 'test-domain.com'],
+        ['id' => 2, 'name' => 'example.org'],
+    ]);
+
+    app()->instance(GetDomainsArrayAction::class, $mock);
 
     $domain = new Domain;
     $rows = $domain->getRows();
