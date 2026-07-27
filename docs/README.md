@@ -10,6 +10,8 @@ updated: 2026-07-27
 
 > **Aggiornamento 2026-07-27:** registro moduli tenant, navigazione Filament, lezioni sessione → [tenant-module-status-registry.md](./tenant-module-status-registry.md) · [session-learnings-modules-config.md](./session-learnings-modules-config.md) · [it/config/modules-statuses.md](./it/config/modules-statuses.md)
 
+> **GitHub remote (GRAVE):** issue/discussion del modulo solo dopo `cd laravel/Modules/Tenant && git remote -v` (`laraxot/module_tenant_fila5`). Mai `base_techplanner` / `base_workorder`. → [github-remote-collision-wrong-base.md](./wiki/memories/github-remote-collision-wrong-base.md) · [code-quality-improvement-report.md](./code-quality-improvement-report.md)
+
 > **Verificato 2026-07-24 contro il codice reale (`find app -iname '*.php'`)**: la sezione "Struttura del Modulo",
 > la tabella "Componenti Principali", "Trait Disponibili" e gli scenari d'uso sotto descrivono un'architettura
 > **in gran parte non presente nel codice**. Verificato:
