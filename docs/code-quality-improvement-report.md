@@ -81,7 +81,7 @@ Rilevazione del 17 luglio 2026 sul working tree locale; esclusi vendor e dipende
 
 ## Modifiche effettive da fare
 
-- [ ] PHPStan L10 scoped senza errori non giustificati.
+- [x] PHPStan L10 scoped senza errori non giustificati. (Modules 2026-07-27)
 - [ ] Pest scoped verde sui flussi critici.
 - [ ] Nessuna nuova estensione Filament diretta o controller FO.
 - [ ] Nessuna nuova business logic in Services/Support.
@@ -90,6 +90,11 @@ Rilevazione del 17 luglio 2026 sul working tree locale; esclusi vendor e dipende
 - [x] Frontmatter GitHub: remote modulo via `git remote -v` (mai `base_*` mono).
 
 ## Criteri di uscita
+
+## Gate PHPStan (2026-07-27)
+
+- `cd laravel && ./vendor/bin/phpstan analyse Modules --memory-limit=-1` → **0 errori**.
+- Themes: solo insieme a Modules — [phpstan-stale-ignore-pattern](../../../../docs/wiki/troubleshooting/phpstan-stale-ignore-pattern.md).
 
 ## Verifica
 
