@@ -147,3 +147,6 @@ docs/**/bashscripts/
 phpinsights.php
 rector.php
 phpstan*
+
+# MODULE ROOT FORBIDDEN DIRS
+workbench
