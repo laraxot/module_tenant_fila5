@@ -38,6 +38,7 @@ related:
 
 ## 🧹 **Manutenzione**
 - 🗑️ **[Cleanup Plan](./duplicate-files-to-remove.md)** - Eliminazione dei file duplicati e obsoleti.
+- 🚨 **[Git push bloccato - LFS missing objects](./git-push-lfs-missing-objects-resolution.md)** - Incidente GH008 risolto senza riscrivere la storia (backfill oggetti LFS).
 
 ## 📦 **Pacchetti Composer**
 - [Riferimento](../../../../docs/composer-packages-reference.md) | [Inventario 312 pacchetti](../../../../docs/architecture/composer-packages-full-inventory.md) - Nessuna dipendenza diretta; usa Xot
