@@ -6,6 +6,7 @@ namespace Modules\Tenant\Tests\Integration;
 
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\TestSushiModel;
+use Modules\Tenant\Tests\Support\TestSushiModelWithJsonPath;
 use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
@@ -23,21 +24,7 @@ function tenantJsonPath(string $tenantName): string
 
 function makeTestSushiModelForPath(string $jsonPath): TestSushiModel
 {
-    $model = new class() extends TestSushiModel
-    {
-        public string $jsonPath = '';
-
-        public function setJsonPath(string $jsonPath): void
-        {
-            $this->jsonPath = $jsonPath;
-        }
-
-        public function getJsonFile(): string
-        {
-            return $this->jsonPath;
-        }
-    };
-
+    $model = new TestSushiModelWithJsonPath();
     $model->setJsonPath($jsonPath);
 
     return $model;
