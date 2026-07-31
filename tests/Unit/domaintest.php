@@ -17,7 +17,7 @@ afterEach(function (): void {
 });
 
 test('domain model can be instantiated', function (): void {
-    $domain = new Domain();
+    $domain = new Domain;
 
     expect($domain)->toBeInstanceOf(Domain::class);
 });
@@ -33,7 +33,7 @@ test('get rows method works correctly', function (): void {
 
     app()->instance(GetDomainsArrayAction::class, $mock);
 
-    $domain = new Domain();
+    $domain = new Domain;
     $rows = $domain->getRows();
 
     expect($rows)->toBeArray();
