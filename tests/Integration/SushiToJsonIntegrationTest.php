@@ -24,7 +24,7 @@ function tenantJsonPath(string $tenantName): string
 
 function makeTestSushiModelForPath(string $jsonPath): TestSushiModel
 {
-    $model = new TestSushiModelWithJsonPath();
+    $model = new TestSushiModelWithJsonPath;
     $model->setJsonPath($jsonPath);
 
     return $model;
