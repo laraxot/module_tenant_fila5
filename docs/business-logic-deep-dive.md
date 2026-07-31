@@ -1,3 +1,14 @@
+---
+title: "Tenant Module - Business Logic Deep Dive"
+module: "Tenant"
+type: concept
+tags: [business, logic, deep, dive]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "business logic deep dive"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Tenant Module - Business Logic Deep Dive
 
 ## 🎯 Module Overview

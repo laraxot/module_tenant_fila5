@@ -1,3 +1,14 @@
+---
+title: "Database config standard (Laravel 13.x)"
+module: "Tenant"
+type: rule
+tags: [database, config, standard]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "database config standard"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Database config standard (Laravel 13.x)
 
 **Status**: attivo  

@@ -7,7 +7,7 @@ namespace Modules\Tenant\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
-use Modules\Tenant\Database\Factories\DomainFactory;
+use Modules\Tenant\Database\Factories\TenantDomainFactory;
 use Modules\Xot\Contracts\ProfileContract;
 use Sushi\Sushi;
 
@@ -36,7 +36,7 @@ use Sushi\Sushi;
  * @property ProfileContract|null $updater
  * @property ProfileContract|null $deleter
  *
- * @method static DomainFactory factory($count = null, $state = [])
+ * @method static TenantDomainFactory factory($count = null, $state = [])
  *
  * @mixin \Eloquent
  */
@@ -56,6 +56,8 @@ class TenantDomain extends BaseModel
 
     /**
      * Model Rows.
+     *
+     * @return array<int, array<string, string>>
      */
     public function getRows(): array
     {

@@ -1,3 +1,14 @@
+---
+title: "Dipendenze Helper Functions - Modulo Tenant"
+module: "Tenant"
+type: concept
+tags: [helper, functions, dependency]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "helper functions dependency"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Dipendenze Helper Functions - Modulo Tenant
 
 ## 📋 Overview

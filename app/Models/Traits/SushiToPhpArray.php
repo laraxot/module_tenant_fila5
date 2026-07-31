@@ -10,88 +10,62 @@ namespace Modules\Tenant\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Modules\Tenant\Services\TenantService;
+use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
+use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
 use Sushi\Sushi;
 
+/** @phpstan-ignore trait.unused */
 trait SushiToPhpArray
 {
     use Sushi;
 
+    /**
+     * @return array<int, array<string, mixed>>
+     *
+     * @phpstan-return array<int, array<string, mixed>>
+     */
     public function getSushiRows(): array
     {
         $name = Str::of($this->getTable())->replace('_', '-')->toString();
 
-        $rows = TenantService::getConfig($name);
+        $rows = app(GetTenantConfigArrayAction::class)->execute($name);
 
-        return array_values($rows);
+        /** @var array<int, array<string, mixed>> $normalized */
+        $normalized = [];
 
-        /*
-         * $files = File::glob($path.'/*.json');
-         * $rows = [];
-         * foreach ($files as $id => $file) {
-         * $json = File::json($file);
-         * $item = [];
-         * foreach ($this->schema as $name => $type) {
-         * $value = $json[$name] ?? null;
-         * if (is_array($value)) {
-         * $value = json_encode($value, JSON_PRETTY_PRINT);
-         * }
-         * $item[$name] = $value;
-         * }
-         * $rows[] = $item;
-         * }
-         *
-         * return $rows;
-         */
+        foreach (array_values($rows) as $item) {
+            if (! is_array($item)) {
+                continue;
+            }
+
+            $normalized[] = app(FilterConfigStringKeysAction::class)->execute($item);
+        }
+
+        return $normalized;
     }
 
-    /**
-     * bootUpdater function.
-     */
     protected static function bootSushiToPhpArray(): void
     {
-        /*
-         * During a model create Eloquent will also update the updated_at field so
-         * need to have the updated_by field here as well.
-         */
-        static::creating(function ($model): void {
-            // Type safety for $model in closure
+        static::creating(static function ($model): void {
             if (! $model instanceof Model) {
                 return;
             }
 
-            // Model always has toArray()
             $model->toArray();
         });
-        /*
-         * updating.
-         */
-        static::updating(function ($model): void {
-            // Type safety for $model in closure
+
+        static::updating(static function ($model): void {
             if (! $model instanceof Model) {
                 return;
             }
 
-            // Model always has toArray()
             $model->toArray();
         });
-        // -------------------------------------------------------------------------------------
-        /*
-         * Deleting a model is slightly different than creating or deleting.
-         * For deletes we need to save the model first with the deleted_by field
-         */
 
-        static::deleting(function ($model): void {
-            // Type safety for $model in closure
+        static::deleting(static function ($model): void {
             if (! $model instanceof Model) {
                 return;
             }
         });
-
-        // ----------------------
     }
-
-    // end function boot
 }
-
-// end trait Updater

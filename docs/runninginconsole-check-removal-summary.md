@@ -1,3 +1,14 @@
+---
+title: "Rimozione runningInConsole Check - Riepilogo"
+module: "Tenant"
+type: concept
+tags: [runninginconsole, check, removal, summary]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "runninginconsole check removal summary"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Rimozione runningInConsole Check - Riepilogo
 
 **Data**: 2025-01-22
