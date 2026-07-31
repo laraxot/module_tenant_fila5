@@ -1,3 +1,14 @@
+---
+title: "Task: Query Optimization Tenant"
+module: "Tenant"
+type: concept
+tags: [query, optimization, tenant]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "query optimization tenant"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Task: Query Optimization Tenant
 
 **Modulo**: Tenant  

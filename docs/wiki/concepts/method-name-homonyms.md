@@ -82,19 +82,14 @@ Hook Filament/Laravel ripetuti — **non** debito. Elenco omesso.
 - `Tenant` · `TestSushiModel` · `Modules/Tenant/app/Models/TestSushiModel.php`
 - `Tenant` · `trait:SushiToJson` · `Modules/Tenant/app/Models/Traits/SushiToJson.php`
 
-#### `active` — 10 classi
+#### `active` — 6 classi
 
-- `Tenant` · `DomainFactory` · `Modules/Tenant/database/Factories/DomainFactory.php`
-- `Tenant` · `TenantFactory` · `Modules/Tenant/database/Factories/TenantFactory.php`
-- `Tenant` · `TestSushiModelFactory` · `Modules/Tenant/database/Factories/TestSushiModelFactory.php`
 - `Tenant` · `DomainFactory` · `Modules/Tenant/database/factories/DomainFactory.php`
 - `Tenant` · `TenantFactory` · `Modules/Tenant/database/factories/TenantFactory.php`
 - `Tenant` · `TestSushiModelFactory` · `Modules/Tenant/database/factories/TestSushiModelFactory.php`
 
-#### `inactive` — 7 classi
+#### `inactive` — 4 classi
 
-- `Tenant` · `TenantFactory` · `Modules/Tenant/database/Factories/TenantFactory.php`
-- `Tenant` · `TestSushiModelFactory` · `Modules/Tenant/database/Factories/TestSushiModelFactory.php`
 - `Tenant` · `TenantFactory` · `Modules/Tenant/database/factories/TenantFactory.php`
 - `Tenant` · `TestSushiModelFactory` · `Modules/Tenant/database/factories/TestSushiModelFactory.php`
 
@@ -122,9 +117,8 @@ Hook Filament/Laravel ripetuti — **non** debito. Elenco omesso.
 
 - `Tenant` · `AdminPanelProvider` · `Modules/Tenant/app/Providers/Filament/AdminPanelProvider.php`
 
-#### `pending` — 4 classi
+#### `pending` — 2 classi
 
-- `Tenant` · `TestSushiModelFactory` · `Modules/Tenant/database/Factories/TestSushiModelFactory.php`
 - `Tenant` · `TestSushiModelFactory` · `Modules/Tenant/database/factories/TestSushiModelFactory.php`
 
 #### `getName` — 3 classi

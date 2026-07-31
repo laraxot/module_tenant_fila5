@@ -9,7 +9,26 @@ module: "Tenant"
 
 ## Log Entries
 
-_No activity yet. Start by ingesting raw documents._
+## [2026-07-27] [GRAVE] Remote GitHub — collisione entrambe false
+
+- `code-quality-improvement-report.md`: HEAD=`base_techplanner` vs other=`base_workorder` — **entrambi sbagliati**
+- Correzione: `cd laravel/Modules/Tenant && git remote -v` → `laraxot/module_tenant_fila5`
+- Memory: [github-remote-collision-wrong-base.md](./memories/github-remote-collision-wrong-base.md)
+- Canon: [module-github-remote-discipline](../../../../../docs/wiki/memories/module-github-remote-discipline.md) · skill [module-theme-git-remote-resolve](../../../../../docs/wiki/skills/module-theme-git-remote-resolve.md)
+
+## [2026-07-01] [INGEST] Database factories — rimossa `Factories_/`
+
+- Regola generica: [database-folder-lowercase-rule.md](../../../../../docs/wiki/concepts/database-folder-lowercase-rule.md)
+- Wiki modulo: [lowercase-database-factories-directory.md](./concepts/lowercase-database-factories-directory.md)
+- `database/Factories_/` era copia stale (gitignore); canonico = `database/factories/`
+- Aggiornati: `method-name-homonyms.md` (path solo minuscolo), `concepts/INDEX.md`, `index.md`
+- Audit: `bash bashscripts/tools/audit-database-folder-lowercase.sh Tenant`
+
+## [2026-06-30] [LINT] Removed duplicate uppercase Tests directory
+
+- Regola: il modulo Tenant usa solo `tests/`.
+- `Tests/` era duplicata rispetto a `tests/` e non deve esistere.
+- Wiki: `docs/wiki/concepts/lowercase-tests-directory.md`.
 
 ### Format
 
@@ -25,5 +44,5 @@ _No activity yet. Start by ingesting raw documents._
 
 ---
 
-**Last Activity:** None  
-**Total Operations:** 0
+**Last Activity:** 2026-07-01  
+**Total Operations:** 2

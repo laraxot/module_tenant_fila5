@@ -1,3 +1,14 @@
+---
+title: "Analisi Metodi Duplicati - Modulo Tenant"
+module: "Tenant"
+type: concept
+tags: [duplicate, methods, analysis]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "duplicate methods analysis"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Analisi Metodi Duplicati - Modulo Tenant
 
 **Totale Gruppi di Duplicati**:
