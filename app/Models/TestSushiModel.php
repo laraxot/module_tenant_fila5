@@ -52,7 +52,7 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  */
 class TestSushiModel extends BaseModel
 {
-    /** @phpstan-ignore-next-line */
+    /** @phpstan-use HasXotFactory<\Modules\Tenant\Database\Factories\TestSushiModelFactory, TestSushiModel> */
     use HasXotFactory;
 
     use SushiToJson;
