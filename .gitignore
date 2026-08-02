@@ -153,3 +153,4 @@ yarn.lock
 # Root quality tool configs forbidden in module root
 phpmd*
 /.ai*
+/_bmad
