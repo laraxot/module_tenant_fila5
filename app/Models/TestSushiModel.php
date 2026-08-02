@@ -12,11 +12,16 @@ use Modules\Tenant\Models\Traits\SushiToJson;
 use Modules\Xot\Models\Traits\HasXotFactory;
 
 class TestSushiModel extends BaseModel
-{
-    use HasXotFactory;
+{/**
+ * @phpstan-use HasXotFactory<\Modules\Tenant\Database\Factories\TestSushiModelFactory, TestSushiModel>
+ */
+use HasXotFactory;
 
     use SushiToJson;
 
+    /**
+     * @var array<string, mixed>
+     */
     protected array $schema = [
         'id' => 'integer',
         'name' => 'string',
@@ -61,6 +66,9 @@ class TestSushiModel extends BaseModel
         return $filePath;
     }
 
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     public function getRows(): array
     {
         return $this->getSushiRows();
