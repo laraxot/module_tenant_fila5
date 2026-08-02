@@ -107,7 +107,7 @@ abstract class BaseModel extends \Modules\Xot\Models\XotBaseModel
 
 ### Pattern 1: getTableColumns() - ESEMPIO REALE
 
-#### Fixcity/TicketResource/ListTickets.php (ECCELLENTE)
+#### progetto corrente/TicketResource/ListTickets.php (ECCELLENTE)
 ```php
 protected function getTableColumns(): array
 {
@@ -468,7 +468,7 @@ public function getTableFilters(): array
 - Test dopo ogni modulo
 - Code review
 
-**Settimana 2**: Moduli Business (Fixcity, Blog, Geo)
+**Settimana 2**: Moduli Business (progetto corrente, Blog, Geo)
 - 20 List files
 - Test integrazione
 - Performance check
@@ -506,7 +506,7 @@ public function getTableFilters(): array
 3. Refactoring moduli core (Xot, User, Cms)
 
 #### ⭐⭐⭐⭐ PRIORITÀ ALTA
-4. Refactoring moduli business (Fixcity, Blog, Geo)
+4. Refactoring moduli business (progetto corrente, Blog, Geo)
 5. ActionPresets per CRUD
 6. Documentazione completa
 

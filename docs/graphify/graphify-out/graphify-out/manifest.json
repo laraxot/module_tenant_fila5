@@ -1,0 +1,752 @@
+{
+  ".php-cs-fixer.dist.php": {
+    "mtime": 1785494468.0866828,
+    "ast_hash": "2d2558b8d4ecd836992d553c5420972d",
+    "semantic_hash": "2d2558b8d4ecd836992d553c5420972d"
+  },
+  ".php-cs-fixer.php": {
+    "mtime": 1785494468.0866828,
+    "ast_hash": "2d2558b8d4ecd836992d553c5420972d",
+    "semantic_hash": "2d2558b8d4ecd836992d553c5420972d"
+  },
+  ".php_cs.dist.php": {
+    "mtime": 1785496692.8985596,
+    "ast_hash": "710ab5811293ea4db6c6a357222cbb0b",
+    "semantic_hash": "710ab5811293ea4db6c6a357222cbb0b"
+  },
+  ".releaserc.json": {
+    "mtime": 1779200039.9942043,
+    "ast_hash": "4e6e1d7f8649520947f1c17eee5fe245",
+    "semantic_hash": "4e6e1d7f8649520947f1c17eee5fe245"
+  },
+  "app/Actions/Config/FilterConfigStringKeysAction.php": {
+    "mtime": 1785494468.0866828,
+    "ast_hash": "684421dcc7eaa4af6ba47d1d5a26d447",
+    "semantic_hash": "684421dcc7eaa4af6ba47d1d5a26d447"
+  },
+  "app/Actions/Config/GetTenantConfigArrayAction.php": {
+    "mtime": 1785494468.0866828,
+    "ast_hash": "3af65303eb0d3095d27b759ca1cdcf50",
+    "semantic_hash": "3af65303eb0d3095d27b759ca1cdcf50"
+  },
+  "app/Actions/Config/GetTenantConfigNamesAction.php": {
+    "mtime": 1779200039.9942043,
+    "ast_hash": "80385962f26925970fe53ae76dac8186",
+    "semantic_hash": "80385962f26925970fe53ae76dac8186"
+  },
+  "app/Actions/Config/GetTenantConfigPathAction.php": {
+    "mtime": 1779200039.9942043,
+    "ast_hash": "b0537b5a14611a33c3ab0410636212b3",
+    "semantic_hash": "b0537b5a14611a33c3ab0410636212b3"
+  },
+  "app/Actions/Config/GetTenantFilePathAction.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "63c62b6ac94eb341428c660faba86300",
+    "semantic_hash": "63c62b6ac94eb341428c660faba86300"
+  },
+  "app/Actions/Config/MergeRecursiveStringKeyConfigAction.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "e84fe32bbccd292dba3727744992f7e1",
+    "semantic_hash": "e84fe32bbccd292dba3727744992f7e1"
+  },
+  "app/Actions/Config/ResolveTenantConfigValueAction.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "b64f9fd9d3082d54ec90e72652f78aa4",
+    "semantic_hash": "b64f9fd9d3082d54ec90e72652f78aa4"
+  },
+  "app/Actions/Config/SaveTenantConfigAction.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "5d3f77019741a248fcb0f626f1f0b770",
+    "semantic_hash": "5d3f77019741a248fcb0f626f1f0b770"
+  },
+  "app/Actions/Domains/GetDomainsArrayAction.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "2868563e167897c8b2b6855aa40b35e0",
+    "semantic_hash": "2868563e167897c8b2b6855aa40b35e0"
+  },
+  "app/Actions/GetTenantNameAction.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "ae7b4c238387d599a303c2abd0bd6fbc",
+    "semantic_hash": "ae7b4c238387d599a303c2abd0bd6fbc"
+  },
+  "app/Actions/Markdown/GetLocalizedMarkdownPathAction.php": {
+    "mtime": 1779200039.9942043,
+    "ast_hash": "812c1ffa9a05f140f7f9ca6de699dafe",
+    "semantic_hash": "812c1ffa9a05f140f7f9ca6de699dafe"
+  },
+  "app/Actions/Models/ResolveTenantModelClassAction.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "b89ae9fa703dbcd5c404c1be77e0d9e1",
+    "semantic_hash": "b89ae9fa703dbcd5c404c1be77e0d9e1"
+  },
+  "app/Actions/Models/ResolveTenantModelInstanceAction.php": {
+    "mtime": 1779200039.9942043,
+    "ast_hash": "16bcb35abf0879b2cdabce08702d7883",
+    "semantic_hash": "16bcb35abf0879b2cdabce08702d7883"
+  },
+  "app/Actions/Modules/GetTenantModulesAction.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "f65bed1827f0a781c45e43c67fd592a3",
+    "semantic_hash": "f65bed1827f0a781c45e43c67fd592a3"
+  },
+  "app/Actions/Translations/TranslateTenantKeyAction.php": {
+    "mtime": 1785496692.8985596,
+    "ast_hash": "62c6b6b1b9080aabce466399c92830b6",
+    "semantic_hash": "62c6b6b1b9080aabce466399c92830b6"
+  },
+  "app/Console/Commands/TestCommand.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "e4a1323c7fc133eb66e0cd4e3021272c",
+    "semantic_hash": "e4a1323c7fc133eb66e0cd4e3021272c"
+  },
+  "app/Console/Commands/_components.json": {
+    "mtime": 1779200039.9942043,
+    "ast_hash": "3db4d87d63f0c36124c57c2f22660b21",
+    "semantic_hash": "3db4d87d63f0c36124c57c2f22660b21"
+  },
+  "app/Contracts/SushiToJsonContract.php": {
+    "mtime": 1781773105.8322988,
+    "ast_hash": "7819a3a0824254be1691e6bfeddbbc10",
+    "semantic_hash": "7819a3a0824254be1691e6bfeddbbc10"
+  },
+  "app/Contracts/SushiToJsonsContract.php": {
+    "mtime": 1779200039.9942043,
+    "ast_hash": "1f0bb599dfa1cfa4ff66a1376c6f135f",
+    "semantic_hash": "1f0bb599dfa1cfa4ff66a1376c6f135f"
+  },
+  "app/Filament/Pages/Dashboard.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "d95c3245d9bbdff389ae9712cfe72c82",
+    "semantic_hash": "d95c3245d9bbdff389ae9712cfe72c82"
+  },
+  "app/Filament/Resources/DomainResource.php": {
+    "mtime": 1779200039.9942043,
+    "ast_hash": "e3db6fa6bf52cda2ee73c2cfa00ea59e",
+    "semantic_hash": "e3db6fa6bf52cda2ee73c2cfa00ea59e"
+  },
+  "app/Filament/Resources/DomainResource/Pages/CreateDomain.php": {
+    "mtime": 1781510350.6630569,
+    "ast_hash": "b555ec6a95dce5afa85b205bbe1ecd6a",
+    "semantic_hash": "b555ec6a95dce5afa85b205bbe1ecd6a"
+  },
+  "app/Filament/Resources/DomainResource/Pages/EditDomain.php": {
+    "mtime": 1781510350.6630569,
+    "ast_hash": "45c854918c9f5cb708f8873e4c009e27",
+    "semantic_hash": "45c854918c9f5cb708f8873e4c009e27"
+  },
+  "app/Filament/Resources/DomainResource/Pages/ListDomains.php": {
+    "mtime": 1781510350.6630569,
+    "ast_hash": "f11e9d3d8f66374063e86748f3c87943",
+    "semantic_hash": "f11e9d3d8f66374063e86748f3c87943"
+  },
+  "app/Filament/Resources/DomainResource/Schemas/DomainForm.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "30591d4b20a34a9f968f50e976d377ae",
+    "semantic_hash": "30591d4b20a34a9f968f50e976d377ae"
+  },
+  "app/Filament/Resources/DomainResource/Schemas/DomainInfolist.php": {
+    "mtime": 1779200039.9942043,
+    "ast_hash": "ea105ec4a186b5acd681353c88f7a1c1",
+    "semantic_hash": "ea105ec4a186b5acd681353c88f7a1c1"
+  },
+  "app/Filament/Resources/DomainResource/Tables/DomainsTable.php": {
+    "mtime": 1779200426.1700518,
+    "ast_hash": "186b356d626e24043b290f696716d6ef",
+    "semantic_hash": "186b356d626e24043b290f696716d6ef"
+  },
+  "app/Http/Livewire/_components.json": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "d751713988987e9331980363e24189ce",
+    "semantic_hash": "d751713988987e9331980363e24189ce"
+  },
+  "app/Models/BaseModel.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "e9017789ea17e739481575ad7c67aab9",
+    "semantic_hash": "e9017789ea17e739481575ad7c67aab9"
+  },
+  "app/Models/BaseModelJsons.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "7b5c92139f3cf7f79780f6b2cf199a9e",
+    "semantic_hash": "7b5c92139f3cf7f79780f6b2cf199a9e"
+  },
+  "app/Models/DatabaseConfig.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "d8651048e2bb2450b94fa8e92b4737bb",
+    "semantic_hash": "d8651048e2bb2450b94fa8e92b4737bb"
+  },
+  "app/Models/Domain.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "9712eec5e738ccb08e1226f932feab1e",
+    "semantic_hash": "9712eec5e738ccb08e1226f932feab1e"
+  },
+  "app/Models/Policies/DomainPolicy.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "0e42000d7a2f85a200c0fab3efbe6387",
+    "semantic_hash": "0e42000d7a2f85a200c0fab3efbe6387"
+  },
+  "app/Models/Policies/TenantBasePolicy.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "a4051e492e7fdbed60202c28f6344b35",
+    "semantic_hash": "a4051e492e7fdbed60202c28f6344b35"
+  },
+  "app/Models/Tenant.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "7b0977478ea523a2aca3b399de75102e",
+    "semantic_hash": "7b0977478ea523a2aca3b399de75102e"
+  },
+  "app/Models/TenantDomain.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "28662424565914c64526ac2c3774c969",
+    "semantic_hash": "28662424565914c64526ac2c3774c969"
+  },
+  "app/Models/TenantSetting.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "80bec94f08f1459c487131fcae0a4e08",
+    "semantic_hash": "80bec94f08f1459c487131fcae0a4e08"
+  },
+  "app/Models/TenantSubscription.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "ac48210a1fd8a73099ad52fe4cdc7594",
+    "semantic_hash": "ac48210a1fd8a73099ad52fe4cdc7594"
+  },
+  "app/Models/TestSushiModel.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "929110feacf9c71f2b9ee0f87c1454f9",
+    "semantic_hash": "929110feacf9c71f2b9ee0f87c1454f9"
+  },
+  "app/Models/Traits/SushiToCsv.php": {
+    "mtime": 1785496692.8985596,
+    "ast_hash": "7afad4d6d0d9e13c2c641540a15cb0e8",
+    "semantic_hash": "7afad4d6d0d9e13c2c641540a15cb0e8"
+  },
+  "app/Models/Traits/SushiToJson.php": {
+    "mtime": 1785496692.8985596,
+    "ast_hash": "32e0b4c1838c9403b8ba67520dd56b65",
+    "semantic_hash": "32e0b4c1838c9403b8ba67520dd56b65"
+  },
+  "app/Models/Traits/SushiToJsons.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "7bbed9357b8b0800dcc04f4c326a7e4c",
+    "semantic_hash": "7bbed9357b8b0800dcc04f4c326a7e4c"
+  },
+  "app/Models/Traits/SushiToPhpArray.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "82d6fd45bdb4d9a847b32553035ca264",
+    "semantic_hash": "82d6fd45bdb4d9a847b32553035ca264"
+  },
+  "app/Providers/EventServiceProvider.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "6ed50cdec5275afc494937b5295b842f",
+    "semantic_hash": "6ed50cdec5275afc494937b5295b842f"
+  },
+  "app/Providers/Filament/AdminPanelProvider.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "b1d763693ea0594dd4889571f123efbe",
+    "semantic_hash": "b1d763693ea0594dd4889571f123efbe"
+  },
+  "app/Providers/RouteServiceProvider.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "42bf75034f55740a85f5ff815380f8f7",
+    "semantic_hash": "42bf75034f55740a85f5ff815380f8f7"
+  },
+  "app/Providers/TenantServiceProvider.php": {
+    "mtime": 1785496692.8985596,
+    "ast_hash": "f5b5696f9240e6b8a6c7ba0e2272b4b1",
+    "semantic_hash": "f5b5696f9240e6b8a6c7ba0e2272b4b1"
+  },
+  "app/Services/Config/ConfigResolverRegistry.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "14a6c0ca93630f80b2f73a25853a67ca",
+    "semantic_hash": "14a6c0ca93630f80b2f73a25853a67ca"
+  },
+  "app/Services/Config/ConfigStringKeyFilter.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "3cd86302f0e235fe3a078a06f806e966",
+    "semantic_hash": "3cd86302f0e235fe3a078a06f806e966"
+  },
+  "app/Services/Config/Contracts/ConfigResolverInterface.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "1925790cb2180a4366808861cc217b55",
+    "semantic_hash": "1925790cb2180a4366808861cc217b55"
+  },
+  "app/Services/Config/Resolvers/DatabaseConfigResolver.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "fb23ff76c2444728617359f7f009df63",
+    "semantic_hash": "fb23ff76c2444728617359f7f009df63"
+  },
+  "app/Services/Config/Resolvers/MorphMapConfigResolver.php": {
+    "mtime": 1785496692.8985596,
+    "ast_hash": "6680db967cf0ce38b79088da8116b90a",
+    "semantic_hash": "6680db967cf0ce38b79088da8116b90a"
+  },
+  "app/Services/Config/Resolvers/StandardConfigResolver.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "a82c776722ff435384e4dbd73182074e",
+    "semantic_hash": "a82c776722ff435384e4dbd73182074e"
+  },
+  "app/Services/TenantService.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "4f89789bf114891562cfe428bf84908c",
+    "semantic_hash": "4f89789bf114891562cfe428bf84908c"
+  },
+  "app/View/Components/_components.json": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "d751713988987e9331980363e24189ce",
+    "semantic_hash": "d751713988987e9331980363e24189ce"
+  },
+  "app/View/View/Components/_components.json": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "d751713988987e9331980363e24189ce",
+    "semantic_hash": "d751713988987e9331980363e24189ce"
+  },
+  "composer.json": {
+    "mtime": 1781773105.8322988,
+    "ast_hash": "601a75f3af581591af6173e0cc867377",
+    "semantic_hash": "601a75f3af581591af6173e0cc867377"
+  },
+  "config/config.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "f03de4b37daba6fca01c31483d0a0f33",
+    "semantic_hash": "f03de4b37daba6fca01c31483d0a0f33"
+  },
+  "config/database.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "16936dfa818468cada79300a6e64599a",
+    "semantic_hash": "16936dfa818468cada79300a6e64599a"
+  },
+  "config/metatag.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "ae437a56dcf105131af2e360af369d6d",
+    "semantic_hash": "ae437a56dcf105131af2e360af369d6d"
+  },
+  "config/modules.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "1f42a56be3e3091a175f0d796f4b50d3",
+    "semantic_hash": "1f42a56be3e3091a175f0d796f4b50d3"
+  },
+  "config/test.php": {
+    "mtime": 1779200426.1540518,
+    "ast_hash": "cca2f729ee79701bccd104cea3519306",
+    "semantic_hash": "cca2f729ee79701bccd104cea3519306"
+  },
+  "config/xra.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "cd911c67f9f1830b2ee95c862c18552d",
+    "semantic_hash": "cd911c67f9f1830b2ee95c862c18552d"
+  },
+  "database/Factories/BaseModelJsonsFactory.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "bcbb1570488033268cdc850aa54adc6e",
+    "semantic_hash": "bcbb1570488033268cdc850aa54adc6e"
+  },
+  "database/Factories/DatabaseConfigFactory.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "5b19a5a0d0eea94a093b5c849c0e322d",
+    "semantic_hash": "5b19a5a0d0eea94a093b5c849c0e322d"
+  },
+  "database/Factories/DomainFactory.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "347894f234365a23670d428e3e0ad323",
+    "semantic_hash": "347894f234365a23670d428e3e0ad323"
+  },
+  "database/Factories/TenantDomainFactory.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "a3853efc30b9340a6c33970ab4f95350",
+    "semantic_hash": "a3853efc30b9340a6c33970ab4f95350"
+  },
+  "database/Factories/TenantFactory.php": {
+    "mtime": 1781510350.6654284,
+    "ast_hash": "47bf75c17a64f2713e6c380b722f0f73",
+    "semantic_hash": "47bf75c17a64f2713e6c380b722f0f73"
+  },
+  "database/Factories/TenantSettingFactory.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "0278f5d89755d1030ce06182c573bce8",
+    "semantic_hash": "0278f5d89755d1030ce06182c573bce8"
+  },
+  "database/Factories/TenantSubscriptionFactory.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "a39507b3a50c11c8ec82886d75d83e00",
+    "semantic_hash": "a39507b3a50c11c8ec82886d75d83e00"
+  },
+  "database/Factories/TestSushiModelFactory.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "c388421fe5ba7cad3850d7ecf5613625",
+    "semantic_hash": "c388421fe5ba7cad3850d7ecf5613625"
+  },
+  "database/Seeders/DatabaseConfigSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "ee9b55fad461ba36f10354e067fea6e5",
+    "semantic_hash": "ee9b55fad461ba36f10354e067fea6e5"
+  },
+  "database/Seeders/DomainSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "44fd9ffb50b012cc7ec6b49e1e9bdce1",
+    "semantic_hash": "44fd9ffb50b012cc7ec6b49e1e9bdce1"
+  },
+  "database/Seeders/DomainsSeeder.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "56e829b520e00d2369f1b96cd82b71c8",
+    "semantic_hash": "56e829b520e00d2369f1b96cd82b71c8"
+  },
+  "database/Seeders/TenantDatabaseSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "4784bd8d85bd8dbd40e08cfe1d75ef6f",
+    "semantic_hash": "4784bd8d85bd8dbd40e08cfe1d75ef6f"
+  },
+  "database/Seeders/TenantDomainSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "73535e3aa8131a5666f430d9345e65f4",
+    "semantic_hash": "73535e3aa8131a5666f430d9345e65f4"
+  },
+  "database/Seeders/TenantSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "18944c295e9724ef13c0ecb37fd0050a",
+    "semantic_hash": "18944c295e9724ef13c0ecb37fd0050a"
+  },
+  "database/Seeders/TenantSettingSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "8eac1ddf45aefa1b1faa6850e515ed96",
+    "semantic_hash": "8eac1ddf45aefa1b1faa6850e515ed96"
+  },
+  "database/Seeders/TenantSubscriptionSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "00461053ab7a2373ec73a7f8a428c071",
+    "semantic_hash": "00461053ab7a2373ec73a7f8a428c071"
+  },
+  "database/Seeders/TestSushiSeeder.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "7dbcaeb867a818ffe83a9a7afb893210",
+    "semantic_hash": "7dbcaeb867a818ffe83a9a7afb893210"
+  },
+  "database/factories/BaseModelJsonsFactory.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "bcbb1570488033268cdc850aa54adc6e",
+    "semantic_hash": "bcbb1570488033268cdc850aa54adc6e"
+  },
+  "database/factories/DatabaseConfigFactory.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "5b19a5a0d0eea94a093b5c849c0e322d",
+    "semantic_hash": "5b19a5a0d0eea94a093b5c849c0e322d"
+  },
+  "database/factories/DomainFactory.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "347894f234365a23670d428e3e0ad323",
+    "semantic_hash": "347894f234365a23670d428e3e0ad323"
+  },
+  "database/factories/TenantDomainFactory.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "a3853efc30b9340a6c33970ab4f95350",
+    "semantic_hash": "a3853efc30b9340a6c33970ab4f95350"
+  },
+  "database/factories/TenantFactory.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "7c8241b43a4ba08fa5130af3f2690fd5",
+    "semantic_hash": "7c8241b43a4ba08fa5130af3f2690fd5"
+  },
+  "database/factories/TenantSettingFactory.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "0278f5d89755d1030ce06182c573bce8",
+    "semantic_hash": "0278f5d89755d1030ce06182c573bce8"
+  },
+  "database/factories/TenantSubscriptionFactory.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "a39507b3a50c11c8ec82886d75d83e00",
+    "semantic_hash": "a39507b3a50c11c8ec82886d75d83e00"
+  },
+  "database/factories/TestSushiModelFactory.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "c388421fe5ba7cad3850d7ecf5613625",
+    "semantic_hash": "c388421fe5ba7cad3850d7ecf5613625"
+  },
+  "database/migrations/2026_07_24_000000_create_tenant_settings_table.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "8b458e1bd03d7f117b49de5f606437b2",
+    "semantic_hash": "8b458e1bd03d7f117b49de5f606437b2"
+  },
+  "database/migrations/2026_07_24_000001_create_tenant_subscriptions_table.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "4ba4d37ad73949ef4ebce35546e9d533",
+    "semantic_hash": "4ba4d37ad73949ef4ebce35546e9d533"
+  },
+  "database/migrations/2026_07_24_000002_create_database_configs_table.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "a94b46e4b7df3b6abb4bfdfd4b0baf4f",
+    "semantic_hash": "a94b46e4b7df3b6abb4bfdfd4b0baf4f"
+  },
+  "database/seeders/DatabaseConfigSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "ee9b55fad461ba36f10354e067fea6e5",
+    "semantic_hash": "ee9b55fad461ba36f10354e067fea6e5"
+  },
+  "database/seeders/DomainSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "44fd9ffb50b012cc7ec6b49e1e9bdce1",
+    "semantic_hash": "44fd9ffb50b012cc7ec6b49e1e9bdce1"
+  },
+  "database/seeders/DomainsSeeder.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "56e829b520e00d2369f1b96cd82b71c8",
+    "semantic_hash": "56e829b520e00d2369f1b96cd82b71c8"
+  },
+  "database/seeders/TenantDatabaseSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "4784bd8d85bd8dbd40e08cfe1d75ef6f",
+    "semantic_hash": "4784bd8d85bd8dbd40e08cfe1d75ef6f"
+  },
+  "database/seeders/TenantDomainSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "73535e3aa8131a5666f430d9345e65f4",
+    "semantic_hash": "73535e3aa8131a5666f430d9345e65f4"
+  },
+  "database/seeders/TenantSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "18944c295e9724ef13c0ecb37fd0050a",
+    "semantic_hash": "18944c295e9724ef13c0ecb37fd0050a"
+  },
+  "database/seeders/TenantSettingSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "8eac1ddf45aefa1b1faa6850e515ed96",
+    "semantic_hash": "8eac1ddf45aefa1b1faa6850e515ed96"
+  },
+  "database/seeders/TenantSubscriptionSeeder.php": {
+    "mtime": 1785494468.0869322,
+    "ast_hash": "00461053ab7a2373ec73a7f8a428c071",
+    "semantic_hash": "00461053ab7a2373ec73a7f8a428c071"
+  },
+  "database/seeders/TestSushiSeeder.php": {
+    "mtime": 1779200039.9985378,
+    "ast_hash": "7dbcaeb867a818ffe83a9a7afb893210",
+    "semantic_hash": "7dbcaeb867a818ffe83a9a7afb893210"
+  },
+  "docs/prd.json": {
+    "mtime": 1779200040.0072043,
+    "ast_hash": "4ad4a8de403ad5cf21f44015e34160af",
+    "semantic_hash": "4ad4a8de403ad5cf21f44015e34160af"
+  },
+  "lang/de/domain.php": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "39ae7f68bbc1a07fe521cbaaedd2cf79",
+    "semantic_hash": "39ae7f68bbc1a07fe521cbaaedd2cf79"
+  },
+  "lang/de/tenant.php": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "ecd88feba537ebc1c147ebe9d8a65d4d",
+    "semantic_hash": "ecd88feba537ebc1c147ebe9d8a65d4d"
+  },
+  "lang/en/domain.php": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "c5b374d1d431d2eb8d16374200c7c6b9",
+    "semantic_hash": "c5b374d1d431d2eb8d16374200c7c6b9"
+  },
+  "lang/en/tenant.php": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "d1eba76f18334e5a300d52c1be6064ae",
+    "semantic_hash": "d1eba76f18334e5a300d52c1be6064ae"
+  },
+  "lang/it/domain.php": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "e7d35dfa877783554cd92684db905433",
+    "semantic_hash": "e7d35dfa877783554cd92684db905433"
+  },
+  "lang/it/domains.php": {
+    "mtime": 1781615588.6597023,
+    "ast_hash": "532b2f97b104a7535901bb0ee572190b",
+    "semantic_hash": "532b2f97b104a7535901bb0ee572190b"
+  },
+  "lang/it/tenant.php": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "2907ba9cf7d2f6826213c60e902915ec",
+    "semantic_hash": "2907ba9cf7d2f6826213c60e902915ec"
+  },
+  "module.json": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "f52ad074e24b1df9d51d3dd5f925553c",
+    "semantic_hash": "f52ad074e24b1df9d51d3dd5f925553c"
+  },
+  "package.json": {
+    "mtime": 1785494468.1052654,
+    "ast_hash": "40ce15f8cdec631de34b79a2cc2bc82b",
+    "semantic_hash": "40ce15f8cdec631de34b79a2cc2bc82b"
+  },
+  "pint.json": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "72d24a23ac7588e114aacdbc94a900ea",
+    "semantic_hash": "72d24a23ac7588e114aacdbc94a900ea"
+  },
+  "postcss.config.js": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "854b38759e7a8b4b82306ae2d9a3a833",
+    "semantic_hash": "854b38759e7a8b4b82306ae2d9a3a833"
+  },
+  "resources/assets/js/app.js": {
+    "mtime": 1785496691.8095598,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "resources/views/admin/dashboard/item.blade.php": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "a3e3ea9196e32b1ffca7d6d52f13b3d8",
+    "semantic_hash": "a3e3ea9196e32b1ffca7d6d52f13b3d8"
+  },
+  "resources/views/filament/pages/dashboard.blade.php": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "232ef9d4ef22bf4890dde621e868a146",
+    "semantic_hash": "232ef9d4ef22bf4890dde621e868a146"
+  },
+  "resources/views/index.blade.php": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "aa3edc78674ff72a783cc273dc1dc8dc",
+    "semantic_hash": "aa3edc78674ff72a783cc273dc1dc8dc"
+  },
+  "resources/views/layouts/master.blade.php": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "68dc35c52f9d83eaddd38298da9b0257",
+    "semantic_hash": "68dc35c52f9d83eaddd38298da9b0257"
+  },
+  "routes/api.php": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "37cbbeb6cfc1b1910fbf1c92261f5a2b",
+    "semantic_hash": "37cbbeb6cfc1b1910fbf1c92261f5a2b"
+  },
+  "routes/web.php": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "ee7566e74477118105057a9066535fb5",
+    "semantic_hash": "ee7566e74477118105057a9066535fb5"
+  },
+  "tailwind.config.js": {
+    "mtime": 1779200040.015871,
+    "ast_hash": "39703ad584fe1269525916a1c542342a",
+    "semantic_hash": "39703ad584fe1269525916a1c542342a"
+  },
+  "tests/Feature/TenantBusinessLogicTest.php": {
+    "mtime": 1785494468.1052654,
+    "ast_hash": "1b671aa62b54efb5c0d632754e5aff1a",
+    "semantic_hash": "1b671aa62b54efb5c0d632754e5aff1a"
+  },
+  "tests/Feature/TenantConfigIsolationTest.php": {
+    "mtime": 1785494468.1052654,
+    "ast_hash": "ce6d1128b83ef7dab59bdbf86061f7e6",
+    "semantic_hash": "ce6d1128b83ef7dab59bdbf86061f7e6"
+  },
+  "tests/Integration/SushiToJsonIntegrationTest.php": {
+    "mtime": 1785496692.9022262,
+    "ast_hash": "8b9d90c1f4783a462830507525a6aab9",
+    "semantic_hash": "8b9d90c1f4783a462830507525a6aab9"
+  },
+  "tests/Pest.php": {
+    "mtime": 1785494468.1052654,
+    "ast_hash": "7e99d0cf54449eafe6e0da3e94d95d8e",
+    "semantic_hash": "7e99d0cf54449eafe6e0da3e94d95d8e"
+  },
+  "tests/Support/TestSushiModelWithJsonPath.php": {
+    "mtime": 1785494468.1052654,
+    "ast_hash": "5aae98f44441eda6d1ae8bd6295cf0a2",
+    "semantic_hash": "5aae98f44441eda6d1ae8bd6295cf0a2"
+  },
+  "tests/Support/helpers.php": {
+    "mtime": 1785494468.109961,
+    "ast_hash": "82498a32c1ba6570694791492bc5580c",
+    "semantic_hash": "82498a32c1ba6570694791492bc5580c"
+  },
+  "tests/TenantContextSetter.php": {
+    "mtime": 1781773105.7989259,
+    "ast_hash": "46f0322bfb3a05fc2027b4604280432e",
+    "semantic_hash": "46f0322bfb3a05fc2027b4604280432e"
+  },
+  "tests/TestCase.php": {
+    "mtime": 1785494468.109961,
+    "ast_hash": "783e6eda29145499a58b4709b9b0b4ba",
+    "semantic_hash": "783e6eda29145499a58b4709b9b0b4ba"
+  },
+  "tests/Unit/Actions/Config/FilterConfigStringKeysActionTest.php": {
+    "mtime": 1785494468.109961,
+    "ast_hash": "db7d5dafac243acf3644438c02ace354",
+    "semantic_hash": "db7d5dafac243acf3644438c02ace354"
+  },
+  "tests/Unit/Actions/Config/GetTenantConfigArrayActionTest.php": {
+    "mtime": 1785494468.109961,
+    "ast_hash": "02a64143e11c2d1182977f8d4efa0657",
+    "semantic_hash": "02a64143e11c2d1182977f8d4efa0657"
+  },
+  "tests/Unit/Actions/Config/GetTenantConfigNamesActionTest.php": {
+    "mtime": 1785494468.109961,
+    "ast_hash": "dd49eb3359702af07a974cc226429e71",
+    "semantic_hash": "dd49eb3359702af07a974cc226429e71"
+  },
+  "tests/Unit/Actions/Config/GetTenantConfigPathActionTest.php": {
+    "mtime": 1785494468.109961,
+    "ast_hash": "b387fe88b996a785d41207f3a606b773",
+    "semantic_hash": "b387fe88b996a785d41207f3a606b773"
+  },
+  "tests/Unit/Actions/Config/GetTenantFilePathActionTest.php": {
+    "mtime": 1785494468.109961,
+    "ast_hash": "e1e25ee5628b8bfbc7e25a3bd789eccc",
+    "semantic_hash": "e1e25ee5628b8bfbc7e25a3bd789eccc"
+  },
+  "tests/Unit/Actions/Config/ResolveTenantConfigValueActionTest.php": {
+    "mtime": 1785494468.109961,
+    "ast_hash": "fa7759bd756144c09ad7489bddd050d4",
+    "semantic_hash": "fa7759bd756144c09ad7489bddd050d4"
+  },
+  "tests/Unit/Actions/Config/SaveTenantConfigActionTest.php": {
+    "mtime": 1785494468.109961,
+    "ast_hash": "c900cc79ea1bed15d24c2edd45da5d33",
+    "semantic_hash": "c900cc79ea1bed15d24c2edd45da5d33"
+  },
+  "tests/Unit/Actions/Domains/GetDomainsArrayActionTest.php": {
+    "mtime": 1785496692.9022262,
+    "ast_hash": "8e5a9f38525742e7e8a7ff7e7d426e8a",
+    "semantic_hash": "8e5a9f38525742e7e8a7ff7e7d426e8a"
+  },
+  "tests/Unit/Actions/GetTenantNameActionTest.php": {
+    "mtime": 1785494468.109961,
+    "ast_hash": "76b6237a05fc1a51c80a0e96c5d9ae94",
+    "semantic_hash": "76b6237a05fc1a51c80a0e96c5d9ae94"
+  },
+  "tests/Unit/Actions/Markdown/GetLocalizedMarkdownPathActionTest.php": {
+    "mtime": 1785494468.109961,
+    "ast_hash": "c63ce93b2bdc50bfe75f3877d2cd4a16",
+    "semantic_hash": "c63ce93b2bdc50bfe75f3877d2cd4a16"
+  },
+  "tests/Unit/Actions/Models/ResolveTenantModelClassActionTest.php": {
+    "mtime": 1785496692.9022262,
+    "ast_hash": "a7d50121360ffade0a1dbafa1592a6bf",
+    "semantic_hash": "a7d50121360ffade0a1dbafa1592a6bf"
+  },
+  "tests/Unit/Actions/TenantAdditionalActionsTest.php": {
+    "mtime": 1785494468.109961,
+    "ast_hash": "787e43730b0708e92d6d09c38ab17758",
+    "semantic_hash": "787e43730b0708e92d6d09c38ab17758"
+  },
+  "tests/Unit/ApplicationPublicPathCoverageTest.php": {
+    "mtime": 1785496692.9022262,
+    "ast_hash": "356717bc6cb000d16417154b5ec1e936",
+    "semantic_hash": "356717bc6cb000d16417154b5ec1e936"
+  },
+  "tests/Unit/DomainTest.php": {
+    "mtime": 1785496692.9022262,
+    "ast_hash": "5f65531aa4ab8a1040c541f8d247a110",
+    "semantic_hash": "5f65531aa4ab8a1040c541f8d247a110"
+  },
+  "tests/Unit/Models/BaseModelTest.php": {
+    "mtime": 1785496692.9022262,
+    "ast_hash": "f0e24be018577a25acc8d8dfd71cf6fc",
+    "semantic_hash": "f0e24be018577a25acc8d8dfd71cf6fc"
+  },
+  "tests/Unit/TenantModelsTest.php": {
+    "mtime": 1785496692.9022262,
+    "ast_hash": "0fc6df4994fe5f1cce54c0b9b739ab0e",
+    "semantic_hash": "0fc6df4994fe5f1cce54c0b9b739ab0e"
+  },
+  "vite.config.js": {
+    "mtime": 1779200040.0202043,
+    "ast_hash": "62cde04de1520aaf830e6fc0fd0b9a78",
+    "semantic_hash": "62cde04de1520aaf830e6fc0fd0b9a78"
+  },
+  "webpack.mix.js": {
+    "mtime": 1785494468.109961,
+    "ast_hash": "6ce331d7a3c1b402d4d25972e2f15f4f",
+    "semantic_hash": "6ce331d7a3c1b402d4d25972e2f15f4f"
+  }
+}

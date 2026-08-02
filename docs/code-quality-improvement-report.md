@@ -7,7 +7,7 @@ created: 2026-07-17
 updated: 2026-07-27
 qmd: "code quality baseline PHPStan Pest strict types Laraxot Tenant git remote module_tenant"
 story: STORY-001
-# GRAVE: issue/discussion del MODULO — mai base_techplanner / base_workorder / mono.
+# GRAVE: issue/discussion del MODULO — mai base_project / base_workorder / mono.
 # Resolve: cd laravel/Modules/Tenant && git remote -v → laraxot/module_tenant_fila5
 issues: []
 discussions: []
@@ -28,7 +28,7 @@ cd laravel/Modules/Tenant && git remote -v
 # laraxot → git@github.com:laraxot/module_tenant_fila5.git
 ```
 
-**Lezione grave:** in un conflitto Git, *entrambe* le parti possono essere sbagliate. Qui HEAD puntava a `base_techplanner_fila5` e l’altro lato a `base_workorder_fila5` — nessuno dei due è il remote Tenant. Non scegliere a caso: scoprire il remote nella cartella del modulo.
+**Lezione grave:** in un conflitto Git, *entrambe* le parti possono essere sbagliate. Qui HEAD puntava a `base_ptvx_fila5` e l’altro lato a `base_workorder_fila5` — nessuno dei due è il remote Tenant. Non scegliere a caso: scoprire il remote nella cartella del modulo.
 
 ## Baseline
 

@@ -56,7 +56,7 @@ This project uses **environment-specific tenant configuration**:
 laravel/config/
 ├── localhost/              # Local dev (all tenants, single DB)
 ├── com/geekpiu/            # GeeKPIU tenant (production)
-├── eu/fixcity/             # FixCity EU tenant
+├── eu/progetto corrente/             # progetto corrente EU tenant
 └── net/futurely/           # Futurely tenant
 ```
 

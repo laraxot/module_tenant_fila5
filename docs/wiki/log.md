@@ -11,7 +11,7 @@ module: "Tenant"
 
 ## [2026-07-27] [GRAVE] Remote GitHub — collisione entrambe false
 
-- `code-quality-improvement-report.md`: HEAD=`base_techplanner` vs other=`base_workorder` — **entrambi sbagliati**
+- `code-quality-improvement-report.md`: HEAD=`base_project` vs other=`base_workorder` — **entrambi sbagliati**
 - Correzione: `cd laravel/Modules/Tenant && git remote -v` → `laraxot/module_tenant_fila5`
 - Memory: [github-remote-collision-wrong-base.md](./memories/github-remote-collision-wrong-base.md)
 - Canon: [module-github-remote-discipline](../../../../../docs/wiki/memories/module-github-remote-discipline.md) · skill [module-theme-git-remote-resolve](../../../../../docs/wiki/skills/module-theme-git-remote-resolve.md)
