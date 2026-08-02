@@ -49,8 +49,8 @@ per puro caso — mascherando il fatto che moduli reali del progetto corrente no
 ## Incidente reale (2026-07-27)
 
 `config/local/workorder/modules_statuses.json` conteneva un elenco di moduli
-(`Quaeris, LU, Chart, Limesurvey, Setting, BarberShop, RealEstate, Booking, Food, Forum,
-TechPlanner, Shop, Ticket, ...`) che non corrispondeva affatto ai 38 moduli reali di
+(`modulo questionari, LU, Chart, Limesurvey, Setting, BarberShop, RealEstate, Booking, Food, Forum,
+modulo operativo, Shop, Ticket, ...`) che non corrispondeva affatto ai 38 moduli reali di
 questo progetto (`AI, Activity, AiAssistant, Billing, Bom, Catalog, Cms, Compliance,
 Customer, Document, Email, Employee, EnergyBroker, Fiscal, Gdpr, Geo, HR, Intervention,
 Inventory, Job, Lang, Media, Notify, Platform, Production, PublicProcurement, Quotation,
@@ -75,7 +75,7 @@ Rigenerato `config/local/workorder/modules_statuses.json`:
 
 - **38 chiavi** — solo moduli con `Modules/{Name}/module.json`, tutti `true`
 - **Esclusi:** `Blog`, `Comment`, `TestModule` (directory senza `module.json`)
-- **Rimossi fantasma:** `DbForge`, `FormBuilder`, nomi legacy multi-verticale (Quaeris, Ticket, Shop, …)
+- **Rimossi fantasma:** `DbForge`, `FormBuilder`, nomi legacy multi-verticale (modulo questionari, Ticket, Shop, …)
 - `config/local/workorder/modules.php` → `statuses-file` punta a questo JSON
 
 ```bash

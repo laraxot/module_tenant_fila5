@@ -5,7 +5,7 @@ tags: [github, git, merge, remote, tenant, grave]
 module: Tenant
 created: 2026-07-27
 updated: 2026-07-27
-qmd: "Tenant git remote module_tenant_fila5 base_techplanner base_workorder collision grave"
+qmd: "Tenant git remote module_tenant_fila5 base_project base_workorder collision grave"
 related:
   - ../../../../../../docs/wiki/memories/module-github-remote-discipline.md
   - ../../../../../../docs/wiki/rules/multi-repo-modules-themes-map.md
@@ -19,7 +19,7 @@ related:
 
 In `docs/code-quality-improvement-report.md` un conflitto Git aveva:
 
-- HEAD → `laraxot/base_techplanner_fila5`
+- HEAD → `laraxot/base_ptvx_fila5`
 - other → `laraxot/base_workorder_fila5`
 
 **Entrambi errati.** Il remote del modulo è:
