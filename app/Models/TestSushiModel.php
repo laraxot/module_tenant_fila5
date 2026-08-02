@@ -12,15 +12,14 @@ use Modules\Tenant\Models\Traits\SushiToJson;
 use Modules\Xot\Models\Traits\HasXotFactory;
 
 class TestSushiModel extends BaseModel
-{/**
- * @phpstan-use HasXotFactory<\Modules\Tenant\Database\Factories\TestSushiModelFactory, TestSushiModel>
- */
-use HasXotFactory;
+{
+    /** @phpstan-use HasXotFactory<TestSushiModelFactory, TestSushiModel> */
+    use HasXotFactory;
 
     use SushiToJson;
 
     /**
-     * @var array<string, mixed>
+     * @var array<string, string>
      */
     protected array $schema = [
         'id' => 'integer',
