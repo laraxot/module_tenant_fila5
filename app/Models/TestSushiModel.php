@@ -11,9 +11,18 @@ use Modules\Tenant\Database\Factories\TestSushiModelFactory;
 use Modules\Tenant\Models\Traits\SushiToJson;
 use Modules\Xot\Models\Traits\HasXotFactory;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $description
+ * @property string $status
+ * @property string $metadata
+ * @property int $created_by
+ * @property int $updated_by
+ */
 class TestSushiModel extends BaseModel
 {
-    /** @phpstan-use HasXotFactory<TestSushiModelFactory, TestSushiModel> */
+    /** @use HasXotFactory<TestSushiModelFactory> */
     use HasXotFactory;
 
     use SushiToJson;
