@@ -29,6 +29,6 @@ Doc verificati e presenti in `docs/`:
 - [translations.md](./translations.md)
 - [phpstan-cluster.md](./phpstan-cluster.md)
 - [testing.md](./testing.md)
-- [ARCHITECTURE.md](./ARCHITECTURE.md)
+- [architecture.md](./architecture.md)
 - [troubleshooting.md](./troubleshooting.md)
 - [conflict-resolution.md](./conflict-resolution.md)

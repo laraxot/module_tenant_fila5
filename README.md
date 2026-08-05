@@ -109,9 +109,9 @@ Tenant/
 │   └── metatag.php          # Meta tag configuration
 ├── routes/                  # Route definitions (if any)
 ├── docs/
-│   ├── INDEX.md             # Documentation index
+│   ├── index.md             # Documentation index
 │   ├── README.md            # This file
-│   ├── ARCHITECTURE.md      # Detailed architecture
+│   ├── architecture.md      # Detailed architecture
 │   ├── PATTERNS.md          # Design patterns
 │   └── TROUBLESHOOTING.md   # Common issues
 └── composer.json
@@ -274,7 +274,7 @@ See [Patterns Documentation](PATTERNS.md) for:
 
 To contribute to the Tenant module:
 
-1. Read [Architecture](ARCHITECTURE.md) for design principles
+1. Read [Architecture](architecture.md) for design principles
 2. Follow patterns in [Patterns](PATTERNS.md)
 3. Add troubleshooting entries for known issues
 4. Keep isolation constraints in mind
@@ -284,4 +284,4 @@ See [Contributing Guide](../../docs/wiki/how-to/contributing.md) for details.
 
 ---
 
-Navigation: [Project Home](../../docs/INDEX.md) | [Modules](../../docs/modules/README.md) | [Documentation Index](INDEX.md)
+Navigation: [Project Home](../../docs/index.md) | [Modules](../../docs/modules/README.md) | [Documentation Index](index.md)
