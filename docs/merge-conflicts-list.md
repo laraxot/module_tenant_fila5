@@ -30,7 +30,7 @@ Elenco dei file trovati contenenti marker di merge (<<<<<<<, >>>>>>>, .merge_fil
 - laravel/Modules/Geo/resources/js/components/coordinate-picker-styles.js
 - laravel/Modules/Geo/docs/wiki/index.md
 - laravel/Modules/Geo/docs/wiki/log.md
-- laravel/Modules/Geo/docs/wiki/AGENTS.md
+- laravel/Modules/Geo/docs/wiki/agents.md
 - laravel/Modules/Project/docs/wiki/index.md
 - laravel/Modules/Project/docs/wiki/log.md
 - laravel/Modules/Project/docs/wiki/README.md

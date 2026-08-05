@@ -32,10 +32,10 @@ related:
 - **[wiki/Architecture.md](./wiki/Architecture.md)** — Multi-tenant system design
 - **[wiki/TenantIdentification.md](./wiki/TenantIdentification.md)** — How tenants are identified
 - **[wiki/ConfigurationDistribution.md](./wiki/ConfigurationDistribution.md)** — Config per tenant
-- **[wiki/SCHEMA.md](./wiki/SCHEMA.md)** — Database schema reference
+- **[wiki/schema.md](./wiki/schema.md)** — Database schema reference
 
 ### Roadmap
-- **[roadmap/00-INDEX.md](./roadmap/00-INDEX.md)** — Q4 2025 roadmap and phases
+- **[roadmap/00-index.md](./roadmap/00-index.md)** — Q4 2025 roadmap and phases
 - **[roadmap/vision.md](./roadmap/vision.md)** — Long-term vision
 - **[roadmap/tenant-isolation.md](./roadmap/tenant-isolation.md)** — Data isolation strategy
 
@@ -114,15 +114,15 @@ For deep understanding of multi-tenant configuration:
 
 **Rule**: When documenting Tenant module features:
 1. Update [wiki/](./wiki/) first (canonical source)
-2. Link from 00-INDEX.md (this file)
+2. Link from 00-index.md (this file)
 3. Archive old duplicates if found
 
 ---
 
 ## 🔗 Related Modules
 
-- **[User Module](../../User/docs/00-INDEX.md)** — Authentication per tenant
-- **[Xot Module](../../Xot/docs/00-INDEX.md)** — Base classes for tenant awareness
+- **[User Module](../../User/docs/00-index.md)** — Authentication per tenant
+- **[Xot Module](../../Xot/docs/00-index.md)** — Base classes for tenant awareness
 - **[Theme System](../../../Themes/)** — Theme per tenant support
 
 ---
