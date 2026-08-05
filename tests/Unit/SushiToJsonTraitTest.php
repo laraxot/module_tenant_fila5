@@ -158,7 +158,7 @@ describe('SushiToJson Trait', function (): void {
         $model = new TestSushiModel();
         $model->fill(['name' => 'New Item', 'description' => 'New Description']);
 
-        expect($model->name)->toBe('New Item');
+        expect($model->getAttribute('name'))->toBe('New Item');
         expect($model->getJsonFile())->toBeString()->toEndWith('test_sushi.json');
     });
 
