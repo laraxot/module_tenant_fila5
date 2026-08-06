@@ -19,6 +19,8 @@ use function Safe\json_decode;
  * Vietato pest()->extend() e expect()->extend() qui (PHPStan method.internalClass).
  */
 
+require_once __DIR__.'/../../Xot/tests/XotBasePest.php';
+
 /**
  * @param  array<array-key, mixed>  $rows
  * @return array<string, mixed>
