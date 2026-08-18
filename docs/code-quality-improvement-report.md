@@ -28,7 +28,7 @@ cd laravel/Modules/Tenant && git remote -v
 # laraxot → git@github.com:laraxot/module_tenant_fila5.git
 ```
 
-**Lezione grave:** in un conflitto Git, *entrambe* le parti possono essere sbagliate. Qui HEAD puntava a `base_ptvx_fila5` e l’altro lato a `base_workorder_fila5` — nessuno dei due è il remote Tenant. Non scegliere a caso: scoprire il remote nella cartella del modulo.
+**Lezione grave:** in un conflitto Git, *entrambe* le parti possono essere sbagliate. Qui HEAD puntava a `<nome repository>` — nessuno dei due è il remote Tenant. Non scegliere a caso: scoprire il remote nella cartella del modulo.
 
 ## Baseline
 
