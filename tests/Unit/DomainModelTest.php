@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit;
 
+use Mockery\MockInterface;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Tests\TestCase;
@@ -14,13 +15,13 @@ uses(TestCase::class);
 describe('Domain Model', function (): void {
     test('_domain_model_can_be_instantiated', function (): void {
         /** @var TestCase $this */
-        $domain = new Domain();
+        $domain = new Domain;
 
         Assert::assertInstanceOf(Domain::class, $domain);
     });
 
     test('_get_rows_method_works_correctly', function (): void {
-        $this->mockService(GetDomainsArrayAction::class, function ($mock): void {
+        $this->mockService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
             $mock->allows([
                 'execute' => [
                     ['id' => 1, 'name' => 'test-domain.com'],
@@ -29,7 +30,7 @@ describe('Domain Model', function (): void {
             ]);
         });
 
-        $domain = new Domain();
+        $domain = new Domain;
         $rows = $domain->getRows();
 
         Assert::assertCount(2, $rows);
