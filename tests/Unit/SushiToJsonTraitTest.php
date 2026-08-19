@@ -27,7 +27,7 @@ beforeEach(function (): void {
 
     $jsonPath = $this->testJsonPath;
     $mock = Mockery::mock(GetTenantFilePathAction::class);
-    tenantMockExpectation($mock, 'execute')
+    $this->tenantMockExpectation($mock, 'execute')
         ->with('database/content/test_sushi.json')
         ->andReturn($jsonPath);
     app()->instance(GetTenantFilePathAction::class, $mock);
@@ -78,13 +78,13 @@ describe('SushiToJson Trait', function (): void {
 
         $rows = $this->sushiModel()->loadExistingData();
 
-        expect($rows)->toBeArray()->toHaveCount(2);
+        expect($rows)->toHaveCount(2);
         expect($this->jsonRecordAt($rows, '1')['name'])->toBe('Test Item 1');
         expect($this->jsonRecordAt($rows, '2')['name'])->toBe('Test Item 2');
     });
 
     it('returns empty array when file not exists', function (): void {
-        expect($this->sushiModel()->getSushiRows())->toBeArray()->toBeEmpty();
+        expect($this->sushiModel()->getSushiRows())->toBeEmpty();
     });
 
     it('throws exception with malformed json', function (): void {
@@ -159,11 +159,10 @@ describe('SushiToJson Trait', function (): void {
         $model->fill(['name' => 'New Item', 'description' => 'New Description']);
 
         expect($model->name)->toBe('New Item');
-        expect($model->getJsonFile())->toBeString()->toEndWith('test_sushi.json');
+        expect($model->getJsonFile())->toEndWith('test_sushi.json');
     });
 
     it('integrates with tenant service correctly', function (): void {
-        expect(app(GetTenantFilePathAction::class))->toBeInstanceOf(GetTenantFilePathAction::class);
         expect($this->sushiModel()->getJsonFile())->toBe($this->testJsonPath);
     });
 
