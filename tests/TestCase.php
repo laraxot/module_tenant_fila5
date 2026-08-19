@@ -7,11 +7,13 @@ namespace Modules\Tenant\Tests;
 use Closure;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
-use Mockery\Expectation;
+use Mockery\ExpectationInterface;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Models\BaseModel;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
@@ -20,8 +22,10 @@ use Modules\User\Providers\UserServiceProvider;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Modules\Xot\Tests\XotBaseTestCase;
 use PHPUnit\Framework\Assert;
+use Webmozart\Assert\Assert as WebmozartAssert;
 
 use function Safe\json_decode;
+use function Safe\putenv;
 
 /**
  * @property TestSushiModel|null $model
@@ -33,6 +37,9 @@ use function Safe\json_decode;
 abstract class TestCase extends XotBaseTestCase
 {
     use DatabaseTransactions;
+
+    /** @var list<string> */
+    protected $connectionsToTransact = ['sqlite', 'tenant', 'user'];
 
     /** @var TestSushiModel */
     public mixed $model;
@@ -51,9 +58,76 @@ abstract class TestCase extends XotBaseTestCase
     /** @var Closure(): array<array-key, array<string, mixed>> */
     public Closure $createTestData;
 
+    /**
+     * Lo sqlite condiviso non contiene per forza le tabelle del modulo Tenant:
+     * le migration non vengono lanciate dai test. I test DB vanno saltati, non falliti.
+     */
+    public static function tenantDbUnavailable(): bool
+    {
+        try {
+            DB::connection('tenant')->getPdo();
+
+            return ! DB::connection('tenant')->getSchemaBuilder()->hasTable('tenants');
+        } catch (\Throwable) {
+            return true;
+        }
+    }
+
+    public static function setServerNameForTenantTest(?string $name): void
+    {
+        if ($name === null) {
+            putenv('SERVER_NAME');
+            unset($_SERVER['SERVER_NAME']);
+
+            return;
+        }
+
+        putenv('SERVER_NAME='.$name);
+        $_SERVER['SERVER_NAME'] = $name;
+    }
+
+    /**
+     * @param  array<string, mixed>  $attributes
+     */
+    public static function createTenant(array $attributes = []): Tenant
+    {
+        /** @var TenantFactory $factory */
+        $factory = Tenant::factory();
+        $tenant = $factory->create($attributes);
+        WebmozartAssert::isInstanceOf($tenant, Tenant::class);
+
+        return $tenant;
+    }
+
+    /**
+     * @return array<int, array<string, mixed>>
+     */
+    public static function decodeTenantJsonFile(string $path): array
+    {
+        $decoded = json_decode(File::get($path), true);
+        Assert::assertIsArray($decoded);
+
+        /** @var array<int, array<string, mixed>> $decoded */
+        return $decoded;
+    }
+
     protected function setUp(): void
     {
         parent::setUp();
+
+        $database = database_path('fixcity_data.sqlite');
+
+        /** @var array<string, array<string, mixed>> $connections */
+        $connections = config('database.connections', []);
+
+        foreach (array_keys($connections) as $connection) {
+            if (config("database.connections.{$connection}.driver") !== 'sqlite') {
+                continue;
+            }
+
+            $this->app['config']->set("database.connections.{$connection}.database", $database);
+            DB::purge($connection);
+        }
 
         $this->model = new TestSushiModel();
         $this->createTestData = static fn (): array => [];
@@ -112,19 +186,16 @@ abstract class TestCase extends XotBaseTestCase
         return ($this->createTestData)();
     }
 
-    public function tenantMockExpectation(MockInterface $mock, string $method): Expectation
+    public function tenantMockExpectation(MockInterface $mock, string $method): ExpectationInterface
     {
-        $expectation = $mock->shouldReceive($method);
-        Assert::assertInstanceOf(Expectation::class, $expectation);
-
-        return $expectation;
+        return $mock->shouldReceive($method);
     }
 
     /**
      * @param  array<array-key, mixed>  $rows
      * @return array<string, mixed>
      */
-    public function sushiRowById(array $rows, int|string $key): array
+    public static function sushiRowById(array $rows, int|string $key): array
     {
         $id = is_int($key) ? $key : (is_numeric($key) ? SafeIntCastAction::cast($key) : 0);
 
@@ -183,7 +254,7 @@ abstract class TestCase extends XotBaseTestCase
      */
     public function jsonRecordAt(array $rows, int|string $key): array
     {
-        return $this->sushiRowById($rows, $key);
+        return self::sushiRowById($rows, $key);
     }
 
     /**
@@ -196,6 +267,14 @@ abstract class TestCase extends XotBaseTestCase
 
         /** @var array<string, mixed> $decoded */
         return $decoded;
+    }
+
+    /**
+     * @param  array<string, mixed>  $data
+     */
+    public function assertDatabaseHasRow(string $table, array $data, ?string $connection = null): void
+    {
+        $this->assertDatabaseHas($table, $data, $connection ?? 'tenant');
     }
 
     /** @return array<int, class-string<ServiceProvider>> */

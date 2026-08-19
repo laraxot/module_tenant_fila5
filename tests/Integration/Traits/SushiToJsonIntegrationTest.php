@@ -25,7 +25,12 @@ function writeTraitIntegrationJson(string $path, array $data): void
 }
 
 beforeEach(function (): void {
-    $this->tenant = createTenant([
+    /** @var TestCase $this */
+    if (TestCase::tenantDbUnavailable()) {
+        $this->skipTest('DB `tenant` non raggiungibile: blocco di ambiente.');
+    }
+
+    $this->tenant = TestCase::createTenant([
         'name' => 'test-tenant',
         'domain' => 'test.example.com',
     ]);
@@ -114,7 +119,7 @@ it('handles large datasets efficiently', function (): void {
 });
 
 it('works with different tenant configurations', function (): void {
-    $secondTenant = createTenant([
+    $secondTenant = TestCase::createTenant([
         'name' => 'second-tenant',
         'domain' => 'second.example.com',
     ]);

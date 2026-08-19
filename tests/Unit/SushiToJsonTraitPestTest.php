@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
+use Modules\Xot\Tests\XotBasePest;
 
 use function Safe\json_encode;
 
@@ -64,7 +65,7 @@ it('loads rows from valid json file', function (): void {
 it('throws when json file is not an array', function (): void {
     File::put($this->testJsonPath, json_encode('not-an-array'));
 
-    assertTenantThrows(
+    XotBasePest::assertThrows(
         fn (): array => $this->sushiModel()->getSushiRows(),
         Exception::class
     );
