@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Models\Traits;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use League\Csv\Reader;
 use League\Csv\Writer;
@@ -68,17 +69,17 @@ trait SushiToCsv
 
     protected static function bootSushiToCsv(): void
     {
-        static::creating(static function ($model): void {
+        static::creating(static function (Model $model): void {
             Assert::isInstanceOf($model, self::class);
             self::handleCsvCreating($model);
         });
 
-        static::updating(static function ($model): void {
+        static::updating(static function (Model $model): void {
             Assert::isInstanceOf($model, self::class);
             self::handleCsvUpdating($model);
         });
 
-        static::deleting(static function ($model): void {
+        static::deleting(static function (Model $model): void {
             Assert::isInstanceOf($model, self::class);
             self::handleCsvDeleting($model);
         });
