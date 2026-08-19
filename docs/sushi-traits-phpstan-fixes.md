@@ -150,6 +150,10 @@ $safeForm = $form;
 ### Aggiornamento [DATE]
 - Normalizzazione di `getSushiRows()` ulteriormente rafforzata con `array_map` tipizzato e `ksort()` sulle chiavi per garantire `array<int, array<string, mixed>>` coerente in tutti i modelli dipendenti (Geo, Tenant, Xot).
 
+### `intValue` / `csvValue` restano mixed (2026-08-18)
+
+`SushiToJson::intValue(mixed)` riceve `$row['id']` da JSON (`array<string, mixed>`) e `Model::getAttribute('id')`. `SushiToCsv::csvValue(mixed)` serializza celle da payload CSV/JSON. Non è un shortcut: è il bordo opaco. Sostituire con `SafeIntCastAction` cambierebbe i default (bool/array).
+
 ## Collegamenti
 
 - [../../../../docs/phpstan-level10-achievement.md](../../../../docs/phpstan-level10-achievement.md)
