@@ -10,6 +10,7 @@ use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
 use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
+use Modules\Xot\Tests\XotBasePest;
 
 uses(TestCase::class);
 
@@ -32,7 +33,7 @@ it('resolves tenant config value by merging with tenant overrides', function ():
 });
 
 it('throws exception for empty config key', function (): void {
-    assertTenantThrows(
+    XotBasePest::assertThrows(
         fn (): mixed => app(ResolveTenantConfigValueAction::class)->execute(''),
         \Exception::class,
     );

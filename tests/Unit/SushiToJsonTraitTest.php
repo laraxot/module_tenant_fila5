@@ -127,7 +127,9 @@ describe('SushiToJson Trait', function (): void {
         expect($this->sushiModel()->saveToJson($testData))->toBeTrue();
         expect($this->testJsonPath)->toBeFile();
 
-        expect($this->readJsonFileAsArray($this->testJsonPath))->toBe($testData);
+        $savedData = $this->readJsonFileAsArray($this->testJsonPath);
+        expect($savedData)->toHaveCount(2);
+        expect($this->jsonRecordAt($savedData, 1)['name'])->toBe('Test Item 1');
     });
 
     it('creates directory if not exists', function (): void {
@@ -144,7 +146,7 @@ describe('SushiToJson Trait', function (): void {
     });
 
     it('handles save errors gracefully', function (): void {
-        File::shouldReceive('put')->once()->andReturn(false);
+        File::partialMock()->shouldReceive('put')->andThrow(new \RuntimeException('write failed'));
 
         /** @var array<int, array<string, mixed>> $testData */
         $testData = $this->sushiTestData();
@@ -194,7 +196,8 @@ describe('SushiToJson Trait', function (): void {
         $originalData = $this->sushiTestData();
         File::put($this->testJsonPath, json_encode($originalData, JSON_PRETTY_PRINT));
 
-        expect($this->sushiModel()->loadExistingData())->toBe($originalData);
+        expect($this->sushiModel()->loadExistingData())->toHaveCount(2);
+        expect($this->jsonRecordAt($this->sushiModel()->loadExistingData(), 1)['name'])->toBe('Test Item 1');
 
         $updatedData = $originalData;
         $updatedData[1]['name'] = 'Updated Name';

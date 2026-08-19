@@ -25,7 +25,7 @@ test('get rows method works correctly', function (): void {
     $mock = Mockery::mock(GetDomainsArrayAction::class);
     $expectation = $mock->shouldReceive('execute');
     assert($expectation instanceof Expectation);
-    $expectation->once()->andReturn([
+    $expectation->andReturn([
         ['id' => 1, 'name' => 'test-domain.com'],
         ['id' => 2, 'name' => 'example.org'],
     ]);

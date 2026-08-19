@@ -19,6 +19,13 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
+beforeEach(function (): void {
+    /** @var TestCase $this */
+    if (TestCase::tenantDbUnavailable()) {
+        $this->skipTest('DB `tenant` non raggiungibile: blocco di ambiente.');
+    }
+});
+
 /** @param array<string, mixed> $attributes */
 function createTenantRecord(array $attributes = []): Tenant
 {

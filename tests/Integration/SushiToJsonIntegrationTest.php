@@ -99,8 +99,8 @@ test('creates json file with tenant isolation', function (): void {
 
     Assert::assertFileExists($tenant2Path);
 
-    $tenant1Data = decodeTenantJsonFile($tenant1Path);
-    $tenant2Data = decodeTenantJsonFile($tenant2Path);
+    $tenant1Data = TestCase::decodeTenantJsonFile($tenant1Path);
+    $tenant2Data = TestCase::decodeTenantJsonFile($tenant2Path);
 
     Assert::assertSame('Tenant 1 Item', rowNameById($tenant1Data, 1));
     Assert::assertSame('Tenant 2 Item', rowNameById($tenant2Data, 1));
