@@ -11,6 +11,7 @@ use Mockery;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Tests\TestCase;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 use function Safe\json_decode;
 use function Safe\json_encode;
@@ -118,8 +119,8 @@ it('normalizes nested arrays in json data', function (): void {
 
     expect($row['metadata'])->toBeString();
     expect($row['tags'])->toBeString();
-    expect(json_decode((string) $row['metadata'], true))->toBe(['nested' => ['deep' => 'value']]);
-    expect(json_decode((string) $row['tags'], true))->toBe(['tag1', 'tag2']);
+    expect(json_decode(SafeStringCastAction::cast($row['metadata']), true))->toBe(['nested' => ['deep' => 'value']]);
+    expect(json_decode(SafeStringCastAction::cast($row['tags']), true))->toBe(['tag1', 'tag2']);
 });
 
 it('saves data to json file successfully', function (): void {
