@@ -23,7 +23,7 @@ trait SushiToCsv
      */
     public function getSushiRows(): array
     {
-        $csv = Reader::createFromPath($this->getCsvPath(), 'r');
+        $csv = Reader::from($this->getCsvPath(), 'r');
         $csv->setHeaderOffset(0);
         $records = $csv->getRecords();
         $rows = iterator_to_array($records);
@@ -60,7 +60,7 @@ trait SushiToCsv
      */
     public function getCsvHeader(): array
     {
-        $reader = Reader::createFromPath($this->getCsvPath(), 'r');
+        $reader = Reader::from($this->getCsvPath(), 'r');
         $reader->setHeaderOffset(0);
 
         return array_values($reader->getHeader());
@@ -95,7 +95,7 @@ trait SushiToCsv
         $model->created_at = now();
         $model->created_by = $authIdInt;
 
-        $writer = Writer::createFromPath($model->getCsvPath(), 'a+');
+        $writer = Writer::from($model->getCsvPath(), 'a+');
         /** @var array<string, mixed> $modelData */
         $modelData = $model->toArray();
         $writer->insertOne(self::buildCsvItemFromData($modelData, $model->getCsvHeader()));
@@ -199,7 +199,7 @@ trait SushiToCsv
      */
     private static function writeCsvFromRows(self $model, array $rowsByKey, array $header): void
     {
-        $writer = Writer::createFromPath($model->getCsvPath(), 'w+');
+        $writer = Writer::from($model->getCsvPath(), 'w+');
         $writer->insertOne($header);
         $writer->insertAll(self::normalizeRowsForCsv($rowsByKey));
     }

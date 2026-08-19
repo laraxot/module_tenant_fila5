@@ -154,10 +154,44 @@ $safeForm = $form;
 
 `SushiToJson::intValue(mixed)` riceve `$row['id']` da JSON (`array<string, mixed>`) e `Model::getAttribute('id')`. `SushiToCsv::csvValue(mixed)` serializza celle da payload CSV/JSON. Non è un shortcut: è il bordo opaco. Sostituire con `SafeIntCastAction` cambierebbe i default (bool/array).
 
+## SushiToCsv — League/CSV 9.27: `createFromPath()` è deprecato
+
+Aggiornamento 2026-08-19. Con `league/csv` 9.28.0 installata, PHPStan riportava quattro
+`staticMethod.deprecated` su `app/Models/Traits/SushiToCsv.php` — gli unici errori reali
+rimasti nel modulo.
+
+`AbstractCsv::createFromPath()` è deprecato dalla **9.27.0**, insieme a
+`createFromString()`, `createFromStream()` e `createFromFileObject()`. Il sostituto unico è
+`AbstractCsv::from()`, che accetta indifferentemente un path, un `SplFileInfo`, un
+`SplFileObject` o una resource; per il contenuto in memoria resta `fromString()`.
+
+```php
+// prima
+$reader = Reader::createFromPath($this->getCsvPath(), 'r');
+$writer = Writer::createFromPath($model->getCsvPath(), 'w+');
+
+// dopo — stessa firma ($filename, $mode, $context)
+$reader = Reader::from($this->getCsvPath(), 'r');
+$writer = Writer::from($model->getCsvPath(), 'w+');
+```
+
+Nessun cambiamento di comportamento: `createFromPath()` internamente faceva già
+`new static(Stream::from($path, $open_mode, $context))`, che è il ramo `default` del `match`
+dentro `from()`.
+
+Il trait è consumato da `Modules\Sigma\Models\WebService` — il modulo `Sigma` ha una copia
+di test del trait in `tests/TestTraits/TestSushiToCsv.php` che **non** è stata allineata:
+se un giorno quella copia viene esercitata dal gate, riporterà le stesse deprecazioni.
+
+Verifica: `./vendor/bin/phpstan analyse Modules/Tenant --no-progress --memory-limit=-1` →
+0 errori reali (restano solo `typeCoverage.*`, che è una percentuale globale del progetto,
+non un difetto del modulo).
+
 ## Collegamenti
 
 - [../../../../docs/phpstan-level10-achievement.md](../../../../docs/phpstan-level10-achievement.md)
 - [Sushi Package Documentation](https://github.com/calebporzio/sushi)
+- [league/csv 9.27 — deprecazione dei costruttori nominati](https://csv.thephpleague.com/9.0/connections/instantiation/)
 
 ---
 
