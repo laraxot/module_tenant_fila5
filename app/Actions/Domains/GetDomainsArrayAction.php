@@ -43,7 +43,6 @@ class GetDomainsArrayAction
         $directories = $filesystem->directories($path);
         $res = [];
         foreach ($directories as $dir) {
-            // Type narrowing: directories() returns array but items are mixed
             if (! is_string($dir)) {
                 continue;
             }

@@ -9,7 +9,6 @@ use Illuminate\Support\Arr;
 use League\Csv\Reader;
 use League\Csv\Writer;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
-use RuntimeException;
 use Stringable;
 use Sushi\Sushi;
 use Webmozart\Assert\Assert;
@@ -31,10 +30,6 @@ trait SushiToCsv
 
         $normalized = [];
         foreach (array_values($rows) as $row) {
-            if (! is_array($row)) {
-                continue;
-            }
-
             $typedRow = [];
             foreach ($row as $key => $value) {
                 $typedRow[(string) $key] = $value;
@@ -48,12 +43,7 @@ trait SushiToCsv
 
     public function getCsvPath(): string
     {
-        $tbl = $this->getTable();
-        if (! is_string($tbl)) {
-            throw new RuntimeException('Table name must be a string');
-        }
-
-        return app(GetTenantFilePathAction::class)->execute($tbl.'.csv');
+        return app(GetTenantFilePathAction::class)->execute($this->getTable().'.csv');
     }
 
     /**
@@ -89,12 +79,12 @@ trait SushiToCsv
     {
         /** @var int $maxId */
         $maxId = $model->max('id') ?? 0;
-        $model->id = $maxId + 1;
-        $model->updated_at = now();
+        $model->setAttribute('id', $maxId + 1);
+        $model->setAttribute('updated_at', now());
         $authIdInt = self::resolveAuthIdInt();
-        $model->updated_by = $authIdInt;
-        $model->created_at = now();
-        $model->created_by = $authIdInt;
+        $model->setAttribute('updated_by', $authIdInt);
+        $model->setAttribute('created_at', now());
+        $model->setAttribute('created_by', $authIdInt);
 
         $writer = Writer::from($model->getCsvPath(), 'a+');
         /** @var array<string, mixed> $modelData */
@@ -106,8 +96,8 @@ trait SushiToCsv
     {
         $rowsByKey = self::keyRowsById($model->getSushiRows());
         $idKey = self::resolveRowIdKey($model->getKey());
-        $model->updated_at = now();
-        $model->updated_by = self::resolveAuthIdInt();
+        $model->setAttribute('updated_at', now());
+        $model->setAttribute('updated_by', self::resolveAuthIdInt());
 
         Assert::keyExists($rowsByKey, $idKey);
         /** @var array<string, mixed> $existingRow */
@@ -217,9 +207,6 @@ trait SushiToCsv
             /** @var array<string, float|int|string|null> $cleanRow */
             $cleanRow = [];
             foreach ($row as $key => $value) {
-                if (! is_string($key) && ! is_int($key)) {
-                    continue;
-                }
                 $cleanRow[(string) $key] = self::csvValue($value);
             }
             $dataArray[] = $cleanRow;

@@ -40,12 +40,7 @@ trait SushiToJsons
      */
     public function getSushiRows(): array
     {
-        $tbl = $this->getTable();
-        if (! is_string($tbl)) {
-            return [];
-        }
-
-        return $this->collectRowsFromJsonFiles($tbl);
+        return $this->collectRowsFromJsonFiles($this->getTable());
     }
 
     public function getJsonFile(): string
@@ -106,10 +101,7 @@ trait SushiToJsons
      */
     private function collectRowsFromJsonFiles(string $tbl): array
     {
-        $files = File::glob(app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl).'/*.json');
-        if ($files === false) {
-            return [];
-        }
+        $files = File::glob(app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl).'/*.json') ?: [];
 
         /** @var array<int, array<string, mixed>> $rows */
         $rows = [];
@@ -118,7 +110,6 @@ trait SushiToJsons
             if (! is_string($file)) {
                 continue;
             }
-
             $row = $this->mapJsonFileToRow($file);
             if ($row !== null) {
                 $rows[] = $row;

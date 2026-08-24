@@ -4,7 +4,7 @@ module: "Tenant"
 type: pattern
 tags: [sushi, traits, phpstan, fixes]
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-08-24
 qmd: "sushi traits phpstan fixes"
 related:
   - "./phpstan-corrections-january.md"
@@ -197,3 +197,48 @@ non un difetto del modulo).
 
 **PHPStan Level**: 10
 **Status**: ✅ COMPLETATO
+
+## Host reale vs Model nudo (famiglia A, 2026-08-24)
+
+PHPStan analizza il trait nel contesto di chi lo `use`. Una fixture `extends Model`
+riapre `property.notFound` sulle colonne dinamiche. La correzione è far estendere
+l'host di produzione: `WebService`, `SocialProvider`, `BaseModelJsons`. Non si tipizza
+la classe anonima e non si allarga la firma del trait.
+
+## Boundary Eloquent dei lifecycle CSV (2026-08-24)
+
+Le closure `creating` e `updating` del trait sono analizzate anche nel contesto di
+ogni modello consumer. Proprietà come `id`, `created_at`, `updated_at`, `created_by`
+e `updated_by` sono colonne Eloquent dinamiche: l'accesso diretto le faceva apparire
+come proprietà PHP non dichiarate nei model anonimi e nelle fixture.
+
+Il contratto corretto usa l'API Eloquent, senza modificare il payload persistito:
+
+```php
+$model->setAttribute('id', $maxId + 1);
+$model->setAttribute('updated_at', now());
+$model->setAttribute('updated_by', self::resolveAuthIdInt());
+```
+
+Questo risolve la dichiarazione nel trait owner una sola volta e quindi anche il
+consumer `Modules\Sigma\Models\WebService`. La migrazione League CSV resta
+`Reader::from()` / `Writer::from()`; header, sequenza delle righe e modalità di
+apertura non cambiano.
+
+### Gate riproducibili
+
+```bash
+./vendor/bin/phpstan analyse \
+  Modules/Tenant/app/Models/Traits/SushiToCsv.php \
+  Modules/Tenant/app/Models/Traits/SushiToJson.php \
+  Modules/Tenant/app/Models/Traits/SushiToJsons.php \
+  Modules/Tenant/app/Models/Traits/SushiToPhpArray.php \
+  Modules/Tenant/app/Actions/Config/GetTenantConfigNamesAction.php \
+  Modules/Tenant/tests/Unit/DomainModelTest.php --no-progress
+
+./vendor/bin/phpstan analyse Modules/Sigma/app/Models/WebService.php --no-progress
+```
+
+Entrambi i gate terminano con zero errori. Il gate Tenant module-wide va comunque
+eseguito separatamente: errori in test non posseduti non vanno mascherati né
+duplicati nei trait.

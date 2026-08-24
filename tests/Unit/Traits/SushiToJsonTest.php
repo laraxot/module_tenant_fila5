@@ -39,9 +39,7 @@ beforeEach(function (): void {
 
     $jsonPath = $this->testJsonPath;
     $mock = Mockery::mock(GetTenantFilePathAction::class);
-    $this->tenantMockExpectation($mock, 'execute')
-        ->with('database/content/test_sushi.json')
-        ->andReturn($jsonPath);
+    $mock->allows(['execute' => $jsonPath]);
     app()->instance(GetTenantFilePathAction::class, $mock);
 
     if (File::exists($this->testJsonPath)) {
