@@ -6,9 +6,7 @@ namespace Modules\Tenant\Models\Traits;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use InvalidArgumentException;
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Sushi\Sushi;
@@ -41,9 +39,6 @@ trait SushiToJson
     public function getJsonFile(): string
     {
         $tbl = $this->getTable();
-        if (! is_string($tbl)) {
-            throw new InvalidArgumentException(__FILE__.':'.__LINE__.' - '.class_basename(self::class).': Table name must be string');
-        }
 
         return app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
     }
@@ -174,10 +169,6 @@ trait SushiToJson
         $maxId = 0;
 
         foreach ($existingData as $row) {
-            if (! \is_array($row)) {
-                continue;
-            }
-
             $rawId = $row['id'] ?? 0;
             $id = \is_numeric($rawId) ? (int) $rawId : 0;
             $maxId = max($maxId, $id);
@@ -231,15 +222,7 @@ trait SushiToJson
      */
     protected function authId(): int|string|null
     {
-        if (\function_exists('authId')) {
-            return authId();
-        }
-
-        if (class_exists('\Illuminate\Support\Facades\Auth')) {
-            return Auth::id();
-        }
-
-        return null;
+        return authId();
     }
 
     /**
