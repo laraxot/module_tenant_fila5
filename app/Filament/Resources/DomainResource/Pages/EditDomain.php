@@ -9,9 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditDomain extends XotBaseEditRecord
 {
-<<<<<<< HEAD
-   protected static string $resource = DomainResource::class;
-=======
     protected static string $resource = DomainResource::class;
->>>>>>> laraxot/dev
 }

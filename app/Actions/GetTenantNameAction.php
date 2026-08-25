@@ -22,11 +22,7 @@ class GetTenantNameAction
      */
     public function execute(): string
     {
-<<<<<<< HEAD
-       $default = $this->resolveDefaultHost();
-=======
         $default = $this->resolveDefaultHost();
->>>>>>> laraxot/dev
 
         /** @var Collection<int, string> $parts */
         $parts = $this->buildServerParts($default);
@@ -44,11 +40,7 @@ class GetTenantNameAction
             $default = 'localhost';
         }
 
-<<<<<<< HEAD
-       return Str::after($default, '//');
-=======
         return Str::after($default, '//');
->>>>>>> laraxot/dev
     }
 
     /**
@@ -117,11 +109,7 @@ class GetTenantNameAction
      * Costruisce il percorso di configurazione.
      *
      * @param  Collection<int, string>  $parts  Le parti del percorso
-<<<<<<< HEAD
-    *
-=======
      *
->>>>>>> laraxot/dev
      * @return string Il percorso completo
      */
     private function buildConfigPath(Collection $parts): string

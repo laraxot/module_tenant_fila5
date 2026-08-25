@@ -18,11 +18,7 @@ trait SushiToCsv
 {
     use Sushi;
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return array<int, array<string, mixed>>
      */
     public function getSushiRows(): array
@@ -55,10 +51,6 @@ trait SushiToCsv
         if (! is_string($tbl)) {
             throw new RuntimeException('Table name must be a string');
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
         return app(GetTenantFilePathAction::class)->execute($tbl.'.csv');
     }
 

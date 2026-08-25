@@ -13,11 +13,7 @@ use Symfony\Component\Finder\SplFileInfo;
 uses(TestCase::class);
 
 it('gets tenant config names', function (): void {
-<<<<<<< HEAD
-   $file1 = mock(SplFileInfo::class);
-=======
     $file1 = mock(SplFileInfo::class);
->>>>>>> laraxot/dev
     $file1->allows([
         'getExtension' => 'php',
         'getFilenameWithoutExtension' => 'database',

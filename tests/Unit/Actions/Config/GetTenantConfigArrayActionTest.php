@@ -14,11 +14,7 @@ it('returns empty array for non-existent config', function (): void {
     $action = app(GetTenantConfigArrayAction::class);
     $result = $action->execute('non_existent_config');
 
-<<<<<<< HEAD
-   Assert::assertIsArray($result);
-=======
     Assert::assertIsArray($result);
->>>>>>> laraxot/dev
 });
 
 it('returns array with string keys', function (): void {
@@ -26,9 +22,5 @@ it('returns array with string keys', function (): void {
     $result = $action->execute('app');
 
     // Should return array with string keys even if empty
-<<<<<<< HEAD
-   Assert::assertIsArray($result);
-=======
     Assert::assertIsArray($result);
->>>>>>> laraxot/dev
 });

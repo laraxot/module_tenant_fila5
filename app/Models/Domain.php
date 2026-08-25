@@ -35,11 +35,7 @@ class Domain extends BaseModel
 
     /**
      * Model Rows.
-<<<<<<< HEAD
-    *
-=======
      *
->>>>>>> laraxot/dev
      * @return array<int, array<string, string>>
      */
     public function getRows(): array

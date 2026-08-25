@@ -66,11 +66,7 @@ class TenantSubscription extends BaseModel
         'expires_at',
     ];
 
-<<<<<<< HEAD
-   /** @return BelongsTo<Tenant, $this> */
-=======
     /** @return BelongsTo<Tenant, $this> */
->>>>>>> laraxot/dev
     public function tenant(): BelongsTo
     {
         return $this->belongsTo(Tenant::class);

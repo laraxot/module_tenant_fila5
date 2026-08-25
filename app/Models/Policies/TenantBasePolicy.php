@@ -11,11 +11,7 @@ abstract class TenantBasePolicy
 {
     use HandlesAuthorization;
 
-<<<<<<< HEAD
-   public function before(UserContract $user, string $ability): ?bool
-=======
     public function before(UserContract $user, string $ability): ?bool
->>>>>>> laraxot/dev
     {
         if ($ability !== '' && $user->hasRole('super-admin')) {
             return true;

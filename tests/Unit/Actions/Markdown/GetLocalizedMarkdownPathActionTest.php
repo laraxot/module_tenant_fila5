@@ -23,11 +23,7 @@ it('gets localized markdown path if it exists', function (): void {
     $tempFile = $tempDir.'/test.md';
     file_put_contents($tempFile, 'test');
 
-<<<<<<< HEAD
-   /** @var TestCase $this */
-=======
     /** @var TestCase $this */
->>>>>>> laraxot/dev
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($tempFile): void {
         $mock->allows([
             'execute' => static function (string $path) use ($tempFile): string {
@@ -50,11 +46,7 @@ it('gets fallback markdown path if localized does not exist', function (): void 
     $tempFile = $tempDir.'/fallback.md';
     file_put_contents($tempFile, 'test');
 
-<<<<<<< HEAD
-   /** @var TestCase $this */
-=======
     /** @var TestCase $this */
->>>>>>> laraxot/dev
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($tempFile): void {
         $mock->allows([
             'execute' => static function (string $path) use ($tempFile): string {
@@ -71,11 +63,7 @@ it('gets fallback markdown path if localized does not exist', function (): void 
 });
 
 it('returns hash if no path exists', function (): void {
-<<<<<<< HEAD
-   /** @var TestCase $this */
-=======
     /** @var TestCase $this */
->>>>>>> laraxot/dev
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => '/non/existent/path.md']);
     });
