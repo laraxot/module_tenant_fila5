@@ -19,21 +19,13 @@ class ResolveTenantModelClassAction
 
     public function execute(string $name): string
     {
-<<<<<<< HEAD
-       $name = Str::snake(Str::singular($name));
-=======
         $name = Str::snake(Str::singular($name));
->>>>>>> laraxot/dev
 
         /** @var mixed $class */
         $class = app(ResolveTenantConfigValueAction::class)->execute('morph_map.'.$name);
 
         if ($class === null) {
-<<<<<<< HEAD
-           $class = $this->resolveAndPersistModelClass($name);
-=======
             $class = $this->resolveAndPersistModelClass($name);
->>>>>>> laraxot/dev
         }
 
         if (! \is_string($class)) {
@@ -43,11 +35,7 @@ class ResolveTenantModelClassAction
         return $class;
     }
 
-<<<<<<< HEAD
-   private function resolveAndPersistModelClass(string $name): string
-=======
     private function resolveAndPersistModelClass(string $name): string
->>>>>>> laraxot/dev
     {
         $models = $this->getAllModulesModels();
         if (! array_key_exists($name, $models)) {
@@ -68,11 +56,7 @@ class ResolveTenantModelClassAction
         $models = [];
 
         foreach (Module::allEnabled() as $module) {
-<<<<<<< HEAD
-           if (! $module instanceof LaravelModule) {
-=======
             if (! $module instanceof LaravelModule) {
->>>>>>> laraxot/dev
                 continue;
             }
 

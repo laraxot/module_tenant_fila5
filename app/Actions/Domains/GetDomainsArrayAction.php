@@ -14,11 +14,7 @@ class GetDomainsArrayAction
 {
     use QueueableAction;
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return array<int, array{id: string, name: string}>
      */
     public function execute(): array
@@ -61,11 +57,7 @@ class GetDomainsArrayAction
         return $res;
     }
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @param array<string, mixed> $data
      *
      * @return array<int, string>
@@ -81,11 +73,7 @@ class GetDomainsArrayAction
 
             // Type narrowing: $v0 is mixed from array
             if (is_array($v0)) {
-<<<<<<< HEAD
-               /** @var array<string, mixed> $nested */
-=======
                 /** @var array<string, mixed> $nested */
->>>>>>> laraxot/dev
                 $nested = $v0;
                 $res = array_merge($res, $this->collapse($nested, $newkey));
             }

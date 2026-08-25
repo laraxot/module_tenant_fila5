@@ -20,11 +20,7 @@ class DatabaseConfigResolver implements ConfigResolverInterface
     }
 
     /**
-<<<<<<< HEAD
-    * @param  string|int|array<string, mixed>|null  $extraConf
-=======
      * @param  string|int|array<string, mixed>|null  $extraConf
->>>>>>> laraxot/dev
      * @return float|int|string|array<string, mixed>|null
      */
     public function resolve(string $key, string|int|array|null $extraConf = null): float|int|string|array|null
@@ -80,11 +76,7 @@ class DatabaseConfigResolver implements ConfigResolverInterface
             return $extraConf;
         }
 
-<<<<<<< HEAD
-       /** @var Collection<int, \Nwidart\Modules\Module> */
-=======
         /** @var Collection<int, \Nwidart\Modules\Module> */
->>>>>>> laraxot/dev
         $modules = Module::toCollection();
 
         foreach ($modules as $module) {

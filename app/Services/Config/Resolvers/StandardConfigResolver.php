@@ -22,11 +22,7 @@ class StandardConfigResolver implements ConfigResolverInterface
         return true;
     }
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @param  string|int|array<string, mixed>|null  $default
      * @return float|int|string|array<mixed>|null
      */
@@ -120,11 +116,7 @@ class StandardConfigResolver implements ConfigResolverInterface
 
     /**
      * @param  array<string, mixed>  $extraConf
-<<<<<<< HEAD
-    * @param  string|int|array<string, mixed>|null  $default
-=======
      * @param  string|int|array<string, mixed>|null  $default
->>>>>>> laraxot/dev
      */
     private function handleMissingConfig(
         string $key,
@@ -133,11 +125,7 @@ class StandardConfigResolver implements ConfigResolverInterface
         string|int|array|null $default
     ): void {
         $index = Str::after($key, $group.'.');
-<<<<<<< HEAD
-       // Side-effect reserved for future persist of defaults into $extraConf
-=======
         // Side-effect reserved for future persist of defaults into $extraConf
->>>>>>> laraxot/dev
         Arr::set($extraConf, $index, $default);
 
         throw new Exception('Configuration key not found: '.$key);

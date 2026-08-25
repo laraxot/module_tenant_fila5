@@ -21,33 +21,21 @@ class ResolveTenantConfigValueAction
      * Works consistently in web, console, queue, and scheduler contexts.
      *
      * @param  string  $key  Config key (e.g., 'app.name', 'mail.driver')
-<<<<<<< HEAD
-    * @param  string|int|array<mixed>|null  $defaultValue  Default value if config not found
-=======
      * @param  string|int|array<mixed>|null  $defaultValue  Default value if config not found
->>>>>>> laraxot/dev
      * @return float|int|string|array<mixed>|null Resolved configuration value
      *
      * @throws Exception If config key is invalid or value type is unexpected
      *
      * @see docs/resolve-tenant-config-console-debate.md
      */
-<<<<<<< HEAD
-   public function execute(string $key, string|int|array|null $defaultValue = null): float|int|string|array|null
-=======
     public function execute(string $key, string|int|array|null $defaultValue = null): float|int|string|array|null
->>>>>>> laraxot/dev
     {
         $group = Arr::first(explode('.', $key));
         if ($group === null || $group === '') {
             throw new Exception('['.__LINE__.']['.class_basename(self::class).']');
         }
 
-<<<<<<< HEAD
-       $mergeConf = $this->buildMergedGroupConfig($group);
-=======
         $mergeConf = $this->buildMergedGroupConfig($group);
->>>>>>> laraxot/dev
         Config::set($group, $mergeConf);
 
         return $this->assertValidConfigValue(config($key, $defaultValue));

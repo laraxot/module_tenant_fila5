@@ -20,11 +20,7 @@ class MorphMapConfigResolver implements ConfigResolverInterface
 {
     public function canResolve(string $key): bool
     {
-<<<<<<< HEAD
-       // Ex RouteService::inAdmin() (Services archiviato): main panel `/admin/...`.
-=======
         // Ex RouteService::inAdmin() (Services archiviato): main panel `/admin/...`.
->>>>>>> laraxot/dev
         // NB: semantica diversa dall'helper globale inAdmin() (module panel `/{module}/admin`).
         $segments = Request::segments();
         $inMainAdmin = Request::segment(1) === 'admin'
@@ -35,11 +31,7 @@ class MorphMapConfigResolver implements ConfigResolverInterface
             && Request::segment(2) !== null;
     }
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @param  string|int|array<string, mixed>|null  $default
      * @return float|int|string|array<mixed>|null
      */

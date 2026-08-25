@@ -49,20 +49,12 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
     public function registerMorphMap(): void
     {
-<<<<<<< HEAD
-       $map = app(ResolveTenantConfigValueAction::class)->execute('morph_map');
-=======
         $map = app(ResolveTenantConfigValueAction::class)->execute('morph_map');
->>>>>>> laraxot/dev
         if (! \is_array($map)) {
             $map = [];
         }
 
-<<<<<<< HEAD
-       /** @var array<string, mixed> $map */
-=======
         /** @var array<string, mixed> $map */
->>>>>>> laraxot/dev
         Relation::morphMap($this->buildMorphMap(app(FilterConfigStringKeysAction::class)->execute($map)));
     }
 
@@ -70,11 +62,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
     {
         Schema::defaultStringLength(191);
 
-<<<<<<< HEAD
-       $preMergeDefaultConn = $this->resolveDefaultConnectionName();
-=======
         $preMergeDefaultConn = $this->resolveDefaultConnectionName();
->>>>>>> laraxot/dev
         $this->purgeConnectionWhenMigrating($preMergeDefaultConn);
 
         /** @var array<string, mixed> $data */
@@ -103,11 +91,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
             $configName = $config['name'];
             if (is_string($configName)) {
-<<<<<<< HEAD
-               app(ResolveTenantConfigValueAction::class)->execute($configName);
-=======
                 app(ResolveTenantConfigValueAction::class)->execute($configName);
->>>>>>> laraxot/dev
             }
         }
     }

@@ -46,11 +46,7 @@ beforeEach(function (): void {
         File::makeDirectory($this->testDirectory, 0755, true, true);
     }
 
-<<<<<<< HEAD
-   $jsonPath = $this->testJsonPath;
-=======
     $jsonPath = $this->testJsonPath;
->>>>>>> laraxot/dev
     $mock = Mockery::mock(GetTenantFilePathAction::class);
     tenantMockExpectation($mock, 'execute')
         ->with('database/content/test_sushi.json')
@@ -66,12 +62,6 @@ afterEach(function (): void {
     if (File::exists($this->testDirectory)) {
         File::deleteDirectory($this->testDirectory);
     }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
     Mockery::close();
 });
 
@@ -115,11 +105,7 @@ it('handles small datasets efficiently', function (): void {
     $smallData = createTestData(10);
 
     $startTime = microtime(true);
-<<<<<<< HEAD
-   $result = $this->sushiModel()->saveToJson($smallData);
-=======
     $result = $this->sushiModel()->saveToJson($smallData);
->>>>>>> laraxot/dev
     $saveTime = microtime(true) - $startTime;
 
     expect($result)->toBeTrue();
@@ -127,27 +113,18 @@ it('handles small datasets efficiently', function (): void {
 
     // Testa caricamento
     $startTime = microtime(true);
-<<<<<<< HEAD
-   $loadedData = $this->sushiModel()->getSushiRows();
-=======
     $loadedData = $this->sushiModel()->getSushiRows();
->>>>>>> laraxot/dev
     $loadTime = microtime(true) - $startTime;
 
     expect($loadedData)->toHaveCount(10);
     expect($loadTime)->toBeLessThan(0.05); // Caricamento dataset piccolo deve essere istantaneo
->>>>>>> laraxot/dev
 });
 
 it('handles medium datasets efficiently', function (): void {
     $mediumData = ($this->createTestData)(100);
 
     $startTime = microtime(true);
-<<<<<<< HEAD
-   $result = $this->sushiModel()->saveToJson($mediumData);
-=======
     $result = $this->sushiModel()->saveToJson($mediumData);
->>>>>>> laraxot/dev
     $saveTime = microtime(true) - $startTime;
 
     expect($result)->toBeTrue();
@@ -155,11 +132,7 @@ it('handles medium datasets efficiently', function (): void {
 
     // Testa caricamento
     $startTime = microtime(true);
-<<<<<<< HEAD
-   $loadedData = $this->sushiModel()->getSushiRows();
-=======
     $loadedData = $this->sushiModel()->getSushiRows();
->>>>>>> laraxot/dev
     $loadTime = microtime(true) - $startTime;
 
     expect($loadedData)->toHaveCount(100);
@@ -170,11 +143,7 @@ it('handles large datasets efficiently', function (): void {
     $largeData = ($this->createTestData)(1000);
 
     $startTime = microtime(true);
-<<<<<<< HEAD
-   $result = $this->sushiModel()->saveToJson($largeData);
-=======
     $result = $this->sushiModel()->saveToJson($largeData);
->>>>>>> laraxot/dev
     $saveTime = microtime(true) - $startTime;
 
     expect($result)->toBeTrue();
@@ -182,11 +151,7 @@ it('handles large datasets efficiently', function (): void {
 
     // Testa caricamento
     $startTime = microtime(true);
-<<<<<<< HEAD
-   $loadedData = $this->sushiModel()->getSushiRows();
-=======
     $loadedData = $this->sushiModel()->getSushiRows();
->>>>>>> laraxot/dev
     $loadTime = microtime(true) - $startTime;
 
     expect($loadedData)->toHaveCount(1000);
@@ -203,22 +168,14 @@ it('manages memory usage efficiently', function (): void {
     $dataCreationMemory = $memoryAfterDataCreation - $initialMemory;
 
     // Salva i dati
-<<<<<<< HEAD
-   $result = $this->sushiModel()->saveToJson($largeData);
-=======
     $result = $this->sushiModel()->saveToJson($largeData);
->>>>>>> laraxot/dev
     expect($result)->toBeTrue();
 
     $memoryAfterSave = memory_get_usage();
     $saveMemory = $memoryAfterSave - $memoryAfterDataCreation;
 
     // Carica i dati
-<<<<<<< HEAD
-   $loadedData = $this->sushiModel()->getSushiRows();
-=======
     $loadedData = $this->sushiModel()->getSushiRows();
->>>>>>> laraxot/dev
     expect($loadedData)->toHaveCount(500);
 
     $finalMemory = memory_get_usage();
@@ -240,21 +197,13 @@ it('handles different file sizes efficiently', function (): void {
         $testData = ($this->createTestData)($size);
 
         $startTime = microtime(true);
-<<<<<<< HEAD
-       $result = $this->sushiModel()->saveToJson($testData);
-=======
         $result = $this->sushiModel()->saveToJson($testData);
->>>>>>> laraxot/dev
         $saveTime = microtime(true) - $startTime;
 
         expect($result)->toBeTrue();
 
         // Verifica dimensione file
-<<<<<<< HEAD
-       $fileSize = File::size($this->sushiJsonPath());
-=======
         $fileSize = File::size($this->sushiJsonPath());
->>>>>>> laraxot/dev
         expect($fileSize)->toBeGreaterThan(0); // File deve avere dimensione maggiore di 0
 
         // Verifica che il tempo di salvataggio sia proporzionale alla dimensione
@@ -263,11 +212,7 @@ it('handles different file sizes efficiently', function (): void {
 
         // Testa caricamento
         $startTime = microtime(true);
-<<<<<<< HEAD
-       $loadedData = $this->sushiModel()->getSushiRows();
-=======
         $loadedData = $this->sushiModel()->getSushiRows();
->>>>>>> laraxot/dev
         $loadTime = microtime(true) - $startTime;
 
         expect($loadedData)->toHaveCount($size);
@@ -282,11 +227,7 @@ it('handles concurrent access efficiently', function (): void {
     $testData = ($this->createTestData)(100);
 
     // Salva dati iniziali
-<<<<<<< HEAD
-   $result = $this->sushiModel()->saveToJson($testData);
-=======
     $result = $this->sushiModel()->saveToJson($testData);
->>>>>>> laraxot/dev
     expect($result)->toBeTrue();
 
     // Simula accesso concorrente
@@ -294,11 +235,7 @@ it('handles concurrent access efficiently', function (): void {
     $startTime = microtime(true);
 
     for ($i = 0; $i < $concurrentOperations; $i++) {
-<<<<<<< HEAD
-       $loadedData = $this->sushiModel()->getSushiRows();
-=======
         $loadedData = $this->sushiModel()->getSushiRows();
->>>>>>> laraxot/dev
         expect($loadedData)->toHaveCount(100);
     }
 
@@ -314,11 +251,7 @@ it('parses json efficiently', function (): void {
     $testData = ($this->createTestData)(200);
 
     // Salva dati
-<<<<<<< HEAD
-   $result = $this->sushiModel()->saveToJson($testData);
-=======
     $result = $this->sushiModel()->saveToJson($testData);
->>>>>>> laraxot/dev
     expect($result)->toBeTrue();
 
     // Testa parsing JSON con diverse dimensioni
@@ -344,20 +277,12 @@ it('normalizes data efficiently', function (): void {
     $testData = ($this->createTestData)(150);
 
     // Salva dati
-<<<<<<< HEAD
-   $result = $this->sushiModel()->saveToJson($testData);
-=======
     $result = $this->sushiModel()->saveToJson($testData);
->>>>>>> laraxot/dev
     expect($result)->toBeTrue();
 
     // Testa normalizzazione
     $startTime = microtime(true);
-<<<<<<< HEAD
-   $normalizedData = $this->sushiModel()->getSushiRows();
-=======
     $normalizedData = $this->sushiModel()->getSushiRows();
->>>>>>> laraxot/dev
     $normalizeTime = microtime(true) - $startTime;
 
     expect($normalizedData)->toHaveCount(150);
@@ -395,11 +320,7 @@ it('performs file operations efficiently', function (): void {
     $startTime = microtime(true);
 
     // Scrittura
-<<<<<<< HEAD
-   $writeResult = $this->sushiModel()->saveToJson($testData);
-=======
     $writeResult = $this->sushiModel()->saveToJson($testData);
->>>>>>> laraxot/dev
     $writeTime = microtime(true) - $startTime;
 
     expect($writeResult)->toBeTrue();
@@ -407,11 +328,7 @@ it('performs file operations efficiently', function (): void {
 
     // Lettura
     $startTime = microtime(true);
-<<<<<<< HEAD
-   $readResult = $this->sushiModel()->getSushiRows();
-=======
     $readResult = $this->sushiModel()->getSushiRows();
->>>>>>> laraxot/dev
     $readTime = microtime(true) - $startTime;
 
     expect($readResult)->toHaveCount(300);
@@ -430,22 +347,14 @@ it('scales efficiently with data size', function (): void {
 
         // Misura tempo di salvataggio
         $startTime = microtime(true);
-<<<<<<< HEAD
-       $result = $this->sushiModel()->saveToJson($testData);
-=======
         $result = $this->sushiModel()->saveToJson($testData);
->>>>>>> laraxot/dev
         $saveTime = microtime(true) - $startTime;
 
         expect($result)->toBeTrue();
 
         // Misura tempo di caricamento
         $startTime = microtime(true);
-<<<<<<< HEAD
-       $loadedData = $this->sushiModel()->getSushiRows();
-=======
         $loadedData = $this->sushiModel()->getSushiRows();
->>>>>>> laraxot/dev
         $loadTime = microtime(true) - $startTime;
 
         expect($loadedData)->toHaveCount($size);
@@ -458,11 +367,7 @@ it('scales efficiently with data size', function (): void {
     }
 
     // Verifica scalabilità
-<<<<<<< HEAD
-   foreach ($sizes as $index => $size) {
-=======
     foreach ($sizes as $index => $size) {
->>>>>>> laraxot/dev
         if ($index === 0) {
             continue;
         }
@@ -494,11 +399,7 @@ it('meets performance benchmarks', function (): void {
 
         // Benchmark salvataggio
         $startTime = microtime(true);
-<<<<<<< HEAD
-       $result = $this->sushiModel()->saveToJson($testData);
-=======
         $result = $this->sushiModel()->saveToJson($testData);
->>>>>>> laraxot/dev
         $saveTime = microtime(true) - $startTime;
 
         expect($result)->toBeTrue();
@@ -506,11 +407,7 @@ it('meets performance benchmarks', function (): void {
 
         // Benchmark caricamento
         $startTime = microtime(true);
-<<<<<<< HEAD
-       $loadedData = $this->sushiModel()->getSushiRows();
-=======
         $loadedData = $this->sushiModel()->getSushiRows();
->>>>>>> laraxot/dev
         $loadTime = microtime(true) - $startTime;
 
         expect($loadedData)->toHaveCount($benchmark['size']);
@@ -526,11 +423,7 @@ it('does not create memory leaks', function (): void {
         $testData = ($this->createTestData)(100);
 
         // Salva
-<<<<<<< HEAD
-       $result = $this->sushiModel()->saveToJson($testData);
-=======
         $result = $this->sushiModel()->saveToJson($testData);
->>>>>>> laraxot/dev
         expect($result)->toBeTrue();
 
         // Carica

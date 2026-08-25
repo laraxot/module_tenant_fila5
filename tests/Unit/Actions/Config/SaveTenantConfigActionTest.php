@@ -14,11 +14,7 @@ use Modules\Xot\Actions\Arr\SaveArrayAction;
 uses(TestCase::class);
 
 it('saves tenant config by merging with existing data', function (): void {
-<<<<<<< HEAD
-   /** @var TestCase $this */
-=======
     /** @var TestCase $this */
->>>>>>> laraxot/dev
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => '/path/to/tenant/database.php']);
     });
@@ -31,11 +27,7 @@ it('saves tenant config by merging with existing data', function (): void {
         ->with('/path/to/tenant/database.php')
         ->andReturn(['connections' => ['mysql' => ['host' => 'localhost']]]);
 
-<<<<<<< HEAD
-   $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
-=======
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
->>>>>>> laraxot/dev
         $mock->allows(['execute' => true]);
     });
 
@@ -44,11 +36,7 @@ it('saves tenant config by merging with existing data', function (): void {
 });
 
 it('saves tenant config when file does not exist', function (): void {
-<<<<<<< HEAD
-   /** @var TestCase $this */
-=======
     /** @var TestCase $this */
->>>>>>> laraxot/dev
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => '/path/to/tenant/app.php']);
     });
@@ -57,11 +45,7 @@ it('saves tenant config when file does not exist', function (): void {
         ->with('/path/to/tenant/app.php')
         ->andReturn(false);
 
-<<<<<<< HEAD
-   $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
-=======
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
->>>>>>> laraxot/dev
         $mock->allows(['execute' => true]);
     });
 
