@@ -56,20 +56,32 @@ afterEach(function (): void {
 });
 
 it('returns correct json file path', function (): void {
+<<<<<<< HEAD
    $expectedPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
+=======
+    $expectedPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
+>>>>>>> laraxot/dev
     $actualPath = $this->sushiModel()->getJsonFile();
 
     expect($actualPath)->toBe($expectedPath);
 });
 
 it('returns empty array when json file not exists', function (): void {
+<<<<<<< HEAD
    $rows = $this->sushiModel()->getSushiRows();
+=======
+    $rows = $this->sushiModel()->getSushiRows();
+>>>>>>> laraxot/dev
 
     expect($rows)->toBe([]);
 });
 
 it('throws exception when json data is invalid', function (): void {
+<<<<<<< HEAD
    writeSushiJsonFile($this->sushiJsonPath(), []);
+=======
+    writeSushiJsonFile($this->sushiJsonPath(), []);
+>>>>>>> laraxot/dev
 
     File::put($this->sushiJsonPath(), 'invalid json content');
 
@@ -95,7 +107,11 @@ it('loads valid json data correctly', function (): void {
         ],
     ];
 
+<<<<<<< HEAD
    writeSushiJsonFile($this->sushiJsonPath(), $testData);
+=======
+    writeSushiJsonFile($this->sushiJsonPath(), $testData);
+>>>>>>> laraxot/dev
 
     $rows = $this->sushiModel()->getSushiRows();
 
@@ -112,7 +128,11 @@ it('normalizes nested arrays in json data', function (): void {
         ],
     ];
 
+<<<<<<< HEAD
    writeSushiJsonFile($this->sushiJsonPath(), $testData);
+=======
+    writeSushiJsonFile($this->sushiJsonPath(), $testData);
+>>>>>>> laraxot/dev
 
     $rows = $this->sushiModel()->getSushiRows();
     $row = $this->jsonRecordAt($rows, '1');
@@ -129,7 +149,11 @@ it('saves data to json file successfully', function (): void {
         '2' => ['id' => 2, 'name' => 'Another Item'],
     ];
 
+<<<<<<< HEAD
    $result = $this->sushiModel()->saveToJson($testData);
+=======
+    $result = $this->sushiModel()->saveToJson($testData);
+>>>>>>> laraxot/dev
 
     expect($result)->toBeTrue();
     expect(File::exists($this->sushiJsonPath()))->toBeTrue();
@@ -142,7 +166,11 @@ it('saves data to json file successfully', function (): void {
 it('creates directory if not exists when saving', function (): void {
     $testData = ['1' => ['id' => 1, 'name' => 'Test']];
 
+<<<<<<< HEAD
    $result = $this->sushiModel()->saveToJson($testData);
+=======
+    $result = $this->sushiModel()->saveToJson($testData);
+>>>>>>> laraxot/dev
 
     expect($result)->toBeTrue();
     expect(File::exists(dirname($this->sushiJsonPath())))->toBeTrue();
@@ -162,7 +190,11 @@ it('loads existing data correctly', function (): void {
         '1' => ['id' => 1, 'name' => 'Existing Item'],
     ];
 
+<<<<<<< HEAD
    writeSushiJsonFile($this->sushiJsonPath(), $testData);
+=======
+    writeSushiJsonFile($this->sushiJsonPath(), $testData);
+>>>>>>> laraxot/dev
 
     $existingData = $this->sushiModel()->loadExistingData();
 
@@ -170,7 +202,11 @@ it('loads existing data correctly', function (): void {
 });
 
 it('returns empty array when no existing data', function (): void {
+<<<<<<< HEAD
    $existingData = $this->sushiModel()->loadExistingData();
+=======
+    $existingData = $this->sushiModel()->loadExistingData();
+>>>>>>> laraxot/dev
 
     expect($existingData)->toBe([]);
 });
@@ -191,7 +227,11 @@ it('works with sushi package integration', function (): void {
         ],
     ];
 
+<<<<<<< HEAD
    writeSushiJsonFile($this->sushiJsonPath(), $testData);
+=======
+    writeSushiJsonFile($this->sushiJsonPath(), $testData);
+>>>>>>> laraxot/dev
 
     $rows = $this->sushiModel()->getSushiRows();
 

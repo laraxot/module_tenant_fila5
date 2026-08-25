@@ -60,7 +60,11 @@ return [
             'tooltip' => '',
             'helper_text' => '',
             'description' => '',
+<<<<<<< HEAD
            'placeholder' => 'rating',
+=======
+            'placeholder' => 'rating',
+>>>>>>> laraxot/dev
         ],
         'toggleColumns' => [
             'label' => 'toggleColumns',
@@ -74,7 +78,11 @@ return [
             'helper_text' => '',
             'description' => '',
         ],
+<<<<<<< HEAD
        'title' => [
+=======
+        'title' => [
+>>>>>>> laraxot/dev
             'label' => 'title',
             'placeholder' => 'title',
             'helper_text' => 'title',

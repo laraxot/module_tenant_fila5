@@ -26,7 +26,11 @@ class TenantFactory extends Factory
      */
     public function definition(): array
     {
+<<<<<<< HEAD
        $name = $this->faker->company();
+=======
+        $name = $this->faker->company();
+>>>>>>> laraxot/dev
 
         return [
             'id' => $this->faker->uuid(),

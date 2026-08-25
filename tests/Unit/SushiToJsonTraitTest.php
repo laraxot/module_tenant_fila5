@@ -38,7 +38,11 @@ beforeEach(function (): void {
             'name' => 'Test Item 1',
             'description' => 'Description 1',
             'status' => 'active',
+<<<<<<< HEAD
            'metadata' => ['key1' => 'value1'],
+=======
+            'metadata' => ['key1' => 'value1'],
+>>>>>>> laraxot/dev
             'created_at' => now()->toISOString(),
             'updated_at' => now()->toISOString(),
         ],
@@ -55,7 +59,11 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
+<<<<<<< HEAD
    if (File::exists($this->testJsonPath)) {
+=======
+    if (File::exists($this->testJsonPath)) {
+>>>>>>> laraxot/dev
         File::delete($this->testJsonPath);
     }
 
@@ -68,7 +76,11 @@ afterEach(function (): void {
 
 describe('SushiToJson Trait', function (): void {
     it('returns correct json file path', function (): void {
+<<<<<<< HEAD
        expect($this->sushiModel()->getJsonFile())->toBe($this->testJsonPath);
+=======
+        expect($this->sushiModel()->getJsonFile())->toBe($this->testJsonPath);
+>>>>>>> laraxot/dev
     });
 
     it('loads existing data from json file', function (): void {
@@ -111,7 +123,11 @@ describe('SushiToJson Trait', function (): void {
             ],
         ];
 
+<<<<<<< HEAD
        File::put($this->testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
+=======
+        File::put($this->testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
+>>>>>>> laraxot/dev
 
         $rows = $this->sushiModel()->getSushiRows();
         $row = $this->jsonRecordAt($rows, '1');
@@ -144,7 +160,11 @@ describe('SushiToJson Trait', function (): void {
     });
 
     it('handles save errors gracefully', function (): void {
+<<<<<<< HEAD
        File::shouldReceive('put')->once()->andReturn(false);
+=======
+        File::shouldReceive('put')->once()->andReturn(false);
+>>>>>>> laraxot/dev
 
         /** @var array<int, array<string, mixed>> $testData */
         $testData = $this->sushiTestData();
@@ -183,7 +203,11 @@ describe('SushiToJson Trait', function (): void {
         }
 
         $startTime = microtime(true);
+<<<<<<< HEAD
        expect($this->sushiModel()->saveToJson($largeData))->toBeTrue();
+=======
+        expect($this->sushiModel()->saveToJson($largeData))->toBeTrue();
+>>>>>>> laraxot/dev
         expect(microtime(true) - $startTime)->toBeLessThan(1.0);
 
         $startTime = microtime(true);

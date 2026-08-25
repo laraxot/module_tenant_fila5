@@ -26,7 +26,11 @@ class TranslateTenantKeyAction
 
         $arrayKey = Str::of($key)->after('.')->toString();
 
+<<<<<<< HEAD
        /** @var mixed $pathResult */
+=======
+        /** @var mixed $pathResult */
+>>>>>>> laraxot/dev
         $pathResult = app(GetTenantFilePathAction::class)->execute('lang/'.$lang.'/'.$transFile);
         $path = is_string($pathResult) ? $pathResult : '';
         if (! File::exists($path)) {

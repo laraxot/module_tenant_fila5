@@ -13,7 +13,11 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 it('gets tenant file path', function (): void {
+<<<<<<< HEAD
    /** @var TestCase $this */
+=======
+    /** @var TestCase $this */
+>>>>>>> laraxot/dev
     $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'test-tenant']);
     });
@@ -23,5 +27,9 @@ it('gets tenant file path', function (): void {
     $expected = base_path('config/test-tenant/database.php');
     $expected = str_replace(['/', '\\'], [\DIRECTORY_SEPARATOR, \DIRECTORY_SEPARATOR], $expected);
 
+<<<<<<< HEAD
    Assert::assertSame($expected, $result);
+=======
+    Assert::assertSame($expected, $result);
+>>>>>>> laraxot/dev
 });

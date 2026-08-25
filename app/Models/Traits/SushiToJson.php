@@ -44,7 +44,11 @@ trait SushiToJson
             throw new InvalidArgumentException(__FILE__.':'.__LINE__.' - '.class_basename(self::class).': Table name must be string');
         }
 
+<<<<<<< HEAD
        return app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
+=======
+        return app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
+>>>>>>> laraxot/dev
     }
 
     /**
@@ -62,7 +66,11 @@ trait SushiToJson
      * Ottiene i dati dal file JSON per il modello Sushi.
      * I dati vengono normalizzati per garantire compatibilità con Eloquent.
      *
+<<<<<<< HEAD
     * @return array<int, array<string, mixed>>
+=======
+     * @return array<int, array<string, mixed>>
+>>>>>>> laraxot/dev
      *
      * @phpstan-return array<int, array<string, mixed>>
      */
@@ -78,7 +86,11 @@ trait SushiToJson
             throw new Exception('Data is not array ['.$path.']');
         }
 
+<<<<<<< HEAD
        /** @var array<int, array<string, mixed>> $typedData */
+=======
+        /** @var array<int, array<string, mixed>> $typedData */
+>>>>>>> laraxot/dev
         $typedData = [];
         foreach (array_values($data) as $item) {
             if (! is_array($item)) {
@@ -146,7 +158,11 @@ trait SushiToJson
     {
         try {
             $file = $this->getJsonFile();
+<<<<<<< HEAD
            $this->ensureDirectoryExists(dirname($file));
+=======
+            $this->ensureDirectoryExists(dirname($file));
+>>>>>>> laraxot/dev
             File::put($file, json_encode($this->normalizeJsonRecords($data), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
             return true;
@@ -166,7 +182,11 @@ trait SushiToJson
     {
         $existingData = $this->loadExistingData();
 
+<<<<<<< HEAD
        if ($existingData === []) {
+=======
+        if ($existingData === []) {
+>>>>>>> laraxot/dev
             return 1;
         }
 
@@ -192,7 +212,11 @@ trait SushiToJson
      */
     protected static function bootSushiToJson(): void
     {
+<<<<<<< HEAD
        static::creating(static function ($model): void {
+=======
+        static::creating(static function ($model): void {
+>>>>>>> laraxot/dev
             Assert::isInstanceOf($model, static::class);
             self::handleSingleJsonCreating($model);
         });
@@ -217,7 +241,11 @@ trait SushiToJson
     protected function findRowIndexById(array $rows, int $id): ?int
     {
         foreach ($rows as $index => $row) {
+<<<<<<< HEAD
            if (is_array($row) && self::intValue($row['id'] ?? null) === $id) {
+=======
+            if (is_array($row) && self::intValue($row['id'] ?? null) === $id) {
+>>>>>>> laraxot/dev
                 return is_int($index) ? $index : null;
             }
         }
@@ -252,6 +280,10 @@ trait SushiToJson
             File::makeDirectory($directory, 0o755, true, true);
         }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
     /**
      * @param  array<int, array<string, mixed>>  $data
      * @return array<int, array<string, mixed>>

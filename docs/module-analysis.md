@@ -342,4 +342,8 @@ $reports = CrossTenantService::aggregateData([
 
 **
 **Versione**: v2.2.0-beta  
+<<<<<<< HEAD
 **Stato**: Production Ready with Enterprise Scaling
+=======
+**Stato**: Production Ready with Enterprise Scaling
+>>>>>>> laraxot/dev

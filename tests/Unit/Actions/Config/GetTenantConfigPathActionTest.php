@@ -13,7 +13,11 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 it('gets tenant config path', function (): void {
+<<<<<<< HEAD
    /** @var TestCase $this */
+=======
+    /** @var TestCase $this */
+>>>>>>> laraxot/dev
     $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'test-tenant']);
     });

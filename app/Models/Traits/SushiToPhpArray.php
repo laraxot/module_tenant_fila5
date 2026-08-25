@@ -19,7 +19,11 @@ trait SushiToPhpArray
 {
     use Sushi;
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return array<int, array<string, mixed>>
      *
      * @phpstan-return array<int, array<string, mixed>>
@@ -28,7 +32,11 @@ trait SushiToPhpArray
     {
         $name = Str::of($this->getTable())->replace('_', '-')->toString();
 
+<<<<<<< HEAD
        $rows = app(GetTenantConfigArrayAction::class)->execute($name);
+=======
+        $rows = app(GetTenantConfigArrayAction::class)->execute($name);
+>>>>>>> laraxot/dev
 
         /** @var array<int, array<string, mixed>> $normalized */
         $normalized = [];
@@ -51,7 +59,11 @@ trait SushiToPhpArray
                 return;
             }
 
+<<<<<<< HEAD
            $model->toArray();
+=======
+            $model->toArray();
+>>>>>>> laraxot/dev
         });
 
         static::updating(static function ($model): void {
@@ -59,7 +71,11 @@ trait SushiToPhpArray
                 return;
             }
 
+<<<<<<< HEAD
            $model->toArray();
+=======
+            $model->toArray();
+>>>>>>> laraxot/dev
         });
 
         static::deleting(static function ($model): void {
@@ -67,5 +83,9 @@ trait SushiToPhpArray
                 return;
             }
         });
+<<<<<<< HEAD
    }
+=======
+    }
+>>>>>>> laraxot/dev
 }
