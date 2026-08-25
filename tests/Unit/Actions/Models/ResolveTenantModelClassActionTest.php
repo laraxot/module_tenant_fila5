@@ -16,7 +16,11 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 it('resolves tenant model class from config', function (): void {
+<<<<<<< HEAD
+   /** @var TestCase $this */
+=======
     /** @var TestCase $this */
+>>>>>>> laraxot/dev
     $this->mockService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'Modules\Test\Models\TestModel']);
     });
@@ -42,7 +46,11 @@ it('resolves tenant model class by scanning modules if not in config', function 
 
     Module::shouldReceive('allEnabled')->andReturn([$module]);
 
+<<<<<<< HEAD
+   $this->mockService(GetAllModelsByModuleNameAction::class, static function (MockInterface $mock): void {
+=======
     $this->mockService(GetAllModelsByModuleNameAction::class, static function (MockInterface $mock): void {
+>>>>>>> laraxot/dev
         $mock->allows(['execute' => ['event' => 'Modules\Meetup\Models\Event']]);
     });
 

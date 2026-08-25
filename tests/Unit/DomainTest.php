@@ -15,7 +15,11 @@ uses(TestCase::class);
 test('domain model can be instantiated', function (): void {
     $domain = new Domain;
 
+<<<<<<< HEAD
+   Assert::assertInstanceOf(Domain::class, $domain);
+=======
     Assert::assertInstanceOf(Domain::class, $domain);
+>>>>>>> laraxot/dev
 });
 
 test('get rows method works correctly', function (): void {
@@ -31,7 +35,11 @@ test('get rows method works correctly', function (): void {
     $domain = new Domain;
     $rows = $domain->getRows();
 
+<<<<<<< HEAD
+   Assert::assertCount(2, $rows);
+=======
     Assert::assertCount(2, $rows);
+>>>>>>> laraxot/dev
     Assert::assertSame('test-domain.com', $rows[0]['name']);
     Assert::assertSame('example.org', $rows[1]['name']);
 });

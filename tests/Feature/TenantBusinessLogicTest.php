@@ -64,7 +64,11 @@ it('can create and manage tenants', function (): void {
         'slug' => 'test-studio',
         'is_active' => true,
     ]);
+<<<<<<< HEAD
+   Assert::assertInstanceOf(Tenant::class, $tenant);
+=======
     Assert::assertInstanceOf(Tenant::class, $tenant);
+>>>>>>> laraxot/dev
 
     /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenants', [
@@ -72,7 +76,11 @@ it('can create and manage tenants', function (): void {
         'name' => 'Test Studio',
         'slug' => 'test-studio',
     ]);
+<<<<<<< HEAD
+   Assert::assertSame('Test Studio', $tenant->name);
+=======
     Assert::assertSame('Test Studio', $tenant->name);
+>>>>>>> laraxot/dev
     Assert::assertSame('test-studio', $tenant->slug);
     Assert::assertTrue($tenant->is_active);
 });
@@ -87,7 +95,11 @@ it('can manage tenant domains', function (): void {
         'is_primary' => true,
         'status' => 'active',
     ]);
+<<<<<<< HEAD
+   Assert::assertInstanceOf(TenantDomain::class, $domain);
+=======
     Assert::assertInstanceOf(TenantDomain::class, $domain);
+>>>>>>> laraxot/dev
 
     /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenant_domains', [
@@ -97,7 +109,11 @@ it('can manage tenant domains', function (): void {
         'is_primary' => true,
         'status' => 'active',
     ]);
+<<<<<<< HEAD
+   Assert::assertSame($tenant->id, $domain->tenant_id);
+=======
     Assert::assertSame($tenant->id, $domain->tenant_id);
+>>>>>>> laraxot/dev
     Assert::assertSame('test.example.com', $domain->domain);
     Assert::assertTrue($domain->is_primary);
     Assert::assertSame('active', $domain->status);
@@ -113,7 +129,11 @@ it('can manage tenant settings', function (): void {
         'type' => 'string',
     ]);
 
+<<<<<<< HEAD
+   /** @var TestCase $this */
+=======
     /** @var TestCase $this */
+>>>>>>> laraxot/dev
     $this->assertDatabaseHasRow('tenant_settings', [
         'id' => $setting->id,
         'tenant_id' => $tenant->id,
@@ -121,7 +141,11 @@ it('can manage tenant settings', function (): void {
         'value' => 'Test Studio Application',
         'type' => 'string',
     ]);
+<<<<<<< HEAD
+   Assert::assertSame($tenant->id, $setting->tenant_id);
+=======
     Assert::assertSame($tenant->id, $setting->tenant_id);
+>>>>>>> laraxot/dev
     Assert::assertSame('app.name', $setting->key);
     Assert::assertSame('Test Studio Application', $setting->value);
     Assert::assertSame('string', $setting->type);
@@ -140,7 +164,11 @@ it('can manage tenant subscriptions', function (): void {
         'max_storage_gb' => 100,
     ]);
 
+<<<<<<< HEAD
+   /** @var TestCase $this */
+=======
     /** @var TestCase $this */
+>>>>>>> laraxot/dev
     $this->assertDatabaseHasRow('tenant_subscriptions', [
         'id' => $subscription->id,
         'tenant_id' => $tenant->id,
@@ -149,7 +177,11 @@ it('can manage tenant subscriptions', function (): void {
         'max_users' => 50,
         'max_storage_gb' => 100,
     ]);
+<<<<<<< HEAD
+   Assert::assertSame($tenant->id, $subscription->tenant_id);
+=======
     Assert::assertSame($tenant->id, $subscription->tenant_id);
+>>>>>>> laraxot/dev
     Assert::assertSame('Professional', $subscription->plan_name);
     Assert::assertSame('active', $subscription->status);
     Assert::assertSame(50, $subscription->max_users);
@@ -166,7 +198,11 @@ it('can validate tenant slug uniqueness', function (): void {
         'slug' => 'studio-b',
     ]);
 
+<<<<<<< HEAD
+   /** @var TestCase $this */
+=======
     /** @var TestCase $this */
+>>>>>>> laraxot/dev
     $this->assertDatabaseHasRow('tenants', [
         'id' => $tenant1->id,
         'slug' => 'studio-a',
@@ -214,7 +250,11 @@ it('can handle tenant domain verification', function (): void {
         'verification_token' => 'abc123',
     ]);
 
+<<<<<<< HEAD
+   /** @var TestCase $this */
+=======
     /** @var TestCase $this */
+>>>>>>> laraxot/dev
     $this->assertDatabaseHasRow('tenant_domains', [
         'id' => $domain->id,
         'status' => 'pending_verification',
@@ -228,7 +268,11 @@ it('can handle tenant domain verification', function (): void {
         'verification_token' => null,
     ]);
 
+<<<<<<< HEAD
+   $domainFresh = $domain->fresh();
+=======
     $domainFresh = $domain->fresh();
+>>>>>>> laraxot/dev
     Assert::assertInstanceOf(TenantDomain::class, $domainFresh);
     Assert::assertSame('active', $domainFresh->status);
     Assert::assertNotNull($domainFresh->verified_at);
@@ -243,13 +287,21 @@ it('can manage tenant storage limits', function (): void {
         'current_storage_gb' => 25,
     ]);
 
+<<<<<<< HEAD
+   /** @var TestCase $this */
+=======
     /** @var TestCase $this */
+>>>>>>> laraxot/dev
     $this->assertDatabaseHasRow('tenant_subscriptions', [
         'id' => $subscription->id,
         'max_storage_gb' => 100,
         'current_storage_gb' => 25,
     ]);
+<<<<<<< HEAD
+   Assert::assertSame(100, $subscription->max_storage_gb);
+=======
     Assert::assertSame(100, $subscription->max_storage_gb);
+>>>>>>> laraxot/dev
     Assert::assertSame(25, $subscription->current_storage_gb);
     Assert::assertSame(75, $subscription->max_storage_gb - $subscription->current_storage_gb);
 
@@ -269,13 +321,21 @@ it('can manage tenant user limits', function (): void {
         'current_users' => 10,
     ]);
 
+<<<<<<< HEAD
+   /** @var TestCase $this */
+=======
     /** @var TestCase $this */
+>>>>>>> laraxot/dev
     $this->assertDatabaseHasRow('tenant_subscriptions', [
         'id' => $subscription->id,
         'max_users' => 50,
         'current_users' => 10,
     ]);
+<<<<<<< HEAD
+   Assert::assertSame(50, $subscription->max_users);
+=======
     Assert::assertSame(50, $subscription->max_users);
+>>>>>>> laraxot/dev
     Assert::assertSame(10, $subscription->current_users);
     Assert::assertSame(40, $subscription->max_users - $subscription->current_users);
 
@@ -319,20 +379,32 @@ it('can manage tenant settings hierarchy', function (): void {
         'value' => 'Studio App',
         'type' => 'string',
     ]);
+<<<<<<< HEAD
+   $databaseSetting = createTenantSettingRecord([
+=======
     $databaseSetting = createTenantSettingRecord([
+>>>>>>> laraxot/dev
         'tenant_id' => $tenant->id,
         'key' => 'database.connection',
         'value' => 'mysql',
         'type' => 'string',
     ]);
+<<<<<<< HEAD
+   $mailSetting = createTenantSettingRecord([
+=======
     $mailSetting = createTenantSettingRecord([
+>>>>>>> laraxot/dev
         'tenant_id' => $tenant->id,
         'key' => 'mail.driver',
         'value' => 'smtp',
         'type' => 'string',
     ]);
 
+<<<<<<< HEAD
+   /** @var TestCase $this */
+=======
     /** @var TestCase $this */
+>>>>>>> laraxot/dev
     $this->assertDatabaseHasRow('tenant_settings', [
         'id' => $appSetting->id,
         'key' => 'app.name',
@@ -363,12 +435,20 @@ it('can validate tenant domain formats', function (): void {
     ];
 
     foreach ($validDomains as $domain) {
+<<<<<<< HEAD
+       $tenantDomain = createTenantDomainRecord([
+=======
         $tenantDomain = createTenantDomainRecord([
+>>>>>>> laraxot/dev
             'tenant_id' => $tenant->id,
             'domain' => $domain,
             'status' => 'active',
         ]);
+<<<<<<< HEAD
+       Assert::assertSame($domain, $tenantDomain->domain);
+=======
         Assert::assertSame($domain, $tenantDomain->domain);
+>>>>>>> laraxot/dev
         /** @var TestCase $this */
         $this->assertDatabaseHasRow('tenant_domains', [
             'id' => $tenantDomain->id,
@@ -378,12 +458,20 @@ it('can validate tenant domain formats', function (): void {
 });
 
 it('can track tenant activity', function (): void {
+<<<<<<< HEAD
+   $tenant = createTenantRecord([
+=======
     $tenant = createTenantRecord([
+>>>>>>> laraxot/dev
         'created_at' => now()->subMonths(3),
         'last_activity_at' => now()->subDays(5),
     ]);
 
+<<<<<<< HEAD
+   $tenant->update(['last_activity_at' => now()]);
+=======
     $tenant->update(['last_activity_at' => now()]);
+>>>>>>> laraxot/dev
 
     $fresh = $tenant->fresh();
     Assert::assertInstanceOf(Tenant::class, $fresh);
@@ -400,13 +488,21 @@ it('can manage tenant billing cycles', function (): void {
         'next_billing_date' => now()->addMonth(),
     ]);
 
+<<<<<<< HEAD
+   /** @var TestCase $this */
+=======
     /** @var TestCase $this */
+>>>>>>> laraxot/dev
     $this->assertDatabaseHasRow('tenant_subscriptions', [
         'id' => $subscription->id,
         'billing_cycle' => 'monthly',
         'billing_amount' => 99.99,
     ]);
+<<<<<<< HEAD
+   Assert::assertSame('monthly', $subscription->billing_cycle);
+=======
     Assert::assertSame('monthly', $subscription->billing_cycle);
+>>>>>>> laraxot/dev
     Assert::assertSame(99.99, $subscription->billing_amount);
     Assert::assertNotNull($subscription->next_billing_date);
     Assert::assertTrue($subscription->next_billing_date->isFuture());
@@ -417,7 +513,11 @@ it('can manage tenant billing cycles', function (): void {
         'next_billing_date' => now()->addYear(),
     ]);
 
+<<<<<<< HEAD
+   $subFresh = $subscription->fresh();
+=======
     $subFresh = $subscription->fresh();
+>>>>>>> laraxot/dev
     Assert::assertInstanceOf(TenantSubscription::class, $subFresh);
     Assert::assertSame('yearly', $subFresh->billing_cycle);
     Assert::assertSame(999.99, $subFresh->billing_amount);

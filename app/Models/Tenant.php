@@ -24,7 +24,11 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property string $domain
  * @property string $database
  * @property string $slug
+<<<<<<< HEAD
+* @property array<string, mixed>|null $settings
+=======
  * @property array<string, mixed>|null $settings
+>>>>>>> laraxot/dev
  * @property bool $is_active
  * @property string|null $logo
  * @property \Carbon\Carbon|null $last_activity_at
@@ -38,7 +42,11 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Tenant query()
  * @method static Tenant|null first()
  * @method static Collection<int, Tenant> get()
+<<<<<<< HEAD
+* @method static Tenant create(array<string, mixed> $attributes = [])
+=======
  * @method static Tenant create(array<string, mixed> $attributes = [])
+>>>>>>> laraxot/dev
  * @method static Tenant firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|Tenant where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|Tenant whereNotNull((string|Expression) $columns)
@@ -92,7 +100,11 @@ class Tenant extends BaseModel
 
     /**
      * Relazione con gli utenti associati al tenant.
+<<<<<<< HEAD
+    *
+=======
      *
+>>>>>>> laraxot/dev
      * @return HasMany<User, $this>
      */
     public function users(): HasMany
@@ -134,7 +146,11 @@ class Tenant extends BaseModel
     {
         $this->attributes['name'] = $value;
 
+<<<<<<< HEAD
+       $slug = $this->attributes['slug'] ?? null;
+=======
         $slug = $this->attributes['slug'] ?? null;
+>>>>>>> laraxot/dev
         if (! is_string($slug) || $slug === '') {
             $this->attributes['slug'] = Str::slug($value);
         }

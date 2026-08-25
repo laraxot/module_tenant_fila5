@@ -14,7 +14,11 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 it('resolves tenant config value by merging with tenant overrides', function (): void {
+<<<<<<< HEAD
+   /** @var TestCase $this */
+=======
     /** @var TestCase $this */
+>>>>>>> laraxot/dev
     $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'test-tenant']);
     });
@@ -27,7 +31,11 @@ it('resolves tenant config value by merging with tenant overrides', function ():
 
     $action = app(ResolveTenantConfigValueAction::class);
 
+<<<<<<< HEAD
+   Assert::assertSame('Tenant App', $action->execute('app.name'));
+=======
     Assert::assertSame('Tenant App', $action->execute('app.name'));
+>>>>>>> laraxot/dev
     Assert::assertSame('UTC', $action->execute('app.timezone'));
 });
 

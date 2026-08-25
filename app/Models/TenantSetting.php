@@ -44,7 +44,11 @@ class TenantSetting extends BaseModel
         'type',
     ];
 
+<<<<<<< HEAD
+   /** @return BelongsTo<Tenant, $this> */
+=======
     /** @return BelongsTo<Tenant, $this> */
+>>>>>>> laraxot/dev
     public function tenant(): BelongsTo
     {
         return $this->belongsTo(Tenant::class);

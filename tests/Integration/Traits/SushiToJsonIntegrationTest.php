@@ -30,7 +30,11 @@ beforeEach(function (): void {
         'domain' => 'test.example.com',
     ]);
 
+<<<<<<< HEAD
+   $this->setCurrentTenant($this->tenantModel());
+=======
     $this->setCurrentTenant($this->tenantModel());
+>>>>>>> laraxot/dev
 
     $this->model = new TestSushiModel();
     $this->testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
@@ -61,7 +65,11 @@ it('creates json file with tenant isolation', function (): void {
         '1' => [
             'id' => 1,
             'name' => 'Tenant Specific Item',
+<<<<<<< HEAD
+           'tenant_id' => $this->tenantId(),
+=======
             'tenant_id' => $this->tenantId(),
+>>>>>>> laraxot/dev
         ],
     ];
 
@@ -101,12 +109,20 @@ it('handles large datasets efficiently', function (): void {
         $largeDataset[$i] = [
             'id' => $i,
             'name' => "Large Item {$i}",
+<<<<<<< HEAD
+           'status' => $i % 2 === 0 ? 'active' : 'inactive',
+=======
             'status' => $i % 2 === 0 ? 'active' : 'inactive',
+>>>>>>> laraxot/dev
         ];
     }
 
     $startTime = microtime(true);
+<<<<<<< HEAD
+   expect($this->sushiModel()->saveToJson($largeDataset))->toBeTrue();
+=======
     expect($this->sushiModel()->saveToJson($largeDataset))->toBeTrue();
+>>>>>>> laraxot/dev
     expect(microtime(true) - $startTime)->toBeLessThan(5.0);
 
     $rows = $this->sushiModel()->getSushiRows();
@@ -119,7 +135,11 @@ it('works with different tenant configurations', function (): void {
         'domain' => 'second.example.com',
     ]);
 
+<<<<<<< HEAD
+   $this->setCurrentTenant($secondTenant);
+=======
     $this->setCurrentTenant($secondTenant);
+>>>>>>> laraxot/dev
 
     $secondModel = new TestSushiModel();
     $secondJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');

@@ -20,7 +20,11 @@ it('can create a tenant', function (): void {
         'database' => 'tenant_test_db',
     ]);
 
+<<<<<<< HEAD
+   Assert::assertInstanceOf(Tenant::class, $tenant);
+=======
     Assert::assertInstanceOf(Tenant::class, $tenant);
+>>>>>>> laraxot/dev
     Assert::assertSame('Test Company', $tenant->name);
     Assert::assertSame('test.company.com', $tenant->domain);
     Assert::assertSame('tenant_test_db', $tenant->database);
@@ -43,7 +47,11 @@ it('exposes users relationship', function (): void {
         'domain' => 'user.example.com',
     ]);
 
+<<<<<<< HEAD
+   /** @var UserFactory $userFactory */
+=======
     /** @var UserFactory $userFactory */
+>>>>>>> laraxot/dev
     $userFactory = User::factory();
     $user = $userFactory->create([
         'name' => 'Tenant User',
@@ -62,7 +70,11 @@ it('can create multiple users for a tenant', function (): void {
         'domain' => 'multi.example.com',
     ]);
 
+<<<<<<< HEAD
+   /** @var UserFactory $userFactory */
+=======
     /** @var UserFactory $userFactory */
+>>>>>>> laraxot/dev
     $userFactory = User::factory();
     $users = $userFactory->count(3)->create();
     foreach ($users->all() as $user) {

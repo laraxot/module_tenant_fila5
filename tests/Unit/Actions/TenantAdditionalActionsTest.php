@@ -14,7 +14,11 @@ uses(TestCase::class);
 
 describe('Tenant Additional Actions Coverage', function (): void {
     test('GetTenantModulesAction is accessible', function (): void {
+<<<<<<< HEAD
+       Assert::assertInstanceOf(GetTenantModulesAction::class, app(GetTenantModulesAction::class));
+=======
         Assert::assertInstanceOf(GetTenantModulesAction::class, app(GetTenantModulesAction::class));
+>>>>>>> laraxot/dev
     });
 
     test('TranslateTenantKeyAction is accessible', function (): void {

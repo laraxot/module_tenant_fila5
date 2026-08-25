@@ -25,7 +25,15 @@ function tenantJsonPath(string $tenantName): string
 
 function makeTestSushiModelForPath(string $jsonPath): TestSushiModel
 {
+<<<<<<< HEAD
    $model = new TestSushiModelWithJsonPath;
+=======
+<<<<<<< HEAD
+   $model = new TestSushiModelWithJsonPath;
+=======
+    $model = new TestSushiModelWithJsonPath;
+>>>>>>> laraxot/dev
+>>>>>>> laraxot/dev
     $model->setJsonPath($jsonPath);
 
     return $model;
@@ -71,7 +79,15 @@ test('creates json file with tenant isolation', function (): void {
     $model2 = makeTestSushiModelForPath($tenant2Path);
 
     $model1->saveToJson([
+<<<<<<< HEAD
        1 => ['id' => 1, 'name' => 'Tenant 1 Item', 'description' => 'Item specifico per tenant 1', 'status' => 'active'],
+=======
+<<<<<<< HEAD
+       1 => ['id' => 1, 'name' => 'Tenant 1 Item', 'description' => 'Item specifico per tenant 1', 'status' => 'active'],
+=======
+        1 => ['id' => 1, 'name' => 'Tenant 1 Item', 'description' => 'Item specifico per tenant 1', 'status' => 'active'],
+>>>>>>> laraxot/dev
+>>>>>>> laraxot/dev
     ]);
 
     Assert::assertFileExists($tenant1Path);
@@ -105,6 +121,13 @@ test('loads data with tenant isolation', function (): void {
 
     $rows1 = $model1->getSushiRows();
     $rows2 = $model2->getSushiRows();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
+>>>>>>> laraxot/dev
     Assert::assertCount(2, $rows1);
     Assert::assertCount(2, $rows2);
     Assert::assertSame('Tenant 1 Item 1', rowNameById($rows1, 1));
@@ -121,7 +144,15 @@ test('handles complex data structures', function (): void {
             'name' => 'Complex Item',
             'metadata' => [
                 'tags' => ['tag1', 'tag2', 'tag3'],
+<<<<<<< HEAD
                'settings' => ['enabled' => true, 'max_retries' => 3, 'timeout' => 30.5],
+=======
+<<<<<<< HEAD
+               'settings' => ['enabled' => true, 'max_retries' => 3, 'timeout' => 30.5],
+=======
+                'settings' => ['enabled' => true, 'max_retries' => 3, 'timeout' => 30.5],
+>>>>>>> laraxot/dev
+>>>>>>> laraxot/dev
             ],
             'status' => 'active',
         ],
@@ -157,7 +188,15 @@ test('works with different tenant configurations', function (): void {
 
     $model = makeTestSushiModelForPath($customDir.'/test_sushi.json');
 
+<<<<<<< HEAD
    Assert::assertTrue($model->saveToJson([
+=======
+<<<<<<< HEAD
+   Assert::assertTrue($model->saveToJson([
+=======
+    Assert::assertTrue($model->saveToJson([
+>>>>>>> laraxot/dev
+>>>>>>> laraxot/dev
         1 => ['id' => 1, 'name' => 'Custom Tenant Item', 'status' => 'active'],
     ]));
 
