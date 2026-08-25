@@ -36,7 +36,11 @@ use Sushi\Sushi;
  * @property ProfileContract|null $updater
  * @property ProfileContract|null $deleter
  *
+<<<<<<< HEAD
 * @method static TenantDomainFactory factory($count = null, $state = [])
+=======
+ * @method static TenantDomainFactory factory($count = null, $state = [])
+>>>>>>> laraxot/dev
  *
  * @mixin \Eloquent
  */
@@ -56,7 +60,11 @@ class TenantDomain extends BaseModel
 
     /**
      * Model Rows.
+<<<<<<< HEAD
     *
+=======
+     *
+>>>>>>> laraxot/dev
      * @return array<int, array<string, string>>
      */
     public function getRows(): array

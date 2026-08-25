@@ -21,4 +21,8 @@ una cartella nominata **com**,
 
 dentro la cartella com un altra cartella nominata **mio_dominio**.
 
+<<<<<<< HEAD
 quindi tutti i file di configurazione che interessano al progetto che verrà pubblicato a dominio https://mio_dominio.com/ si troveranno dentro la cartella **laravel/config/com/mio_dominio"**
+=======
+quindi tutti i file di configurazione che interessano al progetto che verrà pubblicato a dominio https://mio_dominio.com/ si troveranno dentro la cartella **laravel/config/com/mio_dominio"**
+>>>>>>> laraxot/dev

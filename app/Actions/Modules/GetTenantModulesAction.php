@@ -31,7 +31,11 @@ class GetTenantModulesAction
             throw new Exception($e->getMessage().'['.$filePath.']['.__LINE__.']['.basename(__FILE__).']');
         }
 
+<<<<<<< HEAD
        if (! \is_array($json)) {
+=======
+        if (! \is_array($json)) {
+>>>>>>> laraxot/dev
             return [];
         }
 
