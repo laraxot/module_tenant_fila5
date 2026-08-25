@@ -1,3 +1,14 @@
+---
+title: "Fix: SushiToJsonIntegrationTest - Database Connection Configuration"
+module: "Tenant"
+type: concept
+tags: [testing, sushitojson, integration, fix]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "testing sushitojson integration fix"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Fix: SushiToJsonIntegrationTest - Database Connection Configuration
 
 **Problema**: Test fallisce con "Database connection [tenant] not configured"

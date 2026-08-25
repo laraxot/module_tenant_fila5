@@ -21,41 +21,55 @@ class ResolveTenantConfigValueAction
      * Works consistently in web, console, queue, and scheduler contexts.
      *
      * @param  string  $key  Config key (e.g., 'app.name', 'mail.driver')
-     * @param  string|int|array<mixed>|null  $_default  Default value if config not found
+    * @param  string|int|array<mixed>|null  $defaultValue  Default value if config not found
      * @return float|int|string|array<mixed>|null Resolved configuration value
      *
      * @throws Exception If config key is invalid or value type is unexpected
      *
      * @see docs/resolve-tenant-config-console-debate.md
      */
-    public function execute(string $key, string|int|array|null $_default = null): float|int|string|array|null
+   public function execute(string $key, string|int|array|null $defaultValue = null): float|int|string|array|null
     {
         $group = Arr::first(explode('.', $key));
         if ($group === null || $group === '') {
             throw new Exception('['.__LINE__.']['.class_basename(self::class).']');
         }
 
-        $originalConf = config($group);
-        $tenantName = app(GetTenantNameAction::class)->execute();
-
-        $configName = str_replace('/', '.', $tenantName).'.'.$group;
-        $extraConf = config($configName);
-
-        if (! \is_array($originalConf)) {
-            $originalConf = [];
-        }
-
-        if (! \is_array($extraConf)) {
-            $extraConf = [];
-        }
-
-        $mergeConf = array_replace_recursive($originalConf, $extraConf);
-
+       $mergeConf = $this->buildMergedGroupConfig($group);
         Config::set($group, $mergeConf);
 
-        $res = config($key, $_default);
+        return $this->assertValidConfigValue(config($key, $defaultValue));
+    }
 
-        if (is_numeric($res) || \is_string($res) || \is_array($res) || $res === null) {
+    /**
+     * @return array<string, mixed>
+     */
+    private function buildMergedGroupConfig(string $group): array
+    {
+        /** @var mixed $originalConf */
+        $originalConf = config($group);
+        $tenantName = app(GetTenantNameAction::class)->execute();
+        $configName = str_replace('/', '.', $tenantName).'.'.$group;
+        /** @var mixed $extraConf */
+        $extraConf = config($configName);
+
+        $originalConfTyped = is_array($originalConf)
+            ? app(FilterConfigStringKeysAction::class)->execute($originalConf)
+            : [];
+
+        $extraConfTyped = is_array($extraConf)
+            ? app(FilterConfigStringKeysAction::class)->execute($extraConf)
+            : [];
+
+        return app(MergeRecursiveStringKeyConfigAction::class)->execute($originalConfTyped, $extraConfTyped);
+    }
+
+    /**
+     * @return float|int|string|array<mixed>|null
+     */
+    private function assertValidConfigValue(mixed $res): float|int|string|array|null
+    {
+        if (is_numeric($res) || is_string($res) || is_array($res) || $res === null) {
             return $res;
         }
 

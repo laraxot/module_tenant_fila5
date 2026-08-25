@@ -1,3 +1,14 @@
+---
+title: "Test skipped e copertura critica"
+module: "Tenant"
+type: concept
+tags: [test, coverage]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "test coverage"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Test skipped e copertura critica
 
 ## Obiettivo

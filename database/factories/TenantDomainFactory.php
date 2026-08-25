@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Tenant\Models\TenantDomain;
 
@@ -17,6 +18,9 @@ class TenantDomainFactory extends Factory
     /**
      * Define the model's default state.
      */
+   /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [
@@ -25,7 +29,7 @@ class TenantDomainFactory extends Factory
             'is_primary' => (bool) random_int(0, 1),
             'status' => ['active', 'pending', 'inactive', 'verified', 'unverified'][array_rand(['active', 'pending', 'inactive', 'verified', 'unverified'])],
             'verification_token' => (string) random_int(1000000000000000, 9999999999999999),
-            'verified_at' => \Carbon\Carbon::now()->subDays(random_int(0, 30)),
+            'verified_at' => Carbon::now()->subDays(random_int(0, 30)),
         ];
     }
 }

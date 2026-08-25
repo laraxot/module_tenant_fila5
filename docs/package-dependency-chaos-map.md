@@ -1,7 +1,18 @@
+---
+title: "Package Dependency Chaos Map (Tenant)"
+module: "Tenant"
+type: concept
+tags: [package, dependency, chaos, map]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "package dependency chaos map"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Package Dependency Chaos Map (Tenant)
 
 ## Catalogo completo
-- [Composer Packages Full Catalog (2026-03-02)](../../Xot/docs/composer-packages-full-catalog-2026-03-02.md)
+- [Composer Packages Full Catalog (2026-03-02)](../../Xot/docs/composer-packages-full-catalog.md)
 
 ## Pacchetti studiati rilevanti
 - `laravel/framework`

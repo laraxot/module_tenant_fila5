@@ -20,8 +20,8 @@ class DatabaseConfigResolver implements ConfigResolverInterface
     }
 
     /**
-     * @param  array<string, mixed>  $extraConf
-     * @return array<string, mixed>
+    * @param  string|int|array<string, mixed>|null  $extraConf
+     * @return float|int|string|array<string, mixed>|null
      */
     public function resolve(string $key, string|int|array|null $extraConf = null): float|int|string|array|null
     {
@@ -76,7 +76,7 @@ class DatabaseConfigResolver implements ConfigResolverInterface
             return $extraConf;
         }
 
-        /** @var Collection<\Nwidart\Modules\Module> */
+       /** @var Collection<int, \Nwidart\Modules\Module> */
         $modules = Module::toCollection();
 
         foreach ($modules as $module) {
