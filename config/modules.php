@@ -254,7 +254,11 @@ return [
      * |
      */
     'composer' => [
+<<<<<<< HEAD
+       'vendor' => 'nwidart',
+=======
         'vendor' => 'nwidart',
+>>>>>>> laraxot/dev
         'author' => [
             'name' => 'Nicolas Widart',
             'email' => 'n.widart@gmail.com',

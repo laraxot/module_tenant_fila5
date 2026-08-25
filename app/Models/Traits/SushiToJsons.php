@@ -25,7 +25,11 @@ trait SushiToJsons
 
     /**
      * @return array<int, array<string, mixed>>
+<<<<<<< HEAD
+    *
+=======
      *
+>>>>>>> laraxot/dev
      * @phpstan-return array<int, array<string, mixed>>
      */
     public function getRows(): array
@@ -41,7 +45,11 @@ trait SushiToJsons
     public function getSushiRows(): array
     {
         $tbl = $this->getTable();
+<<<<<<< HEAD
+       if (! is_string($tbl)) {
+=======
         if (! is_string($tbl)) {
+>>>>>>> laraxot/dev
             return [];
         }
 
@@ -56,7 +64,11 @@ trait SushiToJsons
         $stringId = is_string($id) || is_numeric($id) ? (string) $id : 'unknown';
         $stringTbl = is_string($tbl) ? $tbl : 'unknown';
 
+<<<<<<< HEAD
+       return app(GetTenantFilePathAction::class)->execute('database/content/'.$stringTbl.'/'.$stringId.'.json');
+=======
         return app(GetTenantFilePathAction::class)->execute('database/content/'.$stringTbl.'/'.$stringId.'.json');
+>>>>>>> laraxot/dev
     }
 
     protected static function bootSushiToJsons(): void

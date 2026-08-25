@@ -60,7 +60,11 @@ class TenantService
      * Merge tra configurazione globale e tenant-specific, con supporto per default.
      *
      * @param  string  $key  Chiave di configurazione (es. 'app.name')
+<<<<<<< HEAD
+    * @param  string|int|array<mixed>|null  $default  Valore di default se la chiave non esiste
+=======
      * @param  string|int|array<mixed>|null  $default  Valore di default se la chiave non esiste
+>>>>>>> laraxot/dev
      * @return float|int|string|array<mixed>|null Valore risolto della configurazione
      */
     public static function config(string $key, string|int|array|null $default = null): float|int|string|array|null

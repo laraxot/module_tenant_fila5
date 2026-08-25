@@ -18,7 +18,11 @@ class TestCommand extends Command
      */
     public function handle(): void
     {
+<<<<<<< HEAD
+       $name = app(GetTenantNameAction::class)->execute();
+=======
         $name = app(GetTenantNameAction::class)->execute();
+>>>>>>> laraxot/dev
         $this->info('tenant name :'.$name);
     }
 }

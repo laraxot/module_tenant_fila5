@@ -30,7 +30,11 @@ class GetTenantConfigArrayAction
             $data = [];
         }
 
+<<<<<<< HEAD
+       /** @var array<string, mixed> $dataArray */
+=======
         /** @var array<string, mixed> $dataArray */
+>>>>>>> laraxot/dev
         $dataArray = [];
         foreach ($data as $key => $value) {
             $dataArray[(string) $key] = $value;

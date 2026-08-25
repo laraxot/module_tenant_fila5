@@ -17,7 +17,11 @@ class DomainResource extends XotBaseResource
 {
     protected static ?string $model = Domain::class;
 
+<<<<<<< HEAD
+   /**
+=======
     /**
+>>>>>>> laraxot/dev
      * Schema legacy del form: la sorgente di verità è DomainForm::getFormSchema().
      *
      * @return array<string, \Filament\Schemas\Components\Component>

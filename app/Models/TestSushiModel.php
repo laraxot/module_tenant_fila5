@@ -42,7 +42,11 @@ class TestSushiModel extends BaseModel
         'updated_by' => 'integer',
     ];
 
+<<<<<<< HEAD
+   protected $table = 'test_sushi';
+=======
     protected $table = 'test_sushi';
+>>>>>>> laraxot/dev
 
     protected $fillable = [
         'name',
@@ -66,7 +70,11 @@ class TestSushiModel extends BaseModel
 
         // fallback: usa il comportamento del trait (replicato qui)
         $tbl = $this->getTable();
+<<<<<<< HEAD
+       $filePath = app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
+=======
         $filePath = app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
+>>>>>>> laraxot/dev
         if (! is_string($filePath)) {
             throw new InvalidArgumentException('File path must be string');
         }

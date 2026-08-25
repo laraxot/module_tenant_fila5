@@ -16,7 +16,11 @@ class GetTenantFilePathAction
 
     public function execute(string $filename): string
     {
+<<<<<<< HEAD
+       $normalizedFilename = str_replace('\\', '/', $filename);
+=======
         $normalizedFilename = str_replace('\\', '/', $filename);
+>>>>>>> laraxot/dev
         if (str_starts_with($normalizedFilename, '/') || str_contains($filename, "\0") || in_array('..', explode('/', $normalizedFilename), true)) {
             throw new InvalidArgumentException('Tenant filename must be a relative path without traversal segments.');
         }
