@@ -29,7 +29,7 @@ use function Safe\putenv;
  * @property BaseModel|null $baseModel
  * @property string $testJsonPath
  * @property string $testDirectory
- * @property Closure(): array<array-key, array<string, mixed>>|null $createTestData
+ * @property Closure(int): array<int, array<string, mixed>>|null $createTestData
  */
 abstract class TestCase extends XotBaseTestCase
 {
@@ -49,7 +49,16 @@ abstract class TestCase extends XotBaseTestCase
 
     public string $testDirectory = '';
 
-    /** @var Closure(): array<array-key, array<string, mixed>> */
+    /**
+     * Fabbrica di dati di prova, iniettata dai test.
+     *
+     * Il parametro ha un valore di default perche' i due chiamanti la invocano in modo
+     * diverso: `sushiTestData()` senza argomenti, il test delle prestazioni con la
+     * dimensione del dataset. Il tipo di valore e' `array<int, …>` e non `array-key`
+     * perche' e' cio' che accetta `TestSushiModel::saveToJson()`.
+     *
+     * @var Closure(int): array<int, array<string, mixed>>
+     */
     public Closure $createTestData;
 
     protected function setUp(): void
@@ -57,7 +66,7 @@ abstract class TestCase extends XotBaseTestCase
         parent::setUp();
 
         $this->model = new TestSushiModel;
-        $this->createTestData = static fn (): array => [];
+        $this->createTestData = static fn (int $count = 0): array => [];
     }
 
     public function tenantModel(): Tenant
@@ -107,10 +116,19 @@ abstract class TestCase extends XotBaseTestCase
         return dirname($this->sushiJsonPath());
     }
 
-    /** @return array<array-key, array<string, mixed>> */
-    public function sushiTestData(): array
+    /**
+     * Righe di prova per i test Sushi.
+     *
+     * Il numero e' esplicito e non un default della closure: quante righe servono e' una
+     * decisione del chiamante, e nasconderla dentro la closure rendeva impossibile
+     * dichiararne il tipo — `Closure(int=)` diceva «parametro opzionale» mentre la closure
+     * assegnata lo richiedeva.
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    public function sushiTestData(int $count = 10): array
     {
-        return ($this->createTestData)();
+        return ($this->createTestData)($count);
     }
 
     public function tenantMockExpectation(MockInterface $mock, string $method): Expectation
