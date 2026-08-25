@@ -22,6 +22,7 @@ use Modules\Xot\Tests\XotBaseTestCase;
 use PHPUnit\Framework\Assert;
 
 use function Safe\json_decode;
+use function Safe\putenv;
 
 /**
  * @property TestSushiModel|null $model
@@ -55,7 +56,7 @@ abstract class TestCase extends XotBaseTestCase
     {
         parent::setUp();
 
-        $this->model = new TestSushiModel();
+        $this->model = new TestSushiModel;
         $this->createTestData = static fn (): array => [];
     }
 
@@ -196,6 +197,29 @@ abstract class TestCase extends XotBaseTestCase
 
         /** @var array<string, mixed> $decoded */
         return $decoded;
+    }
+
+    /**
+     * Imposta (o azzera) l'host che `GetTenantNameAction` legge per risolvere il tenant.
+     *
+     * L'action usa `getenv('SERVER_NAME')` e non la facade `Request`, perche' gira
+     * durante `LoadConfiguration`, quando le facade non esistono ancora: scrivere solo
+     * `$_SERVER['SERVER_NAME']` non avrebbe alcun effetto. `$_SERVER` resta allineato
+     * per il codice che invece legge da li'.
+     *
+     * @param  string|null  $serverName  L'host da simulare, `null` per rimuoverlo
+     */
+    public static function setServerNameForTenantTest(?string $serverName): void
+    {
+        if ($serverName === null) {
+            putenv('SERVER_NAME');
+            unset($_SERVER['SERVER_NAME']);
+
+            return;
+        }
+
+        putenv('SERVER_NAME='.$serverName);
+        $_SERVER['SERVER_NAME'] = $serverName;
     }
 
     /** @return array<int, class-string<ServiceProvider>> */

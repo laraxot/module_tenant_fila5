@@ -4,30 +4,32 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit;
 
+use Illuminate\Support\Facades\File;
 use Mockery;
 use Mockery\MockInterface;
-use Modules\Tenant\Filament\Resources\DomainResource;
-use Modules\Tenant\Filament\Resources\DomainResource\Schemas\DomainForm;
-use Modules\Tenant\Filament\Resources\DomainResource\Schemas\DomainInfolist;
-use Modules\Tenant\Filament\Resources\DomainResource\Tables\DomainsTable;
+use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
 use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
 use Modules\Tenant\Actions\Config\GetTenantConfigPathAction;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+use Modules\Tenant\Actions\Config\MergeRecursiveStringKeyConfigAction;
 use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
 use Modules\Tenant\Actions\Config\SaveTenantConfigAction;
-use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
-use Modules\Tenant\Actions\Config\MergeRecursiveStringKeyConfigAction;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Actions\Models\ResolveTenantModelClassAction;
 use Modules\Tenant\Actions\Modules\GetTenantModulesAction;
 use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
+use Modules\Tenant\Filament\Resources\DomainResource;
+use Modules\Tenant\Filament\Resources\DomainResource\Schemas\DomainForm;
+use Modules\Tenant\Filament\Resources\DomainResource\Schemas\DomainInfolist;
+use Modules\Tenant\Filament\Resources\DomainResource\Tables\DomainsTable;
+use Modules\Tenant\Models\BaseModelJsons;
 use Modules\Tenant\Models\DatabaseConfig;
 use Modules\Tenant\Models\Domain;
-use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\Policies\DomainPolicy;
 use Modules\Tenant\Models\Policies\TenantBasePolicy;
+use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Services\Config\ConfigResolverRegistry;
 use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
 use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
@@ -36,9 +38,10 @@ use Modules\Tenant\Services\Config\Resolvers\MorphMapConfigResolver;
 use Modules\Tenant\Services\Config\Resolvers\StandardConfigResolver;
 use Modules\Tenant\Services\TenantService;
 use Modules\Tenant\Tests\TestCase;
+use Modules\Tenant\Tests\Unit\Fixtures\SushiToCsvCoverageModel;
+use Modules\User\Models\SocialProvider;
 use Modules\Xot\Contracts\UserContract;
 use PHPUnit\Framework\Assert;
-use Illuminate\Support\Facades\File;
 
 use function Safe\json_encode;
 
@@ -56,7 +59,7 @@ describe('Tenant coverage boost — Config actions', function (): void {
             'nested' => ['a' => 1],
         ]);
 
-        Assert::assertSame(['valid' => 1, 'nested' => ['a'  => 1]], $result);
+        Assert::assertSame(['valid' => 1, 'nested' => ['a' => 1]], $result);
         Assert::assertArrayNotHasKey(0, $result);
     });
 
@@ -82,7 +85,7 @@ describe('Tenant coverage boost — Domain sushi', function (): void {
             ]]);
         });
 
-        $rows = (new Domain())->getRows();
+        $rows = (new Domain)->getRows();
 
         Assert::assertCount(1, $rows);
         Assert::assertSame('tenant.example.com', $rows[0]['name']);
@@ -101,7 +104,7 @@ describe('Tenant coverage boost — Models and resolvers', function (): void {
     test('StandardConfigResolver resolves existing config keys', function (): void {
         config(['app' => ['name' => 'Base App', 'locale' => 'it']]);
 
-        $resolver = new StandardConfigResolver();
+        $resolver = new StandardConfigResolver;
 
         Assert::assertTrue($resolver->canResolve('app.name'));
         Assert::assertSame('Base App', $resolver->resolve('app.name'));
@@ -163,7 +166,7 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
         $resourcePages = DomainResource::getPages();
         $formSchema = DomainForm::getFormSchema();
         $infolistSchema = DomainInfolist::getInfolistSchema();
-        $tableColumns = (new DomainsTable())->getTableColumns();
+        $tableColumns = (new DomainsTable)->getTableColumns();
 
         Assert::assertArrayHasKey('index', $resourcePages);
         Assert::assertArrayHasKey('title', $formSchema);
@@ -185,11 +188,11 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
             static fn (string $permission): bool => in_array($permission, ['domain.view', 'domain.update'], true),
         );
 
-        $policy = new DomainPolicy();
-        $domain = new Domain();
+        $policy = new DomainPolicy;
+        $domain = new Domain;
         $domain->exists = true;
 
-        Assert::assertTrue((new class() extends TenantBasePolicy {})->before($superAdmin, 'viewAny'));
+        Assert::assertTrue((new class extends TenantBasePolicy {})->before($superAdmin, 'viewAny'));
         Assert::assertTrue($policy->view($editor, $domain));
         Assert::assertTrue($policy->update($editor, $domain));
         Assert::assertFalse($policy->delete($editor, $domain));
@@ -202,20 +205,20 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
     });
 
     test('config resolver registry prefers matching resolvers and database config casts', function (): void {
-        $registry = new ConfigResolverRegistry();
+        $registry = new ConfigResolverRegistry;
 
         $databaseResolver = $registry->findResolver('database');
         $fallbackResolver = $registry->findResolver('custom.key');
 
         Assert::assertInstanceOf(DatabaseConfigResolver::class, $databaseResolver);
         Assert::assertInstanceOf(StandardConfigResolver::class, $fallbackResolver);
-        Assert::assertFalse((new MorphMapConfigResolver())->canResolve('morph_map'));
+        Assert::assertFalse((new MorphMapConfigResolver)->canResolve('morph_map'));
 
-        $model = new DatabaseConfig();
+        $model = new DatabaseConfig;
         Assert::assertSame('integer', $model->getCasts()['port']);
         Assert::assertSame('array', $model->getCasts()['options']);
 
-        $resolver = new class() implements ConfigResolverInterface
+        $resolver = new class implements ConfigResolverInterface
         {
             public function canResolve(string $key): bool
             {
@@ -252,7 +255,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
             );
         });
 
-        $model = new class() extends \Modules\Tenant\Models\BaseModelJsons
+        $model = new class extends BaseModelJsons
         {
             protected $table = 'catalog';
 
@@ -280,16 +283,12 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
             );
         });
 
-        $model = new class() extends \Modules\Sigma\Models\WebService
-        {
-            protected $table = 'catalog';
-
-            /** @return array<int, array<string, mixed>> */
-            public function getRows(): array
-            {
-                return $this->getSushiRows();
-            }
-        };
+        // L'host storico del trait era `Modules\Sigma\Models\WebService`, che in questo
+        // repository non esiste. Il soggetto del test e' `SushiToCsv`, quindi si riusa
+        // la fixture che gia' lo compone: `getCsvPath()` deriva dal nome tabella, che
+        // qui punta al CSV appena scritto.
+        $model = new SushiToCsvCoverageModel;
+        $model->setTable('catalog');
 
         Assert::assertSame(['id', 'name'], $model->getCsvHeader());
         Assert::assertCount(2, $model->getSushiRows());
@@ -304,7 +303,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
                 ['name' => 'Beta', 'meta' => '{"x":1}'],
             ]]);
         });
-        $model = new class() extends \Modules\User\Models\SocialProvider
+        $model = new class extends SocialProvider
         {
             protected $table = 'tenant_configs';
 
