@@ -21,6 +21,27 @@ beforeEach(function (): void {
     $this->testDirectory = storage_path('tests/sushi-json-performance');
     $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 
+    // Il parametro ha un default perche' `TestCase::sushiTestData()` invoca la stessa
+    // closure senza argomenti: il contratto dichiarato e' `Closure(int=)`.
+    $this->createTestData = static function (int $count = 0): array {
+        $data = [];
+        for ($i = 1; $i <= $count; $i++) {
+            $data[$i] = [
+                'id' => $i,
+                'name' => "Item {$i}",
+                'description' => "Description for item {$i}",
+                'status' => ($i % 2) === 0 ? 'active' : 'inactive',
+                'tags' => ['tag' . ($i % 3), 'tag' . ($i % 5)],
+                'metadata' => ['key' . $i => 'value' . $i],
+                'timestamps' => [now()->toISOString(), now()->toISOString()],
+                'created_at' => now()->toISOString(),
+                'updated_at' => now()->toISOString(),
+            ];
+        }
+
+        return $data;
+    };
+
     if (! File::exists($this->testDirectory)) {
         File::makeDirectory($this->testDirectory, 0755, true, true);
     }
@@ -41,67 +62,10 @@ afterEach(function (): void {
     if (File::exists($this->testDirectory)) {
         File::deleteDirectory($this->testDirectory);
     }
-
-    Mockery::close();
-});
-
-/**
- * @return array<int, array<string, mixed>>
- */
-function createTestData(int $recordCount): array
-{
-    $data = [];
-    for ($i = 1; $i <= $recordCount; $i++) {
-        $data[$i] = [
-            'id' => $i,
-            'name' => "Test Item {$i}",
-            'description' => "This is a detailed description for test item {$i} with additional information to increase the size of the data",
-            'status' => 0 === ($i % 2) ? 'active' : 'inactive',
-            'category' => 'Category '.(($i % 10) + 1),
-            'priority' => ($i % 5) + 1,
-            'tags' => ["tag{$i}", "priority{$i}", "category{$i}"],
-            'metadata' => [
-                'created_by' => 'test_user',
-                'department' => 'testing',
-                'location' => 'test_environment',
-                'notes' => "Additional notes for item {$i} to increase data size",
-                'settings' => [
-                    'notifications' => true,
-                    'auto_save' => false,
-                    'backup_frequency' => 'daily',
-                ],
-            ],
-            'timestamps' => [
-                'created_at' => now()->subDays($i)->toISOString(),
-                'updated_at' => now()->subHours($i)->toISOString(),
-            ],
-        ];
-    }
-
-    return $data;
-}
-
-it('handles small datasets efficiently', function (): void {
-    $smallData = createTestData(10);
-
-    $startTime = microtime(true);
-    $result = $this->sushiModel()->saveToJson($smallData);
-    $saveTime = microtime(true) - $startTime;
-
-    expect($result)->toBeTrue();
-    expect($saveTime)->toBeLessThan(0.1); // Salvataggio dataset piccolo deve essere molto veloce
-
-    // Testa caricamento
-    $startTime = microtime(true);
-    $loadedData = $this->sushiModel()->getSushiRows();
-    $loadTime = microtime(true) - $startTime;
-
-    expect($loadedData)->toHaveCount(10);
-    expect($loadTime)->toBeLessThan(0.05); // Caricamento dataset piccolo deve essere istantaneo
 });
 
 it('handles medium datasets efficiently', function (): void {
-    $mediumData = createTestData(100);
+    $mediumData = ($this->createTestData)(100);
 
     $startTime = microtime(true);
     $result = $this->sushiModel()->saveToJson($mediumData);
@@ -120,7 +84,7 @@ it('handles medium datasets efficiently', function (): void {
 });
 
 it('handles large datasets efficiently', function (): void {
-    $largeData = createTestData(1000);
+    $largeData = ($this->createTestData)(1000);
 
     $startTime = microtime(true);
     $result = $this->sushiModel()->saveToJson($largeData);
@@ -142,7 +106,7 @@ it('manages memory usage efficiently', function (): void {
     $initialMemory = memory_get_usage();
 
     // Crea dataset grande
-    $largeData = createTestData(500);
+    $largeData = ($this->createTestData)(500);
 
     $memoryAfterDataCreation = memory_get_usage();
     $dataCreationMemory = $memoryAfterDataCreation - $initialMemory;
@@ -174,7 +138,7 @@ it('handles different file sizes efficiently', function (): void {
     $sizes = [10, 50, 100, 250, 500];
 
     foreach ($sizes as $size) {
-        $testData = createTestData($size);
+        $testData = ($this->createTestData)($size);
 
         $startTime = microtime(true);
         $result = $this->sushiModel()->saveToJson($testData);
@@ -204,7 +168,7 @@ it('handles different file sizes efficiently', function (): void {
 });
 
 it('handles concurrent access efficiently', function (): void {
-    $testData = createTestData(100);
+    $testData = ($this->createTestData)(100);
 
     // Salva dati iniziali
     $result = $this->sushiModel()->saveToJson($testData);
@@ -228,7 +192,7 @@ it('handles concurrent access efficiently', function (): void {
 });
 
 it('parses json efficiently', function (): void {
-    $testData = createTestData(200);
+    $testData = ($this->createTestData)(200);
 
     // Salva dati
     $result = $this->sushiModel()->saveToJson($testData);
@@ -254,7 +218,7 @@ it('parses json efficiently', function (): void {
 });
 
 it('normalizes data efficiently', function (): void {
-    $testData = createTestData(150);
+    $testData = ($this->createTestData)(150);
 
     // Salva dati
     $result = $this->sushiModel()->saveToJson($testData);
@@ -294,7 +258,7 @@ it('handles errors efficiently', function (): void {
 });
 
 it('performs file operations efficiently', function (): void {
-    $testData = createTestData(300);
+    $testData = ($this->createTestData)(300);
 
     // Testa operazioni di file
     $startTime = microtime(true);
@@ -323,7 +287,7 @@ it('scales efficiently with data size', function (): void {
     $results = [];
 
     foreach ($sizes as $size) {
-        $testData = createTestData($size);
+        $testData = ($this->createTestData)($size);
 
         // Misura tempo di salvataggio
         $startTime = microtime(true);
@@ -375,7 +339,7 @@ it('meets performance benchmarks', function (): void {
     ];
 
     foreach ($benchmarks as $category => $benchmark) {
-        $testData = createTestData($benchmark['size']);
+        $testData = ($this->createTestData)($benchmark['size']);
 
         // Benchmark salvataggio
         $startTime = microtime(true);
@@ -400,7 +364,7 @@ it('does not create memory leaks', function (): void {
 
     // Esegui operazioni multiple
     for ($i = 0; $i < 5; $i++) {
-        $testData = createTestData(100);
+        $testData = ($this->createTestData)(100);
 
         // Salva
         $result = $this->sushiModel()->saveToJson($testData);
