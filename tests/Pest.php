@@ -16,10 +16,15 @@ use function Safe\json_decode;
 /*
  * Bootstrap Pest — modulo Tenant.
  * Ogni file test dichiara uses(\Modules\Tenant\Tests\TestCase::class).
- * Vietato pest()->extend() e expect()->extend() qui (PHPStan method.internalClass).
+ * Per estendere si usa l'API idiomatica di Pest — `pest()->extend(...)`, in fondo
+ * a questo file — senza nessuna annotazione di soppressione: con
+ * `pestphp/pest-plugin-phpstan 5.2.0` installato, `method.internalClass` non
+ * viene piu' segnalato. Misurato il 2026-08-25 su tutti i bootstrap dei moduli:
+ * `phpstan analyse Modules/<Modulo>/tests/Pest.php` = 0 errori.
+ * Se ricomparisse, verificare che il plugin sia ancora caricato da
+ * `phpstan/extension-installer`, non reintrodurre il divieto.
+ * Vedi story XOT-5.41 e ROOT-17.6.
  */
-
-require_once __DIR__.'/../../Xot/tests/XotBasePest.php';
 
 /**
  * @param  array<array-key, mixed>  $rows
@@ -123,3 +128,5 @@ function decodeTenantJsonFile(string $path): array
     /** @var array<int, array<string, mixed>> $decoded */
     return $decoded;
 }
+
+pest()->extend(\Modules\Tenant\Tests\TestCase::class)->in(__DIR__.'/Unit', __DIR__.'/Feature');

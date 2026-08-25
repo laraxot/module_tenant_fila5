@@ -11,7 +11,11 @@ final class MergeRecursiveStringKeyConfigAction
     use QueueableAction;
 
     /**
-     * @param  array<string, mixed>  ...$configs
+     * Le chiavi non-stringa vengono scartate da `FilterConfigStringKeysAction`: il
+     * parametro accetta quindi qualsiasi chiave, altrimenti il filtro non avrebbe
+     * niente da filtrare e il chiamante dovrebbe pulire l'array prima di chiamare.
+     *
+     * @param  array<array-key, mixed>  ...$configs
      * @return array<string, mixed>
      */
     public function execute(array ...$configs): array

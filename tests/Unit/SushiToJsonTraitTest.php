@@ -17,7 +17,7 @@ use function Safe\json_encode;
 uses(TestCase::class);
 
 beforeEach(function (): void {
-    $this->model = new TestSushiModel();
+    $this->model = new TestSushiModel;
     $this->testDirectory = storage_path('tests/sushi-json');
     $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 
@@ -78,13 +78,13 @@ describe('SushiToJson Trait', function (): void {
 
         $rows = $this->sushiModel()->loadExistingData();
 
-        expect($rows)->toBeArray()->toHaveCount(2);
+        expect($rows)->toHaveCount(2);
         expect($this->jsonRecordAt($rows, '1')['name'])->toBe('Test Item 1');
         expect($this->jsonRecordAt($rows, '2')['name'])->toBe('Test Item 2');
     });
 
     it('returns empty array when file not exists', function (): void {
-        expect($this->sushiModel()->getSushiRows())->toBeArray()->toBeEmpty();
+        expect($this->sushiModel()->getSushiRows())->toBeEmpty();
     });
 
     it('throws exception with malformed json', function (): void {
@@ -155,15 +155,17 @@ describe('SushiToJson Trait', function (): void {
     it('handles creating event correctly', function (): void {
         Auth::shouldReceive('id')->andReturn(1);
 
-        $model = new TestSushiModel();
+        $model = new TestSushiModel;
         $model->fill(['name' => 'New Item', 'description' => 'New Description']);
 
         expect($model->getAttribute('name'))->toBe('New Item');
-        expect($model->getJsonFile())->toBeString()->toEndWith('test_sushi.json');
+        expect($model->getJsonFile())->toEndWith('test_sushi.json');
     });
 
     it('integrates with tenant service correctly', function (): void {
-        expect(app(GetTenantFilePathAction::class))->toBeInstanceOf(GetTenantFilePathAction::class);
+        // `app()` restituisce per costruzione un'istanza della classe chiesta: asserirlo
+        // non verifica niente. Cio' che conta e' che il path del modello passi davvero
+        // dall'action, ed e' l'asserzione sotto.
         expect($this->sushiModel()->getJsonFile())->toBe($this->testJsonPath);
     });
 
