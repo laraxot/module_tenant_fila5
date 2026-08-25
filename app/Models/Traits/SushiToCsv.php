@@ -67,17 +67,17 @@ trait SushiToCsv
 
     protected static function bootSushiToCsv(): void
     {
-        static::creating(static function ($model): void {
+        static::creating(static function (mixed $model): void {
             Assert::isInstanceOf($model, self::class);
             self::handleCsvCreating($model);
         });
 
-        static::updating(static function ($model): void {
+        static::updating(static function (mixed $model): void {
             Assert::isInstanceOf($model, self::class);
             self::handleCsvUpdating($model);
         });
 
-        static::deleting(static function ($model): void {
+        static::deleting(static function (mixed $model): void {
             Assert::isInstanceOf($model, self::class);
             self::handleCsvDeleting($model);
         });
