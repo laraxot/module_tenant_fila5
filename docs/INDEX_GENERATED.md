@@ -75,7 +75,7 @@ Comprehensive wiki system with concepts, how-to guides, rules, and troubleshooti
   - [log.md](wiki/log.md)
   - [bmad-method.md](wiki/bmad-method.md)
   - [README.md](wiki/README.md)
-  - [Architecture.md](wiki/Architecture.md)
+  - [Architecture.md](wiki/architecture.md)
 
 **Concepts** (16 files)
   - [INDEX.md](wiki/concepts/INDEX.md)

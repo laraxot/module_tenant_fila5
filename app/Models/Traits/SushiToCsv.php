@@ -13,7 +13,7 @@ use Stringable;
 use Sushi\Sushi;
 use Webmozart\Assert\Assert;
 
-/** @phpstan-ignore trait.unused */
+
 trait SushiToCsv
 {
     use Sushi;
