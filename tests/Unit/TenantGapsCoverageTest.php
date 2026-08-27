@@ -38,15 +38,8 @@ use function Safe\putenv;
 
 uses(TestCase::class);
 
-function expectMockery(MockInterface $mock, string $method): Mockery\Expectation
-{
-    $expectation = $mock->allows($method);
-    if (! $expectation instanceof Mockery\Expectation) {
-        throw new \RuntimeException('Unexpected mockery expectation type.');
-    }
-
-    return $expectation;
-}
+// expectMockery() is declared once in TenantCoverageBoostTest.php (same namespace)
+// and reused here across the Pest test run.
 
 afterEach(function (): void {
     Mockery::close();
