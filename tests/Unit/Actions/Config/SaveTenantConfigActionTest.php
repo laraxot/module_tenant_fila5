@@ -14,6 +14,16 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
+function expectMockery(MockInterface $mock, string $method): \Mockery\Expectation
+{
+    $expectation = $mock->allows($method);
+    if (! $expectation instanceof \Mockery\Expectation) {
+        throw new \RuntimeException('Unexpected mockery expectation type.');
+    }
+
+    return $expectation;
+}
+
 it('saves tenant config by merging with existing data', function (): void {
     /** @var TestCase $this */
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
@@ -29,7 +39,7 @@ it('saves tenant config by merging with existing data', function (): void {
         ->andReturn(['connections' => ['mysql' => ['host' => 'localhost']]]);
 
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
-        $mock->shouldReceive('execute')
+        expectMockery($mock, 'execute')
             ->once()
             ->withArgs(static function (array $data, string $filename): bool {
                 Assert::assertSame('/path/to/tenant/database.php', $filename);
@@ -62,7 +72,7 @@ it('saves tenant config when file does not exist', function (): void {
         ->andReturn(false);
 
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
-        $mock->shouldReceive('execute')
+        expectMockery($mock, 'execute')
             ->once()
             ->withArgs(static function (array $data, string $filename): bool {
                 Assert::assertSame('/path/to/tenant/app.php', $filename);

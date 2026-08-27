@@ -13,7 +13,6 @@ use Stringable;
 use Sushi\Sushi;
 use Webmozart\Assert\Assert;
 
-
 trait SushiToCsv
 {
     use Sushi;
