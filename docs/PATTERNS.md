@@ -328,4 +328,4 @@ public function test_users_isolated_by_tenant()
 
 ---
 
-Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Troubleshooting](TROUBLESHOOTING.md)
+Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](TROUBLESHOOTING.md)

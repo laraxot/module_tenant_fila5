@@ -130,8 +130,8 @@ Each tenant operates in complete isolation:
 
 ## Related Modules
 
-- **[Xot](../../Xot/docs/INDEX.md)** — Core framework and abstractions
-- **[User](../../User/docs/INDEX.md)** — User management and authentication
+- **[Xot](../../Xot/docs/index.md)** — Core framework and abstractions
+- **[User](../../User/docs/index.md)** — User management and authentication
 
 ---
 
@@ -144,3 +144,16 @@ Each tenant operates in complete isolation:
 5. Keep migrations atomic and reversible
 
 For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/contributing.md).
+
+
+---
+
+## Contenuto assorbito da `INDEX.md`
+
+# Documentation Index
+
+Modulo: Tenant
+
+## File disponibili
+
+<!-- auto-generato: elencare i file .md presenti -->
