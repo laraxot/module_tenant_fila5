@@ -6,28 +6,12 @@ namespace Modules\Tenant\Tests\Integration;
 
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\TestSushiModel;
+use Modules\Tenant\Tests\Fixtures\TestSushiModelForPath;
 use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
-
-final class TestSushiModelForPath extends TestSushiModel
-{
-    private string $jsonPath = '';
-
-    public function setJsonPath(string $jsonPath): self
-    {
-        $this->jsonPath = $jsonPath;
-
-        return $this;
-    }
-
-    public function getJsonFile(): string
-    {
-        return $this->jsonPath;
-    }
-}
 
 function tenantJsonPath(string $tenantName): string
 {
