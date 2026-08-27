@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Tenant\Tests\Unit\Actions\Config;
 
 use Illuminate\Support\Facades\File;
+use Mockery\Expectation;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\Config\SaveTenantConfigAction;
@@ -14,10 +15,10 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
-function expectMockery(MockInterface $mock, string $method): \Mockery\Expectation
+function expectMockery(MockInterface $mock, string $method): Expectation
 {
     $expectation = $mock->allows($method);
-    if (! $expectation instanceof \Mockery\Expectation) {
+    if (! $expectation instanceof Expectation) {
         throw new \RuntimeException('Unexpected mockery expectation type.');
     }
 
