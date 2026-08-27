@@ -4,17 +4,29 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit\Fixtures;
 
-use Modules\Sigma\Models\WebService;
+use Illuminate\Database\Eloquent\Model;
+use Modules\Tenant\Models\Traits\SushiToCsv;
 
 /**
- * Fixture di coverage: stesso trait dell'host reale `WebService`, in memoria.
+ * Named subclass for SushiToCsv trait coverage.
  */
-final class SushiToCsvCoverageModel extends WebService
+class SushiToCsvCoverageModel extends Model
 {
+    use SushiToCsv;
+
     protected $table = 'sushi_csv_coverage';
 
+    /** @var array<string, string> */
+    protected array $schema = [
+        'id' => 'integer',
+        'name' => 'string',
+        'updated_at' => 'datetime',
+        'updated_by' => 'integer',
+        'created_at' => 'datetime',
+        'created_by' => 'integer',
+    ];
+
     protected $fillable = [
-        'id',
         'name',
         'updated_at',
         'updated_by',

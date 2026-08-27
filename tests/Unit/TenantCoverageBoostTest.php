@@ -4,30 +4,34 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
 use Mockery;
 use Mockery\MockInterface;
-use Modules\Tenant\Filament\Resources\DomainResource;
-use Modules\Tenant\Filament\Resources\DomainResource\Schemas\DomainForm;
-use Modules\Tenant\Filament\Resources\DomainResource\Schemas\DomainInfolist;
-use Modules\Tenant\Filament\Resources\DomainResource\Tables\DomainsTable;
+use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
 use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
 use Modules\Tenant\Actions\Config\GetTenantConfigPathAction;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+use Modules\Tenant\Actions\Config\MergeRecursiveStringKeyConfigAction;
 use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
 use Modules\Tenant\Actions\Config\SaveTenantConfigAction;
-use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
-use Modules\Tenant\Actions\Config\MergeRecursiveStringKeyConfigAction;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Actions\Models\ResolveTenantModelClassAction;
 use Modules\Tenant\Actions\Modules\GetTenantModulesAction;
 use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
+use Modules\Tenant\Filament\Resources\DomainResource;
+use Modules\Tenant\Filament\Resources\DomainResource\Schemas\DomainForm;
+use Modules\Tenant\Filament\Resources\DomainResource\Schemas\DomainInfolist;
+use Modules\Tenant\Filament\Resources\DomainResource\Tables\DomainsTable;
+use Modules\Tenant\Models\BaseModelJsons;
 use Modules\Tenant\Models\DatabaseConfig;
 use Modules\Tenant\Models\Domain;
-use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\Policies\DomainPolicy;
 use Modules\Tenant\Models\Policies\TenantBasePolicy;
+use Modules\Tenant\Models\Tenant;
+use Modules\Tenant\Models\Traits\SushiToCsv;
 use Modules\Tenant\Services\Config\ConfigResolverRegistry;
 use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
 use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
@@ -36,13 +40,23 @@ use Modules\Tenant\Services\Config\Resolvers\MorphMapConfigResolver;
 use Modules\Tenant\Services\Config\Resolvers\StandardConfigResolver;
 use Modules\Tenant\Services\TenantService;
 use Modules\Tenant\Tests\TestCase;
+use Modules\User\Models\SocialProvider;
 use Modules\Xot\Contracts\UserContract;
 use PHPUnit\Framework\Assert;
-use Illuminate\Support\Facades\File;
 
 use function Safe\json_encode;
 
 uses(TestCase::class);
+
+function expectMockery(MockInterface $mock, string $method): Mockery\Expectation
+{
+    $expectation = $mock->allows($method);
+    if (! $expectation instanceof Mockery\Expectation) {
+        throw new \RuntimeException('Unexpected mockery expectation type.');
+    }
+
+    return $expectation;
+}
 
 afterEach(function (): void {
     Mockery::close();
@@ -56,7 +70,7 @@ describe('Tenant coverage boost — Config actions', function (): void {
             'nested' => ['a' => 1],
         ]);
 
-        Assert::assertSame(['valid' => 1, 'nested' => ['a'  => 1]], $result);
+        Assert::assertSame(['valid' => 1, 'nested' => ['a' => 1]], $result);
         Assert::assertArrayNotHasKey(0, $result);
     });
 
@@ -175,13 +189,13 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
     test('tenant policies and config helpers enforce business rules', function (): void {
         /** @var MockInterface&UserContract $superAdmin */
         $superAdmin = Mockery::mock(UserContract::class);
-        $superAdmin->shouldReceive('hasRole')->with('super-admin')->andReturn(true);
-        $superAdmin->shouldReceive('hasPermissionTo')->andReturn(false);
+        expectMockery($superAdmin, 'hasRole')->with('super-admin')->andReturn(true);
+        expectMockery($superAdmin, 'hasPermissionTo')->andReturn(false);
 
         /** @var MockInterface&UserContract $editor */
         $editor = Mockery::mock(UserContract::class);
-        $editor->shouldReceive('hasRole')->with('super-admin')->andReturn(false);
-        $editor->shouldReceive('hasPermissionTo')->andReturnUsing(
+        expectMockery($editor, 'hasRole')->with('super-admin')->andReturn(false);
+        expectMockery($editor, 'hasPermissionTo')->andReturnUsing(
             static fn (string $permission): bool => in_array($permission, ['domain.view', 'domain.update'], true),
         );
 
@@ -247,12 +261,12 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
 
         /** @var TestCase $this */
         $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
-            $mock->allows('execute')->andReturnUsing(
+            expectMockery($mock, 'execute')->andReturnUsing(
                 static fn (string $path): string => $baseDir.'/'.ltrim($path, '/'),
             );
         });
 
-        $model = new class() extends \Modules\Tenant\Models\BaseModelJsons
+        $model = new class() extends BaseModelJsons
         {
             protected $table = 'catalog';
 
@@ -275,14 +289,22 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
 
         /** @var TestCase $this */
         $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
-            $mock->allows('execute')->andReturnUsing(
+            expectMockery($mock, 'execute')->andReturnUsing(
                 static fn (string $path): string => $baseDir.'/'.basename($path),
             );
         });
 
-        $model = new class() extends \Modules\Sigma\Models\WebService
+        $model = new class() extends Model
         {
+            use SushiToCsv;
+
             protected $table = 'catalog';
+
+            /** @var array<string, string> */
+            protected array $schema = [
+                'id' => 'integer',
+                'name' => 'string',
+            ];
 
             /** @return array<int, array<string, mixed>> */
             public function getRows(): array
@@ -304,7 +326,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
                 ['name' => 'Beta', 'meta' => '{"x":1}'],
             ]]);
         });
-        $model = new class() extends \Modules\User\Models\SocialProvider
+        $model = new class() extends SocialProvider
         {
             protected $table = 'tenant_configs';
 

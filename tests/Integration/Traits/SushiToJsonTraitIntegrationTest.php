@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Integration\Traits;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Database\Factories\TenantFactory;
@@ -29,7 +30,7 @@ beforeEach(function (): void {
             'name' => 'test-tenant',
             'domain' => 'test.example.com',
         ]);
-    } catch (\Illuminate\Database\QueryException $exception) {
+    } catch (QueryException $exception) {
         $this->skipTest('Tenant DB write blocked: '.$exception->getMessage());
     }
     Assert::assertInstanceOf(Tenant::class, $createdTenant);
@@ -52,6 +53,7 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
+    /** @var TestCase $this */
     if (File::exists($this->sushiJsonPath())) {
         File::delete($this->sushiJsonPath());
     }
@@ -91,6 +93,7 @@ describe('Sushi To Json Trait Integration', function (): void {
     });
 
     test('loads data with tenant isolation', function (): void {
+        /** @var TestCase $this */
         $testData = [
             '1' => [
                 'id' => 1,
@@ -120,6 +123,7 @@ describe('Sushi To Json Trait Integration', function (): void {
     });
 
     test('handles complex data structures', function (): void {
+        /** @var TestCase $this */
         $testData = [
             '1' => [
                 'id' => 1,
@@ -165,6 +169,7 @@ describe('Sushi To Json Trait Integration', function (): void {
     });
 
     test('manages file permissions correctly', function (): void {
+        /** @var TestCase $this */
         $testData = ['1' => ['id' => 1, 'name' => 'Permission Test']];
 
         $result = $this->sushiModel()->saveToJson($testData);
@@ -182,6 +187,7 @@ describe('Sushi To Json Trait Integration', function (): void {
     });
 
     test('handles concurrent access safely', function (): void {
+        /** @var TestCase $this */
         // Simula accesso concorrente creando più istanze del modello
         $model1 = new TestSushiModel();
         $model2 = new TestSushiModel();
@@ -211,6 +217,7 @@ describe('Sushi To Json Trait Integration', function (): void {
     });
 
     test('handles large datasets efficiently', function (): void {
+        /** @var TestCase $this */
         // Crea un dataset grande per testare le performance
         $largeDataset = [];
         for ($i = 1; $i <= 1000; $i++) {
@@ -253,6 +260,7 @@ describe('Sushi To Json Trait Integration', function (): void {
     });
 
     test('handles unicode and special characters', function (): void {
+        /** @var TestCase $this */
         $testData = [
             '1' => [
                 'id' => 1,
@@ -293,6 +301,7 @@ describe('Sushi To Json Trait Integration', function (): void {
     });
 
     test('handles empty and null values', function (): void {
+        /** @var TestCase $this */
         $testData = [
             '1' => [
                 'id' => 1,

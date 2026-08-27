@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Modules\Tenant\Tests;
 
 use Closure;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
-use Mockery\ExpectationInterface;
-use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Models\BaseModel;
@@ -97,7 +96,7 @@ abstract class TestCase extends XotBaseTestCase
             WebmozartAssert::isInstanceOf($tenant, Tenant::class);
 
             return $tenant;
-        } catch (\Illuminate\Database\QueryException $exception) {
+        } catch (QueryException $exception) {
             $message = $exception->getMessage();
             if (
                 str_contains($message, 'database is locked')
@@ -197,11 +196,6 @@ abstract class TestCase extends XotBaseTestCase
     public function sushiTestData(): array
     {
         return ($this->createTestData)();
-    }
-
-    public function tenantMockExpectation(MockInterface $mock, string $method): ExpectationInterface
-    {
-        return $mock->shouldReceive($method);
     }
 
     /**
