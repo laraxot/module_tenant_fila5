@@ -17,6 +17,9 @@ declare(strict_types=1);
  * - helper di dominio: metodi statici su `Modules\Tenant\Tests\TestCase`;
  * - ogni file di test dichiara `uses(\Modules\Tenant\Tests\TestCase::class)` in testa —
  *   un `uses()->in(...)` scritto qui non verrebbe applicato;
- * - vietati `pest()->extend()` e `pest()->uses()` (PHPStan `method.internalClass`);
+ * - `pest()->extend(TestCase::class)->in(...)` e' la forma consigliata (il divieto
+ *   storico per `method.internalClass` e' decaduto con pest-plugin-phpstan, story
+ *   XOT-5.41); vincolo XOR con gli `uses()` per-file (`TestCaseAlreadyInUse`):
+ *   migrare per directory, non mescolare;
  * - vietata la cartella `tests/Support/` (ADR-002).
  */

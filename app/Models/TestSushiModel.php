@@ -6,9 +6,9 @@ namespace Modules\Tenant\Models;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
+use Modules\TechPlanner\Models\Profile;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Models\Traits\SushiToJson;
-use Modules\User\Models\Profile;
 use Modules\Xot\Models\Traits\HasXotFactory;
 
 /**
@@ -22,7 +22,6 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @property int|null $created_by
  * @property int|null $updated_by
  * @property-read Profile|null $creator
- * @property-read Profile|null $deleter
  * @property-read Profile|null $updater
  *
  * @method static \Modules\Tenant\Database\Factories\TestSushiModelFactory factory($count = null, $state = [])

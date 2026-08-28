@@ -48,16 +48,6 @@ use function Safe\json_encode;
 
 uses(TestCase::class);
 
-function expectMockery(MockInterface $mock, string $method): Mockery\Expectation
-{
-    $expectation = $mock->allows($method);
-    if (! $expectation instanceof Mockery\Expectation) {
-        throw new \RuntimeException('Unexpected mockery expectation type.');
-    }
-
-    return $expectation;
-}
-
 afterEach(function (): void {
     Mockery::close();
 });
@@ -189,13 +179,13 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
     test('tenant policies and config helpers enforce business rules', function (): void {
         /** @var MockInterface&UserContract $superAdmin */
         $superAdmin = Mockery::mock(UserContract::class);
-        expectMockery($superAdmin, 'hasRole')->with('super-admin')->andReturn(true);
-        expectMockery($superAdmin, 'hasPermissionTo')->andReturn(false);
+        TestCase::expectMockery($superAdmin, 'hasRole')->with('super-admin')->andReturn(true);
+        TestCase::expectMockery($superAdmin, 'hasPermissionTo')->andReturn(false);
 
         /** @var MockInterface&UserContract $editor */
         $editor = Mockery::mock(UserContract::class);
-        expectMockery($editor, 'hasRole')->with('super-admin')->andReturn(false);
-        expectMockery($editor, 'hasPermissionTo')->andReturnUsing(
+        TestCase::expectMockery($editor, 'hasRole')->with('super-admin')->andReturn(false);
+        TestCase::expectMockery($editor, 'hasPermissionTo')->andReturnUsing(
             static fn (string $permission): bool => in_array($permission, ['domain.view', 'domain.update'], true),
         );
 
@@ -261,7 +251,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
 
         /** @var TestCase $this */
         $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
-            expectMockery($mock, 'execute')->andReturnUsing(
+            TestCase::expectMockery($mock, 'execute')->andReturnUsing(
                 static fn (string $path): string => $baseDir.'/'.ltrim($path, '/'),
             );
         });
@@ -289,7 +279,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
 
         /** @var TestCase $this */
         $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
-            expectMockery($mock, 'execute')->andReturnUsing(
+            TestCase::expectMockery($mock, 'execute')->andReturnUsing(
                 static fn (string $path): string => $baseDir.'/'.basename($path),
             );
         });
