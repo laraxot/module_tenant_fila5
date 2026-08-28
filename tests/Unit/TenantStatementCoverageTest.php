@@ -55,16 +55,6 @@ use function Safe\putenv;
 
 uses(TestCase::class);
 
-function expectMockery(MockInterface $mock, string $method): Mockery\Expectation
-{
-    $expectation = $mock->allows($method);
-    if (! $expectation instanceof Mockery\Expectation) {
-        throw new \RuntimeException('Unexpected mockery expectation type.');
-    }
-
-    return $expectation;
-}
-
 afterEach(function (): void {
     Mockery::close();
 });
@@ -132,7 +122,7 @@ describe('Tenant statement coverage — resolvers', function (): void {
         File::put($baseDir.'/morph_map.php', "<?php\nreturn ['domain' => '".addslashes(Domain::class)."'];\n");
 
         $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
-            expectMockery($mock, 'execute')->andReturnUsing(
+            TestCase::expectMockery($mock, 'execute')->andReturnUsing(
                 static fn (string $path): string => $baseDir.'/'.basename($path),
             );
         });
@@ -282,7 +272,7 @@ describe('Tenant statement coverage — actions and service', function (): void 
         File::put($dir.'/lang/it/messages.php', "<?php\nreturn ['hello' => ['nested' => true], 'ok' => 'Ciao'];\n");
 
         $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($dir): void {
-            expectMockery($mock, 'execute')->andReturnUsing(
+            TestCase::expectMockery($mock, 'execute')->andReturnUsing(
                 static fn (string $path): string => $dir.'/'.$path,
             );
         });
@@ -387,8 +377,8 @@ describe('Tenant statement coverage — models and policies', function (): void 
         /** @var TestCase $this */
         /** @var MockInterface&UserContract $user */
         $user = Mockery::mock(UserContract::class);
-        expectMockery($user, 'hasRole')->with('super-admin')->andReturn(false);
-        expectMockery($user, 'hasPermissionTo')->andReturn(true);
+        TestCase::expectMockery($user, 'hasRole')->with('super-admin')->andReturn(false);
+        TestCase::expectMockery($user, 'hasPermissionTo')->andReturn(true);
 
         $policy = new DomainPolicy();
         $domain = new Domain();
@@ -485,14 +475,14 @@ describe('Tenant statement coverage — TenantServiceProvider private paths', fu
             ]]);
         });
         $this->mockService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
-            expectMockery($mock, 'execute')->andReturn('ok');
+            TestCase::expectMockery($mock, 'execute')->andReturn('ok');
         });
         $mergeConfigs->invoke($provider);
 
         $registerMorph = new ReflectionMethod($provider, 'registerMorphMap');
         $registerMorph->setAccessible(true);
         $this->mockService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
-            expectMockery($mock, 'execute')->with('morph_map')->andReturn('not-array');
+            TestCase::expectMockery($mock, 'execute')->with('morph_map')->andReturn('not-array');
         });
         $registerMorph->invoke($provider);
     });
@@ -506,7 +496,7 @@ describe('Tenant statement coverage — SushiToJson named model', function (): v
         $jsonPath = $base.'/database/content/sushi_json_coverage.json';
 
         $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($base): void {
-            expectMockery($mock, 'execute')->andReturnUsing(
+            TestCase::expectMockery($mock, 'execute')->andReturnUsing(
                 static fn (string $path): string => $base.'/'.ltrim($path, '/'),
             );
         });
@@ -587,7 +577,7 @@ describe('Tenant statement coverage — SushiToJson named model', function (): v
 
         $broken = new SushiToJsonCoverageModel();
         $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
-            expectMockery($mock, 'execute')->andThrow(new Exception('boom'));
+            TestCase::expectMockery($mock, 'execute')->andThrow(new Exception('boom'));
         });
         Assert::assertFalse($broken->saveToJson([['id' => 1]]));
 
@@ -673,7 +663,7 @@ describe('Tenant statement coverage — SushiToJsons named model', function (): 
         File::put($base.'/database/content/sushi_jsons_coverage/bad.json', 'null');
 
         $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($base): void {
-            expectMockery($mock, 'execute')->andReturnUsing(
+            TestCase::expectMockery($mock, 'execute')->andReturnUsing(
                 static fn (string $path): string => $base.'/'.ltrim($path, '/'),
             );
         });
