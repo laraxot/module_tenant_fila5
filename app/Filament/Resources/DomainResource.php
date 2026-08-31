@@ -20,9 +20,8 @@ class DomainResource extends XotBaseResource
     /**
      * @return array<string, mixed>
      */
-
-    // #[Override]
-    public static function getFormSchemaOld(): array
+    #[Override]
+    public static function getFormSchema(): array
     {
         return [
             'title' => TextInput::make('title')

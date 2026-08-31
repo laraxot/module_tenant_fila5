@@ -46,7 +46,7 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
-uses(TestCase::class);
+uses(\Modules\Tenant\Tests\TestCase::class);
 
 afterEach(function (): void {
     Mockery::close();
@@ -79,8 +79,7 @@ describe('Tenant coverage boost — Config actions', function (): void {
 
 describe('Tenant coverage boost — Domain sushi', function (): void {
     test('Domain getRows loads from GetDomainsArrayAction', function (): void {
-        /** @var TestCase $this */
-        $this->mockService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => [
                 ['id' => 1, 'name' => 'tenant.example.com'],
             ]]);
@@ -117,35 +116,34 @@ describe('Tenant coverage boost — Models and resolvers', function (): void {
 
 describe('Tenant coverage boost — TenantService facade', function (): void {
     test('TenantService delegates to actions', function (): void {
-        /** @var TestCase $this */
-        $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetTenantNameAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => 'tenant-a']);
         });
-        $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => '/tmp/tenant/settings.json']);
         });
-        $this->mockService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => 'Tenant App']);
         });
-        $this->mockService(GetTenantConfigPathAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetTenantConfigPathAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => '/tmp/tenant/config/app.php']);
         });
-        $this->mockService(GetTenantConfigArrayAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetTenantConfigArrayAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => ['name' => 'Tenant App']]);
         });
-        $this->mockService(SaveTenantConfigAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(SaveTenantConfigAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => null]);
         });
-        $this->mockService(GetTenantConfigNamesAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetTenantConfigNamesAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => [['id' => 1, 'name' => 'app']]]);
         });
-        $this->mockService(GetTenantModulesAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetTenantModulesAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => ['Tenant', 'Lang']]);
         });
-        $this->mockService(TranslateTenantKeyAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(TranslateTenantKeyAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => 'Benvenuto']);
         });
-        $this->mockService(ResolveTenantModelClassAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(ResolveTenantModelClassAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => Tenant::class]);
         });
 
@@ -249,8 +247,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
         File::ensureDirectoryExists($baseDir.'/database/content/catalog');
         File::put($baseDir.'/database/content/catalog/1.json', json_encode(['name' => 'Alpha', 'meta' => ['x' => 1]]));
 
-        /** @var TestCase $this */
-        $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
+        TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
             TestCase::expectMockery($mock, 'execute')->andReturnUsing(
                 static fn (string $path): string => $baseDir.'/'.ltrim($path, '/'),
             );
@@ -277,8 +274,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
         File::ensureDirectoryExists($baseDir);
         File::put($baseDir.'/catalog.csv', "id,name\n1,Alpha\n2,Beta\n");
 
-        /** @var TestCase $this */
-        $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
+        TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
             TestCase::expectMockery($mock, 'execute')->andReturnUsing(
                 static fn (string $path): string => $baseDir.'/'.basename($path),
             );
@@ -309,8 +305,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
     });
 
     test('sushi to php array normalizes tenant config rows', function (): void {
-        /** @var TestCase $this */
-        $this->mockService(GetTenantConfigArrayAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetTenantConfigArrayAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => [
                 ['name' => 'Alpha', 'meta' => null, 0 => 'skip'],
                 ['name' => 'Beta', 'meta' => '{"x":1}'],
