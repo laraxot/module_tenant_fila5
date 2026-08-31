@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Models;
 
-use Modules\TechPlanner\Models\Profile;
+use Modules\Xot\Contracts\ProfileContract;
 
 /**
- * @property-read Profile|null $creator
- * @property-read Profile|null $updater
+ * @property-read ProfileContract|null $creator
+ * @property-read ProfileContract|null $updater
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConfig newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConfig newQuery()

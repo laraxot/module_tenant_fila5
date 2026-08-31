@@ -11,14 +11,14 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
-use Modules\TechPlanner\Models\Profile;
 use Modules\User\Models\User;
+use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 
 /**
  * Modello Tenant per la gestione multi-tenant dell'applicazione.
  *
- * @property-read Profile|null $creator
+ * @property-read ProfileContract|null $creator
  * @property string|null $name
  * @property string|null $domain
  * @property string|null $database
@@ -37,7 +37,7 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @property string|null $tax_code
  * @property string|null $vat_number
  * @property-read string $url
- * @property-read Profile|null $updater
+ * @property-read ProfileContract|null $updater
  * @property-read Collection<int, User> $users
  * @property-read int|null $users_count
  *
