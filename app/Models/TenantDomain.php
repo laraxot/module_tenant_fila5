@@ -6,8 +6,8 @@ namespace Modules\Tenant\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
-use Modules\TechPlanner\Models\Profile;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
+use Modules\User\Models\User;
 use Sushi\Sushi;
 
 /**
@@ -19,8 +19,8 @@ use Sushi\Sushi;
  * @property string|null $status
  * @property string|null $verification_token
  * @property Carbon|null $verified_at
- * @property-read Profile|null $creator
- * @property-read Profile|null $updater
+ * @property-read User|null $creator
+ * @property-read User|null $updater
  *
  * @method static Builder<static>|TenantDomain newModelQuery()
  * @method static Builder<static>|TenantDomain newQuery()

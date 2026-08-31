@@ -7,7 +7,7 @@ namespace Modules\Tenant\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
-use Modules\TechPlanner\Models\Profile;
+use Modules\User\Models\User;
 
 /**
  * @property string|null $tenant_id
@@ -21,9 +21,9 @@ use Modules\TechPlanner\Models\Profile;
  * @property float|null $billing_amount
  * @property Carbon|null $next_billing_date
  * @property Carbon|null $expires_at
- * @property-read Profile|null $creator
+ * @property-read User|null $creator
  * @property-read Tenant|null $tenant
- * @property-read Profile|null $updater
+ * @property-read User|null $updater
  *
  * @method static Builder<static>|TenantSubscription newModelQuery()
  * @method static Builder<static>|TenantSubscription newQuery()

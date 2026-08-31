@@ -17,7 +17,7 @@ use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use function Safe\json_decode;
 use function Safe\json_encode;
 
-uses(\Modules\Tenant\Tests\TestCase::class, DatabaseTransactions::class);
+uses(TestCase::class, DatabaseTransactions::class);
 
 /**
  * @param  array<array-key, mixed>  $data

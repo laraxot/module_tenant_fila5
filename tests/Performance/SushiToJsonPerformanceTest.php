@@ -14,7 +14,7 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_decode;
 
-uses(\Modules\Tenant\Tests\TestCase::class, DatabaseTransactions::class);
+uses(TestCase::class, DatabaseTransactions::class);
 
 beforeEach(function (): void {
     /** @var TestCase $this */
