@@ -1,4 +1,11 @@
-# Git push bloccato da oggetto Git LFS mancante — 2026-07-28
+---
+title: "Git push bloccato da oggetto Git LFS mancante"
+type: incident
+created: 2026-07-28
+updated: 2026-07-28
+---
+
+# Git push bloccato da oggetto Git LFS mancante
 
 ## Sintomo
 
@@ -95,5 +102,5 @@ consapevolmente dal proprietario del repository) per sbloccare anche `provtv`.
 
 ## Verifica qualità (post-fix)
 
-Vedi `docs/quality-gates-2026-07-28.md` per l'esito di PHPStan, PHPMD e
+Vedi `docs/quality-gates.md` per l'esito di PHPStan, PHPMD e
 PHP Insights sull'intera cartella `laravel/Modules/Tenant`.

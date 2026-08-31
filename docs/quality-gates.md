@@ -1,7 +1,14 @@
-# Quality gates — Modules/Tenant — 2026-07-28
+---
+title: "Quality gates — Modules/Tenant"
+type: report
+created: 2026-07-28
+updated: 2026-07-28
+---
+
+# Quality gates — Modules/Tenant
 
 Verifica completa richiesta dopo il fix dell'incidente Git LFS (vedi
-`git-push-lfs-incident-2026-07-28.md`), su **tutta** la cartella
+`git-push-lfs-incident.md`), su **tutta** la cartella
 `laravel/Modules/Tenant`, non solo sui file toccati.
 
 ## PHPStan
@@ -57,5 +64,5 @@ Tutti i gate richiesti (PHPStan, PHPMD, PHP Insights) passano puliti su tutta
 la cartella `laravel/Modules/Tenant`. Il push verso `laraxot` funziona
 (già sincronizzato); il push verso `provtv` resta bloccato solo dall'oggetto
 Git LFS storico irrecuperabile documentato in
-`git-push-lfs-incident-2026-07-28.md` — non un problema di qualità del
+`git-push-lfs-incident.md` — non un problema di qualità del
 codice.
