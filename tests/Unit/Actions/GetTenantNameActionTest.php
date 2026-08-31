@@ -8,10 +8,14 @@ use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+<<<<<<< HEAD
 use function Safe\mkdir;
 use function Safe\rmdir;
 
 uses(TestCase::class);
+=======
+uses(\Modules\Tenant\Tests\TestCase::class);
+>>>>>>> b4736a5 (.)
 
 /** @var list<string> $createdConfigPaths */
 $createdConfigPaths = [];
