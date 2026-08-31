@@ -18,34 +18,17 @@ use Modules\Xot\Models\Traits\HasXotFactory;
 /**
  * Modello Tenant per la gestione multi-tenant dell'applicazione.
  *
- * @property-read User|null $creator
+ * @property-read \Modules\WorkOrder\Models\Profile|null $creator
+ * @property-read \Modules\WorkOrder\Models\Profile|null $deleter
  * @property string|null $name
- * @property string|null $domain
- * @property string|null $database
- * @property string|null $slug
- * @property array<array-key, mixed>|null $settings
- * @property bool $is_active
- * @property Carbon|null $last_activity_at
- * @property string|null $logo
- * @property string|null $email
- * @property string|null $phone
- * @property string|null $address
- * @property string|null $city
- * @property string|null $postal_code
- * @property string|null $province
- * @property string|null $country
- * @property string|null $tax_code
- * @property string|null $vat_number
  * @property-read string $url
- * @property-read User|null $updater
- * @property-read Collection<int, User> $users
+ * @property-read \Modules\WorkOrder\Models\Profile|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
  * @property-read int|null $users_count
- *
  * @method static \Modules\Tenant\Database\Factories\TenantFactory factory($count = null, $state = [])
- * @method static Builder<static>|Tenant newModelQuery()
- * @method static Builder<static>|Tenant newQuery()
- * @method static Builder<static>|Tenant query()
- *
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\Tenant newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\Tenant newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\Tenant query()
  * @mixin \Eloquent
  */
 class Tenant extends BaseModel

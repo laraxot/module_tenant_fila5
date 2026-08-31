@@ -12,22 +12,16 @@ use Sushi\Sushi;
 
 /**
  * @property string|null $id
- * @property string|null $tenant_id
  * @property string|null $name
- * @property string|null $domain
- * @property bool $is_primary
- * @property string|null $status
- * @property string|null $verification_token
- * @property Carbon|null $verified_at
- * @property-read User|null $creator
- * @property-read User|null $updater
- *
- * @method static Builder<static>|TenantDomain newModelQuery()
- * @method static Builder<static>|TenantDomain newQuery()
- * @method static Builder<static>|TenantDomain query()
- * @method static Builder<static>|TenantDomain whereId($value)
- * @method static Builder<static>|TenantDomain whereName($value)
- *
+ * @property-read \Modules\WorkOrder\Models\Profile|null $creator
+ * @property-read \Modules\WorkOrder\Models\Profile|null $deleter
+ * @property-read \Modules\WorkOrder\Models\Profile|null $updater
+ * @method static \Modules\Tenant\Database\Factories\TenantDomainFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TenantDomain newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TenantDomain newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TenantDomain query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TenantDomain whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TenantDomain whereName($value)
  * @mixin \Eloquent
  */
 class TenantDomain extends BaseModel
