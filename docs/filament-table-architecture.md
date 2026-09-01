@@ -53,7 +53,21 @@ class non verrebbe mai eseguita. E' esattamente quello che succedeva fino al 1 s
 ## I nomi dei metodi non hanno prefisso
 
 Si chiamano `getTableColumns()`, `getTableFilters()`, `getTableActions()`,
-`getTableBulkActions()`, `getTableHeaderActions()`, `getTableHeading()`.
+`getTableBulkActions()`, `getTableHeaderActions()`, `getTableHeading()`,
+`getTableEmptyStateActions()`, `getDefaultTableSortColumn()`,
+`getDefaultTableSortDirection()`, `getTableFiltersLayout()`,
+`getTableRecordActionsPosition()`.
+
+**Niente costanti hardcoded dentro `table()`.** Ogni scelta di configurazione passa da un
+hook: il trait fornisce il default, la Table class lo cambia sovrascrivendo il metodo,
+senza dover riscrivere `table()`. Un `->filtersLayout(FiltersLayout::AboveContent)` scritto
+inline non e' un default, e' un muro: obbliga a duplicare tutto `table()` per cambiare una
+riga.
+
+**Niente `array_values()` sui risultati degli hook.** Filament reindicizza da solo
+(`foreach (Arr::wrap($actions) as $action) { ...[] = $action; }`), quindi le chiavi
+stringa degli array associativi non danno fastidio: normalizzare al chiamante e' rumore
+ripetuto a ogni riga.
 
 **`getXotTableFilters()` e i suoi fratelli non esistono piu'.** Erano nati per non
 collidere con i metodi omonimi e deprecati di `Filament\Resources\Pages\ListRecords`,
