@@ -10,14 +10,25 @@ use Illuminate\Support\Carbon;
 use Modules\User\Models\User;
 
 /**
- * @property-read \Modules\WorkOrder\Models\Profile|null $creator
- * @property-read \Modules\WorkOrder\Models\Profile|null $deleter
- * @property-read \Modules\Tenant\Models\Tenant|null $tenant
- * @property-read \Modules\WorkOrder\Models\Profile|null $updater
- * @method static \Modules\Tenant\Database\Factories\TenantSubscriptionFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TenantSubscription newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TenantSubscription newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TenantSubscription query()
+ * @property string|null $tenant_id
+ * @property string|null $plan_name
+ * @property string|null $status
+ * @property int|null $max_users
+ * @property int|null $current_users
+ * @property int|null $max_storage_gb
+ * @property int|null $current_storage_gb
+ * @property string|null $billing_cycle
+ * @property float|null $billing_amount
+ * @property Carbon|null $next_billing_date
+ * @property Carbon|null $expires_at
+ * @property-read User|null $creator
+ * @property-read Tenant|null $tenant
+ * @property-read User|null $updater
+ *
+ * @method static Builder<static>|TenantSubscription newModelQuery()
+ * @method static Builder<static>|TenantSubscription newQuery()
+ * @method static Builder<static>|TenantSubscription query()
+ *
  * @mixin \Eloquent
  */
 class TenantSubscription extends BaseModel
