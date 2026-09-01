@@ -54,9 +54,24 @@ class non verrebbe mai eseguita. E' esattamente quello che succedeva fino al 1 s
 
 Si chiamano `getTableColumns()`, `getTableFilters()`, `getTableActions()`,
 `getTableBulkActions()`, `getTableHeaderActions()`, `getTableHeading()`,
-`getTableEmptyStateActions()`, `getDefaultTableSortColumn()`,
-`getDefaultTableSortDirection()`, `getTableFiltersLayout()`,
-`getTableRecordActionsPosition()`.
+`getTableEmptyStateActions()`, `getTableFiltersLayout()`,
+`getTableRecordActionsPosition()`, e — sulla sola `XotBaseResourceTable` —
+`getTableSortColumn()` / `getTableSortDirection()`.
+
+**Il nome dell'hook decide quanta impalcatura serve.** Tre casi:
+
+| Il nome è… | Esito | Esempio |
+|---|---|---|
+| libero in Filament | `table()` lo chiama e basta | `getTableFiltersLayout()` |
+| occupato da un metodo `@deprecated` | serve un resolver a reflection, per non far scattare `method.deprecated` | `getTableFilters()`, `getTableActions()` |
+| occupato da un metodo **vivo del contratto** `HasTable` | dichiararlo nel trait rompe il framework | `getTableSortColumn()` |
+
+Il terzo caso è il più insidioso: i metodi di un trait vincono su quelli ereditati dalla
+classe padre, quindi un `getTableSortColumn()` nel trait sostituirebbe l'accessor che
+Filament usa per leggere lo stato di sort corrente (`$tableSort`), e il click
+sull'intestazione di colonna smetterebbe di funzionare. Per questo quei due hook stanno
+**solo su `XotBaseResourceTable`**, che non implementa `HasTable`; relation manager e
+widget, che invece lo implementano, usano il default privato del trait.
 
 **Niente costanti hardcoded dentro `table()`.** Ogni scelta di configurazione passa da un
 hook: il trait fornisce il default, la Table class lo cambia sovrascrivendo il metodo,
