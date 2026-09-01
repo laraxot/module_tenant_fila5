@@ -1,5 +1,14 @@
 # Tenant — cosa migliorerei se questo modulo fosse mio per un mese
 
+> I numeri misurati sono in [`docs/cosa-migliorare.md`](cosa-migliorare.md),
+> rilevati da un'altra sessione il 2026-09-01: PHPStan 0, PHPMD `app/` **4 —
+> il più basso dei cinque moduli qui analizzati**, Code 91.8, Arch 85.7, 173
+> casi test. Questo file non rimisura: legge quei numeri e ci mette sopra la
+> lente. Nota: PHPMD gira già (a livello di progetto, senza bisogno di
+> config locale) e trova pochissimo — è la certificazione PHPStan
+> STANDALONE del modulo, quella bloccata dal `phpstan.neon` mancante di cui
+> parlo sotto, non "tutti gli esami".
+
 Questo è il modulo più onesto del monorepo, nel senso peggiore possibile:
 `require` vuoto, `require-dev` vuoto, nessun `phpstan.neon`. Zero
 `dd()`/`dddx()`, zero `@phpstan-ignore`, zero `TODO`/`FIXME` — non perché sia
