@@ -29,6 +29,7 @@ rifare e contestare.
 | PHPInsights — Style | 90.1 % |
 | File `.md` sotto `docs/` | 391 |
 | `TODO`/`FIXME`/`HACK` | 0 |
+| Test con casi che non girano (senza suffisso `Test.php`) | 1 |
 | Collisioni di case nel codice | 1 |
 | Collisioni di case nei docs | 0 |
 | Marker di conflitto | 0 |
@@ -52,13 +53,13 @@ Percorsi coinvolti:
 
 - `tests/Unit/domaintest.php`
 
-### 2 file di test senza suffisso `Test.php`
+### 1 file con casi di test che non girano mai
 
-PHPUnit raccoglie per suffisso: senza `Test.php` questi file non girano mai.
-Non sono duplicati da cancellare finche non si e verificato che esista un
-gemello: se il gemello non c'e, si rinominano e il coverage sale da solo.
+Contengono 2 casi di test ma non finiscono in `Test.php`,
+quindi PHPUnit non li raccoglie. Prima di rinominarli va verificato che non
+esista gia un gemello con lo stesso contenuto: rinominare un duplicato
+raddoppia i test invece di aggiungerne.
 
-- `tests/TenantContextSetter.php`
 - `tests/Unit/domaintest.php`
 
 ## Coverage
@@ -77,6 +78,10 @@ sostituito.
 - **PHPMD misurato su `app/`, non sulla root del modulo.** Puntandolo alla root,
   una singola classe anonima nei test fa abortire tutta l'analisi e stampare zero
   rilievi. Uno zero PHPMD sulla root non e una prova di pulizia.
+- **I file sotto `tests/` senza suffisso `Test.php` non sono tutti test.** Una
+  prima passata ne aveva contati 62 come "test che non girano": verificati uno a uno,
+  47 sono stub, fake, helper e classi base che correttamente non hanno il suffisso.
+  Il conteggio qui sopra riporta solo i file che contengono davvero casi di test.
 - **PHPInsights `Complexity 100 %` su tutte e 22 le unita.** Un valore identico
   ovunque non sta discriminando niente: va trattato come non informativo finche
   non se ne capisce la configurazione.
