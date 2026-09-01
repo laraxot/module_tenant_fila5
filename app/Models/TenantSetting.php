@@ -9,14 +9,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\User\Models\User;
 
 /**
- * @property-read \Modules\WorkOrder\Models\Profile|null $creator
- * @property-read \Modules\WorkOrder\Models\Profile|null $deleter
- * @property-read \Modules\Tenant\Models\Tenant|null $tenant
- * @property-read \Modules\WorkOrder\Models\Profile|null $updater
- * @method static \Modules\Tenant\Database\Factories\TenantSettingFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TenantSetting newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TenantSetting newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TenantSetting query()
+ * @property string|null $tenant_id
+ * @property string|null $key
+ * @property mixed $value
+ * @property string|null $type
+ * @property-read User|null $creator
+ * @property-read Tenant|null $tenant
+ * @property-read User|null $updater
+ *
+ * @method static Builder<static>|TenantSetting newModelQuery()
+ * @method static Builder<static>|TenantSetting newQuery()
+ * @method static Builder<static>|TenantSetting query()
+ *
  * @mixin \Eloquent
  */
 class TenantSetting extends BaseModel

@@ -18,26 +18,27 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @property string|null $description
  * @property string|null $status
  * @property array<array-key, mixed>|null $metadata
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property int|null $created_by
  * @property int|null $updated_by
- * @property-read \Modules\WorkOrder\Models\Profile|null $creator
- * @property-read \Modules\WorkOrder\Models\Profile|null $deleter
- * @property-read \Modules\WorkOrder\Models\Profile|null $updater
+ * @property-read User|null $creator
+ * @property-read User|null $updater
+ *
  * @method static \Modules\Tenant\Database\Factories\TestSushiModelFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TestSushiModel newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TestSushiModel newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TestSushiModel query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TestSushiModel whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TestSushiModel whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TestSushiModel whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TestSushiModel whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TestSushiModel whereMetadata($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TestSushiModel whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TestSushiModel whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TestSushiModel whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|\Modules\Tenant\Models\TestSushiModel whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereMetadata($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class TestSushiModel extends BaseModel
