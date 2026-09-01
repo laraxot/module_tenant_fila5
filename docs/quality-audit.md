@@ -16,8 +16,8 @@ rifare e contestare.
 
 | Metrica | Valore |
 |---|---:|
-| File PHP | 140 |
-| Righe di codice | 11104 |
+| File PHP | 139 |
+| Righe di codice | 11061 |
 | File di test `*Test.php` | 29 |
 | Casi di test | 173 |
 | Casi di test per file PHP | 1.24 |
@@ -27,10 +27,10 @@ rifare e contestare.
 | PHPInsights — Complexity | 100.0 % |
 | PHPInsights — Architecture | 85.7 % |
 | PHPInsights — Style | 90.1 % |
-| File `.md` sotto `docs/` | 391 |
+| File `.md` sotto `docs/` | 392 |
 | `TODO`/`FIXME`/`HACK` | 0 |
-| Test con casi che non girano (senza suffisso `Test.php`) | 1 |
-| Collisioni di case nel codice | 1 |
+| Test con casi che non girano (senza suffisso `Test.php`) | 0 |
+| Collisioni di case nel codice | 0 |
 | Collisioni di case nei docs | 0 |
 | Marker di conflitto | 0 |
 | File `.lock` committati | 0 |
@@ -43,24 +43,10 @@ da `ignoreErrors` e non vengono contate da nessun gate.
 
 ## Cosa non va
 
-### 1 collisioni di case nel codice
+Nessuno dei controlli strutturali di questo audit segnala qualcosa.
 
-Due percorsi che differiscono solo per maiuscole convivono su Linux e si
-fondono su macOS e Windows. Quando sono file di test, uno dei due non viene
-nemmeno raccolto: due file con lo stesso basename generano la stessa classe.
-
-Percorsi coinvolti:
-
-- `tests/Unit/domaintest.php`
-
-### 1 file con casi di test che non girano mai
-
-Contengono 2 casi di test ma non finiscono in `Test.php`,
-quindi PHPUnit non li raccoglie. Prima di rinominarli va verificato che non
-esista gia un gemello con lo stesso contenuto: rinominare un duplicato
-raddoppia i test invece di aggiungerne.
-
-- `tests/Unit/domaintest.php`
+Non significa che sia perfetto: significa che i difetti che questo audit sa
+misurare non ci sono. Restano aperte le voci in "Cosa questa misura non vede".
 
 ## Coverage
 
