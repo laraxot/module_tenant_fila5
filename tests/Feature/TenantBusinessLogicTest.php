@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Feature;
 
+use Illuminate\Database\QueryException;
 use Modules\Tenant\Database\Factories\TenantDomainFactory;
 use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Database\Factories\TenantSettingFactory;
@@ -17,7 +18,7 @@ use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\User;
 use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
+uses(\Modules\Tenant\Tests\TestCase::class);
 
 beforeEach(function (): void {
     /** @var TestCase $this */
@@ -34,7 +35,7 @@ function createTenantRecord(array $attributes = []): Tenant
         Assert::assertInstanceOf(Tenant::class, $tenant);
 
         return $tenant;
-    } catch (\Illuminate\Database\QueryException $exception) {
+    } catch (QueryException $exception) {
         Assert::markTestSkipped(
             'Tenant DB write blocked: '.$exception->getMessage()
         );
@@ -49,7 +50,7 @@ function createTenantDomainRecord(array $attributes = []): TenantDomain
         Assert::assertInstanceOf(TenantDomain::class, $domain);
 
         return $domain;
-    } catch (\Illuminate\Database\QueryException $exception) {
+    } catch (QueryException $exception) {
         Assert::markTestSkipped('TenantDomain DB write blocked: '.$exception->getMessage());
     }
 }
@@ -62,7 +63,7 @@ function createTenantSettingRecord(array $attributes = []): TenantSetting
         Assert::assertInstanceOf(TenantSetting::class, $setting);
 
         return $setting;
-    } catch (\Illuminate\Database\QueryException $exception) {
+    } catch (QueryException $exception) {
         Assert::markTestSkipped('TenantSetting DB write blocked: '.$exception->getMessage());
     }
 }
@@ -75,7 +76,7 @@ function createTenantSubscriptionRecord(array $attributes = []): TenantSubscript
         Assert::assertInstanceOf(TenantSubscription::class, $subscription);
 
         return $subscription;
-    } catch (\Illuminate\Database\QueryException $exception) {
+    } catch (QueryException $exception) {
         Assert::markTestSkipped('TenantSubscription DB write blocked: '.$exception->getMessage());
     }
 }
@@ -83,7 +84,7 @@ function createTenantSubscriptionRecord(array $attributes = []): TenantSubscript
 it('can create and manage tenants', function (): void {
     try {
         $user = UserFactory::new()->createOne();
-    } catch (\Illuminate\Database\QueryException $exception) {
+    } catch (QueryException $exception) {
         Assert::markTestSkipped('User DB write blocked: '.$exception->getMessage());
     }
     Assert::assertInstanceOf(User::class, $user);
@@ -94,7 +95,7 @@ it('can create and manage tenants', function (): void {
             'slug' => 'test-studio',
             'is_active' => true,
         ]);
-    } catch (\Illuminate\Database\QueryException $exception) {
+    } catch (QueryException $exception) {
         Assert::markTestSkipped('Tenant DB write blocked: '.$exception->getMessage());
     }
     Assert::assertInstanceOf(Tenant::class, $tenant);
@@ -417,7 +418,7 @@ it('can track tenant activity', function (): void {
             'last_activity_at' => now()->subDays(5),
         ]);
         $tenant->update(['last_activity_at' => now()]);
-    } catch (\Illuminate\Database\QueryException $exception) {
+    } catch (QueryException $exception) {
         Assert::markTestSkipped('Tenant activity column/write blocked: '.$exception->getMessage());
     }
 

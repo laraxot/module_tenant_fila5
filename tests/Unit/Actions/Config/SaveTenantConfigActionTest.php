@@ -12,7 +12,7 @@ use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Arr\SaveArrayAction;
 use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
+uses(\Modules\Tenant\Tests\TestCase::class);
 
 it('saves tenant config by merging with existing data', function (): void {
     /** @var TestCase $this */
@@ -29,7 +29,7 @@ it('saves tenant config by merging with existing data', function (): void {
         ->andReturn(['connections' => ['mysql' => ['host' => 'localhost']]]);
 
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
-        $mock->shouldReceive('execute')
+        TestCase::expectMockery($mock, 'execute')
             ->once()
             ->withArgs(static function (array $data, string $filename): bool {
                 Assert::assertSame('/path/to/tenant/database.php', $filename);
@@ -62,7 +62,7 @@ it('saves tenant config when file does not exist', function (): void {
         ->andReturn(false);
 
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
-        $mock->shouldReceive('execute')
+        TestCase::expectMockery($mock, 'execute')
             ->once()
             ->withArgs(static function (array $data, string $filename): bool {
                 Assert::assertSame('/path/to/tenant/app.php', $filename);

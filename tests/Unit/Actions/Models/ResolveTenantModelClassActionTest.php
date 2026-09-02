@@ -12,12 +12,12 @@ use Modules\Tenant\Actions\Models\ResolveTenantModelClassAction;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Model\GetAllModelsByModuleNameAction;
+use Modules\Xot\Tests\XotBasePest;
 use Nwidart\Modules\Facades\Module;
 use Nwidart\Modules\Laravel\Module as LaravelModule;
 use PHPUnit\Framework\Assert;
-use Modules\Xot\Tests\XotBasePest;
 
-uses(TestCase::class);
+uses(\Modules\Tenant\Tests\TestCase::class);
 
 it('resolves tenant model class from config', function (): void {
     /** @var TestCase $this */
@@ -37,7 +37,7 @@ it('resolves tenant model class by scanning modules if not in config', function 
     });
 
     $module = Mockery::mock(LaravelModule::class);
-    $module->shouldReceive('getName')->andReturn('Meetup');
+    TestCase::expectMockery($module, 'getName')->andReturn('Meetup');
 
     Module::shouldReceive('allEnabled')->andReturn([$module]);
 

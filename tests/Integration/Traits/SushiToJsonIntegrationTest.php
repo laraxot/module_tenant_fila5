@@ -51,6 +51,7 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
+    /** @var TestCase $this */
     if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
     }
@@ -62,6 +63,7 @@ afterEach(function (): void {
 });
 
 it('creates json file with tenant isolation', function (): void {
+    /** @var TestCase $this */
     $testData = [
         '1' => [
             'id' => 1,
@@ -80,6 +82,7 @@ it('creates json file with tenant isolation', function (): void {
 });
 
 it('loads data with tenant isolation', function (): void {
+    /** @var TestCase $this */
     $tenantId = $this->tenantId();
     $testData = [
         '1' => ['id' => 1, 'name' => 'Item 1', 'tenant_id' => $tenantId],
@@ -101,6 +104,7 @@ it('loads data with tenant isolation', function (): void {
 });
 
 it('handles large datasets efficiently', function (): void {
+    /** @var TestCase $this */
     $largeDataset = [];
     for ($i = 1; $i <= 1000; $i++) {
         $largeDataset[$i] = [
@@ -119,6 +123,7 @@ it('handles large datasets efficiently', function (): void {
 });
 
 it('works with different tenant configurations', function (): void {
+    /** @var TestCase $this */
     $secondTenant = TestCase::createTenant([
         'name' => 'second-tenant',
         'domain' => 'second.example.com',
