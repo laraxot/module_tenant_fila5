@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Modules\Tenant\Tests;
 
 use Closure;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
-use Mockery\ExpectationInterface;
+use Mockery\Expectation;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Database\Factories\TenantFactory;
@@ -42,21 +43,21 @@ abstract class TestCase extends XotBaseTestCase
     protected $connectionsToTransact = ['tenant'];
 
     /** @var TestSushiModel */
-    public mixed $model;
+    public static mixed $sushiModel;
 
     /** @var BaseModel|null */
-    public mixed $baseModel = null;
+    public static mixed $sushiBaseModel = null;
 
-    public ?Tenant $tenant = null;
+    public static ?Tenant $tenant = null;
 
-    public ?Tenant $secondTenant = null;
+    public static ?Tenant $secondTenant = null;
 
-    public string $testJsonPath = '';
+    public static string $testJsonPath = '';
 
-    public string $testDirectory = '';
+    public static string $testDirectory = '';
 
     /** @var Closure(): array<array-key, array<string, mixed>> */
-    public Closure $createTestData;
+    public static Closure $createTestData;
 
     /**
      * Lo sqlite condiviso non contiene per forza le tabelle del modulo Tenant:
@@ -97,7 +98,7 @@ abstract class TestCase extends XotBaseTestCase
             WebmozartAssert::isInstanceOf($tenant, Tenant::class);
 
             return $tenant;
-        } catch (\Illuminate\Database\QueryException $exception) {
+        } catch (QueryException $exception) {
             $message = $exception->getMessage();
             if (
                 str_contains($message, 'database is locked')
@@ -142,66 +143,71 @@ abstract class TestCase extends XotBaseTestCase
             DB::purge($connection);
         }
 
-        $this->model = new TestSushiModel();
-        $this->createTestData = static fn (): array => [];
+        self::$sushiModel = new TestSushiModel();
+        self::$createTestData = static fn (): array => [];
     }
 
-    public function tenantModel(): Tenant
+    public static function tenantModel(): Tenant
     {
-        Assert::assertInstanceOf(Tenant::class, $this->tenant);
+        Assert::assertInstanceOf(Tenant::class, self::$tenant);
 
-        return $this->tenant;
+        return self::$tenant;
     }
 
-    public function secondTenantModel(): Tenant
+    public static function secondTenantModel(): Tenant
     {
-        Assert::assertInstanceOf(Tenant::class, $this->secondTenant);
+        Assert::assertInstanceOf(Tenant::class, self::$secondTenant);
 
-        return $this->secondTenant;
+        return self::$secondTenant;
     }
 
-    public function tenantId(): string
+    public static function tenantId(): string
     {
-        $id = $this->tenantModel()->id;
+        $id = self::tenantModel()->id;
         Assert::assertIsString($id);
 
         return $id;
     }
 
-    public function sushiModel(): TestSushiModel
+    public static function sushiModel(): TestSushiModel
     {
-        Assert::assertInstanceOf(TestSushiModel::class, $this->model);
+        Assert::assertInstanceOf(TestSushiModel::class, self::$sushiModel);
 
-        return $this->model;
+        return self::$sushiModel;
     }
 
-    public function sushiJsonPath(): string
+    public static function sushiJsonPath(): string
     {
-        if ($this->testJsonPath !== '') {
-            return $this->testJsonPath;
+        if (self::$testJsonPath !== '') {
+            return self::$testJsonPath;
         }
 
         return app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
     }
 
-    public function sushiTestDirectory(): string
+    public static function sushiTestDirectory(): string
     {
-        if ($this->testDirectory !== '') {
-            return $this->testDirectory;
+        if (self::$testDirectory !== '') {
+            return self::$testDirectory;
         }
 
-        return dirname($this->sushiJsonPath());
+        return dirname(self::sushiJsonPath());
     }
 
     /** @return array<array-key, array<string, mixed>> */
-    public function sushiTestData(): array
+    public static function sushiTestData(): array
     {
-        return ($this->createTestData)();
+        return (self::$createTestData)();
     }
 
-    public function tenantMockExpectation(MockInterface $mock, string $method): ExpectationInterface
+    public static function expectMockery(MockInterface $mock, string $method): Expectation
     {
-        return $mock->shouldReceive($method);
+        $expectation = $mock->allows($method);
+        if (! $expectation instanceof Expectation) {
+            throw new \RuntimeException('Unexpected mockery expectation type.');
+        }
+
+        return $expectation;
     }
 
     /**
@@ -235,7 +241,7 @@ abstract class TestCase extends XotBaseTestCase
         return [];
     }
 
-    public function setCurrentTenant(Tenant $tenant): void
+    public static function setCurrentTenant(Tenant $tenant): void
     {
         $context = app('tenant');
 
@@ -245,7 +251,7 @@ abstract class TestCase extends XotBaseTestCase
     }
 
     /** @return array<array-key, array<string, mixed>> */
-    public function readJsonFileAsArray(string $path): array
+    public static function readJsonFileAsArray(string $path): array
     {
         $decoded = json_decode(File::get($path), true);
         Assert::assertIsArray($decoded);
@@ -254,18 +260,18 @@ abstract class TestCase extends XotBaseTestCase
         return $decoded;
     }
 
-    public function baseModelInstance(): BaseModel
+    public static function baseModelInstance(): BaseModel
     {
-        Assert::assertInstanceOf(BaseModel::class, $this->baseModel);
+        Assert::assertInstanceOf(BaseModel::class, self::$sushiBaseModel);
 
-        return $this->baseModel;
+        return self::$sushiBaseModel;
     }
 
     /**
      * @param  array<array-key, mixed>  $rows
      * @return array<string, mixed>
      */
-    public function jsonRecordAt(array $rows, int|string $key): array
+    public static function jsonRecordAt(array $rows, int|string $key): array
     {
         return self::sushiRowById($rows, $key);
     }
@@ -273,7 +279,7 @@ abstract class TestCase extends XotBaseTestCase
     /**
      * @return array<string, mixed>
      */
-    public function decodeJsonString(string $json): array
+    public static function decodeJsonString(string $json): array
     {
         $decoded = json_decode($json, true);
         Assert::assertIsArray($decoded);
@@ -288,6 +294,43 @@ abstract class TestCase extends XotBaseTestCase
     public function assertDatabaseHasRow(string $table, array $data, ?string $connection = null): void
     {
         $this->assertDatabaseHas($table, $data, $connection ?? 'tenant');
+    }
+
+    /**
+     * @template T of object
+     *
+     * @param  class-string<T>  $abstract
+     * @param  (\Closure(MockInterface&T): void)|null  $callback
+     * @return MockInterface&T
+     */
+    public static function mockAppService(string $abstract, ?Closure $callback = null): MockInterface
+    {
+        /** @var MockInterface&T $mock */
+        $mock = \Mockery::mock($abstract);
+
+        if ($callback !== null) {
+            $callback($mock);
+        }
+
+        app()->instance($abstract, $mock);
+
+        return $mock;
+    }
+
+    public static function skipCurrentTest(string $message = ''): never
+    {
+        Assert::markTestSkipped($message);
+    }
+
+    /**
+     * @param  array<string, mixed>  $parameters
+     */
+    public static function runArtisanCommand(string $command, array $parameters = []): int
+    {
+        /** @var int $exitCode */
+        $exitCode = \Illuminate\Support\Facades\Artisan::call($command, $parameters);
+
+        return $exitCode;
     }
 
     /** @return array<int, class-string<ServiceProvider>> */

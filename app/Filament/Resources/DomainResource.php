@@ -12,22 +12,16 @@ use Modules\Tenant\Filament\Resources\DomainResource\Pages\ListDomains;
 use Modules\Tenant\Models\Domain;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
-use Filament\Forms\Components\Field;
+
 class DomainResource extends XotBaseResource
 {
     protected static ?string $model = Domain::class;
 
     /**
-
-
      * @return array<string, mixed>
-
-
      */
-
-
-    //#[Override]
-    public static function getFormSchemaOld(): array
+    #[Override]
+    public static function getFormSchema(): array
     {
         return [
             'title' => TextInput::make('title')

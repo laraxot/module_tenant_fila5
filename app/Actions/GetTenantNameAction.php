@@ -113,7 +113,6 @@ class GetTenantNameAction
      * Costruisce il percorso di configurazione.
      *
      * @param  Collection<int, string>  $parts  Le parti del percorso
-     *
      * @return string Il percorso completo
      */
     private function buildConfigPath(Collection $parts): string

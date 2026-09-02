@@ -50,7 +50,7 @@ Hub sintetico per agenti: cosa è successo, perché, dove documentare.
 
 **Problema:** `Field 'id' doesn't have a default value` — legacy UUID PK senza default.
 
-**Fix:** migrazione canonica in **WorkOrder** (`main_module`); duplicati User rimossi con `git rm` (mai `_bak/`).
+**Fix:** migrazione canonica in **WorkOrder** (`main_module`); duplicati User in `_bak`.
 
 **Doc:** [WorkOrder/profile-schema-ownership.md](../WorkOrder/docs/profile-schema-ownership.md)
 

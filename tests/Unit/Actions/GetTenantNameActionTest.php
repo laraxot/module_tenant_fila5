@@ -7,10 +7,11 @@ namespace Modules\Tenant\Tests\Unit\Actions;
 use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
+
 use function Safe\mkdir;
 use function Safe\rmdir;
 
-uses(TestCase::class);
+uses(\Modules\Tenant\Tests\TestCase::class);
 
 /** @var list<string> $createdConfigPaths */
 $createdConfigPaths = [];

@@ -283,13 +283,24 @@ trait SushiToJson
      */
     protected function completeSchemaFields(array $normalizedData, array $form): array
     {
+        // Sushi genera un multi-insert: ogni riga deve avere lo stesso set di colonne.
+        // Completare col solo schema non basta quando alcune righe hanno chiavi extra,
+        // quindi si usa l'unione delle chiavi di schema e di tutte le righe.
+        $allKeys = array_keys($form);
+        foreach ($normalizedData as $item) {
+            $allKeys = array_merge($allKeys, array_keys($item));
+        }
+
+        /** @var list<string> $allKeys */
+        $allKeys = array_values(array_unique($allKeys));
+
         /** @var array<int, array<string, mixed>> $completedData */
         $completedData = [];
 
         foreach ($normalizedData as $item) {
             /** @var array<string, mixed> $row */
             $row = $item;
-            foreach (array_keys($form) as $safeKey) {
+            foreach ($allKeys as $safeKey) {
                 if (! array_key_exists($safeKey, $row)) {
                     $row[$safeKey] = null;
                 }

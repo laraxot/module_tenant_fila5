@@ -57,8 +57,7 @@ class GetDomainsArrayAction
     }
 
     /**
-     * @param array<string, mixed> $data
-     *
+     * @param  array<string, mixed>  $data
      * @return array<int, string>
      */
     public function collapse(array $data, string $keyPrefix = ''): array
