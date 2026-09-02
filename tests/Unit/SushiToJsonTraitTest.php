@@ -15,11 +15,11 @@ use Modules\Tenant\Tests\TestCase;
 
 use function Safe\json_encode;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 beforeEach(function (): void {
     /** @var TestCase $this */
-    $this->model = new TestSushiModel();
+    $this->model = new TestSushiModel;
     $this->testDirectory = storage_path('tests/sushi-json');
     $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 
@@ -171,7 +171,7 @@ describe('SushiToJson Trait', function (): void {
         /** @var TestCase $this */
         Auth::shouldReceive('id')->andReturn(1);
 
-        $model = new TestSushiModel();
+        $model = new TestSushiModel;
         $model->fill(['name' => 'New Item', 'description' => 'New Description']);
 
         expect($model->name)->toBe('New Item');

@@ -11,14 +11,14 @@ use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 afterEach(function (): void {
     Mockery::close();
 });
 
 test('domain model can be instantiated', function (): void {
-    Assert::assertInstanceOf(Domain::class, new Domain());
+    Assert::assertInstanceOf(Domain::class, new Domain);
 });
 
 test('get rows method works correctly', function (): void {
@@ -32,7 +32,7 @@ test('get rows method works correctly', function (): void {
 
     app()->instance(GetDomainsArrayAction::class, $mock);
 
-    $domain = new Domain();
+    $domain = new Domain;
     $rows = $domain->getRows();
 
     expect($rows)->toHaveCount(2);

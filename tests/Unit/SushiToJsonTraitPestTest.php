@@ -12,7 +12,7 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 beforeEach(function (): void {
     /** @var TestCase $this */
