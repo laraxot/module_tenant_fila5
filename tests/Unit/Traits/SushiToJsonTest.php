@@ -31,7 +31,7 @@ function writeSushiJsonFile(string $path, array $data): void
 
 beforeEach(function (): void {
     /** @var TestCase $this */
-    $this->model = new TestSushiModel();
+    $this->model = new TestSushiModel;
     $this->testDirectory = storage_path('tests/sushi-json');
     $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 

@@ -46,7 +46,7 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 afterEach(function (): void {
     Mockery::close();
@@ -85,7 +85,7 @@ describe('Tenant coverage boost — Domain sushi', function (): void {
             ]]);
         });
 
-        $rows = (new Domain())->getRows();
+        $rows = (new Domain)->getRows();
 
         Assert::assertCount(1, $rows);
         Assert::assertSame('tenant.example.com', $rows[0]['name']);
@@ -104,7 +104,7 @@ describe('Tenant coverage boost — Models and resolvers', function (): void {
     test('StandardConfigResolver resolves existing config keys', function (): void {
         config(['app' => ['name' => 'Base App', 'locale' => 'it']]);
 
-        $resolver = new StandardConfigResolver();
+        $resolver = new StandardConfigResolver;
 
         Assert::assertTrue($resolver->canResolve('app.name'));
         Assert::assertSame('Base App', $resolver->resolve('app.name'));
@@ -165,7 +165,7 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
         $resourcePages = DomainResource::getPages();
         $formSchema = DomainForm::getFormSchema();
         $infolistSchema = DomainInfolist::getInfolistSchema();
-        $tableColumns = (new DomainsTable())->getTableColumns();
+        $tableColumns = (new DomainsTable)->getTableColumns();
 
         Assert::assertArrayHasKey('index', $resourcePages);
         Assert::assertArrayHasKey('title', $formSchema);
@@ -187,11 +187,11 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
             static fn (string $permission): bool => in_array($permission, ['domain.view', 'domain.update'], true),
         );
 
-        $policy = new DomainPolicy();
-        $domain = new Domain();
+        $policy = new DomainPolicy;
+        $domain = new Domain;
         $domain->exists = true;
 
-        Assert::assertTrue((new class() extends TenantBasePolicy {})->before($superAdmin, 'viewAny'));
+        Assert::assertTrue((new class extends TenantBasePolicy {})->before($superAdmin, 'viewAny'));
         Assert::assertTrue($policy->view($editor, $domain));
         Assert::assertTrue($policy->update($editor, $domain));
         Assert::assertFalse($policy->delete($editor, $domain));
@@ -204,20 +204,20 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
     });
 
     test('config resolver registry prefers matching resolvers and database config casts', function (): void {
-        $registry = new ConfigResolverRegistry();
+        $registry = new ConfigResolverRegistry;
 
         $databaseResolver = $registry->findResolver('database');
         $fallbackResolver = $registry->findResolver('custom.key');
 
         Assert::assertInstanceOf(DatabaseConfigResolver::class, $databaseResolver);
         Assert::assertInstanceOf(StandardConfigResolver::class, $fallbackResolver);
-        Assert::assertFalse((new MorphMapConfigResolver())->canResolve('morph_map'));
+        Assert::assertFalse((new MorphMapConfigResolver)->canResolve('morph_map'));
 
-        $model = new DatabaseConfig();
+        $model = new DatabaseConfig;
         Assert::assertSame('integer', $model->getCasts()['port']);
         Assert::assertSame('array', $model->getCasts()['options']);
 
-        $resolver = new class() implements ConfigResolverInterface
+        $resolver = new class implements ConfigResolverInterface
         {
             public function canResolve(string $key): bool
             {
@@ -253,7 +253,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
             );
         });
 
-        $model = new class() extends BaseModelJsons
+        $model = new class extends BaseModelJsons
         {
             protected $table = 'catalog';
 
@@ -280,7 +280,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
             );
         });
 
-        $model = new class() extends Model
+        $model = new class extends Model
         {
             use SushiToCsv;
 
@@ -311,7 +311,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
                 ['name' => 'Beta', 'meta' => '{"x":1}'],
             ]]);
         });
-        $model = new class() extends SocialProvider
+        $model = new class extends SocialProvider
         {
             protected $table = 'tenant_configs';
 

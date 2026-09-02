@@ -37,7 +37,7 @@ beforeEach(function (): void {
 
     $this->setCurrentTenant($this->tenantModel());
 
-    $this->model = new TestSushiModel();
+    $this->model = new TestSushiModel;
     $this->testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     if (File::exists($this->testJsonPath)) {
@@ -131,7 +131,7 @@ it('works with different tenant configurations', function (): void {
 
     $this->setCurrentTenant($secondTenant);
 
-    $secondModel = new TestSushiModel();
+    $secondModel = new TestSushiModel;
     $secondJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     expect($secondModel->saveToJson([
