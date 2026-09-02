@@ -19,6 +19,23 @@ last_updated: 2026-07-28
 
 Il modulo Tenant gestisce la multi-tenancy dell'applicazione in modo completo e robusto. Ogni tenant ha il proprio dominio (o sottodominio), le proprie configurazioni e i propri dati completamente isolati. L'isolamento avviene a livello di connessione database: ogni modulo usa automaticamente la connessione corretta basandosi sul namespace del modello.
 
+### Scopo e confini
+
+Il meccanismo attivo è la configurazione per host, non l'isolamento a database:
+`app/Actions/GetTenantNameAction.php:23` traduce `SERVER_NAME` in una cartella sotto
+`config/` (`ptvx.local` → `config/local/ptvx/`, 22 file), e
+`app/Providers/TenantServiceProvider.php:61` riscrive `config('database')`
+sintetizzando una connection per ogni modulo installato — le connection `xot` e
+`tenant`, su cui poggiano `XotBaseModel` e `Tenant\Models\BaseModel`, **non esistono
+in nessun file di config**: nascono qui, a runtime.
+
+Il resto è oggi scaffolding: `TenantSetting`, `TenantSubscription`, `DatabaseConfig`
+e `TenantDomain` hanno **0** referenze fuori dal modulo, la tabella `tenants` è
+creata da User, e gli esempi più sotto (`Tenant::currentTenant()`, `$tenant->domains()`)
+richiamano metodi che nel codice non esistono. I modelli reali sono 9, non 15.
+
+Scopo esteso, misure e mosse: [docs/scopo.md](docs/scopo.md).
+
 ### Key Features
 
 - **Tenant Isolation**: Complete data separation per tenant via database/schema/scoping strategies
@@ -285,3 +302,10 @@ See [Contributing Guide](../../docs/wiki/how-to/contributing.md) for details.
 ---
 
 Navigation: [Project Home](../../docs/index.md) | [Modules](../../docs/modules/README.md) | [Documentation Index](index.md)
+
+---
+
+## Scopo del modulo
+
+Perche' esiste, come raggiungere meglio il suo scopo e cosa **non** gli appartiene:
+[`docs/purpose.md`](./docs/purpose.md).
