@@ -50,7 +50,7 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  */
 class Tenant extends BaseModel
 {
-    /** @use HasXotFactory<TenantFactory> */
+    /** @use HasXotFactory<Tenant> */
     use HasXotFactory;
 
     /**
