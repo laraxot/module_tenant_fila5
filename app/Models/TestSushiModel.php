@@ -43,7 +43,6 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  */
 class TestSushiModel extends BaseModel
 {
-    /** @use HasXotFactory<TestSushiModel> */
     use HasXotFactory;
 
     use SushiToJson;
