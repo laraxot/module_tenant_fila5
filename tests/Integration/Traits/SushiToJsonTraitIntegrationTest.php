@@ -16,7 +16,7 @@ use PHPUnit\Framework\Assert;
 use function Safe\json_decode;
 use function Safe\json_encode;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 beforeEach(function (): void {
     if (TestCase::tenantDbUnavailable()) {

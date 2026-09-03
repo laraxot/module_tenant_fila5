@@ -8,6 +8,7 @@ use Closure;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
@@ -300,7 +301,7 @@ abstract class TestCase extends XotBaseTestCase
      * @template T of object
      *
      * @param  class-string<T>  $abstract
-     * @param  (\Closure(MockInterface&T): void)|null  $callback
+     * @param  (Closure(MockInterface&T): void)|null  $callback
      * @return MockInterface&T
      */
     public static function mockAppService(string $abstract, ?Closure $callback = null): MockInterface
@@ -328,7 +329,7 @@ abstract class TestCase extends XotBaseTestCase
     public static function runArtisanCommand(string $command, array $parameters = []): int
     {
         /** @var int $exitCode */
-        $exitCode = \Illuminate\Support\Facades\Artisan::call($command, $parameters);
+        $exitCode = Artisan::call($command, $parameters);
 
         return $exitCode;
     }

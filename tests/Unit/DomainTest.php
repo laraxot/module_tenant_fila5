@@ -11,7 +11,7 @@ use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 afterEach(function (): void {
     Mockery::close();

@@ -15,7 +15,7 @@ use Modules\Tenant\Tests\TestCase;
 
 use function Safe\json_encode;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 beforeEach(function (): void {
     /** @var TestCase $this */
