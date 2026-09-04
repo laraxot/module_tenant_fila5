@@ -6,6 +6,7 @@ namespace Modules\Tenant\Tests\Unit\Fixtures;
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Tenant\Models\Traits\SushiToPhpArray;
+use Modules\User\Models\User;
 
 /**
  * Fixture minima: rende il trait SushiToPhpArray visibile a PHPStan nel perimetro

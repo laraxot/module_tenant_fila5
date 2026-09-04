@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Tenant\Tests\Unit\Fixtures;
 
 use Modules\User\Models\SocialProvider;
+use Modules\User\Models\User;
 
 /**
  * Fixture di coverage: stesso trait dell'host reale `SocialProvider`, in memoria.

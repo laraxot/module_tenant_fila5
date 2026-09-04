@@ -19,9 +19,8 @@ use function Safe\json_encode;
 uses(TestCase::class);
 
 beforeEach(function (): void {
-    /** @var TestCase $this */
     if (TestCase::tenantDbUnavailable()) {
-        $this->skipTest('DB `tenant` non raggiungibile: blocco di ambiente.');
+        TestCase::skipCurrentTest('DB `tenant` non raggiungibile: blocco di ambiente.');
     }
 
     try {
@@ -31,34 +30,33 @@ beforeEach(function (): void {
             'domain' => 'test.example.com',
         ]);
     } catch (QueryException $exception) {
-        $this->skipTest('Tenant DB write blocked: '.$exception->getMessage());
+        TestCase::skipCurrentTest('Tenant DB write blocked: '.$exception->getMessage());
     }
     Assert::assertInstanceOf(Tenant::class, $createdTenant);
-    $this->tenant = $createdTenant;
+    TestCase::$tenant = $createdTenant;
 
     // Imposta il tenant corrente
-    $this->setCurrentTenant($this->tenantModel());
+    TestCase::setCurrentTenant(TestCase::tenantModel());
 
-    $this->model = new TestSushiModel();
-    $this->testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
+    TestCase::$sushiModel = new TestSushiModel();
+    TestCase::$testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
-    if (File::exists($this->sushiJsonPath())) {
-        File::delete($this->sushiJsonPath());
+    if (File::exists(TestCase::sushiJsonPath())) {
+        File::delete(TestCase::sushiJsonPath());
     }
 
-    $directory = dirname($this->sushiJsonPath());
+    $directory = dirname(TestCase::sushiJsonPath());
     if (File::exists($directory)) {
         File::deleteDirectory($directory);
     }
 });
 
 afterEach(function (): void {
-    /** @var TestCase $this */
-    if (File::exists($this->sushiJsonPath())) {
-        File::delete($this->sushiJsonPath());
+    if (File::exists(TestCase::sushiJsonPath())) {
+        File::delete(TestCase::sushiJsonPath());
     }
 
-    $directory = dirname($this->sushiJsonPath());
+    $directory = dirname(TestCase::sushiJsonPath());
     if (File::exists($directory)) {
         File::deleteDirectory($directory);
     }
@@ -67,63 +65,60 @@ afterEach(function (): void {
 
 describe('Sushi To Json Trait Integration', function (): void {
     test('creates json file with tenant isolation', function (): void {
-        /** @var TestCase $this */
         $testData = [
             '1' => [
                 'id' => 1,
                 'name' => 'Tenant Specific Item',
                 'description' => 'This item belongs to the current tenant',
-                'tenant_id' => $this->tenantModel()->id,
+                'tenant_id' => TestCase::tenantModel()->id,
             ],
         ];
 
-        $result = $this->sushiModel()->saveToJson($testData);
+        $result = TestCase::sushiModel()->saveToJson($testData);
 
         Assert::assertTrue($result);
-        Assert::assertTrue(File::exists($this->sushiJsonPath()));
+        Assert::assertTrue(File::exists(TestCase::sushiJsonPath()));
         // Verifica che il file sia nella directory del tenant corretto
         $expectedPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
-        Assert::assertSame($expectedPath, $this->sushiJsonPath());
+        Assert::assertSame($expectedPath, TestCase::sushiJsonPath());
         // Verifica che il contenuto sia corretto
-        $savedContent = File::get($this->sushiJsonPath());
+        $savedContent = File::get(TestCase::sushiJsonPath());
         $savedData = json_decode($savedContent, true);
 
         Assert::assertSame($testData, $savedData);
-        Assert::assertSame($this->tenantModel()->id, TestCase::sushiRowById($savedData, 1)['tenant_id']);
+        Assert::assertSame(TestCase::tenantModel()->id, TestCase::sushiRowById($savedData, 1)['tenant_id']);
     });
 
     test('loads data with tenant isolation', function (): void {
-        /** @var TestCase $this */
         $testData = [
             '1' => [
                 'id' => 1,
                 'name' => 'Item 1',
-                'tenant_id' => $this->tenantModel()->id,
+                'tenant_id' => TestCase::tenantModel()->id,
             ],
             '2' => [
                 'id' => 2,
                 'name' => 'Item 2',
-                'tenant_id' => $this->tenantModel()->id,
+                'tenant_id' => TestCase::tenantModel()->id,
             ],
         ];
 
         // Crea il file JSON di test
-        $directory = dirname($this->sushiJsonPath());
+        $directory = dirname(TestCase::sushiJsonPath());
         File::makeDirectory($directory, 0755, true, true);
-        File::put($this->sushiJsonPath(), json_encode($testData, JSON_PRETTY_PRINT));
+        File::put(TestCase::sushiJsonPath(), json_encode($testData, JSON_PRETTY_PRINT));
 
-        $rows = $this->sushiModel()->getSushiRows();
+        $rows = TestCase::sushiModel()->getSushiRows();
 
         Assert::assertSame($testData, $rows);
         Assert::assertCount(2, $rows);
         // Verifica che tutti gli elementi appartengano al tenant corrente
         foreach ($rows as $row) {
-            Assert::assertSame($this->tenantModel()->id, $row['tenant_id']);
+            Assert::assertSame(TestCase::tenantModel()->id, $row['tenant_id']);
         }
     });
 
     test('handles complex data structures', function (): void {
-        /** @var TestCase $this */
         $testData = [
             '1' => [
                 'id' => 1,
@@ -150,11 +145,11 @@ describe('Sushi To Json Trait Integration', function (): void {
         ];
 
         // Crea il file JSON di test
-        $directory = dirname($this->sushiJsonPath());
+        $directory = dirname(TestCase::sushiJsonPath());
         File::makeDirectory($directory, 0755, true, true);
-        File::put($this->sushiJsonPath(), json_encode($testData, JSON_PRETTY_PRINT));
+        File::put(TestCase::sushiJsonPath(), json_encode($testData, JSON_PRETTY_PRINT));
 
-        $rows = $this->sushiModel()->getSushiRows();
+        $rows = TestCase::sushiModel()->getSushiRows();
 
         Assert::assertArrayHasKey('1', $rows);
         Assert::assertSame('Complex Item', TestCase::sushiRowById($rows, 1)['name']);
@@ -169,25 +164,23 @@ describe('Sushi To Json Trait Integration', function (): void {
     });
 
     test('manages file permissions correctly', function (): void {
-        /** @var TestCase $this */
         $testData = ['1' => ['id' => 1, 'name' => 'Permission Test']];
 
-        $result = $this->sushiModel()->saveToJson($testData);
+        $result = TestCase::sushiModel()->saveToJson($testData);
 
         Assert::assertTrue($result);
         // Verifica che la directory abbia i permessi corretti
-        $directory = dirname($this->sushiJsonPath());
+        $directory = dirname(TestCase::sushiJsonPath());
         Assert::assertTrue(File::exists($directory));
         // Verifica che il file abbia i permessi corretti
-        Assert::assertTrue(File::exists($this->sushiJsonPath()));
+        Assert::assertTrue(File::exists(TestCase::sushiJsonPath()));
         // Verifica che il file sia leggibile
-        $content = File::get($this->sushiJsonPath());
+        $content = File::get(TestCase::sushiJsonPath());
         Assert::assertIsString($content);
         Assert::assertNotEmpty($content);
     });
 
     test('handles concurrent access safely', function (): void {
-        /** @var TestCase $this */
         // Simula accesso concorrente creando più istanze del modello
         $model1 = new TestSushiModel();
         $model2 = new TestSushiModel();
@@ -206,18 +199,17 @@ describe('Sushi To Json Trait Integration', function (): void {
         Assert::assertTrue($result2);
         Assert::assertTrue($result3);
         // Verifica che tutti i dati siano stati salvati correttamente
-        $finalData = $this->readJsonFileAsArray($this->sushiJsonPath());
+        $finalData = TestCase::readJsonFileAsArray(TestCase::sushiJsonPath());
 
         Assert::assertArrayHasKey('1', $finalData);
         Assert::assertArrayHasKey('2', $finalData);
         Assert::assertArrayHasKey('3', $finalData);
-        Assert::assertSame('Concurrent Item 1', $this->jsonRecordAt($finalData, '1')['name']);
-        Assert::assertSame('Concurrent Item 2', $this->jsonRecordAt($finalData, '2')['name']);
-        Assert::assertSame('Concurrent Item 3', $this->jsonRecordAt($finalData, '3')['name']);
+        Assert::assertSame('Concurrent Item 1', TestCase::jsonRecordAt($finalData, '1')['name']);
+        Assert::assertSame('Concurrent Item 2', TestCase::jsonRecordAt($finalData, '2')['name']);
+        Assert::assertSame('Concurrent Item 3', TestCase::jsonRecordAt($finalData, '3')['name']);
     });
 
     test('handles large datasets efficiently', function (): void {
-        /** @var TestCase $this */
         // Crea un dataset grande per testare le performance
         $largeDataset = [];
         for ($i = 1; $i <= 1000; $i++) {
@@ -235,32 +227,31 @@ describe('Sushi To Json Trait Integration', function (): void {
         }
 
         $startTime = microtime(true);
-        $result = $this->sushiModel()->saveToJson($largeDataset);
+        $result = TestCase::sushiModel()->saveToJson($largeDataset);
         $saveTime = microtime(true) - $startTime;
 
         Assert::assertTrue($result);
         Assert::assertLessThan(5.0, $saveTime);
 
         // Verifica che il file sia stato creato e contenga tutti i dati
-        Assert::assertTrue(File::exists($this->sushiJsonPath()));
-        $fileSize = File::size($this->sushiJsonPath());
+        Assert::assertTrue(File::exists(TestCase::sushiJsonPath()));
+        $fileSize = File::size(TestCase::sushiJsonPath());
         Assert::assertGreaterThan(0, $fileSize);
         // Testa il caricamento dei dati
         $startTime = microtime(true);
-        $rows = $this->sushiModel()->getSushiRows();
+        $rows = TestCase::sushiModel()->getSushiRows();
         $loadTime = microtime(true) - $startTime;
 
         Assert::assertCount(1000, $rows);
         Assert::assertLessThan(2.0, $loadTime);
 
         // Verifica alcuni elementi specifici
-        Assert::assertSame('Large Item 1', $this->jsonRecordAt($rows, '1')['name']);
-        Assert::assertSame('Large Item 500', $this->jsonRecordAt($rows, '500')['name']);
-        Assert::assertSame('Large Item 1000', $this->jsonRecordAt($rows, '1000')['name']);
+        Assert::assertSame('Large Item 1', TestCase::jsonRecordAt($rows, '1')['name']);
+        Assert::assertSame('Large Item 500', TestCase::jsonRecordAt($rows, '500')['name']);
+        Assert::assertSame('Large Item 1000', TestCase::jsonRecordAt($rows, '1000')['name']);
     });
 
     test('handles unicode and special characters', function (): void {
-        /** @var TestCase $this */
         $testData = [
             '1' => [
                 'id' => 1,
@@ -274,21 +265,21 @@ describe('Sushi To Json Trait Integration', function (): void {
             ],
         ];
 
-        $result = $this->sushiModel()->saveToJson($testData);
+        $result = TestCase::sushiModel()->saveToJson($testData);
 
         Assert::assertTrue($result);
         // Verifica che il file sia stato creato
-        Assert::assertTrue(File::exists($this->sushiJsonPath()));
+        Assert::assertTrue(File::exists(TestCase::sushiJsonPath()));
         // Carica i dati e verifica che i caratteri speciali siano preservati
-        $rows = $this->sushiModel()->getSushiRows();
+        $rows = TestCase::sushiModel()->getSushiRows();
 
         Assert::assertArrayHasKey('1', $rows);
         Assert::assertSame('Item con caratteri speciali: à, è, ì, ò, ù', TestCase::sushiRowById($rows, 1)['name']);
         Assert::assertSame('Descrizione con emoji 🚀 e simboli €$£¥', TestCase::sushiRowById($rows, 1)['description']);
-        $row = $this->jsonRecordAt($rows, '1');
+        $row = TestCase::jsonRecordAt($rows, '1');
         $metadataValue = $row['metadata'] ?? null;
         if (is_string($metadataValue)) {
-            $metadata = $this->decodeJsonString($metadataValue);
+            $metadata = TestCase::decodeJsonString($metadataValue);
         } else {
             Assert::assertIsArray($metadataValue);
             /** @var array<string, mixed> $metadata */
@@ -301,7 +292,6 @@ describe('Sushi To Json Trait Integration', function (): void {
     });
 
     test('handles empty and null values', function (): void {
-        /** @var TestCase $this */
         $testData = [
             '1' => [
                 'id' => 1,
@@ -319,11 +309,11 @@ describe('Sushi To Json Trait Integration', function (): void {
             ],
         ];
 
-        $result = $this->sushiModel()->saveToJson($testData);
+        $result = TestCase::sushiModel()->saveToJson($testData);
 
         Assert::assertTrue($result);
         // Carica i dati e verifica che i valori vuoti e null siano gestiti correttamente
-        $rows = $this->sushiModel()->getSushiRows();
+        $rows = TestCase::sushiModel()->getSushiRows();
 
         Assert::assertArrayHasKey('1', $rows);
         Assert::assertArrayHasKey('2', $rows);
@@ -339,17 +329,16 @@ describe('Sushi To Json Trait Integration', function (): void {
     });
 
     test('works with different tenant configurations', function (): void {
-        /** @var TestCase $this */
         // Crea un secondo tenant per testare l'isolamento
         $createdSecondTenant = TenantFactory::new()->createOne([
             'name' => 'second-tenant',
             'domain' => 'second.example.com',
         ]);
         Assert::assertInstanceOf(Tenant::class, $createdSecondTenant);
-        $this->secondTenant = $createdSecondTenant;
+        TestCase::$secondTenant = $createdSecondTenant;
 
         // Imposta il secondo tenant come corrente
-        $this->setCurrentTenant($this->secondTenantModel());
+        TestCase::setCurrentTenant(TestCase::secondTenantModel());
 
         $secondModel = new TestSushiModel();
         $secondJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
@@ -358,16 +347,16 @@ describe('Sushi To Json Trait Integration', function (): void {
             '1' => [
                 'id' => 1,
                 'name' => 'Second Tenant Item',
-                'tenant_id' => $this->secondTenantModel()->id,
+                'tenant_id' => TestCase::secondTenantModel()->id,
             ],
         ];
 
         $result = $secondModel->saveToJson($testData);
 
         Assert::assertTrue($result);
-        Assert::assertNotSame($this->sushiJsonPath(), $secondJsonPath);
+        Assert::assertNotSame(TestCase::sushiJsonPath(), $secondJsonPath);
         // Verifica che i file siano separati
-        Assert::assertFalse(File::exists($this->sushiJsonPath()));
+        Assert::assertFalse(File::exists(TestCase::sushiJsonPath()));
         Assert::assertTrue(File::exists($secondJsonPath));
 
         // Pulisce il secondo tenant

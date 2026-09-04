@@ -7,6 +7,7 @@ namespace Modules\Tenant\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
+use Modules\User\Models\User;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
@@ -21,14 +22,32 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property float|null $billing_amount
  * @property Carbon|null $next_billing_date
  * @property Carbon|null $expires_at
- * @property-read ProfileContract|null $creator
+ * @property-read User|null $creator
  * @property-read Tenant|null $tenant
- * @property-read ProfileContract|null $updater
- *
+ * @property-read User|null $updater
+ * @property-read ProfileContract|null $deleter
  * @method static Builder<static>|TenantSubscription newModelQuery()
  * @method static Builder<static>|TenantSubscription newQuery()
  * @method static Builder<static>|TenantSubscription query()
- *
+ * @method static Builder<static>|TenantSubscription whereBillingCycle($value)
+ * @method static Builder<static>|TenantSubscription whereCreatedAt($value)
+ * @method static Builder<static>|TenantSubscription whereCreatedBy($value)
+ * @method static Builder<static>|TenantSubscription whereCurrentStorageGb($value)
+ * @method static Builder<static>|TenantSubscription whereCurrentUsers($value)
+ * @method static Builder<static>|TenantSubscription whereDeletedAt($value)
+ * @method static Builder<static>|TenantSubscription whereDeletedBy($value)
+ * @method static Builder<static>|TenantSubscription whereExpiresAt($value)
+ * @method static Builder<static>|TenantSubscription whereId($value)
+ * @method static Builder<static>|TenantSubscription whereMaxStorageGb($value)
+ * @method static Builder<static>|TenantSubscription whereMaxUsers($value)
+ * @method static Builder<static>|TenantSubscription whereNextBillingDate($value)
+ * @method static Builder<static>|TenantSubscription wherePlanName($value)
+ * @method static Builder<static>|TenantSubscription whereStatus($value)
+ * @method static Builder<static>|TenantSubscription whereTenantId($value)
+ * @method static Builder<static>|TenantSubscription whereUpdatedAt($value)
+ * @method static Builder<static>|TenantSubscription whereUpdatedBy($value)
+ * @method static Builder<static>|TenantSubscription whereUpdatedAt($value)
+ * @method static Builder<static>|TenantSubscription whereUpdatedBy($value)
  * @mixin \Eloquent
  */
 class TenantSubscription extends BaseModel
