@@ -57,7 +57,7 @@ Inventory, Job, Lang, Media, Notify, Platform, Production, PublicProcurement, Qu
 Rating, Seo, Signature, Tenant, TimberBilling, UI, User, Vehicle, WhatsApp, WorkOrder,
 Xot`) — chiaramente un leftover copiato da un template/demo generico multi-verticale
 (barbershop, real estate, booking, food, forum, shop, ticket) usato come base per altri
-progetti `base_*_fila5` sulla stessa macchina.
+progetti `<nome repository>` sulla stessa macchina.
 
 **Perché non è stato notato prima in questa sessione**: l'audit precedente nella stessa
 sessione era scoped esclusivamente a `Modules/{Name}/config/config.php` (metadati pannello

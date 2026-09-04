@@ -11,7 +11,6 @@ use Modules\Tenant\Models\BaseModelJsons;
  */
 final class SushiToJsonsCoverageModel extends BaseModelJsons
 {
-
     protected $table = 'sushi_jsons_coverage';
 
     /** @var array<string, string>|string */

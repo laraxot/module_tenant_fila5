@@ -6,33 +6,38 @@ namespace Modules\Tenant\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Modules\Tenant\Database\Factories\TenantSettingFactory;
-use Modules\Xot\Contracts\ProfileContract;
+use Modules\User\Models\User;
 
 /**
- * @property int|null $id
  * @property string|null $tenant_id
  * @property string|null $key
- * @property string|null $value
+ * @property mixed $value
  * @property string|null $type
- *
- * @method static Builder|TenantSetting newModelQuery()
- * @method static Builder|TenantSetting newQuery()
- * @method static Builder|TenantSetting query()
- * @method static Builder|TenantSetting whereId($value)
- * @method static Builder|TenantSetting whereTenantId($value)
- * @method static Builder|TenantSetting whereKey($value)
- * @method static Builder|TenantSetting whereValue($value)
- * @method static Builder|TenantSetting whereType($value)
- *
- * @property ProfileContract|null $creator
- * @property ProfileContract|null $updater
- * @property ProfileContract|null $deleter
- *
- * @method static TenantSettingFactory factory($count = null, $state = [])
- *
+ * @property-read User|null $creator
  * @property-read Tenant|null $tenant
- *
+ * @property-read User|null $updater
+ * @method static Builder<static>|TenantSetting newModelQuery()
+ * @method static Builder<static>|TenantSetting newQuery()
+ * @method static Builder<static>|TenantSetting query()
+ * @property string $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property string|null $deleted_by
+ * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ * @method static Builder<static>|TenantSetting whereCreatedAt($value)
+ * @method static Builder<static>|TenantSetting whereCreatedBy($value)
+ * @method static Builder<static>|TenantSetting whereDeletedAt($value)
+ * @method static Builder<static>|TenantSetting whereDeletedBy($value)
+ * @method static Builder<static>|TenantSetting whereId($value)
+ * @method static Builder<static>|TenantSetting whereKey($value)
+ * @method static Builder<static>|TenantSetting whereTenantId($value)
+ * @method static Builder<static>|TenantSetting whereType($value)
+ * @method static Builder<static>|TenantSetting whereUpdatedAt($value)
+ * @method static Builder<static>|TenantSetting whereUpdatedBy($value)
+ * @method static Builder<static>|TenantSetting whereValue($value)
  * @mixin \Eloquent
  */
 class TenantSetting extends BaseModel
