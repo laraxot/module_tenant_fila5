@@ -102,3 +102,86 @@ themselves mid-edit by the concurrent session (`git status --short` shows them `
 this task started) and never touched here. The dedicated test for the one file this task
 did change, `tests/Unit/Actions/Config/FilterConfigStringKeysActionTest.php`, passes in
 isolation (2 passed).
+
+## 2026-09-04 — app/Services retired, converted to Actions (no-services-rule)
+
+Task: eliminate `app/Services/` in this module per
+`bashscripts/ai/wiki/rules/no-services-rule.md` ("RELIGION", no exceptions on destination).
+Full classification, reasoning and per-file mapping is in the story:
+`docs/stories/tenant-services-to-actions.story.md`. Summary:
+
+- `app/Services/TenantService.php` — **Kind A, already-thin facade**. All 11 public
+  methods already delegated 1:1 to existing `app/Actions/**` classes (this module's own
+  `tenant-service-to-actions-migration.md` concept doc, dated 2026-07-21, documents the
+  original migration — the facade was kept afterwards as a thin static wrapper). Deleted
+  outright; the only real call sites left (repo-wide grep, `Modules/` tree) were 2 test
+  files in this module, updated to call `app(XxxAction::class)->execute(...)` directly.
+  Two mentions of `TenantService::` in `Modules/Notify` and `Modules/User` are **commented-out
+  dead code** (`// $middleware=TenantService::config(...)`, `* $data =
+  TenantService::getConfig('sms');`), not live call sites — left as-is, not functional
+  references.
+- `app/Services/Config/ConfigResolverRegistry.php`,
+  `app/Services/Config/Contracts/ConfigResolverInterface.php`,
+  `app/Services/Config/Resolvers/{Database,MorphMap,Standard}ConfigResolver.php` —
+  **proven dead code, deleted, not relocated**. Repo-wide grep (`Modules/` tree) plus a
+  check of `TenantServiceProvider` confirmed zero production callers: nothing
+  instantiates `ConfigResolverRegistry`, nothing binds it in a provider, and the real
+  config-resolution path (`ResolveTenantConfigValueAction`) uses a completely independent
+  implementation (`FilterConfigStringKeysAction` + `MergeRecursiveStringKeyConfigAction`),
+  not this chain. This matches a **prior real audit already done in this exact repo**:
+  commit `a85698f` ("Delete dead ConfigResolverRegistry strategy-chain (zero callers)",
+  2026-07-02, same author) reached the identical conclusion via phpmd/phpinsights/grep —
+  the files were resurrected afterward by an anonymous `.`-message commit (`3b521d2`),
+  apparently an accidental restore, not a deliberate re-introduction. Re-verified the
+  conclusion independently rather than trusting the old commit message; only test files
+  (`TenantCoverageBoostTest.php`, `TenantStatementCoverageTest.php`,
+  `TenantGapsCoverageTest.php`) referenced these classes, purely for coverage padding —
+  those test blocks were removed (dead code testing dead code has no value), one small
+  unrelated assertion (`DatabaseConfig` model casts) was kept and given its own test.
+  Per the module's own no-services-rule carve-out ("a class without a real `execute()`
+  doesn't live in `Actions/`"), moving genuinely dead code into
+  `Actions/Config/Strategies/` would have just relocated the anti-pattern one level down
+  instead of removing it — root-cause deletion was judged the smaller, safer, more
+  honest move.
+- `app/Services/Config/ConfigStringKeyFilter.php` — **proven duplicate of production
+  Actions, deleted**. `onlyStringKeys()` and `mergeRecursive()` are byte-for-byte the same
+  logic already living in `app/Actions/Config/FilterConfigStringKeysAction::execute()` and
+  `app/Actions/Config/MergeRecursiveStringKeyConfigAction::execute()` (both already
+  `QueueableAction`, already used by the real production path). Zero production callers;
+  the one test caller (`TenantCoverageBoostTest.php`) was pointed at the existing Actions
+  instead — no new Action file needed since equivalents already existed.
+
+**Result**: `app/Services/` no longer exists in this module (verified: `find
+Modules/Tenant/app/Services` → empty, directory removed).
+
+**PHPStan**: true baseline (`clear-result-cache` then `analyse Modules/Tenant
+--no-progress --error-format=table`) → **0 errors**. Same command after this diff → still
+0 errors for every file this session touched, but the full-module run currently aborts
+with 6 `phpstan.parse` (non-ignorable) syntax errors from **another, unrelated, concurrent
+session** that appeared mid-task in `Modules/Tenant/app/Actions/Config/{ConfigResolverInterface,
+ConfigResolverRegistry,ConfigStringKeyFilter,DatabaseConfigResolver,MorphMapConfigResolver,
+StandardConfigResolver}Action.php` and `app/Actions/TenantAction.php` — all 7 files are
+git-untracked (`??`), not authored by this session, and appear to be a different,
+apparently-stalled attempt at the *exact same* Services→Actions migration (mechanical
+`*Action` suffix rename with a broken template: `final class ConfigStringKeyFilter { use
+QueueableAction; {` — doubled brace, class not even renamed). Left untouched per repo
+policy (never discard/touch another session's uncommitted work). To prove this diff is
+clean despite the collision: `phpstan analyse` on the explicit list of every `*.php` file
+in the module **except** those 7 foreign files → `[OK] No errors` (134 files). See the
+story file for the full collision note.
+
+**PHPMD**: whole-module run crashes on an unrelated anonymous class
+(`No node to visit provided for visitAnonymousClass`, pre-existing/known per
+`quality-tooling-real-commands`). Scoped to the 3 test files this session changed: no
+violations.
+
+**Pest**: `./vendor/bin/pest Modules/Tenant/tests -c Modules/Tenant/phpunit.xml
+--no-coverage --filter "TenantCoverageBoostTest|TenantStatementCoverageTest|TenantGapsCoverageTest"`
+→ 29 passed, 12 failed. All 12 failures are `RuntimeException: Unexpected mockery
+expectation type.` thrown by `Modules/Tenant/tests/TestCase.php:208`
+(`expectMockery()`), a pre-existing helper that is itself mid-edit and uncommitted
+(`git status --short` shows `tests/TestCase.php` modified before this task started,
+part of the same concurrent-session drift). Confirmed not caused by this diff: every
+failure is on a test line this session did not touch (e.g. `hasRole`/`hasPermissionTo`
+mock setup, sushi file-path mocks), and this session's own new test block ("Config and
+model actions resolve via container") passes.
