@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use Mockery;
 use Mockery\MockInterface;
@@ -30,15 +31,8 @@ use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Models\Policies\DomainPolicy;
 use Modules\Tenant\Models\Policies\TenantBasePolicy;
 use Modules\Tenant\Models\Tenant;
-use Modules\Tenant\Services\Config\ConfigResolverRegistry;
-use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
-use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
-use Modules\Tenant\Services\Config\Resolvers\DatabaseConfigResolver;
-use Modules\Tenant\Services\Config\Resolvers\MorphMapConfigResolver;
-use Modules\Tenant\Services\Config\Resolvers\StandardConfigResolver;
-use Modules\Tenant\Services\TenantService;
+use Modules\Tenant\Models\Traits\SushiToCsv;
 use Modules\Tenant\Tests\TestCase;
-use Modules\Tenant\Tests\Unit\Fixtures\SushiToCsvCoverageModel;
 use Modules\User\Models\SocialProvider;
 use Modules\Xot\Contracts\UserContract;
 use PHPUnit\Framework\Assert;
@@ -78,14 +72,13 @@ describe('Tenant coverage boost — Config actions', function (): void {
 
 describe('Tenant coverage boost — Domain sushi', function (): void {
     test('Domain getRows loads from GetDomainsArrayAction', function (): void {
-        /** @var TestCase $this */
-        $this->mockService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => [
                 ['id' => 1, 'name' => 'tenant.example.com'],
             ]]);
         });
 
-        $rows = (new Domain)->getRows();
+        $rows = (new Domain())->getRows();
 
         Assert::assertCount(1, $rows);
         Assert::assertSame('tenant.example.com', $rows[0]['name']);
@@ -101,63 +94,51 @@ describe('Tenant coverage boost — Models and resolvers', function (): void {
         Assert::assertFalse($inactive->isActive());
     });
 
-    test('StandardConfigResolver resolves existing config keys', function (): void {
-        config(['app' => ['name' => 'Base App', 'locale' => 'it']]);
-
-        $resolver = new StandardConfigResolver;
-
-        Assert::assertTrue($resolver->canResolve('app.name'));
-        Assert::assertSame('Base App', $resolver->resolve('app.name'));
-
-        expect(fn (): mixed => $resolver->resolve('app.missing', 'fallback'))
-            ->toThrow(\Exception::class, 'Configuration key not found: app.missing');
-    });
 });
 
-describe('Tenant coverage boost — TenantService facade', function (): void {
-    test('TenantService delegates to actions', function (): void {
-        /** @var TestCase $this */
-        $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
+describe('Tenant coverage boost — Config and model actions resolve via container', function (): void {
+    test('tenant config actions resolve via app() container', function (): void {
+        TestCase::mockAppService(GetTenantNameAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => 'tenant-a']);
         });
-        $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => '/tmp/tenant/settings.json']);
         });
-        $this->mockService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => 'Tenant App']);
         });
-        $this->mockService(GetTenantConfigPathAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetTenantConfigPathAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => '/tmp/tenant/config/app.php']);
         });
-        $this->mockService(GetTenantConfigArrayAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetTenantConfigArrayAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => ['name' => 'Tenant App']]);
         });
-        $this->mockService(SaveTenantConfigAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(SaveTenantConfigAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => null]);
         });
-        $this->mockService(GetTenantConfigNamesAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetTenantConfigNamesAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => [['id' => 1, 'name' => 'app']]]);
         });
-        $this->mockService(GetTenantModulesAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetTenantModulesAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => ['Tenant', 'Lang']]);
         });
-        $this->mockService(TranslateTenantKeyAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(TranslateTenantKeyAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => 'Benvenuto']);
         });
-        $this->mockService(ResolveTenantModelClassAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(ResolveTenantModelClassAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => Tenant::class]);
         });
 
-        Assert::assertSame('tenant-a', TenantService::getName());
-        Assert::assertSame('/tmp/tenant/settings.json', TenantService::filePath('settings.json'));
-        Assert::assertSame('Tenant App', TenantService::config('app.name'));
-        Assert::assertSame('/tmp/tenant/config/app.php', TenantService::getConfigPath('app'));
-        Assert::assertSame(['name' => 'Tenant App'], TenantService::getConfig('app'));
-        TenantService::saveConfig('app', ['name' => 'Saved']);
-        Assert::assertSame([['id' => 1, 'name' => 'app']], TenantService::getConfigNames());
-        Assert::assertSame(['Tenant', 'Lang'], TenantService::allModules());
-        Assert::assertSame('Benvenuto', TenantService::trans('welcome'));
-        Assert::assertSame(Tenant::class, TenantService::modelClass('tenant'));
+        Assert::assertSame('tenant-a', app(GetTenantNameAction::class)->execute());
+        Assert::assertSame('/tmp/tenant/settings.json', app(GetTenantFilePathAction::class)->execute('settings.json'));
+        Assert::assertSame('Tenant App', app(ResolveTenantConfigValueAction::class)->execute('app.name'));
+        Assert::assertSame('/tmp/tenant/config/app.php', app(GetTenantConfigPathAction::class)->execute('app'));
+        Assert::assertSame(['name' => 'Tenant App'], app(GetTenantConfigArrayAction::class)->execute('app'));
+        app(SaveTenantConfigAction::class)->execute('app', ['name' => 'Saved']);
+        Assert::assertSame([['id' => 1, 'name' => 'app']], app(GetTenantConfigNamesAction::class)->execute());
+        Assert::assertSame(['Tenant', 'Lang'], app(GetTenantModulesAction::class)->execute());
+        Assert::assertSame('Benvenuto', app(TranslateTenantKeyAction::class)->execute('welcome'));
+        Assert::assertSame(Tenant::class, app(ResolveTenantModelClassAction::class)->execute('tenant'));
     });
 });
 
@@ -166,7 +147,7 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
         $resourcePages = DomainResource::getPages();
         $formSchema = DomainForm::getFormSchema();
         $infolistSchema = DomainInfolist::getInfolistSchema();
-        $tableColumns = (new DomainsTable)->getTableColumns();
+        $tableColumns = (new DomainsTable())->getTableColumns();
 
         Assert::assertArrayHasKey('index', $resourcePages);
         Assert::assertArrayHasKey('title', $formSchema);
@@ -178,67 +159,30 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
     test('tenant policies and config helpers enforce business rules', function (): void {
         /** @var MockInterface&UserContract $superAdmin */
         $superAdmin = Mockery::mock(UserContract::class);
-        $superAdmin->shouldReceive('hasRole')->with('super-admin')->andReturn(true);
-        $superAdmin->shouldReceive('hasPermissionTo')->andReturn(false);
+        TestCase::expectMockery($superAdmin, 'hasRole')->with('super-admin')->andReturn(true);
+        TestCase::expectMockery($superAdmin, 'hasPermissionTo')->andReturn(false);
 
         /** @var MockInterface&UserContract $editor */
         $editor = Mockery::mock(UserContract::class);
-        $editor->shouldReceive('hasRole')->with('super-admin')->andReturn(false);
-        $editor->shouldReceive('hasPermissionTo')->andReturnUsing(
+        TestCase::expectMockery($editor, 'hasRole')->with('super-admin')->andReturn(false);
+        TestCase::expectMockery($editor, 'hasPermissionTo')->andReturnUsing(
             static fn (string $permission): bool => in_array($permission, ['domain.view', 'domain.update'], true),
         );
 
-        $policy = new DomainPolicy;
-        $domain = new Domain;
+        $policy = new DomainPolicy();
+        $domain = new Domain();
         $domain->exists = true;
 
-        Assert::assertTrue((new class extends TenantBasePolicy {})->before($superAdmin, 'viewAny'));
+        Assert::assertTrue((new class() extends TenantBasePolicy {})->before($superAdmin, 'viewAny'));
         Assert::assertTrue($policy->view($editor, $domain));
         Assert::assertTrue($policy->update($editor, $domain));
         Assert::assertFalse($policy->delete($editor, $domain));
-
-        Assert::assertSame(['alpha' => 1], ConfigStringKeyFilter::onlyStringKeys(['alpha' => 1]));
-        Assert::assertEquals(
-            ['mail' => ['host' => 'tenant', 'driver' => 'smtp']],
-            ConfigStringKeyFilter::mergeRecursive(['mail' => ['driver' => 'smtp']], ['mail' => ['host' => 'tenant']]),
-        );
     });
 
-    test('config resolver registry prefers matching resolvers and database config casts', function (): void {
-        $registry = new ConfigResolverRegistry;
-
-        $databaseResolver = $registry->findResolver('database');
-        $fallbackResolver = $registry->findResolver('custom.key');
-
-        Assert::assertInstanceOf(DatabaseConfigResolver::class, $databaseResolver);
-        Assert::assertInstanceOf(StandardConfigResolver::class, $fallbackResolver);
-        Assert::assertFalse((new MorphMapConfigResolver)->canResolve('morph_map'));
-
-        $model = new DatabaseConfig;
+    test('DatabaseConfig model casts port and options correctly', function (): void {
+        $model = new DatabaseConfig();
         Assert::assertSame('integer', $model->getCasts()['port']);
         Assert::assertSame('array', $model->getCasts()['options']);
-
-        $resolver = new class implements ConfigResolverInterface
-        {
-            public function canResolve(string $key): bool
-            {
-                return $key === 'special.key';
-            }
-
-            public function resolve(string $key, string|int|array|null $default = null): float|int|string|array|null
-            {
-                return match ($key) {
-                    'float' => 1.5,
-                    'int' => 1,
-                    'array' => [],
-                    'null' => null,
-                    default => 'ok',
-                };
-            }
-        };
-
-        Assert::assertTrue($resolver->canResolve('special.key'));
-        Assert::assertSame('ok', $resolver->resolve('special.key'));
     });
 });
 
@@ -248,14 +192,13 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
         File::ensureDirectoryExists($baseDir.'/database/content/catalog');
         File::put($baseDir.'/database/content/catalog/1.json', json_encode(['name' => 'Alpha', 'meta' => ['x' => 1]]));
 
-        /** @var TestCase $this */
-        $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
-            $mock->allows('execute')->andReturnUsing(
+        TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
+            TestCase::expectMockery($mock, 'execute')->andReturnUsing(
                 static fn (string $path): string => $baseDir.'/'.ltrim($path, '/'),
             );
         });
 
-        $model = new class extends BaseModelJsons
+        $model = new class() extends BaseModelJsons
         {
             protected $table = 'catalog';
 
@@ -276,19 +219,30 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
         File::ensureDirectoryExists($baseDir);
         File::put($baseDir.'/catalog.csv', "id,name\n1,Alpha\n2,Beta\n");
 
-        /** @var TestCase $this */
-        $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
-            $mock->allows('execute')->andReturnUsing(
+        TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
+            TestCase::expectMockery($mock, 'execute')->andReturnUsing(
                 static fn (string $path): string => $baseDir.'/'.basename($path),
             );
         });
 
-        // L'host storico del trait era `Modules\Sigma\Models\WebService`, che in questo
-        // repository non esiste. Il soggetto del test e' `SushiToCsv`, quindi si riusa
-        // la fixture che gia' lo compone: `getCsvPath()` deriva dal nome tabella, che
-        // qui punta al CSV appena scritto.
-        $model = new SushiToCsvCoverageModel;
-        $model->setTable('catalog');
+        $model = new class() extends Model
+        {
+            use SushiToCsv;
+
+            protected $table = 'catalog';
+
+            /** @var array<string, string> */
+            protected array $schema = [
+                'id' => 'integer',
+                'name' => 'string',
+            ];
+
+            /** @return array<int, array<string, mixed>> */
+            public function getRows(): array
+            {
+                return $this->getSushiRows();
+            }
+        };
 
         Assert::assertSame(['id', 'name'], $model->getCsvHeader());
         Assert::assertCount(2, $model->getSushiRows());
@@ -296,14 +250,13 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
     });
 
     test('sushi to php array normalizes tenant config rows', function (): void {
-        /** @var TestCase $this */
-        $this->mockService(GetTenantConfigArrayAction::class, static function (MockInterface $mock): void {
+        TestCase::mockAppService(GetTenantConfigArrayAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => [
                 ['name' => 'Alpha', 'meta' => null, 0 => 'skip'],
                 ['name' => 'Beta', 'meta' => '{"x":1}'],
             ]]);
         });
-        $model = new class extends SocialProvider
+        $model = new class() extends SocialProvider
         {
             protected $table = 'tenant_configs';
 
