@@ -11,7 +11,7 @@ related:
 ---
 # Merge Conflict Files List
 
-This file contains a comprehensive list of files with merge conflict markers (`<` or `<<<< .merge_file`) that need to be resolved.
+This file contains a comprehensive list of files with merge conflict markers (`<<<< HEAD` or `<<<< .merge_file`) that need to be resolved.
 
 ## Total Files Found: 96
 
@@ -43,10 +43,10 @@ This file contains a comprehensive list of files with merge conflict markers (`<
 
 ### Geo Module (5 files)
 - ./laravel/Modules/Geo/resources/js/components/coordinate-picker-styles.js
-- ./laravel/Modules/Geo/docs/wiki/AGENTS.md
+- ./laravel/Modules/Geo/docs/wiki/agents.md
 - ./laravel/Modules/Geo/docs/wiki/index.md
 - ./laravel/Modules/Geo/docs/wiki/log.md
-- ./laravel/Modules/Geo/docs/wiki/AGENTS.md
+- ./laravel/Modules/Geo/docs/wiki/agents.md
 
 ### progetto corrente Module (4 files)
 - ./laravel/Modules/Project/docs/wiki/index.md
@@ -69,7 +69,7 @@ This file contains a comprehensive list of files with merge conflict markers (`<
 - [ ] Update this list as files are resolved
 
 ## Resolution Guidelines:
-1. **Identify the conflict**: Look for `<` or `<<<< .merge_file` markers
+1. **Identify the conflict**: Look for `<<<< HEAD` or `<<<< .merge_file` markers
 2. **Analyze changes**: Compare both versions to understand what each represents
 3. **Choose the correct version**: Based on project context and best practices
 4. **Remove markers**: Delete all conflict markers and keep only the resolved content

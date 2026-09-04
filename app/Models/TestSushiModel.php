@@ -4,25 +4,44 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
-use InvalidArgumentException;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Database\Factories\TestSushiModelFactory;
 use Modules\Tenant\Models\Traits\SushiToJson;
+use Modules\User\Models\User;
 use Modules\Xot\Models\Traits\HasXotFactory;
 
 /**
  * @property int $id
- * @property string $name
- * @property string $description
- * @property string $status
- * @property string $metadata
- * @property int $created_by
- * @property int $updated_by
+ * @property string|null $name
+ * @property string|null $description
+ * @property string|null $status
+ * @property array<array-key, mixed>|null $metadata
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property-read User|null $creator
+ * @property-read User|null $updater
+ * @method static \Modules\Tenant\Database\Factories\TestSushiModelFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereMetadata($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereUpdatedBy($value)
+ * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ * @mixin \Eloquent
  */
 class TestSushiModel extends BaseModel
 {
-    /** @use HasXotFactory<TestSushiModelFactory> */
     use HasXotFactory;
 
     use SushiToJson;
@@ -65,13 +84,7 @@ class TestSushiModel extends BaseModel
         }
 
         // fallback: usa il comportamento del trait (replicato qui)
-        $tbl = $this->getTable();
-        $filePath = app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
-        if (! is_string($filePath)) {
-            throw new InvalidArgumentException('File path must be string');
-        }
-
-        return $filePath;
+        return app(GetTenantFilePathAction::class)->execute('database/content/'.$this->getTable().'.json');
     }
 
     /**

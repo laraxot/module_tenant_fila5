@@ -13,7 +13,7 @@ uses(TestCase::class);
 
 function makeTenantTestBaseModel(): BaseModel
 {
-    return new class extends BaseModel
+    return new class() extends BaseModel
     {
         protected $table = 'test_tenant_table';
     };

@@ -19,8 +19,8 @@ related:
 
 In `docs/code-quality-improvement-report.md` un conflitto Git aveva:
 
-- HEAD → `laraxot/base_ptvx_fila5`
-- other → `laraxot/base_workorder_fila5`
+- HEAD → `laraxot/<nome repository>`
+- other → `laraxot/<nome repository>`
 
 **Entrambi errati.** Il remote del modulo è:
 

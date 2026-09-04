@@ -18,11 +18,10 @@ class DomainResource extends XotBaseResource
     protected static ?string $model = Domain::class;
 
     /**
-     * Schema legacy del form: la sorgente di verità è DomainForm::getFormSchema().
-     *
-     * @return array<string, \Filament\Schemas\Components\Component>
+     * @return array<string, mixed>
      */
-    public static function getFormSchemaOld(): array
+    #[Override]
+    public static function getFormSchema(): array
     {
         return [
             'title' => TextInput::make('title')

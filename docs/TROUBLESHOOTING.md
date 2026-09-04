@@ -484,4 +484,4 @@ php artisan migrate --database=tenant_123
 
 ---
 
-Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Patterns](PATTERNS.md)
+Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](PATTERNS.md)
