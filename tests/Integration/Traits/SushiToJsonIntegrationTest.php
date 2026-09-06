@@ -30,7 +30,7 @@ beforeEach(function (): void {
         $this->skipTest('DB `tenant` non raggiungibile: blocco di ambiente.');
     }
 
-    $this->tenant = TestCase::createTenant([
+    TestCase::$tenant = TestCase::createTenant([
         'name' => 'test-tenant',
         'domain' => 'test.example.com',
     ]);
