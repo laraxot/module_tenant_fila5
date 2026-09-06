@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Testing\PendingCommand;
 use Mockery;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
@@ -52,7 +53,7 @@ use ReflectionMethod;
 
 use function Safe\putenv;
 
-uses(TestCase::class);
+uses(\Modules\Tenant\Tests\TestCase::class);
 
 afterEach(function (): void {
     Mockery::close();
