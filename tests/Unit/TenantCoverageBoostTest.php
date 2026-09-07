@@ -163,7 +163,7 @@ describe('Tenant coverage boost — TenantService facade', function (): void {
 describe('Tenant coverage boost — Filament and policy surface', function (): void {
     test('domain resource schemas and tables are executable', function (): void {
         $resourcePages = DomainResource::getPages();
-        $formSchema = DomainForm::getFormSchema();
+        $formSchema = app(DomainForm::class)->getFormSchema();
         $infolistSchema = DomainInfolist::getInfolistSchema();
         $tableColumns = (new DomainsTable)->getTableColumns();
 
