@@ -164,7 +164,7 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
     test('domain resource schemas and tables are executable', function (): void {
         $resourcePages = DomainResource::getPages();
         $formSchema = app(DomainForm::class)->getFormSchema();
-        $infolistSchema = DomainInfolist::getInfolistSchema();
+        $infolistSchema = app(DomainInfolist::class)->getInfolistSchema();
         $tableColumns = (new DomainsTable)->getTableColumns();
 
         Assert::assertArrayHasKey('index', $resourcePages);
