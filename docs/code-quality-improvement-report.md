@@ -7,7 +7,7 @@ created: 2026-07-17
 updated: 2026-07-27
 qmd: "code quality baseline PHPStan Pest strict types Laraxot Tenant git remote module_tenant"
 story: STORY-001
-# GRAVE: issue/discussion del MODULO — mai base_project / base_workorder / mono.
+# GRAVE: issue/discussion del MODULO — mai base_project / base_<nome progetto> / mono.
 # Resolve: cd laravel/Modules/Tenant && git remote -v → laraxot/module_tenant_fila5
 issues: []
 discussions: []

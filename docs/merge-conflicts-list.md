@@ -37,7 +37,7 @@ Elenco dei file trovati contenenti marker di merge (<<<<<<<, >>>>>>>, .merge_fil
 - laravel/Modules/Xot/docs/phpstan-fixes.md
 - laravel/Modules/Project/resources/views/filament/widgets/ticket-create-wizard.blade.php
 - laravel/Modules/Xot/docs/phpstan-audit.md
-- laravel/Modules/Xot/docs/filament-4-laraxot-e5a872.md
+- laravel/Modules/Xot/docs/Filament-5-laraxot-e5a872.md
 - laravel/Modules/Xot/docs/mcp-database-tools.md
 - laravel/Modules/Xot/docs/laraxot.md
 - laravel/Modules/Xot/docs/comprehensive-code.md

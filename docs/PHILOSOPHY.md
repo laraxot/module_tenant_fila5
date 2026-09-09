@@ -139,7 +139,7 @@ Tenant B  →  Database B (isolated host/file)
 Tenant C  →  Database C (isolated host/file)
 ```
 
-**Chosen for FixCity because:**
+**Chosen for <nome progetto> because:**
 - Maximum isolation (regulatory compliance for healthcare data)
 - Compliance with data residency laws
 - Independent backup/restore per tenant
@@ -177,7 +177,7 @@ We reject RLS because it requires **discipline and code review on every single q
 
 ```
 ┌─ config/app.php (global default)
-│  └─ name: 'FixCity'
+│  └─ name: '<nome progetto>'
 │     locale: 'en'
 │     timezone: 'UTC'
 │
@@ -341,7 +341,7 @@ Does your Tenant implementation embody zen? Check:
 
 ### Already Included (We Don't Use These)
 
-The FixCity stack **explicitly does NOT use**:
+The <nome progetto> stack **explicitly does NOT use**:
 
 - ❌ **`stancil/tenancy`** - Too opinionated, assumes shared database
 - ❌ **`spatie/laravel-tenancy`** - Excellent but adds abstractions we don't need
@@ -877,14 +877,14 @@ Domain::create(['name' => 'new.com']);  // ← Where does this go?
 // ✅ Step 1: Create tenant record
 $tenant = Tenant::create([
     'name' => 'ACME Corporation',
-    'domain' => 'acme.fixcity.local',
+    'domain' => 'acme.<nome progetto>.local',
     'slug' => 'acme',
     'email' => 'admin@acme.com',
     'is_active' => true,
 ]);
 
 // ✅ Step 2: Create database (if using separate DB strategy)
-$dbName = "fixcity_acme_{$tenant->id}";
+$dbName = "<nome progetto>_acme_{$tenant->id}";
 DB::statement("CREATE DATABASE `{$dbName}` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
 
 // ✅ Step 3: Run migrations for tenant
@@ -1021,7 +1021,7 @@ return [
         'default' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
-            'database' => env('DB_DATABASE', 'fixcity_system'),
+            'database' => env('DB_DATABASE', '<nome progetto>_system'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD'),
         ],
@@ -1030,7 +1030,7 @@ return [
         'tenant' => [
             'driver' => 'mysql',
             'host' => env('TENANT_DB_HOST', 'localhost'),
-            'database' => env('TENANT_DB_NAME', 'fixcity_tenant'),
+            'database' => env('TENANT_DB_NAME', '<nome progetto>_tenant'),
             'username' => env('TENANT_DB_USERNAME', 'root'),
             'password' => env('TENANT_DB_PASSWORD'),
         ],
@@ -1106,12 +1106,12 @@ class Tenant extends Model {
 ```env
 # .env
 DB_HOST=localhost
-DB_DATABASE=fixcity_system
+DB_DATABASE=<nome progetto>_system
 DB_USERNAME=root
 DB_PASSWORD=secret
 
 TENANT_DB_HOST=localhost
-TENANT_DB_NAME=fixcity_tenant  # Placeholder, actual DB per tenant
+TENANT_DB_NAME=<nome progetto>_tenant  # Placeholder, actual DB per tenant
 TENANT_DB_USERNAME=root
 TENANT_DB_PASSWORD=secret
 
@@ -1127,7 +1127,7 @@ protected function setUp(): void {
     parent::setUp();
     
     // Create separate testing database for tenant data
-    config(['database.connections.tenant.database' => 'fixcity_test_tenant']);
+    config(['database.connections.tenant.database' => '<nome progetto>_test_tenant']);
     
     // Run migrations on both databases
     $this->artisan('migrate', [
@@ -1323,5 +1323,5 @@ That is the **Zen** of multi-tenancy.
 
 **Status:** Production-Ready Foundation  
 **Last Updated:** September 2026  
-**Maintainer:** FixCity Engineering Team  
+**Maintainer:** <nome progetto> Engineering Team  
 **Version:** 2.0

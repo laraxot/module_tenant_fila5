@@ -32,7 +32,7 @@ Indice operativo del wiki Tenant.
 - [lowercase-tests-directory](./concepts/lowercase-tests-directory.md): solo `tests/`, mai `Tests/`.
 - [lowercase-database-factories-directory](./concepts/lowercase-database-factories-directory.md): solo `database/factories|seeders|migrations` minuscolo; mai `Factories_/`.
 - [services-to-queueable-actions](./concepts/no-app-support-queueable-actions.md): mapping completo `TenantService` → `app(...)->execute()` e regola no injection tra Actions.
-- [tenant-module-status-registry](../tenant-module-status-registry.md) — registry `modules_statuses.json` per overlay tenant (`config/local/workorder/`)
+- [tenant-module-status-registry](../tenant-module-status-registry.md) — registry `modules_statuses.json` per overlay tenant (`config/local/<nome progetto>/`)
 - [runtime-config-religion-hub](../../../../Themes/docs/shared-components/runtime-config-religion-hub.md) — hub cross-modulo (permission, config.php, statuses)
 
 ## Scopo Tenant Module
@@ -60,7 +60,7 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 
 - NON creare Service classes - usare Actions (vedi [actions-over-services-governance](https://github.com/laraxot/platform/blob/main/.opencode/skills/actions-over-services-governance/SKILL.md))
 - NON usare `dehydrated(false)` nei trait - blocca salvataggio (vedi Geo CoordinatePicker fix)
-- NON confondere `modules_statuses.json` root con overlay tenant — per workorder vale `config/local/workorder/modules_statuses.json` (vedi [tenant-module-status-registry](../tenant-module-status-registry.md))
+- NON confondere `modules_statuses.json` root con overlay tenant — per <nome progetto> vale `config/local/<nome progetto>/modules_statuses.json` (vedi [tenant-module-status-registry](../tenant-module-status-registry.md))
 
 ## False Friends
 

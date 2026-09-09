@@ -23,7 +23,7 @@ Il modulo Tenant gestisce la multi-tenancy dell'applicazione in modo completo e 
 
 Il meccanismo attivo è la configurazione per host, non l'isolamento a database:
 `app/Actions/GetTenantNameAction.php:23` traduce `SERVER_NAME` in una cartella sotto
-`config/` (`ptvx.local` → `config/local/ptvx/`, 22 file), e
+`config/` (`<tenant>.local` → `config/local/<tenant>/`), e
 `app/Providers/TenantServiceProvider.php:61` riscrive `config('database')`
 sintetizzando una connection per ogni modulo installato — le connection `xot` e
 `tenant`, su cui poggiano `XotBaseModel` e `Tenant\Models\BaseModel`, **non esistono

@@ -28,17 +28,17 @@ per l'applicazione: niente rotte, niente migrazioni, niente Eloquent.
 
 ## 2. Tenant-scoped — `config/{tenant}/modules_statuses.json`
 
-Risolto dinamicamente per hostname. Per workorder, `config/local/workorder/modules.php` **sovrascrive** anche l’activator nwidart:
+Risolto dinamicamente per hostname. Per <nome progetto>, `config/local/<nome progetto>/modules.php` **sovrascrive** anche l’activator nwidart:
 
 ```php
-'statuses-file' => base_path('config/local/workorder/modules_statuses.json'),
+'statuses-file' => base_path('config/local/<nome progetto>/modules_statuses.json'),
 ```
 
 Catena navigazione:
 
 ```
 GetTenantNameAction::execute()
-  → reversed hostname (es. workorder.local → local/workorder)
+  → reversed hostname (es. <nome progetto>.local → local/<nome progetto>)
 GetTenantFilePathAction::execute('modules_statuses.json')
   → config_path("{tenant}/modules_statuses.json")
 GetTenantModulesAction::execute()
@@ -53,7 +53,7 @@ menu solo perché manca da questo file, senza nessun errore o eccezione.
 
 ## Incidente reale (2026-07-27)
 
-`config/local/workorder/modules_statuses.json` conteneva moduli di un progetto
+`config/local/<nome progetto>/modules_statuses.json` conteneva moduli di un progetto
 completamente diverso (`modulo questionari`, `BarberShop`, `RealEstate`, `Food`, `Forum`,
 `Shop`, `Ticket`, `Limesurvey`, …) — nessuno esistente in `Modules/` di questo
 progetto — più `Blog`/`Comment`/`TestModule` mai ripuliti dopo la loro rimozione.
@@ -69,11 +69,11 @@ compariva nel menu admin.
 # Devono restituire lo stesso insieme di nomi (a meno di moduli col solo
 # ServiceProvider abilitato ma navigazione volutamente nascosta):
 diff <(php -r 'echo implode("\n", array_keys(json_decode(file_get_contents("modules_statuses.json"), true)));' | sort) \
-     <(php -r 'echo implode("\n", array_keys(json_decode(file_get_contents("config/local/workorder/modules_statuses.json"), true)));' | sort)
+     <(php -r 'echo implode("\n", array_keys(json_decode(file_get_contents("config/local/<nome progetto>/modules_statuses.json"), true)));' | sort)
 ```
 
 Quando si aggiunge o rimuove un modulo, aggiornare **entrambi** i file JSON (root e tenant) — non solo quello root.
 
-Rigenerazione: `bash bashscripts/tools/sync-tenant-modules-statuses.sh local/workorder`
+Rigenerazione: `bash bashscripts/tools/sync-tenant-modules-statuses.sh local/<nome progetto>`
 
 Riferimenti: [session-learnings-modules-config.md](../../session-learnings-modules-config.md) · [Themes/tenant-modules-navigation-discipline.md](../../../../Themes/docs/tenant-modules-navigation-discipline.md)
