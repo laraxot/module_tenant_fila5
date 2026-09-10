@@ -26,7 +26,7 @@ use Modules\User\Models\User;
  * @property string|null $created_by
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property string|null $deleted_by
- * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $deleter
  * @method static Builder<static>|TenantSetting whereCreatedAt($value)
  * @method static Builder<static>|TenantSetting whereCreatedBy($value)
  * @method static Builder<static>|TenantSetting whereDeletedAt($value)

@@ -26,7 +26,7 @@ use Sushi\Sushi;
  * @method static Builder<static>|TenantDomain query()
  * @method static Builder<static>|TenantDomain whereId($value)
  * @method static Builder<static>|TenantDomain whereName($value)
- * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $deleter
  * @mixin \Eloquent
  */
 class TenantDomain extends BaseModel

@@ -31,7 +31,7 @@ use Modules\User\Models\User;
  * @property string|null $created_by
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property string|null $deleted_by
- * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $deleter
  * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConfig whereCharset($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConfig whereCollation($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConfig whereCreatedAt($value)

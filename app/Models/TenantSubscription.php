@@ -34,7 +34,7 @@ use Modules\User\Models\User;
  * @property string|null $created_by
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
- * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $deleter
  * @method static Builder<static>|TenantSubscription whereBillingAmount($value)
  * @method static Builder<static>|TenantSubscription whereBillingCycle($value)
  * @method static Builder<static>|TenantSubscription whereCreatedAt($value)
