@@ -7,7 +7,6 @@ namespace Modules\Tenant\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
-use Modules\User\Models\User;
 use Sushi\Sushi;
 
 /**
@@ -19,14 +18,13 @@ use Sushi\Sushi;
  * @property string|null $status
  * @property string|null $verification_token
  * @property Carbon|null $verified_at
- * @property-read User|null $creator
- * @property-read User|null $updater
+ *
  * @method static Builder<static>|TenantDomain newModelQuery()
  * @method static Builder<static>|TenantDomain newQuery()
  * @method static Builder<static>|TenantDomain query()
  * @method static Builder<static>|TenantDomain whereId($value)
  * @method static Builder<static>|TenantDomain whereName($value)
- * @property-read \Modules\Xot\Contracts\ProfileContract|null $deleter
+ *
  * @mixin \Eloquent
  */
 class TenantDomain extends BaseModel

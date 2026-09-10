@@ -32,6 +32,13 @@ use Modules\Tenant\Models\Policies\DomainPolicy;
 use Modules\Tenant\Models\Policies\TenantBasePolicy;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\Traits\SushiToCsv;
+use Modules\Tenant\Services\Config\ConfigResolverRegistry;
+use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
+use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
+use Modules\Tenant\Services\Config\Resolvers\DatabaseConfigResolver;
+use Modules\Tenant\Services\Config\Resolvers\MorphMapConfigResolver;
+use Modules\Tenant\Services\Config\Resolvers\StandardConfigResolver;
+use Modules\Tenant\Services\TenantService;
 use Modules\Tenant\Tests\TestCase;
 use Modules\User\Models\SocialProvider;
 use Modules\Xot\Contracts\UserContract;
@@ -39,7 +46,7 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
-uses(TestCase::class);
+uses(\Modules\Tenant\Tests\TestCase::class);
 
 afterEach(function (): void {
     Mockery::close();
@@ -94,10 +101,21 @@ describe('Tenant coverage boost — Models and resolvers', function (): void {
         Assert::assertFalse($inactive->isActive());
     });
 
+    test('StandardConfigResolver resolves existing config keys', function (): void {
+        config(['app' => ['name' => 'Base App', 'locale' => 'it']]);
+
+        $resolver = new StandardConfigResolver();
+
+        Assert::assertTrue($resolver->canResolve('app.name'));
+        Assert::assertSame('Base App', $resolver->resolve('app.name'));
+
+        expect(fn (): mixed => $resolver->resolve('app.missing', 'fallback'))
+            ->toThrow(\Exception::class, 'Configuration key not found: app.missing');
+    });
 });
 
-describe('Tenant coverage boost — Config and model actions resolve via container', function (): void {
-    test('tenant config actions resolve via app() container', function (): void {
+describe('Tenant coverage boost — TenantService facade', function (): void {
+    test('TenantService delegates to actions', function (): void {
         TestCase::mockAppService(GetTenantNameAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => 'tenant-a']);
         });
@@ -129,24 +147,24 @@ describe('Tenant coverage boost — Config and model actions resolve via contain
             $mock->allows(['execute' => Tenant::class]);
         });
 
-        Assert::assertSame('tenant-a', app(GetTenantNameAction::class)->execute());
-        Assert::assertSame('/tmp/tenant/settings.json', app(GetTenantFilePathAction::class)->execute('settings.json'));
-        Assert::assertSame('Tenant App', app(ResolveTenantConfigValueAction::class)->execute('app.name'));
-        Assert::assertSame('/tmp/tenant/config/app.php', app(GetTenantConfigPathAction::class)->execute('app'));
-        Assert::assertSame(['name' => 'Tenant App'], app(GetTenantConfigArrayAction::class)->execute('app'));
-        app(SaveTenantConfigAction::class)->execute('app', ['name' => 'Saved']);
-        Assert::assertSame([['id' => 1, 'name' => 'app']], app(GetTenantConfigNamesAction::class)->execute());
-        Assert::assertSame(['Tenant', 'Lang'], app(GetTenantModulesAction::class)->execute());
-        Assert::assertSame('Benvenuto', app(TranslateTenantKeyAction::class)->execute('welcome'));
-        Assert::assertSame(Tenant::class, app(ResolveTenantModelClassAction::class)->execute('tenant'));
+        Assert::assertSame('tenant-a', TenantService::getName());
+        Assert::assertSame('/tmp/tenant/settings.json', TenantService::filePath('settings.json'));
+        Assert::assertSame('Tenant App', TenantService::config('app.name'));
+        Assert::assertSame('/tmp/tenant/config/app.php', TenantService::getConfigPath('app'));
+        Assert::assertSame(['name' => 'Tenant App'], TenantService::getConfig('app'));
+        TenantService::saveConfig('app', ['name' => 'Saved']);
+        Assert::assertSame([['id' => 1, 'name' => 'app']], TenantService::getConfigNames());
+        Assert::assertSame(['Tenant', 'Lang'], TenantService::allModules());
+        Assert::assertSame('Benvenuto', TenantService::trans('welcome'));
+        Assert::assertSame(Tenant::class, TenantService::modelClass('tenant'));
     });
 });
 
 describe('Tenant coverage boost — Filament and policy surface', function (): void {
     test('domain resource schemas and tables are executable', function (): void {
         $resourcePages = DomainResource::getPages();
-        $formSchema = DomainForm::getFormSchema();
-        $infolistSchema = DomainInfolist::getInfolistSchema();
+        $formSchema = app(DomainForm::class)->getFormSchema();
+        $infolistSchema = app(DomainInfolist::class)->getInfolistSchema();
         $tableColumns = (new DomainsTable())->getTableColumns();
 
         Assert::assertArrayHasKey('index', $resourcePages);
@@ -177,12 +195,49 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
         Assert::assertTrue($policy->view($editor, $domain));
         Assert::assertTrue($policy->update($editor, $domain));
         Assert::assertFalse($policy->delete($editor, $domain));
+
+        Assert::assertSame(['alpha' => 1], ConfigStringKeyFilter::onlyStringKeys(['alpha' => 1]));
+        Assert::assertEquals(
+            ['mail' => ['host' => 'tenant', 'driver' => 'smtp']],
+            ConfigStringKeyFilter::mergeRecursive(['mail' => ['driver' => 'smtp']], ['mail' => ['host' => 'tenant']]),
+        );
     });
 
-    test('DatabaseConfig model casts port and options correctly', function (): void {
+    test('config resolver registry prefers matching resolvers and database config casts', function (): void {
+        $registry = new ConfigResolverRegistry();
+
+        $databaseResolver = $registry->findResolver('database');
+        $fallbackResolver = $registry->findResolver('custom.key');
+
+        Assert::assertInstanceOf(DatabaseConfigResolver::class, $databaseResolver);
+        Assert::assertInstanceOf(StandardConfigResolver::class, $fallbackResolver);
+        Assert::assertFalse((new MorphMapConfigResolver())->canResolve('morph_map'));
+
         $model = new DatabaseConfig();
         Assert::assertSame('integer', $model->getCasts()['port']);
         Assert::assertSame('array', $model->getCasts()['options']);
+
+        $resolver = new class() implements ConfigResolverInterface
+        {
+            public function canResolve(string $key): bool
+            {
+                return $key === 'special.key';
+            }
+
+            public function resolve(string $key, string|int|array|null $default = null): float|int|string|array|null
+            {
+                return match ($key) {
+                    'float' => 1.5,
+                    'int' => 1,
+                    'array' => [],
+                    'null' => null,
+                    default => 'ok',
+                };
+            }
+        };
+
+        Assert::assertTrue($resolver->canResolve('special.key'));
+        Assert::assertSame('ok', $resolver->resolve('special.key'));
     });
 });
 

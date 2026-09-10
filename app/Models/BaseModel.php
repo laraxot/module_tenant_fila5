@@ -10,8 +10,8 @@ use Modules\Xot\Models\XotBaseModel;
 /**
  * Class BaseModel.
  *
- * @property \Modules\Xot\Contracts\ProfileContract|null $creator
- * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
  */
 abstract class BaseModel extends XotBaseModel
 {
