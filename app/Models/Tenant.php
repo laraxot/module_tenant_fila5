@@ -44,7 +44,7 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @method static Builder<static>|Tenant newModelQuery()
  * @method static Builder<static>|Tenant newQuery()
  * @method static Builder<static>|Tenant query()
- * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $deleter
  * @mixin \Eloquent
  */
 class Tenant extends BaseModel

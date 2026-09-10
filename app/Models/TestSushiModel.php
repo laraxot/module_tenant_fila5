@@ -37,7 +37,7 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereUpdatedBy($value)
- * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $deleter
  * @mixin \Eloquent
  */
 class TestSushiModel extends BaseModel

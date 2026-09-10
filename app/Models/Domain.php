@@ -22,7 +22,7 @@ use Sushi\Sushi;
  * @method static Builder<static>|Domain query()
  * @method static Builder<static>|Domain whereId($value)
  * @method static Builder<static>|Domain whereName($value)
- * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $deleter
  * @mixin \Eloquent
  */
 class Domain extends BaseModel
