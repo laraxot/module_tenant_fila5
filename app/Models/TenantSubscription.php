@@ -1,0 +1,85 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\Tenant\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
+use Modules\User\Models\User;
+use Modules\Xot\Contracts\ProfileContract;
+
+/**
+ * @property string|null $tenant_id
+ * @property string|null $plan_name
+ * @property string|null $status
+ * @property int|null $max_users
+ * @property int|null $current_users
+ * @property int|null $max_storage_gb
+ * @property int|null $current_storage_gb
+ * @property string|null $billing_cycle
+ * @property float|null $billing_amount
+ * @property Carbon|null $next_billing_date
+ * @property Carbon|null $expires_at
+ * @property-read User|null $creator
+ * @property-read Tenant|null $tenant
+ * @property-read User|null $updater
+ * @property-read ProfileContract|null $deleter
+ * @method static Builder<static>|TenantSubscription newModelQuery()
+ * @method static Builder<static>|TenantSubscription newQuery()
+ * @method static Builder<static>|TenantSubscription query()
+ * @method static Builder<static>|TenantSubscription whereBillingCycle($value)
+ * @method static Builder<static>|TenantSubscription whereCreatedAt($value)
+ * @method static Builder<static>|TenantSubscription whereCreatedBy($value)
+ * @method static Builder<static>|TenantSubscription whereCurrentStorageGb($value)
+ * @method static Builder<static>|TenantSubscription whereCurrentUsers($value)
+ * @method static Builder<static>|TenantSubscription whereDeletedAt($value)
+ * @method static Builder<static>|TenantSubscription whereDeletedBy($value)
+ * @method static Builder<static>|TenantSubscription whereExpiresAt($value)
+ * @method static Builder<static>|TenantSubscription whereId($value)
+ * @method static Builder<static>|TenantSubscription whereMaxStorageGb($value)
+ * @method static Builder<static>|TenantSubscription whereMaxUsers($value)
+ * @method static Builder<static>|TenantSubscription whereNextBillingDate($value)
+ * @method static Builder<static>|TenantSubscription wherePlanName($value)
+ * @method static Builder<static>|TenantSubscription whereStatus($value)
+ * @method static Builder<static>|TenantSubscription whereTenantId($value)
+ * @method static Builder<static>|TenantSubscription whereUpdatedAt($value)
+ * @method static Builder<static>|TenantSubscription whereUpdatedBy($value)
+ * @method static Builder<static>|TenantSubscription whereUpdatedAt($value)
+ * @method static Builder<static>|TenantSubscription whereUpdatedBy($value)
+ * @mixin \Eloquent
+ */
+class TenantSubscription extends BaseModel
+{
+    protected $fillable = [
+        'tenant_id',
+        'plan_name',
+        'status',
+        'max_users',
+        'current_users',
+        'max_storage_gb',
+        'current_storage_gb',
+        'billing_cycle',
+        'billing_amount',
+        'next_billing_date',
+        'expires_at',
+    ];
+
+    /** @return BelongsTo<Tenant, $this> */
+    public function tenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+
+    /**
+     * Get the attributes that should be cast.
+     */
+    protected function casts(): array
+    {
+        return array_merge(parent::casts(), [
+            'next_billing_date' => 'datetime',
+            'expires_at' => 'datetime',
+        ]);
+    }
+}
