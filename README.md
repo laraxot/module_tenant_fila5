@@ -1,65 +1,62 @@
+---
+id: module-tenant-readme
+title: "Tenant — Multi-tenancy e Isolamento Organizzativo"
+type: module-readme
+category: module-documentation
+module: Tenant
+status: active
+tags: [tenant, multitenancy, isolation, organization]
+created: 2026-09-14
+updated: 2026-09-14
+qmd: "tenant multitenancy isolation domains configuration module documentation"
+issues:
+  - "https://github.com/laraxot/module_tenant_fila5/issues/46"
+discussions:
+  - "https://github.com/laraxot/module_tenant_fila5/discussions/47"
+related:
+  - "./docs/"
+sources: []
+---
+
 # 🏢 Tenant
 
-[![Stars](https://img.shields.io/github/stars/laraxot/module_tenant_fila5?style=plastic&color=yellow)]()
-[![Forks](https://img.shields.io/github/forks/laraxot/module_tenant_fila5?style=plastic&color=green)]()
-[![Issues](https://img.shields.io/github/issues/laraxot/module_tenant_fila5?style=plastic&color=red)]()
-[![License](https://img.shields.io/github/license/laraxot/module_tenant_fila5?style=plastic&color=blue)]()
-[![Last Commit](https://img.shields.io/github/last-commit/laraxot/module_tenant_fila5?style=plastic&color=purple)]()
-[![Release](https://img.shields.io/github/v/release/laraxot/module_tenant_fila5?style=plastic&color=orange&display_name=release)]()
-[![PHP](https://img.shields.io/badge/PHP-8.4+-777BB4?style=for-the-badge)](https://php.net/)
-[![Filament](https://img.shields.io/badge/Filament-5-ffab00?style=for-the-badge)](https://filamentphp.com/)
-[![Laravel](https://img.shields.io/badge/Laravel-13-red?style=for-the-badge)](https://laravel.com/)
-[![Architecture](https://img.shields.io/badge/Architecture-Modular-purple?style=plastic)]()
-]()
+> **Multi-tenancy e isolamento organizzativo.**
 
-> **Multi-tenancy enterprise-grade**  
-> Multi-tenant con isolamento dati, feature toggle e config personalizzate.
+Tenant, domini, configurazione e appartenenza degli utenti.
 
-## 🎯 La Visione
+## Cosa offre
 
-Crediamo che il software debba essere **chiaro, modulare e potente**. Ogni modulo è stato pensato per risolvere problemi reali con soluzioni eleganti.
+- **Identificazione** – tenancy ID e ruoli
+- **Config organizzativa** – impostazioni per entità
+- **Utenti/tenant** – membership e permessi
+- **Isolamento dati**
 
-## Perché esiste questo modulo?
+## Confini architetturali
 
-**Multi-tenant con isolamento dati, feature toggle e config personalizzate.**
+This module publishes contracts usable by other modules. Logic lives in `Actions`; admin UI follows Laraxot/XotBase.
 
-In un mondo dove la complessità è l'avere, abbiamo scritto codice semplice. Questo modulo non è solo una libreria: è una **promessa di qualità** mantenuta.
+## Integrazione rapida
 
-## 🧘 I Principi Zen (e la nostra filosofia)
+```bash
+cd laravel
+php artisan module:list
+./vendor/bin/phpstan analyse Modules/Tenant
+```
 
-1. **Semplicità vince sulla complessità** - Il codice chiaro è più potente di mille righe di commenti.
-2. **Modulare è dare vita** - Ogni pezzo può vivere da solo, ma insieme diventa un universo.
-3. **Documentare è onniscienza** - La mancanza di documentazione è la paura del futuro.
-4. **Testare è fidarsi** - Non fidarsi del proprio codice è fidarsi del caos.
-5. **Rifattorizzare è crescere** - Lentamente, incrementalmente, diventiamo migliori.
+See local docs for integration patterns.
 
-## 💎 Le sue Superpoteri
+## Documentazione
 
-- **Architettura modulare** - Separazione netta tra logica di business e presentazione
-- **PHPStan Level 10** - Massima sicurezza tipizzazione
-- **PSR-12** - Codice che parla lo stesso linguaggio del mondo
-- **Filament 5** - Admin panel d'eccellenza
-- **XotBase** - Pattern consolidati che funzionano
+The technical map is in [docs/README.md](./docs/README.md).
 
-## 📖 Documentazione
+- [Story BMAD del modulo](./docs/stories/)
+- [Regole del progetto../../../docs/wiki/
+- [README del progetto../../README.md]
 
-| Lingua | Link |
-|--------|------|
-| 🇮🇹 Presentazione | Questo file (`README.md`) |
-| 🇬🇧 Business card | [docs/readme-en.md](./docs/readme-en.md) |
-| 📚 Wiki tecnica | [./docs/wiki/](./docs/) |
-| 🎯 Esempi | [docs/examples/](./docs/examples/) |
+## Qualità e manutenzione
 
-## 🔧 Tecnologie chiave
-
-**Stack principale:** Laravel 13, spatie/laravel-multitenancy, XotBase
-
-**Keywords:** Multi-tenant, SaaS, Isolation
-
-## 🚀 Pronte all'uso
-
-Importa, installa, configura. Il resto ci penseremo noi.
+Keep `declare(strict_types=1);` in PHP, respect project PHPStan config, and update docs when contracts evolve.
 
 ---
 
-**Modulo** `Tenant` · **Laraxot** · PHPStan 10 · Filament 5
+**Modulo** `tenant` · **Laraxot ecosystem** · **Project-agnostic**
