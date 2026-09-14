@@ -8,17 +8,18 @@ namespace Modules\Tenant\Models;
 // use Modules\Dental\Models\Appointment; // Module not available
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Modules\Tenant\Database\Factories\TenantFactory;
-use Modules\Xot\Contracts\UserContract;
-use Modules\Xot\Datas\XotData;
+use Modules\User\Models\User;
+use Modules\Xot\Models\Traits\HasXotFactory;
 
 /**
  * Modello Tenant per la gestione multi-tenant dell'applicazione.
  *
+ * @property-read User|null $creator
  * @property string|null $name
  * @property string|null $domain
  * @property string|null $database
@@ -37,7 +38,8 @@ use Modules\Xot\Datas\XotData;
  * @property string|null $tax_code
  * @property string|null $vat_number
  * @property-read string $url
- * @property-read Collection<int, Model&UserContract> $users
+ * @property-read User|null $updater
+ * @property-read Collection<int, User> $users
  * @property-read int|null $users_count
  *
  * @method static \Modules\Tenant\Database\Factories\TenantFactory factory($count = null, $state = [])
@@ -49,6 +51,8 @@ use Modules\Xot\Datas\XotData;
  */
 class Tenant extends BaseModel
 {
+    /** @use HasXotFactory<Factory<static>> */
+    use HasXotFactory;
 
     /**
      * Gli attributi che sono mass assignable.
@@ -76,17 +80,11 @@ class Tenant extends BaseModel
     /**
      * Relazione con gli utenti associati al tenant.
      *
-     * @return HasMany<Model&UserContract, $this>
+     * @return HasMany<User, $this>
      */
     public function users(): HasMany
     {
-        /** @var class-string<Model&UserContract> $userClass */
-        $userClass = XotData::make()->getUserClass();
-
-        /** @var HasMany<Model&UserContract, $this> $relation */
-        $relation = $this->hasMany($userClass);
-
-        return $relation;
+        return $this->hasMany(User::class);
     }
 
     // Commented out - Patient and Dental modules not available
