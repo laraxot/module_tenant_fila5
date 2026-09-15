@@ -158,7 +158,4 @@ phpmd*
 /_docs
 /docs/archive
 /docs/legacy
-<<<<<<< HEAD
-=======
 graphify-out
->>>>>>> laraxot/dev

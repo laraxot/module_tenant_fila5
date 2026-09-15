@@ -36,11 +36,7 @@ use ReflectionMethod;
 
 use function Safe\putenv;
 
-<<<<<<< HEAD
-uses(TestCase::class);
-=======
 uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> laraxot/dev
 
 // expectMockery() is declared once in TenantCoverageBoostTest.php (same namespace)
 // and reused here across the Pest test run.
@@ -98,11 +94,7 @@ test('GetTenantModulesAction wraps invalid json decode errors', function (): voi
 });
 
 test('MorphMapConfigResolver throws on missing module segment and invalid result type', function (): void {
-<<<<<<< HEAD
-    $resolver = new MorphMapConfigResolver;
-=======
     $resolver = new MorphMapConfigResolver();
->>>>>>> laraxot/dev
 
     $request = HttpRequest::create('/admin', 'GET');
     app()->instance('request', $request);
@@ -128,11 +120,7 @@ test('MorphMapConfigResolver throws on missing module segment and invalid result
 });
 
 test('DatabaseConfigResolver covers empty original config and skip branches', function (): void {
-<<<<<<< HEAD
-    $resolver = new DatabaseConfigResolver;
-=======
     $resolver = new DatabaseConfigResolver();
->>>>>>> laraxot/dev
     $original = config('database');
 
     try {
@@ -159,11 +147,7 @@ test('DatabaseConfigResolver covers empty original config and skip branches', fu
 });
 
 test('StandardConfigResolver database path when resolver returns non-array', function (): void {
-<<<<<<< HEAD
-    $resolver = new StandardConfigResolver;
-=======
     $resolver = new StandardConfigResolver();
->>>>>>> laraxot/dev
     TestCase::mockAppService(GetTenantNameAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'localhost']);
     });
@@ -196,11 +180,7 @@ test('SushiToJson private helpers cover early returns and audit nulls', function
 
     $apply = new ReflectionMethod(SushiToJsonCoverageModel::class, 'applyAuditFields');
     $apply->setAccessible(true);
-<<<<<<< HEAD
-    $model = new SushiToJsonCoverageModel;
-=======
     $model = new SushiToJsonCoverageModel();
->>>>>>> laraxot/dev
     $apply->invoke(null, $model);
     Assert::assertNull($model->getAttribute('created_by'));
 
@@ -216,11 +196,7 @@ test('SushiToJson private helpers cover early returns and audit nulls', function
 
     $deleting = new ReflectionMethod(SushiToJsonCoverageModel::class, 'handleSingleJsonDeleting');
     $deleting->setAccessible(true);
-<<<<<<< HEAD
-    $empty = new SushiToJsonCoverageModel;
-=======
     $empty = new SushiToJsonCoverageModel();
->>>>>>> laraxot/dev
     $deleting->invoke(null, $empty);
     $empty->setAttribute('id', 99);
     $deleting->invoke(null, $empty);
@@ -290,11 +266,7 @@ test('SushiToJsons covers empty schema map and glob false path via reflection', 
     $boot->setAccessible(true);
     $boot->invoke(null);
 
-<<<<<<< HEAD
-    $model = new SushiToJsonsCoverageModel;
-=======
     $model = new SushiToJsonsCoverageModel();
->>>>>>> laraxot/dev
     $map = new ReflectionMethod($model, 'mapJsonFileToRow');
     $map->setAccessible(true);
 
@@ -349,11 +321,7 @@ test('Sushi audit fields with named auth model and csv scalar id', function (): 
 
     $apply = new ReflectionMethod(SushiToJsonAuthCoverageModel::class, 'applyAuditFields');
     $apply->setAccessible(true);
-<<<<<<< HEAD
-    $authModel = new SushiToJsonAuthCoverageModel;
-=======
     $authModel = new SushiToJsonAuthCoverageModel();
->>>>>>> laraxot/dev
     $apply->invoke(null, $authModel);
     Assert::assertSame(42, $authModel->getAttribute('created_by'));
 
@@ -366,11 +334,7 @@ test('Sushi audit fields with named auth model and csv scalar id', function (): 
     $resolveKey->setAccessible(true);
     Assert::assertSame('7', $resolveKey->invoke(null, 7.0));
 
-<<<<<<< HEAD
-    $invalidSchemaModel = new SushiToJsonsCoverageModel;
-=======
     $invalidSchemaModel = new SushiToJsonsCoverageModel();
->>>>>>> laraxot/dev
     $schemaProp = new \ReflectionProperty($invalidSchemaModel, 'schema');
     $schemaProp->setAccessible(true);
     $schemaProp->setValue($invalidSchemaModel, 'invalid');
@@ -388,15 +352,9 @@ test('Sushi audit fields with named auth model and csv scalar id', function (): 
     $jsonsBoot->setAccessible(true);
     $jsonsBoot->invoke(null);
 
-<<<<<<< HEAD
-    $csvModel = new SushiToCsvCoverageModel;
-    $jsonModel = new SushiToJsonCoverageModel;
-    $jsonsModel = new SushiToJsonsCoverageModel;
-=======
     $csvModel = new SushiToCsvCoverageModel();
     $jsonModel = new SushiToJsonCoverageModel();
     $jsonsModel = new SushiToJsonsCoverageModel();
->>>>>>> laraxot/dev
     foreach ([$csvModel, $jsonModel, $jsonsModel] as $model) {
         $fire = new ReflectionMethod($model, 'fireModelEvent');
         $fire->setAccessible(true);
@@ -443,11 +401,7 @@ test('TenantServiceProvider load user connection and filter model classes', func
 
     $filter = new ReflectionMethod(ResolveTenantModelClassAction::class, 'filterValidModelClasses');
     $filter->setAccessible(true);
-<<<<<<< HEAD
-    $action = new ResolveTenantModelClassAction;
-=======
     $action = new ResolveTenantModelClassAction();
->>>>>>> laraxot/dev
     /** @var array<string, class-string> $filtered */
     $filtered = $filter->invoke($action, [
         1 => Tenant::class,
@@ -457,11 +411,7 @@ test('TenantServiceProvider load user connection and filter model classes', func
     Assert::assertArrayHasKey('tenant', $filtered);
     Assert::assertArrayNotHasKey('bad', $filtered);
 
-<<<<<<< HEAD
-    $db = new DatabaseConfigResolver;
-=======
     $db = new DatabaseConfigResolver();
->>>>>>> laraxot/dev
     $result = $db->resolve('database', [
         'default' => 'missing_conn',
         'connections' => ['sqlite' => ['driver' => 'sqlite']],
@@ -491,26 +441,15 @@ test('final remaining statement branches', function (): void {
     expect(fn (): string => app(ResolveTenantModelClassAction::class)->execute('widget'))
         ->toThrow(Exception::class);
 
-<<<<<<< HEAD
-    Module::shouldReceive('allEnabled')->andReturn([new \stdClass]);
-    $getAll = new ReflectionMethod(ResolveTenantModelClassAction::class, 'getAllModulesModels');
-    $getAll->setAccessible(true);
-    Assert::assertSame([], $getAll->invoke(new ResolveTenantModelClassAction));
-=======
     Module::shouldReceive('allEnabled')->andReturn([new \stdClass()]);
     $getAll = new ReflectionMethod(ResolveTenantModelClassAction::class, 'getAllModulesModels');
     $getAll->setAccessible(true);
     Assert::assertSame([], $getAll->invoke(new ResolveTenantModelClassAction()));
->>>>>>> laraxot/dev
 
     $provider = new TenantServiceProvider(app());
     $load = new ReflectionMethod($provider, 'loadTenantDatabaseConfig');
     $load->setAccessible(true);
-<<<<<<< HEAD
-    app()->instance(ResolveTenantConfigValueAction::class, new class
-=======
     app()->instance(ResolveTenantConfigValueAction::class, new class()
->>>>>>> laraxot/dev
     {
         public function execute(string $key, mixed $defaultValue = null): mixed
         {
@@ -533,11 +472,7 @@ test('final remaining statement branches', function (): void {
 
     $merge = new ReflectionMethod($provider, 'mergeModuleConnections');
     $merge->setAccessible(true);
-<<<<<<< HEAD
-    Module::shouldReceive('getOrdered')->andReturn([new \stdClass]);
-=======
     Module::shouldReceive('getOrdered')->andReturn([new \stdClass()]);
->>>>>>> laraxot/dev
     $merged = $merge->invoke($provider, [
         'connections' => ['sqlite' => ['driver' => 'sqlite']],
     ], 'sqlite');
@@ -552,11 +487,7 @@ test('final remaining statement branches', function (): void {
             static fn (string $path): string => $base.'/'.ltrim($path, '/'),
         );
     });
-<<<<<<< HEAD
-    $noSchema = new SushiToJsonsNoSchemaModel;
-=======
     $noSchema = new SushiToJsonsNoSchemaModel();
->>>>>>> laraxot/dev
     Assert::assertSame([], $noSchema->getSushiRows());
     File::deleteDirectory($base);
 });

@@ -4,18 +4,11 @@ module: "Tenant"
 type: concept
 tags: [coverage]
 created: 2026-07-14
-<<<<<<< HEAD
-updated: 2026-07-14
-qmd: "coverage"
-related:
-  - "./phpstan-corrections-january.md"
-=======
 updated: 2026-09-07
 qmd: "coverage"
 related:
   - "./phpstan-corrections-january.md"
   - "./stories/phpstan-tenant-fix.md"
->>>>>>> laraxot/dev
 ---
 # Tenant Module Test Coverage
 
@@ -28,8 +21,6 @@ This module has comprehensive test coverage with various test types implemented.
 - **Test Types**: Unit, Feature, Integration tests
 
 ## Coverage Statistics
-<<<<<<< HEAD
-=======
 ## Status
 
 **2026-09-06**: philosophy.md created. PHPStan analyzed (OK). Pest suite (TBD). Coverage target: +5% per module.
@@ -56,15 +47,12 @@ stessa foreign key di default, solo la resolution della classe concreta e' ora d
 `getUserClass()` risolve a `Modules\User\Models\User`). PHPMD
 (`./tools/phpmd.sh Modules/Tenant/app text phpmd.xml`): nessuna violazione nei file toccati.
 
->>>>>>> laraxot/dev
 - **Files**: 0
 - **Lines of Code**: 0
 - **Classes**: 0
 - **Methods**: 0
 - **Coverage Rate**: 0%
 
-<<<<<<< HEAD
-=======
 ### 2026-09-07 (sessione claude sonnet 5 — campagna "PHPStan zero", `docs/stories/phpstan-tenant-fix.md`)
 
 Al `git status` di apertura, `Modules/Tenant` aveva gia' un WIP concorrente non committato
@@ -142,7 +130,6 @@ gia' WIP altrui), `app/Filament/Resources/DomainResource/Schemas/DomainForm.php`
 altrui, non ritoccato), `app/Filament/Resources/DomainResource/Schemas/DomainInfolist.php`
 (idem), `tests/Unit/TenantCoverageBoostTest.php`, `tests/Unit/TenantStatementCoverageTest.php`.
 
->>>>>>> laraxot/dev
 ## Test Categories
 - Unit Tests
 - Feature Tests

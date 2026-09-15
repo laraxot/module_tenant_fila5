@@ -5,11 +5,7 @@ tags: [github, git, merge, remote, tenant, grave]
 module: Tenant
 created: 2026-07-27
 updated: 2026-07-27
-<<<<<<< HEAD
-qmd: "Tenant git remote module_tenant_fila5 base_project base_<nome progetto> collision grave"
-=======
 qmd: "Tenant git remote module_tenant_fila5 base_project base_workorder collision grave"
->>>>>>> laraxot/dev
 related:
   - ../../../../../../docs/wiki/memories/module-github-remote-discipline.md
   - ../../../../../../docs/wiki/rules/multi-repo-modules-themes-map.md

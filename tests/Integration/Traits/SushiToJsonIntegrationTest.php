@@ -30,27 +30,13 @@ beforeEach(function (): void {
         $this->skipTest('DB `tenant` non raggiungibile: blocco di ambiente.');
     }
 
-<<<<<<< HEAD
-    $this->tenant = TestCase::createTenant([
-=======
     TestCase::$tenant = TestCase::createTenant([
->>>>>>> laraxot/dev
         'name' => 'test-tenant',
         'domain' => 'test.example.com',
     ]);
 
     $this->setCurrentTenant($this->tenantModel());
 
-<<<<<<< HEAD
-    $this->model = new TestSushiModel;
-    $this->testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
-
-    if (File::exists($this->testJsonPath)) {
-        File::delete($this->testJsonPath);
-    }
-
-    $directory = dirname($this->testJsonPath);
-=======
     $this->model = new TestSushiModel();
     TestCase::$testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
@@ -59,7 +45,6 @@ beforeEach(function (): void {
     }
 
     $directory = dirname(TestCase::$testJsonPath);
->>>>>>> laraxot/dev
     if (File::exists($directory)) {
         File::deleteDirectory($directory);
     }
@@ -67,19 +52,11 @@ beforeEach(function (): void {
 
 afterEach(function (): void {
     /** @var TestCase $this */
-<<<<<<< HEAD
-    if (File::exists($this->testJsonPath)) {
-        File::delete($this->testJsonPath);
-    }
-
-    $directory = dirname($this->testJsonPath);
-=======
     if (File::exists(TestCase::$testJsonPath)) {
         File::delete(TestCase::$testJsonPath);
     }
 
     $directory = dirname(TestCase::$testJsonPath);
->>>>>>> laraxot/dev
     if (File::exists($directory)) {
         File::deleteDirectory($directory);
     }
@@ -154,11 +131,7 @@ it('works with different tenant configurations', function (): void {
 
     $this->setCurrentTenant($secondTenant);
 
-<<<<<<< HEAD
-    $secondModel = new TestSushiModel;
-=======
     $secondModel = new TestSushiModel();
->>>>>>> laraxot/dev
     $secondJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     expect($secondModel->saveToJson([

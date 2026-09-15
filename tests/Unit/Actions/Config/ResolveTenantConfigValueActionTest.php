@@ -12,11 +12,7 @@ use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Tests\XotBasePest;
 use PHPUnit\Framework\Assert;
 
-<<<<<<< HEAD
-uses(TestCase::class);
-=======
 uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> laraxot/dev
 
 it('resolves tenant config value by merging with tenant overrides', function (): void {
     /** @var TestCase $this */

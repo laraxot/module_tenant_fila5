@@ -49,6 +49,7 @@ use Modules\Xot\Datas\XotData;
  */
 class Tenant extends BaseModel
 {
+
     /**
      * Gli attributi che sono mass assignable.
      */

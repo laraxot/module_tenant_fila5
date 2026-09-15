@@ -10,10 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
-<<<<<<< HEAD
-=======
 use Illuminate\Testing\PendingCommand;
->>>>>>> laraxot/dev
 use Mockery;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
@@ -27,11 +24,7 @@ use Modules\Tenant\Actions\Models\ResolveTenantModelClassAction;
 use Modules\Tenant\Actions\Models\ResolveTenantModelInstanceAction;
 use Modules\Tenant\Actions\Modules\GetTenantModulesAction;
 use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
-<<<<<<< HEAD
-use Modules\Tenant\Filament\Resources\DomainResource;
-=======
 use Modules\Tenant\Filament\Resources\DomainResource\Schemas\DomainForm;
->>>>>>> laraxot/dev
 use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Models\Policies\DomainPolicy;
 use Modules\Tenant\Models\Tenant;
@@ -60,11 +53,7 @@ use ReflectionMethod;
 
 use function Safe\putenv;
 
-<<<<<<< HEAD
-uses(TestCase::class);
-=======
 uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> laraxot/dev
 
 afterEach(function (): void {
     Mockery::close();
@@ -72,11 +61,7 @@ afterEach(function (): void {
 
 describe('Tenant statement coverage — resolvers', function (): void {
     test('DatabaseConfigResolver covers null extra, defaults and module connections', function (): void {
-<<<<<<< HEAD
-        $resolver = new DatabaseConfigResolver;
-=======
         $resolver = new DatabaseConfigResolver();
->>>>>>> laraxot/dev
         $originalDatabase = config('database');
         Assert::assertIsArray($originalDatabase);
 
@@ -114,11 +99,7 @@ describe('Tenant statement coverage — resolvers', function (): void {
     });
 
     test('MorphMapConfigResolver covers admin and tenant morph paths', function (): void {
-<<<<<<< HEAD
-        $resolver = new MorphMapConfigResolver;
-=======
         $resolver = new MorphMapConfigResolver();
->>>>>>> laraxot/dev
 
         $home = \Illuminate\Http\Request::create('/it/home', 'GET');
         app()->instance('request', $home);
@@ -161,11 +142,7 @@ describe('Tenant statement coverage — resolvers', function (): void {
     });
 
     test('StandardConfigResolver covers database merge, missing key and invalid types', function (): void {
-<<<<<<< HEAD
-        $resolver = new StandardConfigResolver;
-=======
         $resolver = new StandardConfigResolver();
->>>>>>> laraxot/dev
         $originalDatabase = config('database');
 
         TestCase::mockAppService(GetTenantNameAction::class, static function (MockInterface $mock): void {
@@ -213,11 +190,7 @@ describe('Tenant statement coverage — resolvers', function (): void {
     });
 
     test('ConfigResolverRegistry falls back when no resolver matches', function (): void {
-<<<<<<< HEAD
-        $registry = new ConfigResolverRegistry;
-=======
         $registry = new ConfigResolverRegistry();
->>>>>>> laraxot/dev
         $prop = (new ReflectionClass($registry))->getProperty('resolvers');
         $prop->setAccessible(true);
         $prop->setValue($registry, []);
@@ -366,16 +339,10 @@ describe('Tenant statement coverage — models and policies', function (): void 
         Assert::assertSame('acme.test', $tenant->url);
         Assert::assertInstanceOf(HasMany::class, $tenant->users());
 
-<<<<<<< HEAD
-        $noSlug = new Tenant;
-        $noSlug->name = 'Beta';
-        Assert::assertSame('beta', $noSlug->slug);
-=======
         $noSlug = new Tenant();
         $noSlug->name = 'Beta';
         Assert::assertSame('beta', $noSlug->slug);
 
->>>>>>> laraxot/dev
     });
 
     test('TenantDomain TenantSetting TenantSubscription relation helpers', function (): void {
@@ -383,17 +350,10 @@ describe('Tenant statement coverage — models and policies', function (): void 
             $mock->allows(['execute' => [['id' => '1', 'name' => 'a.test']]]);
         });
 
-<<<<<<< HEAD
-        Assert::assertSame([['id' => '1', 'name' => 'a.test']], (new TenantDomain)->getRows());
-        Assert::assertInstanceOf(BelongsTo::class, (new TenantSetting)->tenant());
-        Assert::assertInstanceOf(BelongsTo::class, (new TenantSubscription)->tenant());
-        Assert::assertArrayHasKey('expires_at', (new TenantSubscription)->getCasts());
-=======
         Assert::assertSame([['id' => '1', 'name' => 'a.test']], (new TenantDomain())->getRows());
         Assert::assertInstanceOf(BelongsTo::class, (new TenantSetting())->tenant());
         Assert::assertInstanceOf(BelongsTo::class, (new TenantSubscription())->tenant());
         Assert::assertArrayHasKey('expires_at', (new TenantSubscription())->getCasts());
->>>>>>> laraxot/dev
     });
 
     test('DomainPolicy covers all abilities and TenantBasePolicy null branch', function (): void {
@@ -402,13 +362,8 @@ describe('Tenant statement coverage — models and policies', function (): void 
         TestCase::expectMockery($user, 'hasRole')->with('super-admin')->andReturn(false);
         TestCase::expectMockery($user, 'hasPermissionTo')->andReturn(true);
 
-<<<<<<< HEAD
-        $policy = new DomainPolicy;
-        $domain = new Domain;
-=======
         $policy = new DomainPolicy();
         $domain = new Domain();
->>>>>>> laraxot/dev
         $domain->exists = true;
 
         Assert::assertTrue($policy->viewAny($user));
@@ -416,19 +371,11 @@ describe('Tenant statement coverage — models and policies', function (): void 
         Assert::assertTrue($policy->restore($user, $domain));
         Assert::assertTrue($policy->forceDelete($user, $domain));
 
-<<<<<<< HEAD
-        Assert::assertNull((new TenantBasePolicyCoverage)->before($user, 'view'));
-    });
-
-    test('DomainResource getFormSchema is executable', function (): void {
-        $schema = app(DomainResource::class)->getFormSchema();
-=======
         Assert::assertNull((new TenantBasePolicyCoverage())->before($user, 'view'));
     });
 
     test('DomainForm getFormSchema is executable', function (): void {
         $schema = app(DomainForm::class)->getFormSchema();
->>>>>>> laraxot/dev
         Assert::assertArrayHasKey('title', $schema);
         Assert::assertArrayHasKey('price', $schema);
     });
@@ -442,11 +389,7 @@ describe('Tenant statement coverage — models and policies', function (): void 
             TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
                 $mock->allows(['execute' => '/tmp/tenant_test_sushi.json']);
             });
-<<<<<<< HEAD
-            Assert::assertSame('/tmp/tenant_test_sushi.json', (new TestSushiModel)->getJsonFile());
-=======
             Assert::assertSame('/tmp/tenant_test_sushi.json', (new TestSushiModel())->getJsonFile());
->>>>>>> laraxot/dev
         } finally {
             $app['env'] = $previous;
         }
@@ -536,11 +479,7 @@ describe('Tenant statement coverage — SushiToJson named model', function (): v
             );
         });
 
-<<<<<<< HEAD
-        $model = new SushiToJsonCoverageModel;
-=======
         $model = new SushiToJsonCoverageModel();
->>>>>>> laraxot/dev
         Assert::assertSame($jsonPath, $model->getJsonFile());
         Assert::assertSame([], $model->getRows());
         Assert::assertSame([], $model->loadExistingData());
@@ -614,11 +553,7 @@ describe('Tenant statement coverage — SushiToJson named model', function (): v
         $ensure->invoke($model, $nested);
         Assert::assertTrue(File::isDirectory(dirname($nested)));
 
-<<<<<<< HEAD
-        $broken = new SushiToJsonCoverageModel;
-=======
         $broken = new SushiToJsonCoverageModel();
->>>>>>> laraxot/dev
         TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
             TestCase::expectMockery($mock, 'execute')->andThrow(new Exception('boom'));
         });
@@ -639,11 +574,7 @@ describe('Tenant statement coverage — SushiToCsv named model', function (): vo
             $mock->allows(['execute' => $csvPath]);
         });
 
-<<<<<<< HEAD
-        $model = new SushiToCsvCoverageModel;
-=======
         $model = new SushiToCsvCoverageModel();
->>>>>>> laraxot/dev
         Assert::assertSame(['id', 'name', 'updated_at', 'updated_by', 'created_at', 'created_by'], $model->getCsvHeader());
         Assert::assertCount(1, $model->getSushiRows());
 
@@ -677,11 +608,7 @@ describe('Tenant statement coverage — SushiToCsv named model', function (): vo
         Assert::assertSame('0', $csvValue->invoke(null, false));
         Assert::assertSame(3, $csvValue->invoke(null, 3));
         Assert::assertSame('x', $csvValue->invoke(null, 'x'));
-<<<<<<< HEAD
-        Assert::assertSame('s', $csvValue->invoke(null, new class implements \Stringable
-=======
         Assert::assertSame('s', $csvValue->invoke(null, new class() implements \Stringable
->>>>>>> laraxot/dev
         {
             public function __toString(): string
             {
@@ -717,20 +644,12 @@ describe('Tenant statement coverage — SushiToJsons named model', function (): 
             );
         });
 
-<<<<<<< HEAD
-        $model = new SushiToJsonsCoverageModel;
-=======
         $model = new SushiToJsonsCoverageModel();
->>>>>>> laraxot/dev
         Assert::assertCount(1, $model->getRows());
         $model->setAttribute('id', 1);
         Assert::assertStringContainsString('sushi_jsons_coverage/1.json', $model->getJsonFile());
 
-<<<<<<< HEAD
-        $emptySchemaModel = new SushiToJsonsNoSchemaModel;
-=======
         $emptySchemaModel = new SushiToJsonsNoSchemaModel();
->>>>>>> laraxot/dev
         $resolveEmpty = new ReflectionMethod($emptySchemaModel, 'resolveSchema');
         $resolveEmpty->setAccessible(true);
         Assert::assertSame([], $resolveEmpty->invoke($emptySchemaModel));
@@ -766,11 +685,7 @@ describe('Tenant statement coverage — SushiToJsons named model', function (): 
 
         $assign = new ReflectionMethod(SushiToJsonsCoverageModel::class, 'assignCreatingMetadata');
         $assign->setAccessible(true);
-<<<<<<< HEAD
-        $m = new SushiToJsonsCoverageModel;
-=======
         $m = new SushiToJsonsCoverageModel();
->>>>>>> laraxot/dev
         try {
             $assign->invoke(null, $m);
         } catch (\Throwable) {
@@ -801,11 +716,7 @@ describe('Tenant statement coverage — SushiToPhpArray named model', function (
             ]]);
         });
 
-<<<<<<< HEAD
-        $model = new SushiToPhpArrayCoverageModel;
-=======
         $model = new SushiToPhpArrayCoverageModel();
->>>>>>> laraxot/dev
         $rows = $model->getSushiRows();
         Assert::assertCount(2, $rows);
         Assert::assertSame('A', $rows[0]['name']);
