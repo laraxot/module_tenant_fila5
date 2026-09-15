@@ -18,23 +18,41 @@ uses(TestCase::class, DatabaseTransactions::class);
 
 beforeEach(function (): void {
     /** @var TestCase $this */
+<<<<<<< HEAD
     $this->model = new TestSushiModel;
     $this->testDirectory = storage_path('tests/sushi-json');
     $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 
     if (! File::exists($this->testDirectory)) {
         File::makeDirectory($this->testDirectory, 0755, true, true);
+=======
+    $this->model = new TestSushiModel();
+    TestCase::$testDirectory = storage_path('tests/sushi-json');
+    TestCase::$testJsonPath = TestCase::$testDirectory.'/test_sushi.json';
+
+    if (! File::exists(TestCase::$testDirectory)) {
+        File::makeDirectory(TestCase::$testDirectory, 0755, true, true);
+>>>>>>> laraxot/dev
     }
 });
 
 afterEach(function (): void {
     /** @var TestCase $this */
+<<<<<<< HEAD
     if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
     }
 
     if (File::exists($this->testDirectory)) {
         File::deleteDirectory($this->testDirectory);
+=======
+    if (File::exists(TestCase::$testJsonPath)) {
+        File::delete(TestCase::$testJsonPath);
+    }
+
+    if (File::exists(TestCase::$testDirectory)) {
+        File::deleteDirectory(TestCase::$testDirectory);
+>>>>>>> laraxot/dev
     }
 
     Mockery::close();

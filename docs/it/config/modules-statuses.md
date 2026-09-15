@@ -28,17 +28,28 @@ per l'applicazione: niente rotte, niente migrazioni, niente Eloquent.
 
 ## 2. Tenant-scoped — `config/{tenant}/modules_statuses.json`
 
+<<<<<<< HEAD
 Risolto dinamicamente per hostname. Per <nome progetto>, `config/local/<nome progetto>/modules.php` **sovrascrive** anche l’activator nwidart:
 
 ```php
 'statuses-file' => base_path('config/local/<nome progetto>/modules_statuses.json'),
+=======
+Risolto dinamicamente per hostname. Per workorder, `config/local/workorder/modules.php` **sovrascrive** anche l’activator nwidart:
+
+```php
+'statuses-file' => base_path('config/local/workorder/modules_statuses.json'),
+>>>>>>> laraxot/dev
 ```
 
 Catena navigazione:
 
 ```
 GetTenantNameAction::execute()
+<<<<<<< HEAD
   → reversed hostname (es. <nome progetto>.local → local/<nome progetto>)
+=======
+  → reversed hostname (es. workorder.local → local/workorder)
+>>>>>>> laraxot/dev
 GetTenantFilePathAction::execute('modules_statuses.json')
   → config_path("{tenant}/modules_statuses.json")
 GetTenantModulesAction::execute()
@@ -53,7 +64,11 @@ menu solo perché manca da questo file, senza nessun errore o eccezione.
 
 ## Incidente reale (2026-07-27)
 
+<<<<<<< HEAD
 `config/local/<nome progetto>/modules_statuses.json` conteneva moduli di un progetto
+=======
+`config/local/workorder/modules_statuses.json` conteneva moduli di un progetto
+>>>>>>> laraxot/dev
 completamente diverso (`modulo questionari`, `BarberShop`, `RealEstate`, `Food`, `Forum`,
 `Shop`, `Ticket`, `Limesurvey`, …) — nessuno esistente in `Modules/` di questo
 progetto — più `Blog`/`Comment`/`TestModule` mai ripuliti dopo la loro rimozione.
@@ -69,11 +84,19 @@ compariva nel menu admin.
 # Devono restituire lo stesso insieme di nomi (a meno di moduli col solo
 # ServiceProvider abilitato ma navigazione volutamente nascosta):
 diff <(php -r 'echo implode("\n", array_keys(json_decode(file_get_contents("modules_statuses.json"), true)));' | sort) \
+<<<<<<< HEAD
      <(php -r 'echo implode("\n", array_keys(json_decode(file_get_contents("config/local/<nome progetto>/modules_statuses.json"), true)));' | sort)
+=======
+     <(php -r 'echo implode("\n", array_keys(json_decode(file_get_contents("config/local/workorder/modules_statuses.json"), true)));' | sort)
+>>>>>>> laraxot/dev
 ```
 
 Quando si aggiunge o rimuove un modulo, aggiornare **entrambi** i file JSON (root e tenant) — non solo quello root.
 
+<<<<<<< HEAD
 Rigenerazione: `bash bashscripts/tools/sync-tenant-modules-statuses.sh local/<nome progetto>`
+=======
+Rigenerazione: `bash bashscripts/tools/sync-tenant-modules-statuses.sh local/workorder`
+>>>>>>> laraxot/dev
 
 Riferimenti: [session-learnings-modules-config.md](../../session-learnings-modules-config.md) · [Themes/tenant-modules-navigation-discipline.md](../../../../Themes/docs/tenant-modules-navigation-discipline.md)

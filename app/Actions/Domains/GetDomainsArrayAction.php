@@ -39,7 +39,11 @@ class GetDomainsArrayAction
      */
     public function recurse(string $path): array
     {
+<<<<<<< HEAD
         $filesystem = new Filesystem;
+=======
+        $filesystem = new Filesystem();
+>>>>>>> laraxot/dev
         $directories = $filesystem->directories($path);
         $res = [];
         foreach ($directories as $dir) {

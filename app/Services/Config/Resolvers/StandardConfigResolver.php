@@ -35,7 +35,11 @@ class StandardConfigResolver implements ConfigResolverInterface
 
         // Handle database configuration specially
         if ($key === 'database') {
+<<<<<<< HEAD
             $databaseResolver = new DatabaseConfigResolver;
+=======
+            $databaseResolver = new DatabaseConfigResolver();
+>>>>>>> laraxot/dev
             $resolvedDatabaseConfig = $databaseResolver->resolve($key, $extraConf);
             $extraConf = is_array($resolvedDatabaseConfig) ? $resolvedDatabaseConfig : [];
         }

@@ -10,7 +10,11 @@ use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+<<<<<<< HEAD
 uses(TestCase::class);
+=======
+uses(\Modules\Tenant\Tests\TestCase::class);
+>>>>>>> laraxot/dev
 
 describe('Tenant Additional Actions Coverage', function (): void {
     test('GetTenantModulesAction is accessible', function (): void {

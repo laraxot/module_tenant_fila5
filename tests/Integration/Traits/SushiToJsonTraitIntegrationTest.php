@@ -16,7 +16,11 @@ use PHPUnit\Framework\Assert;
 use function Safe\json_decode;
 use function Safe\json_encode;
 
+<<<<<<< HEAD
 uses(TestCase::class);
+=======
+uses(\Modules\Tenant\Tests\TestCase::class);
+>>>>>>> laraxot/dev
 
 beforeEach(function (): void {
     if (TestCase::tenantDbUnavailable()) {
@@ -38,7 +42,11 @@ beforeEach(function (): void {
     // Imposta il tenant corrente
     TestCase::setCurrentTenant(TestCase::tenantModel());
 
+<<<<<<< HEAD
     TestCase::$sushiModel = new TestSushiModel;
+=======
+    TestCase::$sushiModel = new TestSushiModel();
+>>>>>>> laraxot/dev
     TestCase::$testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     if (File::exists(TestCase::sushiJsonPath())) {
@@ -60,6 +68,10 @@ afterEach(function (): void {
     if (File::exists($directory)) {
         File::deleteDirectory($directory);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
 });
 
 describe('Sushi To Json Trait Integration', function (): void {
@@ -181,9 +193,15 @@ describe('Sushi To Json Trait Integration', function (): void {
 
     test('handles concurrent access safely', function (): void {
         // Simula accesso concorrente creando più istanze del modello
+<<<<<<< HEAD
         $model1 = new TestSushiModel;
         $model2 = new TestSushiModel;
         $model3 = new TestSushiModel;
+=======
+        $model1 = new TestSushiModel();
+        $model2 = new TestSushiModel();
+        $model3 = new TestSushiModel();
+>>>>>>> laraxot/dev
 
         $testData1 = ['1' => ['id' => 1, 'name' => 'Concurrent Item 1']];
         $testData2 = ['2' => ['id' => 2, 'name' => 'Concurrent Item 2']];
@@ -339,7 +357,11 @@ describe('Sushi To Json Trait Integration', function (): void {
         // Imposta il secondo tenant come corrente
         TestCase::setCurrentTenant(TestCase::secondTenantModel());
 
+<<<<<<< HEAD
         $secondModel = new TestSushiModel;
+=======
+        $secondModel = new TestSushiModel();
+>>>>>>> laraxot/dev
         $secondJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
         $testData = [

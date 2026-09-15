@@ -23,14 +23,24 @@ molto tempo in questa sessione multi-agente solo il primo è stato auditato:
 |---|---|---|---|
 | **nwidart FileActivator** (root) | `modules_statuses.json` (root Laravel) | `config/modules.php` → `activators.file.statuses-file` | Abilita/disabilita il **boot** del modulo a livello framework (autoload, service provider, migrations, ecc.) |
 | **Panel metadata per-modulo** | `Modules/{Name}/config/config.php` | `XotBaseServiceProvider::registerConfig()` → `PanelMixin` | `name`/`icon`/`navigation.sort` per il pannello Filament di quel modulo |
+<<<<<<< HEAD
 | **Tenant module registry** (questo doc) | `config/{tenantName}/modules_statuses.json` — qui `config/local/<nome progetto>/modules_statuses.json` | `GetTenantModulesAction` (via `GetTenantFilePathAction`) | Lista dei moduli **visibili/abilitati per questo tenant specifico**, usata per costruire la navigazione (`GetModulesNavigationItems`) |
+=======
+| **Tenant module registry** (questo doc) | `config/{tenantName}/modules_statuses.json` — qui `config/local/workorder/modules_statuses.json` | `GetTenantModulesAction` (via `GetTenantFilePathAction`) | Lista dei moduli **visibili/abilitati per questo tenant specifico**, usata per costruire la navigazione (`GetModulesNavigationItems`) |
+>>>>>>> laraxot/dev
 
 Il path del terzo file **non** è `config/{Name}/`: `GetTenantFilePathAction::execute()`
 risolve `base_path('config/'.$tenantName.'/'.$filename)`, dove `$tenantName` viene da
 `GetTenantNameAction` — hostname (`SERVER_NAME`/`app.url`) diviso per `.`, invertito,
+<<<<<<< HEAD
 sluggificato e unito con `/`. Per hostname `<nome progetto>.local` questo produce
 `local/<nome progetto>`, quindi il path reale è `config/local/<nome progetto>/modules_statuses.json`
 (non `config/<nome progetto>/...`). Verificare sempre con:
+=======
+sluggificato e unito con `/`. Per hostname `workorder.local` questo produce
+`local/workorder`, quindi il path reale è `config/local/workorder/modules_statuses.json`
+(non `config/workorder/...`). Verificare sempre con:
+>>>>>>> laraxot/dev
 
 ```bash
 php artisan tinker --execute="echo app(\Modules\Tenant\Actions\GetTenantNameAction::class)->execute();"
@@ -48,13 +58,21 @@ per puro caso — mascherando il fatto che moduli reali del progetto corrente no
 
 ## Incidente reale (2026-07-27)
 
+<<<<<<< HEAD
 `config/local/<nome progetto>/modules_statuses.json` conteneva un elenco di moduli
+=======
+`config/local/workorder/modules_statuses.json` conteneva un elenco di moduli
+>>>>>>> laraxot/dev
 (`modulo questionari, LU, Chart, Limesurvey, Setting, BarberShop, RealEstate, Booking, Food, Forum,
 modulo operativo, Shop, Ticket, ...`) che non corrispondeva affatto ai 38 moduli reali di
 questo progetto (`AI, Activity, AiAssistant, Billing, Bom, Catalog, Cms, Compliance,
 Customer, Document, Email, Employee, EnergyBroker, Fiscal, Gdpr, Geo, HR, Intervention,
 Inventory, Job, Lang, Media, Notify, Platform, Production, PublicProcurement, Quotation,
+<<<<<<< HEAD
 Rating, Seo, Signature, Tenant, TimberBilling, UI, User, Vehicle, WhatsApp, <nome progetto>,
+=======
+Rating, Seo, Signature, Tenant, TimberBilling, UI, User, Vehicle, WhatsApp, WorkOrder,
+>>>>>>> laraxot/dev
 Xot`) — chiaramente un leftover copiato da un template/demo generico multi-verticale
 (barbershop, real estate, booking, food, forum, shop, ticket) usato come base per altri
 progetti `<nome repository>` sulla stessa macchina.
@@ -71,15 +89,26 @@ segnalato direttamente.
 
 ## Fix applicato (2026-07-27)
 
+<<<<<<< HEAD
 Rigenerato `config/local/<nome progetto>/modules_statuses.json`:
+=======
+Rigenerato `config/local/workorder/modules_statuses.json`:
+>>>>>>> laraxot/dev
 
 - **38 chiavi** — solo moduli con `Modules/{Name}/module.json`, tutti `true`
 - **Esclusi:** `Blog`, `Comment`, `TestModule` (directory senza `module.json`)
 - **Rimossi fantasma:** `DbForge`, `FormBuilder`, nomi legacy multi-verticale (modulo questionari, Ticket, Shop, …)
+<<<<<<< HEAD
 - `config/local/<nome progetto>/modules.php` → `statuses-file` punta a questo JSON
 
 ```bash
 bash bashscripts/tools/sync-tenant-modules-statuses.sh local/<nome progetto>
+=======
+- `config/local/workorder/modules.php` → `statuses-file` punta a questo JSON
+
+```bash
+bash bashscripts/tools/sync-tenant-modules-statuses.sh local/workorder
+>>>>>>> laraxot/dev
 ```
 
 Verificato: `GetTenantModulesAction::execute()` → 38 moduli.

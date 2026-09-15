@@ -130,7 +130,11 @@ abstract class TestCase extends XotBaseTestCase
     {
         parent::setUp();
 
+<<<<<<< HEAD
         $database = self::sharedSqlitePath();
+=======
+        $database = database_path('fixcity_data.sqlite');
+>>>>>>> laraxot/dev
 
         /** @var array<string, array<string, mixed>> $connections */
         $connections = config('database.connections', []);
@@ -144,7 +148,11 @@ abstract class TestCase extends XotBaseTestCase
             DB::purge($connection);
         }
 
+<<<<<<< HEAD
         self::$sushiModel = new TestSushiModel;
+=======
+        self::$sushiModel = new TestSushiModel();
+>>>>>>> laraxot/dev
         self::$createTestData = static fn (): array => [];
     }
 

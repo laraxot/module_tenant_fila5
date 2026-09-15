@@ -13,7 +13,11 @@ use Modules\User\Models\User;
 use PHPUnit\Framework\Assert;
 use Webmozart\Assert\Assert as WebmozartAssert;
 
+<<<<<<< HEAD
 uses(TestCase::class);
+=======
+uses(\Modules\Tenant\Tests\TestCase::class);
+>>>>>>> laraxot/dev
 
 beforeEach(function (): void {
     /** @var TestCase $this */

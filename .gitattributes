@@ -2,7 +2,10 @@
 # Sync: bash bashscripts/templates/sync-gitattributes-modules.sh
 #
 # Git LFS VIETATO. Binari = blob git normali.
+<<<<<<< HEAD
 # Mai: filter=lfs / diff=lfs / merge=lfs
+=======
+>>>>>>> laraxot/dev
 
 * text=auto
 *.css linguist-vendored

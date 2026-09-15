@@ -8,27 +8,45 @@ updated: 2026-07-27
 related:
   - ./tenant-module-status-registry.md
   - ./it/config/modules-statuses.md
+<<<<<<< HEAD
   - ../<nome progetto>/docs/modules-statuses-<nome progetto>.md
+=======
+  - ../WorkOrder/docs/modules-statuses-workorder.md
+>>>>>>> laraxot/dev
   - ../User/docs/wiki/concepts/spatie-permission-table-names.md
   - ../Xot/docs/wiki/concepts/module-admin-panel-provider-mandatory.md
   - ../Xot/docs/wiki/concepts/module-filament-panel-triad.md
   - ../Xot/docs/wiki/concepts/basemodel-connection-religion.md
+<<<<<<< HEAD
   - ../<nome progetto>/docs/profile-schema-ownership.md
+=======
+  - ../WorkOrder/docs/profile-schema-ownership.md
+>>>>>>> laraxot/dev
 ---
 
 # Lezioni 2026-07-27 — moduli, tenant, config
 
 Hub sintetico per agenti: cosa è successo, perché, dove documentare.
 
+<<<<<<< HEAD
 ## 1. `modules_statuses.json` tenant <nome progetto>
 
 **Problema:** `config/local/<nome progetto>/modules_statuses.json` stale (altro progetto) + `modules.php` non puntava al file tenant.
+=======
+## 1. `modules_statuses.json` tenant workorder
+
+**Problema:** `config/local/workorder/modules_statuses.json` stale (altro progetto) + `modules.php` non puntava al file tenant.
+>>>>>>> laraxot/dev
 
 **Fix:** 38 moduli con `module.json` → tutti `true`; rimossi fantasma (`DbForge`, `FormBuilder`, nomi legacy multi-verticale).
 
 **SSoT fisico:** solo directory con `Modules/{Name}/module.json`.
 
+<<<<<<< HEAD
 **Doc:** [tenant-module-status-registry.md](./tenant-module-status-registry.md) · [it/config/modules-statuses.md](./it/config/modules-statuses.md) · [<nome progetto>/modules-statuses-<nome progetto>.md](../<nome progetto>/docs/modules-statuses-<nome progetto>.md)
+=======
+**Doc:** [tenant-module-status-registry.md](./tenant-module-status-registry.md) · [it/config/modules-statuses.md](./it/config/modules-statuses.md) · [WorkOrder/modules-statuses-workorder.md](../WorkOrder/docs/modules-statuses-workorder.md)
+>>>>>>> laraxot/dev
 
 ## 2. `config/config.php` per modulo
 
@@ -46,6 +64,7 @@ Hub sintetico per agenti: cosa è successo, perché, dove documentare.
 
 **Doc:** [User/spatie-permission-table-names.md](../User/docs/wiki/concepts/spatie-permission-table-names.md)
 
+<<<<<<< HEAD
 ## 4. `profiles` — owner schema <nome progetto>
 
 **Problema:** `Field 'id' doesn't have a default value` — legacy UUID PK senza default.
@@ -53,6 +72,15 @@ Hub sintetico per agenti: cosa è successo, perché, dove documentare.
 **Fix:** migrazione canonica in **<nome progetto>** (`main_module`); duplicati User in `_bak`.
 
 **Doc:** [<nome progetto>/profile-schema-ownership.md](../<nome progetto>/docs/profile-schema-ownership.md)
+=======
+## 4. `profiles` — owner schema WorkOrder
+
+**Problema:** `Field 'id' doesn't have a default value` — legacy UUID PK senza default.
+
+**Fix:** migrazione canonica in **WorkOrder** (`main_module`); duplicati User in `_bak`.
+
+**Doc:** [WorkOrder/profile-schema-ownership.md](../WorkOrder/docs/profile-schema-ownership.md)
+>>>>>>> laraxot/dev
 
 ## 5. `BaseModel::$connection` obbligatorio
 
@@ -80,9 +108,15 @@ Ogni modulo dichiara `protected $connection = '{snake}'` nel proprio `BaseModel`
 
 | Audit fatto | Cosa NON copriva |
 |-------------|------------------|
+<<<<<<< HEAD
 | `Modules/*/config/config.php` | JSON tenant in `config/local/<nome progetto>/` |
 | PHPStan / migrate runtime | Navigazione Filament (`GetTenantModulesAction`) |
 | `laravel/modules_statuses.json` root | Override `config/local/<nome progetto>/modules.php` |
+=======
+| `Modules/*/config/config.php` | JSON tenant in `config/local/workorder/` |
+| PHPStan / migrate runtime | Navigazione Filament (`GetTenantModulesAction`) |
+| `laravel/modules_statuses.json` root | Override `config/local/workorder/modules.php` |
+>>>>>>> laraxot/dev
 
 **Regola:** nuovo modulo → 2 provider allineati in `module.json` + `composer.json` + trinità Filament + **entrambi** i `modules_statuses.json` + migrazione owner se ha modelli.
 
@@ -95,7 +129,11 @@ bash bashscripts/tools/audit-module-admin-panel-provider.sh
 bash bashscripts/tools/audit-module-dashboard-page.sh
 ```
 
+<<<<<<< HEAD
 **Sync tenant:** `bash bashscripts/tools/sync-tenant-modules-statuses.sh local/<nome progetto>`
+=======
+**Sync tenant:** `bash bashscripts/tools/sync-tenant-modules-statuses.sh local/workorder`
+>>>>>>> laraxot/dev
 
 ## Themes
 

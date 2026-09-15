@@ -8,17 +8,29 @@ namespace Modules\Tenant\Models;
 // use Modules\Dental\Models\Appointment; // Module not available
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+<<<<<<< HEAD
+=======
+use Illuminate\Database\Eloquent\Model;
+>>>>>>> laraxot/dev
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Modules\Tenant\Database\Factories\TenantFactory;
+<<<<<<< HEAD
 use Modules\User\Models\User;
 use Modules\Xot\Models\Traits\HasXotFactory;
+=======
+use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Datas\XotData;
+>>>>>>> laraxot/dev
 
 /**
  * Modello Tenant per la gestione multi-tenant dell'applicazione.
  *
+<<<<<<< HEAD
  * @property-read User|null $creator
+=======
+>>>>>>> laraxot/dev
  * @property string|null $name
  * @property string|null $domain
  * @property string|null $database
@@ -37,8 +49,12 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @property string|null $tax_code
  * @property string|null $vat_number
  * @property-read string $url
+<<<<<<< HEAD
  * @property-read User|null $updater
  * @property-read Collection<int, User> $users
+=======
+ * @property-read Collection<int, Model&UserContract> $users
+>>>>>>> laraxot/dev
  * @property-read int|null $users_count
  *
  * @method static \Modules\Tenant\Database\Factories\TenantFactory factory($count = null, $state = [])
@@ -50,7 +66,10 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  */
 class Tenant extends BaseModel
 {
+<<<<<<< HEAD
     use HasXotFactory;
+=======
+>>>>>>> laraxot/dev
 
     /**
      * Gli attributi che sono mass assignable.
@@ -78,11 +97,25 @@ class Tenant extends BaseModel
     /**
      * Relazione con gli utenti associati al tenant.
      *
+<<<<<<< HEAD
      * @return HasMany<User, $this>
      */
     public function users(): HasMany
     {
         return $this->hasMany(User::class);
+=======
+     * @return HasMany<Model&UserContract, $this>
+     */
+    public function users(): HasMany
+    {
+        /** @var class-string<Model&UserContract> $userClass */
+        $userClass = XotData::make()->getUserClass();
+
+        /** @var HasMany<Model&UserContract, $this> $relation */
+        $relation = $this->hasMany($userClass);
+
+        return $relation;
+>>>>>>> laraxot/dev
     }
 
     // Commented out - Patient and Dental modules not available

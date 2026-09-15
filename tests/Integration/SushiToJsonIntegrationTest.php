@@ -11,7 +11,11 @@ use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
 
+<<<<<<< HEAD
 uses(TestCase::class);
+=======
+uses(\Modules\Tenant\Tests\TestCase::class);
+>>>>>>> laraxot/dev
 
 function tenantJsonPath(string $tenantName): string
 {
@@ -25,7 +29,11 @@ function tenantJsonPath(string $tenantName): string
 
 function makeTestSushiModelForPath(string $jsonPath): TestSushiModel
 {
+<<<<<<< HEAD
     $model = new TestSushiModelForPath;
+=======
+    $model = new TestSushiModelForPath();
+>>>>>>> laraxot/dev
     $model->setJsonPath($jsonPath);
 
     return $model;
