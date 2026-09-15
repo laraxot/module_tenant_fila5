@@ -26,9 +26,7 @@ class TranslateTenantKeyAction
 
         $arrayKey = Str::of($key)->after('.')->toString();
 
-        /** @var mixed $pathResult */
-        $pathResult = app(GetTenantFilePathAction::class)->execute('lang/'.$lang.'/'.$transFile);
-        $path = is_string($pathResult) ? $pathResult : '';
+        $path = app(GetTenantFilePathAction::class)->execute('lang/'.$lang.'/'.$transFile);
         if (! File::exists($path)) {
             return $key;
         }

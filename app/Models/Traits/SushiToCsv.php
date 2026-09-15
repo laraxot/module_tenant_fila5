@@ -206,12 +206,6 @@ trait SushiToCsv
             /** @var array<string, float|int|string|null> $cleanRow */
             $cleanRow = [];
             foreach ($row as $key => $value) {
-<<<<<<< HEAD
-=======
-                if (! is_string($key) && ! is_int($key)) {
-                    continue;
-                }
->>>>>>> laraxot/dev
                 $cleanRow[(string) $key] = self::csvValue($value);
             }
             $dataArray[] = $cleanRow;

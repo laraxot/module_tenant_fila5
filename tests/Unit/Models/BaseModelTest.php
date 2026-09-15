@@ -13,11 +13,7 @@ uses(\Modules\Tenant\Tests\TestCase::class);
 
 function makeTenantTestBaseModel(): BaseModel
 {
-<<<<<<< HEAD
     return new class() extends BaseModel
-=======
-    return new class extends BaseModel
->>>>>>> laraxot/dev
     {
         protected $table = 'test_tenant_table';
     };
