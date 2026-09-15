@@ -7,21 +7,11 @@ namespace Modules\Tenant\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Database\Factories\DomainFactory;
-<<<<<<< HEAD
-use Modules\User\Models\User;
-use Modules\Xot\Models\Traits\HasXotFactory;
-=======
->>>>>>> laraxot/dev
 use Sushi\Sushi;
 
 /**
  * @property string|null $id
  * @property string|null $name
-<<<<<<< HEAD
- * @property-read User|null $creator
- * @property-read User|null $updater
-=======
->>>>>>> laraxot/dev
  *
  * @method static \Modules\Tenant\Database\Factories\DomainFactory factory($count = null, $state = [])
  * @method static Builder<static>|Domain newModelQuery()
@@ -34,10 +24,6 @@ use Sushi\Sushi;
  */
 class Domain extends BaseModel
 {
-<<<<<<< HEAD
-    use HasXotFactory;
-=======
->>>>>>> laraxot/dev
 
     use Sushi;
 
