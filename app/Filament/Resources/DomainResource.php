@@ -15,8 +15,6 @@ class DomainResource extends XotBaseResource
 {
     protected static ?string $model = Domain::class;
 
-<<<<<<< HEAD
-=======
     /**
      * @return array<string, mixed>
      */
@@ -26,7 +24,6 @@ class DomainResource extends XotBaseResource
         return [];
     }
 
->>>>>>> laraxot/dev
     #[Override]
     public static function getPages(): array
     {

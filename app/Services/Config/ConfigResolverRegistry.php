@@ -46,11 +46,7 @@ class ConfigResolverRegistry
         }
 
         // Fallback to standard resolver
-<<<<<<< HEAD
-        return new StandardConfigResolver;
-=======
         return new StandardConfigResolver();
->>>>>>> laraxot/dev
     }
 
     /**
@@ -59,14 +55,8 @@ class ConfigResolverRegistry
      */
     private function registerDefaultResolvers(): void
     {
-<<<<<<< HEAD
-        $this->register(new MorphMapConfigResolver)
-            ->register(new DatabaseConfigResolver)
-            ->register(new StandardConfigResolver);
-=======
         $this->register(new MorphMapConfigResolver())
             ->register(new DatabaseConfigResolver())
             ->register(new StandardConfigResolver());
->>>>>>> laraxot/dev
     }
 }
