@@ -25,7 +25,11 @@ function tenantJsonPath(string $tenantName): string
 
 function makeTestSushiModelForPath(string $jsonPath): TestSushiModel
 {
+<<<<<<< HEAD
     $model = new TestSushiModelForPath();
+=======
+    $model = new TestSushiModelWithJsonPath;
+>>>>>>> laraxot/dev
     $model->setJsonPath($jsonPath);
 
     return $model;

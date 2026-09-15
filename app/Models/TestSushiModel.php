@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Models;
 
+<<<<<<< HEAD
 use Illuminate\Support\Carbon;
+=======
+>>>>>>> laraxot/dev
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Database\Factories\TestSushiModelFactory;
 use Modules\Tenant\Models\Traits\SushiToJson;
+<<<<<<< HEAD
 
 /**
  * @property int $id
@@ -37,6 +41,10 @@ use Modules\Tenant\Models\Traits\SushiToJson;
  *
  * @mixin \Eloquent
  */
+=======
+use Modules\Xot\Models\Traits\HasXotFactory;
+
+>>>>>>> laraxot/dev
 class TestSushiModel extends BaseModel
 {
 

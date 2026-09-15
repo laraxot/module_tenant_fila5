@@ -2,12 +2,25 @@
 # Sync: bash bashscripts/templates/sync-gitattributes-modules.sh
 #
 # Git LFS VIETATO. Binari = blob git normali.
+<<<<<<< HEAD
 
 * text=auto
 *.css linguist-vendored
 *.scss linguist-vendored
 *.js linguist-vendored
 CHANGELOG.md export-ignore
+=======
+# Mai: filter=lfs / diff=lfs / merge=lfs
+
+* text=auto
+
+*.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+
+CHANGELOG.md export-ignore
+
+>>>>>>> laraxot/dev
 # `binary` + `!filter` azzera eventuali filtri LFS ereditati
 *.png binary !filter
 *.jpg binary !filter
@@ -27,9 +40,12 @@ CHANGELOG.md export-ignore
 *.phar binary !filter
 *.db binary !filter
 *.sqlite binary !filter
+<<<<<<< HEAD
 *.png !text !filter !merge !diff
 *.svg !text !filter !merge !diff
 *.jpg !text !filter !merge !diff
 *.jpeg !text !filter !merge !diff
 *.gif !text !filter !merge !diff
 *.webp !text !filter !merge !diff
+=======
+>>>>>>> laraxot/dev

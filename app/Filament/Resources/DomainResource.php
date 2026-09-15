@@ -10,14 +10,54 @@ use Modules\Tenant\Filament\Resources\DomainResource\Pages\ListDomains;
 use Modules\Tenant\Models\Domain;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
-
+use Filament\Forms\Components\Field;
 class DomainResource extends XotBaseResource
 {
     protected static ?string $model = Domain::class;
 
     /**
+<<<<<<< HEAD
      * @return array<string, mixed>
      */
+=======
+
+
+     * @return array<string, mixed>
+
+
+     */
+
+
+    //#[Override]
+    public static function getFormSchemaOld(): array
+    {
+        return [
+            'title' => TextInput::make('title')
+                ->required()
+                ->string()
+                ->maxLength(255),
+            'brand' => TextInput::make('brand')
+                ->required()
+                ->string()
+                ->maxLength(255),
+            'category' => TextInput::make('category')
+                ->required()
+                ->string()
+                ->maxLength(255),
+            'description' => RichEditor::make('description')->required()->string(),
+            'price' => TextInput::make('price')
+                ->required()
+                ->numeric()
+                ->prefix('$'),
+            'rating' => TextInput::make('rating')
+                ->required()
+                ->numeric()
+                ->minValue(0)
+                ->maxValue(5),
+        ];
+    }
+
+>>>>>>> laraxot/dev
     #[Override]
     public static function getRelations(): array
     {

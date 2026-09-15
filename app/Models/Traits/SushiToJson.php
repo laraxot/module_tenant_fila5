@@ -242,6 +242,7 @@ trait SushiToJson
      * @return array<int, array<string, mixed>>
      */
     protected function normalizeJsonItems(array $data): array
+<<<<<<< HEAD
     {
         /** @var array<int, array<string, mixed>> $normalizedData */
         $normalizedData = [];
@@ -311,6 +312,156 @@ trait SushiToJson
         }
 
         return $completedData;
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $data
+     * @return array<int, array<string, mixed>>
+     */
+    private function normalizeJsonRecords(array $data): array
+    {
+        $validatedData = [];
+
+        foreach ($data as $item) {
+            if (! is_array($item)) {
+                continue;
+            }
+
+            $validatedItem = [];
+            foreach ($item as $key => $value) {
+                $validatedItem[is_string($key) ? $key : (string) $key] = $value;
+            }
+            $validatedData[] = $validatedItem;
+        }
+
+        return $validatedData;
+    }
+
+    private static function handleSingleJsonCreating(self $model): void
+    {
+        $file = $model->getJsonFile();
+        $existingData = $model->loadExistingData();
+        $nextId = self::resolveNextRecordId($existingData);
+
+        $model->setAttribute('id', $nextId);
+        $model->setAttribute('updated_at', now());
+        $model->setAttribute('created_at', now());
+        self::applyAuditFields($model);
+
+        $existingData[] = $model->getAttributes();
+        $model->ensureDirectoryExists($file);
+        $model->saveToJson($existingData);
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $existingData
+     */
+    private static function resolveNextRecordId(array $existingData): int
+    {
+        return max(self::maxIdFromRows($existingData), self::maxIdFromDatabase()) + 1;
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $rows
+     */
+    private static function maxIdFromRows(array $rows): int
+    {
+        $maxId = 0;
+
+        foreach ($rows as $row) {
+            if (! \is_array($row)) {
+                continue;
+            }
+
+            $maxId = max($maxId, self::intValue($row['id'] ?? null));
+        }
+
+        return $maxId;
+    }
+
+    private static function maxIdFromDatabase(): int
+    {
+        try {
+            /** @var int|null $dbMax */
+            $dbMax = static::query()->max('id');
+
+            return \is_int($dbMax) ? $dbMax : 0;
+        } catch (Throwable) {
+            return 0;
+        }
+    }
+
+    private static function applyAuditFields(self $model): void
+    {
+        $authId = $model->authId();
+        if ($authId === null) {
+            return;
+        }
+
+        $model->setAttribute('updated_by', $authId);
+        $model->setAttribute('created_by', $authId);
+    }
+
+    private static function handleSingleJsonUpdating(self $model): void
+    {
+        $model->setAttribute('updated_at', now());
+        self::applyUpdatingAuditField($model);
+
+        $existingData = $model->loadExistingData();
+        $id = self::intValue($model->getAttribute('id'));
+        if ($id <= 0) {
+            return;
+        }
+
+        $index = $model->findRowIndexById($existingData, $id);
+        if ($index === null) {
+            return;
+        }
+
+        /** @var array<string, mixed> $modelArray */
+        $modelArray = $model->toArray();
+        $existingData[$index] = $modelArray;
+        $model->saveToJson($existingData);
+    }
+
+    private static function applyUpdatingAuditField(self $model): void
+    {
+        $authId = $model->authId();
+        if ($authId !== null) {
+            $model->setAttribute('updated_by', $authId);
+        }
+    }
+
+    private static function handleSingleJsonDeleting(self $model): void
+    {
+        $id = self::intValue($model->getAttribute('id'));
+        if ($id <= 0) {
+            return;
+        }
+
+        $existingData = $model->loadExistingData();
+        $index = $model->findRowIndexById($existingData, $id);
+        if ($index === null) {
+            return;
+        }
+
+        unset($existingData[$index]);
+        $model->saveToJson(array_values($existingData));
+    }
+
+    private static function intValue(mixed $value): int
+=======
+>>>>>>> laraxot/dev
+    {
+        if (is_int($value)) {
+            return $value;
+        }
+
+        if ((is_string($value) || is_float($value)) && is_numeric($value)) {
+            return (int) $value;
+        }
+
+        return 0;
     }
 
     /**
