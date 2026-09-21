@@ -8,4 +8,4 @@ related:
 
 # Epics Tenant
 
-Nessun epic conversione. Vedi User 10.1.
+Nessun epic di conversione: zero candidati A/B/C verificati in [livewire-inventory.md](./livewire-inventory.md). Per il team switcher vedi User 10.1.

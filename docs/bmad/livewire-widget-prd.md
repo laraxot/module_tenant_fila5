@@ -8,4 +8,7 @@ related:
 
 # PRD Tenant
 
-Nessun FR HTTP→widget. Non creare un secondo team switcher.
+### FR-T001 [MUST] Nessun FR HTTP→widget.
+### FR-T002 [MUST] Non creare un secondo team switcher: quello del chrome è `User\Filament\Widgets\Team\TeamChangeWidget`.
+
+Verdetto: [livewire-inventory.md](./livewire-inventory.md).

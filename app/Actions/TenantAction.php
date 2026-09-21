@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Actions;
 
-use Spatie\QueueableAction\ActionJob;
-
-use Spatie\QueueableAction\QueueableAction;
-
 use Illuminate\Database\Eloquent\Model;
 use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
 use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
@@ -15,12 +11,12 @@ use Modules\Tenant\Actions\Config\GetTenantConfigPathAction;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
 use Modules\Tenant\Actions\Config\SaveTenantConfigAction;
-use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Actions\Models\ResolveTenantModelClassAction;
 use Modules\Tenant\Actions\Models\ResolveTenantModelInstanceAction;
 use Modules\Tenant\Actions\Modules\GetTenantModulesAction;
 use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use ReflectionException;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * TenantService - Facade sottile per operazioni tenant-aware.
@@ -38,6 +34,7 @@ use ReflectionException;
 class TenantAction
 {
     use QueueableAction;
+
     /**
      * Ottiene il nome del tenant corrente basato sul server name.
      *

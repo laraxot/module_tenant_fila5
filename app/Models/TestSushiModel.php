@@ -7,7 +7,6 @@ namespace Modules\Tenant\Models;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
-use Modules\Tenant\Database\Factories\TestSushiModelFactory;
 use Modules\Tenant\Models\Traits\SushiToJson;
 
 /**
@@ -39,7 +38,6 @@ use Modules\Tenant\Models\Traits\SushiToJson;
  */
 class TestSushiModel extends BaseModel
 {
-
     use SushiToJson;
 
     /**

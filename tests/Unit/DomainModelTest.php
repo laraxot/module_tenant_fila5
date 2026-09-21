@@ -10,11 +10,11 @@ use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 describe('Domain Model', function (): void {
     test('_domain_model_can_be_instantiated', function (): void {
-        $domain = new Domain();
+        $domain = new Domain;
 
         Assert::assertInstanceOf(Domain::class, $domain);
     });
@@ -29,7 +29,7 @@ describe('Domain Model', function (): void {
             ]);
         });
 
-        $domain = new Domain();
+        $domain = new Domain;
         $rows = $domain->getRows();
 
         Assert::assertCount(2, $rows);

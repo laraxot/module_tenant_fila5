@@ -11,7 +11,7 @@ use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 function tenantJsonPath(string $tenantName): string
 {
@@ -25,7 +25,7 @@ function tenantJsonPath(string $tenantName): string
 
 function makeTestSushiModelForPath(string $jsonPath): TestSushiModel
 {
-    $model = new TestSushiModelForPath();
+    $model = new TestSushiModelForPath;
     $model->setJsonPath($jsonPath);
 
     return $model;

@@ -8,4 +8,4 @@ related:
 
 # Brief Tenant
 
-Nessuna UI HTTP da portare nel panel. Team switcher chrome è User 10.1. Tenant non duplica. Zero HTTP.
+Nessuna UI HTTP da portare nel panel. `Http/Livewire` vuoto (solo `_components.json` `[]`); `Filament/Widgets` assente. Team switcher chrome è User 10.1 — Tenant non duplica. Verdetto: [livewire-inventory.md](./livewire-inventory.md).

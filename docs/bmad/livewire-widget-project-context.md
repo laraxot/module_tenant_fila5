@@ -10,3 +10,5 @@ related:
 # Context Tenant
 
 Costituzione piattaforma: [Xot](../../Xot/docs/bmad/livewire-widget-project-context.md). Tenant non riscrive i vincoli: estendere `XotBaseWidget`, mai `Filament\Widgets\Widget` diretto; chrome con `$isDiscovered = false` + FQCN; FO/legal ≠ widget forzato.
+
+Stato verificato: zero `Http\Livewire`, zero widget — [livewire-inventory.md](./livewire-inventory.md).
