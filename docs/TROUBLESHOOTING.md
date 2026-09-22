@@ -484,4 +484,12 @@ php artisan migrate --database=tenant_123
 
 ---
 
+<<<<<<< HEAD
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](PATTERNS.md)
+=======
+<<<<<<< HEAD
+Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](PATTERNS.md)
+=======
+Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Patterns](PATTERNS.md)
+>>>>>>> laraxot/dev
+>>>>>>> laraxot/dev
