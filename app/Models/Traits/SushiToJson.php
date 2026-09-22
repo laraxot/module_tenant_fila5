@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace Modules\Tenant\Models\Traits;
 
 use Exception;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
-use InvalidArgumentException;
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Sushi\Sushi;
@@ -40,9 +39,6 @@ trait SushiToJson
     public function getJsonFile(): string
     {
         $tbl = $this->getTable();
-        if (! is_string($tbl)) {
-            throw new InvalidArgumentException(__FILE__.':'.__LINE__.' - '.class_basename(self::class).': Table name must be string');
-        }
 
         return app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
     }
@@ -173,10 +169,6 @@ trait SushiToJson
         $maxId = 0;
 
         foreach ($existingData as $row) {
-            if (! \is_array($row)) {
-                continue;
-            }
-
             $rawId = $row['id'] ?? 0;
             $id = \is_numeric($rawId) ? (int) $rawId : 0;
             $maxId = max($maxId, $id);
@@ -192,17 +184,17 @@ trait SushiToJson
      */
     protected static function bootSushiToJson(): void
     {
-        static::creating(static function ($model): void {
+        static::creating(static function (Model $model): void {
             Assert::isInstanceOf($model, static::class);
             self::handleSingleJsonCreating($model);
         });
 
-        static::updating(static function ($model): void {
+        static::updating(static function (Model $model): void {
             Assert::isInstanceOf($model, static::class);
             self::handleSingleJsonUpdating($model);
         });
 
-        static::deleting(static function ($model): void {
+        static::deleting(static function (Model $model): void {
             Assert::isInstanceOf($model, static::class);
             self::handleSingleJsonDeleting($model);
         });
@@ -230,15 +222,7 @@ trait SushiToJson
      */
     protected function authId(): int|string|null
     {
-        if (\function_exists('authId')) {
-            return authId();
-        }
-
-        if (class_exists('\Illuminate\Support\Facades\Auth')) {
-            return Auth::id();
-        }
-
-        return null;
+        return authId();
     }
 
     /**
@@ -299,13 +283,24 @@ trait SushiToJson
      */
     protected function completeSchemaFields(array $normalizedData, array $form): array
     {
+        // Sushi genera un multi-insert: ogni riga deve avere lo stesso set di colonne.
+        // Completare col solo schema non basta quando alcune righe hanno chiavi extra,
+        // quindi si usa l'unione delle chiavi di schema e di tutte le righe.
+        $allKeys = array_keys($form);
+        foreach ($normalizedData as $item) {
+            $allKeys = array_merge($allKeys, array_keys($item));
+        }
+
+        /** @var list<string> $allKeys */
+        $allKeys = array_values(array_unique($allKeys));
+
         /** @var array<int, array<string, mixed>> $completedData */
         $completedData = [];
 
         foreach ($normalizedData as $item) {
             /** @var array<string, mixed> $row */
             $row = $item;
-            foreach (array_keys($form) as $safeKey) {
+            foreach ($allKeys as $safeKey) {
                 if (! array_key_exists($safeKey, $row)) {
                     $row[$safeKey] = null;
                 }
@@ -453,6 +448,9 @@ trait SushiToJson
         $model->saveToJson(array_values($existingData));
     }
 
+    /**
+     * @param  mixed  $value  Raw Eloquent attribute (int|string|float expected)
+     */
     private static function intValue(mixed $value): int
     {
         if (is_int($value)) {

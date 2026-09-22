@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+# Documentation Index
+
+Modulo: Tenant
+
+## File disponibili
+
+<!-- auto-generato: elencare i file .md presenti -->
+=======
 ---
 title: Tenant Module Documentation Index
 module: Tenant
@@ -105,3 +114,4 @@ Each tenant operates in complete isolation:
 5. Keep migrations atomic and reversible
 
 For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/contributing.md).
+>>>>>>> laraxot/dev

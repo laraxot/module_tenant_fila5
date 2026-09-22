@@ -46,11 +46,9 @@ class ResolveTenantConfigValueAction
      */
     private function buildMergedGroupConfig(string $group): array
     {
-        /** @var mixed $originalConf */
         $originalConf = config($group);
         $tenantName = app(GetTenantNameAction::class)->execute();
         $configName = str_replace('/', '.', $tenantName).'.'.$group;
-        /** @var mixed $extraConf */
         $extraConf = config($configName);
 
         $originalConfTyped = is_array($originalConf)
@@ -65,6 +63,7 @@ class ResolveTenantConfigValueAction
     }
 
     /**
+     * @param  mixed  $res  Raw config() payload; only scalar/array values are accepted
      * @return float|int|string|array<mixed>|null
      */
     private function assertValidConfigValue(mixed $res): float|int|string|array|null

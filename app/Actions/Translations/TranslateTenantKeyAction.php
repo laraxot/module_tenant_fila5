@@ -26,22 +26,15 @@ class TranslateTenantKeyAction
 
         $arrayKey = Str::of($key)->after('.')->toString();
 
-        /** @var mixed $pathResult */
-        $pathResult = app(GetTenantFilePathAction::class)->execute('lang/'.$lang.'/'.$transFile);
-        $path = is_string($pathResult) ? $pathResult : '';
+        $path = app(GetTenantFilePathAction::class)->execute('lang/'.$lang.'/'.$transFile);
         if (! File::exists($path)) {
             return $key;
         }
 
-        /** @var mixed $data */
         $data = File::getRequire($path);
         Assert::isArray($data);
 
-        /** @var array<string, mixed> $arrayData */
-        $arrayData = $data;
-
-        /** @var mixed $res */
-        $res = Arr::get($arrayData, $arrayKey);
+        $res = Arr::get($data, $arrayKey);
 
         if (! \is_string($res)) {
             return $key;

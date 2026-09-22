@@ -1,10 +1,9 @@
 <?php
 
+declare(strict_types=1);
 /**
  * @see https://dev.to/hasanmn/automatically-update-createdby-and-updatedby-in-laravel-using-bootable-traits-28g9.
  */
-
-declare(strict_types=1);
 
 namespace Modules\Tenant\Models\Traits;
 
@@ -46,26 +45,12 @@ trait SushiToPhpArray
 
     protected static function bootSushiToPhpArray(): void
     {
-        static::creating(static function ($model): void {
-            if (! $model instanceof Model) {
-                return;
-            }
-
+        static::creating(static function (Model $model): void {
             $model->toArray();
         });
 
-        static::updating(static function ($model): void {
-            if (! $model instanceof Model) {
-                return;
-            }
-
+        static::updating(static function (Model $model): void {
             $model->toArray();
-        });
-
-        static::deleting(static function ($model): void {
-            if (! $model instanceof Model) {
-                return;
-            }
         });
     }
 }
