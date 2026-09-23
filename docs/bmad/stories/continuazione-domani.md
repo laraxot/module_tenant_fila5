@@ -4,7 +4,7 @@ type: module-fix
 scope: Tenant
 epic: "7"
 bmad_version: v3.30.1
-updated_at: '2026-09-22'
+updated_at: '2026-09-23'
 status: in-progress
 related:
   - ../../stories/7.1.phpstan-sushi-boundaries.story.md
@@ -22,9 +22,20 @@ related:
 - `@phpstan-ignore trait.unused` presente in `app/Models/Traits/SushiToPhpArray.php:16` — coerente con l'owned scope di `7.1.phpstan-sushi-boundaries.story.md` (quel trait e' esplicitamente nello scope), non un problema nuovo.
 - 0 `TODO`/`FIXME`/`dddx` in `app/` (grep pulito).
 
-## Priorita' #1 domani — chiudere il ciclo 7.1/7.2 sushi PHPStan (probabile falso "in-progress")
+## Priorita' #1 — CHIUSA (2026-09-23, sessione claude sonnet 5, swarm phpstan-fix-21-moduli)
 
-`7.1.phpstan-sushi-boundaries.story.md` (status `in-progress`) documenta che l'AC#1 module-wide era bloccato da 40 diagnostiche PHPStan in test **non posseduti da 7.1** (owned scope = 4 trait Sushi + 1 Action + `DomainModelTest.php`). Quei 40 findings erano owned esattamente da `7.2.phpstan-test-harness-contracts.story.md` (status `review`), il cui Dev Agent Record dichiara gia' verificato: baseline 40 → `cold phpstan analyse Modules/Tenant`: **0 errors, 0 file errors**, Pest mirato 75 passed / 311 assertions. Le due story non sono mai state riallineate: 7.1 resta `in-progress` con l'ultimo task (`Aggiornare sushi-traits-phpstan-fixes.md e rieseguire PHPStan`) ancora `[ ]`. Domani: rieseguire `phpstan analyse Modules/Tenant --no-progress` a freddo per confermare lo 0 dichiarato da 7.2, poi promuovere 7.1 e 7.2 a `done` in un solo giro (evitare di rilavorare da zero qualcosa gia' chiuso).
+Fatto esattamente come pianificato: `./vendor/bin/phpstan clear-result-cache &&
+./vendor/bin/phpstan analyse Modules/Tenant --no-progress --memory-limit=-1` a freddo
+-> `[OK] No errors`. `7.1.phpstan-sushi-boundaries.story.md` e
+`7.2.phpstan-test-harness-contracts.story.md` promosse entrambe a `done`, task
+residuo di 7.1 chiuso, `sushi-traits-phpstan-fixes.md` aggiornato con la nota di
+chiusura. Nessun errore PHPStan reale trovato da correggere in questa sessione:
+il modulo era gia' a 0 dal 2026-08-24/2026-09-07, mancava solo il riallineamento
+di stato delle story. Unico evento notato: un fatal error transitorio in fase di
+bootstrap PHPStan causato da un file `Modules/Incentivi` in WIP concorrente di un
+altro agente dello swarm (`getFormSchemaOld` reso static su
+`ActivityResource.php:28`, fuori owned scope Tenant) — risolto da solo al retry,
+nessuna azione necessaria, stesso pattern gia' visto il 2026-09-06 su AiAssistant.
 
 ## Altri task aperti, in ordine di priorita'
 
