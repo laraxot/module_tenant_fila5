@@ -158,7 +158,7 @@ phpmd*
 /_docs
 /docs/archive
 /docs/legacy
-graphify-out
+graphify-out/
 
 # Laraxot — forbidden at module/theme root (rector.php, phpinsights.php, .cursor, .windsurf, .vscode)
 /rector.php
