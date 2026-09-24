@@ -1,3 +1,17 @@
+<<<<<<< .merge_file_VvDEV7
+=======
+---
+title: "Root files hygiene"
+module: "Tenant"
+type: concept
+tags: [root, files, hygiene]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "root files hygiene"
+related:
+  - "./phpstan-corrections-january.md"
+---
+>>>>>>> .merge_file_sIFSd6
 # Root files hygiene
 
 ## 2026-07-08 16:51
