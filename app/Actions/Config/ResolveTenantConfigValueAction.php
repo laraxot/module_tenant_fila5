@@ -63,10 +63,7 @@ class ResolveTenantConfigValueAction
     }
 
     /**
-<<<<<<< .merge_file_0Chutp
      * @param  mixed  $res  Raw config() payload; only scalar/array values are accepted
-=======
->>>>>>> .merge_file_c4Muh6
      * @return float|int|string|array<mixed>|null
      */
     private function assertValidConfigValue(mixed $res): float|int|string|array|null

@@ -10,11 +10,7 @@ use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-<<<<<<< .merge_file_QMPzdj
-uses(TestCase::class);
-=======
 uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> .merge_file_KAC98f
 
 describe('Tenant Additional Actions Coverage', function (): void {
     test('GetTenantModulesAction is accessible', function (): void {

@@ -39,11 +39,7 @@ class GetDomainsArrayAction
      */
     public function recurse(string $path): array
     {
-<<<<<<< .merge_file_wv7dsY
-        $filesystem = new Filesystem;
-=======
         $filesystem = new Filesystem();
->>>>>>> .merge_file_SPThHV
         $directories = $filesystem->directories($path);
         $res = [];
         foreach ($directories as $dir) {

@@ -18,11 +18,7 @@ use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\User;
 use PHPUnit\Framework\Assert;
 
-<<<<<<< .merge_file_XHV6EB
-uses(TestCase::class);
-=======
 uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> .merge_file_djxUcy
 
 beforeEach(function (): void {
     /** @var TestCase $this */

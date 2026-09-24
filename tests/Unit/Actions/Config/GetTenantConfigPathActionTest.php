@@ -10,11 +10,7 @@ use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-<<<<<<< .merge_file_UcirLu
-uses(TestCase::class);
-=======
 uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> .merge_file_Q6x8Xu
 
 it('gets tenant config path', function (): void {
     /** @var TestCase $this */

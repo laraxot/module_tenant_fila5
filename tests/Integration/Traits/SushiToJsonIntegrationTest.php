@@ -37,11 +37,7 @@ beforeEach(function (): void {
 
     $this->setCurrentTenant($this->tenantModel());
 
-<<<<<<< .merge_file_7Edlag
-    $this->model = new TestSushiModel;
-=======
     $this->model = new TestSushiModel();
->>>>>>> .merge_file_w4yPqJ
     TestCase::$testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     if (File::exists(TestCase::$testJsonPath)) {
@@ -135,11 +131,7 @@ it('works with different tenant configurations', function (): void {
 
     $this->setCurrentTenant($secondTenant);
 
-<<<<<<< .merge_file_7Edlag
-    $secondModel = new TestSushiModel;
-=======
     $secondModel = new TestSushiModel();
->>>>>>> .merge_file_w4yPqJ
     $secondJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     expect($secondModel->saveToJson([

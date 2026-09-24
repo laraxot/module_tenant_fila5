@@ -1,17 +1,9 @@
 <?php
-
-<<<<<<< .merge_file_Oa8rEP
 declare(strict_types=1);
-=======
->>>>>>> .merge_file_r3t2VD
 /**
  * @see https://dev.to/hasanmn/automatically-update-createdby-and-updatedby-in-laravel-using-bootable-traits-28g9.
  */
 
-<<<<<<< .merge_file_Oa8rEP
-=======
-declare(strict_types=1);
->>>>>>> .merge_file_r3t2VD
 
 namespace Modules\Tenant\Models\Traits;
 

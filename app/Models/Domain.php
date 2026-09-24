@@ -24,10 +24,6 @@ use Sushi\Sushi;
  */
 class Domain extends BaseModel
 {
-<<<<<<< .merge_file_sLuyNY
-=======
-
->>>>>>> .merge_file_Tfz81T
     use Sushi;
 
     /**

@@ -17,14 +17,8 @@ interface ConfigResolverInterface
     /**
      * Resolve the configuration value for the given key.
      *
-<<<<<<< .merge_file_6bd8Ww
-     * @param  string|int|array<mixed>|null  $default
-     *
-     * @return float|int|string|array<mixed>|null
-=======
      * @param  string|int|array<string, mixed>|null  $default
      * @return float|int|string|array<string, mixed>|null
->>>>>>> .merge_file_fLZACm
      */
     public function resolve(string $key, string|int|array|null $default = null): float|int|string|array|null;
 }

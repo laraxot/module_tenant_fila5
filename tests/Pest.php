@@ -1,10 +1,6 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_0TQZ2F
-=======
-
->>>>>>> .merge_file_iBQQpT
 /*
  * Bootstrap Pest — modulo Tenant.
  *

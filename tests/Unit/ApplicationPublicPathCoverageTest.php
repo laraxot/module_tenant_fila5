@@ -11,11 +11,7 @@ use PHPUnit\Framework\Assert;
 use function Safe\mkdir;
 use function Safe\realpath;
 
-<<<<<<< .merge_file_hasNgb
-uses(TestCase::class);
-=======
 uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> .merge_file_odwvBe
 
 it('returns real path when requested public path exists', function (): void {
     $root = sys_get_temp_dir().'/appcov-'.uniqid('', true);

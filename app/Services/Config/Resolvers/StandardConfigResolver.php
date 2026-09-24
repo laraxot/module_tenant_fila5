@@ -5,14 +5,8 @@ declare(strict_types=1);
 namespace Modules\Tenant\Services\Config\Resolvers;
 
 use Exception;
-<<<<<<< .merge_file_osMZDe
 use Illuminate\Support\Facades\Config;
 use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
-=======
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Str;
->>>>>>> .merge_file_Hwx8Dr
 use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
 use Modules\Tenant\Services\TenantService;
 
@@ -23,26 +17,16 @@ class StandardConfigResolver implements ConfigResolverInterface
 {
     public function canResolve(string $key): bool
     {
-<<<<<<< .merge_file_osMZDe
         return $key !== '';
     }
 
     /**
      * @param  string|int|array<mixed>|null  $default
-=======
-        // This is the fallback resolver, it can handle any key
-        return true;
-    }
-
-    /**
-     * @param  string|int|array<string, mixed>|null  $default
->>>>>>> .merge_file_Hwx8Dr
      * @return float|int|string|array<mixed>|null
      */
     public function resolve(string $key, string|int|array|null $default = null): float|int|string|array|null
     {
         $group = $this->extractGroup($key);
-<<<<<<< .merge_file_osMZDe
         $mergedConf = $this->buildMergedConfig($key, $group);
 
         Config::set($group, $mergedConf);
@@ -91,26 +75,6 @@ class StandardConfigResolver implements ConfigResolverInterface
 
         if ($result === null && $default !== null) {
             $this->handleMissingConfig($key);
-=======
-
-        $originalConf = $this->getOriginalConfig($group);
-        $extraConf = $this->getTenantConfig($group);
-
-        // Handle database configuration specially
-        if ($key === 'database') {
-            $databaseResolver = new DatabaseConfigResolver();
-            $resolvedDatabaseConfig = $databaseResolver->resolve($key, $extraConf);
-            $extraConf = is_array($resolvedDatabaseConfig) ? $resolvedDatabaseConfig : [];
-        }
-
-        $mergedConf = collect($originalConf)->merge($extraConf)->all();
-        Config::set($group, $mergedConf);
-
-        $result = config($key);
-
-        if ($result === null && $default !== null) {
-            $this->handleMissingConfig($key, $group, $extraConf, $default);
->>>>>>> .merge_file_Hwx8Dr
         }
 
         if (! is_numeric($result) && ! is_string($result) && ! is_array($result) && $result !== null) {
@@ -122,7 +86,6 @@ class StandardConfigResolver implements ConfigResolverInterface
 
     private function extractGroup(string $key): string
     {
-<<<<<<< .merge_file_osMZDe
         $group = collect(explode('.', $key))->first();
 
         if ($group === null) {
@@ -130,9 +93,6 @@ class StandardConfigResolver implements ConfigResolverInterface
         }
 
         return $group;
-=======
-        return explode('.', $key)[0];
->>>>>>> .merge_file_Hwx8Dr
     }
 
     /**
@@ -141,7 +101,6 @@ class StandardConfigResolver implements ConfigResolverInterface
     private function getOriginalConfig(string $group): array
     {
         $config = config($group);
-<<<<<<< .merge_file_osMZDe
 
         if (is_array($config)) {
             /** @var array<string, mixed> $config */
@@ -149,21 +108,6 @@ class StandardConfigResolver implements ConfigResolverInterface
         }
 
         return [];
-=======
-        if (! is_array($config)) {
-            return [];
-        }
-
-        /** @var array<string, mixed> $result */
-        $result = [];
-        foreach ($config as $key => $value) {
-            if (is_string($key)) {
-                $result[$key] = $value;
-            }
-        }
-
-        return $result;
->>>>>>> .merge_file_Hwx8Dr
     }
 
     /**
@@ -174,7 +118,6 @@ class StandardConfigResolver implements ConfigResolverInterface
         $tenantName = TenantService::getName();
         $configName = str_replace('/', '.', $tenantName).'.'.$group;
         $config = config($configName);
-<<<<<<< .merge_file_osMZDe
 
         if (is_array($config)) {
             /** @var array<string, mixed> $config */
@@ -186,37 +129,6 @@ class StandardConfigResolver implements ConfigResolverInterface
 
     private function handleMissingConfig(string $key): void
     {
-=======
-        if (! is_array($config)) {
-            return [];
-        }
-
-        /** @var array<string, mixed> $result */
-        $result = [];
-        foreach ($config as $key => $value) {
-            if (is_string($key)) {
-                $result[$key] = $value;
-            }
-        }
-
-        return $result;
-    }
-
-    /**
-     * @param  array<string, mixed>  $extraConf
-     * @param  string|int|array<string, mixed>|null  $default
-     */
-    private function handleMissingConfig(
-        string $key,
-        string $group,
-        array $extraConf,
-        string|int|array|null $default
-    ): void {
-        $index = Str::after($key, $group.'.');
-        // Side-effect reserved for future persist of defaults into $extraConf
-        Arr::set($extraConf, $index, $default);
-
->>>>>>> .merge_file_Hwx8Dr
         throw new Exception('Configuration key not found: '.$key);
     }
 }

@@ -39,10 +39,6 @@ use Modules\Tenant\Models\Traits\SushiToJson;
  */
 class TestSushiModel extends BaseModel
 {
-<<<<<<< .merge_file_9n8G2J
-=======
-
->>>>>>> .merge_file_J6o3dR
     use SushiToJson;
 
     /**

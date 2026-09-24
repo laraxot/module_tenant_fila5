@@ -21,7 +21,7 @@ class GetTenantConfigArrayAction
 
         try {
             $data = File::getRequire($path);
-        } catch (Throwable $e) {
+        } catch (\Throwable $e) {
             $data = [];
         }
 

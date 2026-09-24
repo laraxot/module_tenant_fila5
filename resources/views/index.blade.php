@@ -1,10 +1,6 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_a03a2y
-=======
-
->>>>>>> .merge_file_Vt9lwA
 ?>
 @extends('tenant::layouts.master')
 

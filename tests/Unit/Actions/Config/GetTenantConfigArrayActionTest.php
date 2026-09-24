@@ -8,11 +8,7 @@ use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-<<<<<<< .merge_file_ObiaYe
-uses(TestCase::class);
-=======
 uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> .merge_file_iNvNAN
 
 it('returns empty array for non-existent config', function (): void {
     $action = app(GetTenantConfigArrayAction::class);

@@ -4,28 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit;
 
-<<<<<<< .merge_file_opXZme
 use Illuminate\Database\Eloquent\Model;
-=======
->>>>>>> .merge_file_6DTu1Q
 use Illuminate\Support\Facades\DB;
 use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Tests\TestCase;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\User;
-<<<<<<< .merge_file_opXZme
 use Modules\Xot\Contracts\UserContract;
 use PHPUnit\Framework\Assert;
 use Webmozart\Assert\Assert as WebmozartAssert;
 
 uses(TestCase::class);
-=======
-use PHPUnit\Framework\Assert;
-use Webmozart\Assert\Assert as WebmozartAssert;
-
-uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> .merge_file_6DTu1Q
 
 beforeEach(function (): void {
     /** @var TestCase $this */
@@ -82,12 +72,8 @@ it('exposes users relationship', function (): void {
         'name' => 'Tenant User',
         'email' => 'user@tenant.example.com',
     ]);
-<<<<<<< .merge_file_opXZme
     WebmozartAssert::isInstanceOf($user, UserContract::class);
     WebmozartAssert::isInstanceOf($user, Model::class);
-=======
-    WebmozartAssert::isInstanceOf($user, User::class);
->>>>>>> .merge_file_6DTu1Q
 
     $tenant->users()->save($user);
 

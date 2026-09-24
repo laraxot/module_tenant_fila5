@@ -1,10 +1,6 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_3j3mgq
-=======
-
->>>>>>> .merge_file_chw0eU
 return array (
   'sections' => 
   array (

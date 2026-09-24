@@ -31,11 +31,7 @@ function writeSushiJsonFile(string $path, array $data): void
 
 beforeEach(function (): void {
     /** @var TestCase $this */
-<<<<<<< .merge_file_yYpc0c
-    $this->model = new TestSushiModel;
-=======
     $this->model = new TestSushiModel();
->>>>>>> .merge_file_Vrx5o5
     TestCase::$testDirectory = storage_path('tests/sushi-json');
     TestCase::$testJsonPath = TestCase::$testDirectory.'/test_sushi.json';
 

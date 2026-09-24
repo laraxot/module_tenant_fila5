@@ -26,7 +26,7 @@ class GetTenantModulesAction
 
         try {
             $json = json_decode($contents, true);
-        } catch (Throwable $e) {
+        } catch (\Throwable $e) {
             throw new Exception($e->getMessage().'['.$filePath.']['.__LINE__.']['.basename(__FILE__).']');
         }
 

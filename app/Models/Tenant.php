@@ -49,10 +49,6 @@ use Modules\Xot\Datas\XotData;
  */
 class Tenant extends BaseModel
 {
-<<<<<<< .merge_file_SXIjbY
-=======
-
->>>>>>> .merge_file_lwffPJ
     /**
      * Gli attributi che sono mass assignable.
      */

@@ -12,11 +12,7 @@ use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Arr\SaveArrayAction;
 use PHPUnit\Framework\Assert;
 
-<<<<<<< .merge_file_xSNrbp
-uses(TestCase::class);
-=======
 uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> .merge_file_PFPb2z
 
 it('saves tenant config by merging with existing data', function (): void {
     /** @var TestCase $this */

@@ -11,11 +11,7 @@ use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
 
-<<<<<<< .merge_file_ZYsUOM
-uses(TestCase::class);
-=======
 uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> .merge_file_qa3RUe
 
 function tenantJsonPath(string $tenantName): string
 {
@@ -29,11 +25,7 @@ function tenantJsonPath(string $tenantName): string
 
 function makeTestSushiModelForPath(string $jsonPath): TestSushiModel
 {
-<<<<<<< .merge_file_ZYsUOM
-    $model = new TestSushiModelForPath;
-=======
     $model = new TestSushiModelForPath();
->>>>>>> .merge_file_qa3RUe
     $model->setJsonPath($jsonPath);
 
     return $model;
