@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_L5b5Lb
 <<<<<<< HEAD
 ---
 title: "Test skipped e copertura critica"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_tDd0KJ
 # Test skipped e copertura critica
 
 ## Obiettivo

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_Do2xZC
 <<<<<<< HEAD
 ---
 title: "Codex Configuration Error Fixes"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_EQskPZ
 # Codex Configuration Error Fixes
 
 Questo documento descrive le correzioni applicate agli errori riscontrati durante l'avvio di `codex`.

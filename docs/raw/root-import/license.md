@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_0iPg3S
 <<<<<<< HEAD
 ---
 title: "License"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_mPqah9
 The MIT License (MIT)
 
 Copyright (c) :vendor_name <author@domain.com>

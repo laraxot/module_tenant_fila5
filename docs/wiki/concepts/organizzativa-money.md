@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_dCqU9v
 <<<<<<< HEAD
 ---
 title: "Organizzativa Money"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_YcOLiH
 ## Organizzativa Money
 
 ### URL

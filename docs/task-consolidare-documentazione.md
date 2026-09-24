@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_BG02CW
 <<<<<<< HEAD
 ---
 title: "Task: Consolidare Documentazione - Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_UC7jQY
 # Task: Consolidare Documentazione - Tenant
 
 **Modulo**: Tenant

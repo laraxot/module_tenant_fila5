@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_fAVbvm
 <<<<<<< HEAD
 ---
 title: "Later (Module Tenant)"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_4Twdqu
 # Later (Module Tenant)
 
 ## Longer-term ideas

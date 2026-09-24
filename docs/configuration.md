@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_pBLOZU
 <<<<<<< HEAD
 ---
 title: Tenant Module Configuration Reference
@@ -6,84 +7,62 @@ type: reference
 tags: [config, settings, customization]
 last_updated: 2026-08-04
 ---
+=======
+# Tenant Configuration (source of truth)
+>>>>>>> .merge_file_M4sqkJ
 
-# Tenant Module Configuration Reference
+ ## Scopo
 
-## Overview
+ Questo documento descrive la risoluzione **tenant-aware** dei valori di configurazione tramite `TenantService::config()` e l'action `ResolveTenantConfigValueAction`.
 
-The Tenant module configuration is split across three files:
-1. **config/config.php** — Module meta, navigation, features
-2. **config/database.php** — Database strategy and connection management
-3. **config/metatag.php** — Per-tenant meta tag configuration
+ ## Regola d'uso
 
-All values can be overridden at runtime via `TenantSetting` model.
+ - Usare `TenantService::config('app.name')` quando il valore può variare per tenant.
+ - Evitare `config('app.name')` nel business code quando si richiede tenant-awareness.
 
----
+ ## Strategia di merge
 
-## config/config.php
+ Per una chiave `group.index` (es. `app.name`):
 
-Module-level configuration for routing, navigation, and features.
+ 1. leggere la configurazione base `config('app')`
+ 2. risolvere il tenant corrente con `GetTenantNameAction`
+ 3. leggere gli override tenant-specific `config("{tenant}.app")` dove `{tenant}` è convertito in prefisso con `str_replace('/', '.', $tenantName)`
+ 4. fare merge in modo che gli override vincano sulla base
+ 5. restituire il valore risolto (con supporto a default)
 
-### Module Metadata
+ ## Decision record (litigata): `runningInConsole()` e mutazioni globali
 
-```php
-return [
-    'name' => 'Tenant',
-    'description' => 'Multi-tenancy support for isolated data and configuration',
-    'version' => '1.0.0',
-];
-```
+ ### Posizione A (perdente): bypass in console
 
-### Navigation Configuration
+ "Se siamo in console, usiamo direttamente `config($key, $default)` e saltiamo la logica tenant-aware."
 
-Controls display in Filament admin panel.
+ **Perché sembra sensato**:
 
-```php
-'navigation' => [
-    'enabled' => true,           // Show in navigation
-    'sort' => 80,                // Display order
-    'icon' => 'heroicon-o-globe', // Icon (if supported)
-    'label' => 'Tenants',        // Display name
-],
-```
+ - in console spesso manca `$_SERVER['SERVER_NAME']`
+ - si vuole evitare I/O e lookup tenant
 
-### Routes Configuration
+ **Perché perde**:
 
-```php
-'routes' => [
-    'enabled' => true,
-    'middleware' => ['web', 'auth'], // Applied to all tenant routes
-    'prefix' => 'tenants',           // URL prefix (optional)
-],
-```
+ - nel nostro codice la console **non** significa assenza di tenant: `GetTenantNameAction` ha fallback su `config('app.url')`
+ - queue worker, scheduler e composer scripts possono richiedere config tenant-aware (es. `morph_map.*`)
+ - bypassare crea incoerenza tra ambienti e rompe bootstrap e risoluzioni dinamiche
 
-### Features Toggle
+ ### Posizione B (vincente): tenant risolvibile ≠ web, console ≠ no-tenant
 
-```php
-'features' => [
-    'subscriptions' => true,     // Enable subscription management
-    'domain_routing' => true,    // Enable domain-based routing
-    'schema_separation' => false, // Use separate schemas (advanced)
-    'audit_trail' => true,       // Log all tenant changes
-],
-```
+ "Il criterio non è console vs web, ma la capacità di risolvere il tenant (con fallback) e di applicare override in modo deterministico."
 
-### Multi-Domain Support
+ **Perché vince**:
 
-```php
-'multi_domain' => [
-    'enabled' => true,
-    'auto_ssl' => true,          // Auto-generate SSL certs
-    'fallback_domain' => 'localhost',
-],
-```
+ - mantiene coerenza tra HTTP, queue, scheduler, package discovery
+ - rispetta la filosofia del modulo: tenant-awareness esplicita e ripetibile
 
----
+ ### Ulteriore decisione: evitare `Config::set()`
 
-## config/database.php
+ La risoluzione deve evitare mutazioni globali (`Config::set('app', ...)`) perché nei processi long-lived (queue) il config rimarrebbe contaminato tra esecuzioni.
 
-Database isolation strategy and connection management.
+ ## Note operative
 
+<<<<<<< .merge_file_pBLOZU
 ### Strategy Selection
 
 Choose isolation strategy for your deployment:
@@ -451,3 +430,7 @@ ConfigurationResolver::clearCache(); // Clear all tenant caches
  - Se un valore non esiste e viene passato un default, il default viene restituito senza side effects.
  - Gli override tenant-specific devono essere espressi nei file di configurazione del tenant.
 >>>>>>> 1ad0554 (.)
+=======
+ - Se un valore non esiste e viene passato un default, il default viene restituito senza side effects.
+ - Gli override tenant-specific devono essere espressi nei file di configurazione del tenant.
+>>>>>>> .merge_file_M4sqkJ

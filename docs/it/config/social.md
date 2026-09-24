@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_UzQ84t
 <<<<<<< HEAD
 ---
 title: "Social"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_trWkmx
 <?php
 
 declare(strict_types=1);

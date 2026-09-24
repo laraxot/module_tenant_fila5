@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_NM4DAx
 <<<<<<< HEAD
 ---
 title: "Metatag"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_JHh88H
 <?php
 
 declare(strict_types=1);

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_DSMpnY
 <<<<<<< HEAD
 ---
 title: "Goals - Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_uBMBng
 # Goals - Tenant
 
 ## Short Term

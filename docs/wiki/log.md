@@ -9,6 +9,7 @@ module: "Tenant"
 
 ## Log Entries
 
+<<<<<<< .merge_file_EeBfZY
 <<<<<<< HEAD
 ## [2026-07-27] [GRAVE] Remote GitHub — collisione entrambe false
 
@@ -19,16 +20,22 @@ module: "Tenant"
 
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_LFaxrD
 ## [2026-07-01] [INGEST] Database factories — rimossa `Factories_/`
 
 - Regola generica: [database-folder-lowercase-rule.md](../../../../../docs/wiki/concepts/database-folder-lowercase-rule.md)
 - Wiki modulo: [lowercase-database-factories-directory.md](./concepts/lowercase-database-factories-directory.md)
 - `database/Factories_/` era copia stale (gitignore); canonico = `database/factories/`
+<<<<<<< .merge_file_EeBfZY
 <<<<<<< HEAD
 - Aggiornati: `method-name-homonyms.md` (path solo minuscolo), `concepts/index.md`, `index.md`
 =======
 - Aggiornati: `method-name-homonyms.md` (path solo minuscolo), `concepts/INDEX.md`, `index.md`
 >>>>>>> 1ad0554 (.)
+=======
+- Aggiornati: `method-name-homonyms.md` (path solo minuscolo), `concepts/INDEX.md`, `index.md`
+>>>>>>> .merge_file_LFaxrD
 - Audit: `bash bashscripts/tools/audit-database-folder-lowercase.sh Tenant`
 
 ## [2026-06-30] [LINT] Removed duplicate uppercase Tests directory

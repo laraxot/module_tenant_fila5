@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_Cvhzn1
 <<<<<<< HEAD
 ---
 title: "Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_Hs5Y5Q
 # Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction
 
 **Metodologia**: Super Mucca - La Litigata Interna

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_Xtr1Dt
 <<<<<<< HEAD
 ---
 title: "Modules Statuses — root vs tenant-scoped"
@@ -79,6 +80,8 @@ Rigenerazione: `bash bashscripts/tools/sync-tenant-modules-statuses.sh local/wor
 
 Riferimenti: [session-learnings-modules-config.md](../../session-learnings-modules-config.md) · [Themes/tenant-modules-navigation-discipline.md](../../../../Themes/docs/tenant-modules-navigation-discipline.md)
 =======
+=======
+>>>>>>> .merge_file_uHrlAt
 {
     "Notify": true,
     "Ptv": true,
@@ -97,4 +100,7 @@ Riferimenti: [session-learnings-modules-config.md](../../session-learnings-modul
     "Xot": true,
     "Incentivi": true
 }
+<<<<<<< .merge_file_Xtr1Dt
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_uHrlAt

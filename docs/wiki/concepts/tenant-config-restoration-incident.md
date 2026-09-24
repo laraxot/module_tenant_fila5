@@ -20,11 +20,15 @@ related:
 ## Cosa è successo
 
 Commit `8a3fdd530` ha rimosso gli alberi config per dominio in `laravel/config/`:
+<<<<<<< .merge_file_XrjnqF
 <<<<<<< HEAD
 `com/geekpiu`, `eu/progetto corrente`, `net/futurely`, `localhost`, file in `local/forecast/`.
 =======
 `com/geekpiu`, `eu/fixcity`, `net/futurely`, `localhost`, file in `local/predict/`.
 >>>>>>> 1ad0554 (.)
+=======
+`com/geekpiu`, `eu/fixcity`, `net/futurely`, `localhost`, file in `local/predict/`.
+>>>>>>> .merge_file_xQudCi
 
 Classificazione errata: «obsolete» durante cleanup ponytail.
 

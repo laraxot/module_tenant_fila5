@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_wWKmSu
 <<<<<<< HEAD
 ---
 title: "Product Requirements Document (PRD) - Tenant Module"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_MZ9Dfa
 # Product Requirements Document (PRD) - Tenant Module
 
 **Module**: Tenant
@@ -329,11 +332,15 @@ graph TD
 
 ### 7.4 Technical Constraints
 - PHP 8.3+ required
+<<<<<<< .merge_file_wWKmSu
 <<<<<<< HEAD
 - Laravel 13+ required
 =======
 - Laravel 12+ required
 >>>>>>> 1ad0554 (.)
+=======
+- Laravel 12+ required
+>>>>>>> .merge_file_MZ9Dfa
 - Tenancy package compatibility
 - Database support (MySQL, PostgreSQL)
 

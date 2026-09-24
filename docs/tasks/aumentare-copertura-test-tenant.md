@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_NqwD2V
 <<<<<<< HEAD
 ---
 title: "Task: Aumentare Copertura Test Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_lA2TiX
 # Task: Aumentare Copertura Test Tenant
 
 **Modulo**: Tenant  

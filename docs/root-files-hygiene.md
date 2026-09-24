@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_HQvg40
 <<<<<<< HEAD
 ---
 title: "Root files hygiene"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_jKqCwB
 # Root files hygiene
 
 ## 2026-07-08 16:51

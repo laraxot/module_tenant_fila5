@@ -21,10 +21,14 @@ class ResolveTenantModelClassAction
     {
         $name = Str::snake(Str::singular($name));
 
+<<<<<<< .merge_file_k43iif
 <<<<<<< HEAD
 =======
         /** @var mixed $class */
 >>>>>>> 1ad0554 (.)
+=======
+        /** @var mixed $class */
+>>>>>>> .merge_file_F9wWSz
         $class = app(ResolveTenantConfigValueAction::class)->execute('morph_map.'.$name);
 
         if ($class === null) {
@@ -85,7 +89,7 @@ class ResolveTenantModelClassAction
     }
 
     /**
-     * @param  array<string, class-string>  $moduleModels
+     * @param  array<mixed, mixed>  $moduleModels
      * @return array<string, class-string>
      */
     private function filterValidModelClasses(array $moduleModels): array

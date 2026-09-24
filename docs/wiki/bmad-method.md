@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_Lyqy76
 <<<<<<< HEAD
 ---
 title: "BMAD Method v6.3 operativo nel progetto"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_7JZUYV
 # BMAD Method v6.3 operativo nel progetto
 
 ## Regola pratica

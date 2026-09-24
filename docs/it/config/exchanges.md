@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_wBDZXU
 <<<<<<< HEAD
 ---
 title: "Exchanges"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_Tgp1c4
 <?php
 
 declare(strict_types=1);

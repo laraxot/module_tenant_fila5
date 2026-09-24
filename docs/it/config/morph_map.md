@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_FEU1YC
 <<<<<<< HEAD
 ---
 title: "Morph Map"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_WlUwSZ
 <?php
 
 

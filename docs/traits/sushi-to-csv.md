@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_jsopG2
 <<<<<<< HEAD
 ---
 title: "Sushi To Csv"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_159Rld
 

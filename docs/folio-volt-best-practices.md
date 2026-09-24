@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_EdgvSU
 <<<<<<< HEAD
 ---
 title: "Laravel Folio + Volt - Best Practices and Patterns Analysis"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_Nz1kQG
 # Laravel Folio + Volt - Best Practices and Patterns Analysis
 
 ## Overview

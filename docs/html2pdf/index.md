@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_iPIBGv
 <<<<<<< HEAD
 ---
 title: "Html2Pdf - Panoramica e Installazione"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_ZcAAGH
 # Html2Pdf - Panoramica e Installazione
 
 Questa sezione fornisce una panoramica generale della libreria Html2Pdf, le novità dell'ultima versione, le istruzioni per l'installazione e l'architettura di integrazione nel progetto.

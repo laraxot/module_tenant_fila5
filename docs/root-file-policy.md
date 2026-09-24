@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_udToEs
 <<<<<<< HEAD
 ---
 title: "Root file policy"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_hGEmzg
 # Root file policy
 
 Updated: 2026-07-08

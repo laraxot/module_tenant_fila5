@@ -1,5 +1,6 @@
 # Raw LLM Wiki Sources
 
+<<<<<<< .merge_file_c1feAc
 <<<<<<< HEAD
 [![Module](https://img.shields.io/badge/Module-Raw LLM Wiki Sources-8B0000.svg)]()
 [![Laravel](https://img.shields.io/badge/Laravel-13-red?style=for-the-badge)](https://laravel.com/)](https://laravel.com/)
@@ -36,9 +37,16 @@ Core module for the FixCity Platform.
 =======
 Append-only staging area for source material that must be preserved before it is summarized into the local wiki.
 
+=======
+Append-only staging area for source material that must be preserved before it is summarized into the local wiki.
+
+>>>>>>> .merge_file_bt32pK
 Rules:
 - keep raw captures close to the original source;
 - prefer Markdown when possible;
 - do not rewrite raw material to make it look cleaner;
 - promote stable knowledge into `../wiki/`.
+<<<<<<< .merge_file_c1feAc
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_bt32pK

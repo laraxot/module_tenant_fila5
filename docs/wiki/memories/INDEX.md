@@ -2,6 +2,7 @@
 title: "Memories Index"
 type: index
 created: 2026-05-11
+<<<<<<< .merge_file_Pv2g9W
 <<<<<<< HEAD
 updated: 2026-07-27
 tags: [memories, index, on-demand, github, remote]
@@ -9,6 +10,10 @@ tags: [memories, index, on-demand, github, remote]
 updated: 2026-05-11
 tags: [memories, index, on-demand]
 >>>>>>> 1ad0554 (.)
+=======
+updated: 2026-05-11
+tags: [memories, index, on-demand]
+>>>>>>> .merge_file_HShCsU
 related:
   - ../rules/00-TRIGGER_MAP.md
   - ../rules/on-demand-pattern.md
@@ -42,6 +47,7 @@ Le Memories progettuali vivono qui, nel wiki del Module **Tenant**, e vengono ca
 <<<<<<< HEAD
 - Per Memories globali, consulta il [wiki root](../../docs/wiki/memories/INDEX.md)
 
+<<<<<<< .merge_file_Pv2g9W
 ## Memories locali (ricorrenti)
 
 | Trigger | File |
@@ -51,6 +57,8 @@ Le Memories progettuali vivono qui, nel wiki del Module **Tenant**, e vengono ca
 - Per Memories globali, consulta il [wiki root](../../../../../../docs/wiki/memories/INDEX.md)
 >>>>>>> 1ad0554 (.)
 
+=======
+>>>>>>> .merge_file_HShCsU
 ## Aggiungere una Nuova MEMORIES
 
 1. Crea `../memories/<nome>.md` con contenuto completo

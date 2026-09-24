@@ -1,4 +1,5 @@
 ---
+<<<<<<< .merge_file_YbbbNB
 <<<<<<< HEAD
 title: "Tenant {{TYPE^}} LLM Wiki Agent Instructions"
 module: "Tenant"
@@ -7,9 +8,20 @@ tags: [AGENTS]
 created: 2026-07-14
 updated: 2026-07-14
 qmd: "agents"
+=======
+title: "Agent instructions"
+type: reference
+tags: [agents, coding-agent, llm-wiki]
+created: 2026-07-01
+updated: 2026-07-01
+qmd: "istruzioni agenti LLM wiki modulo"
+issues: []
+discussions: []
+>>>>>>> .merge_file_ljbRWB
 related:
-  - "./phpstan-corrections-january.md"
+  - ./coding-agent-manifests.md
 ---
+<<<<<<< .merge_file_YbbbNB
 =======
 title: "Agent instructions"
 type: reference
@@ -24,6 +36,9 @@ related:
 ---
 
 >>>>>>> 1ad0554 (.)
+=======
+
+>>>>>>> .merge_file_ljbRWB
 # Tenant {{TYPE^}} LLM Wiki Agent Instructions
 
 > **Module/Theme:** Tenant

@@ -28,6 +28,7 @@ it('gets localized markdown path if it exists', function (): void {
 
     /** @var TestCase $this */
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($tempFile): void {
+<<<<<<< .merge_file_kD4toB
 <<<<<<< HEAD
         TestCase::expectMockery($mock, 'execute')
             ->andReturnUsing(static function (string $path) use ($tempFile): string {
@@ -40,6 +41,13 @@ it('gets localized markdown path if it exists', function (): void {
             },
         ]);
 >>>>>>> 1ad0554 (.)
+=======
+        $mock->allows([
+            'execute' => static function (string $path) use ($tempFile): string {
+                return $path === 'lang/it/test.md' ? $tempFile : '/non/existent/path.md';
+            },
+        ]);
+>>>>>>> .merge_file_rv9MuC
     });
 
     $result = app(GetLocalizedMarkdownPathAction::class)->execute('test.md');
@@ -58,6 +66,7 @@ it('gets fallback markdown path if localized does not exist', function (): void 
 
     /** @var TestCase $this */
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($tempFile): void {
+<<<<<<< .merge_file_kD4toB
 <<<<<<< HEAD
         TestCase::expectMockery($mock, 'execute')
             ->andReturnUsing(static function (string $path) use ($tempFile): string {
@@ -70,6 +79,13 @@ it('gets fallback markdown path if localized does not exist', function (): void 
             },
         ]);
 >>>>>>> 1ad0554 (.)
+=======
+        $mock->allows([
+            'execute' => static function (string $path) use ($tempFile): string {
+                return $path === 'fallback.md' ? $tempFile : '/non/existent/path.md';
+            },
+        ]);
+>>>>>>> .merge_file_rv9MuC
     });
 
     $result = app(GetLocalizedMarkdownPathAction::class)->execute('fallback.md');

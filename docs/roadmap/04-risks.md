@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_rtWDXb
 <<<<<<< HEAD
 ---
 title: "Risks and dependencies (Module Tenant)"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_60HkYi
 # Risks and dependencies (Module Tenant)
 
 ## Risks

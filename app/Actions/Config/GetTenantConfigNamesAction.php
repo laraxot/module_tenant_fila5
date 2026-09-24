@@ -8,10 +8,13 @@ use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Xot\Actions\File\FixPathAction;
 use Spatie\QueueableAction\QueueableAction;
+<<<<<<< .merge_file_x24iYE
 <<<<<<< HEAD
 use Symfony\Component\Finder\SplFileInfo;
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_IshLVB
 
 class GetTenantConfigNamesAction
 {
@@ -30,6 +33,7 @@ class GetTenantConfigNamesAction
         $files = File::files($dir);
 
         return collect($files)
+<<<<<<< .merge_file_x24iYE
 <<<<<<< HEAD
             ->filter(static fn (SplFileInfo $item): bool => $item->getExtension() === 'php')
             ->map(static fn (SplFileInfo $item, int $k): array => [
@@ -37,6 +41,10 @@ class GetTenantConfigNamesAction
             ->filter(static fn ($item): bool => $item->getExtension() === 'php')
             ->map(static fn ($item, $k): array => [
 >>>>>>> 1ad0554 (.)
+=======
+            ->filter(static fn ($item): bool => $item->getExtension() === 'php')
+            ->map(static fn ($item, $k): array => [
+>>>>>>> .merge_file_IshLVB
                 'id' => $k + 1,
                 'name' => $item->getFilenameWithoutExtension(),
             ])

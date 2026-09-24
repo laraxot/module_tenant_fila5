@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_vwp8Pz
 <<<<<<< HEAD
 ---
 title: "Getting Started"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_iS8V7g
 

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_P2rF7a
 <<<<<<< HEAD
 ---
 title: "Task: Advanced Settings Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_bNaq3k
 # Task: Advanced Settings Tenant
 
 **Modulo**: Tenant  

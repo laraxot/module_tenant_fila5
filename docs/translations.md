@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_ofiWLZ
 <<<<<<< HEAD
 ---
 title: "Traduzioni del Modulo Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_1eLVXk
 # Traduzioni del Modulo Tenant
 
 ## Collegamenti

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_HWoqTh
 <<<<<<< HEAD
 ---
 title: "Regole di Naming per File"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_uRpa0O
 # Regole di Naming per File
 
 ## 🎯 Regola Fondamentale: NO Duplicati Case-Insensitive

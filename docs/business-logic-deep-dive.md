@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_hTDzyB
 <<<<<<< HEAD
 ---
 title: "Tenant Module - Business Logic Deep Dive"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_RRAYJG
 # Tenant Module - Business Logic Deep Dive
 
 ## 🎯 Module Overview
@@ -290,11 +293,15 @@ config('app.name');  // ← NO! Non tenant-aware!
 
 ---
 
+<<<<<<< .merge_file_hTDzyB
 <<<<<<< HEAD
 ## 🚀 Modern Laravel 13 + PHP 8.3 Patterns
 =======
 ## 🚀 Modern Laravel 12 + PHP 8.3 Patterns
 >>>>>>> 1ad0554 (.)
+=======
+## 🚀 Modern Laravel 12 + PHP 8.3 Patterns
+>>>>>>> .merge_file_RRAYJG
 
 ### 1. Connection Property Typed
 

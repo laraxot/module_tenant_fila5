@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_DaevlL
 <<<<<<< HEAD
 # Modulo Tenant - Multi-Tenancy Management
 
@@ -345,6 +346,8 @@ $reports = CrossTenantService::aggregateData([
 **Versione**: v2.2.0-beta  
 **Stato**: Production Ready with Enterprise Scaling
 =======
+=======
+>>>>>>> .merge_file_NMbl3C
 # Tenant Module - Comprehensive Analysis
 
 ## Module Overview
@@ -434,5 +437,9 @@ The Tenant module provides comprehensive multi-tenancy functionality:
 - Advanced security controls
 - Tenant-specific features
 - Performance optimization
+<<<<<<< .merge_file_DaevlL
 - Lifecycle automation
 >>>>>>> 1ad0554 (.)
+=======
+- Lifecycle automation
+>>>>>>> .merge_file_NMbl3C

@@ -6,35 +6,41 @@ namespace Modules\Tenant\Tests\Unit;
 
 <<<<<<< HEAD
 use Mockery;
+<<<<<<< .merge_file_SiKwZD
 use Mockery\Expectation;
 =======
 use Mockery\MockInterface;
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_hZqoss
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Tests\TestCase;
-use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
+<<<<<<< .merge_file_SiKwZD
 <<<<<<< HEAD
 afterEach(function (): void {
     Mockery::close();
 });
 
+=======
+>>>>>>> .merge_file_hZqoss
 test('domain model can be instantiated', function (): void {
-    Assert::assertInstanceOf(Domain::class, new Domain);
+    $domain = new Domain;
+
+    expect($domain->getConnectionName())->toBe('tenant');
 });
 
 test('get rows method works correctly', function (): void {
     $mock = Mockery::mock(GetDomainsArrayAction::class);
-    $expectation = $mock->shouldReceive('execute');
-    assert($expectation instanceof Expectation);
-    $expectation->andReturn([
-        ['id' => 1, 'name' => 'test-domain.com'],
-        ['id' => 2, 'name' => 'example.org'],
-    ]);
-
+    tenantMockExpectation($mock, 'execute')
+        ->once()
+        ->andReturn([
+            ['id' => 1, 'name' => 'test-domain.com'],
+            ['id' => 2, 'name' => 'example.org'],
+        ]);
     app()->instance(GetDomainsArrayAction::class, $mock);
 
     $domain = new Domain;

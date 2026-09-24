@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_oTEgCY
 <<<<<<< HEAD
 ---
 title: "Changelog"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_zrIksN
 # Changelog
 
 All notable changes to `:package_name` will be documented in this file.

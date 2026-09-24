@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_2qNkjC
 <<<<<<< HEAD
 ---
 title: "Risoluzione Conflitti nel Modulo Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_NMmtIm
 # Risoluzione Conflitti nel Modulo Tenant
 
 Questo documento descrive i conflitti Git risolti nel modulo Tenant, con particolare attenzione ai file critici e alle strutture di namespace.

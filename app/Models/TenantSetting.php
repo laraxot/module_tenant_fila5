@@ -6,6 +6,7 @@ namespace Modules\Tenant\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+<<<<<<< .merge_file_ZWeFqS
 <<<<<<< HEAD
 
 /**
@@ -16,10 +17,18 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * @property int|null $id
 >>>>>>> 1ad0554 (.)
+=======
+use Modules\Tenant\Database\Factories\TenantSettingFactory;
+use Modules\Xot\Contracts\ProfileContract;
+
+/**
+ * @property int|null $id
+>>>>>>> .merge_file_ZRIpSM
  * @property string|null $tenant_id
  * @property string|null $key
  * @property string|null $value
  * @property string|null $type
+<<<<<<< .merge_file_ZWeFqS
 <<<<<<< HEAD
  * @property-read Tenant|null $tenant
  *
@@ -28,6 +37,9 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|TenantSetting query()
 =======
  *
+=======
+ *
+>>>>>>> .merge_file_ZRIpSM
  * @method static Builder|TenantSetting newModelQuery()
  * @method static Builder|TenantSetting newQuery()
  * @method static Builder|TenantSetting query()
@@ -44,7 +56,10 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static TenantSettingFactory factory($count = null, $state = [])
  *
  * @property-read Tenant|null $tenant
+<<<<<<< .merge_file_ZWeFqS
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_ZRIpSM
  *
  * @mixin \Eloquent
  */

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_lrZC3N
 <<<<<<< HEAD
 ---
 title: "Tenant Module - PHPStan Error Resolution Roadmap"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_YNvwdA
 # Tenant Module - PHPStan Error Resolution Roadmap
 
 This document outlines the steps to resolve the numerous PHPStan errors found in the Tenant module.

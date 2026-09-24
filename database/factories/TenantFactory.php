@@ -35,22 +35,29 @@ class TenantFactory extends Factory
             'domain' => $this->faker->domainName(),
             'database' => 'tenant_'.$this->faker->unique()->slug(),
             'is_active' => $this->faker->boolean(80),
+<<<<<<< .merge_file_TqNM5M
 <<<<<<< HEAD
             // `settings` non è nella factory di default: lo schema sqlite condiviso
             // può non avere la colonna (drift migration). Usare withSettings().
 =======
+=======
+>>>>>>> .merge_file_ZMl4Jm
             'settings' => [
                 'timezone' => $this->faker->randomElement(['Europe/Rome', 'Europe/London', 'America/New_York']),
                 'locale' => $this->faker->randomElement(['it', 'en', 'de']),
                 'currency' => $this->faker->randomElement(['EUR', 'USD', 'GBP']),
             ],
+<<<<<<< .merge_file_TqNM5M
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_ZMl4Jm
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 month', 'now'),
         ];
     }
 
     /**
+<<<<<<< .merge_file_TqNM5M
 <<<<<<< HEAD
      * @param  array<string, mixed>  $settings
      */
@@ -68,6 +75,8 @@ class TenantFactory extends Factory
     /**
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_ZMl4Jm
      * Indicate that the tenant is active.
      */
     public function active(): static

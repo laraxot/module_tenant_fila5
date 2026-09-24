@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_LGUFEi
 <<<<<<< HEAD
 ---
 title: "Rector Conflict Resolution"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_wMrKee
 

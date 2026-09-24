@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_kJJ8CY
 <<<<<<< HEAD
 ---
 title: "Filament Resources"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_XY9I5J
 

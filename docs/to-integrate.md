@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_z2WOVv
 <<<<<<< HEAD
 ---
 title: "To Integrate"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_EkvkF9
 https://filamentphp.com/plugins/andrew-wallo-companies

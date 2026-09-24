@@ -12,6 +12,7 @@ final class MergeRecursiveStringKeyConfigAction
 
 <<<<<<< HEAD
     /**
+<<<<<<< .merge_file_wtaZVI
      * Accetta array con chiavi di qualunque tipo: scartare quelle non stringa è
      * il compito dell'action, non una precondizione del chiamante.
      *
@@ -24,6 +25,9 @@ final class MergeRecursiveStringKeyConfigAction
     /**
      * @param  array<string, mixed>  ...$configs
 >>>>>>> 1ad0554 (.)
+=======
+     * @param  array<string, mixed>  ...$configs
+>>>>>>> .merge_file_GyLd4v
      * @return array<string, mixed>
      */
     public function execute(array ...$configs): array

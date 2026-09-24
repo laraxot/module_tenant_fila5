@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_J8dxll
 <<<<<<< HEAD
 ---
 title: "Tenant Module LLM Wiki"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_JuvcKL
 # Tenant Module LLM Wiki
 
 Indice operativo del wiki Tenant.
@@ -36,11 +39,15 @@ Indice operativo del wiki Tenant.
 - [lowercase-database-factories-directory](./concepts/lowercase-database-factories-directory.md): solo `database/factories|seeders|migrations` minuscolo; mai `Factories_/`.
 <<<<<<< HEAD
 - [services-to-queueable-actions](./concepts/no-app-support-queueable-actions.md): mapping completo `TenantService` → `app(...)->execute()` e regola no injection tra Actions.
+<<<<<<< .merge_file_J8dxll
 - [tenant-module-status-registry](../tenant-module-status-registry.md) — registry `modules_statuses.json` per overlay tenant (`config/local/workorder/`)
 - [runtime-config-religion-hub](../../../../Themes/docs/shared-components/runtime-config-religion-hub.md) — hub cross-modulo (permission, config.php, statuses)
 =======
 - [database-folder-lowercase-rule](../../../../docs/wiki/concepts/database-folder-lowercase-rule.md): regola generica progetto.
 >>>>>>> 1ad0554 (.)
+=======
+- [database-folder-lowercase-rule](../../../../docs/wiki/concepts/database-folder-lowercase-rule.md): regola generica progetto.
+>>>>>>> .merge_file_JuvcKL
 
 ## Scopo Tenant Module
 
@@ -51,10 +58,13 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 | Pagina | Tipo | Argomento | Data |
 |--------|------|-----------|------|
 | [.gitkeep](./concepts/.gitkeep) | Concept | - | 2026-04-21 |
+<<<<<<< .merge_file_J8dxll
 <<<<<<< HEAD
 | [tenant-module-status-registry](../tenant-module-status-registry.md) | Concept | Registry moduli abilitati per tenant | 2026-07-27 |
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_JuvcKL
 | [tenant-config-restoration-incident](./concepts/tenant-config-restoration-incident.md) | Troubleshooting | Ripristino config tenant 2026-07-01 | 2026-07-01 |
 | [lowercase-database-factories-directory](./concepts/lowercase-database-factories-directory.md) | Concept | `database/factories/` canonico; `Factories_` vietata | 2026-07-01 |
 | [lowercase-tests-directory](./concepts/lowercase-tests-directory.md) | Concept | Cartella test canonica minuscola | 2026-06-30 |
@@ -62,16 +72,21 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 
 ## Best Practices
 
+<<<<<<< .merge_file_J8dxll
 <<<<<<< HEAD
 - Usare Actions per tenant logic (vedi [actions-over-services-governance](https://github.com/laraxot/platform/blob/main/.opencode/skills/actions-over-services-governance/SKILL.md))
 =======
 - Usare Actions per tenant logic (vedi [actions-over-services-governance](https://github.com/laraxot/base_fixcity_fila5/blob/main/.opencode/skills/actions-over-services-governance/SKILL.md))
 >>>>>>> 1ad0554 (.)
+=======
+- Usare Actions per tenant logic (vedi [actions-over-services-governance](https://github.com/laraxot/base_fixcity_fila5/blob/main/.opencode/skills/actions-over-services-governance/SKILL.md))
+>>>>>>> .merge_file_JuvcKL
 - Implementare `casts()` method non `$casts` property (vedi [model-casts-phpstan](../../../../docs/wiki/concepts/model-casts-phpstan.md))
 - Usare tenant scoping (vedi [laravel-multi-tenancy](../../../../docs/wiki/concepts/laravel-multi-tenancy.md))
 
 ## Bad Practices
 
+<<<<<<< .merge_file_J8dxll
 <<<<<<< HEAD
 - NON creare Service classes - usare Actions (vedi [actions-over-services-governance](https://github.com/laraxot/platform/blob/main/.opencode/skills/actions-over-services-governance/SKILL.md))
 - NON usare `dehydrated(false)` nei trait - blocca salvataggio (vedi Geo CoordinatePicker fix)
@@ -81,6 +96,11 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 - NON usare `dehydrated(false)` nei trait - blocca salvataggio (vedi Geo CoordinatePicker fix)
 - NON hardcodare tenant config - usare config (vedi [laravel-security-audit](../../../../docs/wiki/concepts/laravel-security-audit.md))
 >>>>>>> 1ad0554 (.)
+=======
+- NON creare Service classes - usare Actions (vedi [actions-over-services-governance](https://github.com/laraxot/base_fixcity_fila5/blob/main/.opencode/skills/actions-over-services-governance/SKILL.md))
+- NON usare `dehydrated(false)` nei trait - blocca salvataggio (vedi Geo CoordinatePicker fix)
+- NON hardcodare tenant config - usare config (vedi [laravel-security-audit](../../../../docs/wiki/concepts/laravel-security-audit.md))
+>>>>>>> .merge_file_JuvcKL
 
 ## False Friends
 
@@ -93,11 +113,15 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 |--------|------|-----------|
 | [.gitkeep](./concepts/.gitkeep) | Concept | Template iniziale |
 
+<<<<<<< .merge_file_J8dxll
 <<<<<<< HEAD
 Aggiornato: 2026-07-27
 =======
 Aggiornato: 2026-07-01
 >>>>>>> 1ad0554 (.)
+=======
+Aggiornato: 2026-07-01
+>>>>>>> .merge_file_JuvcKL
 
 ## Shared Second Brain Discipline
 

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_W42ptf
 <<<<<<< HEAD
 ---
 title: "NestedSet Migration Best Practices - Tenant Module"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_4ishg2
 # NestedSet Migration Best Practices - Tenant Module
 
 ## Overview

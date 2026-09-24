@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_mJQSMi
 <<<<<<< HEAD
 ---
 title: "Indice della Documentazione - Modulo Tenant"
@@ -161,6 +162,10 @@ Modulo: Tenant
 =======
 # Indice della Documentazione - Modulo Tenant
 
+=======
+# Indice della Documentazione - Modulo Tenant
+
+>>>>>>> .merge_file_LdSJvd
 ## Panoramica
 Questo documento serve come indice centrale per il modulo Tenant, fornendo una guida per la gestione del multi-tenancy all'interno di un'applicazione Laravel. Il modulo Tenant gestisce la creazione, configurazione e isolamento di tenant multipli con supporto per database separati e isolamento dei dati.
 
@@ -325,4 +330,7 @@ Questa documentazione viene aggiornata regolarmente. Prima di apportare modifich
 *Ultimo aggiornamento: Gennaio 2025*
 
 - [Conflict Resolution](conflict-resolution.md)
+<<<<<<< .merge_file_mJQSMi
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_LdSJvd

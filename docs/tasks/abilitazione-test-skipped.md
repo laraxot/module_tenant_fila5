@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_xGZTuJ
 <<<<<<< HEAD
 ---
 title: "Task: Abilitazione Test Skipped"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_m3eTs3
 # Task: Abilitazione Test Skipped
 
 **Modulo**: Tenant  

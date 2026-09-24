@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_dyZSvs
 <<<<<<< HEAD
 ---
 title: "Tenant Module - SushiToJson Traits Fix Plan"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_xjWI4C
 # Tenant Module - SushiToJson Traits Fix Plan
 
 ## Problem Analysis
@@ -451,11 +454,15 @@ class InformationSchemaTable extends BaseModel
 1. Fix XotBaseEditRecord schema type issue (1 error)
 2. Fix Blog module errors (6 errors)
 3. Fix Cms module remaining errors (8 errors)
+<<<<<<< .merge_file_dyZSvs
 <<<<<<< HEAD
 4. Fix progetto corrente module errors (45 errors)
 =======
 4. Fix Fixcity module errors (45 errors)
 >>>>>>> 1ad0554 (.)
+=======
+4. Fix Fixcity module errors (45 errors)
+>>>>>>> .merge_file_xjWI4C
 5. Fix Geo module errors (10 errors)
 6. Fix remaining module errors
 

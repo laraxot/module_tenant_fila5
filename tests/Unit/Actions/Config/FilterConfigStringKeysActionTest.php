@@ -1,7 +1,11 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_79huky
 <<<<<<< HEAD
+=======
+
+>>>>>>> .merge_file_N5Lvte
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use PHPUnit\Framework\Assert;
 

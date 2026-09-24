@@ -1,4 +1,5 @@
 ---
+<<<<<<< .merge_file_uVHBxf
 <<<<<<< HEAD
 title: "Tenant — Multi-Tenancy"
 description: "Modulo per il multi-tenancy, isolamento dati per tenant"
@@ -16,56 +17,267 @@ dependencies: ["Xot", "User"]
 extends: []
 extended_by: 0
 documentation_date: "2026-05-27"
+=======
+title: "Tenant Module Documentation"
+type: documentation
+tags: [module, documentation, multi-tenancy, architecture]
+created: 2026-07-14
+updated: 2026-07-14
+>>>>>>> .merge_file_duqlHx
 ---
 
-# Tenant — Multi-Tenancy
+# Modulo Tenant
+
+## Overview
+
+Il modulo **Tenant** implementa la funzionalità multi-tenancy per la piattaforma Laraxot. Fornisce l'isolamento dati tra tenant, routing tenant-aware e gestione della configurazione per ambienti multi-tenant complessi.
 
 ## Scopo
 
-Tenant è il modulo che gestisce il multi-tenancy dell'ecosistema. Ogni `BaseTenant` ha `slug`, `domain`, `database` e una relazione `users()` con pivot `tenant_user`. È il layer che permette a più organizzazioni di coesistere in un'unica installazione.
+- Supporto multi-tenancy a livello architetturale
+- Isolamento dati tra tenant completamente trasparente
+- Routing e middleware tenant-aware
+- Configurazione per-tenant isolata
+- Database separation o schema separation strategies
 
-## Religione
+## Funzionalità Principali
 
-- **"Un database per tenant o row-level security"**: due politiche accettate, ma **mai mixate**
-- **"Tenant è una primitiva, non un dettaglio"**: ogni modulo deve essere tenant-aware
-- **"HasTenants trait su BaseUser"**: la relazione è nel trait, non in ogni modulo
-- **"Salvataggio config con Action"**: `SaveTenantConfigAction` è il punto unico
-- **"XotBase come fondamento"**: ogni risorsa tenant estende `XotBaseResource`
+- **Tenant Isolation**: Isolamento dati completo tra tenant
+- **Tenant Routing**: Routing tenant-aware per URL dinamici
+- **Tenant Database**: Database isolation o schema separation
+- **Tenant Configuration**: Configurazione per-tenant via environment
+- **Tenant Switching**: Cambio tenant durante request lifecycle
+- **Multi-Database Support**: Connessioni database multiple per tenant
 
-## Filosofia
+## Struttura del Modulo
 
-Tenant crede che **l'isolamento dei dati sia un diritto, non un optional**. Ogni tenant ha la sua configurazione, le sue risorse, la sua sicurezza. Il sistema è progettato per **scalare orizzontalmente** aggiungendo tenant senza modificare il codice.
+```
+Modules/Tenant/
+├── app/
+│   ├── Models/
+│   │   ├── Tenant.php              # Tenant model
+│   │   └── TenantUser.php
+│   ├── Services/
+│   │   ├── TenantService.php
+│   │   └── TenantSwitcher.php
+│   ├── Actions/
+│   │   ├── CreateTenantAction.php
+│   │   └── SwitchTenantAction.php
+│   ├── Filament/
+│   │   └── Resources/
+│   │       └── TenantResource.php
+│   ├── Middleware/
+│   │   └── SetTenant.php
+│   └── Traits/
+│       ├── BelongsToTenant.php
+│       └── TenantScoped.php
+├── database/
+│   ├── migrations/
+│   ├── factories/
+│   └── seeders/
+├── resources/
+│   ├── views/
+│   └── lang/
+├── tests/
+├── docs/
+│   ├── README.md
+│   ├── architecture.md
+│   ├── isolation-strategy.md
+│   └── configuration.md
+├── module.json
+└── composer.json
+```
 
-## Politica
+## Componenti Principali
 
-- **Pivot `tenant_user`**: `tenant_id`, `user_id`, `permissions`
-- **`SaveTenantConfigAction`**: unico punto per salvare config tenant
-- **`HasTenants` trait**: relazione `tenants()` su `BaseUser`
-- **Slug + domain**: identificazione tenant tramite slug o dominio
-- **`BaseTenant::$connection`**: supporto per database separati
+| Classe | Scopo | Extends |
+|--------|-------|---------|
+| `Tenant` | Modello tenant | `XotBaseModel` |
+| `TenantUser` | Relazione user-tenant | `XotBaseModel` |
+| `TenantService` | Logica tenant | - |
+| `TenantSwitcher` | Context switching | - |
+| `SetTenant` | Middleware tenant-aware | - |
+| `BelongsToTenant` | Trait scope queries | - |
 
-## Zen
+## Trait Disponibili
 
-> **"Il tenant è un confine. Il confine è una promessa. La promessa è la privacy."**
+| Trait | Scopo | Utilizzo |
+|-------|-------|----------|
+| `BelongsToTenant` | Auto-scope alle query | Tutte i modelli |
+| `TenantScoped` | Relazione tenant | Modelli multi-tenant |
 
-Lo Zen di Tenant è l'**isolamento**. I dati di un tenant non possono mai essere visti, modificati o cancellati da un altro tenant. È una promessa architetturale, non una feature.
+**Utilizzo**:
+```php
+use Modules\Tenant\Traits\BelongsToTenant;
 
-## Perché esiste
+class User extends Model
+{
+    use BelongsToTenant;
+    
+    // Queries automatically scoped to current tenant
+}
+```
 
-Le applicazioni SaaS moderne hanno bisogno di multi-tenancy per servire più clienti con un'unica installazione. Tenant esiste per **gestire questa complessità** in modo standardizzato.
+## Utilizzo Comune
 
-## Cosa Mancherebbe (Gap Analysis)
+### Scenario 1: Creare un Tenant
 
-| Gap | Severità | Suggerimento |
-|-----|----------|--------------|
-| Manca tenant impersonation | Alta | Aggiungere `ImpersonateTenantAction` |
-| Nessun sistema di tenant billing | Alta | Integrare con `Billing` per fatturazione per tenant |
-| Manca tenant backup isolato | Media | Aggiungere `TenantBackup` con restore selettivo |
-| Nessun sistema di tenant analytics | Media | Aggiungere `TenantAnalytics` per usage tracking |
-| Manca cross-tenant reporting | Bassa | Aggiungere `CrossTenantReport` per admin globali |
+```php
+use Modules\Tenant\Actions\CreateTenantAction;
+
+$tenant = CreateTenantAction::execute([
+    'name' => 'Acme Corp',
+    'domain' => 'acme.example.com',
+    'database' => 'acme_db', // per schema separation
+]);
+```
+
+### Scenario 2: Switchare Tenant
+
+```php
+use Modules\Tenant\Services\TenantSwitcher;
+
+TenantSwitcher::switch($tenant);
+
+// Queries automaticamente scoped
+$users = User::all(); // Only tenant's users
+```
+
+### Scenario 3: Query Tenant-Scoped
+
+```php
+$tenant = auth()->user()->tenant;
+
+// Automatico via BelongsToTenant trait
+$articles = Article::all(); // Only this tenant's articles
+
+// Esplicito se necessario
+$articles = Article::whereTenant($tenant)->get();
+```
+
+## Configuration
+
+### Multi-Tenancy Strategy
+
+Scegliere strategia in `laravel/config/local/tenant/config.php`:
+
+```php
+return [
+    // Strategy: 'database' (separate DB per tenant)
+    //           'schema' (separate schema same DB)
+    //           'row' (row-level isolation)
+    'strategy' => env('TENANT_STRATEGY', 'schema'),
+    
+    // Tenant identification
+    'identifier' => env('TENANT_IDENTIFIER', 'domain'),
+    
+    // Database connections per tenant
+    'database_prefix' => 'tenant_',
+];
+```
+
+### Tenant Middleware
+
+Registrare middleware in `ServiceProvider`:
+
+```php
+protected function registerMiddleware()
+{
+    $this->app['router']
+        ->middlewareGroup('tenant', [
+            SetTenant::class,
+        ]);
+}
+```
+
+## Routing
+
+### Tenant-Aware Routes
+
+```php
+// routes/web.php
+Route::middleware('tenant')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'show']);
+    Route::resource('articles', ArticleController::class);
+});
+```
+
+## Testing
+
+```bash
+# Run Tenant module tests
+./vendor/bin/pest Modules/Tenant/tests
+
+# Run isolation tests
+./vendor/bin/pest Modules/Tenant/tests/Feature/TenantIsolationTest.php
+
+# With coverage
+./vendor/bin/pest Modules/Tenant/tests --coverage
+```
+
+## Quality Standards
+
+- **PHPStan**: Level 10 (zero baseline)
+- **Test Coverage**: Minimum 85% (isolation critical)
+- **Code Style**: PSR-12 via Pint
+
+Run locally:
+```bash
+php -d memory_limit=-1 ./vendor/bin/phpstan analyse --level=max Modules/Tenant
+./vendor/bin/pest Modules/Tenant/tests --coverage
+./vendor/bin/pint Modules/Tenant
+```
+
+## Documentation Index
+
+- [Architecture Details](./architecture.md) — Multi-tenancy design patterns
+- [Isolation Strategy](./isolation-strategy.md) — Data isolation approaches
+- [Configuration](./configuration.md) — Environment setup per tenant
+- [Troubleshooting](./troubleshooting.md) — Common isolation issues
+- [Testing Guide](./testing.md) — Testing multi-tenant features
+
+## Dipendenze / Moduli Correlati
+
+- [Xot - Framework Base](../Xot/docs/README.md) — Always dependency
+- [User - Authentication](../User/docs/README.md) — For tenant users
+- [Cms - Content](../Cms/docs/README.md) — Tenant content separation
+- [Lang - Translations](../Lang/docs/README.md) — Per-tenant translations
+
+## Documenti Correlati
+
+- [Multi-Tenancy Architecture](../../../docs/wiki/standards/multi-tenancy.md)
+- [Data Isolation Patterns](../../../docs/wiki/standards/data-isolation.md)
+- [Tenant Security](../../../docs/wiki/standards/tenant-security.md)
+- [PHPStan Configuration](../../../phpstan.neon)
+
+## Regole Critiche
+
+1. **Always extend Xot base classes** — Never extend Laravel/Filament directly
+2. **Use namespace `Modules\Tenant`** — Never `app\Tenant`
+3. **Strict typing** — `declare(strict_types=1);` in all files
+4. **BelongsToTenant everywhere** — All multi-tenant models MUST use trait
+5. **Never hardcode tenant** — Always use current tenant context
+6. **Test isolation** — Every feature test must verify isolation
+7. **No data leaks** — Audit queries for cross-tenant data exposure
+
+## Critical Checklist
+
+- [ ] All models have `BelongsToTenant` trait
+- [ ] All Eloquent queries include tenant scope
+- [ ] Tests verify no cross-tenant data access
+- [ ] Middleware `SetTenant` registered on all routes
+- [ ] Database strategy documented and consistent
+- [ ] Configuration per-environment working
+
+## Standard Rules & Workflow
+
+- [[BMAD Method](../../../docs/wiki/concepts/bmad-method.md)]
+- [[Context Engineering](../../../docs/wiki/concepts/context-engineering.md)]
+- [[LLM Wiki Governance](../../../docs/wiki/concepts/llm-wiki-governance.md)]
 
 ---
 
+<<<<<<< .merge_file_uVHBxf
 *Documento generato secondo le convenzioni del progetto — modulo `Tenant` — data 2026-05-27*
 =======
 title: documentazione modulo Tenant
@@ -171,3 +383,10 @@ Tenant/
 2. Aprire `docs/wiki/index.md` se esiste.
 3. Seguire [disciplina issue GitHub](../../../../docs/wiki/how-to/github-issue-agent-discipline.md) prima di modifiche sostanziali.
 >>>>>>> 1ad0554 (.)
+=======
+**Status**: ✅ Production  
+**Last Updated**: 2026-07-14  
+**Requirements**: PHP 8.3+, Laravel 12  
+**PHPStan Level**: 10 (Target)
+**Security Review**: Completed 2026-Q2
+>>>>>>> .merge_file_duqlHx

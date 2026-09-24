@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_fOBsFf
 <<<<<<< HEAD
 ---
 title: "Changelog"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_fBBIdM
 # Changelog
 
 All notable changes to `:package_name` will be documented in this file.

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_ReZVyi
 <<<<<<< HEAD
 ---
 title: "Product Requirements Document (PRD)"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_UF9xid
 # Product Requirements Document (PRD)
 
 ## Metadata

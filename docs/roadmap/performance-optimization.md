@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_gHHLk5
 <<<<<<< HEAD
 ---
 title: "Performance e ottimizzazioni"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_l4QVA8
 # Performance e ottimizzazioni
 
 ## Obiettivo

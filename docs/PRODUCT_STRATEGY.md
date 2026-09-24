@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_njoixr
 <<<<<<< HEAD
 ---
 title: "Tenant Module - Product Strategy"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_QwBoi4
 # Tenant Module - Product Strategy
 
 **Module:** Tenant  

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_Deavhl
 <<<<<<< HEAD
 ---
 title: "Filament Version Declaration — Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_ZQZyRz
 # Filament Version Declaration — Tenant
 
 **Current Version**: Filament v5 (Livewire v4 + Schemas)

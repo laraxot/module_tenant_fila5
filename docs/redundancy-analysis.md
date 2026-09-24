@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_B1YzK4
 <<<<<<< HEAD
 ---
 title: "REDUNDANCY ANALYSIS"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_HyBhiB
 Redundancy analysis available: docs/analysis/redundancies/summary.md

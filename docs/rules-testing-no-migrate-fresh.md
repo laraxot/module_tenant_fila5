@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_liwWTN
 <<<<<<< HEAD
 ---
 title: "CRITICAL ARCHITECTURE RULE: NO MIGRATE:FRESH"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_c8PDhY
 # CRITICAL ARCHITECTURE RULE: NO MIGRATE:FRESH
 
 ## Rule

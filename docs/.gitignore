@@ -2,6 +2,7 @@
 legacy/
 archive/
 agentdb.rvf
+<<<<<<< .merge_file_DBWPte
 <<<<<<< HEAD
 
 # Version-suffixed markdown (AI artifacts)
@@ -21,3 +22,5 @@ phpstan-fixes-2025-10-13.md
 *_[0-9][0-9].md
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_Eelj9b

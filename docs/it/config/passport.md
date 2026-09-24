@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_MtEHWj
 <<<<<<< HEAD
 ---
 title: "Laravel Passport Configuration (Version 13.4.x)"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_yjpIM8
 # Laravel Passport Configuration (Version 13.4.x)
 
 ## Overview

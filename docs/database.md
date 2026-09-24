@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_hUC4ja
 <<<<<<< HEAD
 ---
 title: "Database"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_dC8hAX
 

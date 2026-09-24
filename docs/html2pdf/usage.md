@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_4UEQzr
 <<<<<<< HEAD
 ---
 title: "Utilizzo Base e Layout"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_AFK1vY
 # Utilizzo Base e Layout
 
 Questa sezione descrive l'utilizzo di base della libreria, come istanziare la classe `Html2Pdf` e come gestire il layout delle pagine con i tag speciali.

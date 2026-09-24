@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_I0x8ue
 <<<<<<< HEAD
 ---
 title: "Dal nome tenant al tema pubblico (pub_theme)"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_nhvKYJ
 # Dal nome tenant al tema pubblico (pub_theme)
 
 La **risoluzione del tema** dipende dal modulo Tenant: il nome tenant determina la cartella di config da cui si legge `xra.php` e quindi `pub_theme`.

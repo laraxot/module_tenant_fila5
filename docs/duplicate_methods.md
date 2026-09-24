@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_mZG9vo
 <<<<<<< HEAD
 ---
 title: "Metodi duplicati — Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_uC1n3H
 # Metodi duplicati — Tenant
 
 Analisi sintetica dei metodi PHP con lo stesso nome all’interno di questo ambito.

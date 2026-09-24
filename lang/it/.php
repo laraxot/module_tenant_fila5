@@ -1,10 +1,14 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_5xUOWv
 <<<<<<< HEAD
 =======
 
 >>>>>>> 1ad0554 (.)
+=======
+
+>>>>>>> .merge_file_VNeA2K
 return array (
   'sections' => 
   array (

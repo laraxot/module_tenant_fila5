@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_PB6F3g
 <<<<<<< HEAD
 ---
 title: "Modular Monolith Architecture for Tenant Module"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_VyyHEO
 # Modular Monolith Architecture for Tenant Module
 
 ## Overview
@@ -198,6 +201,7 @@ sequenceDiagram
 ## Related Documentation
 
 - [Module Structure](structure.md)
+<<<<<<< .merge_file_PB6F3g
 <<<<<<< HEAD
 - [Event System](../Xot/docs/event_system.md)
 - [Testing Strategy](../testing/README.md)
@@ -205,6 +209,10 @@ sequenceDiagram
 - [Event System](../xot/docs/event_system.md)
 - [Testing Strategy](../testing/readme.md)
 >>>>>>> 1ad0554 (.)
+=======
+- [Event System](../xot/docs/event_system.md)
+- [Testing Strategy](../testing/readme.md)
+>>>>>>> .merge_file_VyyHEO
 - [API Documentation](../api.md)
 
 ## References

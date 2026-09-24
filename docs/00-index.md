@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_RYe8cS
 <<<<<<< HEAD
 ---
 title: "Tenant Module — Documentation Index"
@@ -50,84 +51,52 @@ related:
 ## 🏗️ Multi-Tenant Configuration
 
 ### How Tenant Config Works
+=======
+# 📚 **Indice Documentazione Modulo Tenant**
+>>>>>>> .merge_file_2wwfK8
 
-This project uses **environment-specific tenant configuration**:
+**Last Update**: 31 Gennaio 2026
+**Status**: ✅ PHPStan Level 10 Compliant
+**Module Version**: 1.8.0
 
-```
-laravel/config/
-├── localhost/              # Local dev (all tenants, single DB)
-├── com/geekpiu/            # GeeKPIU tenant (production)
-├── eu/progetto corrente/             # progetto corrente EU tenant
-└── net/futurely/           # Futurely tenant
-```
+## 🎯 **Lettura Essenziale**
+1. [README.md](./README.md) - Panoramica del sistema Multi-tenancy.
+2. [roadmap.md](./roadmap.md) - Evoluzione 2026: Dinamismo estremo e performance.
+3. [philosophy.md](./philosophy.md) - "Ognuno nel suo spazio": filosofia dell'isolamento.
 
-**Each tenant context includes**:
-- `app.php` — Locale, timezone, app name per tenant
-- `database.php` — Separate DB connection per tenant
-- `services.php` — API credentials per tenant
-- `modules.php` — Active modules per tenant
-- `modules_statuses.json` — Module status overrides
-- `morph_map.php` — Model registry (CRITICAL — never delete)
+## 🏗️ **Architettura & Logica**
+- 🏛️ **[Modular Monolith](./modular-monolith-architecture.md)** - Come il Tenant abilita la modularità.
+- ⚙️ **[Configuration Logic](./configuration-logic-analysis.md)** - Risoluzione gerarchica della configurazione.
+- 📂 **[Database Population](./database-population.md)** - Strategie per il seeding e la migrazione dei Tenant.
 
-### Why This Architecture
+## 🛠️ **Implementazione Tecnica**
+- 🧬 **[Tenant Config Path](./tenant-config-path-philosophy-debate.md)** - Filosofia della gestione dei path configurazione.
+- 🐚 **[Console Integration](./resolve-tenant-config-console-debate.md)** - Risoluzione del tenant nei comandi CLI.
+- 🍣 **[Sushi to JSON](./sushi-traits-phpstan-fixes.md)** - Gestione dei dati statici e semi-statici dei Tenant.
 
-1. **Data Isolation** — Each tenant has own database or schema
-2. **Environment Separation** — Different APIs/credentials per deployment
-3. **Module Availability** — Different features per tenant
-4. **Local Development** — `localhost/` provides isolated dev environment
+## 🧪 **Qualità e Sviluppo**
+- ✅ **[PHPStan Analysis](./phpstan-level10-fixes.md)** - Report di conformità Level 10.
+- 🔬 **[Testing Guidelines](./testing.md)** - Verifica dell'isolamento dei dati tra tenant.
+- 🧹 **[PHPMD Fixes](./cyclomatic-complexity-report.md)** - Analisi della complessità della logica di routing.
+- 🐒 **[Chaos Monkey Tenant Isolation Checklist](./chaos-monkey-tenant-isolation-checklist.md)** - Checklist operativa per fault su multi-tenant/database.
 
-### Related Memory Files
+## 🧹 **Manutenzione**
+- 🗑️ **[Cleanup Plan](./duplicate-files-to-remove.md)** - Eliminazione dei file duplicati e obsoleti.
 
-For deep understanding of multi-tenant configuration:
-- **[config-architecture-multi-tenant](../../../../.claude/config_architecture_documentation.md)** — Detailed architecture guide
-- **[error_config_deletion_2026_07_01](../../../../.claude/error_config_deletion_2026_07_01.md)** — Critical lessons learned
+## 📦 **Pacchetti Composer**
+- [Riferimento](../../../../docs/composer-packages-reference.md) | [Inventario 312 pacchetti](../../../../docs/architecture/composer-packages-full-inventory.md) - Nessuna dipendenza diretta; usa Xot
+- [Package Dependency Chaos Map](./package-dependency-chaos-map.md)
 
-> **CRITICAL RULE**: Never delete files under `laravel/config/`. These are KNOWN tenant configurations, not speculative code. Always grep before deleting any config file.
-
----
-
-## 🧠 Core Concepts
-
-**Tenant Scoping**: All queries are scoped to current tenant automatically  
-**Tenant Resolution**: Determined by domain/header/request context (see TenantIdentification.md)  
-**Data Boundaries**: Foreign keys enforce tenant isolation at DB level  
-**Config Hierarchy**: Environment-specific overrides per tenant
+## 🔗 **Moduli Correlati**
+- [Xot](../../Xot/docs/README.md) - Base framework per i Service Provider.
+- [User](../../User/docs/README.md) - Associazione Utente-Tenant e permessi.
 
 ---
+*Documentazione conforme agli standard Laraxot - DRY + KISS + SOLID*
 
-## 🛠️ Development Rules
+## Dependency Intelligence
 
-| Rule | Source |
-|------|--------|
-| No Services — use Actions | [wiki/concepts/](./wiki/concepts/) |
-| Tenant scoping automatic | [TenantIdentification.md](./wiki/tenantidentification.md) |
-| Config per tenant required | [ConfigurationDistribution.md](./wiki/configurationdistribution.md) |
-| No hardcoded credentials | Via `laravel/config/{tenant}/` |
-
----
-
-## 📁 Archive & Legacy
-
-**Note**: This module has ~360 documentation files accumulated over years. Only the canonical files above (wiki/, roadmap/, PRD, README) are actively maintained. Other files are:
-- **Legacy**: Historical decisions no longer active
-- **Duplicates**: Multiple versions of same content (ponytail cleanup deferred)
-- **Task-specific**: Archived from past sprints
-
-**Rule**: When documenting Tenant module features:
-1. Update [wiki/](./wiki/) first (canonical source)
-2. Link from 00-index.md (this file)
-3. Archive old duplicates if found
-
----
-
-## 🔗 Related Modules
-
-- **[User Module](../../User/docs/00-index.md)** — Authentication per tenant
-- **[Xot Module](../../Xot/docs/00-index.md)** — Base classes for tenant awareness
-- **[Theme System](../../../Themes/)** — Theme per tenant support
-
----
-
+<<<<<<< .merge_file_RYe8cS
 **Next Step**: Read [wiki/TenantIdentification.md](./wiki/tenantidentification.md) to understand how the current request is associated with a tenant.
 =======
 # 📚 **Indice Documentazione Modulo Tenant**
@@ -175,3 +144,6 @@ For deep understanding of multi-tenant configuration:
 
 - [Dependency intelligence](dependency-intelligence.md)
 >>>>>>> 1ad0554 (.)
+=======
+- [Dependency intelligence](dependency-intelligence.md)
+>>>>>>> .merge_file_2wwfK8

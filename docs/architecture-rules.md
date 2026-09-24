@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_VZuLqW
 <<<<<<< HEAD
 ---
 title: "Architectural Rules & Guidelines"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_ERdZTP
 # Architectural Rules & Guidelines
 
 This module adheres to the **Laraxot Architecture** and **Super Cow Methodology**.

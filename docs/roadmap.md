@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_OH55Fk
 <<<<<<< HEAD
 ---
 title: "🎯 TENANT MODULE - ROADMAP 2025"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_k6W7UM
 # 🎯 TENANT MODULE - ROADMAP 2025
 
 **Modulo**: Tenant ([Description])  

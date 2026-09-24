@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_cEjrCs
 <<<<<<< HEAD
 ---
 title: "Morph Map"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_4wN7VH
 <?php
 
 return ['user' => \Modules\Xot\Datas\XotData::make()->getUserClass()];

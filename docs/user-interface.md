@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_2haaYt
 <<<<<<< HEAD
 ---
 title: "User Interface"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_ivnyCz
 

@@ -1,5 +1,6 @@
 # LLM Wiki Outputs
 
+<<<<<<< .merge_file_5jMD7o
 <<<<<<< HEAD
 [![Module](https://img.shields.io/badge/Module-LLM Wiki Outputs-8B0000.svg)]()
 [![Laravel](https://img.shields.io/badge/Laravel-13-red?style=for-the-badge)](https://laravel.com/)](https://laravel.com/)
@@ -38,3 +39,8 @@ Persistent answers, research reports, and generated summaries derived from this 
 
 Outputs should cite the wiki or raw files they used, so later agents can audit the reasoning.
 >>>>>>> 1ad0554 (.)
+=======
+Persistent answers, research reports, and generated summaries derived from this package wiki belong here.
+
+Outputs should cite the wiki or raw files they used, so later agents can audit the reasoning.
+>>>>>>> .merge_file_CZZRDQ

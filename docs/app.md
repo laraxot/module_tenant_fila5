@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_zZFkGT
 <<<<<<< HEAD
 ---
 title: "App"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_9gENNa
 

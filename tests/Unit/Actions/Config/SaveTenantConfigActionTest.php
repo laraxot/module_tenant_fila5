@@ -10,10 +10,13 @@ use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\Config\SaveTenantConfigAction;
 use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Arr\SaveArrayAction;
+<<<<<<< .merge_file_THWZuo
 <<<<<<< HEAD
 use PHPUnit\Framework\Assert;
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_kP5zQL
 
 uses(TestCase::class);
 
@@ -32,6 +35,7 @@ it('saves tenant config by merging with existing data', function (): void {
         ->andReturn(['connections' => ['mysql' => ['host' => 'localhost']]]);
 
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
+<<<<<<< .merge_file_THWZuo
 <<<<<<< HEAD
         TestCase::expectMockery($mock, 'execute')
             ->once()
@@ -60,6 +64,13 @@ it('saves tenant config by merging with existing data', function (): void {
     $action = app(SaveTenantConfigAction::class);
     $action->execute('database', ['connections' => ['mysql' => ['database' => 'test_db']]]);
 >>>>>>> 1ad0554 (.)
+=======
+        $mock->allows(['execute' => true]);
+    });
+
+    $action = app(SaveTenantConfigAction::class);
+    $action->execute('database', ['connections' => ['mysql' => ['database' => 'test_db']]]);
+>>>>>>> .merge_file_kP5zQL
 });
 
 it('saves tenant config when file does not exist', function (): void {
@@ -73,6 +84,7 @@ it('saves tenant config when file does not exist', function (): void {
         ->andReturn(false);
 
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
+<<<<<<< .merge_file_THWZuo
 <<<<<<< HEAD
         TestCase::expectMockery($mock, 'execute')
             ->once()
@@ -92,4 +104,11 @@ it('saves tenant config when file does not exist', function (): void {
     $action = app(SaveTenantConfigAction::class);
     $action->execute('app', ['name' => 'Test App']);
 >>>>>>> 1ad0554 (.)
+=======
+        $mock->allows(['execute' => true]);
+    });
+
+    $action = app(SaveTenantConfigAction::class);
+    $action->execute('app', ['name' => 'Test App']);
+>>>>>>> .merge_file_kP5zQL
 });

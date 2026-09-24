@@ -1,10 +1,14 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_BpGEMF
 <<<<<<< HEAD
 =======
 
 >>>>>>> 1ad0554 (.)
+=======
+
+>>>>>>> .merge_file_iymQJr
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_i6yBG1
 <<<<<<< HEAD
 ---
 module: theme
@@ -10,3 +11,7 @@ See canonical documentation: ../../../../Themes/docs/shared-components/.gitkeep-
 
 
 >>>>>>> 1ad0554 (.)
+=======
+
+
+>>>>>>> .merge_file_p4uCZw

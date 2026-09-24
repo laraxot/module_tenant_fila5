@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_POF6hH
 <<<<<<< HEAD
 ---
 title: "Database"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_iFueia
 <?php
 
 declare(strict_types=1);

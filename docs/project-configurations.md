@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_CcSdTO
 <<<<<<< HEAD
 ---
 title: "Project Configurations"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_Gkuxst
 

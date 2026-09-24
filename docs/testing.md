@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_1FkYro
 <<<<<<< HEAD
 ---
 title: "Testing Documentation"
@@ -40,6 +41,10 @@ restano in memoria (`forceFill` / file tmp + mock di `GetTenantFilePathAction`).
 # Testing Documentation
 
 >>>>>>> 1ad0554 (.)
+=======
+# Testing Documentation
+
+>>>>>>> .merge_file_b6CuHF
 ## Overview
 
 This document provides testing guidelines and examples for the Tenant module in Laraxot.
@@ -296,11 +301,15 @@ protected function createApplication()
 
 ### External Resources
 
+<<<<<<< .merge_file_1FkYro
 <<<<<<< HEAD
 - [Laravel 13.x Testing Documentation](https://laravel.com/docs/12.x/testing)
 =======
 - [Laravel 12.x Testing Documentation](https://laravel.com/docs/12.x/testing)
 >>>>>>> 1ad0554 (.)
+=======
+- [Laravel 12.x Testing Documentation](https://laravel.com/docs/12.x/testing)
+>>>>>>> .merge_file_b6CuHF
 - [Pest Installation Guide](https://pestphp.com/docs/installation)
 - [PHPStan Documentation](https://phpstan.org/user-guide/getting-started)
 
@@ -414,6 +423,7 @@ Following these guidelines will ensure your Tenant module tests are:
 
 Remember: Good tests are the foundation of reliable software development.
 
+<<<<<<< .merge_file_1FkYro
 <<<<<<< HEAD
 ## Coverage — gate 100%
 
@@ -447,3 +457,8 @@ Riferimenti: [Xot coverage.md](../../Xot/docs/coverage.md).
 
 *
 >>>>>>> 1ad0554 (.)
+=======
+---
+
+*
+>>>>>>> .merge_file_b6CuHF

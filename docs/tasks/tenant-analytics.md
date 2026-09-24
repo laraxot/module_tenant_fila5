@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_m6ymsI
 <<<<<<< HEAD
 ---
 title: "Task: Tenant Analytics"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_qLOOCh
 # Task: Tenant Analytics
 
 **Modulo**: Tenant  

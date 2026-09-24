@@ -7,6 +7,7 @@ namespace Modules\Tenant\Tests\Integration\Traits;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
+<<<<<<< .merge_file_KiJuJT
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 =======
 // Tenant Pest/PHPUnit — claude-audit documentation ratio.
@@ -19,7 +20,10 @@ use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_hS8QvC
 use Modules\Tenant\Models\TestSushiModel;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Tests\TestCase;
 
 use function Safe\json_encode;
@@ -37,6 +41,7 @@ function writeTraitIntegrationJson(string $path, array $data): void
 }
 
 beforeEach(function (): void {
+<<<<<<< .merge_file_KiJuJT
 <<<<<<< HEAD
     /** @var TestCase $this */
     if (TestCase::tenantDbUnavailable()) {
@@ -47,6 +52,9 @@ beforeEach(function (): void {
 =======
     $this->tenant = createTenant([
 >>>>>>> 1ad0554 (.)
+=======
+    $this->tenant = createTenant([
+>>>>>>> .merge_file_hS8QvC
         'name' => 'test-tenant',
         'domain' => 'test.example.com',
     ]);
@@ -54,13 +62,18 @@ beforeEach(function (): void {
     $this->setCurrentTenant($this->tenantModel());
 
     $this->model = new TestSushiModel;
+<<<<<<< .merge_file_KiJuJT
 <<<<<<< HEAD
     TestCase::$testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
+=======
+    $this->testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
+>>>>>>> .merge_file_hS8QvC
 
-    if (File::exists(TestCase::$testJsonPath)) {
-        File::delete(TestCase::$testJsonPath);
+    if (File::exists($this->testJsonPath)) {
+        File::delete($this->testJsonPath);
     }
 
+<<<<<<< .merge_file_KiJuJT
     $directory = dirname(TestCase::$testJsonPath);
 =======
     $this->testJsonPath = app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
@@ -71,12 +84,16 @@ beforeEach(function (): void {
 
     $directory = dirname($this->testJsonPath);
 >>>>>>> 1ad0554 (.)
+=======
+    $directory = dirname($this->testJsonPath);
+>>>>>>> .merge_file_hS8QvC
     if (File::exists($directory)) {
         File::deleteDirectory($directory);
     }
 });
 
 afterEach(function (): void {
+<<<<<<< .merge_file_KiJuJT
 <<<<<<< HEAD
     /** @var TestCase $this */
     if (File::exists(TestCase::$testJsonPath)) {
@@ -91,16 +108,26 @@ afterEach(function (): void {
 
     $directory = dirname($this->testJsonPath);
 >>>>>>> 1ad0554 (.)
+=======
+    if (File::exists($this->testJsonPath)) {
+        File::delete($this->testJsonPath);
+    }
+
+    $directory = dirname($this->testJsonPath);
+>>>>>>> .merge_file_hS8QvC
     if (File::exists($directory)) {
         File::deleteDirectory($directory);
     }
 });
 
 it('creates json file with tenant isolation', function (): void {
+<<<<<<< .merge_file_KiJuJT
 <<<<<<< HEAD
     /** @var TestCase $this */
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_hS8QvC
     $testData = [
         '1' => [
             'id' => 1,
@@ -123,10 +150,13 @@ it('creates json file with tenant isolation', function (): void {
 });
 
 it('loads data with tenant isolation', function (): void {
+<<<<<<< .merge_file_KiJuJT
 <<<<<<< HEAD
     /** @var TestCase $this */
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_hS8QvC
     $tenantId = $this->tenantId();
     $testData = [
         '1' => ['id' => 1, 'name' => 'Item 1', 'tenant_id' => $tenantId],
@@ -148,10 +178,13 @@ it('loads data with tenant isolation', function (): void {
 });
 
 it('handles large datasets efficiently', function (): void {
+<<<<<<< .merge_file_KiJuJT
 <<<<<<< HEAD
     /** @var TestCase $this */
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_hS8QvC
     $largeDataset = [];
     for ($i = 1; $i <= 1000; $i++) {
         $largeDataset[$i] = [
@@ -170,12 +203,16 @@ it('handles large datasets efficiently', function (): void {
 });
 
 it('works with different tenant configurations', function (): void {
+<<<<<<< .merge_file_KiJuJT
 <<<<<<< HEAD
     /** @var TestCase $this */
     $secondTenant = TestCase::createTenant([
 =======
     $secondTenant = createTenant([
 >>>>>>> 1ad0554 (.)
+=======
+    $secondTenant = createTenant([
+>>>>>>> .merge_file_hS8QvC
         'name' => 'second-tenant',
         'domain' => 'second.example.com',
     ]);

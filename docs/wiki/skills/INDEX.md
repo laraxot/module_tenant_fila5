@@ -34,6 +34,7 @@ Le Skills progettuali vivono qui, nel wiki del Module **Tenant**, e vengono cari
 
 - La sorgente di verita' per le Skills e' sempre il wiki locale
 - Non embeddare Skills nei prompt di avvio
+<<<<<<< .merge_file_DKWyBz
 <<<<<<< HEAD
 <<<<<<< .merge_file_MBb37O
 - Per Skills globali, consulta il [wiki root](../../../../../../docs/wiki/skills/INDEX.md)
@@ -43,6 +44,9 @@ Le Skills progettuali vivono qui, nel wiki del Module **Tenant**, e vengono cari
 =======
 - Per Skills globali, consulta il [wiki root](../../../../../../docs/wiki/skills/INDEX.md)
 >>>>>>> 1ad0554 (.)
+=======
+- Per Skills globali, consulta il [wiki root](../../docs/wiki/skills/INDEX.md)
+>>>>>>> .merge_file_CJVxPv
 
 ## Aggiungere una Nuova SKILLS
 

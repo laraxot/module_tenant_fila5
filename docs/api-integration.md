@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_PxBbXm
 <<<<<<< HEAD
 ---
 title: "Api Integration"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_DXlGBx
 

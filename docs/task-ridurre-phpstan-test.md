@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_8pXaHK
 <<<<<<< HEAD
 ---
 title: "Task: Ridurre Suppressioni PHPStan nei Test - Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_D3f76H
 # Task: Ridurre Suppressioni PHPStan nei Test - Tenant
 
 **Modulo**: Tenant

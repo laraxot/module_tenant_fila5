@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_TqKuUo
 <<<<<<< HEAD
 ---
 title: "Fix: SushiToJsonIntegrationTest - Database Connection Configuration"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_DkbikE
 # Fix: SushiToJsonIntegrationTest - Database Connection Configuration
 
 **Problema**: Test fallisce con "Database connection [tenant] not configured"

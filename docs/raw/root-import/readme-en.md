@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_kobSqt
 <<<<<<< HEAD
 ---
 title: "Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_EaFL48
 # Tenant
 
 The **Tenant** module enables multi-tenancy in the Laraxot modular monolith: it resolves the current tenant (domain / path / context), isolates configuration and data, and provides the foundation to run multiple organizations on a single installation.

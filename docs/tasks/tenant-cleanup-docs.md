@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_tzGw4g
 <<<<<<< HEAD
 ---
 title: "Task: Tenant Docs Cleanup"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_MEjieE
 # Task: Tenant Docs Cleanup
 
 ## 📋 Obiettivo

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_1qfJa2
 <<<<<<< HEAD
 ---
 title: "Conflict Resolution — Module Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_yyuraY
 # Conflict Resolution — Module Tenant
 
 ## Summary

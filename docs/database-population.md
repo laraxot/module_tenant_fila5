@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_OP5Tsd
 <<<<<<< HEAD
 ---
 title: "Popolamento Database - Modulo Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_mKYNsF
 # Popolamento Database - Modulo Tenant
 
 ## Aggiornamento [DATE] – Test Sushi Seeder
@@ -310,11 +313,15 @@ private function generateRealisticDomain(string $tenantName, string $sector): st
 
 ## Collegamenti
 
+<<<<<<< .merge_file_OP5Tsd
 <<<<<<< HEAD
 - [README Modulo Tenant](README.md)
 =======
 - [README Modulo Tenant](./readme.md)
 >>>>>>> 1ad0554 (.)
+=======
+- [README Modulo Tenant](./readme.md)
+>>>>>>> .merge_file_mKYNsF
 - [Multi-Tenancy Architecture](./multi-tenancy.md)
 - [Database Schema](./database-schema.md)
 - [Testing Guidelines](./testing.md)

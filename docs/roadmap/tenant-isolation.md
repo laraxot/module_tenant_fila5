@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_SSug9m
 <<<<<<< HEAD
 ---
 title: "Isolamento tenant e configurazioni"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_SSnei9
 # Isolamento tenant e configurazioni
 
 ## Obiettivo

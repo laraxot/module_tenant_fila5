@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_T7Mi2R
 <<<<<<< HEAD
 ---
 title: "Task: Query Optimization Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_wOFAOo
 # Task: Query Optimization Tenant
 
 **Modulo**: Tenant  

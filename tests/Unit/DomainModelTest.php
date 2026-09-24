@@ -18,6 +18,7 @@ uses(TestCase::class);
 
 describe('Domain Model', function (): void {
     test('_domain_model_can_be_instantiated', function (): void {
+        /** @var TestCase $this */
         $domain = new Domain;
 =======
 uses(\Modules\Tenant\Tests\TestCase::class);
@@ -32,11 +33,15 @@ $domain = new Domain;
     });
 
     test('_get_rows_method_works_correctly', function (): void {
+<<<<<<< .merge_file_QzyaqC
 <<<<<<< HEAD
         TestCase::mockAppService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
 =======
 $this->mockService(GetDomainsArrayAction::class, function ($mock): void {
 >>>>>>> 1ad0554 (.)
+=======
+        $this->mockService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
+>>>>>>> .merge_file_QCGMdW
             $mock->allows([
                 'execute' => [
                     ['id' => 1, 'name' => 'test-domain.com'],

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_oRcWcw
 <<<<<<< HEAD
 ---
 title: "Guida agli Stili, Tabelle e Immagini"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_NTMCIk
 # Guida agli Stili, Tabelle e Immagini
 
 Questa guida illustra come applicare stili CSS, creare layout con tabelle e gestire le immagini nei PDF generati con Html2Pdf.

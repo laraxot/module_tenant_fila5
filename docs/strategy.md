@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_F2jwc5
 <<<<<<< HEAD
 ---
 title: "Product Strategy Doc - Tenant Module"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_7U0dfX
 # Product Strategy Doc - Tenant Module
 
 ## Strategic Pillars

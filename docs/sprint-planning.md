@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_1COBCN
 <<<<<<< HEAD
 ---
 title: "Tenant Module - Sprint Planning"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_DTPBAj
 # Tenant Module - Sprint Planning
 
 **Module:** Tenant  

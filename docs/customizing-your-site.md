@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_sXLCV1
 <<<<<<< HEAD
 ---
 title: "Customizing Your Site"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_rVOUWr
 

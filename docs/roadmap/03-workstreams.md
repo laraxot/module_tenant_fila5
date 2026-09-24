@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_GiQ5Su
 <<<<<<< HEAD
 ---
 title: "Workstreams - Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_5ApduN
 # Workstreams - Tenant
 
 ## WS1 Architecture

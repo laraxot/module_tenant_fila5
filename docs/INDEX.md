@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_Za6ld8
 <<<<<<< HEAD
 ---
 title: Tenant Module Documentation Index
@@ -5,11 +6,15 @@ module: Tenant
 status: production
 last_updated: 2026-07-28
 ---
+=======
+# Documentation Index
+>>>>>>> .merge_file_JsYc47
 
-# Tenant Module Documentation Index
+Modulo: Tenant
 
-**Last updated: 2026-07-28**
+## File disponibili
 
+<<<<<<< .merge_file_Za6ld8
 ---
 
 ## Navigation
@@ -115,3 +120,6 @@ Modulo: Tenant
 
 <!-- auto-generato: elencare i file .md presenti -->
 >>>>>>> 1ad0554 (.)
+=======
+<!-- auto-generato: elencare i file .md presenti -->
+>>>>>>> .merge_file_JsYc47

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_ggxj51
 <<<<<<< HEAD
 ---
 title: "Task: Creazione TenantSetting Model"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_85Mcqt
 # Task: Creazione TenantSetting Model
 
 **Modulo**: Tenant  

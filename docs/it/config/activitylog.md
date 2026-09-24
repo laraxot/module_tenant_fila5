@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_SdHRz7
 <<<<<<< HEAD
 ---
 title: "Activitylog"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_wjMIWI
 <?php
 
 return [

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_qn4KkD
 <<<<<<< HEAD
 ---
 title: "Modular Monolith Guidelines for Laravel"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_FmOt4C
 # Modular Monolith Guidelines for Laravel
 
 ## Overview

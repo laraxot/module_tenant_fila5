@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_FTzyLr
 <<<<<<< HEAD
 ---
 title: "DRY & KISS Analysis - Modulo Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_pnEFzM
 # DRY & KISS Analysis - Modulo Tenant
 
 **Data:** 15 Ottobre 2025

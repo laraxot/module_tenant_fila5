@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_A6zGbF
 <<<<<<< HEAD
 ---
 title: "Tenant Config Path Philosophy - THE FURIOUS DEBATE"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_nNJQf7
 # Tenant Config Path Philosophy - THE FURIOUS DEBATE
 
 **Status**: 🔥 FURIOUS INTERNAL DEBATE

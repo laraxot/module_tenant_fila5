@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_ix5lDg
 <<<<<<< HEAD
 ---
 title: "Case Sensitivity Rules - Tenant Module"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_n59a6Z
 # Case Sensitivity Rules - Tenant Module
 
 ## Problema / Problem

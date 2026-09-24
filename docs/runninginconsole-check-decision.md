@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_Pgp72M
 <<<<<<< HEAD
 ---
 title: "Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_V1Bbwu
 # Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction
 
 **Data**: 2025-01-22

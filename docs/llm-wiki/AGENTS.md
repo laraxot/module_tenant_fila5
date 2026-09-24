@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_WrMiax
 <<<<<<< HEAD
 ---
 title: "Tenant {{TYPE^}} LLM Wiki Agent Instructions"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_tsApiM
 # Tenant {{TYPE^}} LLM Wiki Agent Instructions
 
 > **Module/Theme:** Tenant

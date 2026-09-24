@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Tenant\Tests;
 
 use Closure;
+<<<<<<< .merge_file_qqz6Nh
 <<<<<<< HEAD
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Application;
@@ -15,28 +16,38 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 >>>>>>> 1ad0554 (.)
+=======
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+>>>>>>> .merge_file_84M9oc
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Mockery\Expectation;
 use Mockery\MockInterface;
+<<<<<<< .merge_file_qqz6Nh
 <<<<<<< HEAD
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Database\Factories\TenantFactory;
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_84M9oc
 use Modules\Tenant\Models\BaseModel;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Providers\TenantServiceProvider;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\User\Providers\UserServiceProvider;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Modules\Xot\Tests\XotBaseTestCase;
 use PHPUnit\Framework\Assert;
+<<<<<<< .merge_file_qqz6Nh
 <<<<<<< HEAD
 use Webmozart\Assert\Assert as WebmozartAssert;
+=======
+>>>>>>> .merge_file_84M9oc
 
 use function Safe\json_decode;
-use function Safe\putenv;
 
 /**
  * @property TestSushiModel|null $model
@@ -58,23 +69,28 @@ abstract class TestCase extends XotBaseTestCase
 {
     use DatabaseTransactions;
 
+<<<<<<< .merge_file_qqz6Nh
 <<<<<<< HEAD
     /** @var list<string> */
     protected $connectionsToTransact = ['tenant'];
+=======
+    /** @var TestSushiModel */
+    public mixed $model;
+>>>>>>> .merge_file_84M9oc
 
-    public static ?TestSushiModel $sushiModel = null;
+    /** @var BaseModel|null */
+    public mixed $baseModel = null;
 
-    public static ?BaseModel $sushiBaseModel = null;
+    public ?Tenant $tenant = null;
 
-    public static ?Tenant $tenant = null;
+    public ?Tenant $secondTenant = null;
 
-    public static ?Tenant $secondTenant = null;
+    public string $testJsonPath = '';
 
-    public static string $testJsonPath = '';
-
-    public static string $testDirectory = '';
+    public string $testDirectory = '';
 
     /** @var Closure(): array<array-key, array<string, mixed>> */
+<<<<<<< .merge_file_qqz6Nh
     public static Closure $createTestData;
 
     /**
@@ -160,11 +176,15 @@ abstract class TestCase extends XotBaseTestCase
     /** @var Closure(): array<array-key, array<string, mixed>> */
     public Closure $createTestData;
 >>>>>>> 1ad0554 (.)
+=======
+    public Closure $createTestData;
+>>>>>>> .merge_file_84M9oc
 
     protected function setUp(): void
     {
         parent::setUp();
 
+<<<<<<< .merge_file_qqz6Nh
 <<<<<<< HEAD
         $database = database_path('fixcity_data.sqlite');
 
@@ -182,24 +202,29 @@ abstract class TestCase extends XotBaseTestCase
 
         self::$sushiModel = new TestSushiModel;
         self::$createTestData = static fn (): array => [];
+=======
+        $this->model = new TestSushiModel;
+        $this->createTestData = static fn (): array => [];
+>>>>>>> .merge_file_84M9oc
     }
 
-    public static function tenantModel(): Tenant
+    public function tenantModel(): Tenant
     {
-        Assert::assertInstanceOf(Tenant::class, self::$tenant);
+        Assert::assertInstanceOf(Tenant::class, $this->tenant);
 
-        return self::$tenant;
+        return $this->tenant;
     }
 
-    public static function secondTenantModel(): Tenant
+    public function secondTenantModel(): Tenant
     {
-        Assert::assertInstanceOf(Tenant::class, self::$secondTenant);
+        Assert::assertInstanceOf(Tenant::class, $this->secondTenant);
 
-        return self::$secondTenant;
+        return $this->secondTenant;
     }
 
-    public static function tenantId(): string
+    public function tenantId(): string
     {
+<<<<<<< .merge_file_qqz6Nh
         $id = self::tenantModel()->id;
 =======
         $this->model = new TestSushiModel();
@@ -224,45 +249,53 @@ abstract class TestCase extends XotBaseTestCase
     {
         $id = $this->tenantModel()->id;
 >>>>>>> 1ad0554 (.)
+=======
+        $id = $this->tenantModel()->id;
+>>>>>>> .merge_file_84M9oc
         Assert::assertIsString($id);
 
         return $id;
     }
 
+<<<<<<< .merge_file_qqz6Nh
 <<<<<<< HEAD
     public static function sushiModel(): TestSushiModel
+=======
+    public function sushiModel(): TestSushiModel
+>>>>>>> .merge_file_84M9oc
     {
-        Assert::assertInstanceOf(TestSushiModel::class, self::$sushiModel);
+        Assert::assertInstanceOf(TestSushiModel::class, $this->model);
 
-        return self::$sushiModel;
+        return $this->model;
     }
 
-    public static function sushiJsonPath(): string
+    public function sushiJsonPath(): string
     {
-        if (self::$testJsonPath !== '') {
-            return self::$testJsonPath;
+        if ($this->testJsonPath !== '') {
+            return $this->testJsonPath;
         }
 
         return app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
     }
 
-    public static function sushiTestDirectory(): string
+    public function sushiTestDirectory(): string
     {
-        if (self::$testDirectory !== '') {
-            return self::$testDirectory;
+        if ($this->testDirectory !== '') {
+            return $this->testDirectory;
         }
 
-        return dirname(self::sushiJsonPath());
+        return dirname($this->sushiJsonPath());
     }
 
     /** @return array<array-key, array<string, mixed>> */
-    public static function sushiTestData(): array
+    public function sushiTestData(): array
     {
-        return (self::$createTestData)();
+        return ($this->createTestData)();
     }
 
-    public static function expectMockery(MockInterface $mock, string $method): Expectation
+    public function tenantMockExpectation(MockInterface $mock, string $method): Expectation
     {
+<<<<<<< .merge_file_qqz6Nh
         $expectation = $mock->allows($method);
         if (! $expectation instanceof Expectation) {
             throw new \RuntimeException('Unexpected mockery expectation type.');
@@ -304,6 +337,10 @@ abstract class TestCase extends XotBaseTestCase
         $expectation = $mock->shouldReceive($method);
         Assert::assertInstanceOf(Expectation::class, $expectation);
 >>>>>>> 1ad0554 (.)
+=======
+        $expectation = $mock->shouldReceive($method);
+        Assert::assertInstanceOf(Expectation::class, $expectation);
+>>>>>>> .merge_file_84M9oc
 
         return $expectation;
     }
@@ -313,6 +350,7 @@ abstract class TestCase extends XotBaseTestCase
 <<<<<<< HEAD
      * @return array<string, mixed>
      */
+<<<<<<< .merge_file_qqz6Nh
     public static function sushiRowById(array $rows, int|string $key): array
 =======
      *
@@ -320,6 +358,9 @@ abstract class TestCase extends XotBaseTestCase
      */
     public function sushiRowById(array $rows, int|string $key): array
 >>>>>>> 1ad0554 (.)
+=======
+    public function sushiRowById(array $rows, int|string $key): array
+>>>>>>> .merge_file_84M9oc
     {
         $id = is_int($key) ? $key : (is_numeric($key) ? SafeIntCastAction::cast($key) : 0);
 
@@ -346,11 +387,15 @@ abstract class TestCase extends XotBaseTestCase
         return [];
     }
 
+<<<<<<< .merge_file_qqz6Nh
 <<<<<<< HEAD
     public static function setCurrentTenant(Tenant $tenant): void
 =======
     public function setCurrentTenant(Tenant $tenant): void
 >>>>>>> 1ad0554 (.)
+=======
+    public function setCurrentTenant(Tenant $tenant): void
+>>>>>>> .merge_file_84M9oc
     {
         $context = app('tenant');
 
@@ -360,11 +405,15 @@ abstract class TestCase extends XotBaseTestCase
     }
 
     /** @return array<array-key, array<string, mixed>> */
+<<<<<<< .merge_file_qqz6Nh
 <<<<<<< HEAD
     public static function readJsonFileAsArray(string $path): array
 =======
     public function readJsonFileAsArray(string $path): array
 >>>>>>> 1ad0554 (.)
+=======
+    public function readJsonFileAsArray(string $path): array
+>>>>>>> .merge_file_84M9oc
     {
         $decoded = json_decode(File::get($path), true);
         Assert::assertIsArray($decoded);
@@ -373,11 +422,16 @@ abstract class TestCase extends XotBaseTestCase
         return $decoded;
     }
 
+<<<<<<< .merge_file_qqz6Nh
 <<<<<<< HEAD
     public static function baseModelInstance(): BaseModel
+=======
+    public function baseModelInstance(): BaseModel
+>>>>>>> .merge_file_84M9oc
     {
-        Assert::assertInstanceOf(BaseModel::class, self::$sushiBaseModel);
+        Assert::assertInstanceOf(BaseModel::class, $this->baseModel);
 
+<<<<<<< .merge_file_qqz6Nh
         return self::$sushiBaseModel;
 =======
     public function baseModelInstance(): BaseModel
@@ -386,6 +440,9 @@ abstract class TestCase extends XotBaseTestCase
 
         return $this->baseModel;
 >>>>>>> 1ad0554 (.)
+=======
+        return $this->baseModel;
+>>>>>>> .merge_file_84M9oc
     }
 
     /**
@@ -393,8 +450,9 @@ abstract class TestCase extends XotBaseTestCase
 <<<<<<< HEAD
      * @return array<string, mixed>
      */
-    public static function jsonRecordAt(array $rows, int|string $key): array
+    public function jsonRecordAt(array $rows, int|string $key): array
     {
+<<<<<<< .merge_file_qqz6Nh
         return self::sushiRowById($rows, $key);
 =======
      *
@@ -404,16 +462,23 @@ abstract class TestCase extends XotBaseTestCase
     {
         return $this->sushiRowById($rows, $key);
 >>>>>>> 1ad0554 (.)
+=======
+        return $this->sushiRowById($rows, $key);
+>>>>>>> .merge_file_84M9oc
     }
 
     /**
      * @return array<string, mixed>
      */
+<<<<<<< .merge_file_qqz6Nh
 <<<<<<< HEAD
     public static function decodeJsonString(string $json): array
 =======
     public function decodeJsonString(string $json): array
 >>>>>>> 1ad0554 (.)
+=======
+    public function decodeJsonString(string $json): array
+>>>>>>> .merge_file_84M9oc
     {
         $decoded = json_decode($json, true);
         Assert::assertIsArray($decoded);
@@ -422,6 +487,7 @@ abstract class TestCase extends XotBaseTestCase
         return $decoded;
     }
 
+<<<<<<< .merge_file_qqz6Nh
 <<<<<<< HEAD
     /**
      * @param  array<string, mixed>  $data
@@ -470,6 +536,8 @@ abstract class TestCase extends XotBaseTestCase
 
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_84M9oc
     /** @return array<int, class-string<ServiceProvider>> */
     protected function getPackageProviders(Application $app): array
     {

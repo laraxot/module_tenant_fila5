@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_96r8P0
 <<<<<<< HEAD
 ---
 title: "Moduleses"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_hAaO0p
 

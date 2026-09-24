@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_MhkZtN
 <<<<<<< HEAD
 ---
 title: "Next (Module Tenant)"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_kEu6JT
 # Next (Module Tenant)
 
 ## Features

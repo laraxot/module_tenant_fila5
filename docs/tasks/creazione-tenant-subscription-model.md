@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_kivkrT
 <<<<<<< HEAD
 ---
 title: "Task: Creazione TenantSubscription Model"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_Xwa2Av
 # Task: Creazione TenantSubscription Model
 
 **Modulo**: Tenant  

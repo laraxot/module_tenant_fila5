@@ -3,7 +3,7 @@ title: "PHPStan fix patterns for Tenant module"
 type: troubleshooting
 tags: [phpstan, static-analysis, pest, mockery, tenant]
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-09-24
 qmd: "phpstan fix patterns tenant module mockService allows factory WebmozartAssert"
 related:
   - ../../../../../docs/wiki/PHPSTAN-INDEX.md
@@ -24,16 +24,16 @@ Fix sessione corrente:
 | `EventServiceProvider.php` | Rimosso type hint `array` su `$listen` (Laravel parent untyped) |
 | `GetTenantNameAction.php` | `$_SERVER['SERVER_NAME']` al posto di `Request` facade durante LoadConfiguration |
 | `SushiToJsons.php` | Boot handlers tipizzati `self` + `getRows()` + `@phpstan-return` |
-| `SushiToCsv.php` | `@var` prima di `Arr::keyBy()` |
 
 ## Stato (2026-06-18)
 
 `./vendor/bin/phpstan analyse Modules/Tenant` → **0 errori** (da 655, poi 397 dopo restore test duplicati).
 
-## Trait cross-module (probe PHPStan)
+## Trait cross-module e probe
 
-Trait usati fuori Tenant (`SushiToPhpArray` in User) non risultano «used» in scan isolato. Pattern Geo:
+I probe PHPStan non sono parte del contratto attivo del modulo e non vanno duplicati. Dopo il caller tracing completo, `SushiToCsvPhpstanProbe` e `SushiToCsv.php` sono stati archiviati in-place con il suffisso `.bak`: non esistono consumer di produzione e non è stato creato un sostituto.
 
+<<<<<<< .merge_file_5iy7e5
 <<<<<<< HEAD
 `tests/Fixtures/Traits/TenantPhpstanTraitProbes.php` — host `SushiToCsvPhpstanProbe`, `SushiToPhpArrayPhpstanProbe`.
 =======
@@ -41,6 +41,9 @@ I probe `SushiToCsvPhpstanProbe` e `SushiToPhpArrayPhpstanProbe` (in `tests/Fixt
 >>>>>>> 1ad0554 (.)
 
 Fix trait associati: return type `getSushiRows()` / `getCsvHeader()` in `SushiToCsv`; `array_values` tipizzato in `SushiToPhpArray`.
+=======
+Il caso cross-module residuo di `SushiToPhpArray` in User resta documentato dal fixture esistente; il relativo `array_values` resta tipizzato.
+>>>>>>> .merge_file_kSAgAk
 
 ## Codice produzione
 

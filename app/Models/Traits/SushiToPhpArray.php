@@ -1,18 +1,26 @@
 <?php
 
+<<<<<<< .merge_file_dzqxLV
 <<<<<<< HEAD
 declare(strict_types=1);
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_W9Spk2
 /**
  * @see https://dev.to/hasanmn/automatically-update-createdby-and-updatedby-in-laravel-using-bootable-traits-28g9.
  */
 
+<<<<<<< .merge_file_dzqxLV
 <<<<<<< HEAD
 =======
 declare(strict_types=1);
 
 >>>>>>> 1ad0554 (.)
+=======
+declare(strict_types=1);
+
+>>>>>>> .merge_file_W9Spk2
 namespace Modules\Tenant\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;
@@ -24,7 +32,6 @@ use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
 >>>>>>> 1ad0554 (.)
 use Sushi\Sushi;
 
-/** @phpstan-ignore trait.unused */
 trait SushiToPhpArray
 {
     use Sushi;
@@ -64,14 +71,27 @@ trait SushiToPhpArray
 
     protected static function bootSushiToPhpArray(): void
     {
+<<<<<<< .merge_file_dzqxLV
 <<<<<<< HEAD
         static::creating(static function (Model $model): void {
+=======
+        static::creating(static function ($model): void {
+            if (! $model instanceof Model) {
+                return;
+            }
+
+>>>>>>> .merge_file_W9Spk2
             $model->toArray();
         });
 
-        static::updating(static function (Model $model): void {
+        static::updating(static function ($model): void {
+            if (! $model instanceof Model) {
+                return;
+            }
+
             $model->toArray();
         });
+<<<<<<< .merge_file_dzqxLV
 =======
         static::creating(static function ($model): void {
             if (! $model instanceof Model) {
@@ -88,12 +108,17 @@ trait SushiToPhpArray
 
             $model->toArray();
         });
+=======
+>>>>>>> .merge_file_W9Spk2
 
         static::deleting(static function ($model): void {
             if (! $model instanceof Model) {
                 return;
             }
         });
+<<<<<<< .merge_file_dzqxLV
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_W9Spk2
     }
 }

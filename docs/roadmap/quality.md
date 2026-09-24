@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_WMVLzb
 <<<<<<< HEAD
 ---
 title: "Checklist qualità - Tenant Module"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_uOk15C
 # Checklist qualità - Tenant Module
 
 - [x] PHPStan Level 10

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_k2qccm
 <<<<<<< HEAD
 ---
 title: "Task: Verifica TenantDomain"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_c956wH
 # Task: Verifica TenantDomain
 
 **Modulo**: Tenant  

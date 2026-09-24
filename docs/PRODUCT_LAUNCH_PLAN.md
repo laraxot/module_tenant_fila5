@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_VLMghq
 <<<<<<< HEAD
 ---
 title: "Tenant Module - Product Launch Plan"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_yR3eeM
 # Tenant Module - Product Launch Plan
 
 **Module:** Tenant  

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_uHxK6Q
 <<<<<<< HEAD
 ---
 title: "Dipendenze Helper Functions - Modulo Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_zVgw3O
 # Dipendenze Helper Functions - Modulo Tenant
 
 ## 📋 Overview

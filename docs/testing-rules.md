@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_aaMTX2
 <<<<<<< HEAD
 ---
 title: "Testing Rules Summary"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_05hdLf
 # Testing Rules Summary
 
 ## Regole Fondamentali dei Test

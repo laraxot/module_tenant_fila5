@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_sgosq9
 <<<<<<< HEAD
 ---
 title: "Sushi To Json Implementation Plan"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_cKX1mL
 

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_a7k7Ij
 <<<<<<< HEAD
 ---
 title: "License Renamed"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_sTCdfl
 The MIT License (MIT)
 
 Copyright (c) :vendor_name <author@domain.com>

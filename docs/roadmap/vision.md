@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_jLtt4U
 <<<<<<< HEAD
 ---
 title: "Visione - Tenant Module"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_N1olzY
 # Visione - Tenant Module
 
 Rendere la scalabilità dell'isolamento dei dati un processo immediato e trasparente, permettendo l'onboarding di nuovi tenant in pochi secondi tramite:

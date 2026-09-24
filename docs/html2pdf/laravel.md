@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_T9Q0dH
 <<<<<<< HEAD
 ---
 title: "Integrazione con Laravel e Best Practices"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_qvLcCg
 # Integrazione con Laravel e Best Practices
 
 Questa guida si concentra su come integrare e utilizzare `Html2Pdf` in un'applicazione Laravel, seguendo le best practice specifiche del progetto Laraxot.

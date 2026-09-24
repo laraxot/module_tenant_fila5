@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_IXGagt
 <<<<<<< HEAD
 ---
 title: "Decisione: Arr::first() vs collect()->first()"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_6flWs0
 # Decisione: Arr::first() vs collect()->first()
 
 **Data**: 2025-01-22

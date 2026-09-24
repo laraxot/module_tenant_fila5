@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_9jpM3o
 <<<<<<< HEAD
 ---
 title: "Sprint Planning Meeting - Tenant Module"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_4S0600
 # Sprint Planning Meeting - Tenant Module
 
 ## DoD (Definition of Done)

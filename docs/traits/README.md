@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_CxV1io
 <<<<<<< HEAD
 # Tenant
 
@@ -36,3 +37,6 @@ Core module for the FixCity Platform.
 =======
 
 >>>>>>> 1ad0554 (.)
+=======
+
+>>>>>>> .merge_file_DYmfIA

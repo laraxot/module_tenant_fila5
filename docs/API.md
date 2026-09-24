@@ -426,9 +426,13 @@ User::withoutGlobalScopes()->all();  // Requires permission
 ## Related Documentation
 - [Architecture Overview](./ARCHITECTURE.md)
 - [Setup & Configuration](./SETUP.md)
+<<<<<<< .merge_file_c2tdRW
 <<<<<<< HEAD
 - [Troubleshooting](troubleshooting.md)
 =======
 - [Troubleshooting](./TROUBLESHOOTING.md)
 >>>>>>> 1ad0554 (.)
+=======
+- [Troubleshooting](./TROUBLESHOOTING.md)
+>>>>>>> .merge_file_pV4b1V
 - [Best Practices](./BEST_PRACTICES.md)

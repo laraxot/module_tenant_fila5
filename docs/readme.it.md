@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_OcoH68
 <<<<<<< HEAD
 ---
 title: "Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_0gQnNz
 # Tenant
 
 Il modulo **Tenant** abilita la multi-tenancy nel monolite modulare Laraxot: identifica il tenant (domain / path / contesto), isola configurazioni e dati, e fornisce le fondamenta per gestire più organizzazioni in un’unica installazione.

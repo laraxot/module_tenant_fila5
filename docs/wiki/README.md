@@ -1,5 +1,6 @@
 # LLM Wiki (module)
 
+<<<<<<< .merge_file_8Prvf1
 <<<<<<< HEAD
 [![Module](https://img.shields.io/badge/Module-LLM Wiki (module)-8B0000.svg)]()
 [![Laravel](https://img.shields.io/badge/Laravel-13-red?style=for-the-badge)](https://laravel.com/)](https://laravel.com/)
@@ -9,11 +10,19 @@
 [![PSR-12](https://img.shields.io/badge/Code-PSR--12-blue?style=for-the-badge)](https://www.php-fig.org/psr/psr-12/)](https://www.php-fig.org/psr/psr-12/)
 [![Architecture](https://img.shields.io/badge/Architecture-Modular-purple?style=for-the-badge)](https://martinfowler.com/articles/paradigm-shifts.html)]()
 ]()
+=======
+This folder is the module's LLM wiki (docs/wiki). Use it to store synthesized, curated docs optimized for LLM ingestion.
+>>>>>>> .merge_file_62n45U
 
-> **Core module for the FixCity Platform.**
+Structure:
+- raw/: original source docs
+- wiki/: distilled summaries and canonical pages for LLM
+- archived/: historical/obsolete docs
 
-## Perché esiste
+Use qmd to serve or convert these documents (https://github.com/tobi/qmd).
+# LLM Wiki
 
+<<<<<<< .merge_file_8Prvf1
 Core module for the FixCity Platform.
 
 ## Superpoteri
@@ -46,3 +55,6 @@ Use qmd to serve or convert these documents (https://github.com/tobi/qmd).
 
 Questa cartella contiene pagine curate per l'uso con LLM (wiki). Mettere qui sintesi, convenzioni e pagine curate.
 >>>>>>> 1ad0554 (.)
+=======
+Questa cartella contiene pagine curate per l'uso con LLM (wiki). Mettere qui sintesi, convenzioni e pagine curate.
+>>>>>>> .merge_file_62n45U

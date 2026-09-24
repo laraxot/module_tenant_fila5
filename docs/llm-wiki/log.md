@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_cScl1D
 <<<<<<< HEAD
 ---
 title: "Tenant Activity Log"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_YWd0eF
 # Tenant Activity Log
 
 > **Module**: Tenant

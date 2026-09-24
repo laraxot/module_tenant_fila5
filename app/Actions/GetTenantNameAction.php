@@ -126,11 +126,14 @@ class GetTenantNameAction
     private function getServerName(string $default): string
     {
         $serverName = getenv('SERVER_NAME');
+<<<<<<< .merge_file_Mdmxut
 <<<<<<< HEAD
         if ((! is_string($serverName) || $serverName === '') && isset($_SERVER['SERVER_NAME']) && is_string($_SERVER['SERVER_NAME'])) {
             $serverName = $_SERVER['SERVER_NAME'];
         }
 
+=======
+>>>>>>> .merge_file_MFIj11
         if (is_string($serverName) && $serverName !== '' && $serverName !== '127.0.0.1') {
 =======
         if (is_string($serverName) && $serverName !== '' && $serverName !== '127.0.0.1') {
@@ -167,10 +170,14 @@ class GetTenantNameAction
      * Costruisce il percorso di configurazione.
      *
      * @param  Collection<int, string>  $parts  Le parti del percorso
+<<<<<<< .merge_file_Mdmxut
 <<<<<<< HEAD
 =======
      *
 >>>>>>> 1ad0554 (.)
+=======
+     *
+>>>>>>> .merge_file_MFIj11
      * @return string Il percorso completo
      */
     private function buildConfigPath(Collection $parts): string

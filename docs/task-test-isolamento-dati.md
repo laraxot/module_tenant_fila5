@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_qdSe9V
 <<<<<<< HEAD
 ---
 title: "Task: Test Isolamento Dati - Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_JuDCmc
 # Task: Test Isolamento Dati - Tenant
 
 **Modulo**: Tenant

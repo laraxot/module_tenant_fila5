@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_ncSwLC
 <<<<<<< HEAD
 ---
 title: "Correzioni Trait Sushi - PHPStan Level 10"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_l4VhOT
 # Correzioni Trait Sushi - PHPStan Level 10
 
 ## Obiettivo
@@ -153,6 +156,7 @@ $safeForm = $form;
 ### Aggiornamento [DATE]
 - Normalizzazione di `getSushiRows()` ulteriormente rafforzata con `array_map` tipizzato e `ksort()` sulle chiavi per garantire `array<int, array<string, mixed>>` coerente in tutti i modelli dipendenti (Geo, Tenant, Xot).
 
+<<<<<<< .merge_file_ncSwLC
 <<<<<<< HEAD
 ### `intValue` / `csvValue` restano mixed (2026-08-18)
 
@@ -193,19 +197,25 @@ non un difetto del modulo).
 
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_l4VhOT
 ## Collegamenti
 
 - [../../../../docs/phpstan-level10-achievement.md](../../../../docs/phpstan-level10-achievement.md)
 - [Sushi Package Documentation](https://github.com/calebporzio/sushi)
+<<<<<<< .merge_file_ncSwLC
 <<<<<<< HEAD
 - [league/csv 9.27 — deprecazione dei costruttori nominati](https://csv.thephpleague.com/9.0/connections/instantiation/)
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_l4VhOT
 
 ---
 
 **PHPStan Level**: 10
 **Status**: ✅ COMPLETATO
+<<<<<<< .merge_file_ncSwLC
 <<<<<<< HEAD
 
 ## Host reale vs Model nudo (famiglia A, 2026-08-24)
@@ -254,3 +264,5 @@ eseguito separatamente: errori in test non posseduti non vanno mascherati né
 duplicati nei trait.
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_l4VhOT

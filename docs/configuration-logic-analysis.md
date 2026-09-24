@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_f6PKv8
 <<<<<<< HEAD
 ---
 title: "Configuration System Architecture - Tenant Module"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_tWmZ0Q
 # Configuration System Architecture - Tenant Module
 
 ## Data: [DATE]

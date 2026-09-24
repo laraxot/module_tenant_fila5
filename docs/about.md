@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_vYz7na
 <<<<<<< HEAD
 ---
 title: "About"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_udrJkv
 

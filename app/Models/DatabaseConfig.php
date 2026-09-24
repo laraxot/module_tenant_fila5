@@ -4,12 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Models;
 
+<<<<<<< .merge_file_JKvXLz
 <<<<<<< HEAD
 /**
 =======
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
+=======
+use Modules\Xot\Contracts\ProfileContract;
+
+/**
+>>>>>>> .merge_file_D7rnKt
  * @property string|null $host
  * @property int|null $port
  * @property string|null $database
@@ -27,7 +33,10 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property-read ProfileContract|null $updater
  *
  * @method static \Modules\Tenant\Database\Factories\DatabaseConfigFactory factory($count = null, $state = [])
+<<<<<<< .merge_file_JKvXLz
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_D7rnKt
  * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConfig newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConfig newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConfig query()

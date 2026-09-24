@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_8zWWPg
 <<<<<<< HEAD
 ---
 title: "Bugfix: `inAdmin()` undefined during `package:discover`"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_XgeTpN
 # Bugfix: `inAdmin()` undefined during `package:discover`
 
 ## Symptom

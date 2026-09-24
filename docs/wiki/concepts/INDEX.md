@@ -3,17 +3,22 @@ title: "concepts index — Tenant"
 type: index
 tags: [concepts, Tenant]
 created: 2026-05-11
+<<<<<<< .merge_file_Lxhi4k
 <<<<<<< HEAD
 updated: 2026-07-27
 =======
 updated: 2026-07-01
 >>>>>>> 1ad0554 (.)
+=======
+updated: 2026-07-13
+>>>>>>> .merge_file_V39c62
 ---
 
 # concepts Index — Tenant
 
 Concetti specifici del modulo Tenant. Carica on-demand via `qmd search` o consulta il [trigger map root](/docs/wiki/rules/00-TRIGGER_MAP.md).
 
+<<<<<<< .merge_file_Lxhi4k
 <<<<<<< HEAD
 ## Runtime tenant (2026-07-27)
 
@@ -24,6 +29,8 @@ Concetti specifici del modulo Tenant. Carica on-demand via `qmd search` o consul
 
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_V39c62
 ## Struttura modulo
 
 - [lowercase-tests-directory.md](./lowercase-tests-directory.md) — solo `tests/`, mai `Tests/`

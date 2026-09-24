@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_NnWRkx
 <<<<<<< HEAD
 ---
 title: "Decisione: Arr::first() vs collect()->first()"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_c6blzJ
 # Decisione: Arr::first() vs collect()->first()
 
 **Metodologia**: Super Mucca - La Litigata Interna

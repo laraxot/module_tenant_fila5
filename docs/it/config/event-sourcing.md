@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_wVhf6E
 <<<<<<< HEAD
 ---
 title: "Event Sourcing"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_qjCNQ2
 <?php
 
 return [

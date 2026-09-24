@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_wQJ9LZ
 <<<<<<< HEAD
 ---
 title: "🏢 Tenant — English presentation"
@@ -20,17 +21,27 @@ related:
 [![Domain-Multi-Tenant](https://img.shields.io/badge/Domain-Multi--Tenant-283593.svg)](#)
 [![Laravel 12](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com/)
 >>>>>>> 1ad0554 (.)
+=======
+# 🏢 Tenant — English presentation
+
+[![Domain-Multi-Tenant](https://img.shields.io/badge/Domain-Multi--Tenant-283593.svg)](#)
+[![Laravel 12](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com/)
+>>>>>>> .merge_file_KHAcvW
 [![Filament 5](https://img.shields.io/badge/Filament-5-ffab00.svg)](https://filamentphp.com/)
 [![PHP 8.4+](https://img.shields.io/badge/PHP-8.4+-777BB4.svg)](https://php.net/)
 [![PHPStan Level 10](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg)](https://phpstan.org/)
 [![PSR-12](https://img.shields.io/badge/Code-PSR--12-blue.svg)](https://www.php-fig.org/psr/psr-12/)
 [![Strict Types](https://img.shields.io/badge/PHP-strict__types-1-informational.svg)](#)
 [![Laraxot Modules](https://img.shields.io/badge/Architecture-Modular-purple.svg)](#)
+<<<<<<< .merge_file_wQJ9LZ
 <<<<<<< HEAD
 [![Current Platform](https://img.shields.io/badge/Platform-progetto corrente-008758.svg)](#)
 =======
 [![FixCity Platform](https://img.shields.io/badge/Platform-FixCity-008758.svg)](#)
 >>>>>>> 1ad0554 (.)
+=======
+[![FixCity Platform](https://img.shields.io/badge/Platform-FixCity-008758.svg)](#)
+>>>>>>> .merge_file_KHAcvW
 
 > **One codebase, many municipalities.** Data isolation, teams, per-tenant config — PA-ready SaaS.
 
@@ -38,11 +49,15 @@ related:
 
 ## Why it exists
 
+<<<<<<< .merge_file_wQJ9LZ
 <<<<<<< HEAD
 progetto corrente scales across entities without forking code.
 =======
 FixCity scales across entities without forking code.
 >>>>>>> 1ad0554 (.)
+=======
+FixCity scales across entities without forking code.
+>>>>>>> .merge_file_KHAcvW
 
 ## Superpowers
 
@@ -79,8 +94,12 @@ Frontoffice stack: **Tailwind · Alpine · Lit · DaisyUI · Flowbite · Filamen
 
 ---
 
+<<<<<<< .merge_file_wQJ9LZ
 <<<<<<< HEAD
 **Module** `tenant` · **Laraxot** · **Current Platform** · PHPStan 10 · Filament 5
 =======
 **Module** `tenant` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
 >>>>>>> 1ad0554 (.)
+=======
+**Module** `tenant` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
+>>>>>>> .merge_file_KHAcvW

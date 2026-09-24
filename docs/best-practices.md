@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_iHfa6c
 <<<<<<< HEAD
 ---
 title: "Best Practices"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_ugmxeF
 

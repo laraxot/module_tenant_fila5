@@ -31,6 +31,7 @@ class TranslateTenantKeyAction
             return $key;
         }
 
+<<<<<<< .merge_file_DpYymi
 <<<<<<< HEAD
         $data = File::getRequire($path);
         Assert::isArray($data);
@@ -41,12 +42,21 @@ class TranslateTenantKeyAction
         $data = File::getRequire($path);
         Assert::isArray($data);
 
+=======
+        /** @var mixed $data */
+        $data = File::getRequire($path);
+        Assert::isArray($data);
+
+>>>>>>> .merge_file_L6u2Qq
         /** @var array<string, mixed> $arrayData */
         $arrayData = $data;
 
         /** @var mixed $res */
         $res = Arr::get($arrayData, $arrayKey);
+<<<<<<< .merge_file_DpYymi
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_L6u2Qq
 
         if (! \is_string($res)) {
             return $key;

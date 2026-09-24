@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_fdaPfB
 <<<<<<< HEAD
 ---
 title: "Current State - Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_sedmbr
 # Current State - Tenant
 
 ## Baseline

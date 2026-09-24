@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_4pPZAD
 <<<<<<< HEAD
 ---
 title: "AI Methodologies Handbook"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_ymoYRd
 # AI Methodologies Handbook
 
 This file is a DRY local index for AI workflows in this module or theme.

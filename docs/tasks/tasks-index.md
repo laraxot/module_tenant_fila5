@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_8aUgmq
 <<<<<<< HEAD
 ---
 title: "Indice task - Modulo Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_AMvF5q
 # Indice task - Modulo Tenant
 
 Lista dei task del modulo con link ai file .md separati. Ogni task è un file nella cartella `tasks/`. Dettagli dalla [roadmap](../roadmap.md).

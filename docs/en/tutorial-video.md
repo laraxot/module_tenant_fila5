@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_S5LDLp
 <<<<<<< HEAD
 ---
 title: "Tutorial Video"
@@ -13,4 +14,7 @@ related:
 =======
 https://www.youtube.com/watch?v=_eyz7rvwLTQ
 >>>>>>> 1ad0554 (.)
+=======
+https://www.youtube.com/watch?v=_eyz7rvwLTQ
+>>>>>>> .merge_file_yiuyyH
 https://www.youtube.com/watch?v=_eyz7rvwLTQ

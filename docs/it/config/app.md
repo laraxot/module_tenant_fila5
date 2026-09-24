@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_pkIwvV
 <<<<<<< HEAD
 ---
 title: "App"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_lJs0Ey
 ~~~php
 return [
     'timezone' => 'Europe/Rome',

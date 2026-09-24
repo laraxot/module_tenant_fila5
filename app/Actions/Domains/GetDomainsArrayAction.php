@@ -64,6 +64,7 @@ class GetDomainsArrayAction
      */
     public function recurse(string $path): array
     {
+<<<<<<< .merge_file_kvIDzA
 <<<<<<< HEAD
         $filesystem = new Filesystem;
         $directories = $filesystem->directories($path);
@@ -76,6 +77,13 @@ class GetDomainsArrayAction
         foreach ($directories as $dir) {
             // Type narrowing: directories() returns array but items are mixed
 >>>>>>> 1ad0554 (.)
+=======
+        $filesystem = new Filesystem();
+        $directories = $filesystem->directories($path);
+        $res = [];
+        foreach ($directories as $dir) {
+            // Type narrowing: directories() returns array but items are mixed
+>>>>>>> .merge_file_wGoGrt
             if (! is_string($dir)) {
                 continue;
             }
@@ -90,12 +98,17 @@ class GetDomainsArrayAction
     }
 
     /**
+<<<<<<< .merge_file_kvIDzA
 <<<<<<< HEAD
      * @param  array<string, mixed>  $data
 =======
      * @param array<string, mixed> $data
      *
 >>>>>>> 1ad0554 (.)
+=======
+     * @param array<string, mixed> $data
+     *
+>>>>>>> .merge_file_wGoGrt
      * @return array<int, string>
      */
     public function collapse(array $data, string $keyPrefix = ''): array

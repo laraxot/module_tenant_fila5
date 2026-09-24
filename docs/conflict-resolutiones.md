@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_znC70t
 <<<<<<< HEAD
 ---
 title: "Risoluzione Conflitti Git - Modulo Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_FCDW8W
 # Risoluzione Conflitti Git - Modulo Tenant
 
 ## Panoramica

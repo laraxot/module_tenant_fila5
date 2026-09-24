@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_lSm0Zx
 <<<<<<< HEAD
 ---
 module: theme
@@ -13,3 +14,10 @@ See canonical documentation: ../../../../Themes/docs/shared-components/.gitkeep-
 
 https://filamentphp.com/plugins/andrew-wallo-companies
 >>>>>>> 1ad0554 (.)
+=======
+# to_integrate
+
+<!-- Contenuto migrato da _docs/to_integrate.txt -->
+
+https://filamentphp.com/plugins/andrew-wallo-companies
+>>>>>>> .merge_file_d8T49G

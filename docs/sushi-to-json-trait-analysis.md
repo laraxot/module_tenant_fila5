@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_rZD2vO
 <<<<<<< HEAD
 ---
 title: "Sushi To Json Trait Analysis"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_8NATh5
 

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_DyPLnw
 <<<<<<< HEAD
 
 !.env.example
@@ -32,6 +33,15 @@
 # Ultimo aggiornamento: 2025-01-06
 # ==============================================
 
+=======
+# ==============================================
+# LARAXOT MODULE TENANT - .GITIGNORE
+# ==============================================
+# Modulo Tenant Laraxot - Template standardizzato
+# Ultimo aggiornamento: 2025-01-06
+# ==============================================
+
+>>>>>>> .merge_file_hchpVs
 # ==============================================
 # DEPENDENCIES & PACKAGES
 # ==============================================
@@ -59,6 +69,7 @@ cache/
 # ==============================================
 # CACHE & TEMPORARY FILES
 # ==============================================
+<<<<<<< .merge_file_DyPLnw
 *.cache
 *.lock
 *.phar
@@ -136,129 +147,129 @@ Thumbs.db
 *.bak
 *.bakcup
 <<<<<<< HEAD
+=======
+>>>>>>> .merge_file_hchpVs
 *.cache
-*.exe
-*.fila2
-*.jar
 *.lock
+*.phar
+*.jar
+*.tmp
+*.swp
+*.swo
+*.stackdump
+*.exe
+*:Zone.Identifier
+v8-compile-cache-*
+.php-cs-fixer.cache
+.phpunit.result.cache
+
+# ==============================================
+# LOG FILES
+# ==============================================
 *.log
-*.new
+error_log
+npm-debug.log*
+npm-debug.log
+yarn-error.log*
+lerna-debug.log*
+
+# ==============================================
+# LARAVEL SPECIFIC
+# ==============================================
+bootstrap/compiled.php
+app/storage/
+public/storage
+public/hot
+public_html/storage
+public_html/hot
+storage/*.key
+.env
+.env.*
+!.env.example
+
+# ==============================================
+# ENVIRONMENT & CONFIGURATION
+# ==============================================
+Homestead.yaml
+Homestead.json
+/.vagrant
+/.idea
+.phpintel
+
+# ==============================================
+# GIT SPECIFIC
+# ==============================================
+.git-rewrite/
+.git-rewrite
+.git-blame-ignore-revs
+
+# ==============================================
+# SYSTEM FILES
+# ==============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ==============================================
+# BACKUP FILES
+# ==============================================
 *.old
 *.old1
 *.old2
-*.orig
-*.phar
-*.rej
-*.stackdump
-*.swo
-*.swp
-*.tmp
-*:Zone.Identifier
-*~BASE
-*~HEAD
-*~LOCAL
-*~REMOTE
-*~head
-.DS_Store
-.DS_Store?
-.Spotlight-V100
-.Trashes
-._*
-.circleci
-.claude-audit
-.cursor/
-.devcontainer
-.devcontainer/
-.env
-.env.*
-.git-blame-ignore-revs
-.git-rewrite/
-.kilocode
-.kiro
-.php-cs-fixer.cache
-.phpintel
-.phpstorm.meta.php
-.phpunit.result.cache
-.ralph
-.vscode/
-.windsurf/
-/.idea
-/.vagrant
-/build/
-/docs/package-lock.json
-/docs/vendor/
-/node_modules/
-/vendor/
-Homestead.json
-Homestead.yaml
-Tests/
-Thumbs.db
-_bmad-output
-_docs
-app/storage/
-archive/
-audit-coverage/
-bashscripts
-bootstrap/compiled.php
-cache/
-composer.lock
-config/development.php
-config/local.php
-database/Factories_
-database/Factories_old/
-database/Migrations_old/
-database/Seeders_old/
-database_old/
-dist/
-docs/**/*-[0-9].md
-docs/**/archive/
-docs/**/archived/
-docs/**/bashscripts/
-docs/**/legacy/
-docs/**/scripts/
-docs/**/workbench/
-docs/archive/
-docs/archive/**
-docs/archived
-docs/bashscripts/
-docs/cache/
-docs/legacy
-docs/phpstan/
-docs/scripts/
-docs/workbench
-ehthumbs.db
-error_log
-lang/lang/
-laravel
-legacy/
-lerna-debug.log*
-npm-debug.log*
-package-lock.json
-phpinsights.php
-phpmd.ruleset.xml
-phpmd.ruleset.xml.bak
-phpstan*
-public/hot
-public/storage
-public_html
-public_html/hot
-public_html/storage
-rector.php
-resources/views/Components_old/
-scripts
-storage/*.key
-storage/multi-tenant/
-storage/tenant/
-tenant_test_data.json
-test-results
-test_tenants.sql
-tests/.claude-audit
-tests/AuditCoverage/
-v8-compile-cache-*
-workbench
-yarn-error.log*
-yarn.lock
+*.backup
+*.backup.*
+*.bak
+*.bakcup
+*.new
 
+# ==============================================
+# DEVELOPMENT TOOLS
+# ==============================================
+.windsurf/
+.cursor/
+.phpstorm.meta.php
+
+# ==============================================
+# DOCUMENTATION CACHE
+# ==============================================
+docs/phpstan/
+docs/cache/
+
+# ==============================================
+# OLD DIRECTORIES (LEGACY CLEANUP)
+# ==============================================
+resources/views/Components_old/
+resources/views/Components_old
+database/Migrations_old/
+database/Migrations_old
+database/Seeders_old/
+database/Seeders_old
+database/Factories_old/
+database/Factories_old
+database/Factories_
+database_old/
+database_old
+
+# ==============================================
+# MODULE SPECIFIC - TENANT
+# ==============================================
+# File di configurazione locale
+config/local.php
+config/development.php
+
+# Cache tenant
+storage/tenant/
+storage/multi-tenant/
+
+# File di test tenant
+tenant_test_data.json
+test_tenants.sql
+
+<<<<<<< .merge_file_DyPLnw
 # Root quality tool configs forbidden in module root
 phpmd*
 /.ai*
@@ -326,6 +337,8 @@ storage/multi-tenant/
 tenant_test_data.json
 test_tenants.sql
 
+=======
+>>>>>>> .merge_file_hchpVs
 # ==============================================
 # END OF TENANT .GITIGNORE
 # ==============================================
@@ -337,6 +350,7 @@ public_html
 lang/lang/
 _docs/
 _docs/
+<<<<<<< .merge_file_DyPLnw
 # Legacy PHPUnit (solo cartella maiuscola Tests/ — non confondere con Pest tests/)
 /Tests/
 
@@ -345,6 +359,9 @@ _docs/
 !tests/**
 !audit-coverage/
 !audit-coverage/**
+=======
+Tests/
+>>>>>>> .merge_file_hchpVs
 
 # -----------------------------------------------------------------------------
 # Copie residue da merge/rebase o editor (mai committare — es. `.agent~HEAD`, `*.md~head`)
@@ -360,5 +377,13 @@ _docs/
 
 # Second brain: no-docs-archive (wiki) — non tracciare albero legacy docs/archive/
 docs/archive/agentdb.rvf
+<<<<<<< .merge_file_DyPLnw
 audit-coverage/
 >>>>>>> 1ad0554 (.)
+=======
+tests/AuditCoverage/
+audit-coverage/
+.claude-audit/
+.vscode/
+.devcontainer/
+>>>>>>> .merge_file_hchpVs

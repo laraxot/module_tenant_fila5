@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_k0h0WR
 <<<<<<< HEAD
 ---
 title: "Tenant Module - Product Strategy"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_Xb4uEr
 # Tenant Module - Product Strategy
 
 **Module:** Tenant  

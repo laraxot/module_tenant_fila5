@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_lX6VkF
 <<<<<<< HEAD
 ---
 title: "Modelli mancanti e completamento schema"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_bFv8WY
 # Modelli mancanti e completamento schema
 
 ## Obiettivo

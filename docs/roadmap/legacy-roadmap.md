@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_UcvysO
 <<<<<<< HEAD
 ---
 title: "Roadmap Modulo Tenant - Completamento e Miglioramenti"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_h7KTFu
 # Roadmap Modulo Tenant - Completamento e Miglioramenti
 
 **Data Creazione**: 2026-01-02

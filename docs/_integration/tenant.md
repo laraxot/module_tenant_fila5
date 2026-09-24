@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_MsWsqi
 <<<<<<< HEAD
 ---
 title: "tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_g0ohI0
 # tenant
 
 <!-- Contenuto migrato da _docs/tenant.txt -->

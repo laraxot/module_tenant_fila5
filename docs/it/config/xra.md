@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_biHQX1
 <<<<<<< HEAD
 ---
 title: "Xra"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_uTwD86
 <?php
 
 declare(strict_types=1);

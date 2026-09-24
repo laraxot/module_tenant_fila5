@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_3aaf3E
 <<<<<<< HEAD
 ---
 title: "Tenant Module Roadmap 2026"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_Kt1j3e
 # Tenant Module Roadmap 2026
 
 ## 🏢 Sacred Philosophy: "One Application, Many Worlds"

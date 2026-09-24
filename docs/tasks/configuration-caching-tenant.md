@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_q7xvGf
 <<<<<<< HEAD
 ---
 title: "Task: Configuration Caching Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_Ot5USU
 # Task: Configuration Caching Tenant
 
 **Modulo**: Tenant  

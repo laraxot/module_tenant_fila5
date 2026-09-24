@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_grLBxP
 <<<<<<< HEAD
 ---
 title: "Tenant Module — Documentation Index"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_EgF2lC
 # Tenant Module — Documentation Index
 
 **Path**: `laravel/Modules/Tenant/docs/`  
@@ -22,6 +25,7 @@ related:
 
 ## 🎯 Quick Start
 
+<<<<<<< .merge_file_grLBxP
 <<<<<<< HEAD
 **Multi-tenancy 101**: [TenantIdentification.md](./wiki/tenantidentification.md) — How tenants are identified and isolated  
 **Architecture**: [Architecture.md](./wiki/architecture.md) — System design and data flow  
@@ -29,6 +33,10 @@ related:
 **Multi-tenancy 101**: [TenantIdentification.md](./wiki/TenantIdentification.md) — How tenants are identified and isolated  
 **Architecture**: [Architecture.md](./wiki/Architecture.md) — System design and data flow  
 >>>>>>> 1ad0554 (.)
+=======
+**Multi-tenancy 101**: [TenantIdentification.md](./wiki/TenantIdentification.md) — How tenants are identified and isolated  
+**Architecture**: [Architecture.md](./wiki/Architecture.md) — System design and data flow  
+>>>>>>> .merge_file_EgF2lC
 **Configuration**: See **Multi-Tenant Config** section below ⬇️
 
 ---
@@ -37,6 +45,7 @@ related:
 
 ### Wiki (Sacred — Do Not Delete)
 - **[wiki/index.md](./wiki/index.md)** — Operating manual for LLM agents
+<<<<<<< .merge_file_grLBxP
 <<<<<<< HEAD
 - **[wiki/Architecture.md](./wiki/architecture.md)** — Multi-tenant system design
 - **[wiki/TenantIdentification.md](./wiki/tenantidentification.md)** — How tenants are identified
@@ -54,6 +63,15 @@ related:
 ### Roadmap
 - **[roadmap/00-INDEX.md](./roadmap/00-INDEX.md)** — Q4 2025 roadmap and phases
 >>>>>>> 1ad0554 (.)
+=======
+- **[wiki/Architecture.md](./wiki/Architecture.md)** — Multi-tenant system design
+- **[wiki/TenantIdentification.md](./wiki/TenantIdentification.md)** — How tenants are identified
+- **[wiki/ConfigurationDistribution.md](./wiki/ConfigurationDistribution.md)** — Config per tenant
+- **[wiki/SCHEMA.md](./wiki/SCHEMA.md)** — Database schema reference
+
+### Roadmap
+- **[roadmap/00-INDEX.md](./roadmap/00-INDEX.md)** — Q4 2025 roadmap and phases
+>>>>>>> .merge_file_EgF2lC
 - **[roadmap/vision.md](./roadmap/vision.md)** — Long-term vision
 - **[roadmap/tenant-isolation.md](./roadmap/tenant-isolation.md)** — Data isolation strategy
 
@@ -74,11 +92,15 @@ This project uses **environment-specific tenant configuration**:
 laravel/config/
 ├── localhost/              # Local dev (all tenants, single DB)
 ├── com/geekpiu/            # GeeKPIU tenant (production)
+<<<<<<< .merge_file_grLBxP
 <<<<<<< HEAD
 ├── eu/progetto corrente/             # progetto corrente EU tenant
 =======
 ├── eu/fixcity/             # FixCity EU tenant
 >>>>>>> 1ad0554 (.)
+=======
+├── eu/fixcity/             # FixCity EU tenant
+>>>>>>> .merge_file_EgF2lC
 └── net/futurely/           # Futurely tenant
 ```
 
@@ -121,6 +143,7 @@ For deep understanding of multi-tenant configuration:
 | Rule | Source |
 |------|--------|
 | No Services — use Actions | [wiki/concepts/](./wiki/concepts/) |
+<<<<<<< .merge_file_grLBxP
 <<<<<<< HEAD
 | Tenant scoping automatic | [TenantIdentification.md](./wiki/tenantidentification.md) |
 | Config per tenant required | [ConfigurationDistribution.md](./wiki/configurationdistribution.md) |
@@ -128,6 +151,10 @@ For deep understanding of multi-tenant configuration:
 | Tenant scoping automatic | [TenantIdentification.md](./wiki/TenantIdentification.md) |
 | Config per tenant required | [ConfigurationDistribution.md](./wiki/ConfigurationDistribution.md) |
 >>>>>>> 1ad0554 (.)
+=======
+| Tenant scoping automatic | [TenantIdentification.md](./wiki/TenantIdentification.md) |
+| Config per tenant required | [ConfigurationDistribution.md](./wiki/ConfigurationDistribution.md) |
+>>>>>>> .merge_file_EgF2lC
 | No hardcoded credentials | Via `laravel/config/{tenant}/` |
 
 ---
@@ -141,17 +168,22 @@ For deep understanding of multi-tenant configuration:
 
 **Rule**: When documenting Tenant module features:
 1. Update [wiki/](./wiki/) first (canonical source)
+<<<<<<< .merge_file_grLBxP
 <<<<<<< HEAD
 2. Link from 00-index.md (this file)
 =======
 2. Link from 00-INDEX.md (this file)
 >>>>>>> 1ad0554 (.)
+=======
+2. Link from 00-INDEX.md (this file)
+>>>>>>> .merge_file_EgF2lC
 3. Archive old duplicates if found
 
 ---
 
 ## 🔗 Related Modules
 
+<<<<<<< .merge_file_grLBxP
 <<<<<<< HEAD
 - **[User Module](../../User/docs/00-index.md)** — Authentication per tenant
 - **[Xot Module](../../Xot/docs/00-index.md)** — Base classes for tenant awareness
@@ -159,12 +191,20 @@ For deep understanding of multi-tenant configuration:
 - **[User Module](../../User/docs/00-INDEX.md)** — Authentication per tenant
 - **[Xot Module](../../Xot/docs/00-INDEX.md)** — Base classes for tenant awareness
 >>>>>>> 1ad0554 (.)
+=======
+- **[User Module](../../User/docs/00-INDEX.md)** — Authentication per tenant
+- **[Xot Module](../../Xot/docs/00-INDEX.md)** — Base classes for tenant awareness
+>>>>>>> .merge_file_EgF2lC
 - **[Theme System](../../../Themes/)** — Theme per tenant support
 
 ---
 
+<<<<<<< .merge_file_grLBxP
 <<<<<<< HEAD
 **Next Step**: Read [wiki/TenantIdentification.md](./wiki/tenantidentification.md) to understand how the current request is associated with a tenant.
 =======
 **Next Step**: Read [wiki/TenantIdentification.md](./wiki/TenantIdentification.md) to understand how the current request is associated with a tenant.
 >>>>>>> 1ad0554 (.)
+=======
+**Next Step**: Read [wiki/TenantIdentification.md](./wiki/TenantIdentification.md) to understand how the current request is associated with a tenant.
+>>>>>>> .merge_file_EgF2lC

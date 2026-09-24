@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_ZwylAy
 <<<<<<< HEAD
 ---
 title: "Tenant Module - Sprint Planning"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_yqn74v
 # Tenant Module - Sprint Planning
 
 **Module:** Tenant  

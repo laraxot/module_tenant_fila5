@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_SXBKmx
 <<<<<<< HEAD
 ---
 title: "Permission"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_L79R67
 

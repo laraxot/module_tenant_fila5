@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_rzAecD
 <<<<<<< HEAD
 ---
 title: "Dependency Intelligence - Module Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_9voRdl
 # Dependency Intelligence - Module Tenant
 
 

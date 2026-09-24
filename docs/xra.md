@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_F0QLyk
 <<<<<<< HEAD
 ---
 title: "Xra"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_FPZ9B2
 

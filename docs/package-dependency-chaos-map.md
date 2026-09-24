@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_VGBFNW
 <<<<<<< HEAD
 ---
 title: "Package Dependency Chaos Map (Tenant)"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_guFzCZ
 # Package Dependency Chaos Map (Tenant)
 
 ## Catalogo completo

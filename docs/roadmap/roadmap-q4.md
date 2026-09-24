@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_HQABy0
 <<<<<<< HEAD
 ---
 title: "Tenant Module Roadmap (2025 Q4)"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_bTVoO4
 # Tenant Module Roadmap (2025 Q4)
 
 ## Vision & Scope

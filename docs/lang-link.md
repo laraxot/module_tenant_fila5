@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_NDLzCG
 <<<<<<< HEAD
 ---
 module: theme
@@ -10,3 +11,7 @@ See canonical documentation: ../../../Themes/docs/shared-components/.gitkeep-Mod
 
 
 >>>>>>> 1ad0554 (.)
+=======
+
+
+>>>>>>> .merge_file_mimKLD

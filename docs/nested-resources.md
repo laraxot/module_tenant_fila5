@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_CmkQ6b
 <<<<<<< HEAD
 ---
 title: "Tenant Module - Nested Resource Implementation Guide"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_u50ew5
 # Tenant Module - Nested Resource Implementation Guide
 
 ## Overview

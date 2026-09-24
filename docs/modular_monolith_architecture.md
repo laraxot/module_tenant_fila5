@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_ClhxiJ
 <<<<<<< HEAD
 ---
 title: "Modular Monolith Architecture for Tenant Module"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_7DjCzj
 # Modular Monolith Architecture for Tenant Module
 
 ## Overview

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_Y5HNvs
 <<<<<<< HEAD
 ---
 title: "Tenant"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_OaAFtx
 https://gist.github.com/nathandaly/44a83df5e3ea735eae91652c7a4894c9

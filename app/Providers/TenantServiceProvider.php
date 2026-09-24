@@ -11,13 +11,16 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Schema;
-use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
+use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
+<<<<<<< .merge_file_adVNS0
 <<<<<<< HEAD
 use Modules\Xot\Datas\XotData;
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_VoW20h
 use Modules\Xot\Providers\XotBaseServiceProvider;
 use Nwidart\Modules\Facades\Module;
 use Nwidart\Modules\Laravel\Module as LaravelModule;
@@ -58,11 +61,15 @@ class TenantServiceProvider extends XotBaseServiceProvider
             $map = [];
         }
 
+<<<<<<< .merge_file_adVNS0
 <<<<<<< HEAD
 =======
         /** @var array<string, mixed> $map */
 >>>>>>> 1ad0554 (.)
         Relation::morphMap($this->buildMorphMap(app(FilterConfigStringKeysAction::class)->execute($map)));
+=======
+        Relation::morphMap($this->buildMorphMap($map));
+>>>>>>> .merge_file_VoW20h
     }
 
     public function registerDB(): void
@@ -147,10 +154,14 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
     /**
      * @param  array<string, mixed>  $data
+<<<<<<< .merge_file_adVNS0
 <<<<<<< HEAD
 =======
      *
 >>>>>>> 1ad0554 (.)
+=======
+     *
+>>>>>>> .merge_file_VoW20h
      * @return array<string, mixed>
      */
     private function mergeModuleConnections(array $data, string $defaultConnection): array
@@ -189,6 +200,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
     }
 
     /**
+<<<<<<< .merge_file_adVNS0
      * @param  array<string, mixed>  $map
 <<<<<<< HEAD
      * @return array<string, class-string<Model>>
@@ -198,6 +210,11 @@ class TenantServiceProvider extends XotBaseServiceProvider
      *
      * @return array<string, class-string<Model>>
 >>>>>>> 1ad0554 (.)
+=======
+     * @param  array<mixed, mixed>  $map
+     *
+     * @return array<string, class-string<Model>>
+>>>>>>> .merge_file_VoW20h
      */
     private function buildMorphMap(array $map): array
     {
@@ -205,12 +222,16 @@ class TenantServiceProvider extends XotBaseServiceProvider
         $typedMap = [];
 
         foreach ($map as $alias => $class) {
+<<<<<<< .merge_file_adVNS0
 <<<<<<< HEAD
             // ponytail: @ suppresses autoload ErrorException for missing modules
             if (! is_string($alias) || ! is_string($class) || ! @class_exists($class)) {
 =======
             if (! is_string($alias) || ! is_string($class) || ! class_exists($class)) {
 >>>>>>> 1ad0554 (.)
+=======
+            if (! is_string($alias) || ! is_string($class) || ! class_exists($class)) {
+>>>>>>> .merge_file_VoW20h
                 continue;
             }
 
@@ -219,6 +240,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
             $typedMap[$alias] = $modelClass;
         }
 
+<<<<<<< .merge_file_adVNS0
 <<<<<<< HEAD
         // The 'user' morph alias must always resolve to the canonical user class
         // (XotData::getUserClass()), never to a stale per-domain config entry:
@@ -232,6 +254,8 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_VoW20h
         return $typedMap;
     }
 }

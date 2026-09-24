@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_ibpYDp
 <<<<<<< HEAD
 ---
 title: "Rules Index"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_6jn0HD
 # Rules Index
 
 This module follows the global Laraxot coding standards.

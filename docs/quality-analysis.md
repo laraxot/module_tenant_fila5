@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_TzI2xM
 <<<<<<< HEAD
 ---
 title: "Analisi Qualità - Modulo Tenant"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_GY22m2
 # Analisi Qualità - Modulo Tenant
 
 **Ultimo aggiornamento**: [DATE]

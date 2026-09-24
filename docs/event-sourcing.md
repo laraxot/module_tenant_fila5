@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_1BJih2
 <<<<<<< HEAD
 ---
 title: "Event Sourcing"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_uAxag1
 

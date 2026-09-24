@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_3XboTJ
 <<<<<<< HEAD
 ---
 title: "SushiToJson/SushiToJsons PHPStan Level 10 Fixes"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_jn3NA6
 # SushiToJson/SushiToJsons PHPStan Level 10 Fixes
 
 ## Problem Overview

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_cUPV7V
 <<<<<<< HEAD
 ---
 title: "Services"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_VW8Hn9
 <?php
 
 declare(strict_types=1);

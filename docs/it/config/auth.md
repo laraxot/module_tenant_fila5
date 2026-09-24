@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_AeuZn1
 <<<<<<< HEAD
 ---
 title: "Auth"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_VVZkjQ
 <?php
 
 declare(strict_types=1);

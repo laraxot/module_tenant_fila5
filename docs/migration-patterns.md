@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_UnKcs0
 <<<<<<< HEAD
 ---
 title: "Migration Patterns"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_G330PL
 

@@ -74,10 +74,13 @@ return [
             'tooltip' => '',
             'helper_text' => '',
             'description' => '',
+<<<<<<< .merge_file_squedc
 <<<<<<< HEAD
             'placeholder' => 'rating',
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_AVSH0M
         ],
         'toggleColumns' => [
             'label' => 'toggleColumns',
@@ -91,6 +94,7 @@ return [
             'helper_text' => '',
             'description' => '',
         ],
+<<<<<<< .merge_file_squedc
 <<<<<<< HEAD
         'title' => [
             'label' => 'title',
@@ -124,6 +128,8 @@ return [
         ],
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_AVSH0M
     ],
     'actions' => [
         'domain_created' => 'Dominio creato con successo',

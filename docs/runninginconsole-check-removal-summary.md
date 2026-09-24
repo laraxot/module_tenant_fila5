@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_WR7nPf
 <<<<<<< HEAD
 ---
 title: "Rimozione runningInConsole Check - Riepilogo"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_BJq2Ic
 # Rimozione runningInConsole Check - Riepilogo
 
 **Data**: 2025-01-22

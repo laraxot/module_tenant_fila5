@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_3qMf8R
 <<<<<<< HEAD
 ---
 title: "Alternatives"
@@ -12,4 +13,6 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_avYZNF
 https://github.com/InterNACHI/modular

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_fMKyWN
 <<<<<<< HEAD
 ---
 title: "User Research - Tenant Module"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_Ec4w7f
 # User Research - Tenant Module
 
 ## Insights

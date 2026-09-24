@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_4VjF5G
 <<<<<<< HEAD
 ---
 title: "Merge Conflict Files List"
@@ -12,6 +13,8 @@ related:
 ---
 =======
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_UNKVWh
 # Merge Conflict Files List
 
 This file contains a comprehensive list of files with merge conflict markers (`<<<< HEAD` or `<<<< .merge_file`) that need to be resolved.
@@ -25,6 +28,7 @@ This file contains a comprehensive list of files with merge conflict markers (`<
 - ./.planning/debug/resolved/sqlite-model-contract-fix.md
 - ./_bmad/bmm/4-implementation/bmad-create-story/stories/1-1-segnalazione-ui-ux-improvement.md
 - ./bashscripts/ai/.agents/projects/-var-www--bases-base-ptvx-fila4-mono/77bfad8e-8a4c-4b6d-a3f8-f82002ebfe74/session-memory/summary.md
+<<<<<<< .merge_file_4VjF5G
 <<<<<<< HEAD
 - ./bashscripts/ai/.agents/projects/-var-www--bases-base-fila4-mono/9882f009-bf64-44ad-992e-e6c36de2142c/session-memory/summary.md
 - ./bashscripts/ai/.agents/projects/-var-www--bases-base-fila4-mono/b370da1e-b6d8-4a5a-a4bf-9597f57425ee/session-memory/summary.md
@@ -32,6 +36,10 @@ This file contains a comprehensive list of files with merge conflict markers (`<
 - ./bashscripts/ai/.agents/projects/-var-www--bases-base-techplanner-fila4-mono/9882f009-bf64-44ad-992e-e6c36de2142c/session-memory/summary.md
 - ./bashscripts/ai/.agents/projects/-var-www--bases-base-techplanner-fila4-mono/b370da1e-b6d8-4a5a-a4bf-9597f57425ee/session-memory/summary.md
 >>>>>>> 1ad0554 (.)
+=======
+- ./bashscripts/ai/.agents/projects/-var-www--bases-base-techplanner-fila4-mono/9882f009-bf64-44ad-992e-e6c36de2142c/session-memory/summary.md
+- ./bashscripts/ai/.agents/projects/-var-www--bases-base-techplanner-fila4-mono/b370da1e-b6d8-4a5a-a4bf-9597f57425ee/session-memory/summary.md
+>>>>>>> .merge_file_UNKVWh
 - ./bashscripts/ai/.agents/skills/directory-structure/SKILL.md
 - ./bashscripts/ai/.agents/skills/module-roadmap/SKILL.md
 - ./bashscripts/ai/.agents/todos/0607894a-18a3-4b7e-a867-cf1d0ceecac0-agent-0607894a-18a3-4b7e-a867-cf1d0ceecac0.json
@@ -51,12 +59,17 @@ This file contains a comprehensive list of files with merge conflict markers (`<
 
 ### Geo Module (5 files)
 - ./laravel/Modules/Geo/resources/js/components/coordinate-picker-styles.js
+<<<<<<< .merge_file_4VjF5G
 <<<<<<< HEAD
 - ./laravel/Modules/Geo/docs/wiki/agents.md
+=======
+- ./laravel/Modules/Geo/docs/wiki/AGENTS.md
+>>>>>>> .merge_file_UNKVWh
 - ./laravel/Modules/Geo/docs/wiki/index.md
 - ./laravel/Modules/Geo/docs/wiki/log.md
-- ./laravel/Modules/Geo/docs/wiki/agents.md
+- ./laravel/Modules/Geo/docs/wiki/AGENTS.md
 
+<<<<<<< .merge_file_4VjF5G
 ### progetto corrente Module (4 files)
 - ./laravel/Modules/Project/docs/wiki/index.md
 - ./laravel/Modules/Project/docs/wiki/log.md
@@ -68,12 +81,17 @@ This file contains a comprehensive list of files with merge conflict markers (`<
 - ./laravel/Modules/Geo/docs/wiki/log.md
 - ./laravel/Modules/Geo/docs/wiki/AGENTS.md
 
+=======
+>>>>>>> .merge_file_UNKVWh
 ### Fixcity Module (4 files)
 - ./laravel/Modules/Fixcity/docs/wiki/index.md
 - ./laravel/Modules/Fixcity/docs/wiki/log.md
 - ./laravel/Modules/Fixcity/resources/views/filament/widgets/ticket-create-wizard.blade.php
 - ./laravel/Modules/Fixcity/docs/wiki/index.md
+<<<<<<< .merge_file_4VjF5G
 >>>>>>> 1ad0554 (.)
+=======
+>>>>>>> .merge_file_UNKVWh
 
 ### Notify Module (3 files)
 - ./laravel/Modules/Notify/docs/wiki/index.md
