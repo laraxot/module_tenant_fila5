@@ -485,7 +485,10 @@ describe('Tenant statement coverage — SushiToJson named model', function (): v
 
         File::put($jsonPath, 'null');
         expect(fn (): array => $model->getSushiRows())->toThrow(Exception::class);
-        Assert::assertSame([], $model->loadExistingData());
+        // Fresh instance: loadExistingData() must tolerate non-array JSON content that getSushiRows() rejects.
+        $nullContentModel = new SushiToJsonCoverageModel();
+        Assert::assertSame($jsonPath, $nullContentModel->getJsonFile());
+        Assert::assertSame([], $nullContentModel->loadExistingData());
 
         File::put($jsonPath, json_encode([
             ['id' => 1, 'name' => 'Alpha', 'meta' => ['x' => 1], 0 => 'skip'],
