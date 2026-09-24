@@ -1,5 +1,3 @@
-<<<<<<< .merge_file_bFfULm
-=======
 ---
 title: "Tenant"
 module: "Tenant"
@@ -11,7 +9,6 @@ qmd: "readme.it"
 related:
   - "./phpstan-corrections-january.md"
 ---
->>>>>>> .merge_file_WeIHBw
 # Tenant
 
 Il modulo **Tenant** abilita la multi-tenancy nel monolite modulare Laraxot: identifica il tenant (domain / path / contesto), isola configurazioni e dati, e fornisce le fondamenta per gestire più organizzazioni in un’unica installazione.

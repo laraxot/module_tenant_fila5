@@ -18,7 +18,7 @@ uses(TestCase::class, DatabaseTransactions::class);
 
 beforeEach(function (): void {
     /** @var TestCase $this */
-    $this->model = new TestSushiModel;
+    $this->model = new TestSushiModel();
     TestCase::$testDirectory = storage_path('tests/sushi-json');
     TestCase::$testJsonPath = TestCase::$testDirectory.'/test_sushi.json';
 

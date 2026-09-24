@@ -17,13 +17,7 @@ use Modules\Tenant\Actions\Models\ResolveTenantModelInstanceAction;
 use Modules\Tenant\Actions\Modules\GetTenantModulesAction;
 use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use ReflectionException;
-<<<<<<< .merge_file_AtmCSh
-=======
-<<<<<<< .merge_file_9ZEL5r
 use Spatie\QueueableAction\QueueableAction;
-=======
->>>>>>> .merge_file_UQ9Pys
->>>>>>> .merge_file_KuKYpZ
 
 /**
  * TenantService - Facade sottile per operazioni tenant-aware.
@@ -40,14 +34,8 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class TenantService
 {
-<<<<<<< .merge_file_AtmCSh
-=======
-<<<<<<< .merge_file_9ZEL5r
     use QueueableAction;
 
-=======
->>>>>>> .merge_file_UQ9Pys
->>>>>>> .merge_file_KuKYpZ
     /**
      * Ottiene il nome del tenant corrente basato sul server name.
      *
@@ -75,18 +63,8 @@ class TenantService
      * Merge tra configurazione globale e tenant-specific, con supporto per default.
      *
      * @param  string  $key  Chiave di configurazione (es. 'app.name')
-<<<<<<< .merge_file_AtmCSh
      * @param  string|int|array<mixed>|null  $default  Valore di default se la chiave non esiste
      * @return float|int|string|array<mixed>|null Valore risolto della configurazione
-=======
-<<<<<<< .merge_file_9ZEL5r
-     * @param  string|int|array<mixed>|null  $default
-     * @return float|int|string|array<mixed>|null
-=======
-     * @param  string|int|array<mixed>|null  $default  Valore di default se la chiave non esiste
-     * @return float|int|string|array<mixed>|null Valore risolto della configurazione
->>>>>>> .merge_file_UQ9Pys
->>>>>>> .merge_file_KuKYpZ
      */
     public static function config(string $key, string|int|array|null $default = null): float|int|string|array|null
     {
@@ -181,12 +159,6 @@ class TenantService
     {
         return app(GetTenantModulesAction::class)->execute();
     }
-<<<<<<< .merge_file_AtmCSh
-=======
-<<<<<<< .merge_file_9ZEL5r
 
     public function execute(): void {}
-=======
->>>>>>> .merge_file_UQ9Pys
->>>>>>> .merge_file_KuKYpZ
 }

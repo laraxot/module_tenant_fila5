@@ -6,6 +6,7 @@ namespace Modules\Tenant\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
+use Modules\Tenant\Database\Factories\DomainFactory;
 use Sushi\Sushi;
 
 /**
