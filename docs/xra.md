@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Xra"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "xra"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

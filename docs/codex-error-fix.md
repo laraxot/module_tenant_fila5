@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Codex Configuration Error Fixes"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "codex error fix"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Codex Configuration Error Fixes
 
 Questo documento descrive le correzioni applicate agli errori riscontrati durante l'avvio di `codex`.

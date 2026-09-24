@@ -2,6 +2,7 @@
 legacy/
 archive/
 agentdb.rvf
+<<<<<<< HEAD
 
 # Version-suffixed markdown (AI artifacts)
 *-[0-9]*.md
@@ -18,3 +19,5 @@ phpstan-fixes-2025-10-13.md
 *-[0-9][0-9].md
 *_[0-9].md
 *_[0-9][0-9].md
+=======
+>>>>>>> 1ad0554 (.)

@@ -14,8 +14,12 @@ it('gets domains array by scanning config directory', function (): void {
     // This test is a bit tricky because recurse() instantiates Filesystem internally
     // and uses config_path().
 
+<<<<<<< HEAD
     $action = new class extends GetDomainsArrayAction
     {
+=======
+    $action = new class() extends GetDomainsArrayAction {
+>>>>>>> 1ad0554 (.)
         public function recurse(string $path): array
         {
             return [

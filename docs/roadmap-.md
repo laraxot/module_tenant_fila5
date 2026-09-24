@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module Roadmap 2026"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "roadmap "
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Module Roadmap 2026
 
 ## 🏢 Sacred Philosophy: "One Application, Many Worlds"

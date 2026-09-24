@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Filament Resources"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "filament resources"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

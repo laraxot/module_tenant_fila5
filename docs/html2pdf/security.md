@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Configurazione della Sicurezza"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "security"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Configurazione della Sicurezza
 
 A partire dalla versione 5.3, `Html2Pdf` ha introdotto un `Security Service` per controllare l'accesso a risorse esterne (immagini, fogli di stile, etc.) e prevenire vulnerabilità.

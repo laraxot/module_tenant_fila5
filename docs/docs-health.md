@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Docs Health - Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "docs health"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Docs Health - Tenant
 
 ## Snapshot

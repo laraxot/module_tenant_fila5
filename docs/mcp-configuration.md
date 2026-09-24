@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "MCP Server Configuration - Tenant Module"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "mcp configuration"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # MCP Server Configuration - Tenant Module
 
 

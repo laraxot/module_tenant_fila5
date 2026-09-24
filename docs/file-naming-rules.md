@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Regole di Naming per File"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "file naming rules"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Regole di Naming per File
 
 ## 🎯 Regola Fondamentale: NO Duplicati Case-Insensitive

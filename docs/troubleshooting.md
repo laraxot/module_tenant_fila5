@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: Tenant Module Troubleshooting Guide
 module: Tenant
@@ -485,3 +486,6 @@ php artisan migrate --database=tenant_123
 ---
 
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](PATTERNS.md)
+=======
+
+>>>>>>> 1ad0554 (.)

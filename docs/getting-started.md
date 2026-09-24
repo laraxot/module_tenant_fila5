@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Getting Started"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "getting started"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

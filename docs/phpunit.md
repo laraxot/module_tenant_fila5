@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Phpunit"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "phpunit"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

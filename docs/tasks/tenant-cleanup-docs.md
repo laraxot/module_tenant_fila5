@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Tenant Docs Cleanup"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "tenant cleanup docs"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Tenant Docs Cleanup
 
 ## 📋 Obiettivo

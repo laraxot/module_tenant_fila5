@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "MCP Server Consigliati per il Modulo Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "mcp server recommended"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # MCP Server Consigliati per il Modulo Tenant
 
 ## Scopo del Modulo

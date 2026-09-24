@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "SushiToJson/SushiToJsons PHPStan Level 10 Fixes"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "sushi to json phpstan fixes"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # SushiToJson/SushiToJsons PHPStan Level 10 Fixes
 
 ## Problem Overview

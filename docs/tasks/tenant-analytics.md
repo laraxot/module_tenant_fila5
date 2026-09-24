@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Tenant Analytics"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "tenant analytics"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Tenant Analytics
 
 **Modulo**: Tenant  

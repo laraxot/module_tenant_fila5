@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Modular Monolith Guidelines for Laravel"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "modular monolith guidelines"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Modular Monolith Guidelines for Laravel
 
 ## Overview

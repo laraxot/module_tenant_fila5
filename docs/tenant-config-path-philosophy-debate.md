@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Config Path Philosophy - THE FURIOUS DEBATE"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "tenant config path philosophy debate"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Config Path Philosophy - THE FURIOUS DEBATE
 
 **Status**: 🔥 FURIOUS INTERNAL DEBATE

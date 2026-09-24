@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Tenant
 
 [![Module](https://img.shields.io/badge/Module-Tenant-8B0000.svg)]()
@@ -32,3 +33,6 @@ Core module for the FixCity Platform.
 ---
 
 **Modulo** `Tenant` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
+=======
+
+>>>>>>> 1ad0554 (.)

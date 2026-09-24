@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Sushi To Csv"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "sushi to csv"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

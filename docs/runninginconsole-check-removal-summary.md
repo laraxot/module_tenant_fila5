@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Rimozione runningInConsole Check - Riepilogo"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "runninginconsole check removal summary"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Rimozione runningInConsole Check - Riepilogo
 
 **Data**: 2025-01-22

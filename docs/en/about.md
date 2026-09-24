@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "About"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "about"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

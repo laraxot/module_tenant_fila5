@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module LLM Wiki"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "index"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Module LLM Wiki
 
 Indice operativo del wiki Tenant.
@@ -31,9 +34,13 @@ Indice operativo del wiki Tenant.
 - [laravel-multi-tenancy](../../../../docs/wiki/concepts/laravel-multi-tenancy.md): Multi-tenancy patterns.
 - [lowercase-tests-directory](./concepts/lowercase-tests-directory.md): solo `tests/`, mai `Tests/`.
 - [lowercase-database-factories-directory](./concepts/lowercase-database-factories-directory.md): solo `database/factories|seeders|migrations` minuscolo; mai `Factories_/`.
+<<<<<<< HEAD
 - [services-to-queueable-actions](./concepts/no-app-support-queueable-actions.md): mapping completo `TenantService` → `app(...)->execute()` e regola no injection tra Actions.
 - [tenant-module-status-registry](../tenant-module-status-registry.md) — registry `modules_statuses.json` per overlay tenant (`config/local/workorder/`)
 - [runtime-config-religion-hub](../../../../Themes/docs/shared-components/runtime-config-religion-hub.md) — hub cross-modulo (permission, config.php, statuses)
+=======
+- [database-folder-lowercase-rule](../../../../docs/wiki/concepts/database-folder-lowercase-rule.md): regola generica progetto.
+>>>>>>> 1ad0554 (.)
 
 ## Scopo Tenant Module
 
@@ -44,7 +51,10 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 | Pagina | Tipo | Argomento | Data |
 |--------|------|-----------|------|
 | [.gitkeep](./concepts/.gitkeep) | Concept | - | 2026-04-21 |
+<<<<<<< HEAD
 | [tenant-module-status-registry](../tenant-module-status-registry.md) | Concept | Registry moduli abilitati per tenant | 2026-07-27 |
+=======
+>>>>>>> 1ad0554 (.)
 | [tenant-config-restoration-incident](./concepts/tenant-config-restoration-incident.md) | Troubleshooting | Ripristino config tenant 2026-07-01 | 2026-07-01 |
 | [lowercase-database-factories-directory](./concepts/lowercase-database-factories-directory.md) | Concept | `database/factories/` canonico; `Factories_` vietata | 2026-07-01 |
 | [lowercase-tests-directory](./concepts/lowercase-tests-directory.md) | Concept | Cartella test canonica minuscola | 2026-06-30 |
@@ -52,15 +62,25 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 
 ## Best Practices
 
+<<<<<<< HEAD
 - Usare Actions per tenant logic (vedi [actions-over-services-governance](https://github.com/laraxot/platform/blob/main/.opencode/skills/actions-over-services-governance/SKILL.md))
+=======
+- Usare Actions per tenant logic (vedi [actions-over-services-governance](https://github.com/laraxot/base_fixcity_fila5/blob/main/.opencode/skills/actions-over-services-governance/SKILL.md))
+>>>>>>> 1ad0554 (.)
 - Implementare `casts()` method non `$casts` property (vedi [model-casts-phpstan](../../../../docs/wiki/concepts/model-casts-phpstan.md))
 - Usare tenant scoping (vedi [laravel-multi-tenancy](../../../../docs/wiki/concepts/laravel-multi-tenancy.md))
 
 ## Bad Practices
 
+<<<<<<< HEAD
 - NON creare Service classes - usare Actions (vedi [actions-over-services-governance](https://github.com/laraxot/platform/blob/main/.opencode/skills/actions-over-services-governance/SKILL.md))
 - NON usare `dehydrated(false)` nei trait - blocca salvataggio (vedi Geo CoordinatePicker fix)
 - NON confondere `modules_statuses.json` root con overlay tenant — per workorder vale `config/local/workorder/modules_statuses.json` (vedi [tenant-module-status-registry](../tenant-module-status-registry.md))
+=======
+- NON creare Service classes - usare Actions (vedi [actions-over-services-governance](https://github.com/laraxot/base_fixcity_fila5/blob/main/.opencode/skills/actions-over-services-governance/SKILL.md))
+- NON usare `dehydrated(false)` nei trait - blocca salvataggio (vedi Geo CoordinatePicker fix)
+- NON hardcodare tenant config - usare config (vedi [laravel-security-audit](../../../../docs/wiki/concepts/laravel-security-audit.md))
+>>>>>>> 1ad0554 (.)
 
 ## False Friends
 
@@ -73,7 +93,11 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 |--------|------|-----------|
 | [.gitkeep](./concepts/.gitkeep) | Concept | Template iniziale |
 
+<<<<<<< HEAD
 Aggiornato: 2026-07-27
+=======
+Aggiornato: 2026-07-01
+>>>>>>> 1ad0554 (.)
 
 ## Shared Second Brain Discipline
 

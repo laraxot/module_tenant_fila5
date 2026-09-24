@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Test skipped e copertura critica"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "test coverage"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Test skipped e copertura critica
 
 ## Obiettivo

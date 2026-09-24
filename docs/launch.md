@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Product Launch Plan - Tenant Module"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "launch"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Product Launch Plan - Tenant Module
 
 ## Checklist

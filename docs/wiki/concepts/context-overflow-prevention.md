@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Context Overflow Prevention"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "context overflow prevention"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 ## Context Overflow Prevention
 
 context-mode MCP v1.0.121 comprime il 98% del contesto automaticamente.

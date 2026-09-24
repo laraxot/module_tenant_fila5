@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Now (Module Tenant)"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "01 now"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Now (Module Tenant)
 
 ## Stabilization

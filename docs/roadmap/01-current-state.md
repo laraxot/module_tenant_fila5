@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Current State - Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "01 current state"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Current State - Tenant
 
 ## Baseline

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Chaos Monkey Tenant Isolation Checklist (Tenant)"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "chaos monkey tenant isolation checklist"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Chaos Monkey Tenant Isolation Checklist (Tenant)
 
 ## Obiettivo

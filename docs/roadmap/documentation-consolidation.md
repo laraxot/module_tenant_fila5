@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Consolidamento documentazione"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "documentation consolidation"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Consolidamento documentazione
 
 ## Obiettivo

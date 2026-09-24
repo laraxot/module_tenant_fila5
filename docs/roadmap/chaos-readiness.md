@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Chaos Readiness - 2026-03-02"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "chaos readiness"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Chaos Readiness - 2026-03-02
 
 ## Scope

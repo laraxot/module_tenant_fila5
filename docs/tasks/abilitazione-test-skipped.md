@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Abilitazione Test Skipped"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "abilitazione test skipped"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Abilitazione Test Skipped
 
 **Modulo**: Tenant  

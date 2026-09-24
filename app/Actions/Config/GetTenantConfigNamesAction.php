@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Xot\Actions\File\FixPathAction;
 use Spatie\QueueableAction\QueueableAction;
+<<<<<<< HEAD
 use Symfony\Component\Finder\SplFileInfo;
+=======
+>>>>>>> 1ad0554 (.)
 
 class GetTenantConfigNamesAction
 {
@@ -27,8 +30,13 @@ class GetTenantConfigNamesAction
         $files = File::files($dir);
 
         return collect($files)
+<<<<<<< HEAD
             ->filter(static fn (SplFileInfo $item): bool => $item->getExtension() === 'php')
             ->map(static fn (SplFileInfo $item, int $k): array => [
+=======
+            ->filter(static fn ($item): bool => $item->getExtension() === 'php')
+            ->map(static fn ($item, $k): array => [
+>>>>>>> 1ad0554 (.)
                 'id' => $k + 1,
                 'name' => $item->getFilenameWithoutExtension(),
             ])

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Correzioni Trait Sushi - PHPStan Level 10"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "sushi traits phpstan fixes"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Correzioni Trait Sushi - PHPStan Level 10
 
 ## Obiettivo
@@ -150,6 +153,7 @@ $safeForm = $form;
 ### Aggiornamento [DATE]
 - Normalizzazione di `getSushiRows()` ulteriormente rafforzata con `array_map` tipizzato e `ksort()` sulle chiavi per garantire `array<int, array<string, mixed>>` coerente in tutti i modelli dipendenti (Geo, Tenant, Xot).
 
+<<<<<<< HEAD
 ### `intValue` / `csvValue` restano mixed (2026-08-18)
 
 `SushiToJson::intValue(mixed)` riceve `$row['id']` da JSON (`array<string, mixed>`) e `Model::getAttribute('id')`. `SushiToCsv::csvValue(mixed)` serializza celle da payload CSV/JSON. Non è un shortcut: è il bordo opaco. Sostituire con `SafeIntCastAction` cambierebbe i default (bool/array).
@@ -187,16 +191,22 @@ Verifica: `./vendor/bin/phpstan analyse Modules/Tenant --no-progress --memory-li
 0 errori reali (restano solo `typeCoverage.*`, che è una percentuale globale del progetto,
 non un difetto del modulo).
 
+=======
+>>>>>>> 1ad0554 (.)
 ## Collegamenti
 
 - [../../../../docs/phpstan-level10-achievement.md](../../../../docs/phpstan-level10-achievement.md)
 - [Sushi Package Documentation](https://github.com/calebporzio/sushi)
+<<<<<<< HEAD
 - [league/csv 9.27 — deprecazione dei costruttori nominati](https://csv.thephpleague.com/9.0/connections/instantiation/)
+=======
+>>>>>>> 1ad0554 (.)
 
 ---
 
 **PHPStan Level**: 10
 **Status**: ✅ COMPLETATO
+<<<<<<< HEAD
 
 ## Host reale vs Model nudo (famiglia A, 2026-08-24)
 
@@ -242,3 +252,5 @@ apertura non cambiano.
 Entrambi i gate terminano con zero errori. Il gate Tenant module-wide va comunque
 eseguito separatamente: errori in test non posseduti non vanno mascherati né
 duplicati nei trait.
+=======
+>>>>>>> 1ad0554 (.)

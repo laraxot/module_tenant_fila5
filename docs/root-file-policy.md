@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Root file policy"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "root file policy"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Root file policy
 
 Updated: 2026-07-08

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Testing Documentation"
 module: "Tenant"
@@ -35,6 +36,10 @@ non `Model` nudo — `SushiToCsv` → `Sigma\Models\WebService`, `SushiToPhpArra
 restano in memoria (`forceFill` / file tmp + mock di `GetTenantFilePathAction`).
 `setAttribute()` nel trait resta il contratto Eloquent delle colonne dinamiche.
 
+=======
+# Testing Documentation
+
+>>>>>>> 1ad0554 (.)
 ## Overview
 
 This document provides testing guidelines and examples for the Tenant module in Laraxot.
@@ -291,7 +296,11 @@ protected function createApplication()
 
 ### External Resources
 
+<<<<<<< HEAD
 - [Laravel 13.x Testing Documentation](https://laravel.com/docs/12.x/testing)
+=======
+- [Laravel 12.x Testing Documentation](https://laravel.com/docs/12.x/testing)
+>>>>>>> 1ad0554 (.)
 - [Pest Installation Guide](https://pestphp.com/docs/installation)
 - [PHPStan Documentation](https://phpstan.org/user-guide/getting-started)
 
@@ -405,6 +414,7 @@ Following these guidelines will ensure your Tenant module tests are:
 
 Remember: Good tests are the foundation of reliable software development.
 
+<<<<<<< HEAD
 ## Coverage — gate 100%
 
 **Perché:** il tenant risolve path, config, morph map e persistenza Sushi per-tenant.
@@ -432,3 +442,8 @@ Riferimenti: [Xot coverage.md](../../Xot/docs/coverage.md).
 ---
 
 *Last updated: August 2026*
+=======
+---
+
+*
+>>>>>>> 1ad0554 (.)

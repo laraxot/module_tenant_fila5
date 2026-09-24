@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Dal nome tenant al tema pubblico (pub_theme)"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "tenant name to pub theme"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Dal nome tenant al tema pubblico (pub_theme)
 
 La **risoluzione del tema** dipende dal modulo Tenant: il nome tenant determina la cartella di config da cui si legge `xra.php` e quindi `pub_theme`.

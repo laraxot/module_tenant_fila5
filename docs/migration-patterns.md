@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Migration Patterns"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "migration patterns"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

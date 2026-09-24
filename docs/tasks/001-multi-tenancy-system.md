@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task 001: Implement Multi-Tenancy System"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "001 multi tenancy system"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task 001: Implement Multi-Tenancy System
 
 ## Description

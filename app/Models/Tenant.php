@@ -6,6 +6,7 @@ namespace Modules\Tenant\Models;
 
 // use Modules\Patient\Models\Patient; // Module not available
 // use Modules\Dental\Models\Appointment; // Module not available
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -14,10 +15,23 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
+=======
+use Closure;
+use Illuminate\Contracts\Database\Query\Expression;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
+use Modules\Tenant\Database\Factories\TenantFactory;
+use Modules\User\Models\User;
+use Modules\Xot\Contracts\ProfileContract;
+>>>>>>> 1ad0554 (.)
 
 /**
  * Modello Tenant per la gestione multi-tenant dell'applicazione.
  *
+<<<<<<< HEAD
  * @property string|null $name
  * @property string|null $domain
  * @property string|null $database
@@ -43,6 +57,51 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder<static>|Tenant newModelQuery()
  * @method static Builder<static>|Tenant newQuery()
  * @method static Builder<static>|Tenant query()
+=======
+ * @property string $name
+ * @property string $domain
+ * @property string $database
+ * @property string $slug
+ * @property array<string, mixed>|null $settings
+ * @property bool $is_active
+ * @property string|null $logo
+ * @property \Carbon\Carbon|null $last_activity_at
+ *
+ * @property-read string $url
+ * @property-read Collection<int, User> $users
+ * @property-read int|null $users_count
+ *
+ * @method static TenantFactory factory($count = null, $state = [])
+ * @method static Builder<static>|Tenant newModelQuery()
+ * @method static Builder<static>|Tenant newQuery()
+ * @method static Builder<static>|Tenant query()
+ * @method static Tenant|null first()
+ * @method static Collection<int, Tenant> get()
+ * @method static Tenant create(array<string, mixed> $attributes = [])
+ * @method static Tenant firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
+ * @method static Builder<static>|Tenant where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
+ * @method static Builder<static>|Tenant whereNotNull((string|Expression) $columns)
+ * @method static int count(string $columns = '*')
+ *
+ * @property string $id
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string|null $deleted_at
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
+ * @property ProfileContract|null $deleter
+ *
+ * @method static Builder<static>|Tenant whereCreatedAt($value)
+ * @method static Builder<static>|Tenant whereDatabase($value)
+ * @method static Builder<static>|Tenant whereDeletedAt($value)
+ * @method static Builder<static>|Tenant whereDomain($value)
+ * @method static Builder<static>|Tenant whereId($value)
+ * @method static Builder<static>|Tenant whereIsActive($value)
+ * @method static Builder<static>|Tenant whereName($value)
+ * @method static Builder<static>|Tenant whereSlug($value)
+ * @method static Builder<static>|Tenant whereUpdatedAt($value)
+ * @method static Builder<static>|Tenant whereSettings($value)
+>>>>>>> 1ad0554 (.)
  *
  * @mixin \Eloquent
  */
@@ -74,6 +133,7 @@ class Tenant extends BaseModel
     /**
      * Relazione con gli utenti associati al tenant.
      *
+<<<<<<< HEAD
      * @return HasMany<Model&UserContract, $this>
      */
     public function users(): HasMany
@@ -85,6 +145,13 @@ class Tenant extends BaseModel
         $relation = $this->hasMany($userClass);
 
         return $relation;
+=======
+     * @return HasMany<User, $this>
+     */
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
+>>>>>>> 1ad0554 (.)
     }
 
     // Commented out - Patient and Dental modules not available
@@ -127,6 +194,7 @@ class Tenant extends BaseModel
         }
     }
 
+<<<<<<< HEAD
     public function getNameAttribute(): ?string
     {
         $name = $this->attributes['name'] ?? null;
@@ -134,6 +202,8 @@ class Tenant extends BaseModel
         return is_string($name) ? $name : null;
     }
 
+=======
+>>>>>>> 1ad0554 (.)
     /**
      * Restituisce l'URL del tenant.
      */

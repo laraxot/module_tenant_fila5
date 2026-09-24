@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module - Product Launch Plan"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "product launch plan"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Module - Product Launch Plan
 
 **Module:** Tenant  

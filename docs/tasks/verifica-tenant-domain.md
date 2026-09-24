@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Verifica TenantDomain"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "verifica tenant domain"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Verifica TenantDomain
 
 **Modulo**: Tenant  

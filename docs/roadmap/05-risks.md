@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Risks - Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "05 risks"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Risks - Tenant
 
 ## Top Risks

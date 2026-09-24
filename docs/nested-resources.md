@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module - Nested Resource Implementation Guide"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "nested resources"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Module - Nested Resource Implementation Guide
 
 ## Overview

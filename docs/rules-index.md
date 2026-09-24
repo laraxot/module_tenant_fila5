@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Rules Index"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "rules index"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Rules Index
 
 This module follows the global Laraxot coding standards.

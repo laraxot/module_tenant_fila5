@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Bugfix: TestSushiSeeder PHPStan Mixed Type Errors"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "testsushiseeder phpstan mixed type"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Bugfix: TestSushiSeeder PHPStan Mixed Type Errors
 
 **Data Fix**: 11 Novembre 2025

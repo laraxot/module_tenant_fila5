@@ -20,6 +20,10 @@ class GetTenantConfigArrayAction
         $path = app(GetTenantFilePathAction::class)->execute($name.'.php');
 
         try {
+<<<<<<< HEAD
+=======
+            /** @var mixed $data */
+>>>>>>> 1ad0554 (.)
             $data = File::getRequire($path);
         } catch (Throwable $e) {
             $data = [];

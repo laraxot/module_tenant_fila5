@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module - Business Logic Deep Dive"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "business logic deep dive"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Module - Business Logic Deep Dive
 
 ## 🎯 Module Overview
@@ -287,7 +290,11 @@ config('app.name');  // ← NO! Non tenant-aware!
 
 ---
 
+<<<<<<< HEAD
 ## 🚀 Modern Laravel 13 + PHP 8.3 Patterns
+=======
+## 🚀 Modern Laravel 12 + PHP 8.3 Patterns
+>>>>>>> 1ad0554 (.)
 
 ### 1. Connection Property Typed
 

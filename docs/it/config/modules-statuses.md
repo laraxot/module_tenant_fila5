@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Modules Statuses — root vs tenant-scoped"
 module: "Tenant"
@@ -77,3 +78,23 @@ Quando si aggiunge o rimuove un modulo, aggiornare **entrambi** i file JSON (roo
 Rigenerazione: `bash bashscripts/tools/sync-tenant-modules-statuses.sh local/workorder`
 
 Riferimenti: [session-learnings-modules-config.md](../../session-learnings-modules-config.md) · [Themes/tenant-modules-navigation-discipline.md](../../../../Themes/docs/tenant-modules-navigation-discipline.md)
+=======
+{
+    "Notify": true,
+    "Ptv": true,
+    "Tenant": true,
+    "UI": true,
+    "User": true,
+    "Xot": true,
+    "Incentivi": true
+}
+{
+    "Notify": true,
+    "Ptv": true,
+    "Tenant": true,
+    "UI": true,
+    "User": true,
+    "Xot": true,
+    "Incentivi": true
+}
+>>>>>>> 1ad0554 (.)

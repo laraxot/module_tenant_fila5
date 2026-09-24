@@ -5,7 +5,11 @@ module: Tenant
 tags: [redundancy, factories, seeders, casing]
 created: 2026-05-21
 related:
+<<<<<<< HEAD
   - https://github.com/laraxot/platform/issues/89
+=======
+  - https://github.com/laraxot/base_fixcity_fila5/issues/89
+>>>>>>> 1ad0554 (.)
 ---
 
 # Tenant redundancy audit 2026-05-21

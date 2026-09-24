@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Configuration System Architecture - Tenant Module"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "configuration logic analysis"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Configuration System Architecture - Tenant Module
 
 ## Data: [DATE]

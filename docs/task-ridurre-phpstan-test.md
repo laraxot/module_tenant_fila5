@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Ridurre Suppressioni PHPStan nei Test - Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "task ridurre phpstan test"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Ridurre Suppressioni PHPStan nei Test - Tenant
 
 **Modulo**: Tenant

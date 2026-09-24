@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Goals - Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "02 goals"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Goals - Tenant
 
 ## Short Term

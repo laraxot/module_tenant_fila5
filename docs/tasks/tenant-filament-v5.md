@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Tenant Filament v5 Alignment (Clusters)"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "tenant filament v5"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Tenant Filament v5 Alignment (Clusters)
 
 ## 📋 Obiettivo

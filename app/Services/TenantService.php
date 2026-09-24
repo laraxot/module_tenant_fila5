@@ -17,6 +17,7 @@ use Modules\Tenant\Actions\Models\ResolveTenantModelInstanceAction;
 use Modules\Tenant\Actions\Modules\GetTenantModulesAction;
 use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use ReflectionException;
+<<<<<<< HEAD
 <<<<<<< .merge_file_AtmCSh
 =======
 <<<<<<< .merge_file_9ZEL5r
@@ -24,6 +25,8 @@ use Spatie\QueueableAction\QueueableAction;
 =======
 >>>>>>> .merge_file_UQ9Pys
 >>>>>>> .merge_file_KuKYpZ
+=======
+>>>>>>> 1ad0554 (.)
 
 /**
  * TenantService - Facade sottile per operazioni tenant-aware.
@@ -40,6 +43,7 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class TenantService
 {
+<<<<<<< HEAD
 <<<<<<< .merge_file_AtmCSh
 =======
 <<<<<<< .merge_file_9ZEL5r
@@ -48,6 +52,8 @@ class TenantService
 =======
 >>>>>>> .merge_file_UQ9Pys
 >>>>>>> .merge_file_KuKYpZ
+=======
+>>>>>>> 1ad0554 (.)
     /**
      * Ottiene il nome del tenant corrente basato sul server name.
      *
@@ -75,6 +81,7 @@ class TenantService
      * Merge tra configurazione globale e tenant-specific, con supporto per default.
      *
      * @param  string  $key  Chiave di configurazione (es. 'app.name')
+<<<<<<< HEAD
 <<<<<<< .merge_file_AtmCSh
      * @param  string|int|array<mixed>|null  $default  Valore di default se la chiave non esiste
      * @return float|int|string|array<mixed>|null Valore risolto della configurazione
@@ -87,6 +94,10 @@ class TenantService
      * @return float|int|string|array<mixed>|null Valore risolto della configurazione
 >>>>>>> .merge_file_UQ9Pys
 >>>>>>> .merge_file_KuKYpZ
+=======
+     * @param  string|int|array<mixed>|null  $default  Valore di default se la chiave non esiste
+     * @return float|int|string|array<mixed>|null Valore risolto della configurazione
+>>>>>>> 1ad0554 (.)
      */
     public static function config(string $key, string|int|array|null $default = null): float|int|string|array|null
     {
@@ -181,6 +192,7 @@ class TenantService
     {
         return app(GetTenantModulesAction::class)->execute();
     }
+<<<<<<< HEAD
 <<<<<<< .merge_file_AtmCSh
 =======
 <<<<<<< .merge_file_9ZEL5r
@@ -189,4 +201,6 @@ class TenantService
 =======
 >>>>>>> .merge_file_UQ9Pys
 >>>>>>> .merge_file_KuKYpZ
+=======
+>>>>>>> 1ad0554 (.)
 }

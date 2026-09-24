@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Consolidare Documentazione - Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "task consolidare documentazione"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Consolidare Documentazione - Tenant
 
 **Modulo**: Tenant

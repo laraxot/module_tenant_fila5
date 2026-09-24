@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Alternatives"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "alternatives"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 https://github.com/InterNACHI/modular

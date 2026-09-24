@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Sushi To Json Implementation Plan"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "sushi to json implementation plan"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "BMAD Method v6.3 operativo nel progetto"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "bmad method"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # BMAD Method v6.3 operativo nel progetto
 
 ## Regola pratica

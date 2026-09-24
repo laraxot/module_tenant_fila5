@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Metatag"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "metatag"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 <?php
 
 declare(strict_types=1);

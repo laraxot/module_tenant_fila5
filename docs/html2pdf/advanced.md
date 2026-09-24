@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Funzionalità Avanzate"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "advanced"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Funzionalità Avanzate
 
 Questa sezione copre funzionalità avanzate come la generazione di codici a barre, QR code, la creazione di segnalibri (bookmark), indici e altri metodi utili della libreria.

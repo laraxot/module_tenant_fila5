@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Risoluzione Conflitti Git - Modulo Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "conflict resolution fixes"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Risoluzione Conflitti Git - Modulo Tenant
 
 ## Panoramica

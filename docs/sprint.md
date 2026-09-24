@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Sprint Planning Meeting - Tenant Module"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "sprint"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Sprint Planning Meeting - Tenant Module
 
 ## DoD (Definition of Done)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Metodi duplicati — Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "duplicate methods"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Metodi duplicati — Tenant
 
 Analisi sintetica dei metodi PHP con lo stesso nome all’interno di questo ambito.

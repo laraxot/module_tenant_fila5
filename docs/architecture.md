@@ -3,6 +3,7 @@ title: Tenant Module Architecture
 module: Tenant
 type: architecture
 tags: [design, patterns, isolation, multi-tenancy]
+<<<<<<< HEAD
 <<<<<<< .merge_file_wUM0N0
 last_updated: 2026-08-04
 =======
@@ -12,10 +13,14 @@ last_updated: 2026-09-17
 last_updated: 2026-08-04
 >>>>>>> .merge_file_JHP3i9
 >>>>>>> .merge_file_gVTk7C
+=======
+last_updated: 2026-08-04
+>>>>>>> 1ad0554 (.)
 ---
 
 # Tenant Module Architecture
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_wUM0N0
 =======
 <<<<<<< .merge_file_qCm201
@@ -46,6 +51,8 @@ last_updated: 2026-08-04
 =======
 >>>>>>> .merge_file_JHP3i9
 >>>>>>> .merge_file_gVTk7C
+=======
+>>>>>>> 1ad0554 (.)
 ## Core Principles
 
 ### 1. Complete Data Isolation
@@ -381,6 +388,7 @@ $this->mock(DomainResolver::class)
 - [Configuration Reference](configuration.md)
 - [Module README](../README.md)
 - [Testing Guide](../tests/Feature/README.md)
+<<<<<<< HEAD
 <<<<<<< .merge_file_wUM0N0
 - [Contributing Guidelines](./.github/CONTRIBUTING.md)
 <<<<<<< HEAD
@@ -391,6 +399,10 @@ $this->mock(DomainResolver::class)
 - [Contributing Guidelines](./.github/CONTRIBUTING.md)
 >>>>>>> .merge_file_JHP3i9
 >>>>>>> .merge_file_gVTk7C
+=======
+- [Contributing Guidelines](./.github/CONTRIBUTING.md)
+<<<<<<< HEAD
+>>>>>>> 1ad0554 (.)
 
 ---
 
@@ -491,6 +503,7 @@ Per-tenant configuration files override system defaults, enabling customization 
 ### Services & Actions
 
 #### `TenantService`
+<<<<<<< HEAD
 <<<<<<< .merge_file_wUM0N0
 =======
 <<<<<<< .merge_file_qCm201
@@ -503,15 +516,20 @@ Per-tenant configuration files override system defaults, enabling customization 
   descritto più sopra in questo documento.
 =======
 >>>>>>> .merge_file_gVTk7C
+=======
+>>>>>>> 1ad0554 (.)
 - ⚠️ **Verificato 2026-07-24: la classe `TenantService` non esiste nel codice** (nessun `app/Services/`
   neanche come cartella; `grep -rn "class TenantService"` non trova nulla se non un riferimento in
   `docs/business-logic-deep-dive.md`, anch'esso probabilmente aspirazionale). Il coordinamento reale di
   registrazione/config avviene in `app/Providers/TenantServiceProvider.php` e nelle Action sotto
   (`app/Actions/Config/*`). Non chiamare `TenantService::` in nuovo codice finché la classe non esiste davvero.
+<<<<<<< HEAD
 <<<<<<< .merge_file_wUM0N0
 =======
 >>>>>>> .merge_file_JHP3i9
 >>>>>>> .merge_file_gVTk7C
+=======
+>>>>>>> 1ad0554 (.)
 
 #### `GetTenantNameAction`
 - **Invokable:** QueueableAction
@@ -659,6 +677,7 @@ Per-tenant configuration files override system defaults, enabling customization 
 ## Related Files
 
 - [API Reference](./API.md)
+<<<<<<< HEAD
 <<<<<<< .merge_file_wUM0N0
 =======
 <<<<<<< .merge_file_qCm201
@@ -667,13 +686,20 @@ Per-tenant configuration files override system defaults, enabling customization 
 - Module Tests: `tests/Feature/`, `tests/Unit/` (verificare i percorsi esatti nel modulo prima di citarli in dettaglio)
 =======
 >>>>>>> .merge_file_gVTk7C
+=======
+>>>>>>> 1ad0554 (.)
 - [Setup Guide](./SETUP.md)
 - [Troubleshooting](troubleshooting.md)
 - [Best Practices](./BEST_PRACTICES.md)
 - Module Tests: `tests/Feature/TenantBusinessLogicTest.php`, `tests/Unit/Actions/`
+<<<<<<< HEAD
 <<<<<<< .merge_file_wUM0N0
 =======
 >>>>>>> laraxot/dev
 =======
 >>>>>>> .merge_file_JHP3i9
 >>>>>>> .merge_file_gVTk7C
+=======
+=======
+>>>>>>> laraxot/dev
+>>>>>>> 1ad0554 (.)

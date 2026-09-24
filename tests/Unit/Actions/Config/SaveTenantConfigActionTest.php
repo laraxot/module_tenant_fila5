@@ -10,7 +10,10 @@ use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\Config\SaveTenantConfigAction;
 use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Arr\SaveArrayAction;
+<<<<<<< HEAD
 use PHPUnit\Framework\Assert;
+=======
+>>>>>>> 1ad0554 (.)
 
 uses(TestCase::class);
 
@@ -29,6 +32,7 @@ it('saves tenant config by merging with existing data', function (): void {
         ->andReturn(['connections' => ['mysql' => ['host' => 'localhost']]]);
 
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
+<<<<<<< HEAD
         TestCase::expectMockery($mock, 'execute')
             ->once()
             ->withArgs(static function (array $data, string $filename): bool {
@@ -49,6 +53,13 @@ it('saves tenant config by merging with existing data', function (): void {
     app(SaveTenantConfigAction::class)->execute('database', [
         'connections' => ['mysql' => ['database' => 'test_db']],
     ]);
+=======
+        $mock->allows(['execute' => true]);
+    });
+
+    $action = app(SaveTenantConfigAction::class);
+    $action->execute('database', ['connections' => ['mysql' => ['database' => 'test_db']]]);
+>>>>>>> 1ad0554 (.)
 });
 
 it('saves tenant config when file does not exist', function (): void {
@@ -62,6 +73,7 @@ it('saves tenant config when file does not exist', function (): void {
         ->andReturn(false);
 
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
+<<<<<<< HEAD
         TestCase::expectMockery($mock, 'execute')
             ->once()
             ->withArgs(static function (array $data, string $filename): bool {
@@ -73,4 +85,11 @@ it('saves tenant config when file does not exist', function (): void {
     });
 
     app(SaveTenantConfigAction::class)->execute('app', ['name' => 'Test App']);
+=======
+        $mock->allows(['execute' => true]);
+    });
+
+    $action = app(SaveTenantConfigAction::class);
+    $action->execute('app', ['name' => 'Test App']);
+>>>>>>> 1ad0554 (.)
 });

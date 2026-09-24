@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Passport"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "passport"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

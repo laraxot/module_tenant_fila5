@@ -38,6 +38,7 @@ it('rejects path traversal in tenant filename', function (): void {
         $mock->allows(['execute' => 'tenant-a']);
     });
 
+<<<<<<< HEAD
     try {
         app(GetTenantFilePathAction::class)->execute('../../etc/passwd');
     } catch (InvalidArgumentException $exception) {
@@ -54,6 +55,18 @@ it('rejects malicious server name with path traversal', function (): void {
     TestCase::setServerNameForTenantTest('../../evil.com');
 
     $result = app(GetTenantNameAction::class)->execute();
+=======
+    $this->expectException(InvalidArgumentException::class);
+
+    app(GetTenantFilePathAction::class)->execute('../../etc/passwd');
+});
+
+it('rejects malicious server name with path traversal', function (): void {
+    $_SERVER['SERVER_NAME'] = '../../evil.com';
+
+    $action = new GetTenantNameAction();
+    $result = $action->execute();
+>>>>>>> 1ad0554 (.)
 
     Assert::assertSame('localhost', $result);
 });

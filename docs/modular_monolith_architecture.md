@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Modular Monolith Architecture for Tenant Module"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "modular monolith architecture"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Modular Monolith Architecture for Tenant Module
 
 ## Overview

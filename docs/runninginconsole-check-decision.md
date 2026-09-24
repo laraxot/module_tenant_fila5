@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "runninginconsole check decision"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction
 
 **Data**: 2025-01-22

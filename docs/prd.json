@@ -9,7 +9,11 @@
     "Stabilizzare bootstrap tenant-aware"
   ],
   "nonGoals": [
+<<<<<<< HEAD
     "Gestire contenuti editoriali o forecast logic"
+=======
+    "Gestire contenuti editoriali o prediction logic"
+>>>>>>> 1ad0554 (.)
   ],
   "dependencies": [
     "User",

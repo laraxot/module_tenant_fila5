@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Filament Version Declaration — Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "filament version"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Filament Version Declaration — Tenant
 
 **Current Version**: Filament v5 (Livewire v4 + Schemas)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Conflict Resolution — Module Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "conflict resolution"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Conflict Resolution — Module Tenant
 
 ## Summary

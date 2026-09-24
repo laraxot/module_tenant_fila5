@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "readme en root"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant
 
 The **Tenant** module enables multi-tenancy in the Laraxot modular monolith: it resolves the current tenant (domain / path / context), isolates configuration and data, and provides the foundation to run multiple organizations on a single installation.

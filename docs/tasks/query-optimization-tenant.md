@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Query Optimization Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "query optimization tenant"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Query Optimization Tenant
 
 **Modulo**: Tenant  

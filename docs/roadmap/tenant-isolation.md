@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Isolamento tenant e configurazioni"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "tenant isolation"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Isolamento tenant e configurazioni
 
 ## Obiettivo

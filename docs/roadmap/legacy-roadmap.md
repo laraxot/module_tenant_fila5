@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Roadmap Modulo Tenant - Completamento e Miglioramenti"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "legacy roadmap"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Roadmap Modulo Tenant - Completamento e Miglioramenti
 
 **Data Creazione**: 2026-01-02

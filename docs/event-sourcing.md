@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Event Sourcing"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "event sourcing"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

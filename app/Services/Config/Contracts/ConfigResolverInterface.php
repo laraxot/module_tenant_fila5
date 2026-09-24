@@ -17,6 +17,7 @@ interface ConfigResolverInterface
     /**
      * Resolve the configuration value for the given key.
      *
+<<<<<<< HEAD
 <<<<<<< .merge_file_R3GyzX
      * @param  string|int|array<string, mixed>|null  $default
      * @return float|int|string|array<string, mixed>|null
@@ -30,6 +31,10 @@ interface ConfigResolverInterface
      * @return float|int|string|array<string, mixed>|null
 >>>>>>> .merge_file_9XRYX7
 >>>>>>> .merge_file_FVp4cD
+=======
+     * @param  string|int|array<string, mixed>|null  $default
+     * @return float|int|string|array<string, mixed>|null
+>>>>>>> 1ad0554 (.)
      */
     public function resolve(string $key, string|int|array|null $default = null): float|int|string|array|null;
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module - Product Strategy"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "product strategy"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Module - Product Strategy
 
 **Module:** Tenant  

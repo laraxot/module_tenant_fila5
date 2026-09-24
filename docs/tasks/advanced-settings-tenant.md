@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Advanced Settings Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "advanced settings tenant"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Advanced Settings Tenant
 
 **Modulo**: Tenant  

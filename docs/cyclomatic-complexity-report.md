@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Cyclomatic Complexity Report - Module: Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "cyclomatic complexity report"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Cyclomatic Complexity Report - Module: Tenant
 
 **Analyzer:** Super Mucca 🐮

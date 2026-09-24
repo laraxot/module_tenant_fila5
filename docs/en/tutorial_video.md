@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tutorial Video"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "tutorial video"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 https://www.youtube.com/watch?v=_eyz7rvwLTQ

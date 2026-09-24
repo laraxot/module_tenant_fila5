@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Aumentare Copertura Test Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "aumentare copertura test tenant"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Aumentare Copertura Test Tenant
 
 **Modulo**: Tenant  

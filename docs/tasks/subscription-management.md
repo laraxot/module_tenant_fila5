@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Subscription Management"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "subscription management"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Subscription Management
 
 **Modulo**: Tenant  

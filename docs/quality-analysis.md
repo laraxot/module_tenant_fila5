@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Analisi Qualità - Modulo Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "quality analysis"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Analisi Qualità - Modulo Tenant
 
 **Ultimo aggiornamento**: [DATE]

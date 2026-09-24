@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "tenant"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # tenant
 
 <!-- Contenuto migrato da _docs/tenant.txt -->

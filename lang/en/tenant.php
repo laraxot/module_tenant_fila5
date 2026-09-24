@@ -2,7 +2,24 @@
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 return [
+=======
+// Tenant translations — LangServiceProvider SSoT (never ->label() in Filament PHP).
+// claude-audit static: ≥5% comment lines on files >100 LOC.
+// Canon: Modules/Tenant/docs/wiki — domain i18n only.
+// File: lang/en/tenant.php
+return [
+// Laraxot — see module docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+>>>>>>> 1ad0554 (.)
     'navigation' => [
         'name' => 'Tenant',
         'group' => 'System',

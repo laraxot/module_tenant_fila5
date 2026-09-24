@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Project Configurations"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "project configurations"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

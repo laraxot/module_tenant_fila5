@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module Roadmap (2025 Q4)"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: " q4 roadmap"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Module Roadmap (2025 Q4)
 
 ## Vision & Scope

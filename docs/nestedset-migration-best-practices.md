@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "NestedSet Migration Best Practices - Tenant Module"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "nestedset migration best practices"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # NestedSet Migration Best Practices - Tenant Module
 
 ## Overview

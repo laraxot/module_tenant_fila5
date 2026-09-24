@@ -6,9 +6,15 @@ created: 2026-06-05
 updated: 2026-06-13
 qmd: "Tenant testing Pest TestCase sushi JSON PHPStan mockService"
 issues:
+<<<<<<< HEAD
   - "https://github.com/laraxot/platform/issues/52"
 discussions:
   - "https://github.com/laraxot/module_progetto corrente_fila5/discussions/53"
+=======
+  - "https://github.com/laraxot/base_fixcity_fila5/issues/52"
+discussions:
+  - "https://github.com/laraxot/module_fixcity_fila5/discussions/53"
+>>>>>>> 1ad0554 (.)
 related:
   - ../../../Xot/docs/wiki/concepts/phpstan-pest-bridge-discipline.md
   - ../../../Xot/docs/wiki/rules/module-testcase-xotbase-hierarchy.md

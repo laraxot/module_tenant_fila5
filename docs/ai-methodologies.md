@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "AI Methodologies Handbook"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "ai methodologies"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # AI Methodologies Handbook
 
 This file is a DRY local index for AI workflows in this module or theme.

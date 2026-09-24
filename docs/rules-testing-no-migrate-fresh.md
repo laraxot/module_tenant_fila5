@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "CRITICAL ARCHITECTURE RULE: NO MIGRATE:FRESH"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "rules testing no migrate fresh"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # CRITICAL ARCHITECTURE RULE: NO MIGRATE:FRESH
 
 ## Rule

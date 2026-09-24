@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Laravel Folio + Volt - Best Practices and Patterns Analysis"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "folio volt best practices"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Laravel Folio + Volt - Best Practices and Patterns Analysis
 
 ## Overview

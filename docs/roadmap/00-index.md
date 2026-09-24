@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Roadmap Index - Tenant"
 module: "Tenant"
@@ -43,6 +44,8 @@ qmd: "00 index"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Roadmap Index - Tenant
 
 ## Scope

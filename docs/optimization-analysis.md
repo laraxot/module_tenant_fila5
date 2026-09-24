@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Optimization Analysis"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "optimization analysis"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

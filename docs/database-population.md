@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Popolamento Database - Modulo Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "database population"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Popolamento Database - Modulo Tenant
 
 ## Aggiornamento [DATE] – Test Sushi Seeder
@@ -307,7 +310,11 @@ private function generateRealisticDomain(string $tenantName, string $sector): st
 
 ## Collegamenti
 
+<<<<<<< HEAD
 - [README Modulo Tenant](README.md)
+=======
+- [README Modulo Tenant](./readme.md)
+>>>>>>> 1ad0554 (.)
 - [Multi-Tenancy Architecture](./multi-tenancy.md)
 - [Database Schema](./database-schema.md)
 - [Testing Guidelines](./testing.md)

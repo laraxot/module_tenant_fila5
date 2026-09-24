@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Later (Module Tenant)"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "03 later"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Later (Module Tenant)
 
 ## Longer-term ideas

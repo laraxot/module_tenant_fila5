@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module - User Research"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "user research"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Module - User Research
 
 **Module:** Tenant  

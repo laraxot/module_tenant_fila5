@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "File Duplicati da Eliminare - Modulo Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "duplicate files to remove"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # File Duplicati da Eliminare - Modulo Tenant
 
 ## 🗑️ File da Eliminare (Case Sensitivity)

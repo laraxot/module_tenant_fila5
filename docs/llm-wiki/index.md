@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module Wiki Index"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "index"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Module Wiki Index
 
 > **Module**: Tenant

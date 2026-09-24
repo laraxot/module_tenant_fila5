@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ad0554 (.)
 use Mockery\Expectation;
 use Mockery\MockInterface;
 use PHPUnit\Framework\Assert;

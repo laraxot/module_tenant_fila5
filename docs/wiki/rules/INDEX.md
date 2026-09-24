@@ -34,7 +34,11 @@ Le Rules progettuali vivono qui, nel wiki del Module **Tenant**, e vengono caric
 
 - La sorgente di verita' per le Rules e' sempre il wiki locale
 - Non embeddare Rules nei prompt di avvio
+<<<<<<< HEAD
 - Per Rules globali, consulta il [wiki root](../../docs/wiki/rules/INDEX.md)
+=======
+- Per Rules globali, consulta il [wiki root](../../../../../../docs/wiki/rules/INDEX.md)
+>>>>>>> 1ad0554 (.)
 
 ## Aggiungere una Nuova RULES
 

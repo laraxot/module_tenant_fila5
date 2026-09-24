@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module - Sprint Planning"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "sprint planning"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Module - Sprint Planning
 
 **Module:** Tenant  

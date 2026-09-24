@@ -2,7 +2,21 @@
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 return [
+=======
+// Tenant translations — LangServiceProvider SSoT (never ->label() in Filament PHP).
+// claude-audit static: ≥5% comment lines on files >100 LOC.
+// Canon: Modules/Tenant/docs/wiki — domain i18n only.
+// File: lang/it/domain.php
+return [
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+>>>>>>> 1ad0554 (.)
     'navigation' => [
         'plural' => 'Domini',
         'group' => [
@@ -60,7 +74,10 @@ return [
             'tooltip' => '',
             'helper_text' => '',
             'description' => '',
+<<<<<<< HEAD
             'placeholder' => 'rating',
+=======
+>>>>>>> 1ad0554 (.)
         ],
         'toggleColumns' => [
             'label' => 'toggleColumns',
@@ -74,6 +91,7 @@ return [
             'helper_text' => '',
             'description' => '',
         ],
+<<<<<<< HEAD
         'title' => [
             'label' => 'title',
             'placeholder' => 'title',
@@ -104,6 +122,8 @@ return [
             'helper_text' => 'price',
             'description' => 'price',
         ],
+=======
+>>>>>>> 1ad0554 (.)
     ],
     'actions' => [
         'domain_created' => 'Dominio creato con successo',

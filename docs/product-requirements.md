@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Product Requirements Document (PRD)"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "product requirements"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Product Requirements Document (PRD)
 
 ## Metadata

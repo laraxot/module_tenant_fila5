@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module - PHPStan Error Resolution Roadmap"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "todo"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Module - PHPStan Error Resolution Roadmap
 
 This document outlines the steps to resolve the numerous PHPStan errors found in the Tenant module.

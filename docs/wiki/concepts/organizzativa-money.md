@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Organizzativa Money"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "organizzativa money"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 ## Organizzativa Money
 
 ### URL

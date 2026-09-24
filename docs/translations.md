@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Traduzioni del Modulo Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "translations"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Traduzioni del Modulo Tenant
 
 ## Collegamenti

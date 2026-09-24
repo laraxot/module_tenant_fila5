@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Data Models"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "data models"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

@@ -35,14 +35,23 @@ class TenantFactory extends Factory
             'domain' => $this->faker->domainName(),
             'database' => 'tenant_'.$this->faker->unique()->slug(),
             'is_active' => $this->faker->boolean(80),
+<<<<<<< HEAD
             // `settings` non è nella factory di default: lo schema sqlite condiviso
             // può non avere la colonna (drift migration). Usare withSettings().
+=======
+            'settings' => [
+                'timezone' => $this->faker->randomElement(['Europe/Rome', 'Europe/London', 'America/New_York']),
+                'locale' => $this->faker->randomElement(['it', 'en', 'de']),
+                'currency' => $this->faker->randomElement(['EUR', 'USD', 'GBP']),
+            ],
+>>>>>>> 1ad0554 (.)
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 month', 'now'),
         ];
     }
 
     /**
+<<<<<<< HEAD
      * @param  array<string, mixed>  $settings
      */
     public function withSettings(array $settings = []): static
@@ -57,6 +66,8 @@ class TenantFactory extends Factory
     }
 
     /**
+=======
+>>>>>>> 1ad0554 (.)
      * Indicate that the tenant is active.
      */
     public function active(): static

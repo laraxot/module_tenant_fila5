@@ -4,12 +4,29 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Models;
 
+<<<<<<< HEAD
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Models\Traits\SushiToJson;
 
 /**
+=======
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\File;
+use InvalidArgumentException;
+use Modules\Tenant\Database\Factories\TestSushiModelFactory;
+use Modules\Tenant\Models\Traits\SushiToJson;
+use Modules\Xot\Contracts\ProfileContract;
+use Modules\Xot\Models\Traits\HasXotFactory;
+
+/**
+ * Modello di test per il trait SushiToJson.
+ *
+ * Utilizzato esclusivamente per i test del trait.
+ *
+>>>>>>> 1ad0554 (.)
  * @property int $id
  * @property string|null $name
  * @property string|null $description
@@ -17,6 +34,7 @@ use Modules\Tenant\Models\Traits\SushiToJson;
  * @property array<array-key, mixed>|null $metadata
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+<<<<<<< HEAD
  * @property int|null $created_by
  * @property int|null $updated_by
  *
@@ -33,14 +51,42 @@ use Modules\Tenant\Models\Traits\SushiToJson;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereUpdatedBy($value)
+=======
+ *
+ * @method static TestSushiModelFactory factory($count = null, $state = [])
+ * @method static Builder<static>|TestSushiModel newModelQuery()
+ * @method static Builder<static>|TestSushiModel newQuery()
+ * @method static Builder<static>|TestSushiModel query()
+ * @method static Builder<static>|TestSushiModel whereCreatedAt($value)
+ * @method static Builder<static>|TestSushiModel whereDescription($value)
+ * @method static Builder<static>|TestSushiModel whereId($value)
+ * @method static Builder<static>|TestSushiModel whereMetadata($value)
+ * @method static Builder<static>|TestSushiModel whereName($value)
+ * @method static Builder<static>|TestSushiModel whereStatus($value)
+ * @method static Builder<static>|TestSushiModel whereUpdatedAt($value)
+ *
+ * @property-read ProfileContract|null $creator
+ * @property-read ProfileContract|null $deleter
+ * @property-read ProfileContract|null $updater
+>>>>>>> 1ad0554 (.)
  *
  * @mixin \Eloquent
  */
 class TestSushiModel extends BaseModel
 {
+<<<<<<< HEAD
     use SushiToJson;
 
     /**
+=======
+    /** @phpstan-use HasXotFactory<TestSushiModelFactory> */
+    use HasXotFactory;
+    use SushiToJson;
+
+    /**
+     * Schema esplicito per Sushi quando non ci sono righe.
+     *
+>>>>>>> 1ad0554 (.)
      * @var array<string, string>
      */
     protected array $schema = [
@@ -55,8 +101,24 @@ class TestSushiModel extends BaseModel
         'updated_by' => 'integer',
     ];
 
+<<<<<<< HEAD
     protected $table = 'test_sushi';
 
+=======
+    /**
+     * La tabella associata al modello.
+     */
+    protected $table = 'test_sushi';
+
+    /**
+     * Nota: non esporre i metodi protetti del trait.
+     * I metodi del trait vengono utilizzati internamente dagli eventi Eloquent.
+     */
+
+    /**
+     * Gli attributi che sono assegnabili in massa.
+     */
+>>>>>>> 1ad0554 (.)
     protected $fillable = [
         'name',
         'description',
@@ -66,6 +128,12 @@ class TestSushiModel extends BaseModel
         'updated_by',
     ];
 
+<<<<<<< HEAD
+=======
+    /**
+     * Override del path JSON in ambiente di test per NON toccare config/local/<nome progetto>/.
+     */
+>>>>>>> 1ad0554 (.)
     public function getJsonFile(): string
     {
         if (app()->environment('testing')) {
@@ -78,10 +146,26 @@ class TestSushiModel extends BaseModel
         }
 
         // fallback: usa il comportamento del trait (replicato qui)
+<<<<<<< HEAD
         return app(GetTenantFilePathAction::class)->execute('database/content/'.$this->getTable().'.json');
     }
 
     /**
+=======
+        $tbl = $this->getTable();
+        $filePath = app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
+        if (! is_string($filePath)) {
+            throw new InvalidArgumentException('File path must be string');
+        }
+
+        return $filePath;
+    }
+
+    /**
+     * Implementa il metodo getRows() richiesto da Sushi.
+     * Delega al metodo getSushiRows() del trait.
+     *
+>>>>>>> 1ad0554 (.)
      * @return array<int, array<string, mixed>>
      */
     public function getRows(): array
@@ -89,6 +173,14 @@ class TestSushiModel extends BaseModel
         return $this->getSushiRows();
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Gli attributi che devono essere convertiti.
+     *
+     * @return array<string, string>
+     */
+>>>>>>> 1ad0554 (.)
     protected function casts(): array
     {
         return [

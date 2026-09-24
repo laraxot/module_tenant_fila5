@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "License Renamed"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "license renamed"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 The MIT License (MIT)
 
 Copyright (c) :vendor_name <author@domain.com>

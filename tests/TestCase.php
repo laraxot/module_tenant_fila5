@@ -5,17 +5,25 @@ declare(strict_types=1);
 namespace Modules\Tenant\Tests;
 
 use Closure;
+<<<<<<< HEAD
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
+=======
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+>>>>>>> 1ad0554 (.)
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Mockery\Expectation;
 use Mockery\MockInterface;
+<<<<<<< HEAD
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Database\Factories\TenantFactory;
+=======
+>>>>>>> 1ad0554 (.)
 use Modules\Tenant\Models\BaseModel;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
@@ -24,6 +32,7 @@ use Modules\User\Providers\UserServiceProvider;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Modules\Xot\Tests\XotBaseTestCase;
 use PHPUnit\Framework\Assert;
+<<<<<<< HEAD
 use Webmozart\Assert\Assert as WebmozartAssert;
 
 use function Safe\json_decode;
@@ -34,12 +43,22 @@ use function Safe\putenv;
  * @property BaseModel|null $baseModel
  * @property string $testJsonPath
  * @property string $testDirectory
+=======
+use function Safe\json_decode;
+
+/**
+ * @property TestSushiModel|null $model
+ * @property BaseModel|null      $baseModel
+ * @property string              $testJsonPath
+ * @property string              $testDirectory
+>>>>>>> 1ad0554 (.)
  * @property Closure(): array<array-key, array<string, mixed>>|null $createTestData
  */
 abstract class TestCase extends XotBaseTestCase
 {
     use DatabaseTransactions;
 
+<<<<<<< HEAD
     /** @var list<string> */
     protected $connectionsToTransact = ['tenant'];
 
@@ -123,11 +142,30 @@ abstract class TestCase extends XotBaseTestCase
         /** @var array<int, array<string, mixed>> $decoded */
         return $decoded;
     }
+=======
+    /** @var TestSushiModel */
+    public mixed $model;
+
+    /** @var BaseModel */
+    public mixed $baseModel;
+
+    public ?Tenant $tenant = null;
+
+    public ?Tenant $secondTenant = null;
+
+    public string $testJsonPath = '';
+
+    public string $testDirectory = '';
+
+    /** @var Closure(): array<array-key, array<string, mixed>> */
+    public Closure $createTestData;
+>>>>>>> 1ad0554 (.)
 
     protected function setUp(): void
     {
         parent::setUp();
 
+<<<<<<< HEAD
         $database = database_path('fixcity_data.sqlite');
 
         /** @var array<string, array<string, mixed>> $connections */
@@ -163,11 +201,35 @@ abstract class TestCase extends XotBaseTestCase
     public static function tenantId(): string
     {
         $id = self::tenantModel()->id;
+=======
+        $this->model = new TestSushiModel();
+        $this->createTestData = static fn (): array => [];
+    }
+
+    public function tenantModel(): Tenant
+    {
+        Assert::assertInstanceOf(Tenant::class, $this->tenant);
+
+        return $this->tenant;
+    }
+
+    public function secondTenantModel(): Tenant
+    {
+        Assert::assertInstanceOf(Tenant::class, $this->secondTenant);
+
+        return $this->secondTenant;
+    }
+
+    public function tenantId(): string
+    {
+        $id = $this->tenantModel()->id;
+>>>>>>> 1ad0554 (.)
         Assert::assertIsString($id);
 
         return $id;
     }
 
+<<<<<<< HEAD
     public static function sushiModel(): TestSushiModel
     {
         Assert::assertInstanceOf(TestSushiModel::class, self::$sushiModel);
@@ -205,15 +267,59 @@ abstract class TestCase extends XotBaseTestCase
         if (! $expectation instanceof Expectation) {
             throw new \RuntimeException('Unexpected mockery expectation type.');
         }
+=======
+    public function sushiModel(): TestSushiModel
+    {
+        Assert::assertInstanceOf(TestSushiModel::class, $this->model);
+
+        return $this->model;
+    }
+
+    public function sushiJsonPath(): string
+    {
+        if ($this->testJsonPath !== '') {
+            return $this->testJsonPath;
+        }
+
+        return app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
+    }
+
+    public function sushiTestDirectory(): string
+    {
+        if ($this->testDirectory !== '') {
+            return $this->testDirectory;
+        }
+
+        return dirname($this->sushiJsonPath());
+    }
+
+    /** @return array<array-key, array<string, mixed>> */
+    public function sushiTestData(): array
+    {
+        return ($this->createTestData)();
+    }
+
+    public function tenantMockExpectation(MockInterface $mock, string $method): Expectation
+    {
+        $expectation = $mock->shouldReceive($method);
+        Assert::assertInstanceOf(Expectation::class, $expectation);
+>>>>>>> 1ad0554 (.)
 
         return $expectation;
     }
 
     /**
      * @param  array<array-key, mixed>  $rows
+<<<<<<< HEAD
      * @return array<string, mixed>
      */
     public static function sushiRowById(array $rows, int|string $key): array
+=======
+     *
+     * @return array<string, mixed>
+     */
+    public function sushiRowById(array $rows, int|string $key): array
+>>>>>>> 1ad0554 (.)
     {
         $id = is_int($key) ? $key : (is_numeric($key) ? SafeIntCastAction::cast($key) : 0);
 
@@ -240,7 +346,11 @@ abstract class TestCase extends XotBaseTestCase
         return [];
     }
 
+<<<<<<< HEAD
     public static function setCurrentTenant(Tenant $tenant): void
+=======
+    public function setCurrentTenant(Tenant $tenant): void
+>>>>>>> 1ad0554 (.)
     {
         $context = app('tenant');
 
@@ -250,7 +360,11 @@ abstract class TestCase extends XotBaseTestCase
     }
 
     /** @return array<array-key, array<string, mixed>> */
+<<<<<<< HEAD
     public static function readJsonFileAsArray(string $path): array
+=======
+    public function readJsonFileAsArray(string $path): array
+>>>>>>> 1ad0554 (.)
     {
         $decoded = json_decode(File::get($path), true);
         Assert::assertIsArray($decoded);
@@ -259,26 +373,47 @@ abstract class TestCase extends XotBaseTestCase
         return $decoded;
     }
 
+<<<<<<< HEAD
     public static function baseModelInstance(): BaseModel
     {
         Assert::assertInstanceOf(BaseModel::class, self::$sushiBaseModel);
 
         return self::$sushiBaseModel;
+=======
+    public function baseModelInstance(): BaseModel
+    {
+        Assert::assertInstanceOf(BaseModel::class, $this->baseModel);
+
+        return $this->baseModel;
+>>>>>>> 1ad0554 (.)
     }
 
     /**
      * @param  array<array-key, mixed>  $rows
+<<<<<<< HEAD
      * @return array<string, mixed>
      */
     public static function jsonRecordAt(array $rows, int|string $key): array
     {
         return self::sushiRowById($rows, $key);
+=======
+     *
+     * @return array<string, mixed>
+     */
+    public function jsonRecordAt(array $rows, int|string $key): array
+    {
+        return $this->sushiRowById($rows, $key);
+>>>>>>> 1ad0554 (.)
     }
 
     /**
      * @return array<string, mixed>
      */
+<<<<<<< HEAD
     public static function decodeJsonString(string $json): array
+=======
+    public function decodeJsonString(string $json): array
+>>>>>>> 1ad0554 (.)
     {
         $decoded = json_decode($json, true);
         Assert::assertIsArray($decoded);
@@ -287,6 +422,7 @@ abstract class TestCase extends XotBaseTestCase
         return $decoded;
     }
 
+<<<<<<< HEAD
     /**
      * @param  array<string, mixed>  $data
      */
@@ -332,6 +468,8 @@ abstract class TestCase extends XotBaseTestCase
         return $exitCode;
     }
 
+=======
+>>>>>>> 1ad0554 (.)
     /** @return array<int, class-string<ServiceProvider>> */
     protected function getPackageProviders(Application $app): array
     {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant {{TYPE^}} LLM Wiki Agent Instructions"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "agents"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant {{TYPE^}} LLM Wiki Agent Instructions
 
 > **Module/Theme:** Tenant

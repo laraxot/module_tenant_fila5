@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "App"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "app"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 ~~~php
 return [
     'timezone' => 'Europe/Rome',

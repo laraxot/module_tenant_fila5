@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Package Dependency Chaos Map (Tenant)"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "package dependency chaos map"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Package Dependency Chaos Map (Tenant)
 
 ## Catalogo completo

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Next (Module Tenant)"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "02 next"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Next (Module Tenant)
 
 ## Features

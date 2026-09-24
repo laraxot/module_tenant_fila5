@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Git Conflict Inventory"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "git merge conflict inventory"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Git Conflict Inventory
 
 - Date: 2026-04-28

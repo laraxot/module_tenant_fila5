@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "REDUNDANCY ANALYSIS"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "redundancy analysis"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 Redundancy analysis available: docs/analysis/redundancies/summary.md

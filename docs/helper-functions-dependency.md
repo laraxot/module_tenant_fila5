@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Dipendenze Helper Functions - Modulo Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "helper functions dependency"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Dipendenze Helper Functions - Modulo Tenant
 
 ## 📋 Overview

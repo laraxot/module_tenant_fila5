@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Rimozione runningInConsole Check - Riepilogo"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "runninginconsole check removal sumy"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Rimozione runningInConsole Check - Riepilogo
 
 **File**: `app/Actions/Config/ResolveTenantConfigValueAction.php`

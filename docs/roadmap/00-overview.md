@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Roadmap overview (Module Tenant)"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "00 overview"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Roadmap overview (Module Tenant)
 
 ## Scope

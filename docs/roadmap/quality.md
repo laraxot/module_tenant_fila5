@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Checklist qualità - Tenant Module"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "quality"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Checklist qualità - Tenant Module
 
 - [x] PHPStan Level 10

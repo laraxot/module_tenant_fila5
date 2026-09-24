@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Performance e ottimizzazioni"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "performance optimization"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Performance e ottimizzazioni
 
 ## Obiettivo

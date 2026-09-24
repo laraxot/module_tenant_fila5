@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Modelli mancanti e completamento schema"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "missing models"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Modelli mancanti e completamento schema
 
 ## Obiettivo

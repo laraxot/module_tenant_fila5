@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Indice task - Modulo Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "tasks index"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Indice task - Modulo Tenant
 
 Lista dei task del modulo con link ai file .md separati. Ogni task è un file nella cartella `tasks/`. Dettagli dalla [roadmap](../roadmap.md).

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module - SushiToJson Traits Fix Plan"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "sushi to json fix plan"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Module - SushiToJson Traits Fix Plan
 
 ## Problem Analysis
@@ -448,7 +451,11 @@ class InformationSchemaTable extends BaseModel
 1. Fix XotBaseEditRecord schema type issue (1 error)
 2. Fix Blog module errors (6 errors)
 3. Fix Cms module remaining errors (8 errors)
+<<<<<<< HEAD
 4. Fix progetto corrente module errors (45 errors)
+=======
+4. Fix Fixcity module errors (45 errors)
+>>>>>>> 1ad0554 (.)
 5. Fix Geo module errors (10 errors)
 6. Fix remaining module errors
 

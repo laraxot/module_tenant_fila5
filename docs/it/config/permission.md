@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Permission"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "permission"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 <?php
 
 declare(strict_types=1);

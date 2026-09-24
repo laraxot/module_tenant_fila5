@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
+<<<<<<< HEAD
 <<<<<<< .merge_file_eSv7Sp
 use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
 use Modules\Tenant\Services\TenantService;
@@ -26,6 +27,11 @@ use Modules\Tenant\Services\TenantService;
 use Modules\Xot\Actions\Model\GetAllModelsByModuleNameAction;
 >>>>>>> .merge_file_Jgp7N9
 >>>>>>> .merge_file_AcCQKc
+=======
+use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
+use Modules\Tenant\Services\TenantService;
+use Modules\Xot\Actions\Model\GetAllModelsByModuleNameAction;
+>>>>>>> 1ad0554 (.)
 
 /**
  * Resolves morph_map configuration for admin panel.
@@ -34,12 +40,15 @@ class MorphMapConfigResolver implements ConfigResolverInterface
 {
     public function canResolve(string $key): bool
     {
+<<<<<<< HEAD
 <<<<<<< .merge_file_eSv7Sp
 =======
 <<<<<<< .merge_file_DtWKCc
         return RouteService::inAdmin()
 =======
 >>>>>>> .merge_file_AcCQKc
+=======
+>>>>>>> 1ad0554 (.)
         // Ex RouteService::inAdmin() (Services archiviato): main panel `/admin/...`.
         // NB: semantica diversa dall'helper globale inAdmin() (module panel `/{module}/admin`).
         $segments = Request::segments();
@@ -47,27 +56,36 @@ class MorphMapConfigResolver implements ConfigResolverInterface
             || (\count($segments) > 0 && $segments[0] === 'livewire' && session('in_admin', false) === true);
 
         return $inMainAdmin
+<<<<<<< HEAD
 <<<<<<< .merge_file_eSv7Sp
 =======
 >>>>>>> .merge_file_Jgp7N9
 >>>>>>> .merge_file_AcCQKc
+=======
+>>>>>>> 1ad0554 (.)
             && Str::startsWith($key, 'morph_map')
             && Request::segment(2) !== null;
     }
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_eSv7Sp
 =======
 <<<<<<< .merge_file_DtWKCc
 =======
 >>>>>>> .merge_file_AcCQKc
+=======
+>>>>>>> 1ad0554 (.)
     /**
      * @param  string|int|array<string, mixed>|null  $default
      * @return float|int|string|array<mixed>|null
      */
+<<<<<<< HEAD
 <<<<<<< .merge_file_eSv7Sp
 =======
 >>>>>>> .merge_file_Jgp7N9
 >>>>>>> .merge_file_AcCQKc
+=======
+>>>>>>> 1ad0554 (.)
     public function resolve(string $key, string|int|array|null $default = null): float|int|string|array|null
     {
         $moduleName = Request::segment(2);
@@ -75,6 +93,7 @@ class MorphMapConfigResolver implements ConfigResolverInterface
             throw new Exception('Invalid module name from request segment');
         }
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_eSv7Sp
         // Use action directly instead of helper function to avoid autoload issues during package:discover
 =======
@@ -83,10 +102,14 @@ class MorphMapConfigResolver implements ConfigResolverInterface
         // Use action directly instead of helper function to avoid autoload issues during package:discover
 >>>>>>> .merge_file_Jgp7N9
 >>>>>>> .merge_file_AcCQKc
+=======
+        // Use action directly instead of helper function to avoid autoload issues during package:discover
+>>>>>>> 1ad0554 (.)
         /** @var GetAllModelsByModuleNameAction $action */
         $action = app(GetAllModelsByModuleNameAction::class);
         /** @var array<string, class-string> $models */
         $models = $action->execute($moduleName);
+<<<<<<< HEAD
 <<<<<<< .merge_file_eSv7Sp
 =======
 <<<<<<< .merge_file_DtWKCc
@@ -131,6 +154,8 @@ class MorphMapConfigResolver implements ConfigResolverInterface
         return null;
 =======
 >>>>>>> .merge_file_AcCQKc
+=======
+>>>>>>> 1ad0554 (.)
         $originalConf = $this->getOriginalConfig();
         $tenantConf = $this->getTenantConfig();
 
@@ -147,10 +172,13 @@ class MorphMapConfigResolver implements ConfigResolverInterface
         }
 
         return $result;
+<<<<<<< HEAD
 <<<<<<< .merge_file_eSv7Sp
 =======
 >>>>>>> .merge_file_Jgp7N9
 >>>>>>> .merge_file_AcCQKc
+=======
+>>>>>>> 1ad0554 (.)
     }
 
     /**
@@ -159,6 +187,7 @@ class MorphMapConfigResolver implements ConfigResolverInterface
     private function getOriginalConfig(): array
     {
         $config = config('morph_map');
+<<<<<<< HEAD
 <<<<<<< .merge_file_eSv7Sp
 =======
 <<<<<<< .merge_file_DtWKCc
@@ -171,6 +200,8 @@ class MorphMapConfigResolver implements ConfigResolverInterface
         return [];
 =======
 >>>>>>> .merge_file_AcCQKc
+=======
+>>>>>>> 1ad0554 (.)
         if (! is_array($config)) {
             return [];
         }
@@ -184,10 +215,13 @@ class MorphMapConfigResolver implements ConfigResolverInterface
         }
 
         return $result;
+<<<<<<< HEAD
 <<<<<<< .merge_file_eSv7Sp
 =======
 >>>>>>> .merge_file_Jgp7N9
 >>>>>>> .merge_file_AcCQKc
+=======
+>>>>>>> 1ad0554 (.)
     }
 
     /**
@@ -202,6 +236,7 @@ class MorphMapConfigResolver implements ConfigResolverInterface
         }
 
         $config = File::getRequire($path);
+<<<<<<< HEAD
 <<<<<<< .merge_file_eSv7Sp
 =======
 <<<<<<< .merge_file_DtWKCc
@@ -214,6 +249,8 @@ class MorphMapConfigResolver implements ConfigResolverInterface
         return [];
 =======
 >>>>>>> .merge_file_AcCQKc
+=======
+>>>>>>> 1ad0554 (.)
         if (! is_array($config)) {
             return [];
         }
@@ -227,9 +264,12 @@ class MorphMapConfigResolver implements ConfigResolverInterface
         }
 
         return $result;
+<<<<<<< HEAD
 <<<<<<< .merge_file_eSv7Sp
 =======
 >>>>>>> .merge_file_Jgp7N9
 >>>>>>> .merge_file_AcCQKc
+=======
+>>>>>>> 1ad0554 (.)
     }
 }

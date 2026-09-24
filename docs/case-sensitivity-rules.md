@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Case Sensitivity Rules - Tenant Module"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "case sensitivity rules"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Case Sensitivity Rules - Tenant Module
 
 ## Problema / Problem

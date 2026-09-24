@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Core Functionality"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "core functionality"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

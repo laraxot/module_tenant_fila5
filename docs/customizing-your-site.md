@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Customizing Your Site"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "customizing your site"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

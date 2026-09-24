@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Dependency Intelligence - Module Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "dependency intelligence"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Dependency Intelligence - Module Tenant
 
 

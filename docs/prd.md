@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Product Requirements Document (PRD) - Tenant Module"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "prd"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Product Requirements Document (PRD) - Tenant Module
 
 **Module**: Tenant
@@ -326,7 +329,11 @@ graph TD
 
 ### 7.4 Technical Constraints
 - PHP 8.3+ required
+<<<<<<< HEAD
 - Laravel 13+ required
+=======
+- Laravel 12+ required
+>>>>>>> 1ad0554 (.)
 - Tenancy package compatibility
 - Database support (MySQL, PostgreSQL)
 
@@ -436,9 +443,15 @@ CREATE TABLE tenant_quotas (
 - [Stancl Tenancy Package](https://github.com/stancl/tenancy)
 
 ### 11.3 Related PRDs
+<<<<<<< HEAD
 - [User Module PRD](../User/docs/PRD.md)
 - [Gdpr Module PRD](../Gdpr/docs/PRD.md)
 - [UI Module PRD](../UI/docs/PRD.md)
+=======
+- [User Module prd](../User/docs/prd.md)
+- [Gdpr Module prd](../Gdpr/docs/prd.md)
+- [UI Module prd](../UI/docs/prd.md)
+>>>>>>> 1ad0554 (.)
 
 ---
 

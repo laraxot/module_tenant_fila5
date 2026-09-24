@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Decisione: Arr::first() vs collect()->first()"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "arr first vs collect first decision"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Decisione: Arr::first() vs collect()->first()
 
 **Data**: 2025-01-22

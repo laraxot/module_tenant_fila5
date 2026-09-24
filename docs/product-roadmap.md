@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module - Product Roadmap"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "product roadmap"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Tenant Module - Product Roadmap
 
 **Module:** Tenant  

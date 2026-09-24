@@ -46,6 +46,7 @@ class ConfigResolverRegistry
         }
 
         // Fallback to standard resolver
+<<<<<<< HEAD
 <<<<<<< .merge_file_MKeudE
         return new StandardConfigResolver();
 =======
@@ -55,6 +56,9 @@ class ConfigResolverRegistry
         return new StandardConfigResolver;
 >>>>>>> .merge_file_rP0BUN
 >>>>>>> .merge_file_9Kbs2q
+=======
+        return new StandardConfigResolver();
+>>>>>>> 1ad0554 (.)
     }
 
     /**
@@ -63,6 +67,7 @@ class ConfigResolverRegistry
      */
     private function registerDefaultResolvers(): void
     {
+<<<<<<< HEAD
 <<<<<<< .merge_file_MKeudE
         $this->register(new MorphMapConfigResolver())
             ->register(new DatabaseConfigResolver())
@@ -78,5 +83,10 @@ class ConfigResolverRegistry
             ->register(new StandardConfigResolver);
 >>>>>>> .merge_file_rP0BUN
 >>>>>>> .merge_file_9Kbs2q
+=======
+        $this->register(new MorphMapConfigResolver())
+            ->register(new DatabaseConfigResolver())
+            ->register(new StandardConfigResolver());
+>>>>>>> 1ad0554 (.)
     }
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Visione - Tenant Module"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "vision"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Visione - Tenant Module
 
 Rendere la scalabilità dell'isolamento dei dati un processo immediato e trasparente, permettendo l'onboarding di nuovi tenant in pochi secondi tramite:

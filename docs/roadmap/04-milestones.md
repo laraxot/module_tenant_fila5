@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Milestones - Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "04 milestones"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Milestones - Tenant
 
 ## M1 Documentation Baseline

@@ -21,6 +21,10 @@ class ResolveTenantModelClassAction
     {
         $name = Str::snake(Str::singular($name));
 
+<<<<<<< HEAD
+=======
+        /** @var mixed $class */
+>>>>>>> 1ad0554 (.)
         $class = app(ResolveTenantConfigValueAction::class)->execute('morph_map.'.$name);
 
         if ($class === null) {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Api Integration"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "api integration"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

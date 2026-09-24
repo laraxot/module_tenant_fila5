@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Test Isolamento Dati - Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "task test isolamento dati"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Test Isolamento Dati - Tenant
 
 **Modulo**: Tenant

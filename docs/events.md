@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Events"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "events"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

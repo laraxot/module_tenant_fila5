@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Tenant Module Updates - December 2025"
 module: "Tenant"
@@ -13,6 +14,12 @@ related:
 
 ## PHPStan Fixes
 - **DocBlock Updates**: Fixed `class.notFound` errors in `Tenant`, `Domain`, and `TestSushiModel` by replacing incorrect `modulo operativo` and `<nome progetto>` profile references with `Modules\Xot\Contracts\ProfileContract`.
+=======
+# Tenant Module Updates - December 2025
+
+## PHPStan Fixes
+- **DocBlock Updates**: Fixed `class.notFound` errors in `Tenant`, `Domain`, and `TestSushiModel` by replacing incorrect `TechPlanner` and `<nome progetto>` profile references with `Modules\Xot\Contracts\ProfileContract`.
+>>>>>>> 1ad0554 (.)
 - **Helper Functions**: Added `getAllModulesModels` and `array_merge_recursive_distinct` to `Modules/Xot/helpers/Helper.php` to resolve undefined function errors.
 - **TenantService Refactor**: Adhering to the "Fat Model, Skinny Controller" (and Service) philosophy, all business logic has been extracted into dedicated Action classes:
     - `GetTenantFilePathAction`

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Report: Metodi con nome duplicato nei moduli e nei temi"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "duplicate methods report"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Report: Metodi con nome duplicato nei moduli e nei temi
 
 ## Introduzione

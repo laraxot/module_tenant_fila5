@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Creazione TenantSetting Model"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "creazione tenant setting model"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Creazione TenantSetting Model
 
 **Modulo**: Tenant  

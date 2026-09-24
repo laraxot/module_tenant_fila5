@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Best Practices"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "best practices"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

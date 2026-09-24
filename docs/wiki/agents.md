@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: "Tenant {{TYPE^}} LLM Wiki Agent Instructions"
 module: "Tenant"
 type: concept
@@ -9,6 +10,20 @@ qmd: "agents"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+title: "Agent instructions"
+type: reference
+tags: [agents, coding-agent, llm-wiki]
+created: 2026-07-01
+updated: 2026-07-01
+qmd: "istruzioni agenti LLM wiki modulo"
+issues: []
+discussions: []
+related:
+  - ./coding-agent-manifests.md
+---
+
+>>>>>>> 1ad0554 (.)
 # Tenant {{TYPE^}} LLM Wiki Agent Instructions
 
 > **Module/Theme:** Tenant

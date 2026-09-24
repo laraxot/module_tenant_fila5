@@ -92,6 +92,7 @@ In tutti e 4 i casi il corpo della funzione fa immediatamente narrowing a runtim
 e' esattamente il pattern raccomandato per confinare un `mixed` di provenienza framework, non
 un caso di "mixed non ancora sostituito". Nessun cambio applicato — follow-up chiuso come
 "confermato corretto", non come "da fare".
+<<<<<<< HEAD
 <<<<<<< .merge_file_bL2PJP
 =======
 <<<<<<< .merge_file_DmIQlg
@@ -105,3 +106,5 @@ ricevono righe Sushi `array<string, mixed>`, `Model::getAttribute()` o
 disonesto verso il framework.
 >>>>>>> .merge_file_ZqxKEF
 >>>>>>> .merge_file_m1rDBm
+=======
+>>>>>>> 1ad0554 (.)

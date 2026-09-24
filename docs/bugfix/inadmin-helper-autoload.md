@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Bugfix: `inAdmin()` undefined during `package:discover`"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "inadmin helper autoload"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Bugfix: `inAdmin()` undefined during `package:discover`
 
 ## Symptom

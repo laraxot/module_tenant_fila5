@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Changelog"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "changelog root"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Changelog
 
 All notable changes to `:package_name` will be documented in this file.

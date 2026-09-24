@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "DRY & KISS Analysis - Modulo Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "dry kiss analysis"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # DRY & KISS Analysis - Modulo Tenant
 
 **Data:** 15 Ottobre 2025  

@@ -1,6 +1,10 @@
 includes:
     - phpstan-baseline.neon
+<<<<<<< HEAD
     - ../../vendor/larastan/larastan/extension.neon
+=======
+    - ./vendor/larastan/larastan/extension.neon
+>>>>>>> 1ad0554 (.)
     - ./vendor/thecodingmachine/phpstan-safe-rule/phpstan-safe-rule.neon
     #- ./vendor/symplify/phpstan-rules/config/code-complexity-rules.neon
     #- ./vendor/symplify/phpstan-rules/config/collector-rules.neon

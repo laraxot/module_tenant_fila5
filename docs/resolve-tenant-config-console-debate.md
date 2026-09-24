@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "ResolveTenantConfigValueAction - Console Check Debate"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "resolve tenant config console debate"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # ResolveTenantConfigValueAction - Console Check Debate
 
 **Status**: 🔥 FURIOUS INTERNAL DEBATE

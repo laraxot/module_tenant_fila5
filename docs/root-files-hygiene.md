@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Root files hygiene"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "root files hygiene"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Root files hygiene
 
 ## 2026-07-08 16:51

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Rector Conflict Resolution"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "rector conflict resolution"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 

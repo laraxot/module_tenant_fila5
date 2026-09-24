@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Testing Rules Summary"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "testing rules"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Testing Rules Summary
 
 ## Regole Fondamentali dei Test

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Task: Configuration Caching Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "configuration caching tenant"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Task: Configuration Caching Tenant
 
 **Modulo**: Tenant  

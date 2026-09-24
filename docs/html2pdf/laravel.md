@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Integrazione con Laravel e Best Practices"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "laravel"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Integrazione con Laravel e Best Practices
 
 Questa guida si concentra su come integrare e utilizzare `Html2Pdf` in un'applicazione Laravel, seguendo le best practice specifiche del progetto Laraxot.

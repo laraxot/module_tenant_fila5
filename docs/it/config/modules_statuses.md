@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Modules Statuses"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "modules statuses"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 {
     "Notify": true,
     "Ptv": true,

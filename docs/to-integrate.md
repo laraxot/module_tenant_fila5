@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "To Integrate"
 module: "Tenant"
@@ -9,4 +10,6 @@ qmd: "to integrate"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 https://filamentphp.com/plugins/andrew-wallo-companies

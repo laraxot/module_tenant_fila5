@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Activitylog"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "activitylog"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 <?php
 
 return [

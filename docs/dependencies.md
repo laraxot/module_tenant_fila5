@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Dependencies"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "dependencies"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 
 
 Installed packages index:

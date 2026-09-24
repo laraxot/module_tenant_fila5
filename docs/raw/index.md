@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Raw Sources — Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "index"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Raw Sources — Tenant
 
 Questo layer contiene le fonti grezze: documenti immutabili che l'LLM legge ma non modifica.

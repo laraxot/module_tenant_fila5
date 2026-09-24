@@ -9,6 +9,7 @@ last_updated: 2026-07-28
 
 **Last updated: 2026-07-28**
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_QBtfdq
 =======
 <<<<<<< .merge_file_sxzxDn
@@ -19,6 +20,8 @@ last_updated: 2026-07-28
 =======
 >>>>>>> .merge_file_V20Kmp
 >>>>>>> .merge_file_jmLcE8
+=======
+>>>>>>> 1ad0554 (.)
 This guide addresses common issues, errors, and scenarios in the Tenant module.
 
 ---
@@ -494,12 +497,18 @@ php artisan migrate --database=tenant_123
 
 ---
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_QBtfdq
+=======
+>>>>>>> 1ad0554 (.)
 <<<<<<< HEAD
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](PATTERNS.md)
 =======
 Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Patterns](PATTERNS.md)
 >>>>>>> laraxot/dev
+<<<<<<< HEAD
 =======
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](PATTERNS.md)
 >>>>>>> .merge_file_jmLcE8
+=======
+>>>>>>> 1ad0554 (.)

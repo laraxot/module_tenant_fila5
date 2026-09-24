@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Workstreams - Tenant"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "03 workstreams"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Workstreams - Tenant
 
 ## WS1 Architecture

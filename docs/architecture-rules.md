@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Architectural Rules & Guidelines"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "architecture rules"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Architectural Rules & Guidelines
 
 This module adheres to the **Laraxot Architecture** and **Super Cow Methodology**.

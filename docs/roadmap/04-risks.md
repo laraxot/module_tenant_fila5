@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Risks and dependencies (Module Tenant)"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "04 risks"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Risks and dependencies (Module Tenant)
 
 ## Risks

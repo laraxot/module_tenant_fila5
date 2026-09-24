@@ -1,10 +1,14 @@
 <?php
 
+<<<<<<< HEAD
 declare(strict_types=1);
+=======
+>>>>>>> 1ad0554 (.)
 /**
  * @see https://dev.to/hasanmn/automatically-update-createdby-and-updatedby-in-laravel-using-bootable-traits-28g9.
  */
 
+<<<<<<< HEAD
 namespace Modules\Tenant\Models\Traits;
 
 use Exception;
@@ -17,6 +21,19 @@ use Webmozart\Assert\Assert;
 
 use function Safe\json_encode;
 use function Safe\unlink;
+=======
+declare(strict_types=1);
+
+namespace Modules\Tenant\Models\Traits;
+
+use Exception;
+use Illuminate\Support\Facades\File;
+use ReflectionObject;
+use function Safe\json_encode;
+use function Safe\unlink;
+use Sushi\Sushi;
+use Webmozart\Assert\Assert;
+>>>>>>> 1ad0554 (.)
 
 trait SushiToJsons
 {
@@ -39,7 +56,16 @@ trait SushiToJsons
      */
     public function getSushiRows(): array
     {
+<<<<<<< HEAD
         return $this->collectRowsFromJsonFiles($this->getTable());
+=======
+        $tbl = $this->getTable();
+        if (! is_string($tbl)) {
+            return [];
+        }
+
+        return $this->collectRowsFromJsonFiles($tbl);
+>>>>>>> 1ad0554 (.)
     }
 
     public function getJsonFile(): string
@@ -50,22 +76,38 @@ trait SushiToJsons
         $stringId = is_string($id) || is_numeric($id) ? (string) $id : 'unknown';
         $stringTbl = is_string($tbl) ? $tbl : 'unknown';
 
+<<<<<<< HEAD
         return app(GetTenantFilePathAction::class)->execute('database/content/'.$stringTbl.'/'.$stringId.'.json');
+=======
+        return app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/'.$stringTbl.'/'.$stringId.'.json');
+>>>>>>> 1ad0554 (.)
     }
 
     protected static function bootSushiToJsons(): void
     {
+<<<<<<< HEAD
         static::creating(static function (Model $model): void {
+=======
+        static::creating(static function ($model): void {
+>>>>>>> 1ad0554 (.)
             Assert::isInstanceOf($model, static::class);
             self::handleJsonCreating($model);
         });
 
+<<<<<<< HEAD
         static::updating(static function (Model $model): void {
+=======
+        static::updating(static function ($model): void {
+>>>>>>> 1ad0554 (.)
             Assert::isInstanceOf($model, static::class);
             self::handleJsonUpdating($model);
         });
 
+<<<<<<< HEAD
         static::deleting(static function (Model $model): void {
+=======
+        static::deleting(static function ($model): void {
+>>>>>>> 1ad0554 (.)
             Assert::isInstanceOf($model, static::class);
             self::handleJsonDeleting($model);
         });
@@ -100,7 +142,14 @@ trait SushiToJsons
      */
     private function collectRowsFromJsonFiles(string $tbl): array
     {
+<<<<<<< HEAD
         $files = File::glob(app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl).'/*.json') ?: [];
+=======
+        $files = File::glob(app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/'.$tbl).'/*.json');
+        if ($files === false) {
+            return [];
+        }
+>>>>>>> 1ad0554 (.)
 
         /** @var array<int, array<string, mixed>> $rows */
         $rows = [];
@@ -109,6 +158,10 @@ trait SushiToJsons
             if (! is_string($file)) {
                 continue;
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ad0554 (.)
             $row = $this->mapJsonFileToRow($file);
             if ($row !== null) {
                 $rows[] = $row;
@@ -140,6 +193,10 @@ trait SushiToJsons
     /**
      * @param  array<string, mixed>  $schema
      * @param  array<string, mixed>  $json
+<<<<<<< HEAD
+=======
+     *
+>>>>>>> 1ad0554 (.)
      * @return array<string, mixed>
      */
     private function buildRowFromSchema(array $schema, array $json): array

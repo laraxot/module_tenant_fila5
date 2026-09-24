@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Fix: SushiToJsonIntegrationTest - Database Connection Configuration"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "testing sushitojson integration fix"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Fix: SushiToJsonIntegrationTest - Database Connection Configuration
 
 **Problema**: Test fallisce con "Database connection [tenant] not configured"

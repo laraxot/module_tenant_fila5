@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Database config standard (Laravel 13.x)"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "database config standard"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Database config standard (Laravel 13.x)
 
 **Status**: attivo  
@@ -107,11 +110,19 @@ return [
 - Unica modifica ammessa: `use Pdo\Mysql` rimosso, uso di `\Pdo\Mysql::ATTR_SSL_CA` nel ternary (PHP 8.5+) per evitare fatal error su PHP 8.3 dove la classe non esiste
 
 ### Rimozioni
+<<<<<<< HEAD
 - ❌ Tutte le connessioni modulari hardcoded (forecast, blog, cms, activity, user, ecc.)
 - ❌ Configurazioni custom in database.php
 
 ### Aggiunte
 - ✅ Connessioni modulari in `config/local/<tenant>/database.php` (forecast, blog, cms, activity)
+=======
+- ❌ Tutte le connessioni modulari hardcoded (predict, blog, cms, activity, user, ecc.)
+- ❌ Configurazioni custom in database.php
+
+### Aggiunte
+- ✅ Connessioni modulari in `config/local/<tenant>/database.php` (predict, blog, cms, activity)
+>>>>>>> 1ad0554 (.)
 - ✅ Struttura standard Laravel 13.x
 - ✅ `busy_timeout`, `journal_mode`, `synchronous`, `transaction_mode` per SQLite
 - ✅ `sslmode` env per PostgreSQL

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Product Strategy Doc - Tenant Module"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "strategy"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Product Strategy Doc - Tenant Module
 
 ## Strategic Pillars

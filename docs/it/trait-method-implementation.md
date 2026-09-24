@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Trait Method Implementation Rules"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "trait method implementation"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 # Trait Method Implementation Rules
 
 ## Critical: DRY Principle for Trait Methods

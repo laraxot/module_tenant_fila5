@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Morph Map"
 module: "Tenant"
@@ -9,6 +10,8 @@ qmd: "morph map"
 related:
   - "./phpstan-corrections-january.md"
 ---
+=======
+>>>>>>> 1ad0554 (.)
 <?php
 
 return ['user' => \Modules\Xot\Datas\XotData::make()->getUserClass()];
