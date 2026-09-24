@@ -36,7 +36,19 @@ use ReflectionMethod;
 
 use function Safe\putenv;
 
+<<<<<<< .merge_file_4jQPeu
 uses(\Modules\Tenant\Tests\TestCase::class);
+=======
+<<<<<<< .merge_file_wtenQP
+uses(\Modules\Tenant\Tests\TestCase::class);
+=======
+<<<<<<< .merge_file_gLBVNL
+uses(\Modules\Tenant\Tests\TestCase::class);
+=======
+uses(TestCase::class);
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
 
 // expectMockery() is declared once in TenantCoverageBoostTest.php (same namespace)
 // and reused here across the Pest test run.
@@ -94,13 +106,37 @@ test('GetTenantModulesAction wraps invalid json decode errors', function (): voi
 });
 
 test('MorphMapConfigResolver throws on missing module segment and invalid result type', function (): void {
+<<<<<<< .merge_file_4jQPeu
     $resolver = new MorphMapConfigResolver();
+=======
+<<<<<<< .merge_file_wtenQP
+    $resolver = new MorphMapConfigResolver();
+=======
+<<<<<<< .merge_file_gLBVNL
+    $resolver = new MorphMapConfigResolver();
+=======
+    $resolver = new MorphMapConfigResolver;
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
 
     $request = HttpRequest::create('/admin', 'GET');
     app()->instance('request', $request);
     Request::swap($request);
 
+<<<<<<< .merge_file_4jQPeu
     expect(fn (): mixed => $resolver->resolve('morph_map'))
+=======
+<<<<<<< .merge_file_wtenQP
+    expect(fn (): mixed => $resolver->resolve('morph_map'))
+=======
+<<<<<<< .merge_file_gLBVNL
+    expect(fn (): mixed => $resolver->resolve('morph_map'))
+=======
+    expect(fn (): float|int|string|array|null => $resolver->resolve('morph_map'))
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
         ->toThrow(Exception::class, 'Invalid module name');
 
     $request2 = HttpRequest::create('/admin/tenant/x', 'GET');
@@ -115,12 +151,36 @@ test('MorphMapConfigResolver throws on missing module segment and invalid result
     });
     config(['morph_map' => ['flag' => true]]);
 
+<<<<<<< .merge_file_4jQPeu
     expect(fn (): mixed => $resolver->resolve('morph_map.flag'))
+=======
+<<<<<<< .merge_file_wtenQP
+    expect(fn (): mixed => $resolver->resolve('morph_map.flag'))
+=======
+<<<<<<< .merge_file_gLBVNL
+    expect(fn (): mixed => $resolver->resolve('morph_map.flag'))
+=======
+    expect(fn (): float|int|string|array|null => $resolver->resolve('morph_map.flag'))
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
         ->toThrow(Exception::class, 'Invalid morph_map configuration type');
 });
 
 test('DatabaseConfigResolver covers empty original config and skip branches', function (): void {
+<<<<<<< .merge_file_4jQPeu
     $resolver = new DatabaseConfigResolver();
+=======
+<<<<<<< .merge_file_wtenQP
+    $resolver = new DatabaseConfigResolver();
+=======
+<<<<<<< .merge_file_gLBVNL
+    $resolver = new DatabaseConfigResolver();
+=======
+    $resolver = new DatabaseConfigResolver;
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
     $original = config('database');
 
     try {
@@ -147,7 +207,19 @@ test('DatabaseConfigResolver covers empty original config and skip branches', fu
 });
 
 test('StandardConfigResolver database path when resolver returns non-array', function (): void {
+<<<<<<< .merge_file_4jQPeu
     $resolver = new StandardConfigResolver();
+=======
+<<<<<<< .merge_file_wtenQP
+    $resolver = new StandardConfigResolver();
+=======
+<<<<<<< .merge_file_gLBVNL
+    $resolver = new StandardConfigResolver();
+=======
+    $resolver = new StandardConfigResolver;
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
     TestCase::mockAppService(GetTenantNameAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'localhost']);
     });
@@ -180,7 +252,19 @@ test('SushiToJson private helpers cover early returns and audit nulls', function
 
     $apply = new ReflectionMethod(SushiToJsonCoverageModel::class, 'applyAuditFields');
     $apply->setAccessible(true);
+<<<<<<< .merge_file_4jQPeu
     $model = new SushiToJsonCoverageModel();
+=======
+<<<<<<< .merge_file_wtenQP
+    $model = new SushiToJsonCoverageModel();
+=======
+<<<<<<< .merge_file_gLBVNL
+    $model = new SushiToJsonCoverageModel();
+=======
+    $model = new SushiToJsonCoverageModel;
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
     $apply->invoke(null, $model);
     Assert::assertNull($model->getAttribute('created_by'));
 
@@ -196,7 +280,19 @@ test('SushiToJson private helpers cover early returns and audit nulls', function
 
     $deleting = new ReflectionMethod(SushiToJsonCoverageModel::class, 'handleSingleJsonDeleting');
     $deleting->setAccessible(true);
+<<<<<<< .merge_file_4jQPeu
     $empty = new SushiToJsonCoverageModel();
+=======
+<<<<<<< .merge_file_wtenQP
+    $empty = new SushiToJsonCoverageModel();
+=======
+<<<<<<< .merge_file_gLBVNL
+    $empty = new SushiToJsonCoverageModel();
+=======
+    $empty = new SushiToJsonCoverageModel;
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
     $deleting->invoke(null, $empty);
     $empty->setAttribute('id', 99);
     $deleting->invoke(null, $empty);
@@ -266,7 +362,19 @@ test('SushiToJsons covers empty schema map and glob false path via reflection', 
     $boot->setAccessible(true);
     $boot->invoke(null);
 
+<<<<<<< .merge_file_4jQPeu
     $model = new SushiToJsonsCoverageModel();
+=======
+<<<<<<< .merge_file_wtenQP
+    $model = new SushiToJsonsCoverageModel();
+=======
+<<<<<<< .merge_file_gLBVNL
+    $model = new SushiToJsonsCoverageModel();
+=======
+    $model = new SushiToJsonsCoverageModel;
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
     $map = new ReflectionMethod($model, 'mapJsonFileToRow');
     $map->setAccessible(true);
 
@@ -321,7 +429,19 @@ test('Sushi audit fields with named auth model and csv scalar id', function (): 
 
     $apply = new ReflectionMethod(SushiToJsonAuthCoverageModel::class, 'applyAuditFields');
     $apply->setAccessible(true);
+<<<<<<< .merge_file_4jQPeu
     $authModel = new SushiToJsonAuthCoverageModel();
+=======
+<<<<<<< .merge_file_wtenQP
+    $authModel = new SushiToJsonAuthCoverageModel();
+=======
+<<<<<<< .merge_file_gLBVNL
+    $authModel = new SushiToJsonAuthCoverageModel();
+=======
+    $authModel = new SushiToJsonAuthCoverageModel;
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
     $apply->invoke(null, $authModel);
     Assert::assertSame(42, $authModel->getAttribute('created_by'));
 
@@ -334,7 +454,19 @@ test('Sushi audit fields with named auth model and csv scalar id', function (): 
     $resolveKey->setAccessible(true);
     Assert::assertSame('7', $resolveKey->invoke(null, 7.0));
 
+<<<<<<< .merge_file_4jQPeu
     $invalidSchemaModel = new SushiToJsonsCoverageModel();
+=======
+<<<<<<< .merge_file_wtenQP
+    $invalidSchemaModel = new SushiToJsonsCoverageModel();
+=======
+<<<<<<< .merge_file_gLBVNL
+    $invalidSchemaModel = new SushiToJsonsCoverageModel();
+=======
+    $invalidSchemaModel = new SushiToJsonsCoverageModel;
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
     $schemaProp = new \ReflectionProperty($invalidSchemaModel, 'schema');
     $schemaProp->setAccessible(true);
     $schemaProp->setValue($invalidSchemaModel, 'invalid');
@@ -352,9 +484,27 @@ test('Sushi audit fields with named auth model and csv scalar id', function (): 
     $jsonsBoot->setAccessible(true);
     $jsonsBoot->invoke(null);
 
+<<<<<<< .merge_file_4jQPeu
     $csvModel = new SushiToCsvCoverageModel();
     $jsonModel = new SushiToJsonCoverageModel();
     $jsonsModel = new SushiToJsonsCoverageModel();
+=======
+<<<<<<< .merge_file_wtenQP
+    $csvModel = new SushiToCsvCoverageModel();
+    $jsonModel = new SushiToJsonCoverageModel();
+    $jsonsModel = new SushiToJsonsCoverageModel();
+=======
+<<<<<<< .merge_file_gLBVNL
+    $csvModel = new SushiToCsvCoverageModel();
+    $jsonModel = new SushiToJsonCoverageModel();
+    $jsonsModel = new SushiToJsonsCoverageModel();
+=======
+    $csvModel = new SushiToCsvCoverageModel;
+    $jsonModel = new SushiToJsonCoverageModel;
+    $jsonsModel = new SushiToJsonsCoverageModel;
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
     foreach ([$csvModel, $jsonModel, $jsonsModel] as $model) {
         $fire = new ReflectionMethod($model, 'fireModelEvent');
         $fire->setAccessible(true);
@@ -384,7 +534,23 @@ test('TenantServiceProvider load user connection and filter model classes', func
         /** @param array<string, mixed> $connections */
         public function __construct(private string $default, private array $connections) {}
 
+<<<<<<< .merge_file_4jQPeu
         public function execute(string $key, mixed $defaultValue = null): mixed
+=======
+<<<<<<< .merge_file_wtenQP
+        public function execute(string $key, mixed $defaultValue = null): mixed
+=======
+<<<<<<< .merge_file_gLBVNL
+        public function execute(string $key, mixed $defaultValue = null): mixed
+=======
+        /**
+         * @param  array<array-key, mixed>|int|string|null  $defaultValue
+         * @return array<string, mixed>
+         */
+        public function execute(string $key, string|int|array|null $defaultValue = null): array
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
         {
             return [
                 'default' => $this->default,
@@ -401,7 +567,19 @@ test('TenantServiceProvider load user connection and filter model classes', func
 
     $filter = new ReflectionMethod(ResolveTenantModelClassAction::class, 'filterValidModelClasses');
     $filter->setAccessible(true);
+<<<<<<< .merge_file_4jQPeu
     $action = new ResolveTenantModelClassAction();
+=======
+<<<<<<< .merge_file_wtenQP
+    $action = new ResolveTenantModelClassAction();
+=======
+<<<<<<< .merge_file_gLBVNL
+    $action = new ResolveTenantModelClassAction();
+=======
+    $action = new ResolveTenantModelClassAction;
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
     /** @var array<string, class-string> $filtered */
     $filtered = $filter->invoke($action, [
         1 => Tenant::class,
@@ -411,7 +589,19 @@ test('TenantServiceProvider load user connection and filter model classes', func
     Assert::assertArrayHasKey('tenant', $filtered);
     Assert::assertArrayNotHasKey('bad', $filtered);
 
+<<<<<<< .merge_file_4jQPeu
     $db = new DatabaseConfigResolver();
+=======
+<<<<<<< .merge_file_wtenQP
+    $db = new DatabaseConfigResolver();
+=======
+<<<<<<< .merge_file_gLBVNL
+    $db = new DatabaseConfigResolver();
+=======
+    $db = new DatabaseConfigResolver;
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
     $result = $db->resolve('database', [
         'default' => 'missing_conn',
         'connections' => ['sqlite' => ['driver' => 'sqlite']],
@@ -441,17 +631,58 @@ test('final remaining statement branches', function (): void {
     expect(fn (): string => app(ResolveTenantModelClassAction::class)->execute('widget'))
         ->toThrow(Exception::class);
 
+<<<<<<< .merge_file_4jQPeu
+=======
+<<<<<<< .merge_file_wtenQP
+=======
+<<<<<<< .merge_file_gLBVNL
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
     Module::shouldReceive('allEnabled')->andReturn([new \stdClass()]);
     $getAll = new ReflectionMethod(ResolveTenantModelClassAction::class, 'getAllModulesModels');
     $getAll->setAccessible(true);
     Assert::assertSame([], $getAll->invoke(new ResolveTenantModelClassAction()));
+<<<<<<< .merge_file_4jQPeu
+=======
+<<<<<<< .merge_file_wtenQP
+=======
+=======
+    Module::shouldReceive('allEnabled')->andReturn([new \stdClass]);
+    $getAll = new ReflectionMethod(ResolveTenantModelClassAction::class, 'getAllModulesModels');
+    $getAll->setAccessible(true);
+    Assert::assertSame([], $getAll->invoke(new ResolveTenantModelClassAction));
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
 
     $provider = new TenantServiceProvider(app());
     $load = new ReflectionMethod($provider, 'loadTenantDatabaseConfig');
     $load->setAccessible(true);
+<<<<<<< .merge_file_4jQPeu
     app()->instance(ResolveTenantConfigValueAction::class, new class()
     {
         public function execute(string $key, mixed $defaultValue = null): mixed
+=======
+<<<<<<< .merge_file_wtenQP
+    app()->instance(ResolveTenantConfigValueAction::class, new class()
+    {
+        public function execute(string $key, mixed $defaultValue = null): mixed
+=======
+<<<<<<< .merge_file_gLBVNL
+    app()->instance(ResolveTenantConfigValueAction::class, new class()
+    {
+        public function execute(string $key, mixed $defaultValue = null): mixed
+=======
+    app()->instance(ResolveTenantConfigValueAction::class, new class
+    {
+        /**
+         * @param  array<array-key, mixed>|int|string|null  $defaultValue
+         * @return array<string, mixed>
+         */
+        public function execute(string $key, string|int|array|null $defaultValue = null): array
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
         {
             return [
                 'default' => 'sqlite',
@@ -472,7 +703,19 @@ test('final remaining statement branches', function (): void {
 
     $merge = new ReflectionMethod($provider, 'mergeModuleConnections');
     $merge->setAccessible(true);
+<<<<<<< .merge_file_4jQPeu
     Module::shouldReceive('getOrdered')->andReturn([new \stdClass()]);
+=======
+<<<<<<< .merge_file_wtenQP
+    Module::shouldReceive('getOrdered')->andReturn([new \stdClass()]);
+=======
+<<<<<<< .merge_file_gLBVNL
+    Module::shouldReceive('getOrdered')->andReturn([new \stdClass()]);
+=======
+    Module::shouldReceive('getOrdered')->andReturn([new \stdClass]);
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
     $merged = $merge->invoke($provider, [
         'connections' => ['sqlite' => ['driver' => 'sqlite']],
     ], 'sqlite');
@@ -487,7 +730,19 @@ test('final remaining statement branches', function (): void {
             static fn (string $path): string => $base.'/'.ltrim($path, '/'),
         );
     });
+<<<<<<< .merge_file_4jQPeu
     $noSchema = new SushiToJsonsNoSchemaModel();
+=======
+<<<<<<< .merge_file_wtenQP
+    $noSchema = new SushiToJsonsNoSchemaModel();
+=======
+<<<<<<< .merge_file_gLBVNL
+    $noSchema = new SushiToJsonsNoSchemaModel();
+=======
+    $noSchema = new SushiToJsonsNoSchemaModel;
+>>>>>>> .merge_file_Fy8yOO
+>>>>>>> .merge_file_apkhXb
+>>>>>>> .merge_file_eAcLVP
     Assert::assertSame([], $noSchema->getSushiRows());
     File::deleteDirectory($base);
 });

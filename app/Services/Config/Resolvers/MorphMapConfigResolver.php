@@ -9,11 +9,29 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
+<<<<<<< .merge_file_T8I69Z
+=======
+<<<<<<< .merge_file_eSv7Sp
+use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
+use Modules\Tenant\Services\TenantService;
+use Modules\Xot\Actions\Model\GetAllModelsByModuleNameAction;
+=======
+<<<<<<< .merge_file_DtWKCc
+>>>>>>> .merge_file_BxOekS
 use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
 use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
 use Modules\Tenant\Services\TenantService;
 use Modules\Xot\Actions\Model\GetAllModelsByModuleNameAction;
 use Modules\Xot\Services\RouteService;
+<<<<<<< .merge_file_T8I69Z
+=======
+=======
+use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
+use Modules\Tenant\Services\TenantService;
+use Modules\Xot\Actions\Model\GetAllModelsByModuleNameAction;
+>>>>>>> .merge_file_Jgp7N9
+>>>>>>> .merge_file_AcCQKc
+>>>>>>> .merge_file_BxOekS
 
 /**
  * Resolves morph_map configuration for admin panel.
@@ -22,15 +40,50 @@ class MorphMapConfigResolver implements ConfigResolverInterface
 {
     public function canResolve(string $key): bool
     {
+<<<<<<< .merge_file_T8I69Z
         return RouteService::inAdmin()
+=======
+<<<<<<< .merge_file_eSv7Sp
+=======
+<<<<<<< .merge_file_DtWKCc
+        return RouteService::inAdmin()
+=======
+>>>>>>> .merge_file_AcCQKc
+        // Ex RouteService::inAdmin() (Services archiviato): main panel `/admin/...`.
+        // NB: semantica diversa dall'helper globale inAdmin() (module panel `/{module}/admin`).
+        $segments = Request::segments();
+        $inMainAdmin = Request::segment(1) === 'admin'
+            || (\count($segments) > 0 && $segments[0] === 'livewire' && session('in_admin', false) === true);
+
+        return $inMainAdmin
+<<<<<<< .merge_file_eSv7Sp
+=======
+>>>>>>> .merge_file_Jgp7N9
+>>>>>>> .merge_file_AcCQKc
+>>>>>>> .merge_file_BxOekS
             && Str::startsWith($key, 'morph_map')
             && Request::segment(2) !== null;
     }
 
+<<<<<<< .merge_file_T8I69Z
+=======
+<<<<<<< .merge_file_eSv7Sp
+=======
+<<<<<<< .merge_file_DtWKCc
+=======
+>>>>>>> .merge_file_AcCQKc
+>>>>>>> .merge_file_BxOekS
     /**
      * @param  string|int|array<string, mixed>|null  $default
      * @return float|int|string|array<mixed>|null
      */
+<<<<<<< .merge_file_T8I69Z
+=======
+<<<<<<< .merge_file_eSv7Sp
+=======
+>>>>>>> .merge_file_Jgp7N9
+>>>>>>> .merge_file_AcCQKc
+>>>>>>> .merge_file_BxOekS
     public function resolve(string $key, string|int|array|null $default = null): float|int|string|array|null
     {
         $moduleName = Request::segment(2);
@@ -38,11 +91,28 @@ class MorphMapConfigResolver implements ConfigResolverInterface
             throw new Exception('Invalid module name from request segment');
         }
 
+<<<<<<< .merge_file_T8I69Z
         // Use action directly instead of helper function to avoid autoload issues during package:discover
+=======
+<<<<<<< .merge_file_eSv7Sp
+        // Use action directly instead of helper function to avoid autoload issues during package:discover
+=======
+<<<<<<< .merge_file_DtWKCc
+=======
+        // Use action directly instead of helper function to avoid autoload issues during package:discover
+>>>>>>> .merge_file_Jgp7N9
+>>>>>>> .merge_file_AcCQKc
+>>>>>>> .merge_file_BxOekS
         /** @var GetAllModelsByModuleNameAction $action */
         $action = app(GetAllModelsByModuleNameAction::class);
         /** @var array<string, class-string> $models */
         $models = $action->execute($moduleName);
+<<<<<<< .merge_file_T8I69Z
+=======
+<<<<<<< .merge_file_eSv7Sp
+=======
+<<<<<<< .merge_file_DtWKCc
+>>>>>>> .merge_file_BxOekS
 
         /** @var array<string, mixed> $mergedConf */
         $mergedConf = array_merge($models, $this->getOriginalConfig(), $this->getTenantConfig());
@@ -82,6 +152,31 @@ class MorphMapConfigResolver implements ConfigResolverInterface
         }
 
         return null;
+<<<<<<< .merge_file_T8I69Z
+=======
+=======
+>>>>>>> .merge_file_AcCQKc
+        $originalConf = $this->getOriginalConfig();
+        $tenantConf = $this->getTenantConfig();
+
+        // Use array_merge to avoid PHPStan type issues with Collection::merge()
+        /** @var array<string, mixed> $mergedConf */
+        $mergedConf = array_merge($models, $originalConf, $tenantConf);
+
+        Config::set('morph_map', $mergedConf);
+
+        $result = config($key);
+
+        if (! is_numeric($result) && ! is_string($result) && ! is_array($result)) {
+            throw new Exception('Invalid morph_map configuration type');
+        }
+
+        return $result;
+<<<<<<< .merge_file_eSv7Sp
+=======
+>>>>>>> .merge_file_Jgp7N9
+>>>>>>> .merge_file_AcCQKc
+>>>>>>> .merge_file_BxOekS
     }
 
     /**
@@ -90,6 +185,12 @@ class MorphMapConfigResolver implements ConfigResolverInterface
     private function getOriginalConfig(): array
     {
         $config = config('morph_map');
+<<<<<<< .merge_file_T8I69Z
+=======
+<<<<<<< .merge_file_eSv7Sp
+=======
+<<<<<<< .merge_file_DtWKCc
+>>>>>>> .merge_file_BxOekS
 
         if (is_array($config)) {
             /** @var array<string, mixed> $config */
@@ -97,6 +198,28 @@ class MorphMapConfigResolver implements ConfigResolverInterface
         }
 
         return [];
+<<<<<<< .merge_file_T8I69Z
+=======
+=======
+>>>>>>> .merge_file_AcCQKc
+        if (! is_array($config)) {
+            return [];
+        }
+
+        /** @var array<string, mixed> $result */
+        $result = [];
+        foreach ($config as $key => $value) {
+            if (is_string($key)) {
+                $result[$key] = $value;
+            }
+        }
+
+        return $result;
+<<<<<<< .merge_file_eSv7Sp
+=======
+>>>>>>> .merge_file_Jgp7N9
+>>>>>>> .merge_file_AcCQKc
+>>>>>>> .merge_file_BxOekS
     }
 
     /**
@@ -111,6 +234,12 @@ class MorphMapConfigResolver implements ConfigResolverInterface
         }
 
         $config = File::getRequire($path);
+<<<<<<< .merge_file_T8I69Z
+=======
+<<<<<<< .merge_file_eSv7Sp
+=======
+<<<<<<< .merge_file_DtWKCc
+>>>>>>> .merge_file_BxOekS
 
         if (is_array($config)) {
             /** @var array<string, mixed> $config */
@@ -118,5 +247,27 @@ class MorphMapConfigResolver implements ConfigResolverInterface
         }
 
         return [];
+<<<<<<< .merge_file_T8I69Z
+=======
+=======
+>>>>>>> .merge_file_AcCQKc
+        if (! is_array($config)) {
+            return [];
+        }
+
+        /** @var array<string, mixed> $result */
+        $result = [];
+        foreach ($config as $key => $value) {
+            if (is_string($key)) {
+                $result[$key] = $value;
+            }
+        }
+
+        return $result;
+<<<<<<< .merge_file_eSv7Sp
+=======
+>>>>>>> .merge_file_Jgp7N9
+>>>>>>> .merge_file_AcCQKc
+>>>>>>> .merge_file_BxOekS
     }
 }
