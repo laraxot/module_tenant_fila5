@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-# Documentation Index
-
-Modulo: Tenant
-
-## File disponibili
-
-<!-- auto-generato: elencare i file .md presenti -->
-=======
 ---
 title: Tenant Module Documentation Index
 module: Tenant
@@ -23,7 +14,7 @@ last_updated: 2026-07-28
 ## Navigation
 
 - [Overview](README.md) — Module description and quick start
-- [Architecture](ARCHITECTURE.md) — System design and isolation strategies
+- [Architecture](architecture.md) — System design and isolation strategies
 - [API Reference](API.md) — Core models, contracts, and services
 - [Patterns](PATTERNS.md) — Design patterns and best practices
 - [Troubleshooting](TROUBLESHOOTING.md) — Common issues and solutions
@@ -59,7 +50,7 @@ last_updated: 2026-07-28
 | Date | File | Category |
 |------|------|----------|
 | 2026-07-28 | README.md | Documentation |
-| 2026-07-28 | ARCHITECTURE.md | Documentation |
+| 2026-07-28 | architecture.md | Documentation |
 | 2026-07-28 | API.md | Documentation |
 | 2026-07-28 | PATTERNS.md | Documentation |
 | 2026-07-28 | TROUBLESHOOTING.md | Documentation |
@@ -114,4 +105,3 @@ Each tenant operates in complete isolation:
 5. Keep migrations atomic and reversible
 
 For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/contributing.md).
->>>>>>> laraxot/dev
