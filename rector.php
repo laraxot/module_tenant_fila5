@@ -6,7 +6,6 @@ use Rector\Config\RectorConfig;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\ValueObject\PhpVersion;
-use Rector\ValueObject\PhpVersion;
 
 /**
  * Standard Rector Configuration for Laravel Modules
@@ -38,7 +37,6 @@ return static function (RectorConfig $rectorConfig): void {
         // Code quality improvements
         SetList::CODE_QUALITY,
         SetList::DEAD_CODE,
-        SetList::EARLY_RETURN,
 
         // Type declarations (commented - enable carefully)
         // SetList::TYPE_DECLARATION,
