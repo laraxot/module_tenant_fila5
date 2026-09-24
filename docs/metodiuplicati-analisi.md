@@ -1,14 +1,3 @@
----
-title: "🐄⚡ ANALISI METODI DUPLICATI - SUPER MUCCA EDITION"
-module: "Tenant"
-type: concept
-tags: [metodiuplicati, analisi]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "metodiuplicati analisi"
-related:
-  - "./phpstan-corrections-january.md"
----
 # 🐄⚡ ANALISI METODI DUPLICATI - SUPER MUCCA EDITION
 
 **Powered by**: Super Mucca AI 🐄✨  
@@ -117,7 +106,7 @@ abstract class BaseModel extends \Modules\Xot\Models\XotBaseModel
 
 ### Pattern 1: getTableColumns() - ESEMPIO REALE
 
-#### progetto corrente/TicketResource/ListTickets.php (ECCELLENTE)
+#### Fixcity/TicketResource/ListTickets.php (ECCELLENTE)
 ```php
 protected function getTableColumns(): array
 {
@@ -478,7 +467,7 @@ public function getTableFilters(): array
 - Test dopo ogni modulo
 - Code review
 
-**Settimana 2**: Moduli Business (progetto corrente, Blog, Geo)
+**Settimana 2**: Moduli Business (Fixcity, Blog, Geo)
 - 20 List files
 - Test integrazione
 - Performance check
@@ -516,7 +505,7 @@ public function getTableFilters(): array
 3. Refactoring moduli core (Xot, User, Cms)
 
 #### ⭐⭐⭐⭐ PRIORITÀ ALTA
-4. Refactoring moduli business (progetto corrente, Blog, Geo)
+4. Refactoring moduli business (Fixcity, Blog, Geo)
 5. ActionPresets per CRUD
 6. Documentazione completa
 

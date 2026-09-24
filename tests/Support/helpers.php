@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 use Mockery\Expectation;
 use Mockery\MockInterface;
 use PHPUnit\Framework\Assert;

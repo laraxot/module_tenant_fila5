@@ -1,14 +1,3 @@
----
-title: "Task: Advanced Settings Tenant"
-module: "Tenant"
-type: concept
-tags: [advanced, settings, tenant]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "advanced settings tenant"
-related:
-  - "./phpstan-corrections-january.md"
----
 # Task: Advanced Settings Tenant
 
 **Modulo**: Tenant  

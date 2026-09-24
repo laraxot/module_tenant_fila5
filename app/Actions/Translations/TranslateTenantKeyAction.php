@@ -31,10 +31,15 @@ class TranslateTenantKeyAction
             return $key;
         }
 
+        /** @var mixed $data */
         $data = File::getRequire($path);
         Assert::isArray($data);
 
-        $res = Arr::get($data, $arrayKey);
+        /** @var array<string, mixed> $arrayData */
+        $arrayData = $data;
+
+        /** @var mixed $res */
+        $res = Arr::get($arrayData, $arrayKey);
 
         if (! \is_string($res)) {
             return $key;

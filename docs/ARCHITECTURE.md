@@ -3,7 +3,7 @@ title: "Architecture: Tenant Module"
 type: architecture
 tags: [tenant, multi-tenancy, architecture, core]
 created: 2026-07-09
-updated: 2026-07-09
+updated: 2026-09-24
 ---
 
 # Architecture: Tenant Module
@@ -86,9 +86,10 @@ Per-tenant configuration files override system defaults, enabling customization 
   - `getTenant()` - Retrieve associated tenant
 - **Important:** Applied automatically via `BelongsToTenantsScope`
 
-#### `SushiToJson`, `SushiToCsv`, `SushiToJsons`
-- **Purpose:** Convert Sushi (CSV-based) models to JSON/arrays for storage
-- **Usage:** In `phpstan` probe fixtures and test helpers
+#### `SushiToJson`, `SushiToJsons`
+- **Purpose:** Read tenant-scoped Sushi data from JSON files
+- **Usage:** Production models and dedicated trait tests
+- **Removed:** `SushiToCsv` and its PHPStan probes are archived in-place with the `.bak` suffix; do not recreate the scaffolding
 
 ### Services & Actions
 

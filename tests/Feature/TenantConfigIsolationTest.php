@@ -11,7 +11,7 @@ use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 it('isolates tenant file paths per tenant context', function (): void {
     /** @var TestCase $this */
@@ -50,8 +50,7 @@ it('rejects path traversal in tenant filename', function (): void {
 });
 
 it('rejects malicious server name with path traversal', function (): void {
-    config(['app.url' => 'http://localhost']);
-    TestCase::setServerNameForTenantTest('../../evil.com');
+    $_SERVER['SERVER_NAME'] = '../../evil.com';
 
     $result = app(GetTenantNameAction::class)->execute();
 

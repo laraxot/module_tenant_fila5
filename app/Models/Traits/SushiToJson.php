@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Modules\Tenant\Models\Traits;
 
 use Exception;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use InvalidArgumentException;
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Sushi\Sushi;
@@ -39,6 +40,9 @@ trait SushiToJson
     public function getJsonFile(): string
     {
         $tbl = $this->getTable();
+        if (! is_string($tbl)) {
+            throw new InvalidArgumentException(__FILE__.':'.__LINE__.' - '.class_basename(self::class).': Table name must be string');
+        }
 
         return app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
     }
@@ -58,9 +62,9 @@ trait SushiToJson
      * Ottiene i dati dal file JSON per il modello Sushi.
      * I dati vengono normalizzati per garantire compatibilità con Eloquent.
      *
-     * @return array<int, array<string, mixed>>
+     * @return array<int, array<string, mixed>> Array di record per Sushi
      *
-     * @phpstan-return array<int, array<string, mixed>>
+     * @throws Exception Se i dati non sono in formato array valido
      */
     public function getSushiRows(): array
     {
@@ -86,9 +90,7 @@ trait SushiToJson
 
         $normalizedData = $this->normalizeJsonItems($typedData);
         $schema = $this->getSchema();
-        /** @var array<string, mixed> $schemaArray */
-        $schemaArray = $schema;
-        $form = $this->normalizeSchemaFields($schemaArray);
+        $form = $this->normalizeSchemaFields(is_array($schema) ? $schema : []);
 
         return $this->completeSchemaFields($normalizedData, $form);
     }
@@ -169,6 +171,10 @@ trait SushiToJson
         $maxId = 0;
 
         foreach ($existingData as $row) {
+            if (! \is_array($row)) {
+                continue;
+            }
+
             $rawId = $row['id'] ?? 0;
             $id = \is_numeric($rawId) ? (int) $rawId : 0;
             $maxId = max($maxId, $id);
@@ -184,17 +190,17 @@ trait SushiToJson
      */
     protected static function bootSushiToJson(): void
     {
-        static::creating(static function (Model $model): void {
+        static::creating(static function ($model): void {
             Assert::isInstanceOf($model, static::class);
             self::handleSingleJsonCreating($model);
         });
 
-        static::updating(static function (Model $model): void {
+        static::updating(static function ($model): void {
             Assert::isInstanceOf($model, static::class);
             self::handleSingleJsonUpdating($model);
         });
 
-        static::deleting(static function (Model $model): void {
+        static::deleting(static function ($model): void {
             Assert::isInstanceOf($model, static::class);
             self::handleSingleJsonDeleting($model);
         });
@@ -209,8 +215,14 @@ trait SushiToJson
     protected function findRowIndexById(array $rows, int $id): ?int
     {
         foreach ($rows as $index => $row) {
-            if (is_array($row) && self::intValue($row['id'] ?? null) === $id) {
-                return is_int($index) ? $index : null;
+            if (! is_array($row)) {
+                continue;
+            }
+
+            $rawId = $row['id'] ?? 0;
+            $rowId = is_numeric($rawId) ? (int) $rawId : 0;
+            if ($rowId === $id) {
+                return (int) $index;
             }
         }
 
@@ -222,7 +234,15 @@ trait SushiToJson
      */
     protected function authId(): int|string|null
     {
-        return authId();
+        if (\function_exists('authId')) {
+            return authId();
+        }
+
+        if (class_exists('\Illuminate\Support\Facades\Auth')) {
+            return Auth::id();
+        }
+
+        return null;
     }
 
     /**
@@ -235,82 +255,6 @@ trait SushiToJson
         if (! File::exists($directory)) {
             File::makeDirectory($directory, 0o755, true, true);
         }
-    }
-
-    /**
-     * @param  array<int, array<string, mixed>>  $data
-     * @return array<int, array<string, mixed>>
-     */
-    protected function normalizeJsonItems(array $data): array
-    {
-        /** @var array<int, array<string, mixed>> $normalizedData */
-        $normalizedData = [];
-
-        foreach ($data as $item) {
-            if (! \is_array($item)) {
-                continue;
-            }
-
-            /** @var array<string, mixed> $normalizedItem */
-            $normalizedItem = [];
-            foreach ($item as $key => $value) {
-                $stringKey = is_string($key) ? $key : (string) $key;
-                if (\is_array($value) || \is_object($value)) {
-                    $value = json_encode($value);
-                }
-                $normalizedItem[$stringKey] = $value;
-            }
-
-            $normalizedData[] = app(FilterConfigStringKeysAction::class)->execute($normalizedItem);
-        }
-
-        return $normalizedData;
-    }
-
-    /**
-     * @param  array<string, mixed>  $schema
-     * @return array<string, mixed>
-     */
-    protected function normalizeSchemaFields(array $schema): array
-    {
-        return app(FilterConfigStringKeysAction::class)->execute($schema);
-    }
-
-    /**
-     * @param  array<int, array<string, mixed>>  $normalizedData
-     * @param  array<string, mixed>  $form
-     * @return array<int, array<string, mixed>>
-     */
-    protected function completeSchemaFields(array $normalizedData, array $form): array
-    {
-        // Sushi genera un multi-insert: ogni riga deve avere lo stesso set di colonne.
-        // Completare col solo schema non basta quando alcune righe hanno chiavi extra,
-        // quindi si usa l'unione delle chiavi di schema e di tutte le righe.
-        $allKeys = array_keys($form);
-        foreach ($normalizedData as $item) {
-            $allKeys = array_merge($allKeys, array_keys($item));
-        }
-
-        /** @var list<string> $allKeys */
-        $allKeys = array_values(array_unique($allKeys));
-
-        /** @var array<int, array<string, mixed>> $completedData */
-        $completedData = [];
-
-        foreach ($normalizedData as $item) {
-            /** @var array<string, mixed> $row */
-            $row = $item;
-            foreach ($allKeys as $safeKey) {
-                if (! array_key_exists($safeKey, $row)) {
-                    $row[$safeKey] = null;
-                }
-            }
-
-            ksort($row);
-            $completedData[] = $row;
-        }
-
-        return $completedData;
     }
 
     /**
@@ -372,7 +316,9 @@ trait SushiToJson
                 continue;
             }
 
-            $maxId = max($maxId, self::intValue($row['id'] ?? null));
+            $rawId = $row['id'] ?? 0;
+            $id = \is_numeric($rawId) ? (int) $rawId : 0;
+            $maxId = max($maxId, $id);
         }
 
         return $maxId;
@@ -385,7 +331,7 @@ trait SushiToJson
             $dbMax = static::query()->max('id');
 
             return \is_int($dbMax) ? $dbMax : 0;
-        } catch (\Throwable) {
+        } catch (Throwable) {
             return 0;
         }
     }
@@ -407,7 +353,8 @@ trait SushiToJson
         self::applyUpdatingAuditField($model);
 
         $existingData = $model->loadExistingData();
-        $id = self::intValue($model->getAttribute('id'));
+        $rawId = $model->getAttribute('id');
+        $id = is_numeric($rawId) ? (int) $rawId : 0;
         if ($id <= 0) {
             return;
         }
@@ -433,7 +380,8 @@ trait SushiToJson
 
     private static function handleSingleJsonDeleting(self $model): void
     {
-        $id = self::intValue($model->getAttribute('id'));
+        $rawId = $model->getAttribute('id');
+        $id = is_numeric($rawId) ? (int) $rawId : 0;
         if ($id <= 0) {
             return;
         }
@@ -449,18 +397,65 @@ trait SushiToJson
     }
 
     /**
-     * @param  mixed  $value  Raw Eloquent attribute (int|string|float expected)
+     * @param  array<int, array<string, mixed>>  $data
+     * @return array<int, array<string, mixed>>
      */
-    private static function intValue(mixed $value): int
+    protected function normalizeJsonItems(array $data): array
     {
-        if (is_int($value)) {
-            return $value;
+        /** @var array<int, array<string, mixed>> $normalizedData */
+        $normalizedData = [];
+
+        foreach ($data as $item) {
+            if (! \is_array($item)) {
+                continue;
+            }
+
+            /** @var array<string, mixed> $normalizedItem */
+            $normalizedItem = [];
+            foreach ($item as $key => $value) {
+                $stringKey = is_string($key) ? $key : (string) $key;
+                if (\is_array($value) || \is_object($value)) {
+                    $value = json_encode($value);
+                }
+                $normalizedItem[$stringKey] = $value;
+            }
+
+            $normalizedData[] = app(FilterConfigStringKeysAction::class)->execute($normalizedItem);
         }
 
-        if ((is_string($value) || is_float($value)) && is_numeric($value)) {
-            return (int) $value;
+        return $normalizedData;
+    }
+
+    /**
+     * @param  array<mixed, mixed>  $schema
+     * @return array<string, mixed>
+     */
+    protected function normalizeSchemaFields(array $schema): array
+    {
+        return app(FilterConfigStringKeysAction::class)->execute($schema);
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $normalizedData
+     * @param  array<string, mixed>  $form
+     * @return array<int, array<string, mixed>>
+     */
+    protected function completeSchemaFields(array $normalizedData, array $form): array
+    {
+        /** @var array<int, array<string, mixed>> $completedData */
+        $completedData = [];
+
+        foreach ($normalizedData as $item) {
+            foreach (array_keys($form) as $safeKey) {
+                if (! array_key_exists($safeKey, $item)) {
+                    $item[$safeKey] = null;
+                }
+            }
+
+            ksort($item);
+            $completedData[] = $item;
         }
 
-        return 0;
+        return array_values($completedData);
     }
 }

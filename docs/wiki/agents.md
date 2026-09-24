@@ -1,14 +1,16 @@
 ---
-title: "Tenant {{TYPE^}} LLM Wiki Agent Instructions"
-module: "Tenant"
-type: concept
-tags: [AGENTS]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "agents"
+title: "Agent instructions"
+type: reference
+tags: [agents, coding-agent, llm-wiki]
+created: 2026-07-01
+updated: 2026-07-01
+qmd: "istruzioni agenti LLM wiki modulo"
+issues: []
+discussions: []
 related:
-  - "./phpstan-corrections-january.md"
+  - ./coding-agent-manifests.md
 ---
+
 # Tenant {{TYPE^}} LLM Wiki Agent Instructions
 
 > **Module/Theme:** Tenant

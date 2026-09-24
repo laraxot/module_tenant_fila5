@@ -1,14 +1,3 @@
----
-title: "Task: Verifica TenantDomain"
-module: "Tenant"
-type: concept
-tags: [verifica, tenant, domain]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "verifica tenant domain"
-related:
-  - "./phpstan-corrections-january.md"
----
 # Task: Verifica TenantDomain
 
 **Modulo**: Tenant  

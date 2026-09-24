@@ -8,46 +8,10 @@ use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-use function Safe\mkdir;
-use function Safe\rmdir;
-
-uses(\Modules\Tenant\Tests\TestCase::class);
-
-/** @var list<string> $createdConfigPaths */
-$createdConfigPaths = [];
-
-beforeEach(function (): void {
-    config(['app.url' => 'http://localhost']);
-});
-
-afterEach(function () use (&$createdConfigPaths): void {
-    TestCase::setServerNameForTenantTest(null);
-
-    foreach ($createdConfigPaths as $path) {
-        if (is_dir($path)) {
-            rmdir($path);
-        }
-    }
-    $createdConfigPaths = [];
-});
-
-function ensureTenantConfigDir(string $relativePath): string
-{
-    /** @var list<string> $createdConfigPaths */
-    global $createdConfigPaths;
-
-    $path = config_path(str_replace('/', DIRECTORY_SEPARATOR, $relativePath));
-    if (! is_dir($path)) {
-        mkdir($path, 0755, true);
-        $createdConfigPaths[] = $path;
-    }
-
-    return $path;
-}
+uses(TestCase::class);
 
 test('get tenant name action returns correct tenant name from server name', function (): void {
-    ensureTenantConfigDir('com/example/myapp');
-    TestCase::setServerNameForTenantTest('myapp.example.com');
+    $_SERVER['SERVER_NAME'] = 'myapp.example.com';
 
     $result = app(GetTenantNameAction::class)->execute();
 
@@ -55,8 +19,7 @@ test('get tenant name action returns correct tenant name from server name', func
 });
 
 test('get tenant name action handles www prefix correctly', function (): void {
-    ensureTenantConfigDir('com/example/myapp');
-    TestCase::setServerNameForTenantTest('www.myapp.example.com');
+    $_SERVER['SERVER_NAME'] = 'www.myapp.example.com';
 
     $result = app(GetTenantNameAction::class)->execute();
 
@@ -64,7 +27,7 @@ test('get tenant name action handles www prefix correctly', function (): void {
 });
 
 test('get tenant name action falls back to default when server name is localhost', function (): void {
-    TestCase::setServerNameForTenantTest('127.0.0.1');
+    $_SERVER['SERVER_NAME'] = '127.0.0.1';
 
     $result = app(GetTenantNameAction::class)->execute();
 
@@ -72,8 +35,7 @@ test('get tenant name action falls back to default when server name is localhost
 });
 
 test('get tenant name action uses app url config when server name not set', function (): void {
-    ensureTenantConfigDir('test/myapp');
-    TestCase::setServerNameForTenantTest(null);
+    unset($_SERVER['SERVER_NAME']);
     config(['app.url' => 'https://myapp.test']);
 
     $result = app(GetTenantNameAction::class)->execute();
@@ -82,10 +44,10 @@ test('get tenant name action uses app url config when server name not set', func
 });
 
 test('get tenant name action handles empty app url config', function (): void {
-    TestCase::setServerNameForTenantTest(null);
+    unset($_SERVER['SERVER_NAME']);
     config(['app.url' => '']);
 
     $result = app(GetTenantNameAction::class)->execute();
 
-    Assert::assertContains($result, ['', 'localhost']);
+    Assert::assertSame('localhost', $result);
 });

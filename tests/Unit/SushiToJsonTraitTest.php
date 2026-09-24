@@ -8,7 +8,6 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Mockery;
-use Mockery\Expectation;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Tests\TestCase;
@@ -18,21 +17,22 @@ use function Safe\json_encode;
 uses(TestCase::class);
 
 beforeEach(function (): void {
-    /** @var TestCase $this */
-    $this->model = new TestSushiModel();
-    TestCase::$testDirectory = storage_path('tests/sushi-json');
-    TestCase::$testJsonPath = TestCase::$testDirectory.'/test_sushi.json';
+    $this->model = new TestSushiModel;
+    $this->testDirectory = storage_path('tests/sushi-json');
+    $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 
-    if (! File::exists(TestCase::$testDirectory)) {
-        File::makeDirectory(TestCase::$testDirectory, 0o755, true, true);
+    if (! File::exists($this->testDirectory)) {
+        File::makeDirectory($this->testDirectory, 0o755, true, true);
     }
 
-    $jsonPath = TestCase::$testJsonPath;
+    $jsonPath = $this->testJsonPath;
     $mock = Mockery::mock(GetTenantFilePathAction::class);
-    $mock->allows(['execute' => $jsonPath]);
+    tenantMockExpectation($mock, 'execute')
+        ->with('database/content/test_sushi.json')
+        ->andReturn($jsonPath);
     app()->instance(GetTenantFilePathAction::class, $mock);
 
-    TestCase::$createTestData = static fn (): array => [
+    $this->createTestData = static fn (): array => [
         1 => [
             'id' => 1,
             'name' => 'Test Item 1',
@@ -55,13 +55,12 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
-    /** @var TestCase $this */
-    if (File::exists(TestCase::$testJsonPath)) {
-        File::delete(TestCase::$testJsonPath);
+    if (File::exists($this->testJsonPath)) {
+        File::delete($this->testJsonPath);
     }
 
-    if (File::exists(TestCase::$testDirectory)) {
-        File::deleteDirectory(TestCase::$testDirectory);
+    if (File::exists($this->testDirectory)) {
+        File::deleteDirectory($this->testDirectory);
     }
 
     Mockery::close();
@@ -69,15 +68,13 @@ afterEach(function (): void {
 
 describe('SushiToJson Trait', function (): void {
     it('returns correct json file path', function (): void {
-        /** @var TestCase $this */
-        expect($this->sushiModel()->getJsonFile())->toBe(TestCase::$testJsonPath);
+        expect($this->sushiModel()->getJsonFile())->toBe($this->testJsonPath);
     });
 
     it('loads existing data from json file', function (): void {
-        /** @var TestCase $this */
         /** @var array<int, array<string, mixed>> $testData */
         $testData = $this->sushiTestData();
-        File::put(TestCase::$testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
+        File::put($this->testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
 
         $rows = $this->sushiModel()->loadExistingData();
 
@@ -87,28 +84,26 @@ describe('SushiToJson Trait', function (): void {
     });
 
     it('returns empty array when file not exists', function (): void {
-        /** @var TestCase $this */
-        expect($this->sushiModel()->getSushiRows())->toBeEmpty();
+        $rows = $this->sushiModel()->getSushiRows();
+
+        expect($rows)->toBeEmpty();
     });
 
     it('throws exception with malformed json', function (): void {
-        /** @var TestCase $this */
-        File::put(TestCase::$testJsonPath, 'invalid json content');
+        File::put($this->testJsonPath, 'invalid json content');
 
         expect(fn () => $this->sushiModel()->getSushiRows())
             ->toThrow(Exception::class, 'Syntax error');
     });
 
     it('throws exception with non array data', function (): void {
-        /** @var TestCase $this */
-        File::put(TestCase::$testJsonPath, '"string data"');
+        File::put($this->testJsonPath, '"string data"');
 
         expect(fn () => $this->sushiModel()->getSushiRows())
             ->toThrow(Exception::class, 'Data is not array');
     });
 
     it('normalizes nested arrays to json strings', function (): void {
-        /** @var TestCase $this */
         $testData = [
             '1' => [
                 'id' => 1,
@@ -118,48 +113,40 @@ describe('SushiToJson Trait', function (): void {
             ],
         ];
 
-        File::put(TestCase::$testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
+        File::put($this->testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
 
         $rows = $this->sushiModel()->getSushiRows();
         $row = $this->jsonRecordAt($rows, '1');
 
-        expect($row['metadata'])->toBeString()->toBe('{"nested":"value"}');
-        expect($row['tags'])->toBeString()->toBe('["tag1","tag2"]');
+        expect($row['metadata'])->toBe('{"nested":"value"}');
+        expect($row['tags'])->toBe('["tag1","tag2"]');
     });
 
     it('saves data successfully to json file', function (): void {
-        /** @var TestCase $this */
         /** @var array<int, array<string, mixed>> $testData */
         $testData = $this->sushiTestData();
 
         expect($this->sushiModel()->saveToJson($testData))->toBeTrue();
-        expect(TestCase::$testJsonPath)->toBeFile();
+        expect($this->testJsonPath)->toBeFile();
 
-        $savedData = $this->readJsonFileAsArray(TestCase::$testJsonPath);
-        expect($savedData)->toHaveCount(2);
-        expect($this->jsonRecordAt($savedData, 1)['name'])->toBe('Test Item 1');
+        expect($this->readJsonFileAsArray($this->testJsonPath))->toBe($testData);
     });
 
     it('creates directory if not exists', function (): void {
-        /** @var TestCase $this */
-        if (File::exists(TestCase::$testDirectory)) {
-            File::deleteDirectory(TestCase::$testDirectory);
+        if (File::exists($this->testDirectory)) {
+            File::deleteDirectory($this->testDirectory);
         }
 
         /** @var array<int, array<string, mixed>> $testData */
         $testData = $this->sushiTestData();
 
         expect($this->sushiModel()->saveToJson($testData))->toBeTrue();
-        expect(TestCase::$testDirectory)->toBeDirectory();
-        expect(TestCase::$testJsonPath)->toBeFile();
+        expect($this->testDirectory)->toBeDirectory();
+        expect($this->testJsonPath)->toBeFile();
     });
 
     it('handles save errors gracefully', function (): void {
-        /** @var TestCase $this */
-        $expectation = File::partialMock()->shouldReceive('put');
-        if ($expectation instanceof Expectation) {
-            $expectation->andThrow(new \RuntimeException('write failed'));
-        }
+        File::shouldReceive('put')->once()->andReturn(false);
 
         /** @var array<int, array<string, mixed>> $testData */
         $testData = $this->sushiTestData();
@@ -168,10 +155,9 @@ describe('SushiToJson Trait', function (): void {
     });
 
     it('handles creating event correctly', function (): void {
-        /** @var TestCase $this */
         Auth::shouldReceive('id')->andReturn(1);
 
-        $model = new TestSushiModel();
+        $model = new TestSushiModel;
         $model->fill(['name' => 'New Item', 'description' => 'New Description']);
 
         expect($model->name)->toBe('New Item');
@@ -179,12 +165,10 @@ describe('SushiToJson Trait', function (): void {
     });
 
     it('integrates with tenant service correctly', function (): void {
-        /** @var TestCase $this */
-        expect($this->sushiModel()->getJsonFile())->toBe(TestCase::$testJsonPath);
+        expect($this->sushiModel()->getJsonFile())->toBe($this->testJsonPath);
     });
 
     it('handles large datasets efficiently', function (): void {
-        /** @var TestCase $this */
         $largeData = [];
         for ($i = 1; $i <= 1000; $i++) {
             $largeData[$i] = [
@@ -199,22 +183,20 @@ describe('SushiToJson Trait', function (): void {
 
         $startTime = microtime(true);
         expect($this->sushiModel()->saveToJson($largeData))->toBeTrue();
-        expect(microtime(true) - $startTime)->toBeLessThan(50.0);
+        expect(microtime(true) - $startTime)->toBeLessThan(1.0);
 
         $startTime = microtime(true);
         $rows = $this->sushiModel()->getSushiRows();
-        expect(microtime(true) - $startTime)->toBeLessThan(25.0);
+        expect(microtime(true) - $startTime)->toBeLessThan(0.5);
         expect($rows)->toHaveCount(1000);
     });
 
     it('maintains data integrity during operations', function (): void {
-        /** @var TestCase $this */
         /** @var array<int, array<string, mixed>> $originalData */
         $originalData = $this->sushiTestData();
-        File::put(TestCase::$testJsonPath, json_encode($originalData, JSON_PRETTY_PRINT));
+        File::put($this->testJsonPath, json_encode($originalData, JSON_PRETTY_PRINT));
 
-        expect($this->sushiModel()->loadExistingData())->toHaveCount(2);
-        expect($this->jsonRecordAt($this->sushiModel()->loadExistingData(), 1)['name'])->toBe('Test Item 1');
+        expect($this->sushiModel()->loadExistingData())->toBe($originalData);
 
         $updatedData = $originalData;
         $updatedData[1]['name'] = 'Updated Name';

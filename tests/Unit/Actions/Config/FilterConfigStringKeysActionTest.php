@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use PHPUnit\Framework\Assert;
 

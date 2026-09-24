@@ -1,14 +1,3 @@
----
-title: "Analisi Qualità - Modulo Tenant"
-module: "Tenant"
-type: concept
-tags: [quality, analysis]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "quality analysis"
-related:
-  - "./phpstan-corrections-january.md"
----
 # Analisi Qualità - Modulo Tenant
 
 **Ultimo aggiornamento**: [DATE]

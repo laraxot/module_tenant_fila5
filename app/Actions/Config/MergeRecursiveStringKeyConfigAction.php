@@ -11,10 +11,7 @@ final class MergeRecursiveStringKeyConfigAction
     use QueueableAction;
 
     /**
-     * Accetta array con chiavi di qualunque tipo: scartare quelle non stringa è
-     * il compito dell'action, non una precondizione del chiamante.
-     *
-     * @param  array<array-key, mixed>  ...$configs
+     * @param  array<string, mixed>  ...$configs
      * @return array<string, mixed>
      */
     public function execute(array ...$configs): array

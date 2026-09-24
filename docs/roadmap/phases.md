@@ -1,14 +1,3 @@
----
-title: "Fasi di sviluppo - Tenant Module"
-module: "Tenant"
-type: concept
-tags: [phases]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "phases"
-related:
-  - "./phpstan-corrections-january.md"
----
 # Fasi di sviluppo - Tenant Module
 
 ## Fase 1: Stabilità e Standard (In Corso)
@@ -16,7 +5,7 @@ related:
 - [x] PHPStan Level 10 Compliance
 - [ ] Implementazione del **Cluster Tenant** per l'amministrazione centralizzata
 - [ ] Rimozione sistematica dei file obsoleti e pulizia dei docs vuoti
-- [ ] Supporto completo per i Service Provider di Laravel 13 nella risoluzione dei tenant
+- [ ] Supporto completo per i Service Provider di Laravel 12 nella risoluzione dei tenant
 
 ## Fase 2: Onboarding Dinamico (Pianificato)
 

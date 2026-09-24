@@ -7,7 +7,6 @@ namespace Modules\Tenant\Tests\Unit;
 use Exception;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Tests\TestCase;
-use Modules\Xot\Tests\XotBasePest;
 use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
@@ -15,38 +14,33 @@ use function Safe\json_encode;
 uses(TestCase::class);
 
 beforeEach(function (): void {
-    /** @var TestCase $this */
-    TestCase::$testDirectory = storage_path('tests/sushi-json');
-    TestCase::$testJsonPath = TestCase::$testDirectory.'/test_sushi.json';
+    $this->testDirectory = storage_path('tests/sushi-json');
+    $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 
-    if (! File::exists(TestCase::$testDirectory)) {
-        File::makeDirectory(TestCase::$testDirectory, 0o755, true, true);
+    if (! File::exists($this->testDirectory)) {
+        File::makeDirectory($this->testDirectory, 0o755, true, true);
     }
 });
 
 afterEach(function (): void {
-    /** @var TestCase $this */
-    if (File::exists(TestCase::$testJsonPath)) {
-        File::delete(TestCase::$testJsonPath);
+    if (File::exists($this->testJsonPath)) {
+        File::delete($this->testJsonPath);
     }
 });
 
 it('uses isolated json path in testing environment', function (): void {
-    /** @var TestCase $this */
     $path = $this->sushiModel()->getJsonFile();
 
-    Assert::assertSame(TestCase::$testJsonPath, $path);
+    Assert::assertSame($this->testJsonPath, $path);
 });
 
 it('returns empty rows when json file is missing', function (): void {
-    /** @var TestCase $this */
     $rows = $this->sushiModel()->getSushiRows();
 
     Assert::assertSame([], $rows);
 });
 
 it('loads rows from valid json file', function (): void {
-    /** @var TestCase $this */
     $payload = [
         '1' => [
             'id' => 1,
@@ -59,7 +53,7 @@ it('loads rows from valid json file', function (): void {
         ],
     ];
 
-    File::put(TestCase::$testJsonPath, json_encode($payload, JSON_PRETTY_PRINT));
+    File::put($this->testJsonPath, json_encode($payload, JSON_PRETTY_PRINT));
 
     $rows = $this->sushiModel()->getSushiRows();
 
@@ -68,10 +62,9 @@ it('loads rows from valid json file', function (): void {
 });
 
 it('throws when json file is not an array', function (): void {
-    /** @var TestCase $this */
-    File::put(TestCase::$testJsonPath, json_encode('not-an-array'));
+    File::put($this->testJsonPath, json_encode('not-an-array'));
 
-    XotBasePest::assertThrows(
+    assertTenantThrows(
         fn (): array => $this->sushiModel()->getSushiRows(),
         Exception::class
     );

@@ -14,7 +14,7 @@ use PHPUnit\Framework\Assert;
 use function Safe\file_put_contents;
 use function Safe\unlink;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 it('gets localized markdown path if it exists', function (): void {
     App::setLocale('it');
@@ -25,10 +25,11 @@ it('gets localized markdown path if it exists', function (): void {
 
     /** @var TestCase $this */
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($tempFile): void {
-        TestCase::expectMockery($mock, 'execute')
-            ->andReturnUsing(static function (string $path) use ($tempFile): string {
+        $mock->allows([
+            'execute' => static function (string $path) use ($tempFile): string {
                 return $path === 'lang/it/test.md' ? $tempFile : '/non/existent/path.md';
-            });
+            },
+        ]);
     });
 
     $result = app(GetLocalizedMarkdownPathAction::class)->execute('test.md');
@@ -47,10 +48,11 @@ it('gets fallback markdown path if localized does not exist', function (): void 
 
     /** @var TestCase $this */
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($tempFile): void {
-        TestCase::expectMockery($mock, 'execute')
-            ->andReturnUsing(static function (string $path) use ($tempFile): string {
+        $mock->allows([
+            'execute' => static function (string $path) use ($tempFile): string {
                 return $path === 'fallback.md' ? $tempFile : '/non/existent/path.md';
-            });
+            },
+        ]);
     });
 
     $result = app(GetLocalizedMarkdownPathAction::class)->execute('fallback.md');

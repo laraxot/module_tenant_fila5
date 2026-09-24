@@ -1,14 +1,3 @@
----
-title: "Workstreams - Tenant"
-module: "Tenant"
-type: concept
-tags: [03, workstreams]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "03 workstreams"
-related:
-  - "./phpstan-corrections-january.md"
----
 # Workstreams - Tenant
 
 ## WS1 Architecture

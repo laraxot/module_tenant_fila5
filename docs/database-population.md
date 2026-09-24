@@ -1,14 +1,3 @@
----
-title: "Popolamento Database - Modulo Tenant"
-module: "Tenant"
-type: concept
-tags: [database, population]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "database population"
-related:
-  - "./phpstan-corrections-january.md"
----
 # Popolamento Database - Modulo Tenant
 
 ## Aggiornamento [DATE] – Test Sushi Seeder
@@ -307,7 +296,7 @@ private function generateRealisticDomain(string $tenantName, string $sector): st
 
 ## Collegamenti
 
-- [README Modulo Tenant](README.md)
+- [README Modulo Tenant](./readme.md)
 - [Multi-Tenancy Architecture](./multi-tenancy.md)
 - [Database Schema](./database-schema.md)
 - [Testing Guidelines](./testing.md)
