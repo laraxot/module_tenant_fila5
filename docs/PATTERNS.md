@@ -9,13 +9,6 @@ last_updated: 2026-07-28
 
 **Last updated: 2026-07-28**
 
-<<<<<<< .merge_file_vTqfDN
-> **Nota 2026-09-17**: questo documento descrive pattern in gran parte aspirazionali (`HasTenant` trait,
-> `TenantContext`, middleware `resolve.tenant`) non presenti nel codice attuale — vedi il banner di
-> verifica in [architecture.md](./architecture.md) per il dettaglio di cosa esiste davvero.
-
-=======
->>>>>>> .merge_file_7ZUQXE
 This document describes the core architectural patterns used in the Tenant module to ensure isolation, security, and maintainability.
 
 ---

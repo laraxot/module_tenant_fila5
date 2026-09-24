@@ -92,8 +92,6 @@ In tutti e 4 i casi il corpo della funzione fa immediatamente narrowing a runtim
 e' esattamente il pattern raccomandato per confinare un `mixed` di provenienza framework, non
 un caso di "mixed non ancora sostituito". Nessun cambio applicato — follow-up chiuso come
 "confermato corretto", non come "da fare".
-<<<<<<< .merge_file_DmIQlg
-=======
 
 ### Conferma — caster ultima spiaggia (non toccare)
 
@@ -101,4 +99,3 @@ un caso di "mixed non ancora sostituito". Nessun cambio applicato — follow-up 
 ricevono righe Sushi `array<string, mixed>`, `Model::getAttribute()` o
 `config()`. Il narrowing è nel corpo. Restringere la firma sarebbe un typing
 disonesto verso il framework.
->>>>>>> .merge_file_ZqxKEF

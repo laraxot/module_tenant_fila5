@@ -3,42 +3,11 @@ title: Tenant Module Architecture
 module: Tenant
 type: architecture
 tags: [design, patterns, isolation, multi-tenancy]
-<<<<<<< .merge_file_qCm201
-last_updated: 2026-09-17
-=======
 last_updated: 2026-08-04
->>>>>>> .merge_file_JHP3i9
 ---
 
 # Tenant Module Architecture
 
-<<<<<<< .merge_file_qCm201
-> **Accuratezza verificata 2026-09-17** (risolto anche un conflitto di merge irrisolto in questo file):
-> gran parte di questo documento (`HasTenant` trait, `TenantContext`, `TenantMiddleware`/`SetTenant`,
-> `DomainResolver`, `ConfigResolver`, relazione `Domain::belongsTo(Tenant)`, eventi `TenantResolvedEvent`/
-> `TenantCreatedEvent`, switching di connessione DB per-request) descrive un'architettura SaaS
-> per-request **non implementata** in `Modules/Tenant/app`. Trattare gli esempi di codice sotto come
-> **aspirazionali/illustrativi**, non come descrizione dello stato attuale.
->
-> Quello che esiste davvero e verificato contro il codice:
-> - `Modules\Tenant\Models\Tenant` (fillable: `name,domain,database,slug,settings,is_active,...`),
->   relazione `users(): HasMany`, **nessun** metodo `domains()/settings()/subscriptions()`.
-> - `Modules\Tenant\Models\Domain` e `Modules\Tenant\Models\TenantDomain` sono modelli **Sushi** (righe
->   generate da `GetDomainsArrayAction`/config), non tabelle relazionali con FK verso `Tenant`.
-> - `Modules\Tenant\Services\TenantService` esiste (aggiunta dopo la verifica del 2026-07-24 più sotto)
->   ma è una facade sottile che delega alle Actions in `app/Actions/Config/` per la risoluzione di
->   config **per ambiente/deployment** (`laravel/config/{env}/{tenant}/`), non per switching di
->   connessione DB o query scoping per-request.
-> - `app/Http/Middleware/` è vuota (solo `.gitkeep`): nessun `TenantMiddleware`/`SetTenant`/`ResolveTenant`.
-> - Nessun trait `HasTenant`/`BelongsToTenant` in `app/Models/Traits/` (solo `SushiToJson(s)`,
->   `SushiToCsv`, `SushiToPhpArray`).
->
-> Per il quadro reale (config per-tenant su file, non isolamento query per-request) vedi
-> [00-index.md](./00-index.md) e [wiki/index.md](./wiki/index.md). Riferimento gap analysis più ampio:
-> [Xot — stato qualità progetto](../../Xot/docs/stato-qualita-progetto-2026-08-31.md) (se presente).
-
-=======
->>>>>>> .merge_file_JHP3i9
 ## Core Principles
 
 ### 1. Complete Data Isolation
@@ -374,11 +343,7 @@ $this->mock(DomainResolver::class)
 - [Configuration Reference](configuration.md)
 - [Module README](../README.md)
 - [Testing Guide](../tests/Feature/README.md)
-<<<<<<< .merge_file_qCm201
-- [Documentation Index](index.md)
-=======
 - [Contributing Guidelines](./.github/CONTRIBUTING.md)
->>>>>>> .merge_file_JHP3i9
 
 ---
 
@@ -479,21 +444,11 @@ Per-tenant configuration files override system defaults, enabling customization 
 ### Services & Actions
 
 #### `TenantService`
-<<<<<<< .merge_file_qCm201
-- ⚠️ **Verificato 2026-07-24**: la classe `TenantService` non esisteva nel codice a quella data.
-- ✅ **Aggiornamento 2026-09-17**: `Modules\Tenant\Services\TenantService` **ora esiste**
-  (`app/Services/TenantService.php`), ma è una facade sottile a metodi statici che delega ogni chiamata
-  a una Action in `app/Actions/Config/*` o `app/Actions/*` (`getName()`, `config()`, `saveConfig()`,
-  `model()`, `trans()`, `allModules()`, ecc.). Non contiene switching di connessione DB né query scoping:
-  resta un accessor per la configurazione tenant-aware su file, non il motore di isolamento dati
-  descritto più sopra in questo documento.
-=======
 - ⚠️ **Verificato 2026-07-24: la classe `TenantService` non esiste nel codice** (nessun `app/Services/`
   neanche come cartella; `grep -rn "class TenantService"` non trova nulla se non un riferimento in
   `docs/business-logic-deep-dive.md`, anch'esso probabilmente aspirazionale). Il coordinamento reale di
   registrazione/config avviene in `app/Providers/TenantServiceProvider.php` e nelle Action sotto
   (`app/Actions/Config/*`). Non chiamare `TenantService::` in nuovo codice finché la classe non esiste davvero.
->>>>>>> .merge_file_JHP3i9
 
 #### `GetTenantNameAction`
 - **Invokable:** QueueableAction
@@ -641,13 +596,7 @@ Per-tenant configuration files override system defaults, enabling customization 
 ## Related Files
 
 - [API Reference](./API.md)
-<<<<<<< .merge_file_qCm201
-- [Troubleshooting](./TROUBLESHOOTING.md)
-- [Patterns](./PATTERNS.md)
-- Module Tests: `tests/Feature/`, `tests/Unit/` (verificare i percorsi esatti nel modulo prima di citarli in dettaglio)
-=======
 - [Setup Guide](./SETUP.md)
 - [Troubleshooting](troubleshooting.md)
 - [Best Practices](./BEST_PRACTICES.md)
 - Module Tests: `tests/Feature/TenantBusinessLogicTest.php`, `tests/Unit/Actions/`
->>>>>>> .merge_file_JHP3i9
