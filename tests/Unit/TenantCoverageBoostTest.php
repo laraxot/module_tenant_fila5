@@ -46,7 +46,15 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
+<<<<<<< .merge_file_z8RsWH
+uses(\Modules\Tenant\Tests\TestCase::class);
+=======
+<<<<<<< .merge_file_CG0Bzg
+uses(\Modules\Tenant\Tests\TestCase::class);
+=======
 uses(TestCase::class);
+>>>>>>> .merge_file_MTP4mf
+>>>>>>> .merge_file_1sqAUv
 
 afterEach(function (): void {
     Mockery::close();
@@ -85,7 +93,15 @@ describe('Tenant coverage boost — Domain sushi', function (): void {
             ]]);
         });
 
+<<<<<<< .merge_file_z8RsWH
+        $rows = (new Domain())->getRows();
+=======
+<<<<<<< .merge_file_CG0Bzg
+        $rows = (new Domain())->getRows();
+=======
         $rows = (new Domain)->getRows();
+>>>>>>> .merge_file_MTP4mf
+>>>>>>> .merge_file_1sqAUv
 
         Assert::assertCount(1, $rows);
         Assert::assertSame('tenant.example.com', $rows[0]['name']);
@@ -104,12 +120,28 @@ describe('Tenant coverage boost — Models and resolvers', function (): void {
     test('StandardConfigResolver resolves existing config keys', function (): void {
         config(['app' => ['name' => 'Base App', 'locale' => 'it']]);
 
+<<<<<<< .merge_file_z8RsWH
+        $resolver = new StandardConfigResolver();
+=======
+<<<<<<< .merge_file_CG0Bzg
+        $resolver = new StandardConfigResolver();
+=======
         $resolver = new StandardConfigResolver;
+>>>>>>> .merge_file_MTP4mf
+>>>>>>> .merge_file_1sqAUv
 
         Assert::assertTrue($resolver->canResolve('app.name'));
         Assert::assertSame('Base App', $resolver->resolve('app.name'));
 
+<<<<<<< .merge_file_z8RsWH
+        expect(fn (): mixed => $resolver->resolve('app.missing', 'fallback'))
+=======
+<<<<<<< .merge_file_CG0Bzg
+        expect(fn (): mixed => $resolver->resolve('app.missing', 'fallback'))
+=======
         expect(fn (): float|int|string|array|null => $resolver->resolve('app.missing', 'fallback'))
+>>>>>>> .merge_file_MTP4mf
+>>>>>>> .merge_file_1sqAUv
             ->toThrow(\Exception::class, 'Configuration key not found: app.missing');
     });
 });
@@ -165,7 +197,15 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
         $resourcePages = DomainResource::getPages();
         $formSchema = app(DomainForm::class)->getFormSchema();
         $infolistSchema = app(DomainInfolist::class)->getInfolistSchema();
+<<<<<<< .merge_file_z8RsWH
+        $tableColumns = (new DomainsTable())->getTableColumns();
+=======
+<<<<<<< .merge_file_CG0Bzg
+        $tableColumns = (new DomainsTable())->getTableColumns();
+=======
         $tableColumns = (new DomainsTable)->getTableColumns();
+>>>>>>> .merge_file_MTP4mf
+>>>>>>> .merge_file_1sqAUv
 
         Assert::assertArrayHasKey('index', $resourcePages);
         Assert::assertArrayHasKey('title', $formSchema);
@@ -187,11 +227,25 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
             static fn (string $permission): bool => in_array($permission, ['domain.view', 'domain.update'], true),
         );
 
+<<<<<<< .merge_file_z8RsWH
+=======
+<<<<<<< .merge_file_CG0Bzg
+>>>>>>> .merge_file_1sqAUv
+        $policy = new DomainPolicy();
+        $domain = new Domain();
+        $domain->exists = true;
+
+        Assert::assertTrue((new class() extends TenantBasePolicy {})->before($superAdmin, 'viewAny'));
+<<<<<<< .merge_file_z8RsWH
+=======
+=======
         $policy = new DomainPolicy;
         $domain = new Domain;
         $domain->exists = true;
 
         Assert::assertTrue((new class extends TenantBasePolicy {})->before($superAdmin, 'viewAny'));
+>>>>>>> .merge_file_MTP4mf
+>>>>>>> .merge_file_1sqAUv
         Assert::assertTrue($policy->view($editor, $domain));
         Assert::assertTrue($policy->update($editor, $domain));
         Assert::assertFalse($policy->delete($editor, $domain));
@@ -204,13 +258,35 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
     });
 
     test('config resolver registry prefers matching resolvers and database config casts', function (): void {
+<<<<<<< .merge_file_z8RsWH
+        $registry = new ConfigResolverRegistry();
+=======
+<<<<<<< .merge_file_CG0Bzg
+        $registry = new ConfigResolverRegistry();
+=======
         $registry = new ConfigResolverRegistry;
+>>>>>>> .merge_file_MTP4mf
+>>>>>>> .merge_file_1sqAUv
 
         $databaseResolver = $registry->findResolver('database');
         $fallbackResolver = $registry->findResolver('custom.key');
 
         Assert::assertInstanceOf(DatabaseConfigResolver::class, $databaseResolver);
         Assert::assertInstanceOf(StandardConfigResolver::class, $fallbackResolver);
+<<<<<<< .merge_file_z8RsWH
+=======
+<<<<<<< .merge_file_CG0Bzg
+>>>>>>> .merge_file_1sqAUv
+        Assert::assertFalse((new MorphMapConfigResolver())->canResolve('morph_map'));
+
+        $model = new DatabaseConfig();
+        Assert::assertSame('integer', $model->getCasts()['port']);
+        Assert::assertSame('array', $model->getCasts()['options']);
+
+        $resolver = new class() implements ConfigResolverInterface
+<<<<<<< .merge_file_z8RsWH
+=======
+=======
         Assert::assertFalse((new MorphMapConfigResolver)->canResolve('morph_map'));
 
         $model = new DatabaseConfig;
@@ -218,6 +294,8 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
         Assert::assertSame('array', $model->getCasts()['options']);
 
         $resolver = new class implements ConfigResolverInterface
+>>>>>>> .merge_file_MTP4mf
+>>>>>>> .merge_file_1sqAUv
         {
             public function canResolve(string $key): bool
             {
@@ -253,7 +331,15 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
             );
         });
 
+<<<<<<< .merge_file_z8RsWH
+        $model = new class() extends BaseModelJsons
+=======
+<<<<<<< .merge_file_CG0Bzg
+        $model = new class() extends BaseModelJsons
+=======
         $model = new class extends BaseModelJsons
+>>>>>>> .merge_file_MTP4mf
+>>>>>>> .merge_file_1sqAUv
         {
             protected $table = 'catalog';
 
@@ -280,7 +366,15 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
             );
         });
 
+<<<<<<< .merge_file_z8RsWH
+        $model = new class() extends Model
+=======
+<<<<<<< .merge_file_CG0Bzg
+        $model = new class() extends Model
+=======
         $model = new class extends Model
+>>>>>>> .merge_file_MTP4mf
+>>>>>>> .merge_file_1sqAUv
         {
             use SushiToCsv;
 
@@ -311,7 +405,15 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
                 ['name' => 'Beta', 'meta' => '{"x":1}'],
             ]]);
         });
+<<<<<<< .merge_file_z8RsWH
+        $model = new class() extends SocialProvider
+=======
+<<<<<<< .merge_file_CG0Bzg
+        $model = new class() extends SocialProvider
+=======
         $model = new class extends SocialProvider
+>>>>>>> .merge_file_MTP4mf
+>>>>>>> .merge_file_1sqAUv
         {
             protected $table = 'tenant_configs';
 
