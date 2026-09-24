@@ -46,11 +46,7 @@ class ConfigResolverRegistry
         }
 
         // Fallback to standard resolver
-<<<<<<< .merge_file_raXIcS
         return new StandardConfigResolver();
-=======
-        return new StandardConfigResolver;
->>>>>>> .merge_file_rP0BUN
     }
 
     /**
@@ -59,14 +55,8 @@ class ConfigResolverRegistry
      */
     private function registerDefaultResolvers(): void
     {
-<<<<<<< .merge_file_raXIcS
         $this->register(new MorphMapConfigResolver())
             ->register(new DatabaseConfigResolver())
             ->register(new StandardConfigResolver());
-=======
-        $this->register(new MorphMapConfigResolver)
-            ->register(new DatabaseConfigResolver)
-            ->register(new StandardConfigResolver);
->>>>>>> .merge_file_rP0BUN
     }
 }
