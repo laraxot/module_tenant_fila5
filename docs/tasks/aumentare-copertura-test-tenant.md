@@ -1,3 +1,14 @@
+---
+title: "Task: Aumentare Copertura Test Tenant"
+module: "Tenant"
+type: concept
+tags: [aumentare, copertura, test, tenant]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "aumentare copertura test tenant"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Task: Aumentare Copertura Test Tenant
 
 **Modulo**: Tenant  

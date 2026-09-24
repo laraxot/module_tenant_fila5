@@ -10,12 +10,11 @@ final class MergeRecursiveStringKeyConfigAction
 {
     use QueueableAction;
 
-    public function __construct(
-        private readonly FilterConfigStringKeysAction $filterConfigStringKeysAction,
-    ) {}
-
     /**
-     * @param  array<string, mixed>  ...$configs
+     * Accetta array con chiavi di qualunque tipo: scartare quelle non stringa è
+     * il compito dell'action, non una precondizione del chiamante.
+     *
+     * @param  array<array-key, mixed>  ...$configs
      * @return array<string, mixed>
      */
     public function execute(array ...$configs): array
@@ -27,12 +26,12 @@ final class MergeRecursiveStringKeyConfigAction
             /** @var array<string, mixed> $merged */
             $merged = array_replace_recursive(
                 $merged,
-                $this->filterConfigStringKeysAction->execute($config),
+                app(FilterConfigStringKeysAction::class)->execute($config),
             );
         }
 
         /** @var array<string, mixed> $filtered */
-        $filtered = $this->filterConfigStringKeysAction->execute($merged);
+        $filtered = app(FilterConfigStringKeysAction::class)->execute($merged);
 
         return $filtered;
     }

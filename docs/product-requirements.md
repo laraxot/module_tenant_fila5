@@ -1,3 +1,14 @@
+---
+title: "Product Requirements Document (PRD)"
+module: "Tenant"
+type: concept
+tags: [product, requirements]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "product requirements"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Product Requirements Document (PRD)
 
 ## Metadata

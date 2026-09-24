@@ -1,3 +1,14 @@
+---
+title: "Product Launch Plan - Tenant Module"
+module: "Tenant"
+type: concept
+tags: [launch]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "launch"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Product Launch Plan - Tenant Module
 
 ## Checklist

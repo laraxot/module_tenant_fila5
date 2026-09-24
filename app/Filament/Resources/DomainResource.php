@@ -7,7 +7,6 @@ namespace Modules\Tenant\Filament\Resources;
 use Modules\Tenant\Filament\Resources\DomainResource\Pages\CreateDomain;
 use Modules\Tenant\Filament\Resources\DomainResource\Pages\EditDomain;
 use Modules\Tenant\Filament\Resources\DomainResource\Pages\ListDomains;
-use Modules\Tenant\Filament\Resources\DomainResource\Schemas\DomainForm;
 use Modules\Tenant\Models\Domain;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
@@ -16,12 +15,9 @@ class DomainResource extends XotBaseResource
 {
     protected static ?string $model = Domain::class;
 
-    #[Override]
-    public static function getFormSchema(): array
-    {
-        return DomainForm::getFormSchema();
-    }
-
+    /**
+     * @return array<string, mixed>
+     */
     #[Override]
     public static function getRelations(): array
     {

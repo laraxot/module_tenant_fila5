@@ -7,7 +7,6 @@ namespace Modules\Tenant\Actions\Domains;
 // use Illuminate\Support\Facades\File;
 // use Illuminate\Support\Facades\Storage;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -20,24 +19,17 @@ class GetDomainsArrayAction
      */
     public function execute(): array
     {
-        $cacheKey = 'tenant_domains_array_'.md5(config_path());
+        $res = $this->recurse(config_path());
+        /** @var array<string, mixed> $res */
+        $res1 = $this->collapse($res);
 
-        /** @var array<int, array{id: string, name: string}> $mapped */
-        $mapped = Cache::remember($cacheKey, 300, function (): array {
-            $res = $this->recurse(config_path());
-            /** @var array<string, mixed> $res */
-            $res1 = $this->collapse($res);
-
-            $items = [];
-            foreach ($res1 as $value) {
-                $items[] = [
-                    'id' => $value,
-                    'name' => $value,
-                ];
-            }
-
-            return $items;
-        });
+        $mapped = [];
+        foreach ($res1 as $value) {
+            $mapped[] = [
+                'id' => $value,
+                'name' => $value,
+            ];
+        }
 
         return $mapped;
     }
@@ -47,11 +39,10 @@ class GetDomainsArrayAction
      */
     public function recurse(string $path): array
     {
-        $filesystem = new Filesystem();
+        $filesystem = new Filesystem;
         $directories = $filesystem->directories($path);
         $res = [];
         foreach ($directories as $dir) {
-            // Type narrowing: directories() returns array but items are mixed
             if (! is_string($dir)) {
                 continue;
             }
@@ -66,8 +57,7 @@ class GetDomainsArrayAction
     }
 
     /**
-     * @param array<string, mixed> $data
-     *
+     * @param  array<string, mixed>  $data
      * @return array<int, string>
      */
     public function collapse(array $data, string $keyPrefix = ''): array

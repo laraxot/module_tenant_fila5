@@ -1,16 +1,16 @@
 <?php
 
+declare(strict_types=1);
 /**
  * @see https://dev.to/hasanmn/automatically-update-createdby-and-updatedby-in-laravel-using-bootable-traits-28g9.
  */
-
-declare(strict_types=1);
 
 namespace Modules\Tenant\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
+use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
 use Sushi\Sushi;
 
 /** @phpstan-ignore trait.unused */
@@ -27,7 +27,7 @@ trait SushiToPhpArray
     {
         $name = Str::of($this->getTable())->replace('_', '-')->toString();
 
-        $rows = app(\Modules\Tenant\Actions\Config\GetTenantConfigArrayAction::class)->execute($name);
+        $rows = app(GetTenantConfigArrayAction::class)->execute($name);
 
         /** @var array<int, array<string, mixed>> $normalized */
         $normalized = [];
@@ -37,7 +37,6 @@ trait SushiToPhpArray
                 continue;
             }
 
-            /** @var array<string, mixed> $item */
             $normalized[] = app(FilterConfigStringKeysAction::class)->execute($item);
         }
 
@@ -46,26 +45,12 @@ trait SushiToPhpArray
 
     protected static function bootSushiToPhpArray(): void
     {
-        static::creating(static function ($model): void {
-            if (! $model instanceof Model) {
-                return;
-            }
-
+        static::creating(static function (Model $model): void {
             $model->toArray();
         });
 
-        static::updating(static function ($model): void {
-            if (! $model instanceof Model) {
-                return;
-            }
-
+        static::updating(static function (Model $model): void {
             $model->toArray();
-        });
-
-        static::deleting(static function ($model): void {
-            if (! $model instanceof Model) {
-                return;
-            }
         });
     }
 }

@@ -9,6 +9,16 @@ last_updated: 2026-07-28
 
 **Last updated: 2026-07-28**
 
+<<<<<<< .merge_file_QBtfdq
+=======
+<<<<<<< .merge_file_sxzxDn
+> **Nota 2026-09-17**: gli scenari sotto assumono middleware/trait (`resolve.tenant`, `HasTenant`,
+> `TenantContext`) non presenti nel codice attuale — vedi il banner di verifica in
+> [architecture.md](./architecture.md) prima di applicare questi passi alla lettera.
+
+=======
+>>>>>>> .merge_file_V20Kmp
+>>>>>>> .merge_file_jmLcE8
 This guide addresses common issues, errors, and scenarios in the Tenant module.
 
 ---
@@ -484,8 +494,12 @@ php artisan migrate --database=tenant_123
 
 ---
 
+<<<<<<< .merge_file_QBtfdq
 <<<<<<< HEAD
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](PATTERNS.md)
 =======
 Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Patterns](PATTERNS.md)
 >>>>>>> laraxot/dev
+=======
+Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](PATTERNS.md)
+>>>>>>> .merge_file_jmLcE8
