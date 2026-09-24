@@ -4,19 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Models;
 
-<<<<<<< .merge_file_5ZxSc6
-<<<<<<< HEAD
-=======
-use Carbon\Carbon;
->>>>>>> .merge_file_f1o4eL
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Modules\Tenant\Database\Factories\TenantSubscriptionFactory;
-use Modules\Xot\Contracts\ProfileContract;
-
-/**
-<<<<<<< .merge_file_5ZxSc6
-=======
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -25,43 +12,18 @@ use Modules\Xot\Contracts\ProfileContract;
 
 /**
  * @property int|null $id
->>>>>>> 1ad0554 (.)
-=======
- * @property int|null $id
->>>>>>> .merge_file_f1o4eL
  * @property string|null $tenant_id
  * @property string|null $plan_name
  * @property string|null $status
  * @property int|null $max_users
  * @property int|null $current_users
-<<<<<<< .merge_file_5ZxSc6
-<<<<<<< HEAD
- * @property int|null $max_storage_gb
- * @property int|null $current_storage_gb
-=======
  * @property float|null $max_storage_gb
  * @property float|null $current_storage_gb
->>>>>>> 1ad0554 (.)
-=======
- * @property float|null $max_storage_gb
- * @property float|null $current_storage_gb
->>>>>>> .merge_file_f1o4eL
  * @property string|null $billing_cycle
  * @property float|null $billing_amount
  * @property Carbon|null $next_billing_date
  * @property Carbon|null $expires_at
-<<<<<<< .merge_file_5ZxSc6
-<<<<<<< HEAD
- * @property-read Tenant|null $tenant
  *
- * @method static Builder<static>|TenantSubscription newModelQuery()
- * @method static Builder<static>|TenantSubscription newQuery()
- * @method static Builder<static>|TenantSubscription query()
-=======
- *
-=======
- *
->>>>>>> .merge_file_f1o4eL
  * @method static Builder|TenantSubscription newModelQuery()
  * @method static Builder|TenantSubscription newQuery()
  * @method static Builder|TenantSubscription query()
@@ -85,10 +47,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static TenantSubscriptionFactory factory($count = null, $state = [])
  *
  * @property-read Tenant|null $tenant
-<<<<<<< .merge_file_5ZxSc6
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_f1o4eL
  *
  * @mixin \Eloquent
  */
@@ -116,16 +74,8 @@ class TenantSubscription extends BaseModel
 
     /**
      * Get the attributes that should be cast.
-<<<<<<< .merge_file_5ZxSc6
-<<<<<<< HEAD
-=======
      *
      * @return array<string, string>
->>>>>>> 1ad0554 (.)
-=======
-     *
-     * @return array<string, string>
->>>>>>> .merge_file_f1o4eL
      */
     protected function casts(): array
     {

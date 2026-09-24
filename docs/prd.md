@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_1aAiqB
-<<<<<<< HEAD
----
-title: "Product Requirements Document (PRD) - Tenant Module"
-module: "Tenant"
-type: concept
-tags: [PRD]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "prd"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_shUNQa
 # Product Requirements Document (PRD) - Tenant Module
 
 **Module**: Tenant
@@ -332,15 +315,7 @@ graph TD
 
 ### 7.4 Technical Constraints
 - PHP 8.3+ required
-<<<<<<< .merge_file_1aAiqB
-<<<<<<< HEAD
-- Laravel 13+ required
-=======
 - Laravel 12+ required
->>>>>>> 1ad0554 (.)
-=======
-- Laravel 12+ required
->>>>>>> .merge_file_shUNQa
 - Tenancy package compatibility
 - Database support (MySQL, PostgreSQL)
 
@@ -450,21 +425,9 @@ CREATE TABLE tenant_quotas (
 - [Stancl Tenancy Package](https://github.com/stancl/tenancy)
 
 ### 11.3 Related PRDs
-<<<<<<< .merge_file_1aAiqB
-<<<<<<< HEAD
-- [User Module PRD](../User/docs/PRD.md)
-- [Gdpr Module PRD](../Gdpr/docs/PRD.md)
-- [UI Module PRD](../UI/docs/PRD.md)
-=======
 - [User Module prd](../User/docs/prd.md)
 - [Gdpr Module prd](../Gdpr/docs/prd.md)
 - [UI Module prd](../UI/docs/prd.md)
->>>>>>> 1ad0554 (.)
-=======
-- [User Module prd](../User/docs/prd.md)
-- [Gdpr Module prd](../Gdpr/docs/prd.md)
-- [UI Module prd](../UI/docs/prd.md)
->>>>>>> .merge_file_shUNQa
 
 ---
 

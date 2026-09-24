@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_dGIaP7
-<<<<<<< HEAD
----
-title: "Dependencies"
-module: "Tenant"
-type: concept
-tags: [dependencies]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "dependencies"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_9Ar0Ay
 
 
 Installed packages index:

@@ -1,14 +1,7 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_8mU1Cn
-<<<<<<< HEAD
-=======
 
->>>>>>> 1ad0554 (.)
-=======
-
->>>>>>> .merge_file_zSmb1u
 use Nwidart\Modules\Activators\FileActivator;
 use Nwidart\Modules\Providers\ConsoleServiceProvider;
 

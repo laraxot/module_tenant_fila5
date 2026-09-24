@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_fdaPfB
-<<<<<<< HEAD
----
-title: "Current State - Tenant"
-module: "Tenant"
-type: concept
-tags: [01, current, state]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "01 current state"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_sedmbr
 # Current State - Tenant
 
 ## Baseline

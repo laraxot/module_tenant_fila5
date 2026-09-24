@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_kivkrT
-<<<<<<< HEAD
----
-title: "Task: Creazione TenantSubscription Model"
-module: "Tenant"
-type: concept
-tags: [creazione, tenant, subscription, model]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "creazione tenant subscription model"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_Xwa2Av
 # Task: Creazione TenantSubscription Model
 
 **Modulo**: Tenant  

@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_8zWWPg
-<<<<<<< HEAD
----
-title: "Bugfix: `inAdmin()` undefined during `package:discover`"
-module: "Tenant"
-type: concept
-tags: [inadmin, helper, autoload]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "inadmin helper autoload"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_XgeTpN
 # Bugfix: `inAdmin()` undefined during `package:discover`
 
 ## Symptom

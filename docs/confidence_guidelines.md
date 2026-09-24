@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_aVyK1B
-<<<<<<< HEAD
----
-title: "Massimizzare il livello di confidenza"
-module: "Tenant"
-type: how-to
-tags: [confidence, guidelines]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "confidence guidelines"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_85wdNL
 # Massimizzare il livello di confidenza
 
 1. **Test automatizzati**: copertura >90%, includi test unitari, integrazione, e fine‑to‑end.

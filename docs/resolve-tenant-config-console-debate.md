@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_DwnmfJ
-<<<<<<< HEAD
----
-title: "ResolveTenantConfigValueAction - Console Check Debate"
-module: "Tenant"
-type: concept
-tags: [resolve, tenant, config, console]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "resolve tenant config console debate"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_gcrl4v
 # ResolveTenantConfigValueAction - Console Check Debate
 
 **Status**: 🔥 FURIOUS INTERNAL DEBATE

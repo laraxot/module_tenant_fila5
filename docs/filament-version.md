@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_Deavhl
-<<<<<<< HEAD
----
-title: "Filament Version Declaration — Tenant"
-module: "Tenant"
-type: concept
-tags: [filament, version]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "filament version"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_ZQZyRz
 # Filament Version Declaration — Tenant
 
 **Current Version**: Filament v5 (Livewire v4 + Schemas)

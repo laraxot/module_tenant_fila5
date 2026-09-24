@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_9jpM3o
-<<<<<<< HEAD
----
-title: "Sprint Planning Meeting - Tenant Module"
-module: "Tenant"
-type: concept
-tags: [sprint]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "sprint"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_4S0600
 # Sprint Planning Meeting - Tenant Module
 
 ## DoD (Definition of Done)

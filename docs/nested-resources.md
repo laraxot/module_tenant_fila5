@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_CmkQ6b
-<<<<<<< HEAD
----
-title: "Tenant Module - Nested Resource Implementation Guide"
-module: "Tenant"
-type: concept
-tags: [nested, resources]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "nested resources"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_u50ew5
 # Tenant Module - Nested Resource Implementation Guide
 
 ## Overview

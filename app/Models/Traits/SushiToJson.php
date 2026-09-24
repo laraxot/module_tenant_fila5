@@ -5,22 +5,11 @@ declare(strict_types=1);
 namespace Modules\Tenant\Models\Traits;
 
 use Exception;
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-use Illuminate\Database\Eloquent\Model;
-=======
 use Illuminate\Support\Facades\Auth;
->>>>>>> .merge_file_TtozBO
 use Illuminate\Support\Facades\File;
 use InvalidArgumentException;
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
-=======
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use InvalidArgumentException;
-use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
->>>>>>> 1ad0554 (.)
 use Sushi\Sushi;
 use Throwable;
 use Webmozart\Assert\Assert;
@@ -51,22 +40,11 @@ trait SushiToJson
     public function getJsonFile(): string
     {
         $tbl = $this->getTable();
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-=======
         if (! is_string($tbl)) {
             throw new InvalidArgumentException(__FILE__.':'.__LINE__.' - '.class_basename(self::class).': Table name must be string');
         }
->>>>>>> .merge_file_TtozBO
 
         return app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
-=======
-        if (! is_string($tbl)) {
-            throw new InvalidArgumentException(__FILE__.':'.__LINE__.' - '.class_basename(self::class).': Table name must be string');
-        }
-
-        return app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
->>>>>>> 1ad0554 (.)
     }
 
     /**
@@ -84,21 +62,9 @@ trait SushiToJson
      * Ottiene i dati dal file JSON per il modello Sushi.
      * I dati vengono normalizzati per garantire compatibilità con Eloquent.
      *
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-     * @return array<int, array<string, mixed>>
-     *
-     * @phpstan-return array<int, array<string, mixed>>
-=======
      * @return array<int, array<string, mixed>> Array di record per Sushi
      *
      * @throws Exception Se i dati non sono in formato array valido
->>>>>>> 1ad0554 (.)
-=======
-     * @return array<int, array<string, mixed>> Array di record per Sushi
-     *
-     * @throws Exception Se i dati non sono in formato array valido
->>>>>>> .merge_file_TtozBO
      */
     public function getSushiRows(): array
     {
@@ -119,10 +85,6 @@ trait SushiToJson
                 continue;
             }
 
-<<<<<<< HEAD
-=======
-            /** @var array<string, mixed> $item */
->>>>>>> 1ad0554 (.)
             $typedData[] = app(FilterConfigStringKeysAction::class)->execute($item);
         }
 
@@ -209,19 +171,10 @@ trait SushiToJson
         $maxId = 0;
 
         foreach ($existingData as $row) {
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-=======
-=======
->>>>>>> .merge_file_TtozBO
             if (! \is_array($row)) {
                 continue;
             }
 
-<<<<<<< .merge_file_k7l3Tm
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_TtozBO
             $rawId = $row['id'] ?? 0;
             $id = \is_numeric($rawId) ? (int) $rawId : 0;
             $maxId = max($maxId, $id);
@@ -237,41 +190,17 @@ trait SushiToJson
      */
     protected static function bootSushiToJson(): void
     {
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-        static::creating(static function (Model $model): void {
-=======
         static::creating(static function ($model): void {
->>>>>>> 1ad0554 (.)
-=======
-        static::creating(static function ($model): void {
->>>>>>> .merge_file_TtozBO
             Assert::isInstanceOf($model, static::class);
             self::handleSingleJsonCreating($model);
         });
 
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-        static::updating(static function (Model $model): void {
-=======
         static::updating(static function ($model): void {
->>>>>>> 1ad0554 (.)
-=======
-        static::updating(static function ($model): void {
->>>>>>> .merge_file_TtozBO
             Assert::isInstanceOf($model, static::class);
             self::handleSingleJsonUpdating($model);
         });
 
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-        static::deleting(static function (Model $model): void {
-=======
         static::deleting(static function ($model): void {
->>>>>>> 1ad0554 (.)
-=======
-        static::deleting(static function ($model): void {
->>>>>>> .merge_file_TtozBO
             Assert::isInstanceOf($model, static::class);
             self::handleSingleJsonDeleting($model);
         });
@@ -286,15 +215,6 @@ trait SushiToJson
     protected function findRowIndexById(array $rows, int $id): ?int
     {
         foreach ($rows as $index => $row) {
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-            if (is_array($row) && self::intValue($row['id'] ?? null) === $id) {
-                return is_int($index) ? $index : null;
-=======
-            if (is_array($row) && ((int) ($row['id'] ?? 0)) === $id) {
-                return (int) $index;
->>>>>>> 1ad0554 (.)
-=======
             if (! is_array($row)) {
                 continue;
             }
@@ -303,7 +223,6 @@ trait SushiToJson
             $rowId = is_numeric($rawId) ? (int) $rawId : 0;
             if ($rowId === $id) {
                 return (int) $index;
->>>>>>> .merge_file_TtozBO
             }
         }
 
@@ -315,12 +234,6 @@ trait SushiToJson
      */
     protected function authId(): int|string|null
     {
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-        return authId();
-=======
-=======
->>>>>>> .merge_file_TtozBO
         if (\function_exists('authId')) {
             return authId();
         }
@@ -330,10 +243,6 @@ trait SushiToJson
         }
 
         return null;
-<<<<<<< .merge_file_k7l3Tm
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_TtozBO
     }
 
     /**
@@ -352,88 +261,6 @@ trait SushiToJson
      * @param  array<int, array<string, mixed>>  $data
      * @return array<int, array<string, mixed>>
      */
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-    protected function normalizeJsonItems(array $data): array
-    {
-        /** @var array<int, array<string, mixed>> $normalizedData */
-        $normalizedData = [];
-
-        foreach ($data as $item) {
-            if (! \is_array($item)) {
-                continue;
-            }
-
-            /** @var array<string, mixed> $normalizedItem */
-            $normalizedItem = [];
-            foreach ($item as $key => $value) {
-                $stringKey = is_string($key) ? $key : (string) $key;
-                if (\is_array($value) || \is_object($value)) {
-                    $value = json_encode($value);
-                }
-                $normalizedItem[$stringKey] = $value;
-            }
-
-            $normalizedData[] = app(FilterConfigStringKeysAction::class)->execute($normalizedItem);
-        }
-
-        return $normalizedData;
-    }
-
-    /**
-     * @param  array<string, mixed>  $schema
-     * @return array<string, mixed>
-     */
-    protected function normalizeSchemaFields(array $schema): array
-    {
-        return app(FilterConfigStringKeysAction::class)->execute($schema);
-    }
-
-    /**
-     * @param  array<int, array<string, mixed>>  $normalizedData
-     * @param  array<string, mixed>  $form
-     * @return array<int, array<string, mixed>>
-     */
-    protected function completeSchemaFields(array $normalizedData, array $form): array
-    {
-        // Sushi genera un multi-insert: ogni riga deve avere lo stesso set di colonne.
-        // Completare col solo schema non basta quando alcune righe hanno chiavi extra,
-        // quindi si usa l'unione delle chiavi di schema e di tutte le righe.
-        $allKeys = array_keys($form);
-        foreach ($normalizedData as $item) {
-            $allKeys = array_merge($allKeys, array_keys($item));
-        }
-
-        /** @var list<string> $allKeys */
-        $allKeys = array_values(array_unique($allKeys));
-
-        /** @var array<int, array<string, mixed>> $completedData */
-        $completedData = [];
-
-        foreach ($normalizedData as $item) {
-            /** @var array<string, mixed> $row */
-            $row = $item;
-            foreach ($allKeys as $safeKey) {
-                if (! array_key_exists($safeKey, $row)) {
-                    $row[$safeKey] = null;
-                }
-            }
-
-            ksort($row);
-            $completedData[] = $row;
-        }
-
-        return $completedData;
-    }
-
-    /**
-     * @param  array<int, array<string, mixed>>  $data
-     * @return array<int, array<string, mixed>>
-     */
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_TtozBO
     private function normalizeJsonRecords(array $data): array
     {
         $validatedData = [];
@@ -489,19 +316,9 @@ trait SushiToJson
                 continue;
             }
 
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-            $maxId = max($maxId, self::intValue($row['id'] ?? null));
-=======
             $rawId = $row['id'] ?? 0;
             $id = \is_numeric($rawId) ? (int) $rawId : 0;
             $maxId = max($maxId, $id);
->>>>>>> 1ad0554 (.)
-=======
-            $rawId = $row['id'] ?? 0;
-            $id = \is_numeric($rawId) ? (int) $rawId : 0;
-            $maxId = max($maxId, $id);
->>>>>>> .merge_file_TtozBO
         }
 
         return $maxId;
@@ -536,16 +353,8 @@ trait SushiToJson
         self::applyUpdatingAuditField($model);
 
         $existingData = $model->loadExistingData();
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-        $id = self::intValue($model->getAttribute('id'));
-=======
-        $id = (int) ($model->getAttribute('id') ?? 0);
->>>>>>> 1ad0554 (.)
-=======
         $rawId = $model->getAttribute('id');
         $id = is_numeric($rawId) ? (int) $rawId : 0;
->>>>>>> .merge_file_TtozBO
         if ($id <= 0) {
             return;
         }
@@ -571,16 +380,8 @@ trait SushiToJson
 
     private static function handleSingleJsonDeleting(self $model): void
     {
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-        $id = self::intValue($model->getAttribute('id'));
-=======
-        $id = (int) ($model->getAttribute('id') ?? 0);
->>>>>>> 1ad0554 (.)
-=======
         $rawId = $model->getAttribute('id');
         $id = is_numeric($rawId) ? (int) $rawId : 0;
->>>>>>> .merge_file_TtozBO
         if ($id <= 0) {
             return;
         }
@@ -596,13 +397,8 @@ trait SushiToJson
     }
 
     /**
-<<<<<<< .merge_file_k7l3Tm
-<<<<<<< HEAD
-     * @param  mixed  $value  Raw Eloquent attribute (int|string|float expected)
-=======
      * @param  array<int, array<string, mixed>>  $data
      * @return array<int, array<string, mixed>>
->>>>>>> .merge_file_TtozBO
      */
     protected function normalizeJsonItems(array $data): array
     {
@@ -660,72 +456,6 @@ trait SushiToJson
             $completedData[] = $item;
         }
 
-<<<<<<< .merge_file_k7l3Tm
-        return 0;
-=======
-     * @param  array<int, array<string, mixed>>  $data
-     * @return array<int, array<string, mixed>>
-     */
-    protected function normalizeJsonItems(array $data): array
-    {
-        /** @var array<int, array<string, mixed>> $normalizedData */
-        $normalizedData = [];
-
-        foreach ($data as $item) {
-            if (! \is_array($item)) {
-                continue;
-            }
-
-            /** @var array<string, mixed> $normalizedItem */
-            $normalizedItem = [];
-            foreach ($item as $key => $value) {
-                $stringKey = is_string($key) ? $key : (string) $key;
-                if (\is_array($value) || \is_object($value)) {
-                    $value = json_encode($value);
-                }
-                $normalizedItem[$stringKey] = $value;
-            }
-
-            $normalizedData[] = app(FilterConfigStringKeysAction::class)->execute($normalizedItem);
-        }
-
-        return $normalizedData;
-    }
-
-    /**
-     * @param  array<string, mixed> $schema
-     * @return array<string, mixed>
-     */
-    protected function normalizeSchemaFields(array $schema): array
-    {
-        return app(FilterConfigStringKeysAction::class)->execute($schema);
-    }
-
-    /**
-     * @param  array<int, array<string, mixed>>  $normalizedData
-     * @param  array<string, mixed> $form
-     * @return array<int, array<string, mixed>>
-     */
-    protected function completeSchemaFields(array $normalizedData, array $form): array
-    {
-        /** @var array<int, array<string, mixed>> $completedData */
-        $completedData = [];
-
-        foreach ($normalizedData as $item) {
-            foreach (array_keys($form) as $safeKey) {
-                if (! array_key_exists($safeKey, $item)) {
-                    $item[$safeKey] = null;
-                }
-            }
-
-            ksort($item);
-            $completedData[] = $item;
-        }
-
         return array_values($completedData);
->>>>>>> 1ad0554 (.)
-=======
-        return array_values($completedData);
->>>>>>> .merge_file_TtozBO
     }
 }

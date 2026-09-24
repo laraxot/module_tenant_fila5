@@ -9,15 +9,7 @@
     "Stabilizzare bootstrap tenant-aware"
   ],
   "nonGoals": [
-<<<<<<< .merge_file_iUgbSV
-<<<<<<< HEAD
-    "Gestire contenuti editoriali o forecast logic"
-=======
     "Gestire contenuti editoriali o prediction logic"
->>>>>>> 1ad0554 (.)
-=======
-    "Gestire contenuti editoriali o prediction logic"
->>>>>>> .merge_file_QLBFGN
   ],
   "dependencies": [
     "User",

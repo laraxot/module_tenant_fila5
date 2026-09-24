@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_XrvmpT
-<<<<<<< HEAD
----
-title: "Task: Subscription Management"
-module: "Tenant"
-type: concept
-tags: [subscription, management]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "subscription management"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_VRLtL5
 # Task: Subscription Management
 
 **Modulo**: Tenant  

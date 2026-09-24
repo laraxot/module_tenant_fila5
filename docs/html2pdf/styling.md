@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_oRcWcw
-<<<<<<< HEAD
----
-title: "Guida agli Stili, Tabelle e Immagini"
-module: "Tenant"
-type: concept
-tags: [styling]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "styling"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_NTMCIk
 # Guida agli Stili, Tabelle e Immagini
 
 Questa guida illustra come applicare stili CSS, creare layout con tabelle e gestire le immagini nei PDF generati con Html2Pdf.

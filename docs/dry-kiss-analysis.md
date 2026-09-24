@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_yYqIEb
-<<<<<<< HEAD
----
-title: "DRY & KISS Analysis - Modulo Tenant"
-module: "Tenant"
-type: concept
-tags: [dry, kiss, analysis]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "dry kiss analysis"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_pVZXkY
 # DRY & KISS Analysis - Modulo Tenant
 
 **Data:** 15 Ottobre 2025  

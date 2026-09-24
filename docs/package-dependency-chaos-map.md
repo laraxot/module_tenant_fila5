@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_VGBFNW
-<<<<<<< HEAD
----
-title: "Package Dependency Chaos Map (Tenant)"
-module: "Tenant"
-type: concept
-tags: [package, dependency, chaos, map]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "package dependency chaos map"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_guFzCZ
 # Package Dependency Chaos Map (Tenant)
 
 ## Catalogo completo

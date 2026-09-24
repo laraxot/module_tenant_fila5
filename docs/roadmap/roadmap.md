@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_Ilv9fs
-<<<<<<< HEAD
----
-title: "Tenant Module Roadmap (2025 Q4)"
-module: "Tenant"
-type: concept
-tags: [roadmap]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "roadmap"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_FYS56J
 # Tenant Module Roadmap (2025 Q4)
 
 ## Vision & Scope

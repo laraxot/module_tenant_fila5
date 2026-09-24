@@ -14,13 +14,6 @@ use Illuminate\Support\Facades\Schema;
 use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
-<<<<<<< .merge_file_adVNS0
-<<<<<<< HEAD
-use Modules\Xot\Datas\XotData;
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_VoW20h
 use Modules\Xot\Providers\XotBaseServiceProvider;
 use Nwidart\Modules\Facades\Module;
 use Nwidart\Modules\Laravel\Module as LaravelModule;
@@ -61,15 +54,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
             $map = [];
         }
 
-<<<<<<< .merge_file_adVNS0
-<<<<<<< HEAD
-=======
-        /** @var array<string, mixed> $map */
->>>>>>> 1ad0554 (.)
-        Relation::morphMap($this->buildMorphMap(app(FilterConfigStringKeysAction::class)->execute($map)));
-=======
         Relation::morphMap($this->buildMorphMap($map));
->>>>>>> .merge_file_VoW20h
     }
 
     public function registerDB(): void
@@ -87,7 +72,6 @@ class TenantServiceProvider extends XotBaseServiceProvider
         $this->reconnectDatabaseUnlessTesting();
     }
 
-<<<<<<< HEAD
     #[Override]
     public function register(): void
     {
@@ -95,8 +79,6 @@ class TenantServiceProvider extends XotBaseServiceProvider
         // $this->app->register(AdminPanelProvider::class);
     }
 
-=======
->>>>>>> 1ad0554 (.)
     public function mergeConfigs(): void
     {
         $configs = app(GetTenantConfigNamesAction::class)->execute();
@@ -145,23 +127,12 @@ class TenantServiceProvider extends XotBaseServiceProvider
             Arr::set($data, 'connections.user', Arr::get($data, 'connections.user_'.$default));
         }
 
-<<<<<<< HEAD
-=======
-        /** @var array<string, mixed> $data */
->>>>>>> 1ad0554 (.)
         return app(FilterConfigStringKeysAction::class)->execute($data);
     }
 
     /**
      * @param  array<string, mixed>  $data
-<<<<<<< .merge_file_adVNS0
-<<<<<<< HEAD
-=======
      *
->>>>>>> 1ad0554 (.)
-=======
-     *
->>>>>>> .merge_file_VoW20h
      * @return array<string, mixed>
      */
     private function mergeModuleConnections(array $data, string $defaultConnection): array
@@ -200,21 +171,9 @@ class TenantServiceProvider extends XotBaseServiceProvider
     }
 
     /**
-<<<<<<< .merge_file_adVNS0
-     * @param  array<string, mixed>  $map
-<<<<<<< HEAD
-     * @return array<string, class-string<Model>>
-     *
-     * @SuppressWarnings("PHPMD.ErrorControlOperator")
-=======
-     *
-     * @return array<string, class-string<Model>>
->>>>>>> 1ad0554 (.)
-=======
      * @param  array<mixed, mixed>  $map
      *
      * @return array<string, class-string<Model>>
->>>>>>> .merge_file_VoW20h
      */
     private function buildMorphMap(array $map): array
     {
@@ -222,16 +181,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
         $typedMap = [];
 
         foreach ($map as $alias => $class) {
-<<<<<<< .merge_file_adVNS0
-<<<<<<< HEAD
-            // ponytail: @ suppresses autoload ErrorException for missing modules
-            if (! is_string($alias) || ! is_string($class) || ! @class_exists($class)) {
-=======
             if (! is_string($alias) || ! is_string($class) || ! class_exists($class)) {
->>>>>>> 1ad0554 (.)
-=======
-            if (! is_string($alias) || ! is_string($class) || ! class_exists($class)) {
->>>>>>> .merge_file_VoW20h
                 continue;
             }
 
@@ -240,22 +190,6 @@ class TenantServiceProvider extends XotBaseServiceProvider
             $typedMap[$alias] = $modelClass;
         }
 
-<<<<<<< .merge_file_adVNS0
-<<<<<<< HEAD
-        // The 'user' morph alias must always resolve to the canonical user class
-        // (XotData::getUserClass()), never to a stale per-domain config entry:
-        // polymorphic pivot rows (e.g. model_has_role.model_type) are written
-        // through it, and a wrong class here makes roles invisible.
-        $userClass = XotData::make()->getUserClass();
-        if (is_subclass_of($userClass, Model::class)) {
-            /** @var class-string<Model> $userClass */
-            $typedMap['user'] = $userClass;
-        }
-
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_VoW20h
         return $typedMap;
     }
 }

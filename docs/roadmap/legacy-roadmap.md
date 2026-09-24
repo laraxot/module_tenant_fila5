@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_UcvysO
-<<<<<<< HEAD
----
-title: "Roadmap Modulo Tenant - Completamento e Miglioramenti"
-module: "Tenant"
-type: concept
-tags: [legacy, roadmap]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "legacy roadmap"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_h7KTFu
 # Roadmap Modulo Tenant - Completamento e Miglioramenti
 
 **Data Creazione**: 2026-01-02

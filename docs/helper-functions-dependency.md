@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_uHxK6Q
-<<<<<<< HEAD
----
-title: "Dipendenze Helper Functions - Modulo Tenant"
-module: "Tenant"
-type: concept
-tags: [helper, functions, dependency]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "helper functions dependency"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_zVgw3O
 # Dipendenze Helper Functions - Modulo Tenant
 
 ## 📋 Overview

@@ -11,24 +11,12 @@ use Mockery;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Tests\TestCase;
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-use PHPUnit\Framework\Assert;
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_mFFLsm
 
 use function Safe\json_decode;
 
 uses(TestCase::class, DatabaseTransactions::class);
 
 beforeEach(function (): void {
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    /** @var TestCase $this */
-=======
->>>>>>> .merge_file_mFFLsm
     $this->model = new TestSushiModel;
     $this->testDirectory = storage_path('tests/sushi-json-performance');
     $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
@@ -50,38 +38,8 @@ afterEach(function (): void {
         File::delete($this->testJsonPath);
     }
 
-<<<<<<< .merge_file_Cbya6T
-    if (File::exists(TestCase::$testDirectory)) {
-        File::deleteDirectory(TestCase::$testDirectory);
-=======
-    $this->model = new TestSushiModel;
-    $this->testDirectory = storage_path('tests/sushi-json-performance');
-    $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
-
-    if (! File::exists($this->testDirectory)) {
-        File::makeDirectory($this->testDirectory, 0755, true, true);
-    }
-
-    $jsonPath = $this->testJsonPath;
-    $mock = Mockery::mock(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class);
-    $mock->shouldReceive('execute')
-        ->with('database/content/test_sushi.json')
-        ->andReturn($jsonPath);
-    app()->instance(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class, $mock);
-});
-
-afterEach(function (): void {
-    if (File::exists($this->testJsonPath)) {
-        File::delete($this->testJsonPath);
-    }
-
     if (File::exists($this->testDirectory)) {
         File::deleteDirectory($this->testDirectory);
->>>>>>> 1ad0554 (.)
-=======
-    if (File::exists($this->testDirectory)) {
-        File::deleteDirectory($this->testDirectory);
->>>>>>> .merge_file_mFFLsm
     }
 
     Mockery::close();
@@ -124,13 +82,6 @@ function createTestData(int $recordCount): array
 }
 
 it('handles small datasets efficiently', function (): void {
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    /** @var TestCase $this */
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_mFFLsm
     $smallData = createTestData(10);
 
     $startTime = microtime(true);
@@ -138,15 +89,7 @@ it('handles small datasets efficiently', function (): void {
     $saveTime = microtime(true) - $startTime;
 
     expect($result)->toBeTrue();
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    expect($saveTime)->toBeLessThan(5.0); // Salvataggio dataset piccolo deve essere molto veloce
-=======
     expect($saveTime)->toBeLessThan(0.1); // Salvataggio dataset piccolo deve essere molto veloce
->>>>>>> 1ad0554 (.)
-=======
-    expect($saveTime)->toBeLessThan(0.1); // Salvataggio dataset piccolo deve essere molto veloce
->>>>>>> .merge_file_mFFLsm
 
     // Testa caricamento
     $startTime = microtime(true);
@@ -154,25 +97,10 @@ it('handles small datasets efficiently', function (): void {
     $loadTime = microtime(true) - $startTime;
 
     expect($loadedData)->toHaveCount(10);
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    expect($loadTime)->toBeLessThan(5.0); // Caricamento dataset piccolo deve essere istantaneo
-});
-
-it('handles medium datasets efficiently', function (): void {
-    /** @var TestCase $this */
-=======
     expect($loadTime)->toBeLessThan(0.05); // Caricamento dataset piccolo deve essere istantaneo
 });
 
 it('handles medium datasets efficiently', function (): void {
->>>>>>> 1ad0554 (.)
-=======
-    expect($loadTime)->toBeLessThan(0.05); // Caricamento dataset piccolo deve essere istantaneo
-});
-
-it('handles medium datasets efficiently', function (): void {
->>>>>>> .merge_file_mFFLsm
     $mediumData = createTestData(100);
 
     $startTime = microtime(true);
@@ -180,15 +108,7 @@ it('handles medium datasets efficiently', function (): void {
     $saveTime = microtime(true) - $startTime;
 
     expect($result)->toBeTrue();
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    expect($saveTime)->toBeLessThan(25.0); // Salvataggio dataset medio deve essere veloce
-=======
     expect($saveTime)->toBeLessThan(0.5); // Salvataggio dataset medio deve essere veloce
->>>>>>> 1ad0554 (.)
-=======
-    expect($saveTime)->toBeLessThan(0.5); // Salvataggio dataset medio deve essere veloce
->>>>>>> .merge_file_mFFLsm
 
     // Testa caricamento
     $startTime = microtime(true);
@@ -196,25 +116,10 @@ it('handles medium datasets efficiently', function (): void {
     $loadTime = microtime(true) - $startTime;
 
     expect($loadedData)->toHaveCount(100);
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    expect($loadTime)->toBeLessThan(10.0); // Caricamento dataset medio deve essere veloce
-});
-
-it('handles large datasets efficiently', function (): void {
-    /** @var TestCase $this */
-=======
     expect($loadTime)->toBeLessThan(0.2); // Caricamento dataset medio deve essere veloce
 });
 
 it('handles large datasets efficiently', function (): void {
->>>>>>> 1ad0554 (.)
-=======
-    expect($loadTime)->toBeLessThan(0.2); // Caricamento dataset medio deve essere veloce
-});
-
-it('handles large datasets efficiently', function (): void {
->>>>>>> .merge_file_mFFLsm
     $largeData = createTestData(1000);
 
     $startTime = microtime(true);
@@ -222,15 +127,7 @@ it('handles large datasets efficiently', function (): void {
     $saveTime = microtime(true) - $startTime;
 
     expect($result)->toBeTrue();
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    expect($saveTime)->toBeLessThan(100.0); // Salvataggio dataset grande deve essere accettabile
-=======
     expect($saveTime)->toBeLessThan(2.0); // Salvataggio dataset grande deve essere accettabile
->>>>>>> 1ad0554 (.)
-=======
-    expect($saveTime)->toBeLessThan(2.0); // Salvataggio dataset grande deve essere accettabile
->>>>>>> .merge_file_mFFLsm
 
     // Testa caricamento
     $startTime = microtime(true);
@@ -238,25 +135,10 @@ it('handles large datasets efficiently', function (): void {
     $loadTime = microtime(true) - $startTime;
 
     expect($loadedData)->toHaveCount(1000);
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    expect($loadTime)->toBeLessThan(50.0); // Caricamento dataset grande deve essere accettabile
-});
-
-it('manages memory usage efficiently', function (): void {
-    /** @var TestCase $this */
-=======
     expect($loadTime)->toBeLessThan(1.0); // Caricamento dataset grande deve essere accettabile
 });
 
 it('manages memory usage efficiently', function (): void {
->>>>>>> 1ad0554 (.)
-=======
-    expect($loadTime)->toBeLessThan(1.0); // Caricamento dataset grande deve essere accettabile
-});
-
-it('manages memory usage efficiently', function (): void {
->>>>>>> .merge_file_mFFLsm
     $initialMemory = memory_get_usage();
 
     // Crea dataset grande
@@ -289,13 +171,6 @@ it('manages memory usage efficiently', function (): void {
 });
 
 it('handles different file sizes efficiently', function (): void {
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    /** @var TestCase $this */
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_mFFLsm
     $sizes = [10, 50, 100, 250, 500];
 
     foreach ($sizes as $size) {
@@ -312,18 +187,8 @@ it('handles different file sizes efficiently', function (): void {
         expect($fileSize)->toBeGreaterThan(0); // File deve avere dimensione maggiore di 0
 
         // Verifica che il tempo di salvataggio sia proporzionale alla dimensione
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-        $expectedMaxTime = max($size * 0.05, 5.0);
-        expect($saveTime)->toBeLessThan($expectedMaxTime);
-=======
         $expectedMaxTime = $size * 0.001; // 1ms per record
         expect($saveTime)->toBeLessThan($expectedMaxTime); // Salvataggio $size record deve essere veloce
->>>>>>> 1ad0554 (.)
-=======
-        $expectedMaxTime = $size * 0.001; // 1ms per record
-        expect($saveTime)->toBeLessThan($expectedMaxTime); // Salvataggio $size record deve essere veloce
->>>>>>> .merge_file_mFFLsm
 
         // Testa caricamento
         $startTime = microtime(true);
@@ -332,53 +197,19 @@ it('handles different file sizes efficiently', function (): void {
 
         expect($loadedData)->toHaveCount($size);
 
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-        $expectedMaxLoadTime = max($size * 0.05, 5.0);
-        expect($loadTime)->toBeLessThan($expectedMaxLoadTime);
-=======
         // Verifica che il tempo di caricamento sia proporzionale alla dimensione
         $expectedMaxLoadTime = $size * 0.0005; // 0.5ms per record
         expect($loadTime)->toBeLessThan($expectedMaxLoadTime); // Caricamento $size record deve essere veloce
->>>>>>> 1ad0554 (.)
-=======
-        // Verifica che il tempo di caricamento sia proporzionale alla dimensione
-        $expectedMaxLoadTime = $size * 0.0005; // 0.5ms per record
-        expect($loadTime)->toBeLessThan($expectedMaxLoadTime); // Caricamento $size record deve essere veloce
->>>>>>> .merge_file_mFFLsm
     }
 });
 
 it('handles concurrent access efficiently', function (): void {
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    /** @var TestCase $this */
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_mFFLsm
     $testData = createTestData(100);
 
     // Salva dati iniziali
     $result = $this->sushiModel()->saveToJson($testData);
     expect($result)->toBeTrue();
 
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    $path = $this->sushiModel()->getJsonFile();
-    if (! File::exists($path)) {
-        Assert::markTestSkipped('sushi json path missing after save');
-    }
-
-    $probe = $this->sushiModel()->getSushiRows();
-    if (count($probe) !== 100) {
-        Assert::markTestSkipped('sushi json rows unavailable after save');
-    }
-
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_mFFLsm
     // Simula accesso concorrente
     $concurrentOperations = 10;
     $startTime = microtime(true);
@@ -392,28 +223,11 @@ it('handles concurrent access efficiently', function (): void {
     $averageTime = $totalTime / $concurrentOperations;
 
     // Verifica che l'accesso concorrente sia efficiente
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    expect($averageTime)->toBeLessThan(5.0); // Accesso concorrente deve essere veloce
-    expect($totalTime)->toBeLessThan(50.0); // Tempo totale per operazioni concorrenti deve essere accettabile
-});
-
-it('parses json efficiently', function (): void {
-    /** @var TestCase $this */
-=======
     expect($averageTime)->toBeLessThan(0.1); // Accesso concorrente deve essere veloce
     expect($totalTime)->toBeLessThan(1.0); // Tempo totale per operazioni concorrenti deve essere accettabile
 });
 
 it('parses json efficiently', function (): void {
->>>>>>> 1ad0554 (.)
-=======
-    expect($averageTime)->toBeLessThan(0.1); // Accesso concorrente deve essere veloce
-    expect($totalTime)->toBeLessThan(1.0); // Tempo totale per operazioni concorrenti deve essere accettabile
-});
-
-it('parses json efficiently', function (): void {
->>>>>>> .merge_file_mFFLsm
     $testData = createTestData(200);
 
     // Salva dati
@@ -432,22 +246,6 @@ it('parses json efficiently', function (): void {
     expect($parsedData)->toHaveCount(200);
 
     // Verifica che il parsing sia veloce
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    expect($parseTime)->toBeLessThan(5.0); // Parsing JSON deve essere veloce
-=======
-    expect($parseTime)->toBeLessThan(0.1); // Parsing JSON deve essere veloce
->>>>>>> .merge_file_mFFLsm
-
-    // Verifica che il tempo sia proporzionale alla dimensione
-    $expectedMaxTime = $fileSize * 0.000001; // 1 microsecondo per byte
-    expect($parseTime)->toBeLessThan($expectedMaxTime); // Parsing deve essere proporzionale alla dimensione
-});
-
-it('normalizes data efficiently', function (): void {
-<<<<<<< .merge_file_Cbya6T
-    /** @var TestCase $this */
-=======
     expect($parseTime)->toBeLessThan(0.1); // Parsing JSON deve essere veloce
 
     // Verifica che il tempo sia proporzionale alla dimensione
@@ -456,9 +254,6 @@ it('normalizes data efficiently', function (): void {
 });
 
 it('normalizes data efficiently', function (): void {
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_mFFLsm
     $testData = createTestData(150);
 
     // Salva dati
@@ -473,15 +268,7 @@ it('normalizes data efficiently', function (): void {
     expect($normalizedData)->toHaveCount(150);
 
     // Verifica che la normalizzazione sia veloce
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    expect($normalizeTime)->toBeLessThan(5.0); // Normalizzazione dati deve essere veloce
-=======
     expect($normalizeTime)->toBeLessThan(0.1); // Normalizzazione dati deve essere veloce
->>>>>>> 1ad0554 (.)
-=======
-    expect($normalizeTime)->toBeLessThan(0.1); // Normalizzazione dati deve essere veloce
->>>>>>> .merge_file_mFFLsm
 
     // Verifica che gli array nidificati siano convertiti in stringhe JSON
     foreach ($normalizedData as $record) {
@@ -492,51 +279,21 @@ it('normalizes data efficiently', function (): void {
 });
 
 it('handles errors efficiently', function (): void {
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    /** @var TestCase $this */
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_mFFLsm
     // Testa con file JSON malformato
     File::put($this->sushiJsonPath(), 'invalid json content');
 
     $startTime = microtime(true);
 
     expect(fn () => $this->sushiModel()->getSushiRows())
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-        ->toThrow(Exception::class);
-=======
         ->toThrow(Exception::class, 'Data is not array ['.$this->sushiJsonPath().']');
->>>>>>> 1ad0554 (.)
-=======
-        ->toThrow(Exception::class, 'Data is not array ['.$this->sushiJsonPath().']');
->>>>>>> .merge_file_mFFLsm
 
     $errorTime = microtime(true) - $startTime;
 
     // Verifica che la gestione degli errori sia veloce
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    expect($errorTime)->toBeLessThan(5.0); // Gestione errori deve essere veloce
-});
-
-it('performs file operations efficiently', function (): void {
-    /** @var TestCase $this */
-=======
     expect($errorTime)->toBeLessThan(0.1); // Gestione errori deve essere veloce
 });
 
 it('performs file operations efficiently', function (): void {
->>>>>>> 1ad0554 (.)
-=======
-    expect($errorTime)->toBeLessThan(0.1); // Gestione errori deve essere veloce
-});
-
-it('performs file operations efficiently', function (): void {
->>>>>>> .merge_file_mFFLsm
     $testData = createTestData(300);
 
     // Testa operazioni di file
@@ -547,15 +304,7 @@ it('performs file operations efficiently', function (): void {
     $writeTime = microtime(true) - $startTime;
 
     expect($writeResult)->toBeTrue();
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    expect($writeTime)->toBeLessThan(50.0); // Scrittura file deve essere veloce
-=======
     expect($writeTime)->toBeLessThan(1.0); // Scrittura file deve essere veloce
->>>>>>> 1ad0554 (.)
-=======
-    expect($writeTime)->toBeLessThan(1.0); // Scrittura file deve essere veloce
->>>>>>> .merge_file_mFFLsm
 
     // Lettura
     $startTime = microtime(true);
@@ -563,28 +312,13 @@ it('performs file operations efficiently', function (): void {
     $readTime = microtime(true) - $startTime;
 
     expect($readResult)->toHaveCount(300);
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    expect($readTime)->toBeLessThan(25.0); // Lettura file deve essere veloce
-=======
     expect($readTime)->toBeLessThan(0.5); // Lettura file deve essere veloce
->>>>>>> 1ad0554 (.)
-=======
-    expect($readTime)->toBeLessThan(0.5); // Lettura file deve essere veloce
->>>>>>> .merge_file_mFFLsm
 
     // Verifica che le operazioni siano proporzionali
     expect($writeTime)->toBeLessThan($readTime * 3); // Scrittura non deve essere eccessivamente più lenta della lettura
 });
 
 it('scales efficiently with data size', function (): void {
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    /** @var TestCase $this */
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_mFFLsm
     $sizes = [10, 25, 50, 100, 200];
     $results = [];
 
@@ -622,24 +356,10 @@ it('scales efficiently with data size', function (): void {
         $previousResults = $results[$previousSize];
         $currentResults = $results[$size];
 
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-        $expectedMaxGrowth = 15.0; // sotto carico parallelo (campagna 5.26) i timing non sono stabili
-
-        $saveGrowth = $currentResults['save_time'] / max($previousResults['save_time'], 1e-9);
-        $loadGrowth = $currentResults['load_time'] / max($previousResults['load_time'], 1e-9);
-=======
         $expectedMaxGrowth = 2.5;
 
         $saveGrowth = $currentResults['save_time'] / $previousResults['save_time'];
         $loadGrowth = $currentResults['load_time'] / $previousResults['load_time'];
->>>>>>> 1ad0554 (.)
-=======
-        $expectedMaxGrowth = 2.5;
-
-        $saveGrowth = $currentResults['save_time'] / $previousResults['save_time'];
-        $loadGrowth = $currentResults['load_time'] / $previousResults['load_time'];
->>>>>>> .merge_file_mFFLsm
 
         expect($saveGrowth)->toBeLessThan($expectedMaxGrowth);
         expect($loadGrowth)->toBeLessThan($expectedMaxGrowth);
@@ -647,27 +367,11 @@ it('scales efficiently with data size', function (): void {
 });
 
 it('meets performance benchmarks', function (): void {
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    /** @var TestCase $this */
     $benchmarks = [
-        'small' => ['size' => 10, 'max_save' => 5.0, 'max_load' => 5.0],
-        'medium' => ['size' => 100, 'max_save' => 10.0, 'max_load' => 10.0],
-        'large' => ['size' => 500, 'max_save' => 30.0, 'max_load' => 30.0],
-        'xlarge' => ['size' => 1000, 'max_save' => 60.0, 'max_load' => 60.0],
-=======
-    $benchmarks = [
-=======
-    $benchmarks = [
->>>>>>> .merge_file_mFFLsm
         'small' => ['size' => 10, 'max_save' => 0.05, 'max_load' => 0.02],
         'medium' => ['size' => 100, 'max_save' => 0.2, 'max_load' => 0.1],
         'large' => ['size' => 500, 'max_save' => 1.0, 'max_load' => 0.5],
         'xlarge' => ['size' => 1000, 'max_save' => 2.0, 'max_load' => 1.0],
-<<<<<<< .merge_file_Cbya6T
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_mFFLsm
     ];
 
     foreach ($benchmarks as $category => $benchmark) {
@@ -692,13 +396,6 @@ it('meets performance benchmarks', function (): void {
 });
 
 it('does not create memory leaks', function (): void {
-<<<<<<< .merge_file_Cbya6T
-<<<<<<< HEAD
-    /** @var TestCase $this */
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_mFFLsm
     $initialMemory = memory_get_usage();
 
     // Esegui operazioni multiple

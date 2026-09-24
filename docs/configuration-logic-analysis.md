@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_f6PKv8
-<<<<<<< HEAD
----
-title: "Configuration System Architecture - Tenant Module"
-module: "Tenant"
-type: concept
-tags: [configuration, logic, analysis]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "configuration logic analysis"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_tWmZ0Q
 # Configuration System Architecture - Tenant Module
 
 ## Data: [DATE]

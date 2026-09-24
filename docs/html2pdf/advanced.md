@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_YhMqER
-<<<<<<< HEAD
----
-title: "Funzionalità Avanzate"
-module: "Tenant"
-type: concept
-tags: [advanced]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "advanced"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_o5ghCx
 # Funzionalità Avanzate
 
 Questa sezione copre funzionalità avanzate come la generazione di codici a barre, QR code, la creazione di segnalibri (bookmark), indici e altri metodi utili della libreria.

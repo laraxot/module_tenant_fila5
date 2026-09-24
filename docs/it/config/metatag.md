@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_NM4DAx
-<<<<<<< HEAD
----
-title: "Metatag"
-module: "Tenant"
-type: concept
-tags: [metatag]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "metatag"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_JHh88H
 <?php
 
 declare(strict_types=1);

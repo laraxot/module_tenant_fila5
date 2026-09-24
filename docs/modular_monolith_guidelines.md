@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_5C7ers
-<<<<<<< HEAD
----
-title: "Modular Monolith Guidelines for Laravel"
-module: "Tenant"
-type: how-to
-tags: [modular, monolith, guidelines]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "modular monolith guidelines"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_gp6Zhv
 # Modular Monolith Guidelines for Laravel
 
 ## Overview

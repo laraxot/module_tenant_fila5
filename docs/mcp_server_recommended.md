@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_4KcuAi
-<<<<<<< HEAD
----
-title: "MCP Server Consigliati per il Modulo Tenant"
-module: "Tenant"
-type: concept
-tags: [mcp, server, recommended]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "mcp server recommended"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_3Zr9gM
 # MCP Server Consigliati per il Modulo Tenant
 
 ## Scopo del Modulo

@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_iyoFlI
-<<<<<<< HEAD
----
-title: "Cyclomatic Complexity Report - Module: Tenant"
-module: "Tenant"
-type: concept
-tags: [cyclomatic, complexity, report]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "cyclomatic complexity report"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_y8I0Kz
 # Cyclomatic Complexity Report - Module: Tenant
 
 **Analyzer:** Super Mucca 🐮

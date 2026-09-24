@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_k2qccm
-<<<<<<< HEAD
----
-title: "Task: Verifica TenantDomain"
-module: "Tenant"
-type: concept
-tags: [verifica, tenant, domain]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "verifica tenant domain"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_c956wH
 # Task: Verifica TenantDomain
 
 **Modulo**: Tenant  

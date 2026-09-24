@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_gFqwSu
-<<<<<<< HEAD
----
-title: "Raw Sources — Tenant"
-module: "Tenant"
-type: concept
-tags: [index]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "index"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_3Tp4rE
 # Raw Sources — Tenant
 
 Questo layer contiene le fonti grezze: documenti immutabili che l'LLM legge ma non modifica.

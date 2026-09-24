@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_Cvhzn1
-<<<<<<< HEAD
----
-title: "Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction"
-module: "Tenant"
-type: concept
-tags: [runninginconsole, check, ision]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "runninginconsole check ision"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_Hs5Y5Q
 # Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction
 
 **Metodologia**: Super Mucca - La Litigata Interna

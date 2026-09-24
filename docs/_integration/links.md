@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_Dx9CbB
-<<<<<<< HEAD
----
-title: "links"
-module: "Tenant"
-type: concept
-tags: [links]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "links"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_txhgqT
 # links
 
 <!-- Contenuto migrato da _docs/links.txt -->

@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_67GtC4
-<<<<<<< HEAD
----
-title: "Bugfix: TestSushiSeeder PHPStan Mixed Type Errors"
-module: "Tenant"
-type: concept
-tags: [testsushiseeder, phpstan, mixed, type]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "testsushiseeder phpstan mixed type"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_NH5ff4
 # Bugfix: TestSushiSeeder PHPStan Mixed Type Errors
 
 **Data Fix**: 11 Novembre 2025

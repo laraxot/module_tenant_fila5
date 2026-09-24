@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_aPJzt8
-<<<<<<< HEAD
----
-title: "Risks - Tenant"
-module: "Tenant"
-type: concept
-tags: [05, risks]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "05 risks"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_mUqi1b
 # Risks - Tenant
 
 ## Top Risks

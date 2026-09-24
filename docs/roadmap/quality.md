@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_WMVLzb
-<<<<<<< HEAD
----
-title: "Checklist qualità - Tenant Module"
-module: "Tenant"
-type: concept
-tags: [quality]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "quality"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_uOk15C
 # Checklist qualità - Tenant Module
 
 - [x] PHPStan Level 10

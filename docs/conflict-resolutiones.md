@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_znC70t
-<<<<<<< HEAD
----
-title: "Risoluzione Conflitti Git - Modulo Tenant"
-module: "Tenant"
-type: concept
-tags: [conflict, resolutiones]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "conflict resolutiones"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_FCDW8W
 # Risoluzione Conflitti Git - Modulo Tenant
 
 ## Panoramica

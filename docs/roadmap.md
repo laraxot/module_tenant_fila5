@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_OH55Fk
-<<<<<<< HEAD
----
-title: "🎯 TENANT MODULE - ROADMAP 2025"
-module: "Tenant"
-type: concept
-tags: [roadmap]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "roadmap"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_k6W7UM
 # 🎯 TENANT MODULE - ROADMAP 2025
 
 **Modulo**: Tenant ([Description])  

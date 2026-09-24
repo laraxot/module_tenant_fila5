@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_cW1s5g
-<<<<<<< HEAD
----
-title: "🐄⚡ ANALISI METODI DUPLICATI - SUPER MUCCA EDITION"
-module: "Tenant"
-type: concept
-tags: [METODI, DUPLICATI, ANALISI]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "metodi duplicati analisi"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_Ytl8iK
 # 🐄⚡ ANALISI METODI DUPLICATI - SUPER MUCCA EDITION
 
 **Powered by**: Super Mucca AI 🐄✨  
@@ -124,15 +107,7 @@ abstract class BaseModel extends \Modules\Xot\Models\XotBaseModel
 
 ### Pattern 1: getTableColumns() - ESEMPIO REALE
 
-<<<<<<< .merge_file_cW1s5g
-<<<<<<< HEAD
-#### progetto corrente/TicketResource/ListTickets.php (ECCELLENTE)
-=======
 #### Fixcity/TicketResource/ListTickets.php (ECCELLENTE)
->>>>>>> 1ad0554 (.)
-=======
-#### Fixcity/TicketResource/ListTickets.php (ECCELLENTE)
->>>>>>> .merge_file_Ytl8iK
 ```php
 protected function getTableColumns(): array
 {
@@ -493,15 +468,7 @@ public function getTableFilters(): array
 - Test dopo ogni modulo
 - Code review
 
-<<<<<<< .merge_file_cW1s5g
-<<<<<<< HEAD
-**Settimana 2**: Moduli Business (progetto corrente, Blog, Geo)
-=======
 **Settimana 2**: Moduli Business (Fixcity, Blog, Geo)
->>>>>>> 1ad0554 (.)
-=======
-**Settimana 2**: Moduli Business (Fixcity, Blog, Geo)
->>>>>>> .merge_file_Ytl8iK
 - 20 List files
 - Test integrazione
 - Performance check
@@ -539,15 +506,7 @@ public function getTableFilters(): array
 3. Refactoring moduli core (Xot, User, Cms)
 
 #### ⭐⭐⭐⭐ PRIORITÀ ALTA
-<<<<<<< .merge_file_cW1s5g
-<<<<<<< HEAD
-4. Refactoring moduli business (progetto corrente, Blog, Geo)
-=======
 4. Refactoring moduli business (Fixcity, Blog, Geo)
->>>>>>> 1ad0554 (.)
-=======
-4. Refactoring moduli business (Fixcity, Blog, Geo)
->>>>>>> .merge_file_Ytl8iK
 5. ActionPresets per CRUD
 6. Documentazione completa
 

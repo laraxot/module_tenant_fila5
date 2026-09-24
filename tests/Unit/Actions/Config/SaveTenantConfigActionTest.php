@@ -10,13 +10,6 @@ use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\Config\SaveTenantConfigAction;
 use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Arr\SaveArrayAction;
-<<<<<<< .merge_file_THWZuo
-<<<<<<< HEAD
-use PHPUnit\Framework\Assert;
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_kP5zQL
 
 uses(TestCase::class);
 
@@ -35,42 +28,11 @@ it('saves tenant config by merging with existing data', function (): void {
         ->andReturn(['connections' => ['mysql' => ['host' => 'localhost']]]);
 
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
-<<<<<<< .merge_file_THWZuo
-<<<<<<< HEAD
-        TestCase::expectMockery($mock, 'execute')
-            ->once()
-            ->withArgs(static function (array $data, string $filename): bool {
-                Assert::assertSame('/path/to/tenant/database.php', $filename);
-                Assert::assertArrayHasKey('connections', $data);
-                $connections = $data['connections'];
-                Assert::assertIsArray($connections);
-                Assert::assertArrayHasKey('mysql', $connections);
-                $mysql = $connections['mysql'];
-                Assert::assertIsArray($mysql);
-                Assert::assertSame('localhost', $mysql['host'] ?? null);
-                Assert::assertSame('test_db', $mysql['database'] ?? null);
-
-                return true;
-            });
-    });
-
-    app(SaveTenantConfigAction::class)->execute('database', [
-        'connections' => ['mysql' => ['database' => 'test_db']],
-    ]);
-=======
         $mock->allows(['execute' => true]);
     });
 
     $action = app(SaveTenantConfigAction::class);
     $action->execute('database', ['connections' => ['mysql' => ['database' => 'test_db']]]);
->>>>>>> 1ad0554 (.)
-=======
-        $mock->allows(['execute' => true]);
-    });
-
-    $action = app(SaveTenantConfigAction::class);
-    $action->execute('database', ['connections' => ['mysql' => ['database' => 'test_db']]]);
->>>>>>> .merge_file_kP5zQL
 });
 
 it('saves tenant config when file does not exist', function (): void {
@@ -84,31 +46,9 @@ it('saves tenant config when file does not exist', function (): void {
         ->andReturn(false);
 
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
-<<<<<<< .merge_file_THWZuo
-<<<<<<< HEAD
-        TestCase::expectMockery($mock, 'execute')
-            ->once()
-            ->withArgs(static function (array $data, string $filename): bool {
-                Assert::assertSame('/path/to/tenant/app.php', $filename);
-                Assert::assertSame('Test App', $data['name']);
-
-                return true;
-            });
-    });
-
-    app(SaveTenantConfigAction::class)->execute('app', ['name' => 'Test App']);
-=======
         $mock->allows(['execute' => true]);
     });
 
     $action = app(SaveTenantConfigAction::class);
     $action->execute('app', ['name' => 'Test App']);
->>>>>>> 1ad0554 (.)
-=======
-        $mock->allows(['execute' => true]);
-    });
-
-    $action = app(SaveTenantConfigAction::class);
-    $action->execute('app', ['name' => 'Test App']);
->>>>>>> .merge_file_kP5zQL
 });

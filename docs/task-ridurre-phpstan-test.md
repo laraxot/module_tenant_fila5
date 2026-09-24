@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_8pXaHK
-<<<<<<< HEAD
----
-title: "Task: Ridurre Suppressioni PHPStan nei Test - Tenant"
-module: "Tenant"
-type: concept
-tags: [task, ridurre, phpstan, test]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "task ridurre phpstan test"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_D3f76H
 # Task: Ridurre Suppressioni PHPStan nei Test - Tenant
 
 **Modulo**: Tenant

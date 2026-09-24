@@ -22,14 +22,7 @@ class SaveTenantConfigAction
 
         $configData = [];
         if (File::exists($path)) {
-<<<<<<< .merge_file_HGJkSe
-<<<<<<< HEAD
-=======
             /** @var mixed $existing */
->>>>>>> 1ad0554 (.)
-=======
-            /** @var mixed $existing */
->>>>>>> .merge_file_7m1qPj
             $existing = File::getRequire($path);
             if (\is_array($existing)) {
                 /** @var array<string, mixed> $existingArray */
@@ -53,14 +46,7 @@ class SaveTenantConfigAction
     /**
      * @param  array<string, mixed>  $array1
      * @param  array<string, mixed>  $array2
-<<<<<<< .merge_file_HGJkSe
-<<<<<<< HEAD
-=======
      *
->>>>>>> 1ad0554 (.)
-=======
-     *
->>>>>>> .merge_file_7m1qPj
      * @return array<string, mixed>
      */
     private function arrayMergeRecursiveDistinct(array $array1, array $array2): array

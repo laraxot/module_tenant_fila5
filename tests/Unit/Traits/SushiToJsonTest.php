@@ -3,39 +3,14 @@
 declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit\Traits;
-<<<<<<< HEAD
-=======
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
-// Tenant Pest/PHPUnit — claude-audit documentation ratio.
->>>>>>> 1ad0554 (.)
 
 use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
 use Mockery;
-<<<<<<< .merge_file_1JkJ2V
-<<<<<<< HEAD
-use Mockery\Expectation;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Tests\TestCase;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
-=======
-use Modules\Tenant\Models\TestSushiModel;
-use Modules\Tenant\Tests\TestCase;
->>>>>>> 1ad0554 (.)
-=======
-use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
-use Modules\Tenant\Models\TestSushiModel;
-use Modules\Tenant\Tests\TestCase;
->>>>>>> .merge_file_6wxOO0
 
 use function Safe\json_decode;
 use function Safe\json_encode;
@@ -53,11 +28,6 @@ function writeSushiJsonFile(string $path, array $data): void
 }
 
 beforeEach(function (): void {
-<<<<<<< .merge_file_1JkJ2V
-<<<<<<< HEAD
-    /** @var TestCase $this */
-=======
->>>>>>> .merge_file_6wxOO0
     $this->model = new TestSushiModel;
     $this->testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
@@ -65,45 +35,13 @@ beforeEach(function (): void {
         File::delete($this->testJsonPath);
     }
 
-<<<<<<< .merge_file_1JkJ2V
-    $jsonPath = TestCase::$testJsonPath;
-    $mock = Mockery::mock(GetTenantFilePathAction::class);
-    $mock->allows(['execute' => $jsonPath]);
-    app()->instance(GetTenantFilePathAction::class, $mock);
-
-    if (File::exists(TestCase::$testJsonPath)) {
-        File::delete(TestCase::$testJsonPath);
-=======
-    $this->model = new TestSushiModel;
-    $this->testJsonPath = app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
-
-    if (File::exists($this->testJsonPath)) {
-        File::delete($this->testJsonPath);
-    }
-
     $directory = dirname($this->testJsonPath);
     if (File::exists($directory)) {
         File::deleteDirectory($directory);
->>>>>>> 1ad0554 (.)
-=======
-    $directory = dirname($this->testJsonPath);
-    if (File::exists($directory)) {
-        File::deleteDirectory($directory);
->>>>>>> .merge_file_6wxOO0
     }
 });
 
 afterEach(function (): void {
-<<<<<<< .merge_file_1JkJ2V
-<<<<<<< HEAD
-    /** @var TestCase $this */
-    if (File::exists(TestCase::$testJsonPath)) {
-        File::delete(TestCase::$testJsonPath);
-    }
-
-    if (File::exists(TestCase::$testDirectory)) {
-        File::deleteDirectory(TestCase::$testDirectory);
-=======
     if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
     }
@@ -111,40 +49,12 @@ afterEach(function (): void {
     $directory = dirname($this->testJsonPath);
     if (File::exists($directory)) {
         File::deleteDirectory($directory);
->>>>>>> 1ad0554 (.)
-=======
-    if (File::exists($this->testJsonPath)) {
-        File::delete($this->testJsonPath);
-    }
-
-    $directory = dirname($this->testJsonPath);
-    if (File::exists($directory)) {
-        File::deleteDirectory($directory);
->>>>>>> .merge_file_6wxOO0
     }
 
     Mockery::close();
 });
 
 it('returns correct json file path', function (): void {
-<<<<<<< .merge_file_1JkJ2V
-<<<<<<< HEAD
-    /** @var TestCase $this */
-    expect($this->sushiModel()->getJsonFile())->toBe(TestCase::$testJsonPath);
-});
-
-it('returns empty array when json file not exists', function (): void {
-    /** @var TestCase $this */
-=======
-    $expectedPath = app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
-    $actualPath = $this->sushiModel()->getJsonFile();
-
-    expect($actualPath)->toBe($expectedPath);
-});
-
-it('returns empty array when json file not exists', function (): void {
->>>>>>> 1ad0554 (.)
-=======
     $expectedPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
     $actualPath = $this->sushiModel()->getJsonFile();
 
@@ -152,31 +62,12 @@ it('returns empty array when json file not exists', function (): void {
 });
 
 it('returns empty array when json file not exists', function (): void {
->>>>>>> .merge_file_6wxOO0
     $rows = $this->sushiModel()->getSushiRows();
 
     expect($rows)->toBe([]);
 });
 
 it('throws exception when json data is invalid', function (): void {
-<<<<<<< .merge_file_1JkJ2V
-<<<<<<< HEAD
-    /** @var TestCase $this */
-    File::put(TestCase::$testJsonPath, 'invalid json content');
-=======
-    writeSushiJsonFile($this->sushiJsonPath(), []);
-
-    File::put($this->sushiJsonPath(), 'invalid json content');
->>>>>>> .merge_file_6wxOO0
-
-    expect(fn () => $this->sushiModel()->getSushiRows())
-        ->toThrow(Exception::class, 'Data is not array ['.$this->sushiJsonPath().']');
-});
-
-it('loads valid json data correctly', function (): void {
-<<<<<<< .merge_file_1JkJ2V
-    /** @var TestCase $this */
-=======
     writeSushiJsonFile($this->sushiJsonPath(), []);
 
     File::put($this->sushiJsonPath(), 'invalid json content');
@@ -186,9 +77,6 @@ it('loads valid json data correctly', function (): void {
 });
 
 it('loads valid json data correctly', function (): void {
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_6wxOO0
     $testData = [
         '1' => [
             'id' => 1,
@@ -206,22 +94,6 @@ it('loads valid json data correctly', function (): void {
         ],
     ];
 
-<<<<<<< .merge_file_1JkJ2V
-<<<<<<< HEAD
-    writeSushiJsonFile(TestCase::$testJsonPath, $testData);
-=======
-    writeSushiJsonFile($this->sushiJsonPath(), $testData);
->>>>>>> .merge_file_6wxOO0
-
-    $rows = $this->sushiModel()->getSushiRows();
-
-    expect($rows)->toBe($testData);
-});
-
-it('normalizes nested arrays in json data', function (): void {
-<<<<<<< .merge_file_1JkJ2V
-    /** @var TestCase $this */
-=======
     writeSushiJsonFile($this->sushiJsonPath(), $testData);
 
     $rows = $this->sushiModel()->getSushiRows();
@@ -230,9 +102,6 @@ it('normalizes nested arrays in json data', function (): void {
 });
 
 it('normalizes nested arrays in json data', function (): void {
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_6wxOO0
     $testData = [
         '1' => [
             'id' => 1,
@@ -242,12 +111,7 @@ it('normalizes nested arrays in json data', function (): void {
         ],
     ];
 
-<<<<<<< .merge_file_1JkJ2V
-<<<<<<< HEAD
-    writeSushiJsonFile(TestCase::$testJsonPath, $testData);
-=======
     writeSushiJsonFile($this->sushiJsonPath(), $testData);
->>>>>>> .merge_file_6wxOO0
 
     $rows = $this->sushiModel()->getSushiRows();
     $row = $this->jsonRecordAt($rows, '1');
@@ -264,56 +128,13 @@ it('normalizes nested arrays in json data', function (): void {
 
 it('saves data to json file successfully', function (): void {
     $testData = [
-<<<<<<< .merge_file_1JkJ2V
-        1 => ['id' => 1, 'name' => 'Test Item'],
-        2 => ['id' => 2, 'name' => 'Another Item'],
-=======
-    writeSushiJsonFile($this->sushiJsonPath(), $testData);
-
-    $rows = $this->sushiModel()->getSushiRows();
-    $row = $this->jsonRecordAt($rows, '1');
-
-    expect($row['metadata'])->toBeString();
-    expect($row['tags'])->toBeString();
-    expect(json_decode((string) $row['metadata'], true))->toBe(['nested' => ['deep' => 'value']]);
-    expect(json_decode((string) $row['tags'], true))->toBe(['tag1', 'tag2']);
-});
-
-it('saves data to json file successfully', function (): void {
-    $testData = [
         '1' => ['id' => 1, 'name' => 'Test Item'],
         '2' => ['id' => 2, 'name' => 'Another Item'],
->>>>>>> 1ad0554 (.)
-=======
-        '1' => ['id' => 1, 'name' => 'Test Item'],
-        '2' => ['id' => 2, 'name' => 'Another Item'],
->>>>>>> .merge_file_6wxOO0
     ];
 
     $result = $this->sushiModel()->saveToJson($testData);
 
     expect($result)->toBeTrue();
-<<<<<<< .merge_file_1JkJ2V
-<<<<<<< HEAD
-    expect(File::exists(TestCase::$testJsonPath))->toBeTrue();
-=======
-    expect(File::exists($this->sushiJsonPath()))->toBeTrue();
->>>>>>> .merge_file_6wxOO0
-
-    $savedData = $this->readJsonFileAsArray($this->sushiJsonPath());
-
-    expect($savedData)->toBe($testData);
-});
-
-it('creates directory if not exists when saving', function (): void {
-<<<<<<< .merge_file_1JkJ2V
-    /** @var TestCase $this */
-    if (File::exists(TestCase::$testDirectory)) {
-        File::deleteDirectory(TestCase::$testDirectory);
-    }
-
-    $testData = [1 => ['id' => 1, 'name' => 'Test']];
-=======
     expect(File::exists($this->sushiJsonPath()))->toBeTrue();
 
     $savedData = $this->readJsonFileAsArray($this->sushiJsonPath());
@@ -323,30 +144,10 @@ it('creates directory if not exists when saving', function (): void {
 
 it('creates directory if not exists when saving', function (): void {
     $testData = ['1' => ['id' => 1, 'name' => 'Test']];
->>>>>>> 1ad0554 (.)
-=======
-    $testData = ['1' => ['id' => 1, 'name' => 'Test']];
->>>>>>> .merge_file_6wxOO0
 
     $result = $this->sushiModel()->saveToJson($testData);
 
     expect($result)->toBeTrue();
-<<<<<<< .merge_file_1JkJ2V
-<<<<<<< HEAD
-    expect(File::exists(dirname(TestCase::$testJsonPath)))->toBeTrue();
-    expect(File::exists(TestCase::$testJsonPath))->toBeTrue();
-=======
-    expect(File::exists(dirname($this->sushiJsonPath())))->toBeTrue();
-    expect(File::exists($this->sushiJsonPath()))->toBeTrue();
->>>>>>> .merge_file_6wxOO0
-});
-
-it('returns false when saving fails', function (): void {
-    File::shouldReceive('put')->once()->andReturn(false);
-
-<<<<<<< .merge_file_1JkJ2V
-    $result = $this->sushiModel()->saveToJson([1 => ['id' => 1, 'name' => 'Test']]);
-=======
     expect(File::exists(dirname($this->sushiJsonPath())))->toBeTrue();
     expect(File::exists($this->sushiJsonPath()))->toBeTrue();
 });
@@ -355,42 +156,15 @@ it('returns false when saving fails', function (): void {
     File::shouldReceive('put')->once()->andReturn(false);
 
     $result = $this->sushiModel()->saveToJson(['1' => ['id' => 1, 'name' => 'Test']]);
->>>>>>> 1ad0554 (.)
-=======
-    $result = $this->sushiModel()->saveToJson(['1' => ['id' => 1, 'name' => 'Test']]);
->>>>>>> .merge_file_6wxOO0
 
     expect($result)->toBeFalse();
 });
 
 it('loads existing data correctly', function (): void {
-<<<<<<< .merge_file_1JkJ2V
-<<<<<<< HEAD
-    /** @var TestCase $this */
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_6wxOO0
     $testData = [
         '1' => ['id' => 1, 'name' => 'Existing Item'],
     ];
 
-<<<<<<< .merge_file_1JkJ2V
-<<<<<<< HEAD
-    writeSushiJsonFile(TestCase::$testJsonPath, $testData);
-=======
-    writeSushiJsonFile($this->sushiJsonPath(), $testData);
->>>>>>> .merge_file_6wxOO0
-
-    $existingData = $this->sushiModel()->loadExistingData();
-
-    expect($existingData)->toBe($testData);
-});
-
-it('returns empty array when no existing data', function (): void {
-<<<<<<< .merge_file_1JkJ2V
-    /** @var TestCase $this */
-=======
     writeSushiJsonFile($this->sushiJsonPath(), $testData);
 
     $existingData = $this->sushiModel()->loadExistingData();
@@ -399,22 +173,12 @@ it('returns empty array when no existing data', function (): void {
 });
 
 it('returns empty array when no existing data', function (): void {
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_6wxOO0
     $existingData = $this->sushiModel()->loadExistingData();
 
     expect($existingData)->toBe([]);
 });
 
 it('works with sushi package integration', function (): void {
-<<<<<<< .merge_file_1JkJ2V
-<<<<<<< HEAD
-    /** @var TestCase $this */
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_6wxOO0
     $testData = [
         '1' => [
             'id' => 1,
@@ -430,21 +194,6 @@ it('works with sushi package integration', function (): void {
         ],
     ];
 
-<<<<<<< .merge_file_1JkJ2V
-<<<<<<< HEAD
-    writeSushiJsonFile(TestCase::$testJsonPath, $testData);
-=======
-    writeSushiJsonFile($this->sushiJsonPath(), $testData);
->>>>>>> .merge_file_6wxOO0
-
-    $rows = $this->sushiModel()->getSushiRows();
-
-    expect($rows)->toBe($testData);
-    expect($rows)->toHaveCount(2);
-<<<<<<< .merge_file_1JkJ2V
-    expect($this->jsonRecordAt($rows, 1)['name'])->toBe('Sushi Item 1');
-    expect($this->jsonRecordAt($rows, 2)['name'])->toBe('Sushi Item 2');
-=======
     writeSushiJsonFile($this->sushiJsonPath(), $testData);
 
     $rows = $this->sushiModel()->getSushiRows();
@@ -453,9 +202,4 @@ it('works with sushi package integration', function (): void {
     expect($rows)->toHaveCount(2);
     expect($this->jsonRecordAt($rows, '1')['name'])->toBe('Sushi Item 1');
     expect($this->jsonRecordAt($rows, '2')['name'])->toBe('Sushi Item 2');
->>>>>>> 1ad0554 (.)
-=======
-    expect($this->jsonRecordAt($rows, '1')['name'])->toBe('Sushi Item 1');
-    expect($this->jsonRecordAt($rows, '2')['name'])->toBe('Sushi Item 2');
->>>>>>> .merge_file_6wxOO0
 });

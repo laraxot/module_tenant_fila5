@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_QogNH9
-<<<<<<< HEAD
----
-title: "Tenant Module - User Research"
-module: "Tenant"
-type: concept
-tags: [USER, RESEARCH]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "user research"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_rhrnvj
 # Tenant Module - User Research
 
 **Module:** Tenant  

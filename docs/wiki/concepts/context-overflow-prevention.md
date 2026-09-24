@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_ijwTJ3
-<<<<<<< HEAD
----
-title: "Context Overflow Prevention"
-module: "Tenant"
-type: concept
-tags: [context, overflow, prevention]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "context overflow prevention"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_j4kDjJ
 ## Context Overflow Prevention
 
 context-mode MCP v1.0.121 comprime il 98% del contesto automaticamente.

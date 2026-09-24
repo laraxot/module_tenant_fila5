@@ -9,10 +9,6 @@ use Filament\Forms\Components\TextInput;
 use Modules\Tenant\Filament\Resources\DomainResource\Pages\CreateDomain;
 use Modules\Tenant\Filament\Resources\DomainResource\Pages\EditDomain;
 use Modules\Tenant\Filament\Resources\DomainResource\Pages\ListDomains;
-<<<<<<< HEAD
-=======
-use Modules\Tenant\Filament\Resources\DomainResource\Schemas\DomainForm;
->>>>>>> 1ad0554 (.)
 use Modules\Tenant\Models\Domain;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
@@ -21,20 +17,6 @@ class DomainResource extends XotBaseResource
 {
     protected static ?string $model = Domain::class;
 
-<<<<<<< .merge_file_LJz9tG
-<<<<<<< HEAD
-    /**
-     * @return array<string, mixed>
-     */
-=======
-    #[Override]
-    public static function getFormSchema(): array
-    {
-        return DomainForm::getFormSchema();
-    }
-
->>>>>>> 1ad0554 (.)
-=======
     #[Override]
     public function getFormSchemaOld(): array
     {
@@ -64,7 +46,6 @@ class DomainResource extends XotBaseResource
         ];
     }
 
->>>>>>> .merge_file_k6Dgcb
     #[Override]
     public static function getRelations(): array
     {

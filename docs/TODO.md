@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_AqI9ki
-<<<<<<< HEAD
----
-title: "Tenant Module - PHPStan Error Resolution Roadmap"
-module: "Tenant"
-type: concept
-tags: [TODO]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "todo"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_xwHNcw
 # Tenant Module - PHPStan Error Resolution Roadmap
 
 This document outlines the steps to resolve the numerous PHPStan errors found in the Tenant module.

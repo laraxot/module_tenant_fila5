@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_3aaf3E
-<<<<<<< HEAD
----
-title: "Tenant Module Roadmap 2026"
-module: "Tenant"
-type: concept
-tags: [roadmap]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "roadmap "
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_Kt1j3e
 # Tenant Module Roadmap 2026
 
 ## 🏢 Sacred Philosophy: "One Application, Many Worlds"

@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_Pgp72M
-<<<<<<< HEAD
----
-title: "Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction"
-module: "Tenant"
-type: concept
-tags: [runninginconsole, check, decision]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "runninginconsole check decision"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_V1Bbwu
 # Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction
 
 **Data**: 2025-01-22

@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_T7Mi2R
-<<<<<<< HEAD
----
-title: "Task: Query Optimization Tenant"
-module: "Tenant"
-type: concept
-tags: [query, optimization, tenant]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "query optimization tenant"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_wOFAOo
 # Task: Query Optimization Tenant
 
 **Modulo**: Tenant  

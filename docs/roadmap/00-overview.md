@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_wRhOKU
-<<<<<<< HEAD
----
-title: "Roadmap overview (Module Tenant)"
-module: "Tenant"
-type: concept
-tags: [00, overview]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "00 overview"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_eoOj1d
 # Roadmap overview (Module Tenant)
 
 ## Scope

@@ -1,32 +1,7 @@
-<<<<<<< .merge_file_udVUH1
-<<<<<<< HEAD
----
-title: "Tenant Module Updates - December 2025"
-module: "Tenant"
-type: concept
-tags: [updates, dec]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "updates dec"
-related:
-  - "./phpstan-corrections-january.md"
----
-# Tenant Module Updates - December 2025
-
-## PHPStan Fixes
-- **DocBlock Updates**: Fixed `class.notFound` errors in `Tenant`, `Domain`, and `TestSushiModel` by replacing incorrect `modulo operativo` and `modulo questionari` profile references with `Modules\Xot\Contracts\ProfileContract`.
-=======
 # Tenant Module Updates - December 2025
 
 ## PHPStan Fixes
 - **DocBlock Updates**: Fixed `class.notFound` errors in `Tenant`, `Domain`, and `TestSushiModel` by replacing incorrect `TechPlanner` and `Quaeris` profile references with `Modules\Xot\Contracts\ProfileContract`.
->>>>>>> 1ad0554 (.)
-=======
-# Tenant Module Updates - December 2025
-
-## PHPStan Fixes
-- **DocBlock Updates**: Fixed `class.notFound` errors in `Tenant`, `Domain`, and `TestSushiModel` by replacing incorrect `TechPlanner` and `Quaeris` profile references with `Modules\Xot\Contracts\ProfileContract`.
->>>>>>> .merge_file_tcnChn
 - **Helper Functions**: Added `getAllModulesModels` and `array_merge_recursive_distinct` to `Modules/Xot/helpers/Helper.php` to resolve undefined function errors.
 - **TenantService Refactor**: Adhering to the "Fat Model, Skinny Controller" (and Service) philosophy, all business logic has been extracted into dedicated Action classes:
     - `GetTenantFilePathAction`

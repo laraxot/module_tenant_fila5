@@ -5,11 +5,7 @@ declare(strict_types=1);
 namespace Modules\Tenant\Console\Commands;
 
 use Illuminate\Console\Command;
-<<<<<<< HEAD
 use Modules\Tenant\Actions\GetTenantNameAction;
-=======
-use Modules\Tenant\Services\TenantService;
->>>>>>> 1ad0554 (.)
 
 class TestCommand extends Command
 {
@@ -26,11 +22,7 @@ class TestCommand extends Command
      */
     public function handle()
     {
-<<<<<<< HEAD
         $name = app(GetTenantNameAction::class)->execute();
-=======
-        $name = TenantService::getName();
->>>>>>> 1ad0554 (.)
         $this->info('tenant name :' . $name);
     }
 }

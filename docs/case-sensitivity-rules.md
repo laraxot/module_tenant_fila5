@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_ix5lDg
-<<<<<<< HEAD
----
-title: "Case Sensitivity Rules - Tenant Module"
-module: "Tenant"
-type: rule
-tags: [case, sensitivity, rules]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "case sensitivity rules"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_n59a6Z
 # Case Sensitivity Rules - Tenant Module
 
 ## Problema / Problem

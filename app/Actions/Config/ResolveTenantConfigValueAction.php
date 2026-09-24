@@ -8,16 +8,8 @@ use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
 use Modules\Tenant\Actions\GetTenantNameAction;
-<<<<<<< .merge_file_iRWlPd
-<<<<<<< HEAD
-=======
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\MergeRecursiveStringKeyConfigAction;
->>>>>>> 1ad0554 (.)
-=======
-use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
-use Modules\Tenant\Actions\Config\MergeRecursiveStringKeyConfigAction;
->>>>>>> .merge_file_EnGLLf
 use Spatie\QueueableAction\QueueableAction;
 
 class ResolveTenantConfigValueAction
@@ -56,11 +48,7 @@ class ResolveTenantConfigValueAction
      */
     private function buildMergedGroupConfig(string $group): array
     {
-<<<<<<< .merge_file_iRWlPd
-<<<<<<< HEAD
-=======
         /** @var mixed $originalConf */
->>>>>>> .merge_file_EnGLLf
         $originalConf = config($group);
         $tenantName = app(GetTenantNameAction::class)->execute();
         $configName = str_replace('/', '.', $tenantName).'.'.$group;
@@ -74,36 +62,11 @@ class ResolveTenantConfigValueAction
         $extraConfTyped = is_array($extraConf)
             ? app(FilterConfigStringKeysAction::class)->execute($extraConf)
             : [];
-=======
-        /** @var mixed $originalConf */
-        $originalConf = config($group);
-        $tenantName = app(GetTenantNameAction::class)->execute();
-        $configName = str_replace('/', '.', $tenantName).'.'.$group;
-        /** @var mixed $extraConf */
-        $extraConf = config($configName);
-
-        $originalConfArray = is_array($originalConf) ? $originalConf : [];
-        $extraConfArray = is_array($extraConf) ? $extraConf : [];
-
-        /** @var array<string, mixed> $originalConfArray */
-        /** @var array<string, mixed> $extraConfArray */
-
-        $filter = app(FilterConfigStringKeysAction::class);
-        $originalConfTyped = $filter->execute($originalConfArray);
-        $extraConfTyped = $filter->execute($extraConfArray);
->>>>>>> 1ad0554 (.)
 
         return app(MergeRecursiveStringKeyConfigAction::class)->execute($originalConfTyped, $extraConfTyped);
     }
 
     /**
-<<<<<<< .merge_file_iRWlPd
-<<<<<<< HEAD
-     * @param  mixed  $res  Raw config() payload; only scalar/array values are accepted
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_EnGLLf
      * @return float|int|string|array<mixed>|null
      */
     private function assertValidConfigValue(mixed $res): float|int|string|array|null

@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_aI7RUv
-<<<<<<< HEAD
----
-title: "Consolidamento documentazione"
-module: "Tenant"
-type: concept
-tags: [documentation, consolidation]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "documentation consolidation"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_eTL4F6
 # Consolidamento documentazione
 
 ## Obiettivo

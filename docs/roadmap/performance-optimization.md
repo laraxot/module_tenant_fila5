@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_gHHLk5
-<<<<<<< HEAD
----
-title: "Performance e ottimizzazioni"
-module: "Tenant"
-type: concept
-tags: [performance, optimization]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "performance optimization"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_l4QVA8
 # Performance e ottimizzazioni
 
 ## Obiettivo

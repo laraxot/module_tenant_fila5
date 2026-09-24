@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_ggxj51
-<<<<<<< HEAD
----
-title: "Task: Creazione TenantSetting Model"
-module: "Tenant"
-type: concept
-tags: [creazione, tenant, setting, model]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "creazione tenant setting model"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_85Mcqt
 # Task: Creazione TenantSetting Model
 
 **Modulo**: Tenant  

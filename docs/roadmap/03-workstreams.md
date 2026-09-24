@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_GiQ5Su
-<<<<<<< HEAD
----
-title: "Workstreams - Tenant"
-module: "Tenant"
-type: concept
-tags: [03, workstreams]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "03 workstreams"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_5ApduN
 # Workstreams - Tenant
 
 ## WS1 Architecture

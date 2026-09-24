@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_Sn3b1T
-<<<<<<< HEAD
----
-title: "Task 001: Implement Multi-Tenancy System"
-module: "Tenant"
-type: concept
-tags: [001, multi, tenancy, system]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "001 multi tenancy system"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_IIQTyF
 # Task 001: Implement Multi-Tenancy System
 
 ## Description

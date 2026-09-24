@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_WywO0V
-<<<<<<< HEAD
----
-title: "Tenant Module - Product Roadmap"
-module: "Tenant"
-type: concept
-tags: [PRODUCT, ROADMAP]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "product roadmap"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_t87r9u
 # Tenant Module - Product Roadmap
 
 **Module:** Tenant  

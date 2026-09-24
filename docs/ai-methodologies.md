@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_4pPZAD
-<<<<<<< HEAD
----
-title: "AI Methodologies Handbook"
-module: "Tenant"
-type: concept
-tags: [ai, methodologies]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "ai methodologies"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_ymoYRd
 # AI Methodologies Handbook
 
 This file is a DRY local index for AI workflows in this module or theme.

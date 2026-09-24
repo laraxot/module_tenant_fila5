@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_A6zGbF
-<<<<<<< HEAD
----
-title: "Tenant Config Path Philosophy - THE FURIOUS DEBATE"
-module: "Tenant"
-type: concept
-tags: [tenant, config, path, philosophy]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "tenant config path philosophy debate"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_nNJQf7
 # Tenant Config Path Philosophy - THE FURIOUS DEBATE
 
 **Status**: 🔥 FURIOUS INTERNAL DEBATE

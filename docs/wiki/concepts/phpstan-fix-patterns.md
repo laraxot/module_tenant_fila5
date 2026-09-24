@@ -33,17 +33,7 @@ Fix sessione corrente:
 
 I probe PHPStan non sono parte del contratto attivo del modulo e non vanno duplicati. Dopo il caller tracing completo, `SushiToCsvPhpstanProbe` e `SushiToCsv.php` sono stati archiviati in-place con il suffisso `.bak`: non esistono consumer di produzione e non è stato creato un sostituto.
 
-<<<<<<< .merge_file_5iy7e5
-<<<<<<< HEAD
-`tests/Fixtures/Traits/TenantPhpstanTraitProbes.php` — host `SushiToCsvPhpstanProbe`, `SushiToPhpArrayPhpstanProbe`.
-=======
-I probe `SushiToCsvPhpstanProbe` e `SushiToPhpArrayPhpstanProbe` (in `tests/Fixtures/Traits/`) coprono i trait cross-module usati fuori Tenant.
->>>>>>> 1ad0554 (.)
-
-Fix trait associati: return type `getSushiRows()` / `getCsvHeader()` in `SushiToCsv`; `array_values` tipizzato in `SushiToPhpArray`.
-=======
 Il caso cross-module residuo di `SushiToPhpArray` in User resta documentato dal fixture esistente; il relativo `array_values` resta tipizzato.
->>>>>>> .merge_file_kSAgAk
 
 ## Codice produzione
 

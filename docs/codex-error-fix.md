@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_Do2xZC
-<<<<<<< HEAD
----
-title: "Codex Configuration Error Fixes"
-module: "Tenant"
-type: concept
-tags: [codex, error, fix]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "codex error fix"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_EQskPZ
 # Codex Configuration Error Fixes
 
 Questo documento descrive le correzioni applicate agli errori riscontrati durante l'avvio di `codex`.

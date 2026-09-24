@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_1qfJa2
-<<<<<<< HEAD
----
-title: "Conflict Resolution — Module Tenant"
-module: "Tenant"
-type: concept
-tags: [conflict, resolution]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "conflict resolution"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_yyuraY
 # Conflict Resolution — Module Tenant
 
 ## Summary

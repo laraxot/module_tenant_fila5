@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_k0h0WR
-<<<<<<< HEAD
----
-title: "Tenant Module - Product Strategy"
-module: "Tenant"
-type: concept
-tags: [PRODUCT, STRATEGY]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "product strategy"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_Xb4uEr
 # Tenant Module - Product Strategy
 
 **Module:** Tenant  

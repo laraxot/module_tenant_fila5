@@ -20,14 +20,7 @@ class GetTenantConfigArrayAction
         $path = app(GetTenantFilePathAction::class)->execute($name.'.php');
 
         try {
-<<<<<<< .merge_file_2uR0a0
-<<<<<<< HEAD
-=======
             /** @var mixed $data */
->>>>>>> 1ad0554 (.)
-=======
-            /** @var mixed $data */
->>>>>>> .merge_file_6ZHm4U
             $data = File::getRequire($path);
         } catch (Throwable $e) {
             $data = [];

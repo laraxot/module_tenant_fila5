@@ -1,28 +1,4 @@
 ---
-<<<<<<< .merge_file_cmJq0I
-<<<<<<< HEAD
-title: "Tenant {{TYPE^}} LLM Wiki Agent Instructions"
-module: "Tenant"
-type: concept
-tags: [AGENTS]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "agents"
-=======
-title: "Agent instructions"
-type: reference
-tags: [agents, coding-agent, llm-wiki]
-created: 2026-07-01
-updated: 2026-07-01
-qmd: "istruzioni agenti LLM wiki modulo"
-issues: []
-discussions: []
->>>>>>> .merge_file_QyYTrl
-related:
-  - ./coding-agent-manifests.md
----
-<<<<<<< .merge_file_cmJq0I
-=======
 title: "Agent instructions"
 type: reference
 tags: [agents, coding-agent, llm-wiki]
@@ -35,10 +11,6 @@ related:
   - ./coding-agent-manifests.md
 ---
 
->>>>>>> 1ad0554 (.)
-=======
-
->>>>>>> .merge_file_QyYTrl
 # Tenant {{TYPE^}} LLM Wiki Agent Instructions
 
 > **Module/Theme:** Tenant

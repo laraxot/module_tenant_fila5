@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_LN7VbW
-<<<<<<< HEAD
----
-title: "Tenant Module Wiki Index"
-module: "Tenant"
-type: concept
-tags: [index]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "index"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_XNyw8i
 # Tenant Module Wiki Index
 
 > **Module**: Tenant

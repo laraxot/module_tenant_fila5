@@ -21,12 +21,6 @@ una cartella nominata **com**,
 
 dentro la cartella com un altra cartella nominata **mio_dominio**.
 
-<<<<<<< .merge_file_8KvFkA
-<<<<<<< HEAD
-quindi tutti i file di configurazione che interessano al progetto che verrà pubblicato a dominio https://mio_dominio.com/ si troveranno dentro la cartella **laravel/config/com/mio_dominio"**
-=======
-=======
->>>>>>> .merge_file_MF0wQI
 quindi tutti i file di configurazione che interessano al progetto che verrà pubblicato a dominio https://mio_dominio.com/ si troveranno dentro la cartella **laravel/config/com/mio_dominio"**
 ---
 title: Configurazione progetti
@@ -52,7 +46,3 @@ una cartella nominata **com**,
 dentro la cartella com un altra cartella nominata **mio_dominio**.
 
 quindi tutti i file di configurazione che interessano al progetto che verrà pubblicato a dominio https://mio_dominio.com/ si troveranno dentro la cartella **laravel/config/com/mio_dominio"**
-<<<<<<< .merge_file_8KvFkA
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_MF0wQI

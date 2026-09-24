@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_liwWTN
-<<<<<<< HEAD
----
-title: "CRITICAL ARCHITECTURE RULE: NO MIGRATE:FRESH"
-module: "Tenant"
-type: rule
-tags: [rules, testing, no, migrate]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "rules testing no migrate fresh"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_c8PDhY
 # CRITICAL ARCHITECTURE RULE: NO MIGRATE:FRESH
 
 ## Rule

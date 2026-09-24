@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_qG6cvV
-<<<<<<< HEAD
----
-title: "Report: Metodi con nome duplicato nei moduli e nei temi"
-module: "Tenant"
-type: concept
-tags: [duplicate, methods, report]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "duplicate methods report"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_BDAbqc
 # Report: Metodi con nome duplicato nei moduli e nei temi
 
 ## Introduzione

@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_4s1LQ0
-<<<<<<< HEAD
----
-title: "File Duplicati da Eliminare - Modulo Tenant"
-module: "Tenant"
-type: concept
-tags: [duplicate, files, remove]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "duplicate files to remove"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_kpvTQq
 # File Duplicati da Eliminare - Modulo Tenant
 
 ## 🗑️ File da Eliminare (Case Sensitivity)

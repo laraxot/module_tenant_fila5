@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_W42ptf
-<<<<<<< HEAD
----
-title: "NestedSet Migration Best Practices - Tenant Module"
-module: "Tenant"
-type: concept
-tags: [nestedset, migration, best, practices]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "nestedset migration best practices"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_4ishg2
 # NestedSet Migration Best Practices - Tenant Module
 
 ## Overview

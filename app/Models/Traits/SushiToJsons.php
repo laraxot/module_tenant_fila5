@@ -1,22 +1,11 @@
 <?php
 
-<<<<<<< .merge_file_0exzsp
-<<<<<<< HEAD
-declare(strict_types=1);
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_YguSGW
 /**
  * @see https://dev.to/hasanmn/automatically-update-createdby-and-updatedby-in-laravel-using-bootable-traits-28g9.
  */
 
-<<<<<<< .merge_file_0exzsp
-<<<<<<< HEAD
-=======
 declare(strict_types=1);
 
->>>>>>> .merge_file_YguSGW
 namespace Modules\Tenant\Models\Traits;
 
 use Exception;
@@ -25,24 +14,8 @@ use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use ReflectionObject;
 use function Safe\json_encode;
 use function Safe\unlink;
-<<<<<<< .merge_file_0exzsp
-=======
-declare(strict_types=1);
-
-namespace Modules\Tenant\Models\Traits;
-
-use Exception;
-use Illuminate\Support\Facades\File;
-use ReflectionObject;
-use function Safe\json_encode;
-use function Safe\unlink;
 use Sushi\Sushi;
 use Webmozart\Assert\Assert;
->>>>>>> 1ad0554 (.)
-=======
-use Sushi\Sushi;
-use Webmozart\Assert\Assert;
->>>>>>> .merge_file_YguSGW
 
 trait SushiToJsons
 {
@@ -65,22 +38,12 @@ trait SushiToJsons
      */
     public function getSushiRows(): array
     {
-<<<<<<< .merge_file_0exzsp
-<<<<<<< HEAD
-        return $this->collectRowsFromJsonFiles($this->getTable());
-=======
-=======
->>>>>>> .merge_file_YguSGW
         $tbl = $this->getTable();
         if (! is_string($tbl)) {
             return [];
         }
 
         return $this->collectRowsFromJsonFiles($tbl);
-<<<<<<< .merge_file_0exzsp
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_YguSGW
     }
 
     public function getJsonFile(): string
@@ -91,50 +54,22 @@ trait SushiToJsons
         $stringId = is_string($id) || is_numeric($id) ? (string) $id : 'unknown';
         $stringTbl = is_string($tbl) ? $tbl : 'unknown';
 
-<<<<<<< HEAD
         return app(GetTenantFilePathAction::class)->execute('database/content/'.$stringTbl.'/'.$stringId.'.json');
-=======
-        return app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/'.$stringTbl.'/'.$stringId.'.json');
->>>>>>> 1ad0554 (.)
     }
 
     protected static function bootSushiToJsons(): void
     {
-<<<<<<< .merge_file_0exzsp
-<<<<<<< HEAD
-        static::creating(static function (Model $model): void {
-=======
         static::creating(static function ($model): void {
->>>>>>> 1ad0554 (.)
-=======
-        static::creating(static function ($model): void {
->>>>>>> .merge_file_YguSGW
             Assert::isInstanceOf($model, static::class);
             self::handleJsonCreating($model);
         });
 
-<<<<<<< .merge_file_0exzsp
-<<<<<<< HEAD
-        static::updating(static function (Model $model): void {
-=======
         static::updating(static function ($model): void {
->>>>>>> 1ad0554 (.)
-=======
-        static::updating(static function ($model): void {
->>>>>>> .merge_file_YguSGW
             Assert::isInstanceOf($model, static::class);
             self::handleJsonUpdating($model);
         });
 
-<<<<<<< .merge_file_0exzsp
-<<<<<<< HEAD
-        static::deleting(static function (Model $model): void {
-=======
         static::deleting(static function ($model): void {
->>>>>>> 1ad0554 (.)
-=======
-        static::deleting(static function ($model): void {
->>>>>>> .merge_file_YguSGW
             Assert::isInstanceOf($model, static::class);
             self::handleJsonDeleting($model);
         });
@@ -169,21 +104,10 @@ trait SushiToJsons
      */
     private function collectRowsFromJsonFiles(string $tbl): array
     {
-<<<<<<< .merge_file_0exzsp
-<<<<<<< HEAD
-        $files = File::glob(app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl).'/*.json') ?: [];
-=======
-        $files = File::glob(app(\Modules\Tenant\Actions\Config\GetTenantFilePathAction::class)->execute('database/content/'.$tbl).'/*.json');
-        if ($files === false) {
-            return [];
-        }
->>>>>>> 1ad0554 (.)
-=======
         $files = File::glob(app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl).'/*.json');
         if ($files === false) {
             return [];
         }
->>>>>>> .merge_file_YguSGW
 
         /** @var array<int, array<string, mixed>> $rows */
         $rows = [];
@@ -192,14 +116,7 @@ trait SushiToJsons
             if (! is_string($file)) {
                 continue;
             }
-<<<<<<< .merge_file_0exzsp
-<<<<<<< HEAD
-=======
 
->>>>>>> 1ad0554 (.)
-=======
-
->>>>>>> .merge_file_YguSGW
             $row = $this->mapJsonFileToRow($file);
             if ($row !== null) {
                 $rows[] = $row;
@@ -229,16 +146,8 @@ trait SushiToJsons
 
     /**
      * @param  array<string, mixed>  $schema
-<<<<<<< .merge_file_0exzsp
-     * @param  array<string, mixed>  $json
-<<<<<<< HEAD
-=======
-     *
->>>>>>> 1ad0554 (.)
-=======
      * @param  array<mixed, mixed>  $json
      *
->>>>>>> .merge_file_YguSGW
      * @return array<string, mixed>
      */
     private function buildRowFromSchema(array $schema, array $json): array

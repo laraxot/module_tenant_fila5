@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_rzAecD
-<<<<<<< HEAD
----
-title: "Dependency Intelligence - Module Tenant"
-module: "Tenant"
-type: concept
-tags: [dependency, intelligence]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "dependency intelligence"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_9voRdl
 # Dependency Intelligence - Module Tenant
 
 

@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_MtEHWj
-<<<<<<< HEAD
----
-title: "Laravel Passport Configuration (Version 13.4.x)"
-module: "Tenant"
-type: concept
-tags: [passport]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "passport"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_yjpIM8
 # Laravel Passport Configuration (Version 13.4.x)
 
 ## Overview

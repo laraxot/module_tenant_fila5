@@ -9,15 +9,7 @@ qmd: "gitignore Tests slash ignora tests Pest claude-audit zero test files"
 issues:
   - "https://github.com/laraxot/module_tenant_fila5/issues/1"
 discussions:
-<<<<<<< .merge_file_IYv46s
-<<<<<<< HEAD
-  - "https://github.com/laraxot/platform/discussions/304"
-=======
   - "https://github.com/laraxot/base_fixcity_fila5/discussions/304"
->>>>>>> 1ad0554 (.)
-=======
-  - "https://github.com/laraxot/base_fixcity_fila5/discussions/304"
->>>>>>> .merge_file_JgSbWJ
 related:
   - ../../Xot/docs/wiki/concepts/claude-audit-static-all-modules.md
 ---

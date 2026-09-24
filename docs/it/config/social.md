@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_UzQ84t
-<<<<<<< HEAD
----
-title: "Social"
-module: "Tenant"
-type: concept
-tags: [social]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "social"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_trWkmx
 <?php
 
 declare(strict_types=1);

@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_JpEJz0
-<<<<<<< HEAD
----
-title: "License"
-module: "Tenant"
-type: concept
-tags: [license]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "license"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_08kmnN
 The MIT License (MIT)
 
 Copyright (c) :vendor_name <author@domain.com>

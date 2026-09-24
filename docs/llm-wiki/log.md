@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_cScl1D
-<<<<<<< HEAD
----
-title: "Tenant Activity Log"
-module: "Tenant"
-type: concept
-tags: [log]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "log"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_YWd0eF
 # Tenant Activity Log
 
 > **Module**: Tenant

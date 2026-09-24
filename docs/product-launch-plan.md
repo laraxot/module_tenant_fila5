@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_yDNd5B
-<<<<<<< HEAD
----
-title: "Tenant Module - Product Launch Plan"
-module: "Tenant"
-type: concept
-tags: [PRODUCT, LAUNCH, PLAN]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "product launch plan"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_bJD5uf
 # Tenant Module - Product Launch Plan
 
 **Module:** Tenant  

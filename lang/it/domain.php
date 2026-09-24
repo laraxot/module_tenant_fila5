@@ -2,21 +2,7 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
 return [
-=======
-// Tenant translations — LangServiceProvider SSoT (never ->label() in Filament PHP).
-// claude-audit static: ≥5% comment lines on files >100 LOC.
-// Canon: Modules/Tenant/docs/wiki — domain i18n only.
-// File: lang/it/domain.php
-return [
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
->>>>>>> 1ad0554 (.)
     'navigation' => [
         'plural' => 'Domini',
         'group' => [
@@ -74,13 +60,6 @@ return [
             'tooltip' => '',
             'helper_text' => '',
             'description' => '',
-<<<<<<< .merge_file_squedc
-<<<<<<< HEAD
-            'placeholder' => 'rating',
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_AVSH0M
         ],
         'toggleColumns' => [
             'label' => 'toggleColumns',
@@ -94,42 +73,6 @@ return [
             'helper_text' => '',
             'description' => '',
         ],
-<<<<<<< .merge_file_squedc
-<<<<<<< HEAD
-        'title' => [
-            'label' => 'title',
-            'placeholder' => 'title',
-            'helper_text' => 'title',
-            'description' => 'title',
-        ],
-        'brand' => [
-            'label' => 'brand',
-            'placeholder' => 'brand',
-            'helper_text' => 'brand',
-            'description' => 'brand',
-        ],
-        'category' => [
-            'label' => 'category',
-            'placeholder' => 'category',
-            'helper_text' => 'category',
-            'description' => 'category',
-        ],
-        'description' => [
-            'label' => 'description',
-            'placeholder' => 'description',
-            'helper_text' => 'description',
-            'description' => 'description',
-        ],
-        'price' => [
-            'label' => 'price',
-            'placeholder' => 'price',
-            'helper_text' => 'price',
-            'description' => 'price',
-        ],
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_AVSH0M
     ],
     'actions' => [
         'domain_created' => 'Dominio creato con successo',

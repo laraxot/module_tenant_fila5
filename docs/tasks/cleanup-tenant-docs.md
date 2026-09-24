@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_SFBghK
-<<<<<<< HEAD
----
-title: "Task: Cleanup Tenant Docs"
-module: "Tenant"
-type: concept
-tags: [cleanup, tenant, docs]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "cleanup tenant docs"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_A8nacY
 # Task: Cleanup Tenant Docs
 
 ## 📋 Obiettivo

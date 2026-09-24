@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_qdSe9V
-<<<<<<< HEAD
----
-title: "Task: Test Isolamento Dati - Tenant"
-module: "Tenant"
-type: concept
-tags: [task, test, isolamento, dati]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "task test isolamento dati"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_JuDCmc
 # Task: Test Isolamento Dati - Tenant
 
 **Modulo**: Tenant

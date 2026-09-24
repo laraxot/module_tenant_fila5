@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_VZuLqW
-<<<<<<< HEAD
----
-title: "Architectural Rules & Guidelines"
-module: "Tenant"
-type: rule
-tags: [architecture, rules]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "architecture rules"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_ERdZTP
 # Architectural Rules & Guidelines
 
 This module adheres to the **Laraxot Architecture** and **Super Cow Methodology**.

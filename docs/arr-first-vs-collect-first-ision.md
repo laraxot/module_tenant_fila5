@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_NnWRkx
-<<<<<<< HEAD
----
-title: "Decisione: Arr::first() vs collect()->first()"
-module: "Tenant"
-type: concept
-tags: [arr, first, vs, collect]
-created: 2026-07-14
-updated: 2026-07-14
-qmd: "arr first vs collect first ision"
-related:
-  - "./phpstan-corrections-january.md"
----
-=======
->>>>>>> 1ad0554 (.)
-=======
->>>>>>> .merge_file_c6blzJ
 # Decisione: Arr::first() vs collect()->first()
 
 **Metodologia**: Super Mucca - La Litigata Interna
