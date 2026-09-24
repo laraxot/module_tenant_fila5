@@ -31,11 +31,7 @@ function writeSushiJsonFile(string $path, array $data): void
 
 beforeEach(function (): void {
     /** @var TestCase $this */
-<<<<<<< HEAD
     $this->model = new TestSushiModel;
-=======
-    $this->model = new TestSushiModel();
->>>>>>> laraxot/dev
     TestCase::$testDirectory = storage_path('tests/sushi-json');
     TestCase::$testJsonPath = TestCase::$testDirectory.'/test_sushi.json';
 

@@ -9,19 +9,11 @@ use Modules\Tenant\Models\BaseModel;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-<<<<<<< HEAD
 uses(TestCase::class);
 
 function makeTenantTestBaseModel(): BaseModel
 {
     return new class extends BaseModel
-=======
-uses(\Modules\Tenant\Tests\TestCase::class);
-
-function makeTenantTestBaseModel(): BaseModel
-{
-    return new class() extends BaseModel
->>>>>>> laraxot/dev
     {
         protected $table = 'test_tenant_table';
     };

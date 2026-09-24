@@ -12,11 +12,7 @@ use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Arr\SaveArrayAction;
 use PHPUnit\Framework\Assert;
 
-<<<<<<< HEAD
 uses(TestCase::class);
-=======
-uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> laraxot/dev
 
 it('saves tenant config by merging with existing data', function (): void {
     /** @var TestCase $this */

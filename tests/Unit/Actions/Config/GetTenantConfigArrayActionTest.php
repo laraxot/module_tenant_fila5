@@ -8,11 +8,7 @@ use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-<<<<<<< HEAD
 uses(TestCase::class);
-=======
-uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> laraxot/dev
 
 it('returns empty array for non-existent config', function (): void {
     $action = app(GetTenantConfigArrayAction::class);

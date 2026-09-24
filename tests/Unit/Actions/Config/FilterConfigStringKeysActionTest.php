@@ -1,10 +1,6 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use PHPUnit\Framework\Assert;
 

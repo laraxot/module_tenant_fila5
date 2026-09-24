@@ -43,17 +43,9 @@ abstract class TestCase extends XotBaseTestCase
     /** @var list<string> */
     protected $connectionsToTransact = ['tenant'];
 
-<<<<<<< HEAD
     public static ?TestSushiModel $sushiModel = null;
 
     public static ?BaseModel $sushiBaseModel = null;
-=======
-    /** @var TestSushiModel */
-    public static mixed $sushiModel;
-
-    /** @var BaseModel|null */
-    public static mixed $sushiBaseModel = null;
->>>>>>> laraxot/dev
 
     public static ?Tenant $tenant = null;
 
@@ -150,11 +142,7 @@ abstract class TestCase extends XotBaseTestCase
             DB::purge($connection);
         }
 
-<<<<<<< HEAD
         self::$sushiModel = new TestSushiModel;
-=======
-        self::$sushiModel = new TestSushiModel();
->>>>>>> laraxot/dev
         self::$createTestData = static fn (): array => [];
     }
 

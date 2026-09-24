@@ -37,11 +37,7 @@ beforeEach(function (): void {
 
     $this->setCurrentTenant($this->tenantModel());
 
-<<<<<<< HEAD
     $this->model = new TestSushiModel;
-=======
-    $this->model = new TestSushiModel();
->>>>>>> laraxot/dev
     TestCase::$testJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     if (File::exists(TestCase::$testJsonPath)) {
@@ -135,11 +131,7 @@ it('works with different tenant configurations', function (): void {
 
     $this->setCurrentTenant($secondTenant);
 
-<<<<<<< HEAD
     $secondModel = new TestSushiModel;
-=======
-    $secondModel = new TestSushiModel();
->>>>>>> laraxot/dev
     $secondJsonPath = app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
 
     expect($secondModel->saveToJson([

@@ -19,11 +19,7 @@ uses(TestCase::class);
 
 beforeEach(function (): void {
     /** @var TestCase $this */
-<<<<<<< HEAD
     $this->model = new TestSushiModel;
-=======
-    $this->model = new TestSushiModel();
->>>>>>> laraxot/dev
     TestCase::$testDirectory = storage_path('tests/sushi-json');
     TestCase::$testJsonPath = TestCase::$testDirectory.'/test_sushi.json';
 
@@ -175,11 +171,7 @@ describe('SushiToJson Trait', function (): void {
         /** @var TestCase $this */
         Auth::shouldReceive('id')->andReturn(1);
 
-<<<<<<< HEAD
         $model = new TestSushiModel;
-=======
-        $model = new TestSushiModel();
->>>>>>> laraxot/dev
         $model->fill(['name' => 'New Item', 'description' => 'New Description']);
 
         expect($model->name)->toBe('New Item');

@@ -11,11 +11,7 @@ use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-<<<<<<< HEAD
 uses(TestCase::class);
-=======
-uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> laraxot/dev
 
 it('isolates tenant file paths per tenant context', function (): void {
     /** @var TestCase $this */

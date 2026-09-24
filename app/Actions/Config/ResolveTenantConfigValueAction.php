@@ -63,10 +63,7 @@ class ResolveTenantConfigValueAction
     }
 
     /**
-<<<<<<< HEAD
      * @param  mixed  $res  Raw config() payload; only scalar/array values are accepted
-=======
->>>>>>> laraxot/dev
      * @return float|int|string|array<mixed>|null
      */
     private function assertValidConfigValue(mixed $res): float|int|string|array|null

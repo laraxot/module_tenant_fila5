@@ -11,11 +11,7 @@ use PHPUnit\Framework\Assert;
 use function Safe\mkdir;
 use function Safe\rmdir;
 
-<<<<<<< HEAD
 uses(TestCase::class);
-=======
-uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> laraxot/dev
 
 /** @var list<string> $createdConfigPaths */
 $createdConfigPaths = [];

@@ -482,19 +482,11 @@ describe('Tenant statement coverage — SushiToJson named model', function (): v
         $model = new SushiToJsonCoverageModel();
         Assert::assertSame($jsonPath, $model->getJsonFile());
         Assert::assertSame([], $model->getRows());
-<<<<<<< HEAD
         Assert::assertEmpty($model->loadExistingData());
 
         File::put($jsonPath, 'null');
         expect(fn (): array => $model->getSushiRows())->toThrow(Exception::class);
         Assert::assertEmpty($model->loadExistingData());
-=======
-        Assert::assertSame([], $model->loadExistingData());
-
-        File::put($jsonPath, 'null');
-        expect(fn (): array => $model->getSushiRows())->toThrow(Exception::class);
-        Assert::assertSame([], $model->loadExistingData());
->>>>>>> laraxot/dev
 
         File::put($jsonPath, json_encode([
             ['id' => 1, 'name' => 'Alpha', 'meta' => ['x' => 1], 0 => 'skip'],

@@ -4,28 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit;
 
-<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Model;
-=======
->>>>>>> laraxot/dev
 use Illuminate\Support\Facades\DB;
 use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Tests\TestCase;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\User;
-<<<<<<< HEAD
 use Modules\Xot\Contracts\UserContract;
 use PHPUnit\Framework\Assert;
 use Webmozart\Assert\Assert as WebmozartAssert;
 
 uses(TestCase::class);
-=======
-use PHPUnit\Framework\Assert;
-use Webmozart\Assert\Assert as WebmozartAssert;
-
-uses(\Modules\Tenant\Tests\TestCase::class);
->>>>>>> laraxot/dev
 
 beforeEach(function (): void {
     /** @var TestCase $this */
@@ -82,12 +72,8 @@ it('exposes users relationship', function (): void {
         'name' => 'Tenant User',
         'email' => 'user@tenant.example.com',
     ]);
-<<<<<<< HEAD
     WebmozartAssert::isInstanceOf($user, UserContract::class);
     WebmozartAssert::isInstanceOf($user, Model::class);
-=======
-    WebmozartAssert::isInstanceOf($user, User::class);
->>>>>>> laraxot/dev
 
     $tenant->users()->save($user);
 

@@ -6,10 +6,7 @@ namespace Modules\Tenant\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
-<<<<<<< HEAD
-=======
 use Modules\Tenant\Database\Factories\DomainFactory;
->>>>>>> laraxot/dev
 use Sushi\Sushi;
 
 /**
@@ -27,10 +24,6 @@ use Sushi\Sushi;
  */
 class Domain extends BaseModel
 {
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
     use Sushi;
 
     /**

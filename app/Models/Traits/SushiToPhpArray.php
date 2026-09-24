@@ -1,18 +1,11 @@
 <?php
 
-<<<<<<< HEAD
 declare(strict_types=1);
-=======
->>>>>>> laraxot/dev
 /**
  * @see https://dev.to/hasanmn/automatically-update-createdby-and-updatedby-in-laravel-using-bootable-traits-28g9.
  */
 
-<<<<<<< HEAD
-=======
-declare(strict_types=1);
 
->>>>>>> laraxot/dev
 namespace Modules\Tenant\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;

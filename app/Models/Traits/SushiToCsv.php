@@ -150,12 +150,9 @@ trait SushiToCsv
         return $authId !== null ? (int) $authId : null;
     }
 
-<<<<<<< HEAD
     /**
      * @param  mixed  $id  Raw model key from Model::getKey() (int|string expected)
      */
-=======
->>>>>>> laraxot/dev
     private static function resolveRowIdKey(mixed $id): int|string
     {
         Assert::notNull($id);
@@ -220,12 +217,9 @@ trait SushiToCsv
         return $dataArray;
     }
 
-<<<<<<< HEAD
     /**
      * @param  mixed  $value  Arbitrary model attribute (scalar|Stringable|null expected)
      */
-=======
->>>>>>> laraxot/dev
     private static function csvValue(mixed $value): float|int|string|null
     {
         if ($value === null) {

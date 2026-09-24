@@ -1,10 +1,6 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
 use Mockery\Expectation;
 use Mockery\MockInterface;
 use PHPUnit\Framework\Assert;
