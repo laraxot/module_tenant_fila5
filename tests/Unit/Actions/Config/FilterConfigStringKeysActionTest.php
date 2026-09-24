@@ -1,7 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_bpBtEH
 
+=======
+>>>>>>> .merge_file_juSTKE
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use PHPUnit\Framework\Assert;
 

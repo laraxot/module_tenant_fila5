@@ -1,5 +1,7 @@
-# to_integrate
+---
+module: theme
+topic: to_integrate
+canonical: ../../../../Themes/docs/shared-components/.gitkeep-Modules
+---
 
-<!-- Contenuto migrato da _docs/to_integrate.txt -->
-
-https://filamentphp.com/plugins/andrew-wallo-companies
+See canonical documentation: ../../../../Themes/docs/shared-components/.gitkeep-Modules

@@ -1,3 +1,14 @@
+---
+title: "Trait Method Implementation Rules"
+module: "Tenant"
+type: pattern
+tags: [trait, method, implementation]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "trait method implementation"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Trait Method Implementation Rules
 
 ## Critical: DRY Principle for Trait Methods

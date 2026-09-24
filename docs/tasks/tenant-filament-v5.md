@@ -1,3 +1,14 @@
+---
+title: "Task: Tenant Filament v5 Alignment (Clusters)"
+module: "Tenant"
+type: concept
+tags: [tenant, filament, v5]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "tenant filament v5"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Task: Tenant Filament v5 Alignment (Clusters)
 
 ## 📋 Obiettivo

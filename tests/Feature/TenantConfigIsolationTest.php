@@ -11,7 +11,11 @@ use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+<<<<<<< .merge_file_Qdnrbq
 uses(\Modules\Tenant\Tests\TestCase::class);
+=======
+uses(TestCase::class);
+>>>>>>> .merge_file_KM2ai8
 
 it('isolates tenant file paths per tenant context', function (): void {
     /** @var TestCase $this */

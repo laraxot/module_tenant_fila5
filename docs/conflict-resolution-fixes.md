@@ -1,3 +1,14 @@
+---
+title: "Risoluzione Conflitti Git - Modulo Tenant"
+module: "Tenant"
+type: concept
+tags: [conflict, resolution, fixes]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "conflict resolution fixes"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Risoluzione Conflitti Git - Modulo Tenant
 
 ## Panoramica

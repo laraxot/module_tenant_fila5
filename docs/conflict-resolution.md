@@ -1,3 +1,14 @@
+---
+title: "Conflict Resolution — Module Tenant"
+module: "Tenant"
+type: concept
+tags: [conflict, resolution]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "conflict resolution"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Conflict Resolution — Module Tenant
 
 ## Summary

@@ -1,3 +1,14 @@
+---
+title: "Docs Health - Tenant"
+module: "Tenant"
+type: concept
+tags: [docs, health]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "docs health"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Docs Health - Tenant
 
 ## Snapshot
