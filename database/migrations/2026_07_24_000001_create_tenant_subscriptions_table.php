@@ -1,11 +1,18 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_2wNMa2
 
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 return new class() extends XotBaseMigration
+=======
+use Illuminate\Database\Schema\Blueprint;
+use Modules\Xot\Database\Migrations\XotBaseMigration;
+
+return new class extends XotBaseMigration
+>>>>>>> .merge_file_GlXNpd
 {
     /**
      * Run the migrations.

@@ -5,10 +5,16 @@ declare(strict_types=1);
 namespace Modules\Tenant\Services\Config\Resolvers;
 
 use Illuminate\Support\Arr;
+<<<<<<< .merge_file_BQvdK2
 use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
 use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
 use Nwidart\Modules\Facades\Module;
 use Nwidart\Modules\Laravel\Module as LaravelModule;
+=======
+use Illuminate\Support\Collection;
+use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
+use Nwidart\Modules\Facades\Module;
+>>>>>>> .merge_file_RQOLyK
 
 /**
  * Resolves database configuration with module-specific connections.
@@ -21,9 +27,14 @@ class DatabaseConfigResolver implements ConfigResolverInterface
     }
 
     /**
+<<<<<<< .merge_file_BQvdK2
      * @param  array<string, mixed>  $extraConf
      *
      * @return array<string, mixed>
+=======
+     * @param  string|int|array<string, mixed>|null  $extraConf
+     * @return float|int|string|array<string, mixed>|null
+>>>>>>> .merge_file_RQOLyK
      */
     public function resolve(string $key, string|int|array|null $extraConf = null): float|int|string|array|null
     {
@@ -31,6 +42,7 @@ class DatabaseConfigResolver implements ConfigResolverInterface
             return null;
         }
 
+<<<<<<< .merge_file_BQvdK2
         if ($key !== 'database') {
             return null;
         }
@@ -41,6 +53,19 @@ class DatabaseConfigResolver implements ConfigResolverInterface
             $originalConfTyped = ConfigStringKeyFilter::onlyStringKeys($originalConf);
         } else {
             $originalConfTyped = [];
+=======
+        $originalConf = config('database');
+        if (! is_array($originalConf)) {
+            $originalConf = [];
+        }
+
+        /** @var array<string, mixed> $originalConfTyped */
+        $originalConfTyped = [];
+        foreach ($originalConf as $key => $value) {
+            if (is_string($key)) {
+                $originalConfTyped[$key] = $value;
+            }
+>>>>>>> .merge_file_RQOLyK
         }
 
         $default = $this->resolveDefaultConnection($extraConf, $originalConfTyped);
@@ -54,14 +79,29 @@ class DatabaseConfigResolver implements ConfigResolverInterface
      */
     private function resolveDefaultConnection(array $extraConf, array $originalConf): ?string
     {
+<<<<<<< .merge_file_BQvdK2
         $default = Arr::get($extraConf, 'default') ?? Arr::get($originalConf, 'default') ?? config('database.default');
+=======
+        $default = Arr::get($extraConf, 'default');
+
+        if ($default === null) {
+            $default = Arr::get($originalConf, 'default');
+        }
+
+        if ($default === null) {
+            $default = config('database.default');
+        }
+>>>>>>> .merge_file_RQOLyK
 
         return is_string($default) ? $default : null;
     }
 
     /**
      * @param  array<string, mixed>  $extraConf
+<<<<<<< .merge_file_BQvdK2
      *
+=======
+>>>>>>> .merge_file_RQOLyK
      * @return array<string, mixed>
      */
     private function addModuleConnections(array $extraConf, ?string $default): array
@@ -70,6 +110,7 @@ class DatabaseConfigResolver implements ConfigResolverInterface
             return $extraConf;
         }
 
+<<<<<<< .merge_file_BQvdK2
         $connectionsRaw = Arr::get($extraConf, 'connections');
 
         if (! is_array($connectionsRaw)) {
@@ -100,6 +141,29 @@ class DatabaseConfigResolver implements ConfigResolverInterface
 
         $extraConf['connections'] = $connections;
 
+=======
+        /** @var Collection<int, \Nwidart\Modules\Module> */
+        $modules = Module::toCollection();
+
+        foreach ($modules as $module) {
+            $name = $module->getSnakeName();
+
+            if (! isset($extraConf['connections']) || ! is_array($extraConf['connections'])) {
+                continue;
+            }
+
+            if (isset($extraConf['connections'][$name])) {
+                continue;
+            }
+
+            if (! isset($extraConf['connections'][$default])) {
+                continue;
+            }
+
+            $extraConf['connections'][$name] = $extraConf['connections'][$default];
+        }
+
+>>>>>>> .merge_file_RQOLyK
         return $extraConf;
     }
 }

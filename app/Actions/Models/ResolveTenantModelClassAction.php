@@ -21,7 +21,6 @@ class ResolveTenantModelClassAction
     {
         $name = Str::snake(Str::singular($name));
 
-        /** @var mixed $class */
         $class = app(ResolveTenantConfigValueAction::class)->execute('morph_map.'.$name);
 
         if ($class === null) {
@@ -82,7 +81,7 @@ class ResolveTenantModelClassAction
     }
 
     /**
-     * @param  array<mixed, mixed>  $moduleModels
+     * @param  array<string, class-string>  $moduleModels
      * @return array<string, class-string>
      */
     private function filterValidModelClasses(array $moduleModels): array

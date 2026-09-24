@@ -1,3 +1,14 @@
+---
+title: "Tenant Module Roadmap (2025 Q4)"
+module: "Tenant"
+type: concept
+tags: [roadmap, q4]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "roadmap q4"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Tenant Module Roadmap (2025 Q4)
 
 ## Vision & Scope

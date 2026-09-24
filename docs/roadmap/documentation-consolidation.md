@@ -1,3 +1,14 @@
+---
+title: "Consolidamento documentazione"
+module: "Tenant"
+type: concept
+tags: [documentation, consolidation]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "documentation consolidation"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Consolidamento documentazione
 
 ## Obiettivo

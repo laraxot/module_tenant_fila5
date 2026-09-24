@@ -1,3 +1,14 @@
+---
+title: "Task: Abilitazione Test Skipped"
+module: "Tenant"
+type: concept
+tags: [abilitazione, test, skipped]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "abilitazione test skipped"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Task: Abilitazione Test Skipped
 
 **Modulo**: Tenant  

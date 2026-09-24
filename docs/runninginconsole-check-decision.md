@@ -1,3 +1,14 @@
+---
+title: "Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction"
+module: "Tenant"
+type: concept
+tags: [runninginconsole, check, decision]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "runninginconsole check decision"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction
 
 **Data**: 2025-01-22

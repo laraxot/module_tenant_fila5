@@ -11,9 +11,10 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Schema;
-use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
+use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
 use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
+use Modules\Xot\Datas\XotData;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 use Nwidart\Modules\Facades\Module;
 use Nwidart\Modules\Laravel\Module as LaravelModule;
@@ -54,7 +55,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
             $map = [];
         }
 
-        Relation::morphMap($this->buildMorphMap($map));
+        Relation::morphMap($this->buildMorphMap(app(FilterConfigStringKeysAction::class)->execute($map)));
     }
 
     public function registerDB(): void
@@ -132,7 +133,6 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
     /**
      * @param  array<string, mixed>  $data
-     *
      * @return array<string, mixed>
      */
     private function mergeModuleConnections(array $data, string $defaultConnection): array
@@ -171,9 +171,10 @@ class TenantServiceProvider extends XotBaseServiceProvider
     }
 
     /**
-     * @param  array<mixed, mixed>  $map
-     *
+     * @param  array<string, mixed>  $map
      * @return array<string, class-string<Model>>
+     *
+     * @SuppressWarnings("PHPMD.ErrorControlOperator")
      */
     private function buildMorphMap(array $map): array
     {
@@ -181,13 +182,24 @@ class TenantServiceProvider extends XotBaseServiceProvider
         $typedMap = [];
 
         foreach ($map as $alias => $class) {
-            if (! is_string($alias) || ! is_string($class) || ! class_exists($class)) {
+            // ponytail: @ suppresses autoload ErrorException for missing modules
+            if (! is_string($alias) || ! is_string($class) || ! @class_exists($class)) {
                 continue;
             }
 
             /** @var class-string<Model> $modelClass */
             $modelClass = $class;
             $typedMap[$alias] = $modelClass;
+        }
+
+        // The 'user' morph alias must always resolve to the canonical user class
+        // (XotData::getUserClass()), never to a stale per-domain config entry:
+        // polymorphic pivot rows (e.g. model_has_role.model_type) are written
+        // through it, and a wrong class here makes roles invisible.
+        $userClass = XotData::make()->getUserClass();
+        if (is_subclass_of($userClass, Model::class)) {
+            /** @var class-string<Model> $userClass */
+            $typedMap['user'] = $userClass;
         }
 
         return $typedMap;

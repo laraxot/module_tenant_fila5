@@ -1,3 +1,14 @@
+---
+title: "Tenant Module Wiki Index"
+module: "Tenant"
+type: concept
+tags: [index]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "index"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Tenant Module Wiki Index
 
 > **Module**: Tenant

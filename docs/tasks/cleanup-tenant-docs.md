@@ -1,3 +1,14 @@
+---
+title: "Task: Cleanup Tenant Docs"
+module: "Tenant"
+type: concept
+tags: [cleanup, tenant, docs]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "cleanup tenant docs"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Task: Cleanup Tenant Docs
 
 ## 📋 Obiettivo
