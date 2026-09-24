@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_0xIUg5
+=======
+
+>>>>>>> .merge_file_zhimZy
 use Nwidart\Modules\Activators\FileActivator;
 use Nwidart\Modules\Providers\ConsoleServiceProvider;
 

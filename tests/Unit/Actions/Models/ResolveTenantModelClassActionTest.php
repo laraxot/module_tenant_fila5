@@ -17,7 +17,11 @@ use Nwidart\Modules\Facades\Module;
 use Nwidart\Modules\Laravel\Module as LaravelModule;
 use PHPUnit\Framework\Assert;
 
+<<<<<<< .merge_file_dvAdCs
 uses(TestCase::class);
+=======
+uses(\Modules\Tenant\Tests\TestCase::class);
+>>>>>>> .merge_file_hEfNsS
 
 it('resolves tenant model class from config', function (): void {
     /** @var TestCase $this */

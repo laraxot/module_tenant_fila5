@@ -18,7 +18,11 @@ uses(TestCase::class, DatabaseTransactions::class);
 
 beforeEach(function (): void {
     /** @var TestCase $this */
+<<<<<<< .merge_file_LCaQzF
     $this->model = new TestSushiModel;
+=======
+    $this->model = new TestSushiModel();
+>>>>>>> .merge_file_iE7kXc
     TestCase::$testDirectory = storage_path('tests/sushi-json');
     TestCase::$testJsonPath = TestCase::$testDirectory.'/test_sushi.json';
 

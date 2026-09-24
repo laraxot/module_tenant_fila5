@@ -1,10 +1,17 @@
 <?php
 
+<<<<<<< .merge_file_IhSItY
 declare(strict_types=1);
+=======
+>>>>>>> .merge_file_OxIfL3
 /**
  * @see https://dev.to/hasanmn/automatically-update-createdby-and-updatedby-in-laravel-using-bootable-traits-28g9.
  */
 
+<<<<<<< .merge_file_IhSItY
+=======
+declare(strict_types=1);
+>>>>>>> .merge_file_OxIfL3
 
 namespace Modules\Tenant\Models\Traits;
 

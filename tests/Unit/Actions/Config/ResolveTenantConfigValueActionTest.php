@@ -12,7 +12,11 @@ use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Tests\XotBasePest;
 use PHPUnit\Framework\Assert;
 
+<<<<<<< .merge_file_l3G28V
 uses(TestCase::class);
+=======
+uses(\Modules\Tenant\Tests\TestCase::class);
+>>>>>>> .merge_file_ThQhHn
 
 it('resolves tenant config value by merging with tenant overrides', function (): void {
     /** @var TestCase $this */
@@ -34,7 +38,11 @@ it('resolves tenant config value by merging with tenant overrides', function ():
 
 it('throws exception for empty config key', function (): void {
     XotBasePest::assertThrows(
+<<<<<<< .merge_file_l3G28V
         fn (): float|int|string|array|null => app(ResolveTenantConfigValueAction::class)->execute(''),
+=======
+        fn (): mixed => app(ResolveTenantConfigValueAction::class)->execute(''),
+>>>>>>> .merge_file_ThQhHn
         \Exception::class,
     );
 });

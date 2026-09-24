@@ -10,7 +10,11 @@ use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+<<<<<<< .merge_file_IkFIUW
 uses(TestCase::class);
+=======
+uses(\Modules\Tenant\Tests\TestCase::class);
+>>>>>>> .merge_file_mxRKD1
 
 it('gets tenant file path', function (): void {
     /** @var TestCase $this */

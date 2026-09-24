@@ -17,7 +17,10 @@ use Modules\Tenant\Actions\Models\ResolveTenantModelInstanceAction;
 use Modules\Tenant\Actions\Modules\GetTenantModulesAction;
 use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use ReflectionException;
+<<<<<<< .merge_file_OciJA6
 use Spatie\QueueableAction\QueueableAction;
+=======
+>>>>>>> .merge_file_75eyTR
 
 /**
  * TenantService - Facade sottile per operazioni tenant-aware.
@@ -34,8 +37,11 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class TenantService
 {
+<<<<<<< .merge_file_OciJA6
     use QueueableAction;
 
+=======
+>>>>>>> .merge_file_75eyTR
     /**
      * Ottiene il nome del tenant corrente basato sul server name.
      *
@@ -159,6 +165,9 @@ class TenantService
     {
         return app(GetTenantModulesAction::class)->execute();
     }
+<<<<<<< .merge_file_OciJA6
 
     public function execute(): void {}
+=======
+>>>>>>> .merge_file_75eyTR
 }

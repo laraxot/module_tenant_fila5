@@ -43,9 +43,17 @@ abstract class TestCase extends XotBaseTestCase
     /** @var list<string> */
     protected $connectionsToTransact = ['tenant'];
 
+<<<<<<< .merge_file_lhEoXv
     public static ?TestSushiModel $sushiModel = null;
 
     public static ?BaseModel $sushiBaseModel = null;
+=======
+    /** @var TestSushiModel */
+    public static mixed $sushiModel;
+
+    /** @var BaseModel|null */
+    public static mixed $sushiBaseModel = null;
+>>>>>>> .merge_file_bmnfOz
 
     public static ?Tenant $tenant = null;
 
@@ -142,7 +150,11 @@ abstract class TestCase extends XotBaseTestCase
             DB::purge($connection);
         }
 
+<<<<<<< .merge_file_lhEoXv
         self::$sushiModel = new TestSushiModel;
+=======
+        self::$sushiModel = new TestSushiModel();
+>>>>>>> .merge_file_bmnfOz
         self::$createTestData = static fn (): array => [];
     }
 

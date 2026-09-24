@@ -8,13 +8,21 @@ use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+<<<<<<< .merge_file_1L32uH
 uses(TestCase::class);
+=======
+uses(\Modules\Tenant\Tests\TestCase::class);
+>>>>>>> .merge_file_jxBbUd
 
 it('gets domains array by scanning config directory', function (): void {
     // This test is a bit tricky because recurse() instantiates Filesystem internally
     // and uses config_path().
 
+<<<<<<< .merge_file_1L32uH
     $action = new class extends GetDomainsArrayAction
+=======
+    $action = new class() extends GetDomainsArrayAction
+>>>>>>> .merge_file_jxBbUd
     {
         public function recurse(string $path): array
         {

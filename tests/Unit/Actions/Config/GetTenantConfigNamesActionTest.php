@@ -10,7 +10,11 @@ use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 use Symfony\Component\Finder\SplFileInfo;
 
+<<<<<<< .merge_file_4RfWRW
 uses(TestCase::class);
+=======
+uses(\Modules\Tenant\Tests\TestCase::class);
+>>>>>>> .merge_file_Ovia66
 
 it('gets tenant config names', function (): void {
     $file1 = mock(SplFileInfo::class);

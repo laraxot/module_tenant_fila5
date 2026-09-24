@@ -448,9 +448,12 @@ trait SushiToJson
         $model->saveToJson(array_values($existingData));
     }
 
+<<<<<<< .merge_file_eX1cXF
     /**
      * @param  mixed  $value  Raw Eloquent attribute (int|string|float expected)
      */
+=======
+>>>>>>> .merge_file_wZ3OcU
     private static function intValue(mixed $value): int
     {
         if (is_int($value)) {

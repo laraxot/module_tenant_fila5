@@ -19,7 +19,11 @@ uses(TestCase::class);
 
 beforeEach(function (): void {
     /** @var TestCase $this */
+<<<<<<< .merge_file_8TChkP
     $this->model = new TestSushiModel;
+=======
+    $this->model = new TestSushiModel();
+>>>>>>> .merge_file_w0i7wi
     TestCase::$testDirectory = storage_path('tests/sushi-json');
     TestCase::$testJsonPath = TestCase::$testDirectory.'/test_sushi.json';
 
@@ -171,7 +175,11 @@ describe('SushiToJson Trait', function (): void {
         /** @var TestCase $this */
         Auth::shouldReceive('id')->andReturn(1);
 
+<<<<<<< .merge_file_8TChkP
         $model = new TestSushiModel;
+=======
+        $model = new TestSushiModel();
+>>>>>>> .merge_file_w0i7wi
         $model->fill(['name' => 'New Item', 'description' => 'New Description']);
 
         expect($model->name)->toBe('New Item');

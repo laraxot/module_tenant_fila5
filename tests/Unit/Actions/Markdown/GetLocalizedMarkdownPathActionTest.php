@@ -14,7 +14,11 @@ use PHPUnit\Framework\Assert;
 use function Safe\file_put_contents;
 use function Safe\unlink;
 
+<<<<<<< .merge_file_BiVsUD
 uses(TestCase::class);
+=======
+uses(\Modules\Tenant\Tests\TestCase::class);
+>>>>>>> .merge_file_Q6JH8j
 
 it('gets localized markdown path if it exists', function (): void {
     App::setLocale('it');

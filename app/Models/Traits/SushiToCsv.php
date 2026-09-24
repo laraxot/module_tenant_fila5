@@ -150,9 +150,12 @@ trait SushiToCsv
         return $authId !== null ? (int) $authId : null;
     }
 
+<<<<<<< .merge_file_0KyYGJ
     /**
      * @param  mixed  $id  Raw model key from Model::getKey() (int|string expected)
      */
+=======
+>>>>>>> .merge_file_8cry6A
     private static function resolveRowIdKey(mixed $id): int|string
     {
         Assert::notNull($id);
@@ -217,9 +220,12 @@ trait SushiToCsv
         return $dataArray;
     }
 
+<<<<<<< .merge_file_0KyYGJ
     /**
      * @param  mixed  $value  Arbitrary model attribute (scalar|Stringable|null expected)
      */
+=======
+>>>>>>> .merge_file_8cry6A
     private static function csvValue(mixed $value): float|int|string|null
     {
         if ($value === null) {

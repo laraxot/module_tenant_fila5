@@ -11,7 +11,11 @@ use PHPUnit\Framework\Assert;
 use function Safe\mkdir;
 use function Safe\rmdir;
 
+<<<<<<< .merge_file_8iMB8V
 uses(TestCase::class);
+=======
+uses(\Modules\Tenant\Tests\TestCase::class);
+>>>>>>> .merge_file_6pQAxB
 
 /** @var list<string> $createdConfigPaths */
 $createdConfigPaths = [];
