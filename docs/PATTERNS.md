@@ -9,19 +9,6 @@ last_updated: 2026-07-28
 
 **Last updated: 2026-07-28**
 
-<<<<<<< .merge_file_P0yDGf
-=======
-<<<<<<< .merge_file_GadQrs
-=======
-<<<<<<< .merge_file_vTqfDN
-> **Nota 2026-09-17**: questo documento descrive pattern in gran parte aspirazionali (`HasTenant` trait,
-> `TenantContext`, middleware `resolve.tenant`) non presenti nel codice attuale — vedi il banner di
-> verifica in [architecture.md](./architecture.md) per il dettaglio di cosa esiste davvero.
-
-=======
->>>>>>> .merge_file_7ZUQXE
->>>>>>> .merge_file_OLO0XM
->>>>>>> .merge_file_sCuLhk
 This document describes the core architectural patterns used in the Tenant module to ensure isolation, security, and maintainability.
 
 ---
@@ -341,12 +328,4 @@ public function test_users_isolated_by_tenant()
 
 ---
 
-<<<<<<< .merge_file_GadQrs
-<<<<<<< HEAD
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](TROUBLESHOOTING.md)
-=======
-Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Troubleshooting](TROUBLESHOOTING.md)
->>>>>>> laraxot/dev
-=======
-Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](TROUBLESHOOTING.md)
->>>>>>> .merge_file_OLO0XM

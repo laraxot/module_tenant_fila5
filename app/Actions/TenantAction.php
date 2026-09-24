@@ -4,22 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Actions;
 
-<<<<<<< .merge_file_TVIVM3
-=======
-<<<<<<< .merge_file_bDZO8d
-=======
-<<<<<<< .merge_file_qRkMwe
->>>>>>> .merge_file_sgNvjj
-use Spatie\QueueableAction\ActionJob;
-
-use Spatie\QueueableAction\QueueableAction;
-
-<<<<<<< .merge_file_bDZO8d
-=======
-=======
->>>>>>> .merge_file_uJRiSd
->>>>>>> .merge_file_sgNvjj
->>>>>>> .merge_file_ao6Aou
 use Illuminate\Database\Eloquent\Model;
 use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
 use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
@@ -27,33 +11,12 @@ use Modules\Tenant\Actions\Config\GetTenantConfigPathAction;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
 use Modules\Tenant\Actions\Config\SaveTenantConfigAction;
-<<<<<<< .merge_file_TVIVM3
-=======
-<<<<<<< .merge_file_bDZO8d
-use Modules\Tenant\Actions\GetTenantNameAction;
-=======
-<<<<<<< .merge_file_qRkMwe
-use Modules\Tenant\Actions\GetTenantNameAction;
-=======
->>>>>>> .merge_file_uJRiSd
->>>>>>> .merge_file_sgNvjj
->>>>>>> .merge_file_ao6Aou
 use Modules\Tenant\Actions\Models\ResolveTenantModelClassAction;
 use Modules\Tenant\Actions\Models\ResolveTenantModelInstanceAction;
 use Modules\Tenant\Actions\Modules\GetTenantModulesAction;
 use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use ReflectionException;
-<<<<<<< .merge_file_TVIVM3
 use Spatie\QueueableAction\QueueableAction;
-=======
-<<<<<<< .merge_file_bDZO8d
-=======
-<<<<<<< .merge_file_qRkMwe
-=======
-use Spatie\QueueableAction\QueueableAction;
->>>>>>> .merge_file_uJRiSd
->>>>>>> .merge_file_sgNvjj
->>>>>>> .merge_file_ao6Aou
 
 /**
  * TenantService - Facade sottile per operazioni tenant-aware.
@@ -71,17 +34,7 @@ use Spatie\QueueableAction\QueueableAction;
 class TenantAction
 {
     use QueueableAction;
-<<<<<<< .merge_file_TVIVM3
 
-=======
-<<<<<<< .merge_file_bDZO8d
-=======
-<<<<<<< .merge_file_qRkMwe
-=======
-
->>>>>>> .merge_file_uJRiSd
->>>>>>> .merge_file_sgNvjj
->>>>>>> .merge_file_ao6Aou
     /**
      * Ottiene il nome del tenant corrente basato sul server name.
      *

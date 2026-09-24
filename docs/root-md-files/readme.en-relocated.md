@@ -1,5 +1,3 @@
-<<<<<<< .merge_file_i4lmCL
-=======
 ---
 title: "Tenant"
 module: "Tenant"
@@ -11,7 +9,6 @@ qmd: "readme.en relocated"
 related:
   - "./phpstan-corrections-january.md"
 ---
->>>>>>> .merge_file_DyTVgb
 # Tenant
 
 The **Tenant** module enables multi-tenancy in the Laraxot modular monolith: it resolves the current tenant (domain / path / context), isolates configuration and data, and provides the foundation to run multiple organizations on a single installation.
