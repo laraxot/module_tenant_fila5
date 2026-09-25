@@ -57,6 +57,7 @@
 ._*
 .circleci
 .claude-audit
+.cursor/
 .devcontainer
 .devcontainer/
 .env
@@ -87,6 +88,7 @@ _bmad-output
 _docs
 app/storage/
 archive/
+audit-coverage/
 bashscripts
 bootstrap/compiled.php
 cache/
@@ -123,6 +125,7 @@ legacy/
 lerna-debug.log*
 npm-debug.log*
 package-lock.json
+phpinsights.php
 phpmd.ruleset.xml
 phpmd.ruleset.xml.bak
 phpstan*
@@ -131,6 +134,7 @@ public/storage
 public_html
 public_html/hot
 public_html/storage
+rector.php
 resources/views/Components_old/
 scripts
 storage/*.key
@@ -157,29 +161,13 @@ phpmd*
 graphify-out
 
 # Laraxot — forbidden at module/theme root (rector.php, phpinsights.php, .cursor, .windsurf, .vscode)
+/rector.php
+/phpinsights.php
+/.cursor
+/.cursor/
 /.windsurf
 /.windsurf/
 /.vscode
 /.vscode/
 .cursor~*
 .windsurf~*
-
-# Agent tooling and local audit output
-
-# Module-local quality tool configuration
-.rector.php
-.phpinsights.php
-
-# Root agent tooling and PHP quality configuration
-/.agents/
-/.codex/
-/.cursor/
-/.opencode/
-/.qwen/
-/rector.php
-/phpinsights.php
-/.php-cs-fixer.php
-/.php-cs-fixer.dist.php
-
-# Generated Claude audit coverage scaffold (never commit)
-/audit-coverage/
