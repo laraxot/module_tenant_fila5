@@ -144,7 +144,7 @@ abstract class TestCase extends XotBaseTestCase
             DB::purge($connection);
         }
 
-        self::$sushiModel = new TestSushiModel();
+        self::$sushiModel = new TestSushiModel;
         self::$createTestData = static fn (): array => [];
     }
 

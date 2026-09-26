@@ -36,7 +36,7 @@ use ReflectionMethod;
 
 use function Safe\putenv;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 // expectMockery() is declared once in TenantCoverageBoostTest.php (same namespace)
 // and reused here across the Pest test run.
@@ -94,7 +94,7 @@ test('GetTenantModulesAction wraps invalid json decode errors', function (): voi
 });
 
 test('MorphMapConfigResolver throws on missing module segment and invalid result type', function (): void {
-    $resolver = new MorphMapConfigResolver();
+    $resolver = new MorphMapConfigResolver;
 
     $request = HttpRequest::create('/admin', 'GET');
     app()->instance('request', $request);
@@ -120,7 +120,7 @@ test('MorphMapConfigResolver throws on missing module segment and invalid result
 });
 
 test('DatabaseConfigResolver covers empty original config and skip branches', function (): void {
-    $resolver = new DatabaseConfigResolver();
+    $resolver = new DatabaseConfigResolver;
     $original = config('database');
 
     try {
@@ -147,7 +147,7 @@ test('DatabaseConfigResolver covers empty original config and skip branches', fu
 });
 
 test('StandardConfigResolver database path when resolver returns non-array', function (): void {
-    $resolver = new StandardConfigResolver();
+    $resolver = new StandardConfigResolver;
     TestCase::mockAppService(GetTenantNameAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => 'localhost']);
     });
@@ -180,7 +180,7 @@ test('SushiToJson private helpers cover early returns and audit nulls', function
 
     $apply = new ReflectionMethod(SushiToJsonCoverageModel::class, 'applyAuditFields');
     $apply->setAccessible(true);
-    $model = new SushiToJsonCoverageModel();
+    $model = new SushiToJsonCoverageModel;
     $apply->invoke(null, $model);
     Assert::assertNull($model->getAttribute('created_by'));
 
@@ -196,7 +196,7 @@ test('SushiToJson private helpers cover early returns and audit nulls', function
 
     $deleting = new ReflectionMethod(SushiToJsonCoverageModel::class, 'handleSingleJsonDeleting');
     $deleting->setAccessible(true);
-    $empty = new SushiToJsonCoverageModel();
+    $empty = new SushiToJsonCoverageModel;
     $deleting->invoke(null, $empty);
     $empty->setAttribute('id', 99);
     $deleting->invoke(null, $empty);
@@ -266,7 +266,7 @@ test('SushiToJsons covers empty schema map and glob false path via reflection', 
     $boot->setAccessible(true);
     $boot->invoke(null);
 
-    $model = new SushiToJsonsCoverageModel();
+    $model = new SushiToJsonsCoverageModel;
     $map = new ReflectionMethod($model, 'mapJsonFileToRow');
     $map->setAccessible(true);
 
@@ -321,7 +321,7 @@ test('Sushi audit fields with named auth model and csv scalar id', function (): 
 
     $apply = new ReflectionMethod(SushiToJsonAuthCoverageModel::class, 'applyAuditFields');
     $apply->setAccessible(true);
-    $authModel = new SushiToJsonAuthCoverageModel();
+    $authModel = new SushiToJsonAuthCoverageModel;
     $apply->invoke(null, $authModel);
     Assert::assertSame(42, $authModel->getAttribute('created_by'));
 
@@ -334,7 +334,7 @@ test('Sushi audit fields with named auth model and csv scalar id', function (): 
     $resolveKey->setAccessible(true);
     Assert::assertSame('7', $resolveKey->invoke(null, 7.0));
 
-    $invalidSchemaModel = new SushiToJsonsCoverageModel();
+    $invalidSchemaModel = new SushiToJsonsCoverageModel;
     $schemaProp = new \ReflectionProperty($invalidSchemaModel, 'schema');
     $schemaProp->setAccessible(true);
     $schemaProp->setValue($invalidSchemaModel, 'invalid');
@@ -352,9 +352,9 @@ test('Sushi audit fields with named auth model and csv scalar id', function (): 
     $jsonsBoot->setAccessible(true);
     $jsonsBoot->invoke(null);
 
-    $csvModel = new SushiToCsvCoverageModel();
-    $jsonModel = new SushiToJsonCoverageModel();
-    $jsonsModel = new SushiToJsonsCoverageModel();
+    $csvModel = new SushiToCsvCoverageModel;
+    $jsonModel = new SushiToJsonCoverageModel;
+    $jsonsModel = new SushiToJsonsCoverageModel;
     foreach ([$csvModel, $jsonModel, $jsonsModel] as $model) {
         $fire = new ReflectionMethod($model, 'fireModelEvent');
         $fire->setAccessible(true);
@@ -401,7 +401,7 @@ test('TenantServiceProvider load user connection and filter model classes', func
 
     $filter = new ReflectionMethod(ResolveTenantModelClassAction::class, 'filterValidModelClasses');
     $filter->setAccessible(true);
-    $action = new ResolveTenantModelClassAction();
+    $action = new ResolveTenantModelClassAction;
     /** @var array<string, class-string> $filtered */
     $filtered = $filter->invoke($action, [
         1 => Tenant::class,
@@ -411,7 +411,7 @@ test('TenantServiceProvider load user connection and filter model classes', func
     Assert::assertArrayHasKey('tenant', $filtered);
     Assert::assertArrayNotHasKey('bad', $filtered);
 
-    $db = new DatabaseConfigResolver();
+    $db = new DatabaseConfigResolver;
     $result = $db->resolve('database', [
         'default' => 'missing_conn',
         'connections' => ['sqlite' => ['driver' => 'sqlite']],
@@ -441,15 +441,15 @@ test('final remaining statement branches', function (): void {
     expect(fn (): string => app(ResolveTenantModelClassAction::class)->execute('widget'))
         ->toThrow(Exception::class);
 
-    Module::shouldReceive('allEnabled')->andReturn([new \stdClass()]);
+    Module::shouldReceive('allEnabled')->andReturn([new \stdClass]);
     $getAll = new ReflectionMethod(ResolveTenantModelClassAction::class, 'getAllModulesModels');
     $getAll->setAccessible(true);
-    Assert::assertSame([], $getAll->invoke(new ResolveTenantModelClassAction()));
+    Assert::assertSame([], $getAll->invoke(new ResolveTenantModelClassAction));
 
     $provider = new TenantServiceProvider(app());
     $load = new ReflectionMethod($provider, 'loadTenantDatabaseConfig');
     $load->setAccessible(true);
-    app()->instance(ResolveTenantConfigValueAction::class, new class()
+    app()->instance(ResolveTenantConfigValueAction::class, new class
     {
         public function execute(string $key, mixed $defaultValue = null): mixed
         {
@@ -472,7 +472,7 @@ test('final remaining statement branches', function (): void {
 
     $merge = new ReflectionMethod($provider, 'mergeModuleConnections');
     $merge->setAccessible(true);
-    Module::shouldReceive('getOrdered')->andReturn([new \stdClass()]);
+    Module::shouldReceive('getOrdered')->andReturn([new \stdClass]);
     $merged = $merge->invoke($provider, [
         'connections' => ['sqlite' => ['driver' => 'sqlite']],
     ], 'sqlite');
@@ -487,7 +487,7 @@ test('final remaining statement branches', function (): void {
             static fn (string $path): string => $base.'/'.ltrim($path, '/'),
         );
     });
-    $noSchema = new SushiToJsonsNoSchemaModel();
+    $noSchema = new SushiToJsonsNoSchemaModel;
     Assert::assertSame([], $noSchema->getSushiRows());
     File::deleteDirectory($base);
 });

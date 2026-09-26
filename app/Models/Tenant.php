@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
-use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 
@@ -49,7 +48,6 @@ use Modules\Xot\Datas\XotData;
  */
 class Tenant extends BaseModel
 {
-
     /**
      * Gli attributi che sono mass assignable.
      */

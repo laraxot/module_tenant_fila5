@@ -1,18 +1,20 @@
 <?php
 
 declare(strict_types=1);
+use PhpCsFixer\Config;
+use Symfony\Component\Finder\Finder;
 
-$finder = Symfony\Component\Finder\Finder::create()
+$finder = Finder::create()
     ->in([
-        __DIR__ . '/src',
-        __DIR__ . '/tests',
+        __DIR__.'/src',
+        __DIR__.'/tests',
     ])
     ->name('*.php')
     ->notName('*.blade.php')
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
 
-return (new PhpCsFixer\Config())->setRules([
+return (new Config)->setRules([
     '@PSR12' => true,
     'array_syntax' => ['syntax' => 'short'],
     'ordered_imports' => ['sort_algorithm' => 'alpha'],
