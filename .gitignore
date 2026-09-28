@@ -105,3 +105,8 @@ v8-compile-cache-*
 yarn-error.log*
 yarn.lock
 *:Zone.Identifier
+graphify-out/
+.claude/
+.claude-audit/
+test-results/
+tenant.code-workspace
