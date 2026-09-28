@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Modules Statuses"
 module: "Tenant"
 type: concept

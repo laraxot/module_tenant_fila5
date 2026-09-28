@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Consolidare Documentazione - Tenant"
 module: "Tenant"
 type: concept

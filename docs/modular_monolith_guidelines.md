@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Modular Monolith Guidelines for Laravel"
 module: "Tenant"
 type: how-to

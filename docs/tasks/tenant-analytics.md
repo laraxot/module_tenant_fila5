@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Tenant Analytics"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "CRITICAL ARCHITECTURE RULE: NO MIGRATE:FRESH"
 module: "Tenant"
 type: rule

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Migration Patterns"
 module: "Tenant"
 type: pattern

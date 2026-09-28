@@ -1,4 +1,10 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "git state conflict marker daemon cleanup.story"
+issues: []
+discussions: []
 id: tenant-git-state-conflict-marker-daemon-cleanup
 title: "Tenant — pulizia marker di conflitto reintrodotti dal daemon auto-commit"
 type: chore

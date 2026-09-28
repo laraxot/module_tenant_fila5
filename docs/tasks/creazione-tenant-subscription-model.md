@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Creazione TenantSubscription Model"
 module: "Tenant"
 type: concept

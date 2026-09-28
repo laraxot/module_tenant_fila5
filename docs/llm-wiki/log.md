@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Activity Log"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Core Functionality"
 module: "Tenant"
 type: concept

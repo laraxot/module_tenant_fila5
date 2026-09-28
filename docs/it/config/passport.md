@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Laravel Passport Configuration (Version 13.4.x)"
 module: "Tenant"
 type: concept

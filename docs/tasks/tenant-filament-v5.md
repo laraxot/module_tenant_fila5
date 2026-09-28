@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Tenant Filament v5 Alignment (Clusters)"
 module: "Tenant"
 type: concept

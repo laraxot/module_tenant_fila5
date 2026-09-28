@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Laravel Folio + Volt - Best Practices and Patterns Analysis"
 module: "Tenant"
 type: concept

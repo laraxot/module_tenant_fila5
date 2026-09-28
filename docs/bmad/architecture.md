@@ -1,4 +1,10 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "architecture"
+issues: []
+discussions: []
 title: "Tenant — Architettura BMAD"
 type: architecture
 scope: Tenant

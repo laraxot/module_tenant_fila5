@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Product Strategy Doc - Tenant Module"
 module: "Tenant"
 type: concept

@@ -1,3 +1,14 @@
+---
+title: "module tenant 1"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "module tenant 1"
+issues: []
+discussions: []
+---
+
 # Modulo Tenant
 
 ## Informazioni Generali
@@ -237,6 +248,14 @@ composer format        # Formatta il codice
 
 ---
 
+title: "module tenant 1"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "module tenant 1"
+issues: []
+discussions: []
 Le modifiche vengono tracciate nel repository GitHub. 
 
 ## Collegamenti sulla risoluzione dei conflitti

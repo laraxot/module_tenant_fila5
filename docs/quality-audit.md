@@ -1,4 +1,8 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+issues: []
+discussions: []
 title: "Audit di qualita: modulo Tenant"
 type: report
 module: Tenant

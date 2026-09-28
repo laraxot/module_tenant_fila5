@@ -1,4 +1,7 @@
 ---
+qmd: "on demand pattern"
+issues: []
+discussions: []
 title: "On-Demand Pattern — Module Tenant"
 type: documentation
 created: 2026-05-11

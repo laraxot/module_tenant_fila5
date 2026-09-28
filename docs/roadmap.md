@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "🎯 TENANT MODULE - ROADMAP 2025"
 module: "Tenant"
 type: concept

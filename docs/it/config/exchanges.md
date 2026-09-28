@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Exchanges"
 module: "Tenant"
 type: concept

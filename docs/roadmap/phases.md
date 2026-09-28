@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Fasi di sviluppo - Tenant Module"
 module: "Tenant"
 type: concept

@@ -1,3 +1,14 @@
+---
+title: "modular monolith guidelines 1"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "modular monolith guidelines 1"
+issues: []
+discussions: []
+---
+
 # Modular Monolith Guidelines for Laravel
 
 ## Overview
@@ -48,4 +59,12 @@ Adopting a modular monolith architecture in Laravel enhances maintainability, sc
 
 ---
 
+title: "modular monolith guidelines 1"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "modular monolith guidelines 1"
+issues: []
+discussions: []
 For further details or contributions to this documentation, please refer to the main documentation folder or contact the project maintainer.

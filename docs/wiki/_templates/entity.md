@@ -1,4 +1,7 @@
 ---
+qmd: "entity"
+issues: []
+discussions: []
 title: "Entity Name"
 type: entity
 sources: ["raw/articles/source-filename.md"]

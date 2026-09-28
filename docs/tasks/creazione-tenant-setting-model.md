@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Creazione TenantSetting Model"
 module: "Tenant"
 type: concept

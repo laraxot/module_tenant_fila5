@@ -1,4 +1,7 @@
 ---
+qmd: "session learnings modules config"
+issues: []
+discussions: []
 title: session learnings modules and tenant config
 type: concept
 module: Tenant

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Modelli mancanti e completamento schema"
 module: "Tenant"
 type: concept

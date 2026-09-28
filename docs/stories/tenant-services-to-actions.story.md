@@ -1,4 +1,8 @@
 ---
+tags: [documentation]
+qmd: "tenant services to actions.story"
+issues: []
+discussions: []
 title: "Tenant: eliminazione app/Services, conversione a QueueableAction"
 type: story
 module: Tenant

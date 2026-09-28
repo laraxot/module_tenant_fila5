@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Architectural Rules & Guidelines"
 module: "Tenant"
 type: rule

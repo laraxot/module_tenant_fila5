@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Filament Resources"
 module: "Tenant"
 type: concept

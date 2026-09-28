@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "User Interface"
 module: "Tenant"
 type: concept

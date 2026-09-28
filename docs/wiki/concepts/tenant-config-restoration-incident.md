@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: Ripristino config tenant dopo delete accidentale
 type: troubleshooting
 confidence: high

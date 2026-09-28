@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Rules Index"
 module: "Tenant"
 type: rule

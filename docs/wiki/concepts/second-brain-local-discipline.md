@@ -1,4 +1,7 @@
 ---
+qmd: "second brain local discipline"
+issues: []
+discussions: []
 title: "Second Brain Local Discipline (stub modulo)"
 type: concept
 tags: [second-brain, stub-canonical-xot]

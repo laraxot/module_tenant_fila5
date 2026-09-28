@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module - Product Roadmap"
 module: "Tenant"
 type: concept

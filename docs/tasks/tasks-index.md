@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Indice task - Modulo Tenant"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Configuration Caching Tenant"
 module: "Tenant"
 type: concept

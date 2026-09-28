@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "links"
 module: "Tenant"
 type: concept

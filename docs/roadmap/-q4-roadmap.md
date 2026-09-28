@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module Roadmap (2025 Q4)"
 module: "Tenant"
 type: concept

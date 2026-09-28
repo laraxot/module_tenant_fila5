@@ -1,4 +1,7 @@
 ---
+qmd: "tenant module status registry"
+issues: []
+discussions: []
 title: "Tenant module status registry — config/{tenant}/modules_statuses.json"
 type: concept
 module: Tenant

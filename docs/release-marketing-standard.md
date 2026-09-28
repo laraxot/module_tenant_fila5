@@ -1,4 +1,7 @@
 ---
+qmd: "release marketing standard"
+issues: []
+discussions: []
 title: "Release e README marketing — Tenant"
 type: reference
 status: approved

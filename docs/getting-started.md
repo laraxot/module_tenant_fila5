@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Getting Started"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "REDUNDANCY ANALYSIS"
 module: "Tenant"
 type: concept

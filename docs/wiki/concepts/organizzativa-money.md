@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Organizzativa Money"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Rector Conflict Resolution"
 module: "Tenant"
 type: concept

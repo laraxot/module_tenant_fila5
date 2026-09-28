@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Metodi duplicati — Tenant"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Consolidamento documentazione"
 module: "Tenant"
 type: concept

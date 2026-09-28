@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Modular Monolith Architecture for Tenant Module"
 module: "Tenant"
 type: concept

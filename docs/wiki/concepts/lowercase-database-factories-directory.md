@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: Directory database lowercase — factories
 type: concept
 module: Tenant

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "NestedSet Migration Best Practices - Tenant Module"
 module: "Tenant"
 type: concept

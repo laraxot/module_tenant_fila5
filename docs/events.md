@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Events"
 module: "Tenant"
 type: concept

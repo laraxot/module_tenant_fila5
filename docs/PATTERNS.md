@@ -1,4 +1,11 @@
 ---
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "PATTERNS"
+issues: []
+discussions: []
 title: Tenant Module Design Patterns
 module: Tenant
 status: production
@@ -328,8 +335,6 @@ public function test_users_isolated_by_tenant()
 
 ---
 
-<<<<<<< HEAD
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](TROUBLESHOOTING.md)
-=======
+---
 Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Troubleshooting](TROUBLESHOOTING.md)
->>>>>>> laraxot/dev

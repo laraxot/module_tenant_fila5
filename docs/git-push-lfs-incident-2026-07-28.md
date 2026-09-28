@@ -1,3 +1,14 @@
+---
+title: "git push lfs incident 2026 07 28"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "git push lfs incident 2026 07 28"
+issues: []
+discussions: []
+---
+
 # Git push bloccato da oggetto Git LFS mancante — 2026-07-28
 
 ## Sintomo

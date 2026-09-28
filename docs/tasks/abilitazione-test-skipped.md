@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Abilitazione Test Skipped"
 module: "Tenant"
 type: concept

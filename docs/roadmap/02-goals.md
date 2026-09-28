@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Goals - Tenant"
 module: "Tenant"
 type: concept

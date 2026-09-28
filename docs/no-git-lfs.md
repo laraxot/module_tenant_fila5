@@ -1,4 +1,8 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+issues: []
+discussions: []
 title: "Git LFS vietato: linea guida e prototipo .gitattributes"
 type: guideline
 module: Tenant

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Traduzioni del Modulo Tenant"
 module: "Tenant"
 type: concept

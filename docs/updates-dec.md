@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module Updates - December 2025"
 module: "Tenant"
 type: concept

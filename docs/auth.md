@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Auth"
 module: "Tenant"
 type: concept

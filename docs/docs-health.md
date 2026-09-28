@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Docs Health - Tenant"
 module: "Tenant"
 type: concept

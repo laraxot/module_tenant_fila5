@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Risoluzione Conflitti Git - Modulo Tenant"
 module: "Tenant"
 type: concept

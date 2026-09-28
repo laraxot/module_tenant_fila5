@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Git Conflict Inventory"
 module: "Tenant"
 type: concept

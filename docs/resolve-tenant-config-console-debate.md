@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "ResolveTenantConfigValueAction - Console Check Debate"
 module: "Tenant"
 type: concept

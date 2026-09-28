@@ -1,3 +1,14 @@
+---
+title: "updates 12"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "updates 12"
+issues: []
+discussions: []
+---
+
 # Tenant Module Updates - December 2025
 
 ## PHPStan Fixes

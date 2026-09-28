@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "corpi metodo duplicati — Tenant"
 type: analysis
 module: Tenant

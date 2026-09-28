@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Models Factory Seeder Analysis"
 module: "Tenant"
 type: concept

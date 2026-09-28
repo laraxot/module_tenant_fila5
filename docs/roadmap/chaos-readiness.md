@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Chaos Readiness - 2026-03-02"
 module: "Tenant"
 type: concept

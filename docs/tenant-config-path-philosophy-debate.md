@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Config Path Philosophy - THE FURIOUS DEBATE"
 module: "Tenant"
 type: concept

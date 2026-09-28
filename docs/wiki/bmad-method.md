@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "BMAD Method v6.3 operativo nel progetto"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Query Optimization Tenant"
 module: "Tenant"
 type: concept

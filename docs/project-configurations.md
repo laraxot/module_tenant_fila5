@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Project Configurations"
 module: "Tenant"
 type: concept

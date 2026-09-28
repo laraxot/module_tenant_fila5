@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction"
 module: "Tenant"
 type: concept

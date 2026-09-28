@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Services"
 module: "Tenant"
 type: concept

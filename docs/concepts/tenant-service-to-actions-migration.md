@@ -1,4 +1,8 @@
 ---
+created: 2026-09-26
+qmd: "tenant service to actions migration"
+issues: []
+discussions: []
 title: migrazione tenantservice ad actions
 type: concept
 module: Tenant

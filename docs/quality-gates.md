@@ -1,4 +1,8 @@
 ---
+tags: [documentation]
+qmd: "quality gates"
+issues: []
+discussions: []
 title: "Quality gates — Modules/Tenant"
 type: report
 created: 2026-07-28

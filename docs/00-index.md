@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module — Documentation Index"
 module: "Tenant"
 type: concept

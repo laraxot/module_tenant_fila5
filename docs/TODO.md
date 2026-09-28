@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module - PHPStan Error Resolution Roadmap"
 module: "Tenant"
 type: concept

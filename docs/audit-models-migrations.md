@@ -1,4 +1,9 @@
 ---
+tags: [documentation]
+updated: 2026-09-26
+qmd: "audit models migrations"
+issues: []
+discussions: []
 title: Tenant Module Models/Migrations Audit
 type: audit
 created: 2026-07-15

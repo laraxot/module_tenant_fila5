@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Popolamento Database - Modulo Tenant"
 module: "Tenant"
 type: concept

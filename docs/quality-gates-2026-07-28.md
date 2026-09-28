@@ -1,3 +1,14 @@
+---
+title: "quality gates 2026 07 28"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "quality gates 2026 07 28"
+issues: []
+discussions: []
+---
+
 # Quality gates — Modules/Tenant — 2026-07-28
 
 Verifica completa richiesta dopo il fix dell'incidente Git LFS (vedi

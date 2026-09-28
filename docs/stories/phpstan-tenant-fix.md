@@ -1,4 +1,10 @@
 ---
+title: "phpstan tenant fix"
+type: note
+tags: [documentation]
+qmd: "phpstan tenant fix"
+issues: []
+discussions: []
 id: phpstan-tenant-fix
 slug: phpstan-tenant
 scope: [module:Tenant, project:base_workorder_fila5]

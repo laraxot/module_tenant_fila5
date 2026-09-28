@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "App"
 module: "Tenant"
 type: concept

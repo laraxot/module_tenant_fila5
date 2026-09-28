@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Database config standard (Laravel 13.x)"
 module: "Tenant"
 type: rule

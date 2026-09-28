@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Permission"
 module: "Tenant"
 type: concept

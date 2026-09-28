@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Cyclomatic Complexity Report - Module: Tenant"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module — Documentation Index"
 module: "Tenant"
 type: concept
@@ -29,15 +31,13 @@ related:
 
 ### Wiki (Sacred — Do Not Delete)
 - **[wiki/index.md](./wiki/index.md)** — Operating manual for LLM agents
-<<<<<<< HEAD
 - **[wiki/Architecture.md](./wiki/architecture.md)** — Multi-tenant system design
 - **[wiki/TenantIdentification.md](./wiki/tenantidentification.md)** — How tenants are identified
 - **[wiki/ConfigurationDistribution.md](./wiki/configurationdistribution.md)** — Config per tenant
-=======
+---
 - **[wiki/Architecture.md](./wiki/Architecture.md)** — Multi-tenant system design
 - **[wiki/TenantIdentification.md](./wiki/TenantIdentification.md)** — How tenants are identified
 - **[wiki/ConfigurationDistribution.md](./wiki/ConfigurationDistribution.md)** — Config per tenant
->>>>>>> laraxot/dev
 - **[wiki/schema.md](./wiki/schema.md)** — Database schema reference
 
 ### Roadmap

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module - Nested Resource Implementation Guide"
 module: "Tenant"
 type: concept

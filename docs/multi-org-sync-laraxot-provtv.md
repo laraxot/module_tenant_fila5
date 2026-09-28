@@ -1,4 +1,7 @@
 ---
+qmd: "multi org sync laraxot provtv"
+issues: []
+discussions: []
 title: "Sincronizzazione multi-organizzazione (laraxot + provtv)"
 type: concept
 tags: [git, sync, multi-org, laraxot, provtv, quality-gates]

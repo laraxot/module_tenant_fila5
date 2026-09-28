@@ -1,3 +1,14 @@
+---
+title: "INDEX GENERATED"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "INDEX GENERATED"
+issues: []
+discussions: []
+---
+
 # Tenant Module Documentation Index
 
 **Stats**: 499 files | 20 categories | Last update: 2026-07-28 11:11
@@ -373,6 +384,14 @@ Visual references and UI screenshots.
 
 ---
 
+title: "INDEX GENERATED"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "INDEX GENERATED"
+issues: []
+discussions: []
 ## Recently Updated
 
 **Last 20 files by modification date**

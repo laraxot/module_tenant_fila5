@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Database"
 module: "Tenant"
 type: concept

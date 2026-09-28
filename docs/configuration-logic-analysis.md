@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Configuration System Architecture - Tenant Module"
 module: "Tenant"
 type: concept

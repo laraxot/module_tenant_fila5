@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Cleanup Tenant Docs"
 module: "Tenant"
 type: concept

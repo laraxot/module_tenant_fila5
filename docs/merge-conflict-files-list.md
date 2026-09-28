@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Merge Conflict Files List"
 module: "Tenant"
 type: concept

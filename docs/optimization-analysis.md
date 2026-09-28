@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Optimization Analysis"
 module: "Tenant"
 type: concept

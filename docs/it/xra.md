@@ -1,4 +1,11 @@
 ---
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "xra"
+issues: []
+discussions: []
 title: Il file xra.php
 description: Il file xra.php
 extends: _layouts.documentation

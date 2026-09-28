@@ -1,3 +1,14 @@
+---
+title: "risoluzione conflitti 1"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "risoluzione conflitti 1"
+issues: []
+discussions: []
+---
+
 # Risoluzione Conflitti nel Modulo Tenant
 
 Questo documento descrive i conflitti Git risolti nel modulo Tenant, con particolare attenzione ai file critici e alle strutture di namespace.

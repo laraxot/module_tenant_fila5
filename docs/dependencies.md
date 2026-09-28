@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Dependencies"
 module: "Tenant"
 type: concept

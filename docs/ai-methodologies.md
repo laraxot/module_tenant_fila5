@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "AI Methodologies Handbook"
 module: "Tenant"
 type: concept

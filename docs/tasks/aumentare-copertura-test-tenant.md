@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Aumentare Copertura Test Tenant"
 module: "Tenant"
 type: concept

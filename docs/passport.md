@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Passport"
 module: "Tenant"
 type: concept

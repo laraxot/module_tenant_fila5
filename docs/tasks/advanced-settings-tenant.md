@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Advanced Settings Tenant"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Correzioni Trait Sushi - PHPStan Level 10"
 module: "Tenant"
 type: pattern

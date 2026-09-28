@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Conflict Resolution — Module Tenant"
 module: "Tenant"
 type: concept

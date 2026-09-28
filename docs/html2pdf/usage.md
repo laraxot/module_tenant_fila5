@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Utilizzo Base e Layout"
 module: "Tenant"
 type: concept

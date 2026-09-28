@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Verifica TenantDomain"
 module: "Tenant"
 type: concept
