@@ -242,3 +242,13 @@ apertura non cambiano.
 Entrambi i gate terminano con zero errori. Il gate Tenant module-wide va comunque
 eseguito separatamente: errori in test non posseduti non vanno mascherati né
 duplicati nei trait.
+
+### Chiusura (2026-09-23, swarm phpstan-fix-21-moduli)
+
+Gate module-wide riverificato a freddo: `./vendor/bin/phpstan clear-result-cache &&
+./vendor/bin/phpstan analyse Modules/Tenant --no-progress --memory-limit=-1` ->
+`[OK] No errors`. Le 40 diagnostiche che a suo tempo bloccavano l'AC#1 di
+`stories/7.1.phpstan-sushi-boundaries.story.md` erano nell'owned scope di
+`stories/7.2.phpstan-test-harness-contracts.story.md`, gia' risolte il 2026-08-24
+ma senza promuovere lo status delle due story. Entrambe ora `done`. Ultimo task
+aperto di 7.1 ("Aggiornare questo file e rieseguire PHPStan") chiuso.

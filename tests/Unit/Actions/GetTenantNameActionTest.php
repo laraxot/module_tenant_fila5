@@ -11,7 +11,7 @@ use PHPUnit\Framework\Assert;
 use function Safe\mkdir;
 use function Safe\rmdir;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 /** @var list<string> $createdConfigPaths */
 $createdConfigPaths = [];

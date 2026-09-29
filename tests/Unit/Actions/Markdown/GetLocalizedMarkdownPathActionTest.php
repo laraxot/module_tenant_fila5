@@ -14,7 +14,7 @@ use PHPUnit\Framework\Assert;
 use function Safe\file_put_contents;
 use function Safe\unlink;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 it('gets localized markdown path if it exists', function (): void {
     App::setLocale('it');

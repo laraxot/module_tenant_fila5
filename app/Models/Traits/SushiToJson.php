@@ -97,6 +97,12 @@ trait SushiToJson
      * Carica i dati esistenti dal file JSON.
      * Preserva la struttura originale dei dati senza normalizzazione.
      *
+     * Impuro: legge lo stato corrente del file su disco, quindi due chiamate
+     * consecutive possono restituire valori diversi se il file cambia nel
+     * frattempo (vedi tests/Unit/TenantStatementCoverageTest.php).
+     *
+     * @phpstan-impure
+     *
      * @return array<int, array<string, mixed>> Dati esistenti
      */
     public function loadExistingData(): array
@@ -385,7 +391,7 @@ trait SushiToJson
             $dbMax = static::query()->max('id');
 
             return \is_int($dbMax) ? $dbMax : 0;
-        } catch (\Throwable) {
+        } catch (Throwable) {
             return 0;
         }
     }
