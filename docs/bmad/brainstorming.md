@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_yCYIwW
 <<<<<<< .merge_file_AMohWO
 ---
 title: "Tenant — Brainstorming BMAD (indice e decisioni)"
@@ -57,6 +58,8 @@ related:
 | Riconnessione DB sempre attiva al boot | spegnerebbe l'isolamento nei test; il provider la salta sotto testing |
 | Morph map dichiarata a mano in un array statico | il provider la compone dalla config e la valida classe per classe |
 =======
+=======
+>>>>>>> .merge_file_MtIHYA
 # Brainstorming - Modulo Tenant
 
 ## Idee iniziali
@@ -79,4 +82,7 @@ related:
 
 - [DOMANDA 1]
 - [DOMANDA 2]
+<<<<<<< .merge_file_yCYIwW
 >>>>>>> .merge_file_Ehn13j
+=======
+>>>>>>> .merge_file_MtIHYA

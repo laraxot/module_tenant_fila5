@@ -60,6 +60,7 @@ Keep `declare(strict_types=1);` in PHP, respect project PHPStan config, and upda
 ---
 
 **Modulo** `tenant` · **Laraxot ecosystem** · **Project-agnostic**
+<<<<<<< .merge_file_NNe5FS
 ---
 
 ## Scheda tecnica verificata (2026-09-28)
@@ -86,3 +87,5 @@ php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules/Tenant
 La responsabilità del modulo, le decisioni architetturali e le opportunità sono
 documentate negli artefatti BMAD sotto [`docs/bmad/`](docs/bmad/). I numeri vanno
 rigenerati quando il modulo cambia; non copiarli in badge non verificati.
+=======
+>>>>>>> .merge_file_Kfcj6u

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_uOg22l
 <<<<<<< .merge_file_B50TGO
 ---
 title: "Tenant — indice BMAD"
@@ -62,6 +63,8 @@ related:
 - [../../../Xot/docs/bmad-method.md](../../../Xot/docs/bmad-method.md) — metodo BMAD in Laraxot.
 - [../../../Xot/docs/bmad/stories/5.249-bmad-docs-fleet-completion.story.md](../../../Xot/docs/bmad/stories/5.249-bmad-docs-fleet-completion.story.md) — campagna di completamento docs.
 =======
+=======
+>>>>>>> .merge_file_h1KKXy
 # Tenant Module
 
 Modulo del sistema PTVX per la gestione delle risorse umane e valutazione delle performance nelle pubbliche amministrazioni.
@@ -95,4 +98,7 @@ Il modulo Tenant si occupa di [DESCRIZIONE DA COMPLETARE].
 ## Licenza
 
 Proprietario - Laraxot
+<<<<<<< .merge_file_uOg22l
 >>>>>>> .merge_file_k8LnVQ
+=======
+>>>>>>> .merge_file_h1KKXy
