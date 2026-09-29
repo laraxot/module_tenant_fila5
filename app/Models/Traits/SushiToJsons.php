@@ -1,9 +1,9 @@
 <?php
-
 declare(strict_types=1);
 /**
  * @see https://dev.to/hasanmn/automatically-update-createdby-and-updatedby-in-laravel-using-bootable-traits-28g9.
  */
+
 
 namespace Modules\Tenant\Models\Traits;
 

@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Modules\Tenant\Services\Config\Resolvers;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
+use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
 use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
 use Nwidart\Modules\Facades\Module;
+use Nwidart\Modules\Laravel\Module as LaravelModule;
 
 /**
  * Resolves database configuration with module-specific connections.
@@ -68,6 +69,7 @@ class DatabaseConfigResolver implements ConfigResolverInterface
 
     /**
      * @param  array<string, mixed>  $extraConf
+     *
      * @return array<string, mixed>
      */
     private function addModuleConnections(array $extraConf, ?string $default): array
@@ -76,26 +78,35 @@ class DatabaseConfigResolver implements ConfigResolverInterface
             return $extraConf;
         }
 
-        /** @var Collection<int, \Nwidart\Modules\Module> */
-        $modules = Module::toCollection();
+        $connectionsRaw = Arr::get($extraConf, 'connections');
 
-        foreach ($modules as $module) {
+        if (! is_array($connectionsRaw)) {
+            return $extraConf;
+        }
+
+        /** @var array<string, mixed> $connectionsRaw */
+        $connections = ConfigStringKeyFilter::onlyStringKeys($connectionsRaw);
+
+        foreach (Module::getOrdered() as $module) {
+            if (! $module instanceof LaravelModule) {
+                continue;
+            }
+
             $name = $module->getSnakeName();
 
-            if (! isset($extraConf['connections']) || ! is_array($extraConf['connections'])) {
+            if (isset($connections[$name])) {
                 continue;
             }
 
-            if (isset($extraConf['connections'][$name])) {
+            $template = Arr::get($connections, $default);
+            if ($template === null) {
                 continue;
             }
 
-            if (! isset($extraConf['connections'][$default])) {
-                continue;
-            }
-
-            $extraConf['connections'][$name] = $extraConf['connections'][$default];
+            $connections[$name] = $template;
         }
+
+        $extraConf['connections'] = $connections;
 
         return $extraConf;
     }

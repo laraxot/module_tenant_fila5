@@ -17,6 +17,7 @@ use Modules\Tenant\Actions\Models\ResolveTenantModelInstanceAction;
 use Modules\Tenant\Actions\Modules\GetTenantModulesAction;
 use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use ReflectionException;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * TenantService - Facade sottile per operazioni tenant-aware.
@@ -33,6 +34,8 @@ use ReflectionException;
  */
 class TenantService
 {
+    use QueueableAction;
+
     /**
      * Ottiene il nome del tenant corrente basato sul server name.
      *
@@ -156,4 +159,6 @@ class TenantService
     {
         return app(GetTenantModulesAction::class)->execute();
     }
+
+    public function execute(): void {}
 }

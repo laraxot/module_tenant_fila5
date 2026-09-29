@@ -9,11 +9,11 @@ use Modules\Tenant\Models\BaseModel;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
+uses(\Modules\Tenant\Tests\TestCase::class);
 
 function makeTenantTestBaseModel(): BaseModel
 {
-    return new class extends BaseModel
+    return new class() extends BaseModel
     {
         protected $table = 'test_tenant_table';
     };

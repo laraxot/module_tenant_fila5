@@ -385,7 +385,7 @@ trait SushiToJson
             $dbMax = static::query()->max('id');
 
             return \is_int($dbMax) ? $dbMax : 0;
-        } catch (Throwable) {
+        } catch (\Throwable) {
             return 0;
         }
     }
