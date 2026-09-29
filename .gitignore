@@ -190,3 +190,7 @@ build
 /.github/skills/
 .github/skills
 docs/graphify
+resources/lang
+
+# docs/chat — coordination notes replaced by BMAD stories in docs/bmad/
+docs/chat
