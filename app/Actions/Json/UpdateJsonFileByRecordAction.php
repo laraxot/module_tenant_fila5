@@ -4,34 +4,48 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Actions\Json;
 
-// use Illuminate\Support\Facades\File;
-// use Illuminate\Support\Facades\Storage;
-use Illuminate\Filesystem\Filesystem;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Modules\Tenant\Models\Contracts\HasSushiToJson;
 use Modules\Xot\Actions\Arr\EnsureKeysAction;
 use Modules\Xot\Actions\Array\SaveArrayAction;
 use Spatie\QueueableAction\QueueableAction;
+use Webmozart\Assert\Assert;
 
+/**
+ * Sincronizza sul file JSON la riga corrispondente al record in aggiornamento.
+ *
+ * Chiavizza le righe sulla colonna primaria come `DeleteJsonFileByRecordAction`,
+ * cosi' la stessa coppia `($keyName, $key)` identifica la riga da sostituire
+ * in scrittura e da rimuovere in cancellazione.
+ */
 class UpdateJsonFileByRecordAction
 {
     use QueueableAction;
 
-    public function execute(HasSushiToJson $record): void
+    public function execute(Model&HasSushiToJson $record): void
     {
-        $rows=$record->getRows();
+        $rows = $record->getRows();
+
         $record->setAttribute('updated_at', now());
-        $key=$record->getKey();
-        $keyName=$record->getKeyName();
+
+        $keyName = $record->getKeyName();
+        $key = $record->getKey();
+
+        Assert::integer($key);
 
         $keyed = Arr::keyBy($rows, $keyName);
-        $keyed[$key]=$record->toArray();
-        $filename=$record->getJsonFile();
-        $keyed = app(EnsureKeysAction::class)->execute($keyed, array_keys($record->getSchema()));
-        $keyed=array_values($keyed);
 
-        app(SaveArrayAction::class)->execute($keyed,$filename,'json');
+        $keyed[$key] = $record->toArray();
 
+        $keyed = app(EnsureKeysAction::class)->execute(
+            $keyed,
+            array_keys($record->getSchema())
+        );
+
+        $keyed = array_values($keyed);
+        $filename = $record->getJsonFile();
+
+        app(SaveArrayAction::class)->execute($keyed, $filename, 'json');
     }
 }

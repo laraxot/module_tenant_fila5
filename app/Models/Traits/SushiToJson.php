@@ -55,52 +55,86 @@ trait SushiToJson
      * Metodo richiesto da Sushi per popolare la tabella in-memory.
      * Delegato a getSushiRows() per mantenere separazione semantica.
      *
-     * @return array<int, array<string, mixed>>
+     * @return array<array-key, array<string, mixed>>
      */
-    public function getRows()
+    public function getRows(): array
     {
-       $res= $this->getSushiRows();
-
-
-        return $res;
+        return $this->getSushiRows();
     }
 
-    public function getSushiRows()
+    /**
+     * Sovrascrittura tipizzata della firma vendor `Sushi::getSchema()`, che
+     * restituisce `mixed` e faceva fallire `array_keys()` a livello max.
+     *
+     * @return array<string, string>
+     */
+    public function getSchema(): array
+    {
+        /** @var array<string, string> $schema */
+        $schema = $this->schema ?? [];
+
+        return $schema;
+    }
+
+    /**
+     * Righe lette dal file JSON del tenant corrente.
+     *
+     * @return array<array-key, array<string, mixed>>
+     */
+    public function getSushiRows(): array
     {
         $path = $this->getJsonFile();
         $content = file_get_contents($path);
         $data = json_decode($content, true);
 
+        Assert::isArray($data);
+        Assert::allIsArray($data);
 
-        $res = app(EnsureKeysAction::class)->execute($data, array_keys($this->getSchema()));
-
-        return $res;
+        return app(EnsureKeysAction::class)->execute($data, array_keys($this->getSchema()));
     }
 
-
-
-    protected function sushiShouldCache()
+    protected function sushiShouldCache(): bool
     {
         return false;
     }
-
 
     /**
      * Boot method per il trait SushiToJson.
      * Gestisce gli eventi di creazione, aggiornamento e cancellazione
      * per sincronizzare automaticamente i dati con i file JSON.
+     *
+     * I modelli Sushi read-only (che usano il trait solo per leggere il JSON)
+     * non implementano HasSushiToJson: su di loro la sincronizzazione non deve
+     * essere registrata, altrimenti le callback riceverebbero un tipo non
+     * conforme al contratto e il listener fallirebbe con TypeError.
      */
     protected static function bootSushiToJson(): void
     {
-        static::creating(static function (HasSushiToJson $record): void {
+        if (! is_a(static::class, HasSushiToJson::class, true)) {
+            return;
+        }
+
+        static::creating(static function (Model $record): void {
+            if (! $record instanceof HasSushiToJson) {
+                return;
+            }
+
             app(CreateJsonFileByRecordAction::class)->execute($record);
         });
 
-        static::updating(static function (HasSushiToJson $record): void {
-                app(UpdateJsonFileByRecordAction::class)->execute($record);
+        static::updating(static function (Model $record): void {
+            if (! $record instanceof HasSushiToJson) {
+                return;
+            }
+
+            app(UpdateJsonFileByRecordAction::class)->execute($record);
         });
 
-        static::deleting(static function (HasSushiToJson $record): void {
+        static::deleting(static function (Model $record): void {
+            if (! $record instanceof HasSushiToJson) {
+                return;
+            }
+
             app(DeleteJsonFileByRecordAction::class)->execute($record);
         });
     }
