@@ -55,22 +55,46 @@ trait SushiToJson
      * Metodo richiesto da Sushi per popolare la tabella in-memory.
      * Delegato a getSushiRows() per mantenere separazione semantica.
      *
-     * @return array<int, array<string, mixed>>
+     * @return array<array-key, array<string, mixed>>
      */
     public function getRows()
     {
        $res= $this->getSushiRows();
 
+<<<<<<< .merge_file_56z8uX
 
         return $res;
     }
 
     public function getSushiRows()
+=======
+    /**
+     * Sovrascrittura tipizzata della firma vendor `Sushi::getSchema()`, che
+     * restituisce `mixed` e faceva fallire `array_keys()` a livello max.
+     *
+     * @return array<string, string>
+     */
+    public function getSchema(): array
+    {
+        /** @var array<string, string> $schema */
+        $schema = $this->schema ?? [];
+
+        return $schema;
+    }
+
+    /**
+     * Righe lette dal file JSON del tenant corrente.
+     *
+     * @return array<array-key, array<string, mixed>>
+     */
+    public function getSushiRows(): array
+>>>>>>> .merge_file_xugZnb
     {
         $path = $this->getJsonFile();
         $content = file_get_contents($path);
         $data = json_decode($content, true);
 
+<<<<<<< .merge_file_56z8uX
 
         $res = app(EnsureKeysAction::class)->execute($data, array_keys($this->getSchema()));
 
@@ -80,6 +104,15 @@ trait SushiToJson
 
 
     protected function sushiShouldCache()
+=======
+        Assert::isArray($data);
+        Assert::allIsArray($data);
+
+        return app(EnsureKeysAction::class)->execute($data, array_keys($this->getSchema()));
+    }
+
+    protected function sushiShouldCache(): bool
+>>>>>>> .merge_file_xugZnb
     {
         return false;
     }
@@ -89,6 +122,7 @@ trait SushiToJson
      * Boot method per il trait SushiToJson.
      * Gestisce gli eventi di creazione, aggiornamento e cancellazione
      * per sincronizzare automaticamente i dati con i file JSON.
+<<<<<<< .merge_file_56z8uX
      */
     protected static function bootSushiToJson(): void
     {
@@ -101,6 +135,41 @@ trait SushiToJson
         });
 
         static::deleting(static function (HasSushiToJson $record): void {
+=======
+     *
+     * I modelli Sushi read-only (che usano il trait solo per leggere il JSON)
+     * non implementano HasSushiToJson: su di loro la sincronizzazione non deve
+     * essere registrata, altrimenti le callback riceverebbero un tipo non
+     * conforme al contratto e il listener fallirebbe con TypeError.
+     */
+    protected static function bootSushiToJson(): void
+    {
+        if (! is_a(static::class, HasSushiToJson::class, true)) {
+            return;
+        }
+
+        static::creating(static function (Model $record): void {
+            if (! $record instanceof HasSushiToJson) {
+                return;
+            }
+
+            app(CreateJsonFileByRecordAction::class)->execute($record);
+        });
+
+        static::updating(static function (Model $record): void {
+            if (! $record instanceof HasSushiToJson) {
+                return;
+            }
+
+            app(UpdateJsonFileByRecordAction::class)->execute($record);
+        });
+
+        static::deleting(static function (Model $record): void {
+            if (! $record instanceof HasSushiToJson) {
+                return;
+            }
+
+>>>>>>> .merge_file_xugZnb
             app(DeleteJsonFileByRecordAction::class)->execute($record);
         });
     }
