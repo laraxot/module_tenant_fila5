@@ -7,6 +7,7 @@ created: 2026-09-28
 updated: 2026-09-28
 qmd: "Tenant architettura confini componenti PHP Laravel Filament"
 ---
+tags: [docs, tenant, bmad]
 # Tenant — architettura
 
 ## Scopo osservato

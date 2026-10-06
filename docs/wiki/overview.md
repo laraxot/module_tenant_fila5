@@ -5,6 +5,7 @@ type: overview
 created: "2026-04-15T08:28:50Z"
 updated: "2026-04-15T08:28:50Z"
 ---
+tags: [docs, tenant, bmad]
 
 # Tenant Wiki Overview
 

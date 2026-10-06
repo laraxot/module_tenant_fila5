@@ -1,3 +1,13 @@
+---
+title: "code-quality-report.md"
+type: concept
+status: active
+module: "Tenant"
+tags: [docs, tenant, bmad]
+created: 2026-10-06
+updated: 2026-10-06
+---
+
 # Code quality — modulo Tenant
 
 Report locale (2026-07-17). Metodo: `phpstan analyse` livello max, `phpmd` (ruleset codesize+unusedcode), grep mirati (TODO/FIXME/@deprecated, dd()/dump(), facade in app/Actions, extends Filament diretto), rapporto file test/app.

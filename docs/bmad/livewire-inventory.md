@@ -12,6 +12,7 @@ related:
   - ../../User/docs/bmad/livewire-inventory.md
   - ../../Xot/docs/bmad/livewire-widget-project-context.md
 ---
+tags: [docs, tenant, bmad]
 
 # Inventario: Livewire HTTP → Filament — modulo Tenant
 

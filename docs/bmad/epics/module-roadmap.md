@@ -7,6 +7,7 @@ created: 2026-09-28
 updated: 2026-09-28
 qmd: "Tenant epic roadmap qualità architettura test documentazione"
 ---
+tags: [docs, tenant, bmad]
 # Tenant — epic roadmap
 
 ## Epic A — Contratto e architettura

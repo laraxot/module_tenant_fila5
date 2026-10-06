@@ -1,4 +1,5 @@
 ---
+type: concept
 title: "Tenant — Multi-Tenancy"
 description: "Modulo per il multi-tenancy, isolamento dati per tenant"
 module: "Tenant"
@@ -16,6 +17,8 @@ extends: []
 extended_by: 0
 documentation_date: "2026-05-27"
 ---
+type: concept
+tags: [docs, tenant, bmad]
 
 # Tenant — Multi-Tenancy
 

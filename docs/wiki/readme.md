@@ -1,3 +1,13 @@
+---
+title: "readme.md"
+type: concept
+status: active
+module: "Tenant"
+tags: [docs, tenant, bmad]
+created: 2026-10-06
+updated: 2026-10-06
+---
+
 # LLM Wiki (module)
 
 [![Module](https://img.shields.io/badge/Module-LLM Wiki (module)-8B0000.svg)]()

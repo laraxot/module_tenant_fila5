@@ -11,6 +11,7 @@ related:
   - ../../../../Xot/docs/bmad/stories/module-root-hygiene.story.md
   - ../../../../Rating/docs/stories/18.35.rating-morph-type-doppia-forma.story.md
 ---
+tags: [docs, tenant, bmad]
 
 # config/local untracciata applicando il .gitignore ai file tracciati
 

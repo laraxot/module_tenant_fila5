@@ -7,6 +7,7 @@ related:
   - ./livewire-widget-prd.md
   - ../../Xot/docs/bmad/livewire-widget-project-context.md
 ---
+tags: [docs, tenant, bmad]
 
 # Architecture Tenant
 

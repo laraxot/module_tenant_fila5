@@ -6,6 +6,7 @@ related:
   - ./livewire-inventory.md
   - ./livewire-widget-prd.md
 ---
+tags: [docs, tenant, bmad]
 
 # Tech spec Tenant
 

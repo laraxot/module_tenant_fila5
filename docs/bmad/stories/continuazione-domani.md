@@ -12,6 +12,7 @@ related:
   - ../../stories/21-1-replace-profile-model-with-contract.md
   - ../../stories/git-state-conflict-marker-daemon-cleanup.story.md
 ---
+tags: [docs, tenant, bmad]
 
 # Tenant — Continuazione Domani
 

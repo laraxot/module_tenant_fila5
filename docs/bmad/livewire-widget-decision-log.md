@@ -5,6 +5,7 @@ module: Tenant
 related:
   - ./livewire-inventory.md
 ---
+tags: [docs, tenant, bmad]
 
 # Decision log Tenant
 

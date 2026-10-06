@@ -1,3 +1,13 @@
+---
+title: "brainstorming.md"
+type: concept
+status: active
+module: "Tenant"
+tags: [docs, tenant, bmad]
+created: 2026-10-06
+updated: 2026-10-06
+---
+
 <<<<<<< .merge_file_yCYIwW
 <<<<<<< .merge_file_AMohWO
 ---

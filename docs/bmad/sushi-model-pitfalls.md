@@ -7,6 +7,7 @@ status: active
 created: 2026-09-30
 updated: 2026-09-30
 ---
+tags: [docs, tenant, bmad]
 
 # Sushi nei modelli Tenant: trappole verificate
 
