@@ -34,6 +34,7 @@ class UpdateJsonFileByRecordAction
 
         Assert::integer($key);
 
+        /** @var array<int|string, array<string, mixed>> $keyed */
         $keyed = Arr::keyBy($rows, $keyName);
 
         $keyed[$key] = $record->toArray();

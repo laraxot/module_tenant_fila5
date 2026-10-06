@@ -39,11 +39,21 @@ trait SushiToJson
     }
     use SushiConnectionByName;
 
-     public function getSchema(): array
+    /**
+     * @return array<string, string>
+     */
+    public function getSchema(): array
     {
-        return $this->sushiGetSchema();
+        $schema = $this->sushiGetSchema();
+        Assert::isArray($schema);
+
+        /** @var array<string, string> $schema */
+        return $schema;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function loadExistingData(): array
     {
         $path = $this->getJsonFile();
@@ -54,10 +64,15 @@ trait SushiToJson
 
         $content = File::get($path);
         $data = json_decode($content, true);
+        Assert::isArray($data);
 
-        return is_array($data) ? $data : [];
+        /** @var array<string, mixed> $data */
+        return $data;
     }
 
+    /**
+     * @param array<int|string, array<string, mixed>> $data
+     */
     public function saveToJson(array $data): bool
     {
         $path = $this->getJsonFile();
@@ -87,50 +102,63 @@ trait SushiToJson
      *
      * @return array<array-key, array<string, mixed>>
      */
-    public function getRows()
+    public function getRows(): array
     {
-       $res= $this->getSushiRows();
+       $res = $this->getSushiRows();
 
-
-        return $res;
+        return $schema;
     }
 
-    public function getSushiRows()
+    /**
+     * @return array<int, array<string, mixed>>
+     */
+    public function getSushiRows(): array
     {
         $path = $this->getJsonFile();
         $content = file_get_contents($path);
         $data = json_decode($content, true);
+        Assert::isArray($data);
 
-
+        /** @var array<int|string, array<string, mixed>> $data */
         $res = app(EnsureKeysAction::class)->execute($data, array_keys($this->getSchema()));
 
-        return $res;
+        return array_values($res);
     }
 
 
 
-    protected function sushiShouldCache()
+    protected function sushiShouldCache(): bool
     {
         return false;
     }
-
 
     /**
      * Boot method per il trait SushiToJson.
      * Gestisce gli eventi di creazione, aggiornamento e cancellazione
      * per sincronizzare automaticamente i dati con i file JSON.
+     *
+     * I modelli Sushi read-only (che usano il trait solo per leggere il JSON)
+     * non implementano HasSushiToJson: su di loro la sincronizzazione non deve
+     * essere registrata, altrimenti le callback riceverebbero un tipo non
+     * conforme al contratto e il listener fallirebbe con TypeError.
      */
     protected static function bootSushiToJson(): void
     {
         static::creating(static function (HasSushiToJson $record): void {
+            Assert::isInstanceOf($record, Model::class);
+            /** @var Model&HasSushiToJson $record */
             app(CreateJsonFileByRecordAction::class)->execute($record);
         });
 
         static::updating(static function (HasSushiToJson $record): void {
+                Assert::isInstanceOf($record, Model::class);
+                /** @var Model&HasSushiToJson $record */
                 app(UpdateJsonFileByRecordAction::class)->execute($record);
         });
 
         static::deleting(static function (HasSushiToJson $record): void {
+            Assert::isInstanceOf($record, Model::class);
+            /** @var Model&HasSushiToJson $record */
             app(DeleteJsonFileByRecordAction::class)->execute($record);
         });
     }

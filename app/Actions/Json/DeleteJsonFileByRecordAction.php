@@ -32,6 +32,7 @@ class DeleteJsonFileByRecordAction
 
         Assert::integer($key);
 
+        /** @var array<int|string, array<string, mixed>> $keyed */
         $keyed = Arr::keyBy($rows, $keyName);
 
         Arr::forget($keyed, $key);
