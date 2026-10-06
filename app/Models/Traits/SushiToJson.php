@@ -34,10 +34,40 @@ use function Safe\json_encode;
  */
 trait SushiToJson
 {
-    use Sushi;
+    use Sushi {
+        getSchema as protected sushiGetSchema;
+    }
     use SushiConnectionByName;
 
-     /**
+     public function getSchema(): array
+    {
+        return $this->sushiGetSchema();
+    }
+
+    public function loadExistingData(): array
+    {
+        $path = $this->getJsonFile();
+
+        if (! File::exists($path)) {
+            return [];
+        }
+
+        $content = File::get($path);
+        $data = json_decode($content, true);
+
+        return is_array($data) ? $data : [];
+    }
+
+    public function saveToJson(array $data): bool
+    {
+        $path = $this->getJsonFile();
+
+        File::put($path, json_encode($data, JSON_PRETTY_PRINT));
+
+        return true;
+    }
+
+    /**
      * Ottiene il percorso del file JSON per il modello corrente.
      * Il file è specifico per il tenant corrente e la tabella del modello.
      *
@@ -61,40 +91,16 @@ trait SushiToJson
     {
        $res= $this->getSushiRows();
 
-<<<<<<< .merge_file_56z8uX
 
         return $res;
     }
 
     public function getSushiRows()
-=======
-    /**
-     * Sovrascrittura tipizzata della firma vendor `Sushi::getSchema()`, che
-     * restituisce `mixed` e faceva fallire `array_keys()` a livello max.
-     *
-     * @return array<string, string>
-     */
-    public function getSchema(): array
-    {
-        /** @var array<string, string> $schema */
-        $schema = $this->schema ?? [];
-
-        return $schema;
-    }
-
-    /**
-     * Righe lette dal file JSON del tenant corrente.
-     *
-     * @return array<array-key, array<string, mixed>>
-     */
-    public function getSushiRows(): array
->>>>>>> .merge_file_xugZnb
     {
         $path = $this->getJsonFile();
         $content = file_get_contents($path);
         $data = json_decode($content, true);
 
-<<<<<<< .merge_file_56z8uX
 
         $res = app(EnsureKeysAction::class)->execute($data, array_keys($this->getSchema()));
 
@@ -104,15 +110,6 @@ trait SushiToJson
 
 
     protected function sushiShouldCache()
-=======
-        Assert::isArray($data);
-        Assert::allIsArray($data);
-
-        return app(EnsureKeysAction::class)->execute($data, array_keys($this->getSchema()));
-    }
-
-    protected function sushiShouldCache(): bool
->>>>>>> .merge_file_xugZnb
     {
         return false;
     }
@@ -122,7 +119,6 @@ trait SushiToJson
      * Boot method per il trait SushiToJson.
      * Gestisce gli eventi di creazione, aggiornamento e cancellazione
      * per sincronizzare automaticamente i dati con i file JSON.
-<<<<<<< .merge_file_56z8uX
      */
     protected static function bootSushiToJson(): void
     {
@@ -135,41 +131,6 @@ trait SushiToJson
         });
 
         static::deleting(static function (HasSushiToJson $record): void {
-=======
-     *
-     * I modelli Sushi read-only (che usano il trait solo per leggere il JSON)
-     * non implementano HasSushiToJson: su di loro la sincronizzazione non deve
-     * essere registrata, altrimenti le callback riceverebbero un tipo non
-     * conforme al contratto e il listener fallirebbe con TypeError.
-     */
-    protected static function bootSushiToJson(): void
-    {
-        if (! is_a(static::class, HasSushiToJson::class, true)) {
-            return;
-        }
-
-        static::creating(static function (Model $record): void {
-            if (! $record instanceof HasSushiToJson) {
-                return;
-            }
-
-            app(CreateJsonFileByRecordAction::class)->execute($record);
-        });
-
-        static::updating(static function (Model $record): void {
-            if (! $record instanceof HasSushiToJson) {
-                return;
-            }
-
-            app(UpdateJsonFileByRecordAction::class)->execute($record);
-        });
-
-        static::deleting(static function (Model $record): void {
-            if (! $record instanceof HasSushiToJson) {
-                return;
-            }
-
->>>>>>> .merge_file_xugZnb
             app(DeleteJsonFileByRecordAction::class)->execute($record);
         });
     }

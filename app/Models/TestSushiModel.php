@@ -89,6 +89,29 @@ class TestSushiModel extends BaseModel
         return $this->getSushiRows();
     }
 
+    public function loadExistingData(): array
+    {
+        $path = $this->getJsonFile();
+
+        if (! File::exists($path)) {
+            return [];
+        }
+
+        $content = File::get($path);
+        $data = json_decode($content, true);
+
+        return is_array($data) ? $data : [];
+    }
+
+    public function saveToJson(array $data): bool
+    {
+        $path = $this->getJsonFile();
+
+        File::put($path, json_encode($data, JSON_PRETTY_PRINT));
+
+        return true;
+    }
+
     protected function casts(): array
     {
         return [

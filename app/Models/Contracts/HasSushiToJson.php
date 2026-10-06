@@ -24,21 +24,13 @@ use Illuminate\Support\Carbon;
  * @property Pivot|null $pivot
  * @property string $tennant_name
  *
-<<<<<<< .merge_file_Il8EQ2
- * @method string getRouteKey()
-=======
 * @method string getRouteKey()
->>>>>>> .merge_file_Zuh8Il
  * @method string getRouteKeyName()
  * @method string getTable()
  * @method \Illuminate\Database\Eloquent\Builder<Model> with(array<int, string> $array)
  * @method list<string> getFillable()
  * @method static fill(array<string, mixed> $array)
-<<<<<<< .merge_file_Il8EQ2
- * @method \Illuminate\Database\Connection getConnection()
-=======
  * @method \Illuminate\Database\ConnectionInterface getConnection()
->>>>>>> .merge_file_Zuh8Il
  * @method bool update(array<string, mixed> $params)
  * @method bool|null delete()
  * @method int detach(mixed $params)
@@ -51,21 +43,12 @@ use Illuminate\Support\Carbon;
  *
  * @phpstan-require-extends Model
  *
-<<<<<<< .merge_file_Il8EQ2
- * @mixin \Eloquent
-=======
  * @mixin Model
->>>>>>> .merge_file_Zuh8Il
  */
 interface HasSushiToJson
 {
     /**
      * non possiamo mettere :array perche' Sushi lo richiede come array<int, array<string, mixed>>
-<<<<<<< .merge_file_Il8EQ2
-     * @return array<int, array<string, mixed>>
-     */
-    public function getRows();
-=======
      *
      * @return array<int, array<string, mixed>>
      */
@@ -88,6 +71,11 @@ interface HasSushiToJson
      *
      * @return array<string, string>
      */
+    /**
+     * Schema delle colonne della tabella in-memory, come definito da Sushi.
+     *
+     * @return array<string, string>
+     */
     public function getSchema(): array;
->>>>>>> .merge_file_Zuh8Il
 }
+
