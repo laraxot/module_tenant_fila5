@@ -34,10 +34,7 @@ class UpdateJsonFileByRecordAction
 
         Assert::integer($key);
 
-<<<<<<< HEAD
         /** @var array<int|string, array<string, mixed>> $keyed */
-=======
->>>>>>> laraxot/dev
         $keyed = Arr::keyBy($rows, $keyName);
 
         $keyed[$key] = $record->toArray();
