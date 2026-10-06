@@ -8,10 +8,13 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Models\Traits\SushiToJson;
+<<<<<<< HEAD
 use Webmozart\Assert\Assert;
 
 use function Safe\json_decode;
 use function Safe\json_encode;
+=======
+>>>>>>> laraxot/dev
 
 /**
  * @property int $id
@@ -93,9 +96,12 @@ class TestSushiModel extends BaseModel
         return $this->getSushiRows();
     }
 
+<<<<<<< HEAD
     /**
      * @return array<string, mixed>
      */
+=======
+>>>>>>> laraxot/dev
     public function loadExistingData(): array
     {
         $path = $this->getJsonFile();
@@ -106,6 +112,7 @@ class TestSushiModel extends BaseModel
 
         $content = File::get($path);
         $data = json_decode($content, true);
+<<<<<<< HEAD
         Assert::isArray($data);
 
         /** @var array<string, mixed> $data */
@@ -115,6 +122,12 @@ class TestSushiModel extends BaseModel
     /**
      * @param array<int|string, array<string, mixed>> $data
      */
+=======
+
+        return is_array($data) ? $data : [];
+    }
+
+>>>>>>> laraxot/dev
     public function saveToJson(array $data): bool
     {
         $path = $this->getJsonFile();

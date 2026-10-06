@@ -14,7 +14,10 @@ use Modules\Tenant\Tests\TestCase;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToCsvConnectionProbe;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonsCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToPhpArrayConnectionProbe;
+<<<<<<< HEAD
 use Webmozart\Assert\Assert;
+=======
+>>>>>>> laraxot/dev
 
 use function Safe\json_decode;
 use function Safe\json_encode;
@@ -53,9 +56,14 @@ it('resolves the connection named after the model to the live sushi connection',
     Model::clearBootedModels();
 
     $model = new $modelClass;
+<<<<<<< HEAD
     Assert::isInstanceOf($model, Model::class);
 
     expect(DB::connection($modelClass))->toBe($model->resolveConnection());
+=======
+
+    expect(DB::connection($modelClass))->toBe($model::resolveConnection());
+>>>>>>> laraxot/dev
 })->with([
     'SushiToJson' => TestSushiModel::class,
     'SushiToJsons' => SushiToJsonsCoverageModel::class,

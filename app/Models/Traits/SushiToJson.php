@@ -39,6 +39,7 @@ trait SushiToJson
     }
     use SushiConnectionByName;
 
+<<<<<<< HEAD
     /**
      * @return array<string, string>
      */
@@ -54,6 +55,13 @@ trait SushiToJson
     /**
      * @return array<string, mixed>
      */
+=======
+     public function getSchema(): array
+    {
+        return $this->sushiGetSchema();
+    }
+
+>>>>>>> laraxot/dev
     public function loadExistingData(): array
     {
         $path = $this->getJsonFile();
@@ -64,6 +72,7 @@ trait SushiToJson
 
         $content = File::get($path);
         $data = json_decode($content, true);
+<<<<<<< HEAD
         Assert::isArray($data);
 
         /** @var array<string, mixed> $data */
@@ -73,6 +82,12 @@ trait SushiToJson
     /**
      * @param array<int|string, array<string, mixed>> $data
      */
+=======
+
+        return is_array($data) ? $data : [];
+    }
+
+>>>>>>> laraxot/dev
     public function saveToJson(array $data): bool
     {
         $path = $this->getJsonFile();
@@ -102,6 +117,7 @@ trait SushiToJson
      *
      * @return array<array-key, array<string, mixed>>
      */
+<<<<<<< HEAD
     public function getRows(): array
     {
        $res = $this->getSushiRows();
@@ -113,52 +129,91 @@ trait SushiToJson
      * @return array<int, array<string, mixed>>
      */
     public function getSushiRows(): array
+=======
+    public function getRows()
+    {
+       $res= $this->getSushiRows();
+
+
+        return $res;
+    }
+
+    public function getSushiRows()
+>>>>>>> laraxot/dev
     {
         $path = $this->getJsonFile();
         $content = file_get_contents($path);
         $data = json_decode($content, true);
+<<<<<<< HEAD
         Assert::isArray($data);
 
         /** @var array<int|string, array<string, mixed>> $data */
         $res = app(EnsureKeysAction::class)->execute($data, array_keys($this->getSchema()));
 
         return array_values($res);
+=======
+
+
+        $res = app(EnsureKeysAction::class)->execute($data, array_keys($this->getSchema()));
+
+        return $res;
+>>>>>>> laraxot/dev
     }
 
 
 
+<<<<<<< HEAD
     protected function sushiShouldCache(): bool
+=======
+    protected function sushiShouldCache()
+>>>>>>> laraxot/dev
     {
         return false;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
     /**
      * Boot method per il trait SushiToJson.
      * Gestisce gli eventi di creazione, aggiornamento e cancellazione
      * per sincronizzare automaticamente i dati con i file JSON.
+<<<<<<< HEAD
      *
      * I modelli Sushi read-only (che usano il trait solo per leggere il JSON)
      * non implementano HasSushiToJson: su di loro la sincronizzazione non deve
      * essere registrata, altrimenti le callback riceverebbero un tipo non
      * conforme al contratto e il listener fallirebbe con TypeError.
+=======
+>>>>>>> laraxot/dev
      */
     protected static function bootSushiToJson(): void
     {
         static::creating(static function (HasSushiToJson $record): void {
+<<<<<<< HEAD
             Assert::isInstanceOf($record, Model::class);
             /** @var Model&HasSushiToJson $record */
+=======
+>>>>>>> laraxot/dev
             app(CreateJsonFileByRecordAction::class)->execute($record);
         });
 
         static::updating(static function (HasSushiToJson $record): void {
+<<<<<<< HEAD
                 Assert::isInstanceOf($record, Model::class);
                 /** @var Model&HasSushiToJson $record */
+=======
+>>>>>>> laraxot/dev
                 app(UpdateJsonFileByRecordAction::class)->execute($record);
         });
 
         static::deleting(static function (HasSushiToJson $record): void {
+<<<<<<< HEAD
             Assert::isInstanceOf($record, Model::class);
             /** @var Model&HasSushiToJson $record */
+=======
+>>>>>>> laraxot/dev
             app(DeleteJsonFileByRecordAction::class)->execute($record);
         });
     }

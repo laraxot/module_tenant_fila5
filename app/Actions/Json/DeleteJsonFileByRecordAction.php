@@ -32,7 +32,10 @@ class DeleteJsonFileByRecordAction
 
         Assert::integer($key);
 
+<<<<<<< HEAD
         /** @var array<int|string, array<string, mixed>> $keyed */
+=======
+>>>>>>> laraxot/dev
         $keyed = Arr::keyBy($rows, $keyName);
 
         Arr::forget($keyed, $key);
@@ -47,4 +50,8 @@ class DeleteJsonFileByRecordAction
 
         app(SaveArrayAction::class)->execute($keyed, $filename, 'json');
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> laraxot/dev
