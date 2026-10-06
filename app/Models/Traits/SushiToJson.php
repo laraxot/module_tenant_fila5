@@ -104,9 +104,7 @@ trait SushiToJson
      */
     public function getRows(): array
     {
-       $res = $this->getSushiRows();
-
-        return $schema;
+        return $this->getSushiRows();
     }
 
     /**
@@ -120,7 +118,9 @@ trait SushiToJson
         Assert::isArray($data);
 
         /** @var array<int|string, array<string, mixed>> $data */
-        $res = app(EnsureKeysAction::class)->execute($data, array_keys($this->getSchema()));
+        $schema = $this->getSchema();
+
+        $res = app(EnsureKeysAction::class)->execute($data, array_keys($schema));
 
         return array_values($res);
     }
