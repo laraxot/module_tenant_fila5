@@ -22,6 +22,7 @@ use function Safe\unlink;
 trait SushiToJsons
 {
     use Sushi;
+    use SushiConnectionByName;
 
     /**
      * @return array<int, array<string, mixed>>

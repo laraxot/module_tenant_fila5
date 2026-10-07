@@ -108,6 +108,7 @@ For deep understanding of multi-tenant configuration:
 | Tenant scoping automatic | [TenantIdentification.md](./wiki/tenantidentification.md) |
 | Config per tenant required | [ConfigurationDistribution.md](./wiki/configurationdistribution.md) |
 | No hardcoded credentials | Via `laravel/config/{tenant}/` |
+| Modelli Sushi: `unique`/`exists` richiedono la connessione per nome | [stories/7.4.sushi-connection-by-name.story.md](./stories/7.4.sushi-connection-by-name.story.md), [bmad/sushi-model-pitfalls.md](./bmad/sushi-model-pitfalls.md) |
 
 ---
 
@@ -134,3 +135,13 @@ For deep understanding of multi-tenant configuration:
 ---
 
 **Next Step**: Read [wiki/TenantIdentification.md](./wiki/tenantidentification.md) to understand how the current request is associated with a tenant.
+
+## Documentazione BMAD del modulo
+
+Aggiornata il 2026-10-07 dopo la risoluzione dei marker di merge nei docs (versioni composte, non scelte a un lato).
+
+- [Brainstorming](bmad/brainstorming.md): decisioni, questioni aperte, opzioni scartate.
+- [Architecture](bmad/architecture.md)
+- [Quick reference](bmad/quick-reference.md)
+- [Setup guide](bmad/setup-guide.md)
+- Story: cartella [bmad/stories/](bmad/stories/).

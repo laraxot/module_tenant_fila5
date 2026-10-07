@@ -29,6 +29,7 @@ use function Safe\json_encode;
 trait SushiToJson
 {
     use Sushi;
+    use SushiConnectionByName;
 
     /**
      * Ottiene il percorso del file JSON per il modello corrente.

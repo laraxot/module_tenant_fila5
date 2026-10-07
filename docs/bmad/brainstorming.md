@@ -1,16 +1,4 @@
 ---
-title: "brainstorming.md"
-type: concept
-status: active
-module: "Tenant"
-tags: [docs, tenant, bmad]
-created: 2026-10-06
-updated: 2026-10-06
----
-
-<<<<<<< .merge_file_yCYIwW
-<<<<<<< .merge_file_AMohWO
----
 title: "Tenant — Brainstorming BMAD (indice e decisioni)"
 type: note
 module: Tenant
@@ -20,13 +8,15 @@ tags:
   - brainstorming
   - decisioni
 created: 2026-09-28
-updated: 2026-09-28
+updated: 2026-10-07
 qmd: "tenant brainstorming decisioni aperte scartate"
 related:
   - architecture.md
   - architecture/tenant-config-resolution.md
   - brainstorming/module-opportunities.md
   - epics/tenant-config-resolution.md
+bmad: true
+status: active
 ---
 
 # Tenant — Brainstorming
@@ -67,32 +57,3 @@ related:
 | Config per tenant hardcoded in `config/*.php` del modulo | il provider già la risolve a runtime via `ResolveTenantConfigValueAction` su chiavi `database` e `morph_map` |
 | Riconnessione DB sempre attiva al boot | spegnerebbe l'isolamento nei test; il provider la salta sotto testing |
 | Morph map dichiarata a mano in un array statico | il provider la compone dalla config e la valida classe per classe |
-=======
-=======
->>>>>>> .merge_file_MtIHYA
-# Brainstorming - Modulo Tenant
-
-## Idee iniziali
-
-- [IDEA 1]
-- [IDEA 2]
-- [IDEA 3]
-
-## Problemi da risolvere
-
-- [PROBLEMA 1]
-- [PROBLEMA 2]
-
-## Soluzioni proposte
-
-- [SOLUZIONE 1]
-- [SOLUZIONE 2]
-
-## Domande aperte
-
-- [DOMANDA 1]
-- [DOMANDA 2]
-<<<<<<< .merge_file_yCYIwW
->>>>>>> .merge_file_Ehn13j
-=======
->>>>>>> .merge_file_MtIHYA

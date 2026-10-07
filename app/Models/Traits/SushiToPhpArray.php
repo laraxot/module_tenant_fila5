@@ -18,6 +18,7 @@ use Sushi\Sushi;
 trait SushiToPhpArray
 {
     use Sushi;
+    use SushiConnectionByName;
 
     /**
      * @return array<int, array<string, mixed>>

@@ -16,6 +16,7 @@ use Webmozart\Assert\Assert;
 trait SushiToCsv
 {
     use Sushi;
+    use SushiConnectionByName;
 
     /**
      * @return array<int, array<string, mixed>>
