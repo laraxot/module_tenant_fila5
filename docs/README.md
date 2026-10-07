@@ -13,3 +13,7 @@ related:
 # Tenant — docs
 
 Module docs root. Sections: `wiki/`, `bmad/`, `stories/`, `concepts/`, `stories/`, `_integration/`. BMAD YAML applied to all `.md` files.
+
+## Stories PHPStan
+
+- [2026-10-06 PHPStan cleanup — Tenant](./stories/2026-10-06-phpstan-cleanup-tenant.story.md) · [dev](./stories/2026-10-06-phpstan-cleanup-tenant.dev.md)

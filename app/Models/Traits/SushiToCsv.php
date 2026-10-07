@@ -77,9 +77,12 @@ trait SushiToCsv
 
     private static function handleCsvCreating(self $model): void
     {
-        /** @var int $maxId */
-        $maxId = $model->max('id') ?? 0;
-        $model->setAttribute('id', $maxId + 1);
+        $maxId = $model->max('id');
+        $maxIdInt = filter_var($maxId, FILTER_VALIDATE_INT);
+        if ($maxIdInt === false) {
+            $maxIdInt = 0;
+        }
+        $model->setAttribute('id', $maxIdInt + 1);
         $model->setAttribute('updated_at', now());
         $authIdInt = self::resolveAuthIdInt();
         $model->setAttribute('updated_by', $authIdInt);
@@ -101,7 +104,7 @@ trait SushiToCsv
 
         Assert::keyExists($rowsByKey, $idKey);
         /** @var array<string, mixed> $existingRow */
-        $existingRow = $rowsByKey[$idKey] ?? [];
+        $existingRow = $rowsByKey[$idKey];
         /** @var array<string, mixed> $mergedRow */
         $mergedRow = array_merge($existingRow, $model->toArray());
         $rowsByKey[$idKey] = $mergedRow;

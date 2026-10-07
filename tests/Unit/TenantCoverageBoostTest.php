@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use Mockery;
 use Mockery\MockInterface;
@@ -25,13 +24,11 @@ use Modules\Tenant\Filament\Resources\DomainResource;
 use Modules\Tenant\Filament\Resources\DomainResource\Schemas\DomainForm;
 use Modules\Tenant\Filament\Resources\DomainResource\Schemas\DomainInfolist;
 use Modules\Tenant\Filament\Resources\DomainResource\Tables\DomainsTable;
-use Modules\Tenant\Models\BaseModelJsons;
 use Modules\Tenant\Models\DatabaseConfig;
 use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Models\Policies\DomainPolicy;
 use Modules\Tenant\Models\Policies\TenantBasePolicy;
 use Modules\Tenant\Models\Tenant;
-use Modules\Tenant\Models\Traits\SushiToCsv;
 use Modules\Tenant\Services\Config\ConfigResolverRegistry;
 use Modules\Tenant\Services\Config\ConfigStringKeyFilter;
 use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
@@ -40,7 +37,9 @@ use Modules\Tenant\Services\Config\Resolvers\MorphMapConfigResolver;
 use Modules\Tenant\Services\Config\Resolvers\StandardConfigResolver;
 use Modules\Tenant\Services\TenantService;
 use Modules\Tenant\Tests\TestCase;
-use Modules\User\Models\SocialProvider;
+use Modules\Tenant\Tests\Unit\Fixtures\CatalogSushiCsvModel;
+use Modules\Tenant\Tests\Unit\Fixtures\CatalogSushiJsonsModel;
+use Modules\Tenant\Tests\Unit\Fixtures\SushiToPhpArrayCoverageModel;
 use Modules\Xot\Contracts\UserContract;
 use PHPUnit\Framework\Assert;
 
@@ -253,13 +252,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
             );
         });
 
-        $model = new class extends BaseModelJsons
-        {
-            protected $table = 'catalog';
-
-            /** @var array<string, mixed> */
-            protected array $schema = ['name' => null, 'meta' => null];
-        };
+        $model = new CatalogSushiJsonsModel;
 
         $rows = $model->getSushiRows();
 
@@ -280,24 +273,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
             );
         });
 
-        $model = new class extends Model
-        {
-            use SushiToCsv;
-
-            protected $table = 'catalog';
-
-            /** @var array<string, string> */
-            protected array $schema = [
-                'id' => 'integer',
-                'name' => 'string',
-            ];
-
-            /** @return array<int, array<string, mixed>> */
-            public function getRows(): array
-            {
-                return $this->getSushiRows();
-            }
-        };
+        $model = new CatalogSushiCsvModel;
 
         Assert::assertSame(['id', 'name'], $model->getCsvHeader());
         Assert::assertCount(2, $model->getSushiRows());
@@ -311,16 +287,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
                 ['name' => 'Beta', 'meta' => '{"x":1}'],
             ]]);
         });
-        $model = new class extends SocialProvider
-        {
-            protected $table = 'tenant_configs';
-
-            /** @return array<int, array<string, mixed>> */
-            public function getRows(): array
-            {
-                return $this->getSushiRows();
-            }
-        };
+        $model = new SushiToPhpArrayCoverageModel;
 
         $rows = $model->getSushiRows();
 

@@ -399,7 +399,7 @@ it('meets performance benchmarks', function (): void {
         $saveTime = microtime(true) - $startTime;
 
         expect($result)->toBeTrue();
-        expect($saveTime)->toBeLessThan($benchmark['max_save']); // Salvataggio $category dataset deve rispettare il benchmark
+        Assert::assertLessThan($benchmark['max_save'], $saveTime, "Salvataggio dataset {$category} oltre il benchmark");
 
         // Benchmark caricamento
         $startTime = microtime(true);
@@ -407,7 +407,7 @@ it('meets performance benchmarks', function (): void {
         $loadTime = microtime(true) - $startTime;
 
         expect($loadedData)->toHaveCount($benchmark['size']);
-        expect($loadTime)->toBeLessThan($benchmark['max_load']); // Caricamento $category dataset deve rispettare il benchmark
+        Assert::assertLessThan($benchmark['max_load'], $loadTime, "Caricamento dataset {$category} oltre il benchmark");
     }
 });
 
