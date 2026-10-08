@@ -6,9 +6,7 @@ namespace Modules\Tenant\Models\Traits;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
-use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\Json\CreateJsonFileByRecordAction;
 use Modules\Tenant\Actions\Json\DeleteJsonFileByRecordAction;
@@ -16,7 +14,6 @@ use Modules\Tenant\Actions\Json\UpdateJsonFileByRecordAction;
 use Modules\Tenant\Models\Contracts\HasSushiToJson;
 use Modules\Xot\Actions\Arr\EnsureKeysAction;
 use Sushi\Sushi;
-use Throwable;
 use Webmozart\Assert\Assert;
 
 use function Safe\file_get_contents;
@@ -71,7 +68,7 @@ trait SushiToJson
     }
 
     /**
-     * @param array<int|string, array<string, mixed>> $data
+     * @param  array<int|string, array<string, mixed>>  $data
      */
     public function saveToJson(array $data): bool
     {
@@ -94,7 +91,6 @@ trait SushiToJson
 
         return app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl.'.json');
     }
-
 
     /**
      * Metodo richiesto da Sushi per popolare la tabella in-memory.
@@ -140,8 +136,6 @@ trait SushiToJson
         );
     }
 
-
-
     protected function sushiShouldCache(): bool
     {
         return false;
@@ -180,5 +174,4 @@ trait SushiToJson
             app(DeleteJsonFileByRecordAction::class)->execute($record);
         });
     }
-
 }
