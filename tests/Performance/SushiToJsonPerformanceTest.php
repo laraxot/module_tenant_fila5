@@ -18,7 +18,7 @@ uses(TestCase::class, DatabaseTransactions::class);
 
 beforeEach(function (): void {
     /** @var TestCase $this */
-    $this->model = new TestSushiModel();
+    $this->model = new TestSushiModel;
     TestCase::$testDirectory = storage_path('tests/sushi-json');
     TestCase::$testJsonPath = TestCase::$testDirectory.'/test_sushi.json';
 
@@ -399,15 +399,15 @@ it('meets performance benchmarks', function (): void {
         $saveTime = microtime(true) - $startTime;
 
         expect($result)->toBeTrue();
-        expect($saveTime)->toBeLessThan($benchmark['max_save']); // Salvataggio $category dataset deve rispettare il benchmark
+        expect($saveTime)->toBeLessThan($benchmark['max_save'], "Salvataggio dataset {$category} oltre il benchmark");
 
         // Benchmark caricamento
         $startTime = microtime(true);
         $loadedData = $this->sushiModel()->getSushiRows();
         $loadTime = microtime(true) - $startTime;
 
-        expect($loadedData)->toHaveCount($benchmark['size']);
-        expect($loadTime)->toBeLessThan($benchmark['max_load']); // Caricamento $category dataset deve rispettare il benchmark
+        expect($loadedData)->toHaveCount($benchmark['size'], "Righe caricate dataset {$category}");
+        expect($loadTime)->toBeLessThan($benchmark['max_load'], "Caricamento dataset {$category} oltre il benchmark");
     }
 });
 

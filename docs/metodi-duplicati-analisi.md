@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "🐄⚡ ANALISI METODI DUPLICATI - SUPER MUCCA EDITION"
 module: "Tenant"
 type: concept

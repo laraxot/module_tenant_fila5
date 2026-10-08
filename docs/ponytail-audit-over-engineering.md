@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Ponytail audit — Tenant (over-engineering)"
 module: "Tenant"
 type: concept

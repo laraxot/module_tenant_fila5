@@ -1,4 +1,11 @@
 ---
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "about"
+issues: []
+discussions: []
 title: About Tenant
 description: About Tenant
 extends: _layouts.documentation

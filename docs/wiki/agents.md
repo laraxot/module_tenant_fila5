@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant {{TYPE^}} LLM Wiki Agent Instructions"
 module: "Tenant"
 type: concept

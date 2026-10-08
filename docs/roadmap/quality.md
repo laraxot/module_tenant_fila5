@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Checklist qualità - Tenant Module"
 module: "Tenant"
 type: concept

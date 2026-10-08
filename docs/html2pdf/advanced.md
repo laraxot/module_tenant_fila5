@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Funzionalità Avanzate"
 module: "Tenant"
 type: concept

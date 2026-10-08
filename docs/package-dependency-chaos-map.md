@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Package Dependency Chaos Map (Tenant)"
 module: "Tenant"
 type: concept

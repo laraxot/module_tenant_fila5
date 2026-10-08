@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Analisi Metodi Duplicati - Modulo Tenant"
 module: "Tenant"
 type: concept

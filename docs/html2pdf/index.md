@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Html2Pdf - Panoramica e Installazione"
 module: "Tenant"
 type: concept

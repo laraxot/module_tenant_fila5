@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Context Overflow Prevention"
 module: "Tenant"
 type: concept

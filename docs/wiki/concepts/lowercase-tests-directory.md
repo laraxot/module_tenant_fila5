@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Lowercase Tests Directory"
 type: concept
 module: Tenant

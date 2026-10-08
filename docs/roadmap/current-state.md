@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Current State - Tenant"
 module: "Tenant"
 type: concept

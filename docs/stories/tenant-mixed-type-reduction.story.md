@@ -1,4 +1,8 @@
 ---
+tags: [documentation]
+qmd: "tenant mixed type reduction.story"
+issues: []
+discussions: []
 title: "Tenant: riduzione uso mixed dove il tipo reale e' noto"
 type: story
 module: Tenant

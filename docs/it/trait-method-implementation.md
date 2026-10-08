@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Trait Method Implementation Rules"
 module: "Tenant"
 type: pattern

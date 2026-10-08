@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Sushi To Json Plan"
 module: "Tenant"
 type: concept

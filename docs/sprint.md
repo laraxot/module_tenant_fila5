@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Sprint Planning Meeting - Tenant Module"
 module: "Tenant"
 type: concept

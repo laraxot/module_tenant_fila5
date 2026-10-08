@@ -1,4 +1,9 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+qmd: "method name homonyms"
+issues: []
+discussions: []
 title: "censimento omonimi metodi — modulo Tenant"
 type: analysis
 module: Tenant

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Rimozione runningInConsole Check - Riepilogo"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Sushi To Jsons"
 module: "Tenant"
 type: concept

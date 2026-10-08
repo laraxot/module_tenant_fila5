@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Testing\PendingCommand;
 use Mockery;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
@@ -33,11 +32,6 @@ use Modules\Tenant\Models\TenantSetting;
 use Modules\Tenant\Models\TenantSubscription;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Providers\TenantServiceProvider;
-use Modules\Tenant\Services\Config\ConfigResolverRegistry;
-use Modules\Tenant\Services\Config\Resolvers\DatabaseConfigResolver;
-use Modules\Tenant\Services\Config\Resolvers\MorphMapConfigResolver;
-use Modules\Tenant\Services\Config\Resolvers\StandardConfigResolver;
-use Modules\Tenant\Services\TenantService;
 use Modules\Tenant\Tests\TestCase;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToCsvCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonCoverageModel;
@@ -45,161 +39,19 @@ use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonsCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonsNoSchemaModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToPhpArrayCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\TenantBasePolicyCoverage;
-use Modules\Xot\Actions\Model\GetAllModelsByModuleNameAction;
 use Modules\Xot\Contracts\UserContract;
 use PHPUnit\Framework\Assert;
-use ReflectionClass;
 use ReflectionMethod;
 
 use function Safe\putenv;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 afterEach(function (): void {
     Mockery::close();
 });
 
-describe('Tenant statement coverage — resolvers', function (): void {
-    test('DatabaseConfigResolver covers null extra, defaults and module connections', function (): void {
-        $resolver = new DatabaseConfigResolver();
-        $originalDatabase = config('database');
-        Assert::assertIsArray($originalDatabase);
-
-        try {
-            Assert::assertNull($resolver->resolve('database', null));
-            Assert::assertNull($resolver->resolve('database', 'not-array'));
-
-            $sampleConnections = is_array($originalDatabase['connections'] ?? null)
-                ? $originalDatabase['connections']
-                : ['sqlite' => ['driver' => 'sqlite', 'database' => ':memory:']];
-            $default = is_string($originalDatabase['default'] ?? null)
-                ? $originalDatabase['default']
-                : array_key_first($sampleConnections) ?? 'sqlite';
-
-            $result = $resolver->resolve('database', [
-                'default' => $default,
-                'connections' => $sampleConnections,
-            ]);
-            Assert::assertIsArray($result);
-            Assert::assertArrayHasKey('connections', $result);
-
-            $withoutDefault = $resolver->resolve('database', [
-                'connections' => $sampleConnections,
-            ]);
-            Assert::assertIsArray($withoutDefault);
-
-            $nullDefault = $resolver->resolve('database', [
-                'default' => null,
-                'connections' => $sampleConnections,
-            ]);
-            Assert::assertIsArray($nullDefault);
-        } finally {
-            config(['database' => $originalDatabase]);
-        }
-    });
-
-    test('MorphMapConfigResolver covers admin and tenant morph paths', function (): void {
-        $resolver = new MorphMapConfigResolver();
-
-        $home = \Illuminate\Http\Request::create('/it/home', 'GET');
-        app()->instance('request', $home);
-        Request::swap($home);
-        Assert::assertFalse($resolver->canResolve('morph_map.user'));
-
-        $request = \Illuminate\Http\Request::create('/admin/tenant/resources', 'GET');
-        app()->instance('request', $request);
-        Request::swap($request);
-        Assert::assertTrue($resolver->canResolve('morph_map'));
-
-        TestCase::mockAppService(GetAllModelsByModuleNameAction::class, static function (MockInterface $mock): void {
-            $mock->allows(['execute' => ['tenant' => Tenant::class]]);
-        });
-
-        $baseDir = sys_get_temp_dir().'/tenant_morph_'.uniqid('', true);
-        File::ensureDirectoryExists($baseDir);
-        File::put($baseDir.'/morph_map.php', "<?php\nreturn ['domain' => '".addslashes(Domain::class)."'];\n");
-
-        TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
-            TestCase::expectMockery($mock, 'execute')->andReturnUsing(
-                static fn (string $path): string => $baseDir.'/'.basename($path),
-            );
-        });
-
-        config(['morph_map' => ['user' => Tenant::class, 0 => 'skip']]);
-
-        $resolved = $resolver->resolve('morph_map');
-        Assert::assertIsArray($resolved);
-        Assert::assertArrayHasKey('tenant', $resolved);
-
-        File::put($baseDir.'/morph_map.php', "<?php\nreturn 'invalid';\n");
-        Assert::assertIsArray($resolver->resolve('morph_map'));
-
-        File::delete($baseDir.'/morph_map.php');
-        config(['morph_map' => null]);
-        Assert::assertIsArray($resolver->resolve('morph_map'));
-
-        File::deleteDirectory($baseDir);
-    });
-
-    test('StandardConfigResolver covers database merge, missing key and invalid types', function (): void {
-        $resolver = new StandardConfigResolver();
-        $originalDatabase = config('database');
-
-        TestCase::mockAppService(GetTenantNameAction::class, static function (MockInterface $mock): void {
-            $mock->allows(['execute' => 'localhost']);
-        });
-
-        try {
-            config([
-                'app' => ['name' => 'Base', 'env' => 'testing', 'flag' => true],
-                'localhost.app' => ['name' => 'TenantApp'],
-            ]);
-
-            Assert::assertSame('TenantApp', $resolver->resolve('app.name'));
-
-            $dbDefault = is_string(config('database.default')) ? config('database.default') : 'sqlite';
-            $connections = config('database.connections');
-            Assert::assertIsArray($connections);
-            config([
-                'localhost.database' => [
-                    'default' => $dbDefault,
-                    'connections' => $connections,
-                ],
-            ]);
-            Assert::assertIsArray($resolver->resolve('database'));
-
-            $ref = new ReflectionClass($resolver);
-            $getOriginal = $ref->getMethod('getOriginalConfig');
-            $getOriginal->setAccessible(true);
-            config(['ghost' => null]);
-            Assert::assertSame([], $getOriginal->invoke($resolver, 'ghost'));
-
-            $getTenant = $ref->getMethod('getTenantConfig');
-            $getTenant->setAccessible(true);
-            config(['localhost.ghost' => 'not-array']);
-            Assert::assertSame([], $getTenant->invoke($resolver, 'ghost'));
-
-            expect(fn (): mixed => $resolver->resolve('app.totally_missing', 'fallback'))
-                ->toThrow(Exception::class, 'Configuration key not found');
-
-            expect(fn (): mixed => $resolver->resolve('app.flag'))
-                ->toThrow(Exception::class, 'Invalid configuration type');
-        } finally {
-            config(['database' => $originalDatabase]);
-        }
-    });
-
-    test('ConfigResolverRegistry falls back when no resolver matches', function (): void {
-        $registry = new ConfigResolverRegistry();
-        $prop = (new ReflectionClass($registry))->getProperty('resolvers');
-        $prop->setAccessible(true);
-        $prop->setValue($registry, []);
-
-        Assert::assertInstanceOf(StandardConfigResolver::class, $registry->findResolver('anything'));
-    });
-});
-
-describe('Tenant statement coverage — actions and service', function (): void {
+describe('Tenant statement coverage — actions', function (): void {
     test('SaveTenantConfigAction merges recursively on real filesystem', function (): void {
         $dir = sys_get_temp_dir().'/tenant_save_cfg_'.uniqid('', true);
         File::ensureDirectoryExists($dir);
@@ -308,18 +160,17 @@ describe('Tenant statement coverage — actions and service', function (): void 
             $mock->allows(['execute' => 'localhost']);
         });
 
-        expect(fn (): mixed => app(ResolveTenantConfigValueAction::class)->execute('app.flag'))
+        expect(fn (): float|int|string|array|null => app(ResolveTenantConfigValueAction::class)->execute('app.flag'))
             ->toThrow(Exception::class);
     });
 
-    test('ResolveTenantModelInstanceAction and TenantService::model delegate', function (): void {
+    test('ResolveTenantModelInstanceAction instantiates the resolved model class', function (): void {
         TestCase::mockAppService(ResolveTenantModelClassAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => Tenant::class]);
         });
 
         $instance = app(ResolveTenantModelInstanceAction::class)->execute('tenant');
         Assert::assertInstanceOf(Tenant::class, $instance);
-        Assert::assertInstanceOf(Tenant::class, TenantService::model('tenant'));
     });
 
     test('artisan tenant:test command prints tenant name', function (): void {
@@ -339,7 +190,7 @@ describe('Tenant statement coverage — models and policies', function (): void 
         Assert::assertSame('acme.test', $tenant->url);
         Assert::assertInstanceOf(HasMany::class, $tenant->users());
 
-        $noSlug = new Tenant();
+        $noSlug = new Tenant;
         $noSlug->name = 'Beta';
         Assert::assertSame('beta', $noSlug->slug);
 
@@ -350,10 +201,10 @@ describe('Tenant statement coverage — models and policies', function (): void 
             $mock->allows(['execute' => [['id' => '1', 'name' => 'a.test']]]);
         });
 
-        Assert::assertSame([['id' => '1', 'name' => 'a.test']], (new TenantDomain())->getRows());
-        Assert::assertInstanceOf(BelongsTo::class, (new TenantSetting())->tenant());
-        Assert::assertInstanceOf(BelongsTo::class, (new TenantSubscription())->tenant());
-        Assert::assertArrayHasKey('expires_at', (new TenantSubscription())->getCasts());
+        Assert::assertSame([['id' => '1', 'name' => 'a.test']], (new TenantDomain)->getRows());
+        Assert::assertInstanceOf(BelongsTo::class, (new TenantSetting)->tenant());
+        Assert::assertInstanceOf(BelongsTo::class, (new TenantSubscription)->tenant());
+        Assert::assertArrayHasKey('expires_at', (new TenantSubscription)->getCasts());
     });
 
     test('DomainPolicy covers all abilities and TenantBasePolicy null branch', function (): void {
@@ -362,8 +213,8 @@ describe('Tenant statement coverage — models and policies', function (): void 
         TestCase::expectMockery($user, 'hasRole')->with('super-admin')->andReturn(false);
         TestCase::expectMockery($user, 'hasPermissionTo')->andReturn(true);
 
-        $policy = new DomainPolicy();
-        $domain = new Domain();
+        $policy = new DomainPolicy;
+        $domain = new Domain;
         $domain->exists = true;
 
         Assert::assertTrue($policy->viewAny($user));
@@ -371,7 +222,7 @@ describe('Tenant statement coverage — models and policies', function (): void 
         Assert::assertTrue($policy->restore($user, $domain));
         Assert::assertTrue($policy->forceDelete($user, $domain));
 
-        Assert::assertNull((new TenantBasePolicyCoverage())->before($user, 'view'));
+        Assert::assertNull((new TenantBasePolicyCoverage)->before($user, 'view'));
     });
 
     test('DomainForm getFormSchema is executable', function (): void {
@@ -389,7 +240,7 @@ describe('Tenant statement coverage — models and policies', function (): void 
             TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
                 $mock->allows(['execute' => '/tmp/tenant_test_sushi.json']);
             });
-            Assert::assertSame('/tmp/tenant_test_sushi.json', (new TestSushiModel())->getJsonFile());
+            Assert::assertSame('/tmp/tenant_test_sushi.json', (new TestSushiModel)->getJsonFile());
         } finally {
             $app['env'] = $previous;
         }
@@ -479,14 +330,15 @@ describe('Tenant statement coverage — SushiToJson named model', function (): v
             );
         });
 
-        $model = new SushiToJsonCoverageModel();
+        $model = new SushiToJsonCoverageModel;
         Assert::assertSame($jsonPath, $model->getJsonFile());
         Assert::assertSame([], $model->getRows());
-        Assert::assertEmpty($model->loadExistingData());
+        Assert::assertSame([], $model->loadExistingData());
 
         File::put($jsonPath, 'null');
         expect(fn (): array => $model->getSushiRows())->toThrow(Exception::class);
-        Assert::assertEmpty($model->loadExistingData());
+        $dataAfterNullWrite = $model->loadExistingData();
+        Assert::assertSame([], $dataAfterNullWrite);
 
         File::put($jsonPath, json_encode([
             ['id' => 1, 'name' => 'Alpha', 'meta' => ['x' => 1], 0 => 'skip'],
@@ -553,7 +405,7 @@ describe('Tenant statement coverage — SushiToJson named model', function (): v
         $ensure->invoke($model, $nested);
         Assert::assertTrue(File::isDirectory(dirname($nested)));
 
-        $broken = new SushiToJsonCoverageModel();
+        $broken = new SushiToJsonCoverageModel;
         TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
             TestCase::expectMockery($mock, 'execute')->andThrow(new Exception('boom'));
         });
@@ -574,7 +426,7 @@ describe('Tenant statement coverage — SushiToCsv named model', function (): vo
             $mock->allows(['execute' => $csvPath]);
         });
 
-        $model = new SushiToCsvCoverageModel();
+        $model = new SushiToCsvCoverageModel;
         Assert::assertSame(['id', 'name', 'updated_at', 'updated_by', 'created_at', 'created_by'], $model->getCsvHeader());
         Assert::assertCount(1, $model->getSushiRows());
 
@@ -608,7 +460,7 @@ describe('Tenant statement coverage — SushiToCsv named model', function (): vo
         Assert::assertSame('0', $csvValue->invoke(null, false));
         Assert::assertSame(3, $csvValue->invoke(null, 3));
         Assert::assertSame('x', $csvValue->invoke(null, 'x'));
-        Assert::assertSame('s', $csvValue->invoke(null, new class() implements \Stringable
+        Assert::assertSame('s', $csvValue->invoke(null, new class implements \Stringable
         {
             public function __toString(): string
             {
@@ -644,12 +496,12 @@ describe('Tenant statement coverage — SushiToJsons named model', function (): 
             );
         });
 
-        $model = new SushiToJsonsCoverageModel();
+        $model = new SushiToJsonsCoverageModel;
         Assert::assertCount(1, $model->getRows());
         $model->setAttribute('id', 1);
         Assert::assertStringContainsString('sushi_jsons_coverage/1.json', $model->getJsonFile());
 
-        $emptySchemaModel = new SushiToJsonsNoSchemaModel();
+        $emptySchemaModel = new SushiToJsonsNoSchemaModel;
         $resolveEmpty = new ReflectionMethod($emptySchemaModel, 'resolveSchema');
         $resolveEmpty->setAccessible(true);
         Assert::assertSame([], $resolveEmpty->invoke($emptySchemaModel));
@@ -671,7 +523,7 @@ describe('Tenant statement coverage — SushiToJsons named model', function (): 
 
         $writeNoSchema = new ReflectionMethod(SushiToJsonsNoSchemaModel::class, 'writeCreatingJsonFile');
         $writeNoSchema->setAccessible(true);
-        expect(fn (): mixed => $writeNoSchema->invoke(null, $emptySchemaModel))
+        expect(fn () => $writeNoSchema->invoke(null, $emptySchemaModel))
             ->toThrow(Exception::class);
 
         $updating = new ReflectionMethod(SushiToJsonsCoverageModel::class, 'handleJsonUpdating');
@@ -685,7 +537,7 @@ describe('Tenant statement coverage — SushiToJsons named model', function (): 
 
         $assign = new ReflectionMethod(SushiToJsonsCoverageModel::class, 'assignCreatingMetadata');
         $assign->setAccessible(true);
-        $m = new SushiToJsonsCoverageModel();
+        $m = new SushiToJsonsCoverageModel;
         try {
             $assign->invoke(null, $m);
         } catch (\Throwable) {
@@ -716,7 +568,7 @@ describe('Tenant statement coverage — SushiToPhpArray named model', function (
             ]]);
         });
 
-        $model = new SushiToPhpArrayCoverageModel();
+        $model = new SushiToPhpArrayCoverageModel;
         $rows = $model->getSushiRows();
         Assert::assertCount(2, $rows);
         Assert::assertSame('A', $rows[0]['name']);

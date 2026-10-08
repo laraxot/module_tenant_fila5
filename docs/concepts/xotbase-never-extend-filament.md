@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant — mai Filament\*, sempre XotBase*"
 type: concept
 module: Tenant

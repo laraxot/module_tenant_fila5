@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Dal nome tenant al tema pubblico (pub_theme)"
 module: "Tenant"
 type: concept

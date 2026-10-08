@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Roadmap Index - Tenant"
 module: "Tenant"
 type: concept

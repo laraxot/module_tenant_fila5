@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module - Product Launch Plan"
 module: "Tenant"
 type: concept

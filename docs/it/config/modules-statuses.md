@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Modules Statuses — root vs tenant-scoped"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Testing Documentation"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Performance e ottimizzazioni"
 module: "Tenant"
 type: concept

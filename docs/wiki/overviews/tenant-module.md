@@ -1,4 +1,10 @@
 ---
+title: "tenant module"
+tags: [documentation]
+created: 2026-09-26
+qmd: "tenant module"
+issues: []
+discussions: []
 type: overview
 module: Tenant
 sources:

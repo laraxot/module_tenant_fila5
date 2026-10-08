@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module - SushiToJson Traits Fix Plan"
 module: "Tenant"
 type: concept

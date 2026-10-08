@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module Wiki Index"
 module: "Tenant"
 type: concept

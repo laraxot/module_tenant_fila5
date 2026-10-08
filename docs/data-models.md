@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Data Models"
 module: "Tenant"
 type: concept

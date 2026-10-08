@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: collisione GitHub remote sbagliato nei docs Tenant
 type: memory
 tags: [github, git, merge, remote, tenant, grave]

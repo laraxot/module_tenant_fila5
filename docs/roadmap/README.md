@@ -1,3 +1,14 @@
+---
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
+---
+
 # Tenant Module Roadmap
 
 [![Module](https://img.shields.io/badge/Module-Tenant Module Roadmap-8B0000.svg)]()
@@ -31,4 +42,12 @@
 
 ---
 
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
 **Modulo** `Tenant` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5

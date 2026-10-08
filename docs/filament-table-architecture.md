@@ -1,4 +1,8 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+issues: []
+discussions: []
 title: "Dove si configura la tabella di una Resource Filament"
 type: guideline
 module: Tenant

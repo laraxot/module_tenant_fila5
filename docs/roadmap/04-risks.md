@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Risks and dependencies (Module Tenant)"
 module: "Tenant"
 type: concept

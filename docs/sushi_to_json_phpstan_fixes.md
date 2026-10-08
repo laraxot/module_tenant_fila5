@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "SushiToJson/SushiToJsons PHPStan Level 10 Fixes"
 module: "Tenant"
 type: concept

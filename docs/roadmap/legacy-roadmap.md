@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Roadmap Modulo Tenant - Completamento e Miglioramenti"
 module: "Tenant"
 type: concept

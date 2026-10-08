@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Raw Sources — Tenant"
 module: "Tenant"
 type: concept

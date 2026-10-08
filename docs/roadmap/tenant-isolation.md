@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Isolamento tenant e configurazioni"
 module: "Tenant"
 type: concept

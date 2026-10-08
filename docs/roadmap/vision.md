@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Visione - Tenant Module"
 module: "Tenant"
 type: concept

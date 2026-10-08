@@ -1,4 +1,7 @@
 ---
+qmd: "code redundancy audit"
+issues: []
+discussions: []
 title: "Code redundancy audit — Tenant"
 type: source
 status: draft

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Sushi To Json Trait Analysis"
 module: "Tenant"
 type: pattern

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Dipendenze Helper Functions - Modulo Tenant"
 module: "Tenant"
 type: concept

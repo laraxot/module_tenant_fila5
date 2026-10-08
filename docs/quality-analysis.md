@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Analisi Qualità - Modulo Tenant"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Ridurre Suppressioni PHPStan nei Test - Tenant"
 module: "Tenant"
 type: concept

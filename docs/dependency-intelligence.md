@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Dependency Intelligence - Module Tenant"
 module: "Tenant"
 type: concept

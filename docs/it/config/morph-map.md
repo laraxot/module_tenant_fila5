@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Morph Map"
 module: "Tenant"
 type: concept

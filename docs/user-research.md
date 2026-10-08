@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module - User Research"
 module: "Tenant"
 type: concept

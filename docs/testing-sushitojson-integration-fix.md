@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Fix: SushiToJsonIntegrationTest - Database Connection Configuration"
 module: "Tenant"
 type: concept

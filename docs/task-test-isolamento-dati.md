@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task: Test Isolamento Dati - Tenant"
 module: "Tenant"
 type: concept

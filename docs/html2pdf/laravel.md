@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Integrazione con Laravel e Best Practices"
 module: "Tenant"
 type: concept

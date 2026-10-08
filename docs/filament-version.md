@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Filament Version Declaration — Tenant"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Configurazione della Sicurezza"
 module: "Tenant"
 type: concept

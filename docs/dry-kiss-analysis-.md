@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "DRY & KISS Analysis - Modulo Tenant"
 module: "Tenant"
 type: concept

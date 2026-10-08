@@ -10,7 +10,7 @@ use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Tenant\Tests\TestCase::class);
+uses(TestCase::class);
 
 it('gets tenant file path', function (): void {
     /** @var TestCase $this */

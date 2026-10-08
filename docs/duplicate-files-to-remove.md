@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "File Duplicati da Eliminare - Modulo Tenant"
 module: "Tenant"
 type: concept

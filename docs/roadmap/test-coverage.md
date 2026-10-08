@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Test skipped e copertura critica"
 module: "Tenant"
 type: concept

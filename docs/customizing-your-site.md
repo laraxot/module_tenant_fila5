@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Customizing Your Site"
 module: "Tenant"
 type: concept

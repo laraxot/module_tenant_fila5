@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Packages"
 module: "Tenant"
 type: concept

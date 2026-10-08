@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Case Sensitivity Rules - Tenant Module"
 module: "Tenant"
 type: rule

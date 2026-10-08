@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tutorial Video"
 module: "Tenant"
 type: how-to

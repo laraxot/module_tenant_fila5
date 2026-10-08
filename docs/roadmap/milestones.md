@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Milestones - Tenant"
 module: "Tenant"
 type: concept

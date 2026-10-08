@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Regole di Naming per File"
 module: "Tenant"
 type: rule

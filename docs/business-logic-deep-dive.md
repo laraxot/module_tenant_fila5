@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module - Business Logic Deep Dive"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module — Documentation Index"
 module: "Tenant"
 type: concept
@@ -29,15 +31,13 @@ related:
 
 ### Wiki (Sacred — Do Not Delete)
 - **[wiki/index.md](./wiki/index.md)** — Operating manual for LLM agents
-<<<<<<< HEAD
 - **[wiki/Architecture.md](./wiki/architecture.md)** — Multi-tenant system design
 - **[wiki/TenantIdentification.md](./wiki/tenantidentification.md)** — How tenants are identified
 - **[wiki/ConfigurationDistribution.md](./wiki/configurationdistribution.md)** — Config per tenant
-=======
+---
 - **[wiki/Architecture.md](./wiki/Architecture.md)** — Multi-tenant system design
 - **[wiki/TenantIdentification.md](./wiki/TenantIdentification.md)** — How tenants are identified
 - **[wiki/ConfigurationDistribution.md](./wiki/ConfigurationDistribution.md)** — Config per tenant
->>>>>>> laraxot/dev
 - **[wiki/schema.md](./wiki/schema.md)** — Database schema reference
 
 ### Roadmap
@@ -108,6 +108,7 @@ For deep understanding of multi-tenant configuration:
 | Tenant scoping automatic | [TenantIdentification.md](./wiki/tenantidentification.md) |
 | Config per tenant required | [ConfigurationDistribution.md](./wiki/configurationdistribution.md) |
 | No hardcoded credentials | Via `laravel/config/{tenant}/` |
+| Modelli Sushi: `unique`/`exists` richiedono la connessione per nome | [stories/7.4.sushi-connection-by-name.story.md](./stories/7.4.sushi-connection-by-name.story.md), [bmad/sushi-model-pitfalls.md](./bmad/sushi-model-pitfalls.md) |
 
 ---
 
@@ -134,3 +135,15 @@ For deep understanding of multi-tenant configuration:
 ---
 
 **Next Step**: Read [wiki/TenantIdentification.md](./wiki/tenantidentification.md) to understand how the current request is associated with a tenant.
+
+## Documentazione BMAD del modulo
+
+Aggiornata il 2026-10-07 dopo la risoluzione dei marker di merge nei docs (versioni composte, non scelte a un lato).
+
+- [Brainstorming](bmad/brainstorming.md): decisioni, questioni aperte, opzioni scartate.
+- [Architecture](bmad/architecture.md)
+- [Quick reference](bmad/quick-reference.md)
+- [Setup guide](bmad/setup-guide.md)
+- Story: cartella [bmad/stories/](bmad/stories/).
+- Story PHPStan 2026-10-08: [categoria nei benchmark Sushi](stories/2026-10-08-phpstan-tenant-sushi-benchmark-category.story.md).
+- Story Services 2026-10-08: [TenantService e Services/Config eliminati](stories/2026-10-08-services-to-actions-tenant.story.md).

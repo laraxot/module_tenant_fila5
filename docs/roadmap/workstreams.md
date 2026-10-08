@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Workstreams - Tenant"
 module: "Tenant"
 type: concept

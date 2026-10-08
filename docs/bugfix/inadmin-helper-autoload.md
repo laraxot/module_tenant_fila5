@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Bugfix: `inAdmin()` undefined during `package:discover`"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Product Requirements Document (PRD) - Tenant Module"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Metatag"
 module: "Tenant"
 type: concept

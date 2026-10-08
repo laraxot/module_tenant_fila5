@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Xra"
 module: "Tenant"
 type: concept

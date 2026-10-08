@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Later (Module Tenant)"
 module: "Tenant"
 type: concept

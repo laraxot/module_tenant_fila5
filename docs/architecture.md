@@ -1,4 +1,9 @@
 ---
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "architecture"
+issues: []
+discussions: []
 title: Tenant Module Architecture
 module: Tenant
 type: architecture
@@ -344,7 +349,6 @@ $this->mock(DomainResolver::class)
 - [Module README](../README.md)
 - [Testing Guide](../tests/Feature/README.md)
 - [Contributing Guidelines](./.github/CONTRIBUTING.md)
-<<<<<<< HEAD
 
 ---
 
@@ -601,5 +605,4 @@ Per-tenant configuration files override system defaults, enabling customization 
 - [Troubleshooting](troubleshooting.md)
 - [Best Practices](./BEST_PRACTICES.md)
 - Module Tests: `tests/Feature/TenantBusinessLogicTest.php`, `tests/Unit/Actions/`
-=======
->>>>>>> laraxot/dev
+---

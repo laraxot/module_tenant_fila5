@@ -1,4 +1,14 @@
-<<<<<<< HEAD
+---
+title: "INDEX"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "INDEX"
+issues: []
+discussions: []
+---
+
 # Documentation Index
 
 Modulo: Tenant
@@ -6,7 +16,15 @@ Modulo: Tenant
 ## File disponibili
 
 <!-- auto-generato: elencare i file .md presenti -->
-=======
+---
+title: "INDEX"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "INDEX"
+issues: []
+discussions: []
 ---
 title: Tenant Module Documentation Index
 module: Tenant
@@ -114,4 +132,3 @@ Each tenant operates in complete isolation:
 5. Keep migrations atomic and reversible
 
 For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/contributing.md).
->>>>>>> laraxot/dev

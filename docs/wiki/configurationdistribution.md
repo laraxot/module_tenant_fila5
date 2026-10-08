@@ -1,4 +1,12 @@
 ---
+title: "configurationdistribution"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "configurationdistribution"
+issues: []
+discussions: []
 module: Tenant
 concept: Configuration Distribution
 last_updated: 2026-04-15

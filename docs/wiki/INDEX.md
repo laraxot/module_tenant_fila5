@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module LLM Wiki"
 module: "Tenant"
 type: concept

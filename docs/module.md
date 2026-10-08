@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Tenant Module — Doctrine"
 type: doctrine
 tags: [tenant, multi-tenancy, module-doctrine]

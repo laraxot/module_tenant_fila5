@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "LICENSE Full"
 module: "Tenant"
 type: concept

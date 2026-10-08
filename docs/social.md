@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Social"
 module: "Tenant"
 type: concept

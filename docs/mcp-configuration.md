@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "MCP Server Configuration - Tenant Module"
 module: "Tenant"
 type: concept

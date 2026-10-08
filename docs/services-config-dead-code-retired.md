@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Services/Config retired — usare Actions"
 module: "Tenant"
 type: concept
