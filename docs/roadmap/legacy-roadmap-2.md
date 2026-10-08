@@ -1,3 +1,14 @@
+---
+title: "legacy roadmap 2"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "legacy roadmap 2"
+issues: []
+discussions: []
+---
+
 # Roadmap Tenant
 
 Roadmap operativo del module **Tenant**, suddiviso in file tematici.

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Task 001: Implement Multi-Tenancy System"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "PHPStan fix patterns for Tenant module"
 type: troubleshooting
 tags: [phpstan, static-analysis, pest, mockery, tenant]

@@ -1,4 +1,10 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "continuazione domani"
+issues: []
+discussions: []
 title: "Continuazione BMAD — Domani (chiusura 7.1/7.2 sushi PHPStan + profile-contract stale)"
 type: module-fix
 scope: Tenant

@@ -1,4 +1,10 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "livewire widget project context"
+issues: []
+discussions: []
 title: "Project context — Tenant"
 type: constitution
 module: Tenant

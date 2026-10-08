@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: PHPStan Standards - Tenant Module (SushiToJson Traits)
 type: technical
 tags: [phpstan, sushi, traits, tenant, json]

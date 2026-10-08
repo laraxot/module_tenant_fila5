@@ -1,3 +1,14 @@
+---
+title: "phpstan roadmap 2026 01 30"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan roadmap 2026 01 30"
+issues: []
+discussions: []
+---
+
 # PHPStan Level 10 Roadmap - Tenant Module
 
 **Data**: 2026-01-30

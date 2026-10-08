@@ -1,4 +1,7 @@
 ---
+qmd: "phpstan fixes 2026 05 06"
+issues: []
+discussions: []
 title: "PHPStan Fixes 2026-05-06"
 type: troubleshooting
 sources: ["phpstan_modules_initial.json"]
