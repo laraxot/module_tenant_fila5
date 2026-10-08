@@ -34,7 +34,7 @@ it('resolves tenant config value by merging with tenant overrides', function ():
 
 it('throws exception for empty config key', function (): void {
     XotBasePest::assertThrows(
-        fn (): mixed => app(ResolveTenantConfigValueAction::class)->execute(''),
+        fn (): float|int|string|array|null => app(ResolveTenantConfigValueAction::class)->execute(''),
         \Exception::class,
     );
 });

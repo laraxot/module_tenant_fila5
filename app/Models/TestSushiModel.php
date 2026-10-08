@@ -7,7 +7,12 @@ namespace Modules\Tenant\Models;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+use Modules\Tenant\Models\Contracts\HasSushiToJson;
 use Modules\Tenant\Models\Traits\SushiToJson;
+use Webmozart\Assert\Assert;
+
+use function Safe\json_decode;
+use function Safe\json_encode;
 
 /**
  * @property int $id
@@ -36,7 +41,7 @@ use Modules\Tenant\Models\Traits\SushiToJson;
  *
  * @mixin \Eloquent
  */
-class TestSushiModel extends BaseModel
+class TestSushiModel extends BaseModel implements HasSushiToJson
 {
     use SushiToJson;
 
@@ -87,6 +92,37 @@ class TestSushiModel extends BaseModel
     public function getRows(): array
     {
         return $this->getSushiRows();
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function loadExistingData(): array
+    {
+        $path = $this->getJsonFile();
+
+        if (! File::exists($path)) {
+            return [];
+        }
+
+        $content = File::get($path);
+        $data = json_decode($content, true);
+        Assert::isArray($data);
+
+        /** @var array<string, mixed> $data */
+        return $data;
+    }
+
+    /**
+     * @param array<int|string, array<string, mixed>> $data
+     */
+    public function saveToJson(array $data): bool
+    {
+        $path = $this->getJsonFile();
+
+        File::put($path, json_encode($data, JSON_PRETTY_PRINT));
+
+        return true;
     }
 
     protected function casts(): array

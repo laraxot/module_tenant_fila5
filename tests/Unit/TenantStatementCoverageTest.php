@@ -160,7 +160,7 @@ describe('Tenant statement coverage — actions', function (): void {
             $mock->allows(['execute' => 'localhost']);
         });
 
-        expect(fn (): mixed => app(ResolveTenantConfigValueAction::class)->execute('app.flag'))
+        expect(fn (): float|int|string|array|null => app(ResolveTenantConfigValueAction::class)->execute('app.flag'))
             ->toThrow(Exception::class);
     });
 
@@ -337,7 +337,8 @@ describe('Tenant statement coverage — SushiToJson named model', function (): v
 
         File::put($jsonPath, 'null');
         expect(fn (): array => $model->getSushiRows())->toThrow(Exception::class);
-        expect($model->loadExistingData())->toBeEmpty();
+        $dataAfterNullWrite = $model->loadExistingData();
+        Assert::assertSame([], $dataAfterNullWrite);
 
         File::put($jsonPath, json_encode([
             ['id' => 1, 'name' => 'Alpha', 'meta' => ['x' => 1], 0 => 'skip'],
@@ -522,7 +523,7 @@ describe('Tenant statement coverage — SushiToJsons named model', function (): 
 
         $writeNoSchema = new ReflectionMethod(SushiToJsonsNoSchemaModel::class, 'writeCreatingJsonFile');
         $writeNoSchema->setAccessible(true);
-        expect(fn (): mixed => $writeNoSchema->invoke(null, $emptySchemaModel))
+        expect(fn () => $writeNoSchema->invoke(null, $emptySchemaModel))
             ->toThrow(Exception::class);
 
         $updating = new ReflectionMethod(SushiToJsonsCoverageModel::class, 'handleJsonUpdating');

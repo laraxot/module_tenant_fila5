@@ -18,10 +18,6 @@ use Webmozart\Assert\Assert;
  * `DatabaseManager` un `:memory:` nuovo e vuoto: "no such table".
  * Qui il nome viene legato all'istanza viva, così tutti vedono lo stesso database.
  *
- * Non si usa direttamente nei modelli: la includono i trait `SushiToJson`, `SushiToJsons`,
- * `SushiToCsv` e `SushiToPhpArray` (subito dopo `use Sushi;`). Un modello con `use Sushi;` puro
- * deve aggiungerla a mano.
- *
  * @see https://github.com/calebporzio/sushi
  */
 trait SushiConnectionByName

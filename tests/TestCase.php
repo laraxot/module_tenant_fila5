@@ -43,11 +43,9 @@ abstract class TestCase extends XotBaseTestCase
     /** @var list<string> */
     protected $connectionsToTransact = ['tenant'];
 
-    /** @var TestSushiModel */
-    public static mixed $sushiModel;
+    public static ?TestSushiModel $sushiModel = null;
 
-    /** @var BaseModel|null */
-    public static mixed $sushiBaseModel = null;
+    public static ?BaseModel $sushiBaseModel = null;
 
     public static ?Tenant $tenant = null;
 

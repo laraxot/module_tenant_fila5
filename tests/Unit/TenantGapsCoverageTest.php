@@ -18,9 +18,11 @@ use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Providers\TenantServiceProvider;
 use Modules\Tenant\Tests\TestCase;
+use Modules\Tenant\Tests\Unit\Fixtures\SqliteTenantConfigValueResolverStub;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToCsvCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonAuthCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonCoverageModel;
+use Modules\Tenant\Tests\Unit\Fixtures\TenantConfigValueResolverStub;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonsCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonsNoSchemaModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonThrowingQueryModel;
@@ -305,21 +307,7 @@ test('TenantServiceProvider load user connection and filter model classes', func
     Assert::assertIsArray($connections);
     $connections = app(FilterConfigStringKeysAction::class)->execute($connections);
 
-    app()->instance(ResolveTenantConfigValueAction::class, new class($default, $connections)
-    {
-        /** @param array<string, mixed> $connections */
-        public function __construct(private string $default, private array $connections) {}
-
-        public function execute(string $key, mixed $defaultValue = null): mixed
-        {
-            return [
-                'default' => $this->default,
-                'connections' => $this->connections + [
-                    'user_'.$this->default => ['driver' => 'sqlite', 'database' => ':memory:'],
-                ],
-            ];
-        }
-    });
+    app()->instance(ResolveTenantConfigValueAction::class, new TenantConfigValueResolverStub($default, $connections));
 
     /** @var array<string, mixed> $data */
     $data = $load->invoke($provider, $default);
@@ -368,19 +356,7 @@ test('final remaining statement branches', function (): void {
     $provider = new TenantServiceProvider(app());
     $load = new ReflectionMethod($provider, 'loadTenantDatabaseConfig');
     $load->setAccessible(true);
-    app()->instance(ResolveTenantConfigValueAction::class, new class
-    {
-        public function execute(string $key, mixed $defaultValue = null): mixed
-        {
-            return [
-                'default' => 'sqlite',
-                'connections' => [
-                    'sqlite' => ['driver' => 'sqlite'],
-                    'user_sqlite' => ['driver' => 'sqlite', 'database' => ':memory:'],
-                ],
-            ];
-        }
-    });
+    app()->instance(ResolveTenantConfigValueAction::class, new SqliteTenantConfigValueResolverStub);
     /** @var array<string, mixed> $data */
     $data = $load->invoke($provider, 'sqlite');
     Assert::assertIsArray($data);

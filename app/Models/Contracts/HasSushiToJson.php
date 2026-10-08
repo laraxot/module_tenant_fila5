@@ -76,6 +76,6 @@ interface HasSushiToJson
      *
      * @return array<string, string>
      */
-    public function getSchema(): array;
+    public function getSchema();
 }
 
