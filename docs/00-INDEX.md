@@ -145,3 +145,5 @@ Aggiornata il 2026-10-07 dopo la risoluzione dei marker di merge nei docs (versi
 - [Quick reference](bmad/quick-reference.md)
 - [Setup guide](bmad/setup-guide.md)
 - Story: cartella [bmad/stories/](bmad/stories/).
+- Story PHPStan 2026-10-08: [categoria nei benchmark Sushi](stories/2026-10-08-phpstan-tenant-sushi-benchmark-category.story.md).
+- Story Services 2026-10-08: [TenantService e Services/Config eliminati](stories/2026-10-08-services-to-actions-tenant.story.md).

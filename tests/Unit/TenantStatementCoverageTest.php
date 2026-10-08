@@ -32,11 +32,6 @@ use Modules\Tenant\Models\TenantSetting;
 use Modules\Tenant\Models\TenantSubscription;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Providers\TenantServiceProvider;
-use Modules\Tenant\Services\Config\ConfigResolverRegistry;
-use Modules\Tenant\Services\Config\Resolvers\DatabaseConfigResolver;
-use Modules\Tenant\Services\Config\Resolvers\MorphMapConfigResolver;
-use Modules\Tenant\Services\Config\Resolvers\StandardConfigResolver;
-use Modules\Tenant\Services\TenantService;
 use Modules\Tenant\Tests\TestCase;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToCsvCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonCoverageModel;
@@ -44,10 +39,8 @@ use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonsCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonsNoSchemaModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToPhpArrayCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\TenantBasePolicyCoverage;
-use Modules\Xot\Actions\Model\GetAllModelsByModuleNameAction;
 use Modules\Xot\Contracts\UserContract;
 use PHPUnit\Framework\Assert;
-use ReflectionClass;
 use ReflectionMethod;
 
 use function Safe\putenv;
@@ -58,147 +51,7 @@ afterEach(function (): void {
     Mockery::close();
 });
 
-describe('Tenant statement coverage — resolvers', function (): void {
-    test('DatabaseConfigResolver covers null extra, defaults and module connections', function (): void {
-        $resolver = new DatabaseConfigResolver;
-        $originalDatabase = config('database');
-        Assert::assertIsArray($originalDatabase);
-
-        try {
-            Assert::assertNull($resolver->resolve('database', null));
-            Assert::assertNull($resolver->resolve('database', 'not-array'));
-
-            $sampleConnections = is_array($originalDatabase['connections'] ?? null)
-                ? $originalDatabase['connections']
-                : ['sqlite' => ['driver' => 'sqlite', 'database' => ':memory:']];
-            $default = is_string($originalDatabase['default'] ?? null)
-                ? $originalDatabase['default']
-                : array_key_first($sampleConnections) ?? 'sqlite';
-
-            $result = $resolver->resolve('database', [
-                'default' => $default,
-                'connections' => $sampleConnections,
-            ]);
-            Assert::assertIsArray($result);
-            Assert::assertArrayHasKey('connections', $result);
-
-            $withoutDefault = $resolver->resolve('database', [
-                'connections' => $sampleConnections,
-            ]);
-            Assert::assertIsArray($withoutDefault);
-
-            $nullDefault = $resolver->resolve('database', [
-                'default' => null,
-                'connections' => $sampleConnections,
-            ]);
-            Assert::assertIsArray($nullDefault);
-        } finally {
-            config(['database' => $originalDatabase]);
-        }
-    });
-
-    test('MorphMapConfigResolver covers admin and tenant morph paths', function (): void {
-        $resolver = new MorphMapConfigResolver;
-
-        $home = \Illuminate\Http\Request::create('/it/home', 'GET');
-        app()->instance('request', $home);
-        Request::swap($home);
-        Assert::assertFalse($resolver->canResolve('morph_map.user'));
-
-        $request = \Illuminate\Http\Request::create('/admin/tenant/resources', 'GET');
-        app()->instance('request', $request);
-        Request::swap($request);
-        Assert::assertTrue($resolver->canResolve('morph_map'));
-
-        TestCase::mockAppService(GetAllModelsByModuleNameAction::class, static function (MockInterface $mock): void {
-            $mock->allows(['execute' => ['tenant' => Tenant::class]]);
-        });
-
-        $baseDir = sys_get_temp_dir().'/tenant_morph_'.uniqid('', true);
-        File::ensureDirectoryExists($baseDir);
-        File::put($baseDir.'/morph_map.php', "<?php\nreturn ['domain' => '".addslashes(Domain::class)."'];\n");
-
-        TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
-            TestCase::expectMockery($mock, 'execute')->andReturnUsing(
-                static fn (string $path): string => $baseDir.'/'.basename($path),
-            );
-        });
-
-        config(['morph_map' => ['user' => Tenant::class, 0 => 'skip']]);
-
-        $resolved = $resolver->resolve('morph_map');
-        Assert::assertIsArray($resolved);
-        Assert::assertArrayHasKey('tenant', $resolved);
-
-        File::put($baseDir.'/morph_map.php', "<?php\nreturn 'invalid';\n");
-        Assert::assertIsArray($resolver->resolve('morph_map'));
-
-        File::delete($baseDir.'/morph_map.php');
-        config(['morph_map' => null]);
-        Assert::assertIsArray($resolver->resolve('morph_map'));
-
-        File::deleteDirectory($baseDir);
-    });
-
-    test('StandardConfigResolver covers database merge, missing key and invalid types', function (): void {
-        $resolver = new StandardConfigResolver;
-        $originalDatabase = config('database');
-
-        TestCase::mockAppService(GetTenantNameAction::class, static function (MockInterface $mock): void {
-            $mock->allows(['execute' => 'localhost']);
-        });
-
-        try {
-            config([
-                'app' => ['name' => 'Base', 'env' => 'testing', 'flag' => true],
-                'localhost.app' => ['name' => 'TenantApp'],
-            ]);
-
-            Assert::assertSame('TenantApp', $resolver->resolve('app.name'));
-
-            $dbDefault = is_string(config('database.default')) ? config('database.default') : 'sqlite';
-            $connections = config('database.connections');
-            Assert::assertIsArray($connections);
-            config([
-                'localhost.database' => [
-                    'default' => $dbDefault,
-                    'connections' => $connections,
-                ],
-            ]);
-            Assert::assertIsArray($resolver->resolve('database'));
-
-            $ref = new ReflectionClass($resolver);
-            $getOriginal = $ref->getMethod('getOriginalConfig');
-            $getOriginal->setAccessible(true);
-            config(['ghost' => null]);
-            Assert::assertSame([], $getOriginal->invoke($resolver, 'ghost'));
-
-            $getTenant = $ref->getMethod('getTenantConfig');
-            $getTenant->setAccessible(true);
-            config(['localhost.ghost' => 'not-array']);
-            Assert::assertSame([], $getTenant->invoke($resolver, 'ghost'));
-
-            expect(fn (): mixed => $resolver->resolve('app.totally_missing', 'fallback'))
-                ->toThrow(Exception::class, 'Configuration key not found');
-
-            expect(fn (): mixed => $resolver->resolve('app.flag'))
-                ->toThrow(Exception::class, 'Invalid configuration type');
-        } finally {
-            config(['database' => $originalDatabase]);
-        }
-    });
-
-    test('ConfigResolverRegistry falls back when no resolver matches', function (): void {
-        $registry = new ConfigResolverRegistry;
-        $prop = (new ReflectionClass($registry))->getProperty('resolvers');
-        $prop->setAccessible(true);
-        $prop->setValue($registry, []);
-
-        Assert::assertInstanceOf(StandardConfigResolver::class, $registry->findResolver('anything'));
-    });
-});
-
-describe('Tenant statement coverage — actions and service', function (): void {
+describe('Tenant statement coverage — actions', function (): void {
     test('SaveTenantConfigAction merges recursively on real filesystem', function (): void {
         $dir = sys_get_temp_dir().'/tenant_save_cfg_'.uniqid('', true);
         File::ensureDirectoryExists($dir);
@@ -311,14 +164,13 @@ describe('Tenant statement coverage — actions and service', function (): void 
             ->toThrow(Exception::class);
     });
 
-    test('ResolveTenantModelInstanceAction and TenantService::model delegate', function (): void {
+    test('ResolveTenantModelInstanceAction instantiates the resolved model class', function (): void {
         TestCase::mockAppService(ResolveTenantModelClassAction::class, static function (MockInterface $mock): void {
             $mock->allows(['execute' => Tenant::class]);
         });
 
         $instance = app(ResolveTenantModelInstanceAction::class)->execute('tenant');
         Assert::assertInstanceOf(Tenant::class, $instance);
-        Assert::assertInstanceOf(Tenant::class, TenantService::model('tenant'));
     });
 
     test('artisan tenant:test command prints tenant name', function (): void {
