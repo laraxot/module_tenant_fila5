@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "mcp server recommended"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # MCP Server Consigliati per il Modulo Tenant
 

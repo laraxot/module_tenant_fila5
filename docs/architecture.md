@@ -9,6 +9,7 @@ module: Tenant
 type: architecture
 tags: [design, patterns, isolation, multi-tenancy]
 last_updated: 2026-08-04
+status: draft
 ---
 
 # Tenant Module Architecture

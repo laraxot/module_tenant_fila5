@@ -7,6 +7,7 @@ updated: 2026-10-06
 qmd: "README"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Tenant bmad docs

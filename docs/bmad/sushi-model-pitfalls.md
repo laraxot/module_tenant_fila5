@@ -6,6 +6,8 @@ slug: sushi-model-pitfalls
 status: active
 created: 2026-09-30
 updated: 2026-09-30
+tags: [docs, tenant, bmad]
+qmd: "sushi nei modelli tenant: trappole verificate tenant"
 ---
 tags: [docs, tenant, bmad]
 

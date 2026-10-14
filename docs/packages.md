@@ -10,5 +10,6 @@ updated: 2026-07-14
 qmd: "packages"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 

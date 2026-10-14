@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "modular monolith guidelines 1"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Modular Monolith Guidelines for Laravel
@@ -58,13 +59,4 @@ Start by isolating one domain, such as Users, and gradually move logic into doma
 Adopting a modular monolith architecture in Laravel enhances maintainability, scalability, and clarity of your application structure. This approach provides a strategic path to evolve your application without the overhead of microservices.
 
 ---
-
-title: "modular monolith guidelines 1"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "modular monolith guidelines 1"
-issues: []
-discussions: []
 For further details or contributions to this documentation, please refer to the main documentation folder or contact the project maintainer.

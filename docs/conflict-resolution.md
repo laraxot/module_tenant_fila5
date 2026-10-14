@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "conflict resolution"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Conflict Resolution — Module Tenant
 

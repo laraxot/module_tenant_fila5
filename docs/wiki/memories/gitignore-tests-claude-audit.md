@@ -12,6 +12,7 @@ discussions:
   - "https://github.com/laraxot/platform/discussions/304"
 related:
   - ../../Xot/docs/wiki/concepts/claude-audit-static-all-modules.md
+status: draft
 ---
 
 # `Tests/` in .gitignore e claude-audit

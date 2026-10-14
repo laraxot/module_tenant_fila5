@@ -392,4 +392,4 @@ ConfigurationResolver::clearCache(); // Clear all tenant caches
 
 - [Architecture Reference](architecture.md)
 - [Module README](../README.md)
-- [Testing Guide](../tests/Feature/README.md)
+- [Testing Guide](../../tests/Feature/README.md)

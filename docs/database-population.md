@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "database population"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Popolamento Database - Modulo Tenant
 

@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "metodi duplicati analisi"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # 🐄⚡ ANALISI METODI DUPLICATI - SUPER MUCCA EDITION
 

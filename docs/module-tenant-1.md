@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "module tenant 1"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Modulo Tenant
@@ -246,15 +247,6 @@ composer format        # Formatta il codice
 ## Changelog
 
 ---
-
-title: "module tenant 1"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "module tenant 1"
-issues: []
-discussions: []
 Le modifiche vengono tracciate nel repository GitHub.
 
 ## Collegamenti sulla risoluzione dei conflitti

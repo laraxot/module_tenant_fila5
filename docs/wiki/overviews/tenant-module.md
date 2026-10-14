@@ -8,10 +8,10 @@ discussions: []
 type: overview
 module: Tenant
 sources:
-  - ../../../module.md
-  - ../../../philosophy.md
-  - ../../../configuration.md
-  - ../../../structure.md
+  - ../../module.md
+  - ../../../PHILOSOPHY.md
+  - ../../configuration.md
+  - ../../structure.md
 confidence: high
 updated: 2026-04-15
 ---

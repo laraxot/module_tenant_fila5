@@ -7,6 +7,7 @@ discussions: []
 title: agent edit discipline — puntatore
 type: reference
 updated: 2026-05-19
+status: draft
 ---
 
 # Disciplina edit e qualità (puntatore)

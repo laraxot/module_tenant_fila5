@@ -10,7 +10,7 @@ tags: [tenant, queueable-action, migration]
 updated: "2026-10-08"
 related:
   - ../README.md
-  - ../../../docs/wiki/rules/no-services-rule.md
+  - ../../../../../docs/wiki/rules/no-services-rule.md
 ---
 
 # TenantService → Actions

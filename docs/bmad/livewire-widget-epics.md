@@ -10,6 +10,7 @@ type: epics
 module: Tenant
 related:
   - ./livewire-inventory.md
+status: draft
 ---
 
 # Epics Tenant

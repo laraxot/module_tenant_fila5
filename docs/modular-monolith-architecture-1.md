@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "modular monolith architecture 1"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Modular Monolith Architecture for Tenant Module

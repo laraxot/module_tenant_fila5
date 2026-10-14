@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "bugfix larastan tenant model collision"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Bugfix: PHPStan `assign.propertyType` — TenantFactory duplicata confonde il tipo Tenant

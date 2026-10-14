@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "risoluzione conflitti 1"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Risoluzione Conflitti nel Modulo Tenant

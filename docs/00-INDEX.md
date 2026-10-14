@@ -6,24 +6,25 @@ module: "Tenant"
 type: concept
 tags: [00, INDEX]
 created: 2026-07-14
-updated: 2026-07-14
-qmd: "00 index"
+updated: 2026-10-14
+qmd: "tenant module docs index canonico host config directory evidence legacy"
+status: active
 related:
   - "./phpstan-corrections-january.md"
 ---
 # Tenant Module — Documentation Index
 
 **Path**: `laravel/Modules/Tenant/docs/`  
-**Updated**: 2026-07-01  
+**Updated**: 2026-10-14  
 **Status**: Multi-tenant core module
 
 ---
 
 ## 🎯 Quick Start
 
-**Multi-tenancy 101**: [TenantIdentification.md](./wiki/tenantidentification.md) — How tenants are identified and isolated  
-**Architecture**: [Architecture.md](./wiki/architecture.md) — System design and data flow  
-**Configuration**: See **Multi-Tenant Config** section below ⬇️
+**Come funziona davvero (verificato 2026-10-14)**: [README.md](./README.md). Il tenant e' la cartella `laravel/config/<host invertito>/` scelta da `GetTenantNameAction` (`fixcity.local` diventa `local/fixcity`); non c'e' isolamento per riga ne' `TenantService`.  
+**Comando di prova**: `cd laravel && php artisan tenant:test` (stampa `tenant name :local/fixcity`).  
+**Pagine wiki Architecture, TenantIdentification, ConfigurationDistribution**: marcate `stale` il 2026-10-14 (descrivono un TenantService e sottodomini che non esistono).
 
 ---
 
@@ -31,9 +32,9 @@ related:
 
 ### Wiki (Sacred — Do Not Delete)
 - **[wiki/index.md](./wiki/index.md)** — Operating manual for LLM agents
-- **[wiki/Architecture.md](./wiki/architecture.md)** — Multi-tenant system design
-- **[wiki/TenantIdentification.md](./wiki/tenantidentification.md)** — How tenants are identified
-- **[wiki/ConfigurationDistribution.md](./wiki/configurationdistribution.md)** — Config per tenant
+- **[wiki/Architecture.md](./wiki/architecture.md)** — Multi-tenant system design (stale, vedi README.md)
+- **[wiki/TenantIdentification.md](./wiki/tenantidentification.md)** — How tenants are identified (stale, vedi README.md)
+- **[wiki/ConfigurationDistribution.md](./wiki/configurationdistribution.md)** — Config per tenant (stale, vedi README.md)
 ---
 - **[wiki/Architecture.md](./wiki/Architecture.md)** — Multi-tenant system design
 - **[wiki/TenantIdentification.md](./wiki/TenantIdentification.md)** — How tenants are identified
@@ -60,11 +61,12 @@ This project uses **environment-specific tenant configuration**:
 
 ```
 laravel/config/
-├── localhost/              # Local dev (all tenants, single DB)
-├── com/geekpiu/            # GeeKPIU tenant (production)
-├── eu/progetto corrente/             # progetto corrente EU tenant
-└── net/futurely/           # Futurely tenant
+├── localhost/              # tenant di ripiego, 23 file di config come gli altri
+├── local/fixcity/          # tenant di sviluppo, host fixcity.local
+├── eu/fixcity/             # tenant EU
+└── net/futurely/           # tenant Futurely
 ```
+(Elenco verificato con `ls` il 2026-10-14. `com/geekpiu` non esiste piu'.)
 
 **Each tenant context includes**:
 - `app.php` — Locale, timezone, app name per tenant
@@ -84,8 +86,8 @@ laravel/config/
 ### Related Memory Files
 
 For deep understanding of multi-tenant configuration:
-- **[config-architecture-multi-tenant](../../../../.claude/config_architecture_documentation.md)** — Detailed architecture guide
-- **[error_config_deletion_2026_07_01](../../../../.claude/error_config_deletion_2026_07_01.md)** — Critical lessons learned
+- **[config-architecture-multi-tenant](../../../../.claude/config_architecture_documentation.md)** _(target mancante, verificato 2026-10-14)_ — Detailed architecture guide
+- **[error_config_deletion_2026_07_01](../../../../.claude/error_config_deletion_2026_07_01.md)** _(target mancante, verificato 2026-10-14)_ — Critical lessons learned
 
 > **CRITICAL RULE**: Never delete files under `laravel/config/`. These are KNOWN tenant configurations, not speculative code. Always grep before deleting any config file.
 
@@ -93,10 +95,10 @@ For deep understanding of multi-tenant configuration:
 
 ## 🧠 Core Concepts
 
-**Tenant Scoping**: All queries are scoped to current tenant automatically  
-**Tenant Resolution**: Determined by domain/header/request context (see TenantIdentification.md)  
-**Data Boundaries**: Foreign keys enforce tenant isolation at DB level  
-**Config Hierarchy**: Environment-specific overrides per tenant
+**Tenant Scoping**: NON implementato. Nessun global scope ne' `BelongsToTenant` nel modulo (grep 2026-10-14).  
+**Tenant Resolution**: da `SERVER_NAME` o host di `APP_URL`, inverso delle parti, prima cartella esistente in `config/` (`Actions/GetTenantNameAction.php`).  
+**Data Boundaries**: non dimostrati. Le tabelle `tenant_settings`, `tenant_subscriptions`, `database_configs` hanno `tenant_id` come stringa nullable, senza chiave esterna.  
+**Config Hierarchy**: `ResolveTenantConfigValueAction` fonde `config/<gruppo>.php` con `config/<tenant>/<gruppo>.php`.
 
 ---
 
@@ -105,12 +107,28 @@ For deep understanding of multi-tenant configuration:
 | Rule | Source |
 |------|--------|
 | No Services — use Actions | [wiki/concepts/](./wiki/concepts/) |
-| Tenant scoping automatic | [TenantIdentification.md](./wiki/tenantidentification.md) |
-| Config per tenant required | [ConfigurationDistribution.md](./wiki/configurationdistribution.md) |
+| Tenant scoping automatic | non implementato (vedi sopra) |
+| Config per tenant required | [README.md](./README.md), `ResolveTenantConfigValueAction` |
 | No hardcoded credentials | Via `laravel/config/{tenant}/` |
 | Modelli Sushi: `unique`/`exists` richiedono la connessione per nome | [stories/7.4.sushi-connection-by-name.story.md](./stories/7.4.sushi-connection-by-name.story.md), [bmad/sushi-model-pitfalls.md](./bmad/sushi-model-pitfalls.md) |
 
 ---
+
+## Mappa delle directory di docs/ (2026-10-14)
+
+| Directory | Ruolo | File .md |
+|---|---|---|
+| `README.md`, `wiki/` | canonici (README verificato sul codice; le tre pagine wiki citate sopra sono stale) | 74 in wiki |
+| `stories/` | evidence BMAD | 19 |
+| `bmad/` | evidence (brainstorming, architecture, quick-reference, story storiche) | 76 |
+| `roadmap/` | piani, non stato | 41 |
+| `investigation/`, `bugfix/` | diagnosi | 1 e 2 |
+| `traits/`, `models/`, `concepts/` | riferimenti tecnici sui trait Sushi e i modelli | 11, 2, 2 |
+| `it/`, `en/` | legacy (about, tutorial) | 31, 4 |
+| `_integration/`, `html2pdf/`, `analysis/`, `architecture/`, `development/`, `tasks/`, `prompts/`, `outputs/`, `llm-wiki/` | legacy o evidence di sessioni passate | 7, 6, 1, 1, 1, 1, 1, 1, 7 |
+| `raw/` | sorgenti immutabili | 23 |
+
+Il contratto (`bmad-output/docs-architecture/module-theme-docs-contract.md`) vuole `00-INDEX.md` come indice operativo: in Tenant lo e'. `index.md` e `00-index.md` sono varianti storiche, non crearne altre.
 
 ## 📁 Archive & Legacy
 
@@ -129,7 +147,7 @@ For deep understanding of multi-tenant configuration:
 ## 🔗 Related Modules
 
 - **[User Module](../../User/docs/00-index.md)** — Authentication per tenant
-- **[Xot Module](../../Xot/docs/00-index.md)** — Base classes for tenant awareness
+- **[Xot Module](../../Xot/docs/00-INDEX.md)** — Base classes for tenant awareness
 - **[Theme System](../../../Themes/)** — Theme per tenant support
 
 ---

@@ -15,6 +15,7 @@ related:
   - ../architecture.md
   - module-boundary.md
   - ../quick-reference.md
+status: draft
 ---
 
 # Tenant — risoluzione della configurazione

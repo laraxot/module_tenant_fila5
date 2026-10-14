@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "rector conflict resolution 1"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Risoluzione conflitto git su rector.php

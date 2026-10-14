@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "updates 12"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Tenant Module Updates - December 2025

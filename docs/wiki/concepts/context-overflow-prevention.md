@@ -9,7 +9,7 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "context overflow prevention"
 related:
-  - "./phpstan-corrections-january.md"
+  - "../../phpstan-corrections-january.md"
 ---
 ## Context Overflow Prevention
 

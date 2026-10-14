@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan Level 10 Roadmap - Tenant Module

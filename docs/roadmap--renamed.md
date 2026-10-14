@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "roadmap renamed"
 issues: []
 discussions: []
+status: draft
 ---
 
 # 🎯 TENANT MODULE - ROADMAP 2025
@@ -18,15 +19,6 @@ discussions: []
 **Filament**: 🚧 4.x Compatibile  
 
 ---
-
-title: "roadmap renamed"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "roadmap renamed"
-issues: []
-discussions: []
 ## 🎯 MODULE OVERVIEW
 
 Il modulo **Tenant** [descrizione del modulo].

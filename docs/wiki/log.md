@@ -8,6 +8,7 @@ issues: []
 discussions: []
 title: "Activity Log"
 module: "Tenant"
+status: draft
 ---
 
 # Activity Log — Tenant
@@ -15,6 +16,11 @@ module: "Tenant"
 > **Purpose:** Append-only chronological activity record tracking ingests, queries, and lint passes.
 
 ## Log Entries
+
+## [2026-10-14] [DOCS] Studio del codice e correzione degli ingressi
+
+- Verificato: il tenant e' la cartella `config/<host invertito>/` scelta da `GetTenantNameAction` (`tenant:test` -> `local/fixcity`); nessun isolamento per riga, nessun `TenantService`. README e `00-INDEX.md` corretti; 6 pagine wiki marcate `stale`.
+- Story: [2026-10-14-docs-tenant-studio](../stories/2026-10-14-docs-tenant-studio.story.md). Memoria: [nota di memoria](../../../../../bashscripts/ai/wiki/memories/2026-10-14-docs-cms-lang-tenant-seo-studio.md)
 
 ## [2026-07-27] [GRAVE] Remote GitHub — collisione entrambe false
 

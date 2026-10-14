@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "filament version"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Filament Version Declaration — Tenant
 
