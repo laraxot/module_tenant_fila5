@@ -3,7 +3,6 @@ title: "phpstan compliance status"
 type: note
 tags: [documentation]
 created: 2026-09-26
-<<<<<<< .merge_file_rQgTqZ
 updated: 2026-10-15
 qmd: "phpstan compliance status"
 issues: []
@@ -16,15 +15,6 @@ source_of_truth: false
 > **Superseded.** Usa [./phpstan.md](./phpstan.md).
 
 
-=======
-updated: 2026-09-26
-qmd: "phpstan compliance status"
-issues: []
-discussions: []
-status: draft
----
-
->>>>>>> .merge_file_BOyfxQ
 # PHPStan Level 10 Compliance Status
 
 

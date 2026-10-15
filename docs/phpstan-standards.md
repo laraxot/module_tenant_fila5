@@ -7,13 +7,9 @@ tags: [phpstan, sushi, traits, tenant, json]
 created: 2026-06-10
 updated: 2026-10-15
 qmd: docs/wiki/phpstan-tenant-module.md
-<<<<<<< .merge_file_ay7hst
 status: stable
 related:
   - ./phpstan.md
-=======
-status: draft
->>>>>>> .merge_file_BtKLs8
 ---
 
 > Canonica gate/status: [phpstan.md](./phpstan.md). Questa pagina resta il riferimento tipi Sushi.

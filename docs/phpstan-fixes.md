@@ -1,20 +1,4 @@
-<<<<<<< .merge_file_SkeFw6
 # BMAD + Second Brain — Fix PHPStan (session)
-=======
----
-title: "phpstan fixes"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "phpstan fixes"
-issues: []
-discussions: []
-status: draft
----
-
-# PHPStan Fixes - Tenant Module - 2025-10-13
->>>>>>> .merge_file_eOGpOh
 
 - BMAD: docs in `Modules/<nome>/docs/` (senza date), osservazioni wiki, sprint-status.yaml.
 - Second brain: MEMORY.md aggiornato, wiki_retro salvato, wiki_observe registrato.
@@ -34,11 +18,6 @@ status: draft
 
 ## Collegamenti
 
-<<<<<<< .merge_file_SkeFw6
-- [Story fixture](stories/sushitojson-test-fixtures.story.md)
-- [Fix integrazione SushiToJson](testing-sushitojson-integration-fix.md)
-- [Task isolamento dati](task-test-isolamento-dati.md)
-=======
 **Reason**: Test file references models that don't exist:
 - `TenantDomain` (should be `Domain`?)
 - `TenantSetting` (not created)
@@ -166,4 +145,3 @@ beforeEach(function (): void {
 *Last Updated: 2025-10-13*
 *Progress: 71% complete (24 errors remaining)*
 *Module Status: Partial completion - major issues resolved*
->>>>>>> .merge_file_eOGpOh

@@ -1,5 +1,4 @@
 ---
-<<<<<<< .merge_file_jN9t7h
 title: "Tenant — PHPStan e qualità (canonica)"
 type: reference
 status: stable
@@ -18,20 +17,6 @@ related:
 issues: []
 discussions: []
 ---
-=======
-title: "phpstan"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "phpstan"
-issues: []
-discussions: []
-status: draft
----
-
-# PHPStan Level 10 Roadmap - Tenant Module
->>>>>>> .merge_file_TkrniZ
 
 # Tenant: PHPStan e qualità
 
