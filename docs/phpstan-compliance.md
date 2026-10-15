@@ -3,6 +3,7 @@ title: "phpstan compliance"
 type: note
 tags: [documentation]
 created: 2026-09-26
+<<<<<<< .merge_file_0bkttI
 updated: 2026-10-15
 qmd: "phpstan compliance"
 issues: []
@@ -15,6 +16,15 @@ source_of_truth: false
 > **Superseded.** Usa [./phpstan.md](./phpstan.md).
 
 
+=======
+updated: 2026-09-26
+qmd: "phpstan compliance"
+issues: []
+discussions: []
+status: draft
+---
+
+>>>>>>> .merge_file_h1YfGU
 # PHPStan Compliance - Tenant Module
 
 ## Status: ✅ FULLY COMPLIANT

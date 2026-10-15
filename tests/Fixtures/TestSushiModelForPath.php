@@ -13,6 +13,10 @@ final class TestSushiModelForPath extends TestSushiModel
     public function setJsonPath(string $jsonPath): self
     {
         $this->jsonPath = $jsonPath;
+<<<<<<< .merge_file_AOKbVz
+=======
+
+>>>>>>> .merge_file_Mvz1KD
         return $this;
     }
 
