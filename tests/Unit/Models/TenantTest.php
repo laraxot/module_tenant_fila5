@@ -48,14 +48,14 @@ describe('Tenant Model', function () {
 
         expect(fn () => Tenant::factory()->create(['name' => 'unique-tenant']))
             ->toThrow(\Illuminate\Database\QueryException::class);
-    }
+    });
 
     it('has unique domain', function () {
         Tenant::factory()->create(['domain' => 'unique.example.com']);
 
         expect(fn () => Tenant::factory()->create(['domain' => 'unique.example.com']))
             ->toThrow(\Illuminate\Database\QueryException::class);
-    }
+    });
 
     it('has many domains', function () {
         $tenant = Tenant::factory()->create();
@@ -67,7 +67,7 @@ describe('Tenant Model', function () {
         $tenant = Tenant::factory()->create();
 
         expect($tenant->settingsRelation())->toBeInstanceOf(\Illuminate\Database\Eloquent\Relations\HasMany::class);
-    }
+    });
 
     it('has many subscriptions', function () {
         $tenant = Tenant::factory()->create();

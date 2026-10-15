@@ -39,7 +39,7 @@ describe('Domain Model', function () {
 
         expect(fn () => Domain::factory()->create(['domain' => 'unique.example.com', 'tenant_id' => $this->tenant->id]))
             ->toThrow(\Illuminate\Database\QueryException::class);
-    }
+    });
 
     it('casts ssl_status', function () {
         $domain = Domain::create([
