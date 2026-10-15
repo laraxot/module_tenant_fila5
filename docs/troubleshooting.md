@@ -3,7 +3,7 @@ type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "troubleshooting"
+qmd: "TROUBLESHOOTING"
 issues: []
 discussions: []
 title: Tenant Module Troubleshooting Guide
@@ -85,8 +85,8 @@ Data from different tenants appearing in queries, or users accessing data from o
 - Log data access for compliance
 
 ### Reference
-- See [Query Scoping Pattern](PATTERNS.md#4-query-scoping-pattern)
-- See [Isolation Pattern](PATTERNS.md#1-tenant-isolation-pattern)
+- See [Query Scoping Pattern](patterns.md#4-query-scoping-pattern)
+- See [Isolation Pattern](patterns.md#1-tenant-isolation-pattern)
 
 ---
 
@@ -162,7 +162,7 @@ Background jobs, queued notifications, or scheduled tasks process data from wron
 - Log tenant in job handlers
 
 ### Reference
-- See [Context Switching Pattern](PATTERNS.md#5-context-switching-pattern)
+- See [Context Switching Pattern](patterns.md#5-context-switching-pattern)
 - Laravel Queue documentation: https://laravel.com/docs/queue
 
 ---
@@ -238,7 +238,7 @@ Background jobs, queued notifications, or scheduled tasks process data from wron
 - Monitor 404 errors for new domains
 
 ### Reference
-- See [Middleware Pattern](PATTERNS.md#3-middleware-pattern)
+- See [Middleware Pattern](patterns.md#3-middleware-pattern)
 
 ---
 
@@ -484,11 +484,13 @@ php artisan migrate --database=tenant_123
 
 ## Related Documentation
 
-- [Patterns](PATTERNS.md) — Design patterns to follow
-- [Architecture](ARCHITECTURE.md) — System design
+- [Patterns](patterns.md) — Design patterns to follow
+- [Architecture](architecture.md) — System design
 - [README](README.md) — Overview and usage
-- [API Reference](API.md) — Model and service signatures
+- [API Reference](api.md) — Model and service signatures
 
 ---
 
-Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](PATTERNS.md)
+Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](patterns.md)
+---
+Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](patterns.md)

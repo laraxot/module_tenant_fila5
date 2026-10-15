@@ -117,8 +117,8 @@ context-mode ctx-stats
 ## Riferimenti
 
 - [Global Performance Guide](../../docs/wiki/concepts/performance-optimization.md)
-- [On-Demand Pattern](./ON-DEMAND-PATTERN.md)
-- [QMD Setup](./QMD-SETUP.md)
+- [On-Demand Pattern](./on-demand-pattern.md)
+- [QMD Setup](./qmd-setup.md)
 
 ---
 *Status: Ottimizzato | Token risparmiati: ~48K per session*

@@ -40,7 +40,7 @@ related:
 - **[roadmap/tenant-isolation.md](../roadmap/tenant-isolation.md)** — Data isolation strategy
 
 ### Product & Strategy
-- **[PRD.md](./PRD.md)** — Product requirements document
+- **[PRD.md](./prd.md)** — Product requirements document
 - **[philosophy.md](./philosophy.md)** — Core principles
 - **[README.md](./README.md)** — Module overview and local knowledge map
 
