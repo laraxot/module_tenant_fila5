@@ -1,11 +1,17 @@
 ---
+title: "tenant module"
+tags: [documentation]
+created: 2026-09-26
+qmd: "tenant module"
+issues: []
+discussions: []
 type: overview
 module: Tenant
 sources:
-  - ../../../module.md
-  - ../../../philosophy.md
-  - ../../../configuration.md
-  - ../../../structure.md
+  - ../../module.md
+  - ../../../PHILOSOPHY.md
+  - ../../configuration.md
+  - ../../structure.md
 confidence: high
 updated: 2026-04-15
 ---

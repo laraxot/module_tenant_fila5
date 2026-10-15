@@ -1,4 +1,7 @@
 ---
+qmd: "xotbase table columns enforcement"
+issues: []
+discussions: []
 title: "XotBaseResourceTable Columns Enforcement — Tenant Module"
 type: concept
 sources: []
@@ -8,6 +11,7 @@ updated: 2026-05-07
 tags: [xotbase, filament, tables, enforcement]
 related:
   - ../../../../../../docs/wiki/concepts/xotbase-table-columns-enforcement.md
+status: draft
 ---
 
 # Tenant Module: XotBaseResourceTable Columns

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: Ripristino config tenant dopo delete accidentale
 type: troubleshooting
 confidence: high
@@ -13,6 +15,7 @@ related:
   - ../../../../../../docs/project/incidents/config-directory-mismatch.md
   - ../ConfigurationDistribution.md
   - ../../../app/Actions/GetTenantNameAction.php
+status: draft
 ---
 
 # Ripristino config tenant — incidente 2026-07-01
@@ -20,7 +23,7 @@ related:
 ## Cosa è successo
 
 Commit `8a3fdd530` ha rimosso gli alberi config per dominio in `laravel/config/`:
-`com/geekpiu`, `eu/fixcity`, `net/futurely`, `localhost`, file in `local/predict/`.
+`com/geekpiu`, `eu/progetto corrente`, `net/futurely`, `localhost`, file in `local/forecast/`.
 
 Classificazione errata: «obsolete» durante cleanup ponytail.
 

@@ -1,3 +1,17 @@
+---
+issues: []
+discussions: []
+title: "LICENSE Full"
+module: "Tenant"
+type: concept
+tags: [LICENSE, full]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "license full"
+related:
+  - "./phpstan-corrections-january.md"
+status: draft
+---
 The MIT License (MIT)
 
 Copyright (c) :vendor_name <author@domain.com>

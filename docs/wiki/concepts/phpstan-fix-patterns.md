@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "PHPStan fix patterns for Tenant module"
 type: troubleshooting
 tags: [phpstan, static-analysis, pest, mockery, tenant]
@@ -6,9 +8,9 @@ created: 2026-06-18
 updated: 2026-06-18
 qmd: "phpstan fix patterns tenant module mockService allows factory WebmozartAssert"
 related:
-  - ../../../../../docs/wiki/PHPSTAN-INDEX.md
+  - ../../../../../../docs/wiki/PHPSTAN-INDEX.md
   - ../../../Xot/docs/wiki/concepts/phpstan-pest-bridge-discipline.md
-  - ../testing-rules.md
+  - ../../testing-rules.md
 ---
 
 # PHPStan fix patterns — Tenant
@@ -34,7 +36,7 @@ Fix sessione corrente:
 
 Trait usati fuori Tenant (`SushiToPhpArray` in User) non risultano «used» in scan isolato. Pattern Geo:
 
-I probe `SushiToCsvPhpstanProbe` e `SushiToPhpArrayPhpstanProbe` (in `tests/Fixtures/Traits/`) coprono i trait cross-module usati fuori Tenant.
+`tests/Fixtures/Traits/TenantPhpstanTraitProbes.php` — host `SushiToCsvPhpstanProbe`, `SushiToPhpArrayPhpstanProbe`.
 
 Fix trait associati: return type `getSushiRows()` / `getCsvHeader()` in `SushiToCsv`; `array_values` tipizzato in `SushiToPhpArray`.
 
@@ -91,6 +93,6 @@ vendor/bin/phpinsights analyse Modules/Tenant/app Modules/Tenant/tests --config-
 ./vendor/bin/pest Modules/Tenant/tests
 ```
 
-Regole PHPMD modulo: `Modules/Tenant/phpmd.ruleset.xml` — allineato al [canon Laraxot](../../../../docs/wiki/concepts/phpmd-laraxot-conventions.md) (exclude aggiuntivo `GetTenantNameAction` per bootstrap `$_SERVER`).
+Regole PHPMD modulo: `Modules/Tenant/phpmd.ruleset.xml` — allineato al [canon Laraxot](../../../../../../docs/wiki/concepts/phpmd-laraxot-conventions.md) (exclude aggiuntivo `GetTenantNameAction` per bootstrap `$_SERVER`).
 
 Config PHPInsights: `Modules/Tenant/phpinsights.php` (preset laravel + remove regole incompatibili con Pest/traits).

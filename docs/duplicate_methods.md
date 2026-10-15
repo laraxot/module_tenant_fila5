@@ -1,3 +1,17 @@
+---
+issues: []
+discussions: []
+title: "Metodi duplicati — Tenant"
+module: "Tenant"
+type: concept
+tags: [duplicate, methods]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "duplicate methods"
+related:
+  - "./phpstan-corrections-january.md"
+status: draft
+---
 # Metodi duplicati — Tenant
 
 Analisi sintetica dei metodi PHP con lo stesso nome all’interno di questo ambito.

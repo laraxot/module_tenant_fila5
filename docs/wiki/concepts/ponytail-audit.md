@@ -1,4 +1,8 @@
 ---
+created: 2026-09-26
+qmd: "ponytail audit"
+issues: []
+discussions: []
 title: "Ponytail audit Tenant"
 type: concept
 module: Tenant
@@ -7,6 +11,7 @@ updated: "2026-07-01"
 related:
   - "./tenant-config-restoration-incident.md"
   - "../../ponytail-audit-over-engineering.md"
+status: draft
 ---
 
 # Ponytail audit — Tenant

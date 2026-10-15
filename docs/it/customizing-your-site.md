@@ -1,4 +1,11 @@
 ---
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "customizing your site"
+issues: []
+discussions: []
 title: Customizing Your Site
 description: Customizing your Jigsaw docs site
 extends: _layouts.documentation
@@ -87,11 +94,11 @@ class Foo extends bar
 * [customizing-your-site.md](../../../ui/project_docs/customizing-your-site.md)
 * [customizing-your-site.md](../../../tenant/project_docs/it/customizing-your-site.md)
 * [customizing-your-site.md](../../../cms/project_docs/customizing-your-site.md)
-* [customizing-your-site.md](../../../gdpr/docs/customizing-your-site.md)
+* [customizing-your-site.md](../../../Gdpr/docs/customizing-your-site.md)
 * [customizing-your-site.md](../../../xot/docs/customizing-your-site.md)
 * [customizing-your-site.md](../../../ui/docs/customizing-your-site.md)
 * [customizing-your-site.md](../../../tenant/docs/it/customizing-your-site.md)
-* [customizing-your-site.md](../../../cms/docs/customizing-your-site.md)
+* [customizing-your-site.md](../../../Cms/docs/customizing-your-site.md)
 
 ### Versione Incoming
 

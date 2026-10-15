@@ -1,3 +1,16 @@
+---
+issues: []
+discussions: []
+title: "Modelli mancanti e completamento schema"
+module: "Tenant"
+type: concept
+tags: [missing, models]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "missing models"
+related:
+  - "../phpstan-corrections-january.md"
+---
 # Modelli mancanti e completamento schema
 
 ## Obiettivo

@@ -1,3 +1,16 @@
+---
+issues: []
+discussions: []
+title: "Analisi Qualità - Modulo Tenant"
+module: "Tenant"
+type: concept
+tags: [quality, analysis]
+created: 2026-07-14
+updated: 2026-07-14
+qmd: "quality analysis"
+related:
+  - "./phpstan-corrections-january.md"
+---
 # Analisi Qualità - Modulo Tenant
 
 **Ultimo aggiornamento**: [DATE]
@@ -60,4 +73,4 @@
 
 - [PHPStan Analysis](../../xot/docs/phpstan-analysis-[date].md)
 - [Quality Guide](../../xot/docs/php-quality-guide.md)
-- [CI/CD Workflow](../.github/workflows/quality.yml)
+- [CI/CD Workflow](../../../../.github/workflows/quality.yml)
