@@ -1,27 +1,22 @@
----
-title: "phpstan fixes"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "phpstan fixes"
-issues: []
-discussions: []
-status: draft
----
+# BMAD + Second Brain — Fix PHPStan (session)
 
-# PHPStan Fixes - Tenant Module - 2025-10-13
+- BMAD: docs in `Modules/<nome>/docs/` (senza date), osservazioni wiki, sprint-status.yaml.
+- Second brain: MEMORY.md aggiornato, wiki_retro salvato, wiki_observe registrato.
+- Ponytail: solo correzioni minime (signature, generics, fixtures mancanti), nessun re-engineering.
+- Ordine: casuale, parallelo quando possibile.
+- Git: solo avanti, mai destructive.
+- Nessuna conferma richiesta.
 
-## Summary
+# Decision: makeTestSushiModelForPath — path JSON obbligatorio
 
-**Starting Errors**: 82
-**Current Errors**: 24
-**Progress**: 71% reduction (58 errors fixed)
+- Sorgente: `arguments.count` su `SushiToJsonIntegrationTest` — helper chiamata con 0 argomenti, 1 richiesto.
+- Scopo business: i test Sushi→JSON verificano l'isolamento path per tenant. Ogni modello deve puntare a un file JSON distinto (`tenantJsonPath('tenant1')` vs `tenant2`, oppure path custom).
+- Contratto corretto: `makeTestSushiModelForPath(string $jsonPath): TestSushiModelForPath` — parametro obbligatorio, niente default vuoto.
+- Anti-pattern rifiutato: default `= ''` (silenzia PHPStan ma annulla l'isolamento: due modelli condividono path vuoto / comportamento trait).
+- Fixture: `TestSushiModelForPath::getJsonFile()` deve restituire `$jsonPath` impostato via `setJsonPath()`, altrimenti `SushiToJson` usa `GetTenantFilePathAction` e il path iniettato è un no-op.
+- Call site: passare sempre `tenantJsonPath(...)` o il path custom del test.
 
-## Major Fixes Implemented
-
-### 1. Skipped Invalid Test File
-**File**: `tests/Feature/TenantBusinessLogicTest.php` → `.php.skip`
+## Collegamenti
 
 **Reason**: Test file references models that don't exist:
 - `TenantDomain` (should be `Domain`?)

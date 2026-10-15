@@ -1,5 +1,5 @@
 ---
-qmd: "api"
+qmd: "API"
 issues: []
 discussions: []
 title: "API Reference: Tenant Module"
@@ -428,7 +428,7 @@ User::withoutGlobalScopes()->all();  // Requires permission
 ---
 
 ## Related Documentation
-- [Architecture Overview](./ARCHITECTURE.md)
+- [Architecture Overview](./architecture.md)
 - [Setup & Configuration](./SETUP.md)
 - [Troubleshooting](troubleshooting.md)
 - [Best Practices](./BEST_PRACTICES.md)

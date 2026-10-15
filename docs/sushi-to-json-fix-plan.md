@@ -464,3 +464,17 @@ The SushiToJson traits are causing the majority of PHPStan errors because they c
 3. Adding proper type hints and documentation
 
 We can eliminate 90+ errors and achieve a 65% reduction in total PHPStan errors.
+
+<!-- phpstan-fixture-note -->
+## Fixture path injection (PHPStan + isolamento)
+
+Business why: `SushiToJson::saveToJson()` / `getSushiRows()` usano solo `getJsonFile()`.
+Nei test di isolamento tenant il path deve essere iniettabile per tenant (file distinti),
+non il path unico di `GetTenantFilePathAction`.
+
+Contratto fixture `TestSushiModelForPath`:
+- `setJsonPath(string)` + override `getJsonFile()` con proprietà **private** (non Eloquent attribute)
+- factory: `TestCase::makeTestSushiModelForPath($path)` (niente free-function: Pest non le carica)
+
+Aggiornato: 2026-10-15
+

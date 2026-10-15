@@ -1,47 +1,74 @@
 ---
-title: "phpstan"
-type: note
-tags: [documentation]
+title: "Tenant — PHPStan e qualità (canonica)"
+type: reference
+status: stable
+source_of_truth: true
+module: Tenant
 created: 2026-09-26
-updated: 2026-09-26
-qmd: "phpstan"
+updated: 2026-10-15
+tags: [phpstan, quality, tenant, sushi, standing-order]
+qmd: "tenant phpstan zero errori sushi to json standards compliance report quality gate no ignore baseline"
+related:
+  - ./phpstan-standards.md
+  - ./README.md
+  - ./00-index.md
+  - ../../../../bashscripts/docs/prompts/11-phpstan.md
+  - ../../../../bashscripts/ai/wiki/memories/phpstan-quality-docs-bmad-standing-order.md
 issues: []
 discussions: []
-status: draft
 ---
 
-# PHPStan Level 10 Roadmap - Tenant Module
+# Tenant: PHPStan e qualità
 
-**Status**: 🟡 In Progress
-**Errori Totali**: 581 (Iniziali)
+Canonica del modulo per il gate statico. I report numerici storici sotto restano
+come evidence, non come stato corrente.
 
-## Analisi Errori
-La quasi totalità degli errori (99%) si trova nella directory `Tests`.
+## Scopo
 
-### Top Offender Files
-- `Tests/Unit/SushiToJsonTraitTest.php`: 197 errori
-- `Tests/Feature/TenantBusinessLogicTest.php`: 155 errori
-- `Tests/Unit/SushiToJsonTraitPestTest.php`: 110 errori
+Tenant risolve il **tenant da host** (cartella `config/<tenant>/`) e espone
+storage Sushi JSON/CSV/PHP. PHPStan serve a proteggere quel contratto: tipi
+reali su trait, modelli e test, senza silenziatori.
 
-### Pattern Principali
-1. **Mixed Method Calls**: `Cannot call method create() on mixed` (36)
-2. **Mixed Property Access**: `Cannot access property $id on mixed` (35)
-3. **Pest Internal Access**: `Call to method toBe() ... from outside its root namespace` (32)
-4. **Undefined Properties**: `Access to an undefined property PHPUnit\Framework\TestCase::$model` (30)
+## Gate
 
-## Strategia di Risoluzione
+```bash
+cd laravel && ./vendor/bin/phpstan analyse Modules/Tenant
+# chiusura swarm / consegna:
+cd laravel && ./vendor/bin/phpstan analyse Modules
+```
 
-### Fase 1: Pest Configuration & Base Classes
-- [ ] Investigare errore `Pest\Mixins\Expectation` (probabile problema di namespace o import).
-- [ ] Fix `Tests/TestCase.php` e classi base per proprietà non definite (`$model`, `$testJsonPath`).
+- `laravel/phpstan.neon` immutabile (solo utente umano).
+- Vietati: `@phpstan-ignore*`, baseline, `assert()`, `@var`/cast solo per zittire.
+- Parti dallo **scopo** del codice (Sushi, config per host, morph map), poi causa
+  radice, poi fix. Prompt: [11-phpstan.md](../../../../bashscripts/docs/prompts/11-phpstan.md).
+- Standing order:
+  [phpstan-quality-docs-bmad-standing-order.md](../../../../bashscripts/ai/wiki/memories/phpstan-quality-docs-bmad-standing-order.md).
 
-### Fase 2: SushiToJson Fixes
-- [ ] Refactoring `SushiToJsonTraitTest.php` e `SushiToJsonTraitPestTest.php`.
-- [ ] Aggiungere type hints per eliminare `mixed`.
+## Knowledge riusabile
 
-### Fase 3: Business Logic Tests
-- [ ] Fix `TenantBusinessLogicTest.php`.
-- [ ] Tipizzare factory calls e modelli.
+| Argomento | File |
+|-----------|------|
+| Standard tipi SushiToJson / SushiToJsons | [phpstan-standards.md](./phpstan-standards.md) |
+| Identità e flusso tenant | [README.md](./README.md) |
+| Pattern di fix (wiki) | [wiki/concepts/phpstan-fix-patterns.md](./wiki/concepts/phpstan-fix-patterns.md) |
 
-## Obiettivo
-Ridurre gli errori a 0 mantenendo la validità dei test.
+## Duplicati storici (superseded)
+
+Non creare nuovi `phpstan-fixes-*` / `phpstan-corrections-*`. Aggiorna questa
+pagina o una story in `docs/stories/` / `docs/bmad/stories/`.
+
+| File | Nota |
+|------|------|
+| [phpstan-compliance.md](./phpstan-compliance.md) | claim L9 datato — superseded |
+| [phpstan-compliance-status.md](./phpstan-compliance-status.md) | superseded |
+| [phpstan-report.md](./phpstan-report.md) | output grezzo — superseded |
+| [phpstan-fixes.md](./phpstan-fixes.md) e varianti `*-january*`, `*-gennaio*`, `*-corrections*` | diary di sessione — superseded |
+| [phpstan-errors-roadmap.md](./phpstan-errors-roadmap.md), [phpstan-roadmap.md](./phpstan-roadmap.md) | roadmap storica — superseded |
+
+Prima di un nuovo `.md`: `python3 -I bashscripts/tools/docs/md-filenames.py name <percorso>`
+e cerca duplicati (`rg`/QMD). Nomi senza date/timestamp; link relativi.
+
+## Verifica
+
+Rimisura sempre: i numeri di un report vecchio non sono prova. Story BMAD del
+modulo per cause/fix/output; git forward-only.

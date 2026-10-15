@@ -6,7 +6,7 @@ module: "Tenant"
 type: rule
 tags: [file, naming, rules]
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-10-15
 qmd: "file naming rules"
 related:
   - "./phpstan-corrections-january.md"
@@ -132,3 +132,11 @@ Se entrambi i file contengono contenuto diverso:
 - Laravel Naming Conventions
 - Filament Best Practices
 - Git Case Sensitivity Issues
+
+## Convenzioni `.md` in `docs/`
+
+- Solo **kebab-case minuscolo** (`best-practices.md`), mai `BEST_PRACTICES.md` o `best_practices.md`.
+- Eccezione unica: `README.md`.
+- Niente date/timestamp ne' suffissi `-1.md`/`-2.md` nel nome (la data sta nel frontmatter).
+- Prima di creare un file: verifica che non esista gia' lo stesso argomento; usa `python3 -I bashscripts/tools/docs/md-filenames.py name <percorso>`.
+- Se esistono versioni UPPERCASE e lowercase dello stesso argomento: tieni kebab-case, elimina il duplicato (contenuto piu' ricco vince).

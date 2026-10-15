@@ -1,10 +1,10 @@
 ---
-title: "index generated"
+title: "INDEX GENERATED"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "index generated"
+qmd: "INDEX GENERATED"
 issues: []
 discussions: []
 ---
@@ -24,22 +24,22 @@ discussions: []
 
 The root level contains strategic documents, analyses, and consolidated guides:
 
-- [00-INDEX.md](00-INDEX.md)
+- [00-INDEX.md](00-index.md)
 - [00-index.md](00-index.md)
-- [API.md](API.md)
-- [ARCHITECTURE.md](ARCHITECTURE.md)
-- [LICENSE-full.md](LICENSE-full.md)
-- [METODI_DUPLICATI_ANALISI.md](METODI_DUPLICATI_ANALISI.md)
-- [PRD.md](PRD.md)
-- [PRODUCT_LAUNCH_PLAN.md](PRODUCT_LAUNCH_PLAN.md)
-- [PRODUCT_ROADMAP.md](PRODUCT_ROADMAP.md)
-- [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md)
+- [API.md](api.md)
+- [ARCHITECTURE.md](architecture.md)
+- [LICENSE-full.md](license-full.md)
+- [METODI_DUPLICATI_ANALISI.md](metodi-duplicati-analisi.md)
+- [PRD.md](prd.md)
+- [PRODUCT_LAUNCH_PLAN.md](product-launch-plan.md)
+- [PRODUCT_ROADMAP.md](product-roadmap.md)
+- [PRODUCT_STRATEGY.md](product-strategy.md)
 - [README.md](README.md)
-- [REDUNDANCY_ANALYSIS.md](REDUNDANCY_ANALYSIS.md)
-- [SPRINT_PLANNING.md](SPRINT_PLANNING.md)
-- [SUSHI_TO_JSON_FIX_PLAN.md](SUSHI_TO_JSON_FIX_PLAN.md)
-- [TODO.md](TODO.md)
-- [USER_RESEARCH.md](USER_RESEARCH.md)
+- [REDUNDANCY_ANALYSIS.md](redundancy-analysis.md)
+- [SPRINT_PLANNING.md](sprint-planning.md)
+- [SUSHI_TO_JSON_FIX_PLAN.md](sushi-to-json-fix-plan.md)
+- [TODO.md](todo.md)
+- [USER_RESEARCH.md](user-research.md)
 - [about.md](about.md)
 - [activitylog.md](activitylog.md)
 - [ai-methodologies.md](ai-methodologies.md)
@@ -61,7 +61,7 @@ The root level contains strategic documents, analyses, and consolidated guides:
 - [code-quality-improvement-report.md](code-quality-improvement-report.md)
 - [code-quality-report.md](code-quality-report.md)
 - [codex-error-fix.md](codex-error-fix.md)
-- [confidence_guidelines.md](confidence_guidelines.md)
+- [confidence_guidelines.md](confidence-guidelines.md)
 - [configuration-logic-analysis.md](configuration-logic-analysis.md)
 - [configuration.md](configuration.md)
 - [conflict-resolution-fixes.md](conflict-resolution-fixes.md)
@@ -384,12 +384,12 @@ Visual references and UI screenshots.
 
 ---
 
-title: "index generated"
+title: "INDEX GENERATED"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "index generated"
+qmd: "INDEX GENERATED"
 issues: []
 discussions: []
 ## Recently Updated
@@ -398,14 +398,14 @@ discussions: []
 
 | Date | File | Category |
 |------|------|----------|
-| 2026-07-28 | [00-INDEX.md](00-INDEX.md) | root |
-| 2026-07-28 | [API.md](API.md) | root |
-| 2026-07-28 | [ARCHITECTURE.md](ARCHITECTURE.md) | root |
-| 2026-07-28 | [PRD.md](PRD.md) | root |
+| 2026-07-28 | [00-INDEX.md](00-index.md) | root |
+| 2026-07-28 | [API.md](api.md) | root |
+| 2026-07-28 | [ARCHITECTURE.md](architecture.md) | root |
+| 2026-07-28 | [PRD.md](prd.md) | root |
 | 2026-07-28 | [README.md](README.md) | root |
-| 2026-07-28 | [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md) | root |
-| 2026-07-28 | [SPRINT_PLANNING.md](SPRINT_PLANNING.md) | root |
-| 2026-07-28 | [TODO.md](TODO.md) | root |
+| 2026-07-28 | [PRODUCT_STRATEGY.md](product-strategy.md) | root |
+| 2026-07-28 | [SPRINT_PLANNING.md](sprint-planning.md) | root |
+| 2026-07-28 | [TODO.md](todo.md) | root |
 | 2026-07-28 | [best-practices.md](best-practices.md) | root |
 | 2026-07-28 | [changelog.md](changelog.md) | root |
 | 2026-07-28 | [configuration.md](configuration.md) | root |

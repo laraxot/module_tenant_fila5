@@ -5,11 +5,14 @@ title: PHPStan Standards - Tenant Module (SushiToJson Traits)
 type: technical
 tags: [phpstan, sushi, traits, tenant, json]
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-10-15
 qmd: docs/wiki/phpstan-tenant-module.md
-status: draft
+status: stable
+related:
+  - ./phpstan.md
 ---
 
+> Canonica gate/status: [phpstan.md](./phpstan.md). Questa pagina resta il riferimento tipi Sushi.
 # PHPStan Level 10 Standards - Tenant Module
 
 ## SushiToJson Traits

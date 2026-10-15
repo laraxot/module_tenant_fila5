@@ -9,6 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "00 index"
 related:
+  - "./phpstan.md"
+  - "./phpstan-standards.md"
   - "./phpstan-corrections-january.md"
 ---
 # Tenant Module — Documentation Index
@@ -18,6 +20,12 @@ related:
 **Status**: Multi-tenant core module
 
 ---
+
+## Qualità / PHPStan
+
+- Canonica: [phpstan.md](./phpstan.md)
+- Tipi Sushi: [phpstan-standards.md](./phpstan-standards.md)
+- Prompt repo: [11-phpstan.md](../../../../bashscripts/docs/prompts/11-phpstan.md)
 
 ## 🎯 Quick Start
 
@@ -42,7 +50,7 @@ related:
 - **[roadmap/tenant-isolation.md](./roadmap/tenant-isolation.md)** — Data isolation strategy
 
 ### Product & Strategy
-- **[PRD.md](./PRD.md)** — Product requirements document
+- **[PRD.md](./prd.md)** — Product requirements document
 - **[philosophy.md](./philosophy.md)** — Core principles
 - **[README.md](./README.md)** — Module overview and local knowledge map
 
