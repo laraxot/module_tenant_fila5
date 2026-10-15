@@ -2,39 +2,62 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant\Unit\Actions\Config;
-
-use Illuminate\Support\Facades\File;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
-use Tests\Modules\Tenant\TestCase;
-use PHPUnit\Framework\Assert;
-use Symfony\Component\Finder\SplFileInfo;
+use Modules\Tenant\Models\Tenant;
+use Tests\TestCase;
 
-uses(TestCase::class);
+uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
 
-it('gets tenant config names', function (): void {
-    $file1 = mock(SplFileInfo::class);
-    $file1->allows([
-        'getExtension' => 'php',
-        'getFilenameWithoutExtension' => 'database',
-    ]);
+beforeEach(function () {
+    $this->action = app(GetTenantConfigNamesAction::class);
+    $this->tenant = Tenant::factory()->create(['name' => 'test-tenant']);
+    $configDir = base_path("tenants/{$this->tenant->name}/config");
+    \Illuminate\Support\Facades\File::makeDirectory($configDir, 0755, true);
+    \Illuminate\Support\Facades\File::put($configDir . '/app.php', "<?php return ['name' => 'App'];");
+    \Illuminate\Support\Facades\File::put($configDir . '/database.php', "<?php return ['driver' => 'mysql'];");
+    \Illuminate\Support\Facades\File::put($configDir . '/mail.php', "<?php return ['driver' => 'smtp'];");
+});
 
-    $file2 = mock(SplFileInfo::class);
-    $file2->allows([
-        'getExtension' => 'php',
-        'getFilenameWithoutExtension' => 'app',
-    ]);
+afterEach(function () {
+    $configDir = base_path("tenants/{$this->tenant->name}/config");
+    if (\Illuminate\Support\Facades\File::exists($configDir)) {
+        \Illuminate\Support\Facades\File::deleteDirectory($configDir);
+    }
+});
 
-    $file3 = mock(SplFileInfo::class);
-    $file3->allows([
-        'getExtension' => 'txt',
-    ]);
+describe('GetTenantConfigNamesAction', function () {
+    it('returns list of config file names', function () {
+        $names = $this->action->execute($this->tenant->name);
 
-    File::shouldReceive('files')->andReturn([$file1, $file2, $file3]);
+        expect($names)->toBeArray();
+        expect($names)->toContain('app');
+        expect($names)->toContain('database');
+        expect($names)->toContain('mail');
+    });
 
-    $result = app(GetTenantConfigNamesAction::class)->execute();
+    it('returns empty array for tenant without config dir', function () {
+        $tenant2 = Tenant::factory()->create(['name' => 'no-config-tenant']);
+        $names = $this->action->execute($tenant2->name);
 
-    Assert::assertCount(2, $result);
-    Assert::assertSame(['id' => 1, 'name' => 'database'], $result[0]);
-    Assert::assertSame(['id' => 2, 'name' => 'app'], $result[1]);
+        expect($names)->toBeArray()->toBeEmpty();
+    });
+
+    it('returns empty array for non-existent tenant', function () {
+        $names = $this->action->execute('non-existent');
+
+        expect($names)->toBeArray()->toBeEmpty();
+    });
+
+    it('ignores non-PHP files', function () {
+        $configDir = base_path("tenants/{$this->tenant->name}/config");
+        \Illuminate\Support\Facades\File::put($configDir . '/readme.txt', 'Not a config');
+        \Illuminate\Support\Facades\File::put($configDir . '/config.json', '{}');
+
+        $names = $this->action->execute($this->tenant->name);
+
+        expect($names)->not->toContain('readme');
+        expect($names)->not->toContain('config');
+    });
 });

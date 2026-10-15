@@ -2,25 +2,87 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant\Unit\Actions\Config;
-
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
-use Tests\Modules\Tenant\TestCase;
-use PHPUnit\Framework\Assert;
+use Modules\Tenant\Models\Tenant;
+use Tests\TestCase;
 
-uses(TestCase::class);
+uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
 
-it('returns empty array for non-existent config', function (): void {
-    $action = app(GetTenantConfigArrayAction::class);
-    $result = $action->execute('non_existent_config');
-
-    Assert::assertIsArray($result);
+beforeEach(function () {
+    $this->action = app(GetTenantConfigArrayAction::class);
+    $this->tenant = Tenant::factory()->create(['name' => 'test-tenant']);
+    // Create tenant config file
+    $configDir = base_path("tenants/{$this->tenant->name}/config");
+    \Illuminate\Support\Facades\File::makeDirectory($configDir, 0755, true);
+    \Illuminate\Support\Facades\File::put(
+        $configDir . '/app.php',
+        '<?php return [' . PHP_EOL .
+        "    'name' => 'Tenant App'," . PHP_EOL .
+        "    'debug' => true," . PHP_EOL .
+        '];'
+    );
 });
 
-it('returns array with string keys', function (): void {
-    $action = app(GetTenantConfigArrayAction::class);
-    $result = $action->execute('app');
+afterEach(function () {
+    $configDir = base_path("tenants/{$this->tenant->name}/config");
+    if (\Illuminate\Support\Facades\File::exists($configDir)) {
+        \Illuminate\Support\Facades\File::deleteDirectory($configDir);
+    }
+});
 
-    // Should return array with string keys even if empty
-    Assert::assertIsArray($result);
+describe('GetTenantConfigArrayAction', function () {
+    it('loads tenant config array', function () {
+        $config = $this->action->execute('app', $this->tenant->name);
+
+        expect($config)->toBeArray()
+            ->toHaveKeys(['name', 'debug']);
+        expect($config['name'])->toBe('Tenant App');
+        expect($config['debug'])->toBeTrue();
+    });
+
+    it('returns empty array for non-existent config', function () {
+        $config = $this->action->execute('non-existent', $this->tenant->name);
+
+        expect($config)->toBeArray()->toBeEmpty();
+    });
+
+    it('returns empty array for non-existent tenant', function () {
+        $config = $this->action->execute('app', 'non-existent-tenant');
+
+        expect($config)->toBeArray()->toBeEmpty();
+    });
+
+    it('loads nested config values', function () {
+        $configDir = base_path("tenants/{$this->tenant->name}/config");
+        \Illuminate\Support\Facades\File::put(
+            $configDir . '/database.php',
+            '<?php return [' . PHP_EOL .
+            "    'connections' => [" . PHP_EOL .
+            "        'tenant' => [" . PHP_EOL .
+            "            'driver' => 'mysql'," . PHP_EOL .
+            "            'host' => 'localhost'," . PHP_EOL .
+            "        ]," . PHP_EOL .
+            "    ]," . PHP_EOL .
+            '];'
+        );
+
+        $config = $this->action->execute('database', $this->tenant->name);
+
+        expect($config)->toHaveKey('connections');
+        expect($config['connections']['tenant']['driver'])->toBe('mysql');
+    });
+
+    it('handles PHP array syntax variations', function () {
+        $configDir = base_path("tenants/{$this->tenant->name}/config");
+        \Illuminate\Support\Facades\File::put(
+            $configDir . '/short.php',
+            '<?php return [\'key\' => \'value\'];'
+        );
+
+        $config = $this->action->execute('short', $this->tenant->name);
+
+        expect($config['key'])->toBe('value');
+    });
 });

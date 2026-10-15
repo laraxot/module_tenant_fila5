@@ -2,54 +2,58 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant\Unit\Actions\Domains;
-
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
-use Tests\Modules\Tenant\TestCase;
-use PHPUnit\Framework\Assert;
+use Modules\Tenant\Models\Domain;
+use Modules\Tenant\Models\Tenant;
+use Tests\TestCase;
 
-uses(TestCase::class);
+uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
 
-it('gets domains array by scanning config directory', function (): void {
-    // This test is a bit tricky because recurse() instantiates Filesystem internally
-    // and uses config_path().
-
-    $action = new class extends GetDomainsArrayAction
-    {
-        public function recurse(string $path): array
-        {
-            return [
-                'tenant1' => [],
-                'group1' => [
-                    'tenant2' => [],
-                ],
-            ];
-        }
-    };
-
-    $result = $action->execute();
-
-    Assert::assertCount(2, $result);
-    Assert::assertContains(['id' => 'tenant1', 'name' => 'tenant1'], $result);
-    Assert::assertContains(['id' => 'tenant2.group1', 'name' => 'tenant2.group1'], $result);
+beforeEach(function () {
+    $this->action = app(GetDomainsArrayAction::class);
+    $this->tenant = Tenant::factory()->create(['name' => 'test-tenant']);
 });
 
-it('collapses nested directory structure into dot notation', function (): void {
-    $action = app(GetDomainsArrayAction::class);
-    $data = [
-        'a' => [
-            'b' => [
-                'c' => [],
-            ],
-            'd' => [],
-        ],
-        'e' => [],
-    ];
+describe('GetDomainsArrayAction', function () {
+    it('returns domains for tenant', function () {
+        Domain::factory()->create(['tenant_id' => $this->tenant->id, 'domain' => 'tenant1.example.com', 'is_primary' => true]);
+        Domain::factory()->create(['tenant_id' => $this->tenant->id, 'domain' => 'alias.example.com', 'is_primary' => false]);
 
-    $result = $action->collapse($data);
+        $domains = $this->action->execute($this->tenant->id);
 
-    Assert::assertCount(3, $result);
-    Assert::assertContains('c.b.a', $result);
-    Assert::assertContains('d.a', $result);
-    Assert::assertContains('e', $result);
+        expect($domains)->toBeArray()->toHaveCount(2);
+        expect($domains[0]['domain'])->toBe('tenant1.example.com');
+        expect($domains[0]['is_primary'])->toBeTrue();
+        expect($domains[1]['is_primary'])->toBeFalse();
+    });
+
+    it('returns empty array for tenant without domains', function () {
+        $tenant2 = Tenant::factory()->create(['name' => 'no-domains']);
+
+        $domains = $this->action->execute($tenant2->id);
+
+        expect($domains)->toBeArray()->toBeEmpty();
+    });
+
+    it('returns empty array for non-existent tenant', function () {
+        $domains = $this->action->execute(99999);
+
+        expect($domains)->toBeArray()->toBeEmpty();
+    });
+
+    it('includes SSL status', function () {
+        Domain::factory()->create([
+            'tenant_id' => $this->tenant->id,
+            'domain' => 'secure.example.com',
+            'is_primary' => true,
+            'ssl_status' => 'active',
+        ]);
+
+        $domains = $this->action->execute($this->tenant->id);
+
+        expect($domains[0])->toHaveKey('ssl_status');
+        expect($domains[0]['ssl_status'])->toBe('active');
+    });
 });
