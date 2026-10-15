@@ -107,9 +107,9 @@ Comprehensive wiki system with concepts, how-to guides, rules, and troubleshooti
   - [xotbase-table-columns-enforcement.md](wiki/concepts/xotbase-table-columns-enforcement.md)
 
 **Troubleshooting** (4 files)
-  - [git-merge-conflict-inventory-2026-04-28.md](wiki/troubleshooting/git-merge-conflict-inventory-2026-04-28.md)
+  - [git-merge-conflict-inventory-2026-04-28.md](wiki/troubleshooting/git-merge-conflict-inventory.md)
   - [git-merge-conflict-inventory.md](wiki/troubleshooting/git-merge-conflict-inventory.md)
-  - [phpstan-fixes-2026-05-06.md](wiki/troubleshooting/phpstan-fixes-2026-05-06.md)
+  - [phpstan-fixes-2026-05-06.md](wiki/troubleshooting/phpstan-fixes.md)
   - [phpstan-fixes.md](wiki/troubleshooting/phpstan-fixes.md)
 
 **Memories** (3 files)
@@ -146,7 +146,7 @@ Strategic planning and vision documents:
 - [04-milestones.md](roadmap/04-milestones.md)
 - [04-risks.md](roadmap/04-risks.md)
 - [05-risks.md](roadmap/05-risks.md)
-- [2025-q4-roadmap.md](roadmap/2025-q4-roadmap.md)
+- [2025-q4-roadmap.md](roadmap/roadmap-deprecated-aggiungere.md)
 - [chaos-readiness.md](roadmap/chaos-readiness.md)
 - [documentation-consolidation.md](roadmap/documentation-consolidation.md)
 - [missing-models.md](roadmap/missing-models.md)
@@ -301,8 +301,8 @@ Documents pending integration:
 - [links.md](_integration/links.md)
 - [tenant.md](_integration/tenant.md)
 - [to-integrate.md](_integration/to-integrate.md)
-- [to-integrate-1.md](_integration/to-integrate-1.md)
-- [to-integrate_1.md](_integration/to-integrate_1.md)
+- [to-integrate-1.md](_integration/to-integrate-contenuto-migrato.md)
+- [to-integrate_1.md](_integration/to-integrate-contenuto-migrato.md)
 - [to_integrate.md](_integration/to_integrate.md)
 
 ### HTML to PDF (6 files)

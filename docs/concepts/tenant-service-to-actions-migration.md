@@ -60,4 +60,4 @@ caller Geo; non esiste più una classe pubblica `Modules\Tenant\Services\TenantS
 - La catena `ConfigResolverRegistry` non è stata spostata: era codice morto e la sua semantica avrebbe perso
   connessioni database e fallback quando collegata al percorso reale.
 
-Dettaglio, prove e probe prima/dopo: [stories/2026-10-08-services-to-actions-tenant.story.md](../stories/2026-10-08-services-to-actions-tenant.story.md).
+Dettaglio, prove e probe prima/dopo: [stories/services-to-actions-tenant.story.md](../stories/services-to-actions-tenant.story.md).
