@@ -601,7 +601,7 @@ Per-tenant configuration files override system defaults, enabling customization 
 
 ## Related Files
 
-- [API Reference](./api.md)
+- [API Reference](./API.md)
 - [Setup Guide](./SETUP.md)
 - [Troubleshooting](troubleshooting.md)
 - [Best Practices](./BEST_PRACTICES.md)

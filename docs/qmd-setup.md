@@ -1,5 +1,5 @@
 ---
-qmd: "QMD SETUP"
+qmd: "qmd setup"
 issues: []
 discussions: []
 title: "QMD Setup — Module Tenant"
@@ -67,7 +67,7 @@ qmd search "form" -c tenant  # Solo questo modulo
 
 - [Global QMD Config](../qmd.md) (root docs)
 - [Operational Discipline](../../../../docs/wiki/concepts/llm-wiki-operational-discipline.md)
-- [On-Demand Pattern](./on-demand-pattern.md)
+- [On-Demand Pattern](./ON-DEMAND-PATTERN.md)
 
 ---
 *Cache: ~/.cache/qmd-cache/ | Index: ~/.cache/qmd-cache/index*

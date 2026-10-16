@@ -1,5 +1,5 @@
 ---
-qmd: "PROJECT STRUCTURE"
+qmd: "project structure"
 issues: []
 discussions: []
 title: "Project Structure — Module Tenant"
@@ -50,7 +50,7 @@ tags: [structure, architecture, module]
 | `wiki/log.md` | Storico attività (ingest/query/lint) |
 | `wiki/rules/` | Regole + trigger map locale |
 | `wiki/concepts/` | Concetti specifici del modulo |
-| `on-demand-pattern.md` | **Leggi prima** — pattern da seguire |
+| `ON-DEMAND-PATTERN.md` | **Leggi prima** — pattern da seguire |
 
 ## Convenzioni
 

@@ -3,17 +3,12 @@ title: "phpstan report"
 type: note
 tags: [documentation]
 created: 2026-09-26
-updated: 2026-10-15
+updated: 2026-09-26
 qmd: "phpstan report"
 issues: []
 discussions: []
-status: superseded
-superseded_by: ./phpstan.md
-source_of_truth: false
+status: draft
 ---
-
-> **Superseded.** Usa [./phpstan.md](./phpstan.md).
-
 
 
  [OK] No errors        

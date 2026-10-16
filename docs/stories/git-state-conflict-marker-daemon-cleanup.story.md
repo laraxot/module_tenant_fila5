@@ -38,7 +38,7 @@ Un working tree gia' modificato (non mio, presumibilmente da un run
 precedente) tentava di ripulire di nuovo ma **cancellava contenuto reale**
 invece di limitarsi a rimuovere i marker: `docs/INDEX.md` e `docs/README.md`
 azzerati a 0 byte, `docs/architecture.md` troncato di 257 righe (perso l'intero
-capitolo "Architecture: Tenant Module" merged da `architecture.md`), le 4
+capitolo "Architecture: Tenant Module" merged da `ARCHITECTURE.md`), le 4
 story private della YAML frontmatter (`id`, `epic`, `story`, `scope`,
 `epic_title`).
 

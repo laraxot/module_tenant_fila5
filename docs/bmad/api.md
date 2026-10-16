@@ -426,7 +426,7 @@ User::withoutGlobalScopes()->all();  // Requires permission
 ---
 
 ## Related Documentation
-- [Architecture Overview](./architecture.md)
+- [Architecture Overview](./ARCHITECTURE.md)
 - [Setup & Configuration](./SETUP.md)
 - [Troubleshooting](troubleshooting.md)
 - [Best Practices](./BEST_PRACTICES.md)
