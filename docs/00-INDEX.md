@@ -11,6 +11,7 @@ qmd: "tenant module docs index canonico host config directory evidence legacy"
 status: active
 related:
   - "./phpstan-corrections-january.md"
+  - "./stories/phpstan-tenant-test-assertions.story.md"
 ---
 # Tenant Module — Documentation Index
 
@@ -23,6 +24,8 @@ related:
 ## 🎯 Quick Start
 
 **Come funziona davvero (verificato 2026-10-14)**: [README.md](./README.md). Il tenant e' la cartella `laravel/config/<host invertito>/` scelta da `GetTenantNameAction` (`fixcity.local` diventa `local/fixcity`); non c'e' isolamento per riga ne' `TenantService`.  
+**PHPStan test wave**: [stories/phpstan-tenant-test-assertions.story.md](./stories/phpstan-tenant-test-assertions.story.md).  
+**PHPStan test wave**: [stories/phpstan-tenant-test-assertions.story.md](./stories/phpstan-tenant-test-assertions.story.md).  
 **Comando di prova**: `cd laravel && php artisan tenant:test` (stampa `tenant name :local/fixcity`).  
 **Pagine wiki Architecture, TenantIdentification, ConfigurationDistribution**: marcate `stale` il 2026-10-14 (descrivono un TenantService e sottodomini che non esistono).
 

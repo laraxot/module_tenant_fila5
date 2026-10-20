@@ -16,7 +16,7 @@ describe('Domain Model', function (): void {
     test('_domain_model_can_be_instantiated', function (): void {
         $domain = new Domain;
 
-        Assert::assertInstanceOf(Domain::class, $domain);
+        Assert::assertSame(Domain::class, $domain::class);
     });
 
     test('_get_rows_method_works_correctly', function (): void {

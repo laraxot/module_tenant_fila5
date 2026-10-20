@@ -32,7 +32,6 @@ function createTenantRecord(array $attributes = []): Tenant
 {
     try {
         $tenant = TenantFactory::new()->createOne($attributes);
-        Assert::assertInstanceOf(Tenant::class, $tenant);
 
         return $tenant;
     } catch (QueryException $exception) {
@@ -47,7 +46,6 @@ function createTenantDomainRecord(array $attributes = []): TenantDomain
 {
     try {
         $domain = TenantDomainFactory::new()->createOne($attributes);
-        Assert::assertInstanceOf(TenantDomain::class, $domain);
 
         return $domain;
     } catch (QueryException $exception) {
@@ -113,7 +111,6 @@ it('can create and manage tenants', function (): void {
 
 it('can manage tenant domains', function (): void {
     $tenant = createTenantRecord();
-    Assert::assertInstanceOf(Tenant::class, $tenant);
 
     $domain = createTenantDomainRecord([
         'tenant_id' => $tenant->id,
@@ -121,7 +118,6 @@ it('can manage tenant domains', function (): void {
         'is_primary' => true,
         'status' => 'active',
     ]);
-    Assert::assertInstanceOf(TenantDomain::class, $domain);
 
     /** @var TestCase $this */
     $this->assertDatabaseHasRow('tenant_domains', [
