@@ -148,3 +148,9 @@ risposta JSON esterna di HERE, resta). Nei file eliminati non c'erano const.
 - Rischio di nuova riesumazione dei file cancellati se un merge da `laraxot/dev` riporta la versione vecchia: controllare `git status` del
   modulo dopo il prossimo merge.
 - I 13 test falliti sopra (TestCase `expectMockery`, `DomainsTable`) sono preesistenti e fuori perimetro.
+
+## Riesuma 2026-10-20
+
+Pull ha riportato `TenantService` + Config resolvers. Re-`rg`: zero produzione viva (solo commenti).
+Rimosso di nuovo l'intero albero `app/Services/` del modulo. Nessuna Action nuova.
+

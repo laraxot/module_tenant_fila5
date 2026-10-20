@@ -6,7 +6,7 @@ module: "Tenant"
 type: concept
 tags: [00, INDEX]
 created: 2026-07-14
-updated: 2026-10-14
+updated: 2026-10-20
 qmd: "tenant module docs index canonico host config directory evidence legacy"
 status: active
 related:
@@ -119,7 +119,7 @@ For deep understanding of multi-tenant configuration:
 | Directory | Ruolo | File .md |
 |---|---|---|
 | `README.md`, `wiki/` | canonici (README verificato sul codice; le tre pagine wiki citate sopra sono stale) | 74 in wiki |
-| `stories/` | evidence BMAD | 19 |
+| `stories/` | evidence BMAD | 22 |
 | `bmad/` | evidence (brainstorming, architecture, quick-reference, story storiche) | 76 |
 | `roadmap/` | piani, non stato | 41 |
 | `investigation/`, `bugfix/` | diagnosi | 1 e 2 |
@@ -163,5 +163,6 @@ Aggiornata il 2026-10-07 dopo la risoluzione dei marker di merge nei docs (versi
 - [Quick reference](bmad/quick-reference.md)
 - [Setup guide](bmad/setup-guide.md)
 - Story: cartella [bmad/stories/](bmad/stories/).
-- Story PHPStan 2026-10-08: [categoria nei benchmark Sushi](stories/phpstan-tenant-sushi-benchmark-category.story.md).
-- Story Services 2026-10-08: [TenantService e Services/Config eliminati](stories/services-to-actions-tenant.story.md).
+- Story Services 2026-10-08: [TenantService e Services/Config eliminati](stories/services-to-actions-tenant.story.md). **Superata dai fatti il 2026-10-20**: il pull ha riportato `app/Services/` (vedi la story qui sotto e [services-config-dead-code-retired.md](services-config-dead-code-retired.md)).
+- Story PHPStan 2026-10-20: [regressione dei test dopo il pull](stories/phpstan-test-wave-tenant.story.md) (TestCase e test riportati alla generazione tipizzata, `app/Services` corretto sul posto).
+- La story `phpstan-tenant-sushi-benchmark-category.story.md`, linkata qui fino al 2026-10-14, non esiste piu' nel modulo: link rimosso.
