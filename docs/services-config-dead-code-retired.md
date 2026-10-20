@@ -44,3 +44,4 @@ Dopo `rg` produzione (escluse docs/tests): zero chiamanti vivi a `TenantService`
 Eliminati di nuovo: `TenantService.php`, `ConfigResolverRegistry`, `ConfigResolverInterface`, tre resolver.
 `HereService` (unico ex-chiamante) era gia' sparito con il cluster Geo.
 
+
