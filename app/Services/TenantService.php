@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\GetTenantNameAction;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Xot\Actions\Arr\SaveArrayAction;
 use Modules\Xot\Actions\File\FixPathAction;
 use Nwidart\Modules\Facades\Module;
@@ -49,9 +50,7 @@ class TenantService
         if (\function_exists('isRunningTestBench') && isRunningTestBench()) {
             return realpath(__DIR__.'/../Config').\DIRECTORY_SEPARATOR.$filename;
         }
-        $path = base_path('config/'.self::getName().'/'.$filename);
-
-        return str_replace(['/', '\\'], [\DIRECTORY_SEPARATOR, \DIRECTORY_SEPARATOR], $path);
+        return app(GetTenantFilePathAction::class)->execute($filename);
     }
 
     // end function
