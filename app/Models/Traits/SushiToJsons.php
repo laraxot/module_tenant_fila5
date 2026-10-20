@@ -99,26 +99,28 @@ trait SushiToJsons
     }
 
     /**
+     * Legge ogni `database/content/<tabella>/**.json` come una riga.
+     *
      * @return array<int, array<string, mixed>>
      */
     private function collectRowsFromJsonFiles(string $tbl): array
     {
         $path = app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl);
-        $files = File::allFiles($path) ?: [];
+        if (! File::isDirectory($path)) {
+            return [];
+        }
 
         $rows = [];
-        foreach ($files as $file) {
+        foreach (File::allFiles($path) as $file) {
             $row = $this->getRowFromJsonFile($file);
-            if ($row == null) {
+            if ($row === null) {
                 continue;
             }
 
             $relativePathname = $file->getRelativePathname();
 
             if (Str::contains($relativePathname, '/')) {
-                $sub = Str::of($relativePathname)->beforeLast('/')->replace('/', '.')->toString();
-                $row['id'] = $sub.'.'.$row['id'];
-                $row['slug'] = $sub.'.'.$row['slug'];
+                $row = $this->prefixRowKeys($row, Str::of($relativePathname)->beforeLast('/')->replace('/', '.')->toString());
             }
 
             $rows[] = $row;
@@ -127,21 +129,34 @@ trait SushiToJsons
         return $rows;
     }
 
+    /**
+     * @return array<string, mixed>|null
+     */
     private function getRowFromJsonFile(SplFileInfo $file): ?array
     {
         if ($file->getExtension() !== 'json') {
             return null;
         }
 
-        $json = File::json($file->getPathname());
+        return $this->mapJsonFileToRow($file->getPathname());
+    }
 
-        $schema = $this->resolveSchema();
-        if ($schema === []) {
-            return null;
+    /**
+     * Una riga in sottocartella (`a/b/1.json`) espone id e slug come `a.b.<valore>`.
+     *
+     * @param  array<string, mixed>  $row
+     * @return array<string, mixed>
+     */
+    private function prefixRowKeys(array $row, string $prefix): array
+    {
+        foreach (['id', 'slug'] as $key) {
+            $value = $row[$key] ?? null;
+            if (is_string($value) || is_int($value)) {
+                $row[$key] = $prefix.'.'.$value;
+            }
         }
 
-        /** @var array<string, mixed> $json */
-        return $this->buildRowFromSchema($schema, $json);
+        return $row;
     }
 
     /**

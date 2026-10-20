@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
+use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Xot\Actions\Arr\SaveArrayAction;
 use Modules\Xot\Actions\File\FixPathAction;
 use Nwidart\Modules\Facades\Module;
+use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
 
 use function Safe\json_decode;
@@ -57,8 +59,11 @@ class TenantService
      * tenant config.
      * ret_old \Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed.
      * ret_old1 \Illuminate\Config\Repository|mixed.
+     *
+     * @param  string|int|array<mixed>|null  $default  Valore restituito se la chiave non esiste
+     * @return float|int|string|array<mixed>|null
      */
-    public static function config(string $key, string|int|array|null $_default = null): float|int|string|array|null
+    public static function config(string $key, string|int|array|null $default = null): float|int|string|array|null
     {
         /*
          * if(app()->runningInConsole()){
@@ -120,26 +125,8 @@ class TenantService
 
         Config::set($group, $merge_conf);
 
-        $res = config($key);
+        $res = config($key, $default);
 
-        if ($res === null && isset($default)) {
-            $index = Str::after($key, $group.'.');
-            $data = Arr::set($extra_conf, $index, $default);
-            /*
-             * dddx([
-             * 'key' => $key,
-             * 'group' => $group,
-             * 'index' => $index,
-             * '$config_name' => $config_name,
-             * 'data' => $data,
-             * ]);
-             */
-            throw new Exception('['.__LINE__.']['.class_basename(self::class).']');
-            // self::saveConfig($group,$data);
-            // return $default;
-        }
-
-        // dddx(gettype($res));//array;
         if (is_numeric($res) || \is_string($res) || \is_array($res) || $res === null) {
             return $res;
         }
@@ -156,6 +143,9 @@ class TenantService
         return str_replace('/', '.', $name).'.'.$key;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public static function getConfig(string $name): array
     {
         $path = self::filePath($name.'.php');
@@ -168,9 +158,12 @@ class TenantService
             $data = [];
         }
 
-        return $data;
+        return app(FilterConfigStringKeysAction::class)->execute($data);
     }
 
+    /**
+     * @param  array<string, mixed>  $data
+     */
     public static function saveConfig(string $name, array $data): void
     {
         $path = self::filePath($name.'.php');
@@ -314,6 +307,9 @@ class TenantService
         return $res;
     }
 
+    /**
+     * @return array<int, array{id: int, name: string}>
+     */
     public static function getConfigNames(): array
     {
         $name = self::getName();
@@ -344,8 +340,8 @@ class TenantService
         $files = File::files($dir);
 
         return collect($files)
-            ->filter(static fn ($item): bool => $item->getExtension() === 'php')
-            ->map(static fn ($item, $k): array => [
+            ->filter(static fn (SplFileInfo $item): bool => $item->getExtension() === 'php')
+            ->map(static fn (SplFileInfo $item, int $k): array => [
                 'id' => $k + 1,
                 'name' => $item->getFilenameWithoutExtension(),
             ])
@@ -361,7 +357,6 @@ class TenantService
         $filePath = static::filePath('modules_statuses.json');
         $contents = File::get($filePath);
         try {
-            /** @var array */
             $json = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
         } catch (Exception $e) {
             throw new Exception($e->getMessage().'['.$filePath.']['.__LINE__.']['.basename(__FILE__).']');

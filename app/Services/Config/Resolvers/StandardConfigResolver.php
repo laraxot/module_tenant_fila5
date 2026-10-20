@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Modules\Tenant\Services\Config\Resolvers;
 
 use Exception;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Str;
 use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
 use Modules\Tenant\Services\TenantService;
 
@@ -22,6 +20,10 @@ class StandardConfigResolver implements ConfigResolverInterface
         return true;
     }
 
+    /**
+     * @param  string|int|array<mixed>|null  $default
+     * @return float|int|string|array<mixed>|null
+     */
     public function resolve(string $key, string|int|array|null $default = null): float|int|string|array|null
     {
         $group = $this->extractGroup($key);
@@ -45,7 +47,7 @@ class StandardConfigResolver implements ConfigResolverInterface
         $result = config($key);
 
         if ($result === null && $default !== null) {
-            $this->handleMissingConfig($key, $group, $extraConf, $default);
+            $this->handleMissingConfig($key);
         }
 
         if (! is_numeric($result) && ! is_string($result) && ! is_array($result) && $result !== null) {
@@ -111,19 +113,11 @@ class StandardConfigResolver implements ConfigResolverInterface
     }
 
     /**
-     * @param  array<string, mixed>  $extraConf
+     * Una chiave assente con un default esplicito e' un errore (comportamento storico mantenuto).
+     * Il salvataggio del default nella config del tenant non e' mai stato attivato.
      */
-    private function handleMissingConfig(
-        string $key,
-        string $group,
-        array $extraConf,
-        string|int|array|null $default
-    ): void {
-        $index = Str::after($key, $group.'.');
-        $data = Arr::set($extraConf, $index, $default);
-
-        // In production, we might want to save this default
-        // For now, we just throw an exception to maintain backward compatibility
+    private function handleMissingConfig(string $key): never
+    {
         throw new Exception('Configuration key not found: '.$key);
     }
 }

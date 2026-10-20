@@ -6,7 +6,7 @@ module: "Tenant"
 type: concept
 tags: [services, config, dead, code]
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-10-20
 qmd: "services config dead code retired"
 related:
   - "./phpstan-corrections-january.md"
@@ -27,3 +27,14 @@ status: draft
 Consumer aggiornati: `Modules/User/app/Datas/{PasswordData,SocialProviderData}.php`, `Modules/User/app/Filament/Pages/Password.php`, `Modules/Notify/app/Providers/NotifyServiceProvider.php` (import morto rimosso), `Modules/User/resources/views/pages/index.blade.php` (import morto rimosso).
 
 Dettagli investigazione completa: `docs/chat/xot-merge-conflicts-coordination.md`.
+
+## Aggiornamento 2026-10-20: i file sono tornati
+
+Il pull del 2026-10-20 ha riportato `app/Services/TenantService.php`,
+`app/Services/Config/ConfigResolverRegistry.php`, `Contracts/ConfigResolverInterface.php` e i tre
+resolver. Non e' una scelta: e' la quarta volta che un sync li ripristina (vedi anche
+[stories/tenant-services-to-actions.story.md](stories/tenant-services-to-actions.story.md)).
+Per ora sono stati corretti sul posto per PHPStan, senza toccare il comportamento, perche'
+`Modules/Geo/app/Services/HereService.php` chiama ancora `TenantService::config()`.
+L'Action che lo sostituisce (`Geo\Actions\Here\GetHereRouteSummaryAction`) esiste gia'.
+Decisione aperta e dettagli: [stories/phpstan-test-wave-tenant.story.md](stories/phpstan-test-wave-tenant.story.md).

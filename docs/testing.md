@@ -6,7 +6,7 @@ module: "Tenant"
 type: concept
 tags: [testing]
 created: 2026-07-14
-updated: 2026-08-24
+updated: 2026-10-20
 qmd: "testing"
 related:
   - "./phpstan-corrections-january.md"
@@ -19,6 +19,10 @@ related:
   trait, Action e consumer domain.
 - [TENANT-7.2 — contratti dei test harness](./stories/7.2.phpstan-test-harness-contracts.story.md)
   possiede i 40 findings residui nei test di configurazione, Sushi e coverage.
+
+- [Regressione dei test dopo il pull, 2026-10-20](./stories/phpstan-test-wave-tenant.story.md):
+  `tests/TestCase.php` e 9 file di test erano tornati a una generazione senza helper e
+  senza tipi (733 errori); ripristinata la generazione tipizzata, 0 errori sul modulo.
 
 ### Esito TENANT-7.2
 
@@ -36,6 +40,17 @@ non `Model` nudo — `SushiToCsv` → `Sigma\Models\WebService`, `SushiToPhpArra
 `User\Models\SocialProvider`, `SushiToJsons` → `Tenant\Models\BaseModelJsons`. I test
 restano in memoria (`forceFill` / file tmp + mock di `GetTenantFilePathAction`).
 `setAttribute()` nel trait resta il contratto Eloquent delle colonne dinamiche.
+
+### Helper di `Modules\Tenant\Tests\TestCase`
+
+I test Pest del modulo chiamano metodi statici di `TestCase`, non funzioni libere
+(`tests/Pest.php` e' solo un commento: Pest legge un solo `Pest.php`, quello della root).
+I principali: `mockAppService($classe, $callback)` (mock Mockery registrato nel container
+con `app()->instance`), `expectMockery($mock, $metodo)` (espettativa tipizzata),
+`sushiModel()` / `sushiJsonPath()` / `sushiTestData()` / `sushiRowById()` (fixture del modello
+Sushi di test), `createTenant()` / `tenantModel()`, `setServerNameForTenantTest()`,
+`tenantDbUnavailable()` (oggi `true`: i test che scrivono sul DB tenant si saltano) e
+`skipCurrentTest()`. Un helper nuovo va qui, tipizzato, non in un file `Support`.
 
 ## Overview
 
