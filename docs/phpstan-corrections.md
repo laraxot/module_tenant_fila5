@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan corrections"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Correzioni PHPStan - Modulo Tenant

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan cluster"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan Cluster - 2026-03-10

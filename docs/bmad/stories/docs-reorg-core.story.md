@@ -3,6 +3,8 @@ title: "Riorganizzazione docs core Tenant"
 type: story
 tags: [docs, bmad, tenant, reorganization]
 qmd: "riorganizzazione docs core Tenant"
+status: draft
+updated: 2026-10-09
 ---
 
 # Story — riorganizzazione docs core: Tenant

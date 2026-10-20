@@ -7,7 +7,7 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "arr first vs collect first ision"
 related:
-  - "./phpstan-corrections-january.md"
+  - "../phpstan-corrections-january.md"
 ---
 # Decisione: Arr::first() vs collect()->first()
 

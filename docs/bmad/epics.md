@@ -6,6 +6,7 @@ module: "Tenant"
 tags: [docs, tenant, bmad]
 created: 2026-10-06
 updated: 2026-10-06
+qmd: "epics e user stories - modulo tenant tenant"
 ---
 
 # Epics e User Stories - Modulo Tenant

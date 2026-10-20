@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan fixes"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan Fixes - Tenant Module - 2025-10-13
@@ -146,15 +147,6 @@ beforeEach(function (): void {
 3. Create missing models for TenantBusinessLogicTest
 
 ---
-
-title: "phpstan fixes"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "phpstan fixes"
-issues: []
-discussions: []
 *Last Updated: 2025-10-13*
 *Progress: 71% complete (24 errors remaining)*
 *Module Status: Partial completion - major issues resolved*

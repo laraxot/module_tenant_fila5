@@ -8,9 +8,9 @@ created: 2026-06-18
 updated: 2026-06-18
 qmd: "phpstan fix patterns tenant module mockService allows factory WebmozartAssert"
 related:
-  - ../../../../../docs/wiki/PHPSTAN-INDEX.md
+  - ../../../../../../docs/wiki/PHPSTAN-INDEX.md
   - ../../../Xot/docs/wiki/concepts/phpstan-pest-bridge-discipline.md
-  - ../testing-rules.md
+  - ../../testing-rules.md
 ---
 
 # PHPStan fix patterns — Tenant
@@ -93,6 +93,6 @@ vendor/bin/phpinsights analyse Modules/Tenant/app Modules/Tenant/tests --config-
 ./vendor/bin/pest Modules/Tenant/tests
 ```
 
-Regole PHPMD modulo: `Modules/Tenant/phpmd.ruleset.xml` — allineato al [canon Laraxot](../../../../docs/wiki/concepts/phpmd-laraxot-conventions.md) (exclude aggiuntivo `GetTenantNameAction` per bootstrap `$_SERVER`).
+Regole PHPMD modulo: `Modules/Tenant/phpmd.ruleset.xml` — allineato al [canon Laraxot](../../../../../../docs/wiki/concepts/phpmd-laraxot-conventions.md) (exclude aggiuntivo `GetTenantNameAction` per bootstrap `$_SERVER`).
 
 Config PHPInsights: `Modules/Tenant/phpinsights.php` (preset laravel + remove regole incompatibili con Pest/traits).

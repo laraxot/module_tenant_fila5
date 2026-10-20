@@ -16,6 +16,9 @@ dependencies: ["Xot", "User"]
 extends: []
 extended_by: 0
 documentation_date: "2026-05-27"
+updated: 2026-10-07
+tags: [docs, tenant, bmad]
+qmd: "tenant   multi-tenancy tenant"
 ---
 type: concept
 tags: [docs, tenant, bmad]

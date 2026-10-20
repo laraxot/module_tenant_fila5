@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan fixes gennaio 2025"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Correzioni PHPStan - Gennaio 2025

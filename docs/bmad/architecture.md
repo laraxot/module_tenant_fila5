@@ -13,7 +13,7 @@ bmad_version: v3.30.1
 updated_at: '2026-09-22'
 status: done
 related:
-  - ../stories/continuazione-domani.md
+  - stories/continuazione-domani.md
 ---
 
 # Tenant — Architettura
