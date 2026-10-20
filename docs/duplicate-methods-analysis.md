@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "duplicate methods analysis"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Analisi Metodi Duplicati - Modulo Tenant
 

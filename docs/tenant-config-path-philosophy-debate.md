@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "tenant config path philosophy debate"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Tenant Config Path Philosophy - THE FURIOUS DEBATE
 

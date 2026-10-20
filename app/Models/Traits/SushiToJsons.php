@@ -10,9 +10,11 @@ namespace Modules\Tenant\Models\Traits;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use ReflectionObject;
 use Sushi\Sushi;
+use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
 
 use function Safe\json_encode;
@@ -101,22 +103,45 @@ trait SushiToJsons
      */
     private function collectRowsFromJsonFiles(string $tbl): array
     {
-        $files = File::glob(app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl).'/*.json') ?: [];
+        $path = app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl);
+        $files = File::allFiles($path) ?: [];
 
-        /** @var array<int, array<string, mixed>> $rows */
         $rows = [];
-
         foreach ($files as $file) {
-            if (! is_string($file)) {
+            $row = $this->getRowFromJsonFile($file);
+            if ($row == null) {
                 continue;
             }
-            $row = $this->mapJsonFileToRow($file);
-            if ($row !== null) {
-                $rows[] = $row;
+
+            $relativePathname = $file->getRelativePathname();
+
+            if (Str::contains($relativePathname, '/')) {
+                $sub = Str::of($relativePathname)->beforeLast('/')->replace('/', '.')->toString();
+                $row['id'] = $sub.'.'.$row['id'];
+                $row['slug'] = $sub.'.'.$row['slug'];
             }
+
+            $rows[] = $row;
         }
 
         return $rows;
+    }
+
+    private function getRowFromJsonFile(SplFileInfo $file): ?array
+    {
+        if ($file->getExtension() !== 'json') {
+            return null;
+        }
+
+        $json = File::json($file->getPathname());
+
+        $schema = $this->resolveSchema();
+        if ($schema === []) {
+            return null;
+        }
+
+        /** @var array<string, mixed> $json */
+        return $this->buildRowFromSchema($schema, $json);
     }
 
     /**

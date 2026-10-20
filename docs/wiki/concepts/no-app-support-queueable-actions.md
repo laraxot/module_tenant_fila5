@@ -10,7 +10,7 @@ issues:
 discussions:
   - "https://github.com/laraxot/platform/discussions/273"
 related:
-  - ../../../../docs/wiki/concepts/no-app-support-monorepo-migration.md
+  - ../../../../../../docs/wiki/concepts/no-app-support-monorepo-migration.md
   - config-merge-philosophy.md
 ---
 
@@ -55,4 +55,4 @@ Config tenant e morph map devono ignorare chiavi non-string (PHPStan + merge sic
 
 ## Collegamenti
 
-- [no-app-support-monorepo-migration](../../../../docs/wiki/concepts/no-app-support-monorepo-migration.md)
+- [no-app-support-monorepo-migration](../../../../../../docs/wiki/concepts/no-app-support-monorepo-migration.md)

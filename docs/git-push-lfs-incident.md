@@ -7,6 +7,7 @@ title: "Git push bloccato da oggetto Git LFS mancante"
 type: incident
 created: 2026-07-28
 updated: 2026-07-28
+status: draft
 ---
 
 # Git push bloccato da oggetto Git LFS mancante

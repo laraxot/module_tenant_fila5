@@ -9,6 +9,7 @@ module: Tenant
 type: reference
 tags: [config, settings, customization]
 last_updated: 2026-08-04
+status: draft
 ---
 
 # Tenant Module Configuration Reference

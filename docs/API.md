@@ -7,6 +7,7 @@ type: reference
 tags: [tenant, api, contracts, services]
 created: 2026-07-09
 updated: 2026-07-09
+status: draft
 ---
 
 # API Reference: Tenant Module

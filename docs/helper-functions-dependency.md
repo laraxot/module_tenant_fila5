@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "helper functions dependency"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Dipendenze Helper Functions - Modulo Tenant
 

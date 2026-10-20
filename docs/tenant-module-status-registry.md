@@ -13,6 +13,7 @@ related:
   - ../app/Actions/Modules/GetTenantModulesAction.php
   - ../app/Actions/Config/GetTenantFilePathAction.php
   - ../../Xot/app/Actions/Filament/GetModulesNavigationItems.php
+status: draft
 ---
 
 # Registro tenant-specific dei moduli abilitati

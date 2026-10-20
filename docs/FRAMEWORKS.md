@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "FRAMEWORKS"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Tenant — Framework Integration Notes
@@ -44,12 +45,4 @@ Efficiency principles:
 - Simplification opportunities: [TBD]
 
 ---
-title: "FRAMEWORKS"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "FRAMEWORKS"
-issues: []
-discussions: []
 *Generated: 2026-08-04*

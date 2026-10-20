@@ -13,6 +13,8 @@ updated: 2026-07-27
 
 Concetti specifici del modulo Tenant. Carica on-demand via `qmd search` o consulta il [trigger map root](/docs/wiki/rules/00-TRIGGER_MAP.md).
 
+- [Sostenibilità tenant](../../project-sustainability-tenant-governance.md) — opt-in partner/CTA per host (BMAD)
+
 ## Runtime tenant (2026-07-27)
 
 - [tenant-module-status-registry](../../tenant-module-status-registry.md) — `modules_statuses.json` per overlay `config/local/{tenant}/`
@@ -29,4 +31,4 @@ Concetti specifici del modulo Tenant. Carica on-demand via `qmd search` o consul
 
 ## Regola progetto
 
-- [database-folder-lowercase-rule.md](../../../../../docs/wiki/concepts/database-folder-lowercase-rule.md)
+- [database-folder-lowercase-rule.md](../../../../../../docs/wiki/concepts/database-folder-lowercase-rule.md)

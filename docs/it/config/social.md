@@ -9,7 +9,7 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "social"
 related:
-  - "./phpstan-corrections-january.md"
+  - "../../phpstan-corrections-january.md"
 ---
 <?php
 
@@ -40,7 +40,7 @@ return [
 
 ## Collegamenti tra versioni di social.md
 * [social.md](../../../tenant/docs/it/config/social.md)
-* [social.md](../../../cms/docs/blocks/social.md)
+* [social.md](../../../../Cms/docs/blocks/social.md)
 
 ### Versione Incoming
 

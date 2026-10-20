@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "services config dead code retired"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Services/Config retired — usare Actions
 

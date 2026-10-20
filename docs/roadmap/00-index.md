@@ -9,7 +9,7 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "00 index"
 related:
-  - "./phpstan-corrections-january.md"
+  - "../phpstan-corrections-january.md"
 ---
 # Roadmap Index - Tenant
 

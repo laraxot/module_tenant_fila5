@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "00 INDEX"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Roadmap Index - Tenant

@@ -11,6 +11,7 @@ discussions: []
 related:
   - "../../../../../../docs/stories/STORY-003-gitmodules-sync-conflict-sweep.md"
   - "../../../../../../docs/chat/gitmodules-sync.md"
+status: draft
 ---
 
 # Gitmodules sync session

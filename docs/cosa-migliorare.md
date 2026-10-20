@@ -54,5 +54,5 @@ Prima di fidarsi di qualunque numero: il tree deve essere fermo e `vendor/` comp
 php -r 'echo count(require "vendor/composer/autoload_classmap.php");'   # ~25358, non 13041
 ```
 
-Quadro comparativo di tutte le unità: [`docs/quality-audit.md`](../../../../docs/quality-audit.md).
+Quadro comparativo di tutte le unità: [`docs/quality-audit.md`](quality-audit.md).
 
