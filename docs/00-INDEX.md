@@ -164,5 +164,6 @@ Aggiornata il 2026-10-07 dopo la risoluzione dei marker di merge nei docs (versi
 - [Setup guide](bmad/setup-guide.md)
 - Story: cartella [bmad/stories/](bmad/stories/).
 - Story Services 2026-10-08: [TenantService e Services/Config eliminati](stories/services-to-actions-tenant.story.md). **Superata dai fatti il 2026-10-20**: il pull ha riportato `app/Services/` (vedi la story qui sotto e [services-config-dead-code-retired.md](services-config-dead-code-retired.md)).
+- Story parita' 2026-10-20 (epic Service verso QueueableAction, W2): [TenantService e Services/Config contro le Action successore](stories/services-parity-audit-tenant.story.md), con i difetti ereditati sul boot path.
 - Story PHPStan 2026-10-20: [regressione dei test dopo il pull](stories/phpstan-test-wave-tenant.story.md) (TestCase e test riportati alla generazione tipizzata, `app/Services` corretto sul posto).
 - La story `phpstan-tenant-sushi-benchmark-category.story.md`, linkata qui fino al 2026-10-14, non esiste piu' nel modulo: link rimosso.

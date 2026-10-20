@@ -26,7 +26,7 @@ Ordine dell'utente (2026-10-20): "i services vanno tutti convertiti in spatie qu
 ## Stato misurato il 2026-10-20 alle 12:45 UTC (volatile)
 
 - Dal disco: `Tenant/app/Services/` non esiste. `git -C Modules/Tenant ls-tree -r --name-only HEAD -- app/Services` e `laraxot/dev`: 0 file. Alle 10:00 `laraxot/dev` ne aveva 6: la pulizia e' arrivata con il commit `6ed6bfa` (2026-10-20 12:19 UTC), che ha tolto `TenantService.php` (386 righe) e i 5 file di `Services/Config/`.
-- Nessun `MERGE_HEAD`, nessun file non risolto, `git status` pulito alle 12:34. Controprova: Geo nello stesso istante ha `MERGE_HEAD` e 15 file non risolti, quindi il comando distingue.
+- Nessun `MERGE_HEAD`, nessun file non risolto, `git status` pulito alle 12:34 e alle 12:48. Controprova: alle 12:34 Geo aveva `MERGE_HEAD` e 15 file non risolti (alle 12:48 non piu'), quindi il comando distingue.
 - Storia di `TenantService.php`: cancellato l'8 ottobre (`ccbfc94`), riportato dal pull il 20 ottobre alle 09:07 (`40f7efe`), cancellato di nuovo alle 12:19 (`6ed6bfa`). Senza guardia il prossimo pull puo' riportarlo.
 
 ## Analisi dello scopo
@@ -81,13 +81,15 @@ Consumatori vivi di `ResolveTenantConfigValueAction`: `TenantServiceProvider` (r
 
 ## Acceptance criteria
 
-- [ ] La cartella `laravel/Modules/Tenant/app/Services/` non esiste piu' (su disco e nell'indice del repo del modulo), con ogni file non-Service che conteneva spostato nella sede giusta (Adapters/, Actions/, Datas/, docs/archive) o eliminato come copia morta con evidenza. Stato 2026-10-20 12:45: gia' soddisfatto per i file; ripetere il controllo dopo ogni pull.
+- [ ] Verificato il 2026-10-20 12:49 (da rimisurare prima della chiusura): la cartella `laravel/Modules/Tenant/app/Services/` non esiste (su disco e nell'indice del repo del modulo). Comando: `find laravel/Modules laravel/Themes laravel/app -type d -name Services -not -path '*/vendor/*'` (non stampa nessun `app/Services`; stampa ancora `Xot/tests/Unit/Services` e `Notify/tests/Unit/Services`, che non sono `app/Services`) e `git -C laravel/Modules/Tenant ls-files app/Services` vuoto. Ripetere dopo ogni pull.
+- [ ] I file non-Service che la cartella conteneva sono stati eliminati dall'auto-sync (commit `6ed6bfa`, 12:19) senza rinomina: `Services/Config/*` (5 file: nessun successore diretto, la logica `database` e `morph_map` sta nel `TenantServiceProvider`) e `TenantService.php` (12 Action successore nella tabella). Confermare con `git -C laravel/Modules/Tenant show 6ed6bfa --stat` e registrare "eliminato, successore X".
+- [ ] Vettori di rigenerazione (W4), solo da citare: `laravel/config/localhost/modules.php:136` (`'services' => [..., 'generate' => false]` alle 12:5x, modifica non committata) e `php artisan module:make-service` di nwidart, che crea `app/Services/<Nome>.php` senza guardare `generate`. Nessuna azione in questa story.
 - [ ] Parita' registrata per ogni riga della tabella, con la lettura di `git -C Modules/Tenant show 6ed6bfa^:app/Services/TenantService.php` accanto alla Action.
 - [ ] Decisione scritta sulle copie Tenant/Xot di `GetTenantConfigPathAction` e `GetTenantConfigArrayAction` (una sola sorgente).
 - [ ] Confronto `mergeModuleConnections` contro `DatabaseConfigResolver::addModuleConnections` con esito scritto.
 - [ ] `GetTenantConfigArrayAction` non ingoia piu' ogni `Throwable` in silenzio, oppure la story spiega perche' va bene.
 - [ ] Nessun riferimento residuo: `rg -nP 'TenantService\b|Services\\Config' Modules Themes routes config tests -g '*.php' -g '!**/vendor/**'` restituisce solo commenti o docs storici motivati, con controprova su un simbolo ancora citato.
-- [ ] Guardia contro la resurrezione decisa con l'utente (cancellazione in `laraxot/dev` gia' avvenuta per Tenant a monte; verificare con `ls-tree`).
+- [ ] Guardia contro la resurrezione: il ratchet `laravel/tests/Architecture/ModulesArchitectureTest.php` (test "has no Modules/*/app/Services directory", allowlist `archAllowedServicesDirs()`) copre la cartella e non va modificato ne' duplicato; la cancellazione in `laraxot/dev` per Tenant risulta avvenuta (`ls-tree` = 0 alle 12:48), da riverificare.
 - [ ] PHPStan solo mirato sul perimetro toccato.
 
 ## Verifica
@@ -96,7 +98,8 @@ Da `laravel/`:
 
 ```bash
 ls Modules/Tenant/app/Services 2>&1                                         # atteso: No such file or directory
-git -C Modules/Tenant ls-tree -r --name-only laraxot/dev -- app/Services | wc -l   # atteso 0 (Geo: 6, controprova)
+git -C Modules/Tenant ls-tree -r --name-only laraxot/dev -- app/Services | wc -l   # atteso 0
+git -C Modules/Tenant ls-tree -r --name-only 6ed6bfa^ -- app/Services | wc -l      # controprova: > 0 (6 il 2026-10-20)
 rg -nP '\bTenantService\b|Services\\Config\\' Modules Themes routes config -g '*.php' -g '!**/vendor/**' -g '!**/tests/**'
 find Modules Themes app -type d -name Services -not -path '*/vendor/*'      # atteso a fine epic: vuoto
 find Modules Themes app -type d -name Actions -not -path '*/vendor/*' | wc -l   # controprova: > 0 (oggi 57)
