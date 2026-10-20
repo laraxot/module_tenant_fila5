@@ -43,5 +43,3 @@ Dettagli: [stories/services-to-actions-tenant.story.md](stories/services-to-acti
 Dopo `rg` produzione (escluse docs/tests): zero chiamanti vivi a `TenantService` (commenti in Notify SMS Data / SmtpData; Cms Breadcrumb gia' su Action).
 Eliminati di nuovo: `TenantService.php`, `ConfigResolverRegistry`, `ConfigResolverInterface`, tre resolver.
 `HereService` (unico ex-chiamante) era gia' sparito con il cluster Geo.
-
-
