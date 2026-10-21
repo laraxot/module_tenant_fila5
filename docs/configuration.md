@@ -1,4 +1,9 @@
 ---
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "configuration"
+issues: []
+discussions: []
 title: Tenant Module Configuration Reference
 module: Tenant
 type: reference

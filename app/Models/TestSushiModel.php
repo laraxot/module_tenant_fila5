@@ -7,6 +7,7 @@ namespace Modules\Tenant\Models;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+use Modules\Tenant\Models\Contracts\HasSushiToJson;
 use Modules\Tenant\Models\Traits\SushiToJson;
 use Webmozart\Assert\Assert;
 
@@ -40,7 +41,7 @@ use function Safe\json_encode;
  *
  * @mixin \Eloquent
  */
-class TestSushiModel extends BaseModel
+class TestSushiModel extends BaseModel implements HasSushiToJson
 {
     use SushiToJson;
 
@@ -113,7 +114,7 @@ class TestSushiModel extends BaseModel
     }
 
     /**
-     * @param array<int|string, array<string, mixed>> $data
+     * @param  array<int|string, array<string, mixed>>  $data
      */
     public function saveToJson(array $data): bool
     {

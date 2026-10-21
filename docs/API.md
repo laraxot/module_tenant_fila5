@@ -1,4 +1,7 @@
 ---
+qmd: "API"
+issues: []
+discussions: []
 title: "API Reference: Tenant Module"
 type: reference
 tags: [tenant, api, contracts, services]

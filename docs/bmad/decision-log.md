@@ -1,3 +1,13 @@
+---
+title: "decision-log.md"
+type: concept
+status: active
+module: "Tenant"
+tags: [docs, tenant, bmad]
+created: 2026-10-06
+updated: 2026-10-06
+---
+
 # Decision Log - Modulo Tenant
 
 ## Formato

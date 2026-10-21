@@ -1,4 +1,7 @@
 ---
+qmd: "ARCHITECTURE"
+issues: []
+discussions: []
 title: "Architecture: Tenant Module"
 type: architecture
 tags: [tenant, multi-tenancy, architecture, core]

@@ -7,6 +7,7 @@ created: 2026-09-28
 updated: 2026-09-28
 qmd: "Tenant brainstorming rischi opportunità domande aperte"
 ---
+tags: [docs, tenant, bmad]
 # Tenant — brainstorming
 
 ## Punto di partenza

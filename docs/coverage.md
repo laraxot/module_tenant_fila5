@@ -1,4 +1,13 @@
 ---
+title: "coverage"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "coverage"
+issues: []
+discussions: []
+---
 title: "Tenant Module Test Coverage"
 module: "Tenant"
 type: concept
@@ -21,6 +30,7 @@ This module has comprehensive test coverage with various test types implemented.
 - **Test Types**: Unit, Feature, Integration tests
 
 ## Coverage Statistics
+---
 ## Status
 
 **2026-09-06**: philosophy.md created. PHPStan analyzed (OK). Pest suite (TBD). Coverage target: +5% per module.
@@ -53,6 +63,7 @@ stessa foreign key di default, solo la resolution della classe concreta e' ora d
 - **Methods**: 0
 - **Coverage Rate**: 0%
 
+---
 ### 2026-09-07 (sessione claude sonnet 5 — campagna "PHPStan zero", `docs/stories/phpstan-tenant-fix.md`)
 
 Al `git status` di apertura, `Modules/Tenant` aveva gia' un WIP concorrente non committato

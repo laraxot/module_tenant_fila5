@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "🏢 Tenant — English presentation"
 module: "Tenant"
 type: concept

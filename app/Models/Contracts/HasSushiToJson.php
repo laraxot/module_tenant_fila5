@@ -24,7 +24,7 @@ use Illuminate\Support\Carbon;
  * @property Pivot|null $pivot
  * @property string $tennant_name
  *
-* @method string getRouteKey()
+ * @method string getRouteKey()
  * @method string getRouteKeyName()
  * @method string getTable()
  * @method \Illuminate\Database\Eloquent\Builder<Model> with(array<int, string> $array)
@@ -76,6 +76,5 @@ interface HasSushiToJson
      *
      * @return array<string, string>
      */
-    public function getSchema(): array;
+    public function getSchema();
 }
-

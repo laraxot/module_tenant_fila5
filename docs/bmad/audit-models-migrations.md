@@ -4,6 +4,7 @@ type: audit
 created: 2026-07-15
 confidence: high
 ---
+tags: [docs, tenant, bmad]
 
 # Tenant Module Models & Migrations Audit
 

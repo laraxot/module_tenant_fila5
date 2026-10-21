@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Chaos Monkey Tenant Isolation Checklist (Tenant)"
 module: "Tenant"
 type: concept

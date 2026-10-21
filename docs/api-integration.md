@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Api Integration"
 module: "Tenant"
 type: concept

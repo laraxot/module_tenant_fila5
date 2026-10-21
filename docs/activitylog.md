@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Activitylog"
 module: "Tenant"
 type: concept

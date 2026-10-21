@@ -3,6 +3,7 @@ title: agent edit discipline — puntatore
 type: reference
 updated: 2026-05-19
 ---
+tags: [docs, tenant, bmad]
 
 # Disciplina edit e qualità (puntatore)
 

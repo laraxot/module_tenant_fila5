@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Decisione: Arr::first() vs collect()->first()"
 module: "Tenant"
 type: concept

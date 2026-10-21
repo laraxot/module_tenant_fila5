@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Best Practices"
 module: "Tenant"
 type: concept

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Bugfix: TestSushiSeeder PHPStan Mixed Type Errors"
 module: "Tenant"
 type: concept
