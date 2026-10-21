@@ -326,12 +326,13 @@ describe('Tenant statement coverage — SushiToJson named model', function (): v
 
         $model = new SushiToJsonCoverageModel;
         Assert::assertSame($jsonPath, $model->getJsonFile());
-        Assert::assertSame([], $model->getRows());
-        Assert::assertSame([], $model->loadExistingData());
+        // Stato iniziale: file JSON vuoto → nessuna riga Sushi (comportamento, non tautologia tipizzata).
+        Assert::assertCount(0, $model->getRows());
+        Assert::assertCount(0, $model->loadExistingData());
 
         File::put($jsonPath, 'null');
         expect(fn (): array => $model->getSushiRows())->toThrow(Exception::class);
-        Assert::assertSame([], $model->loadExistingData());
+        Assert::assertCount(0, $model->loadExistingData());
 
         File::put($jsonPath, json_encode([
             ['id' => 1, 'name' => 'Alpha', 'meta' => ['x' => 1], 0 => 'skip'],
