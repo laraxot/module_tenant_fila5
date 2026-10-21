@@ -6,6 +6,10 @@ module: "Tenant"
 tags: [docs, tenant, bmad]
 created: 2026-10-06
 updated: 2026-10-06
+<<<<<<< .merge_file_EeYMq3
+=======
+qmd: "collisioni di nome per sola differenza di maiuscole tenant"
+>>>>>>> .merge_file_TPr518
 ---
 
 # Collisioni di nome per sola differenza di maiuscole

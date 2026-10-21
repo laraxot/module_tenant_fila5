@@ -9,7 +9,11 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "02 next"
 related:
+<<<<<<< .merge_file_reO4zL
   - "./phpstan-corrections-january.md"
+=======
+  - "../phpstan-corrections-january.md"
+>>>>>>> .merge_file_YbbmmZ
 ---
 # Next (Module Tenant)
 

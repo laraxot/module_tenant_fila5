@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "mcp configuration"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_j1gbCy
+=======
+status: draft
+>>>>>>> .merge_file_9U9VOi
 ---
 # MCP Server Configuration - Tenant Module
 

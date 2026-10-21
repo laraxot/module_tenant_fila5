@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "license"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_p0h7aX
+=======
+status: draft
+>>>>>>> .merge_file_2MolTm
 ---
 The MIT License (MIT)
 

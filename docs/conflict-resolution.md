@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "conflict resolution"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_OAebRS
+=======
+status: draft
+>>>>>>> .merge_file_EjIGH1
 ---
 # Conflict Resolution — Module Tenant
 

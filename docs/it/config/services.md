@@ -9,7 +9,11 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "services"
 related:
+<<<<<<< .merge_file_HhWC01
   - "./phpstan-corrections-january.md"
+=======
+  - "../../phpstan-corrections-january.md"
+>>>>>>> .merge_file_mGlx7I
 ---
 <?php
 

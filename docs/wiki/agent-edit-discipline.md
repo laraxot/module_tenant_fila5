@@ -11,8 +11,13 @@ Stub **DRY**: policy nella wiki di progetto; discussione e ragionamenti in GitHu
 
 ## Link operativi (relativi al repo)
 
+<<<<<<< .merge_file_VrGS7P
 - Regola canonica: [../../../../docs/wiki/rules/validation-post-edit-rule.md](../../../../docs/wiki/rules/validation-post-edit-rule.md)
 - How-to issue ↔ wiki: [../../../../docs/wiki/how-to/github-issue-agent-discipline.md](../../../../docs/wiki/how-to/github-issue-agent-discipline.md)
+=======
+- Regola canonica: [../../../../docs/wiki/rules/validation-post-edit-rule.md](../../../../../docs/wiki/rules/validation-post-edit-rule.md)
+- How-to issue ↔ wiki: [../../../../docs/wiki/how-to/github-issue-agent-discipline.md](../../../../../docs/wiki/how-to/github-issue-agent-discipline.md)
+>>>>>>> .merge_file_oBmH6x
 - Prompt LLM: [../../../../bashscripts/tools/prompts/llm-wiki.txt](../../../../bashscripts/tools/prompts/llm-wiki.txt) §3 (FLVP)
 
 ## Perché questo file

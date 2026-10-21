@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "runninginconsole check ision"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_GIJdYT
+=======
+status: draft
+>>>>>>> .merge_file_ZhQGGj
 ---
 # Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction
 

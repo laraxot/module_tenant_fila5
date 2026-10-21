@@ -10,6 +10,7 @@ type: ux-design
 module: Tenant
 related:
   - ./livewire-inventory.md
+status: draft
 ---
 
 # UX Tenant

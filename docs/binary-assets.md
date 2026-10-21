@@ -7,6 +7,10 @@ updated: 2026-09-26
 qmd: "binary assets"
 issues: []
 discussions: []
+<<<<<<< .merge_file_zmoj5W
+=======
+status: draft
+>>>>>>> .merge_file_198mea
 ---
 
 # Asset binari

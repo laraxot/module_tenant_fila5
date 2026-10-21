@@ -9,7 +9,11 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "app"
 related:
+<<<<<<< .merge_file_PuJ2ek
   - "./phpstan-corrections-january.md"
+=======
+  - "../../phpstan-corrections-january.md"
+>>>>>>> .merge_file_nzBGJ1
 ---
 ~~~php
 return [

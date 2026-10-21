@@ -9,7 +9,11 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "performance optimization"
 related:
+<<<<<<< .merge_file_hpCYYM
   - "./phpstan-corrections-january.md"
+=======
+  - "../phpstan-corrections-january.md"
+>>>>>>> .merge_file_pv5sZV
 ---
 # Performance e ottimizzazioni
 

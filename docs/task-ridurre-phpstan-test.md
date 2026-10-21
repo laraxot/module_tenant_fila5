@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "task ridurre phpstan test"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_3yCq2v
+=======
+status: draft
+>>>>>>> .merge_file_nU7Xi0
 ---
 # Task: Ridurre Suppressioni PHPStan nei Test - Tenant
 

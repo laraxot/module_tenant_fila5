@@ -10,5 +10,9 @@ updated: 2026-07-14
 qmd: "exchanges"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_JsjD4a
+=======
+status: draft
+>>>>>>> .merge_file_zp3Zoo
 ---
 

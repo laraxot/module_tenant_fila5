@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "license full"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_fxZX3s
+=======
+status: draft
+>>>>>>> .merge_file_f3bkzB
 ---
 The MIT License (MIT)
 

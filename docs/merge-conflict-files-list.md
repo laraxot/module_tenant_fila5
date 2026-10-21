@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "merge conflict files list"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_ahPdRI
+=======
+status: draft
+>>>>>>> .merge_file_w5Z2sl
 ---
 # Merge Conflict Files List
 

@@ -2,6 +2,13 @@
 type: investigation
 title: "Investigation Isolation Strategy"
 links: {github_issue: #XXX}
+<<<<<<< .merge_file_SK3IGr
+=======
+status: draft
+updated: 2026-10-08
+tags: [docs, tenant, investigation]
+qmd: "investigation: isolation strategy tenant"
+>>>>>>> .merge_file_ABPewp
 ---
 # Investigation: Isolation Strategy
 

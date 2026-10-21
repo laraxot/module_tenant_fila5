@@ -8,6 +8,10 @@ type: report
 module: Tenant
 updated: 2026-09-01
 qmd: "audit qualita tenant phpstan phpmd phpinsights pest coverage soppressioni collisioni case"
+<<<<<<< .merge_file_PkCYOx
+=======
+status: draft
+>>>>>>> .merge_file_W7OUuA
 ---
 
 # Audit di qualita — modulo Tenant

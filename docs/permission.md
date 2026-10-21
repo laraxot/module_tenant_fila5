@@ -10,5 +10,9 @@ updated: 2026-07-14
 qmd: "permission"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_mRiKhF
+=======
+status: draft
+>>>>>>> .merge_file_imJIPs
 ---
 

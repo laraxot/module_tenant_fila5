@@ -10,6 +10,10 @@ discussions: []
 module: theme
 topic: lang_link
 canonical: ../../../Themes/docs/shared-components/.gitkeep-Modules
+<<<<<<< .merge_file_bFu0Nf
+=======
+status: stub
+>>>>>>> .merge_file_GgQaWK
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/.gitkeep-Modules

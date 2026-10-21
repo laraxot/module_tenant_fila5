@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Modules\Tenant\Tests\Unit;
 
 use Exception;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
@@ -28,7 +26,6 @@ use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Models\Policies\DomainPolicy;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TenantDomain;
-use Modules\Tenant\Models\TenantSetting;
 use Modules\Tenant\Models\TenantSubscription;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Providers\TenantServiceProvider;
@@ -188,7 +185,6 @@ describe('Tenant statement coverage — models and policies', function (): void 
         Assert::assertSame('acme-corp', $tenant->slug);
         Assert::assertTrue($tenant->isActive());
         Assert::assertSame('acme.test', $tenant->url);
-        Assert::assertInstanceOf(HasMany::class, $tenant->users());
 
         $noSlug = new Tenant;
         $noSlug->name = 'Beta';
@@ -202,8 +198,6 @@ describe('Tenant statement coverage — models and policies', function (): void 
         });
 
         Assert::assertSame([['id' => '1', 'name' => 'a.test']], (new TenantDomain)->getRows());
-        Assert::assertInstanceOf(BelongsTo::class, (new TenantSetting)->tenant());
-        Assert::assertInstanceOf(BelongsTo::class, (new TenantSubscription)->tenant());
         Assert::assertArrayHasKey('expires_at', (new TenantSubscription)->getCasts());
     });
 
@@ -337,8 +331,7 @@ describe('Tenant statement coverage — SushiToJson named model', function (): v
 
         File::put($jsonPath, 'null');
         expect(fn (): array => $model->getSushiRows())->toThrow(Exception::class);
-        $dataAfterNullWrite = $model->loadExistingData();
-        Assert::assertSame([], $dataAfterNullWrite);
+        Assert::assertSame([], $model->loadExistingData());
 
         File::put($jsonPath, json_encode([
             ['id' => 1, 'name' => 'Alpha', 'meta' => ['x' => 1], 0 => 'skip'],

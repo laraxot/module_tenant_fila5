@@ -10,6 +10,10 @@ tags: [redundancy, factories, seeders, casing]
 created: 2026-05-21
 related:
   - https://github.com/laraxot/platform/issues/89
+<<<<<<< .merge_file_HX9zkY
+=======
+status: draft
+>>>>>>> .merge_file_iTWgtW
 ---
 
 # Tenant redundancy audit 2026-05-21

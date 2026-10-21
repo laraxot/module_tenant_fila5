@@ -6,6 +6,10 @@ module: "Tenant"
 tags: [docs, tenant, bmad]
 created: 2026-10-06
 updated: 2026-10-06
+<<<<<<< .merge_file_sWobgp
+=======
+qmd: "bugfix: phpstan `assign.propertytype`   tenantfactory duplicata confonde il tipo tenant tenant"
+>>>>>>> .merge_file_Dannhm
 ---
 
 # Bugfix: PHPStan `assign.propertyType` — TenantFactory duplicata confonde il tipo Tenant

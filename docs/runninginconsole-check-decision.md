@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "runninginconsole check decision"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_DgaMCC
+=======
+status: draft
+>>>>>>> .merge_file_LIA2dg
 ---
 # Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction
 

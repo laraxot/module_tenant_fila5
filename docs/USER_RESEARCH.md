@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "user research"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_iAEkX4
+=======
+status: draft
+>>>>>>> .merge_file_WXrQRE
 ---
 # Tenant Module - User Research
 

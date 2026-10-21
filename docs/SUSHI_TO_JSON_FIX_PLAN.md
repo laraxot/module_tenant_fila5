@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "sushi to json fix plan"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_7GkXSu
+=======
+status: draft
+>>>>>>> .merge_file_wscF2O
 ---
 # Tenant Module - SushiToJson Traits Fix Plan
 

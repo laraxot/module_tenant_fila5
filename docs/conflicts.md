@@ -10,5 +10,9 @@ updated: 2026-07-14
 qmd: "conflicts"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_zEBqps
+=======
+status: draft
+>>>>>>> .merge_file_fY1ygZ
 ---
 

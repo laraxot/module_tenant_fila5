@@ -10,5 +10,9 @@ updated: 2026-07-14
 qmd: "moduleses"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_ZclINw
+=======
+status: draft
+>>>>>>> .merge_file_5r5rla
 ---
 

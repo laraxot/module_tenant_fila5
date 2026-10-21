@@ -7,7 +7,11 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "confidence guidelines"
 related:
+<<<<<<< .merge_file_Da9ogn
   - "./phpstan-corrections-january.md"
+=======
+  - "../phpstan-corrections-january.md"
+>>>>>>> .merge_file_E6SQj5
 ---
 # Massimizzare il livello di confidenza
 

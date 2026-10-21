@@ -9,6 +9,10 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "sushi to json completion summary"
 related:
+<<<<<<< .merge_file_GWE63P
   - "./phpstan-corrections-january.md"
+=======
+  - "../phpstan-corrections-january.md"
+>>>>>>> .merge_file_SEttqE
 ---
 

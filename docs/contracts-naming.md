@@ -9,6 +9,10 @@ updated: 2026-07-12
 tags: [contract, naming, architecture, laraxot, tenant]
 related:
   - ../../../../docs/wiki/rules/module-contracts-naming-placement.md
+<<<<<<< .merge_file_P5RxDH
+=======
+status: draft
+>>>>>>> .merge_file_hhmxOl
 ---
 
 # Contracts Naming & Placement in Tenant

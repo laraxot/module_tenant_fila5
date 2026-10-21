@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "duplicate files to remove"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_3pwe65
+=======
+status: draft
+>>>>>>> .merge_file_jcNRc9
 ---
 # File Duplicati da Eliminare - Modulo Tenant
 

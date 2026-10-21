@@ -10,5 +10,9 @@ updated: 2026-07-14
 qmd: "rector conflict resolution"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_MqsLpV
+=======
+status: draft
+>>>>>>> .merge_file_aN7Upo
 ---
 

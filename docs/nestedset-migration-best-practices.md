@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "nestedset migration best practices"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_XforJK
+=======
+status: draft
+>>>>>>> .merge_file_BBSAGq
 ---
 # NestedSet Migration Best Practices - Tenant Module
 

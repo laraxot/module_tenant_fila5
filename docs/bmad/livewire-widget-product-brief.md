@@ -10,6 +10,7 @@ type: product-brief
 module: Tenant
 related:
   - ./livewire-inventory.md
+status: draft
 ---
 
 # Brief Tenant

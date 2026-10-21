@@ -13,6 +13,10 @@ related:
   - "../../../app/Actions/GetTenantNameAction.php"
   - "../../../app/Actions/Config/GetTenantFilePathAction.php"
   - "../../../../Xot/app/Actions/Filament/GetModulesNavigationItems.php"
+<<<<<<< .merge_file_0EZitS
+=======
+status: draft
+>>>>>>> .merge_file_HUGtBP
 ---
 
 # Modules Statuses — due file indipendenti, non uno solo

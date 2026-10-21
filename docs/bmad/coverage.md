@@ -7,8 +7,8 @@ created: 2026-07-14
 updated: 2026-09-07
 qmd: "coverage"
 related:
-  - "./phpstan-corrections-january.md"
-  - "./stories/phpstan-tenant-fix.md"
+  - "../phpstan-corrections-january.md"
+  - "../stories/phpstan-tenant-fix.md"
 ---
 # Tenant Module Test Coverage
 

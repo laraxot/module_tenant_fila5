@@ -8,10 +8,17 @@ discussions: []
 type: overview
 module: Tenant
 sources:
+<<<<<<< .merge_file_zxeQYz
   - ../../../module.md
   - ../../../philosophy.md
   - ../../../configuration.md
   - ../../../structure.md
+=======
+  - ../../module.md
+  - ../../../PHILOSOPHY.md
+  - ../../configuration.md
+  - ../../structure.md
+>>>>>>> .merge_file_9y7Ras
 confidence: high
 updated: 2026-04-15
 ---

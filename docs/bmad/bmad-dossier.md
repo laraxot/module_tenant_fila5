@@ -7,6 +7,10 @@ tags: [bmad, tenant, isolation]
 qmd: "Tenant module product brief PRD architecture UX security epics gaps release"
 issues: ["https://github.com/laraxot/base_fixcity_fila5/issues/383"]
 discussions: ["https://github.com/laraxot/base_fixcity_fila5/discussions/392"]
+<<<<<<< .merge_file_FiuHSi
+=======
+status: draft
+>>>>>>> .merge_file_X5M55m
 ---
 # Tenant — BMAD dossier
 ## Product brief / PRD

@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "todo"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_qHxOu1
+=======
+status: draft
+>>>>>>> .merge_file_bHVtFO
 ---
 # Tenant Module - PHPStan Error Resolution Roadmap
 

@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "merge conflicts list"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_ergRSO
+=======
+status: draft
+>>>>>>> .merge_file_S0hO82
 ---
 # Merge conflict markers — file list
 

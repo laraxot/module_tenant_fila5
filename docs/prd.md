@@ -438,8 +438,13 @@ CREATE TABLE tenant_quotas (
 - [Stancl Tenancy Package](https://github.com/stancl/tenancy)
 
 ### 11.3 Related PRDs
+<<<<<<< .merge_file_AvP4eW
 - [User Module PRD](../User/docs/PRD.md)
 - [Gdpr Module PRD](../Gdpr/docs/PRD.md)
+=======
+- [User Module PRD](../../User/docs/prd.md)
+- [Gdpr Module PRD](../../Gdpr/docs/prd.md)
+>>>>>>> .merge_file_7mocA1
 - [UI Module PRD](../UI/docs/PRD.md)
 
 ---

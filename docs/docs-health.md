@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "docs health"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_HUfx9u
+=======
+status: draft
+>>>>>>> .merge_file_0Vm9mC
 ---
 # Docs Health - Tenant
 

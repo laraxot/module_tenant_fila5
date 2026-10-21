@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "task consolidare documentazione"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_dYNU4w
+=======
+status: draft
+>>>>>>> .merge_file_DVyuuy
 ---
 # Task: Consolidare Documentazione - Tenant
 

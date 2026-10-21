@@ -11,6 +11,10 @@ tags:
   - conventions
   - llm-instructions
 created: 2026-04-15
+<<<<<<< .merge_file_QvOy7b
+=======
+status: draft
+>>>>>>> .merge_file_vXxl8v
 ---
 
 # Wiki Schema - Tenant

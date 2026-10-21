@@ -8,6 +8,10 @@ type: guideline
 module: Tenant
 updated: 2026-09-01
 qmd: "tabella filament resource table class getTableFilters XotBaseResourceTable HasXotTable list page tenant"
+<<<<<<< .merge_file_NOrf8T
+=======
+status: draft
+>>>>>>> .merge_file_WS06Jj
 ---
 
 # La tabella si configura nella Table class, non nella pagina

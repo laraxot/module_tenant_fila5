@@ -9,7 +9,11 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "agents"
 related:
+<<<<<<< .merge_file_dD7YTB
   - "./phpstan-corrections-january.md"
+=======
+  - "../phpstan-corrections-january.md"
+>>>>>>> .merge_file_GOuPhD
 ---
 # Tenant {{TYPE^}} LLM Wiki Agent Instructions
 

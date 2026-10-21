@@ -10,5 +10,9 @@ updated: 2026-07-14
 qmd: "database"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_2vpfmF
+=======
+status: draft
+>>>>>>> .merge_file_nA2HmN
 ---
 

@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "resolve tenant config console debate"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_yePEXC
+=======
+status: draft
+>>>>>>> .merge_file_vzBldg
 ---
 # ResolveTenantConfigValueAction - Console Check Debate
 

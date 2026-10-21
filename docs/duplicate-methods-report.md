@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "duplicate methods report"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_gwryTq
+=======
+status: draft
+>>>>>>> .merge_file_A3gvYv
 ---
 # Report: Metodi con nome duplicato nei moduli e nei temi
 

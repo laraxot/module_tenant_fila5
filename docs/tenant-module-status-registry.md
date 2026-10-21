@@ -13,6 +13,10 @@ related:
   - ../app/Actions/Modules/GetTenantModulesAction.php
   - ../app/Actions/Config/GetTenantFilePathAction.php
   - ../../Xot/app/Actions/Filament/GetModulesNavigationItems.php
+<<<<<<< .merge_file_YC2a28
+=======
+status: draft
+>>>>>>> .merge_file_R56j8W
 ---
 
 # Registro tenant-specific dei moduli abilitati

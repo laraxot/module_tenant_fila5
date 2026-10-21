@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "folio volt best practices"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_SCFtow
+=======
+status: draft
+>>>>>>> .merge_file_Kp4YHp
 ---
 # Laravel Folio + Volt - Best Practices and Patterns Analysis
 

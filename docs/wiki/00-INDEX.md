@@ -7,7 +7,11 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "00 index"
 related:
+<<<<<<< .merge_file_jysFD1
   - "./phpstan-corrections-january.md"
+=======
+  - "../phpstan-corrections-january.md"
+>>>>>>> .merge_file_yP5eSM
 ---
 # Tenant Module — Documentation Index
 
@@ -36,8 +40,13 @@ related:
 
 ### Roadmap
 - **[roadmap/00-index.md](./roadmap/00-index.md)** — Q4 2025 roadmap and phases
+<<<<<<< .merge_file_jysFD1
 - **[roadmap/vision.md](./roadmap/vision.md)** — Long-term vision
 - **[roadmap/tenant-isolation.md](./roadmap/tenant-isolation.md)** — Data isolation strategy
+=======
+- **[roadmap/vision.md](../roadmap/vision.md)** — Long-term vision
+- **[roadmap/tenant-isolation.md](../roadmap/tenant-isolation.md)** — Data isolation strategy
+>>>>>>> .merge_file_yP5eSM
 
 ### Product & Strategy
 - **[PRD.md](./PRD.md)** — Product requirements document
@@ -121,9 +130,15 @@ For deep understanding of multi-tenant configuration:
 
 ## 🔗 Related Modules
 
+<<<<<<< .merge_file_jysFD1
 - **[User Module](../../User/docs/00-index.md)** — Authentication per tenant
 - **[Xot Module](../../Xot/docs/00-index.md)** — Base classes for tenant awareness
 - **[Theme System](../../../Themes/)** — Theme per tenant support
+=======
+- **[User Module](../../../User/docs/00-index.md)** — Authentication per tenant
+- **[Xot Module](../../../Xot/docs/00-INDEX.md)** — Base classes for tenant awareness
+- **[Theme System](../../../../Themes)** — Theme per tenant support
+>>>>>>> .merge_file_yP5eSM
 
 ---
 

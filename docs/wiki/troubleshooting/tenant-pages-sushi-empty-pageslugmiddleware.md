@@ -12,6 +12,10 @@ discussions:
 related:
   - ../concepts/cms-page-middleware-json-ssot.md
   - ../../../../Fixcity/docs/wiki/concepts/ticket-crea-url-routing-chain.md
+<<<<<<< .merge_file_Segwgh
+=======
+status: draft
+>>>>>>> .merge_file_Qef8Z6
 ---
 
 # Tenant name — Page Sushi vuoto → auth JSON ignorato

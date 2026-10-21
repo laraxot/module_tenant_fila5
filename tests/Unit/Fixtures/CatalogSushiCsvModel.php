@@ -9,6 +9,8 @@ use Modules\Tenant\Models\Traits\SushiToCsv;
 
 /**
  * Modello `catalog` letto da `catalog.csv` tramite SushiToCsv (classe con nome, non anonima).
+ *
+ * @property string|null $name
  */
 final class CatalogSushiCsvModel extends Model
 {

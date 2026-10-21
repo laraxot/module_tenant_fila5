@@ -10,9 +10,11 @@ namespace Modules\Tenant\Models\Traits;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use ReflectionObject;
 use Sushi\Sushi;
+use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
 
 use function Safe\json_encode;
@@ -97,26 +99,64 @@ trait SushiToJsons
     }
 
     /**
+     * Legge ogni `database/content/<tabella>/**.json` come una riga.
+     *
      * @return array<int, array<string, mixed>>
      */
     private function collectRowsFromJsonFiles(string $tbl): array
     {
-        $files = File::glob(app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl).'/*.json') ?: [];
+        $path = app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl);
+        if (! File::isDirectory($path)) {
+            return [];
+        }
 
-        /** @var array<int, array<string, mixed>> $rows */
         $rows = [];
-
-        foreach ($files as $file) {
-            if (! is_string($file)) {
+        foreach (File::allFiles($path) as $file) {
+            $row = $this->getRowFromJsonFile($file);
+            if ($row === null) {
                 continue;
             }
-            $row = $this->mapJsonFileToRow($file);
-            if ($row !== null) {
-                $rows[] = $row;
+
+            $relativePathname = $file->getRelativePathname();
+
+            if (Str::contains($relativePathname, '/')) {
+                $row = $this->prefixRowKeys($row, Str::of($relativePathname)->beforeLast('/')->replace('/', '.')->toString());
             }
+
+            $rows[] = $row;
         }
 
         return $rows;
+    }
+
+    /**
+     * @return array<string, mixed>|null
+     */
+    private function getRowFromJsonFile(SplFileInfo $file): ?array
+    {
+        if ($file->getExtension() !== 'json') {
+            return null;
+        }
+
+        return $this->mapJsonFileToRow($file->getPathname());
+    }
+
+    /**
+     * Una riga in sottocartella (`a/b/1.json`) espone id e slug come `a.b.<valore>`.
+     *
+     * @param  array<string, mixed>  $row
+     * @return array<string, mixed>
+     */
+    private function prefixRowKeys(array $row, string $prefix): array
+    {
+        foreach (['id', 'slug'] as $key) {
+            $value = $row[$key] ?? null;
+            if (is_string($value) || is_int($value)) {
+                $row[$key] = $prefix.'.'.$value;
+            }
+        }
+
+        return $row;
     }
 
     /**

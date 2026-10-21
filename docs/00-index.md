@@ -124,7 +124,7 @@ For deep understanding of multi-tenant configuration:
 ## 🔗 Related Modules
 
 - **[User Module](../../User/docs/00-index.md)** — Authentication per tenant
-- **[Xot Module](../../Xot/docs/00-index.md)** — Base classes for tenant awareness
+- **[Xot Module](../../Xot/docs/00-INDEX.md)** — Base classes for tenant awareness
 - **[Theme System](../../../Themes/)** — Theme per tenant support
 
 ---

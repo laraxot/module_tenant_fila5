@@ -9,6 +9,10 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "tutorial video"
 related:
+<<<<<<< .merge_file_93Ve76
   - "./phpstan-corrections-january.md"
+=======
+  - "../phpstan-corrections-january.md"
+>>>>>>> .merge_file_h12L8w
 ---
 https://www.youtube.com/watch?v=_eyz7rvwLTQ

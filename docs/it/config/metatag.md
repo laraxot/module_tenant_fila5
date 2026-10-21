@@ -9,7 +9,11 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "metatag"
 related:
+<<<<<<< .merge_file_3K2rOx
   - "./phpstan-corrections-january.md"
+=======
+  - "../../phpstan-corrections-january.md"
+>>>>>>> .merge_file_2NyjhN
 ---
 <?php
 

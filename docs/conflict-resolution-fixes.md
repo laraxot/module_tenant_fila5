@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "conflict resolution fixes"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Risoluzione Conflitti Git - Modulo Tenant
 

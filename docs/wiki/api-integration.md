@@ -7,6 +7,10 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "api integration"
 related:
+<<<<<<< .merge_file_mEWOPK
   - "./phpstan-corrections-january.md"
+=======
+  - "../phpstan-corrections-january.md"
+>>>>>>> .merge_file_9CrhrB
 ---
 

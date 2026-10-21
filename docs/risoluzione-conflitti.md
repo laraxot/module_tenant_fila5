@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "risoluzione conflitti"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_qslftM
+=======
+status: draft
+>>>>>>> .merge_file_NPyDNI
 ---
 # Risoluzione Conflitti nel Modulo Tenant
 

@@ -10,6 +10,10 @@ discussions: []
 module: theme
 topic: sushi_to_json
 canonical: ../../../../Themes/docs/shared-components/.gitkeep-Modules
+<<<<<<< .merge_file_grvvH0
+=======
+status: stub
+>>>>>>> .merge_file_D7xUFu
 ---
 
 See canonical documentation: ../../../../Themes/docs/shared-components/.gitkeep-Modules

@@ -7,6 +7,10 @@ updated: 2026-09-26
 qmd: "00 INDEX"
 issues: []
 discussions: []
+<<<<<<< .merge_file_C4KVoL
+=======
+status: draft
+>>>>>>> .merge_file_mUCOME
 ---
 
 # Roadmap Index - Tenant

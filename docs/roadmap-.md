@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "roadmap "
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_Z0lRnv
+=======
+status: draft
+>>>>>>> .merge_file_VsOlyL
 ---
 # Tenant Module Roadmap 2026
 

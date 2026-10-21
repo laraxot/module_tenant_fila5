@@ -9,7 +9,11 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "auth"
 related:
+<<<<<<< .merge_file_bqjwrt
   - "./phpstan-corrections-january.md"
+=======
+  - "../../phpstan-corrections-january.md"
+>>>>>>> .merge_file_0vX5hR
 ---
 <?php
 
@@ -123,7 +127,11 @@ return [
 
 ## Collegamenti tra versioni di auth.md
 * [auth.md](../../../xot/docs/install/auth.md)
+<<<<<<< .merge_file_bqjwrt
 * [auth.md](../../../user/docs/lang/en/auth.md)
+=======
+* [auth.md](../../../../User/docs/lang/en/auth.md)
+>>>>>>> .merge_file_0vX5hR
 * [auth.md](../../../tenant/docs/it/config/auth.md)
 
 ### Versione Incoming

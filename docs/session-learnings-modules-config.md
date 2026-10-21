@@ -12,7 +12,11 @@ related:
   - ./tenant-module-status-registry.md
   - ./it/config/modules-statuses.md
   - ../WorkOrder/docs/modules-statuses-workorder.md
+<<<<<<< .merge_file_GbAkGo
   - ../User/docs/wiki/concepts/spatie-permission-table-names.md
+=======
+  - ../../User/docs/wiki/concepts/spatie-permission-table-names.md
+>>>>>>> .merge_file_eLBvSw
   - ../Xot/docs/wiki/concepts/module-admin-panel-provider-mandatory.md
   - ../Xot/docs/wiki/concepts/module-filament-panel-triad.md
   - ../Xot/docs/wiki/concepts/basemodel-connection-religion.md
@@ -47,7 +51,11 @@ Hub sintetico per agenti: cosa è successo, perché, dove documentare.
 
 **Regola:** `laravel/config/permission.php` → pivot **singolari** (`model_has_role`, …). Codice e migrazioni **seguono** config. Overlay tenant: solo `models`, mai `table_names`.
 
+<<<<<<< .merge_file_GbAkGo
 **Doc:** [User/spatie-permission-table-names.md](../User/docs/wiki/concepts/spatie-permission-table-names.md)
+=======
+**Doc:** [User/spatie-permission-table-names.md](../../User/docs/wiki/concepts/spatie-permission-table-names.md)
+>>>>>>> .merge_file_eLBvSw
 
 ## 4. `profiles` — owner schema WorkOrder
 

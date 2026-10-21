@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "sushi to json phpstan fixes"
 related:
   - "./phpstan-corrections-january.md"
+<<<<<<< .merge_file_Dyo0Ai
+=======
+status: draft
+>>>>>>> .merge_file_mZEYr9
 ---
 # SushiToJson/SushiToJsons PHPStan Level 10 Fixes
 

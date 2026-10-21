@@ -3,6 +3,11 @@ title: Tenant — indice BMAD
 type: index
 tags: [docs, bmad, tenant]
 qmd: "Tenant indice BMAD documentazione"
+<<<<<<< .merge_file_grM7hY
+=======
+status: draft
+updated: 2026-10-09
+>>>>>>> .merge_file_Bjbr5h
 ---
 
 # Tenant — indice BMAD

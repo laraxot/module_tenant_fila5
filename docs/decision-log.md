@@ -2,6 +2,13 @@
 type: decision-log
 title: "Decision Log — Tenant"
 links: {github_issue: #XXX, discussion: #XXX}
+<<<<<<< .merge_file_DGgCSc
+=======
+status: draft
+updated: 2026-10-08
+tags: [docs, tenant]
+qmd: "decision log   tenant tenant"
+>>>>>>> .merge_file_YbxEAy
 ---
 # Decision Log — Tenant
 

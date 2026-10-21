@@ -9,7 +9,11 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "trait method implementation"
 related:
+<<<<<<< .merge_file_3VJBYJ
   - "./phpstan-corrections-january.md"
+=======
+  - "../phpstan-corrections-january.md"
+>>>>>>> .merge_file_iemeeA
 ---
 # Trait Method Implementation Rules
 

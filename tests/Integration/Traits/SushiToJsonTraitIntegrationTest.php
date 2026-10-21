@@ -159,8 +159,6 @@ describe('Sushi To Json Trait Integration', function (): void {
         $decodedMetadata = json_decode(TestCase::sushiRowById($rows, 1)['metadata'], true);
         Assert::assertIsArray($decodedMetadata);
         Assert::assertSame($testData['1']['metadata'], $decodedMetadata);
-        Assert::assertSame(['tag1', 'tag2', 'tag3'], $decodedMetadata['tags']);
-        Assert::assertSame('deep_value', $decodedMetadata['nested']['level1']['level2']['level3']);
     });
 
     test('manages file permissions correctly', function (): void {
