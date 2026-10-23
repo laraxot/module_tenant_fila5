@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "product requirements"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_EvM9qS
-=======
 status: draft
->>>>>>> .merge_file_btfWy8
 ---
 # Product Requirements Document (PRD)
 

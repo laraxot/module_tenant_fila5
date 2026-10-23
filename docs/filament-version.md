@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "filament version"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_FvzAYp
-=======
 status: draft
->>>>>>> .merge_file_qCaM0V
 ---
 # Filament Version Declaration — Tenant
 

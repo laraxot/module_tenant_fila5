@@ -10,8 +10,5 @@ updated: 2026-07-14
 qmd: "test1"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_mu9Dp7
-=======
 status: draft
->>>>>>> .merge_file_F36UqV
 ---

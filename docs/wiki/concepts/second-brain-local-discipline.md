@@ -7,10 +7,7 @@ type: concept
 tags: [second-brain, stub-canonical-xot]
 created: "2026-05-22"
 updated: "2026-05-22"
-<<<<<<< .merge_file_VVUtfV
-=======
 status: draft
->>>>>>> .merge_file_4r5y2T
 ---
 
 # Contratto wiki locale — stub

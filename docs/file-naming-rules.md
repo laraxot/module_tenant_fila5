@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "file naming rules"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_ss2feN
-=======
 status: draft
->>>>>>> .merge_file_byPo2H
 ---
 # Regole di Naming per File
 

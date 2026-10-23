@@ -10,9 +10,6 @@ updated: 2026-07-14
 qmd: "sushi to json trait analysis"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_nnRwl7
-=======
 status: draft
->>>>>>> .merge_file_INDHi7
 ---
 

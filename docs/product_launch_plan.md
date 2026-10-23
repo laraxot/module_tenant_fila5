@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "product launch plan"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_CBz3ba
-=======
 status: draft
->>>>>>> .merge_file_weLi40
 ---
 # Tenant Module - Product Launch Plan
 

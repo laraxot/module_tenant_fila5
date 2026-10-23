@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "task test isolamento dati"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_dfhPhH
-=======
 status: draft
->>>>>>> .merge_file_AO5xvi
 ---
 # Task: Test Isolamento Dati - Tenant
 

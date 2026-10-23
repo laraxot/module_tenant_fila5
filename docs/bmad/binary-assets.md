@@ -6,10 +6,7 @@ module: "Tenant"
 tags: [docs, tenant, bmad]
 created: 2026-10-06
 updated: 2026-10-06
-<<<<<<< .merge_file_vri4q4
-=======
 qmd: "asset binari tenant"
->>>>>>> .merge_file_knwTBG
 ---
 
 # Asset binari

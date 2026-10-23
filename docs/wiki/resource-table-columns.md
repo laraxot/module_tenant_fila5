@@ -7,10 +7,7 @@ updated: 2026-09-26
 qmd: "resource table columns"
 issues: []
 discussions: []
-<<<<<<< .merge_file_prsx2I
-=======
 status: draft
->>>>>>> .merge_file_GrcMcG
 ---
 
 # Colonne delle Resource — verifica 2026-09-10

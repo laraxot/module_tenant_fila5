@@ -10,10 +10,7 @@ discussions: []
 module: theme
 topic: module_tenant
 canonical: ../../../Themes/docs/shared-components/.gitkeep-Modules
-<<<<<<< .merge_file_lPcjso
-=======
 status: stub
->>>>>>> .merge_file_BUm2TM
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/.gitkeep-Modules

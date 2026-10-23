@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "dependencies"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_jBK91J
-=======
 status: draft
->>>>>>> .merge_file_W3vkxE
 ---
 
 

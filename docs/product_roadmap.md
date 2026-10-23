@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "product roadmap"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_duohg2
-=======
 status: draft
->>>>>>> .merge_file_h2hwK0
 ---
 # Tenant Module - Product Roadmap
 

@@ -153,7 +153,7 @@ Strategic planning and vision documents:
 - [04-risks.md](roadmap/04-risks.md)
 - [05-risks.md](roadmap/05-risks.md)
 <<<<<<< .merge_file_HRedWl
-- [2025-q4-roadmap.md](roadmap/2025-q4-roadmap.md)
+- [2025-q4-roadmap.md](roadmap/roadmap.md)
 =======
 - [2025-q4-roadmap.md](roadmap/roadmap-deprecated-aggiungere.md)
 >>>>>>> .merge_file_7Nw6YI

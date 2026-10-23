@@ -10,9 +10,6 @@ updated: 2026-07-14
 qmd: "core functionality"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_DpDi5x
-=======
 status: draft
->>>>>>> .merge_file_ljqUcb
 ---
 

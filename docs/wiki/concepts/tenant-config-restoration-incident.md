@@ -15,10 +15,7 @@ related:
   - ../../../../../../docs/project/incidents/config-directory-mismatch.md
   - ../ConfigurationDistribution.md
   - ../../../app/Actions/GetTenantNameAction.php
-<<<<<<< .merge_file_O6QIXX
-=======
 status: draft
->>>>>>> .merge_file_n8Znnw
 ---
 
 # Ripristino config tenant — incidente 2026-07-01

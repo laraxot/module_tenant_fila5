@@ -6,10 +6,7 @@ module: "Tenant"
 tags: [docs, tenant, bmad]
 created: 2026-10-06
 updated: 2026-10-06
-<<<<<<< .merge_file_ljZMlF
-=======
 qmd: "tenant   bmad status tenant"
->>>>>>> .merge_file_UbHnM0
 ---
 
 # Tenant — BMAD Status

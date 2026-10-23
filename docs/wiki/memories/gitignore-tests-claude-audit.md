@@ -12,10 +12,7 @@ discussions:
   - "https://github.com/laraxot/platform/discussions/304"
 related:
   - ../../Xot/docs/wiki/concepts/claude-audit-static-all-modules.md
-<<<<<<< .merge_file_emxSQb
-=======
 status: draft
->>>>>>> .merge_file_cGjvxf
 ---
 
 # `Tests/` in .gitignore e claude-audit

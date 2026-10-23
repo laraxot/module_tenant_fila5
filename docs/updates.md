@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "updates"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_U2tKdR
-=======
 status: draft
->>>>>>> .merge_file_4g28OX
 ---
 # Tenant Module Updates - December 2025
 

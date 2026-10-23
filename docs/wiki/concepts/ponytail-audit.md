@@ -11,10 +11,7 @@ updated: "2026-07-01"
 related:
   - "./tenant-config-restoration-incident.md"
   - "../../ponytail-audit-over-engineering.md"
-<<<<<<< .merge_file_UOKvf6
-=======
 status: draft
->>>>>>> .merge_file_SaQZwb
 ---
 
 # Ponytail audit — Tenant

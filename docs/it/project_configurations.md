@@ -10,10 +10,7 @@ title: Configurazione progetti
 description: Configurazione progetti
 extends: _layouts.documentation
 section: content
-<<<<<<< .merge_file_Z8Q9Ew
-=======
 status: draft
->>>>>>> .merge_file_zEgOE4
 ---
 
 # Configurazione progetti {#configurazione-progetti}

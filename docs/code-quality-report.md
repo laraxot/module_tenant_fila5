@@ -7,10 +7,7 @@ updated: 2026-09-26
 qmd: "code quality report"
 issues: []
 discussions: []
-<<<<<<< .merge_file_0kLEEC
-=======
 status: draft
->>>>>>> .merge_file_MyC6IK
 ---
 
 # Code quality — modulo Tenant

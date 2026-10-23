@@ -11,10 +11,7 @@ qmd: "Tenant module Services and Support banned use app Actions QueueableAction 
 related:
   - no-app-support-queueable-actions.md
   - ../../../Xot/docs/wiki/concepts/queueable-action-trait-mandatory.md
-<<<<<<< .merge_file_9FQEVO
-=======
 status: draft
->>>>>>> .merge_file_F0kafK
 ---
 
 # Tenant — Services/Support vietati: solo Actions

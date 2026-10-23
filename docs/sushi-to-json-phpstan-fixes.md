@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "sushi to json phpstan fixes"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_SmJCLy
-=======
 status: draft
->>>>>>> .merge_file_9kJ1tt
 ---
 # SushiToJson/SushiToJsons PHPStan Level 10 Fixes
 
@@ -40,13 +37,10 @@ Interfaccia in `Modules/Tenant/app/Contracts/SushiToJsonsContract.php` con metod
 
 Modelli che implementano: Attachment, Menu, PageContent, Section, BaseModelJsons.
 
-<<<<<<< .merge_file_SmJCLy
-=======
 ### HasSushiToJson — return type coverage (2026-10)
 
 Il contratto `Modules/Tenant/app/Models/Contracts/HasSushiToJson.php` espone `getRows(): array` e `getSchema(): array` con PHPDoc `@return array<int, array<string, mixed>>` e `@return array<string, string>`. La firma `: array` soddisfa la regola `typeCoverage.returnTypeCoverage` senza confliggere con Sushi (che richiede array, non `mixed`).
 
->>>>>>> .merge_file_9kJ1tt
 ### Pattern nei trait
 ```php
 if (! $model instanceof Model || ! $model instanceof SushiToJsonContract) {

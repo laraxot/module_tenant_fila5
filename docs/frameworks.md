@@ -7,10 +7,7 @@ updated: 2026-09-26
 qmd: "frameworks"
 issues: []
 discussions: []
-<<<<<<< .merge_file_md5JwD
-=======
 status: draft
->>>>>>> .merge_file_lktRcR
 ---
 
 # Tenant — Framework Integration Notes
@@ -48,7 +45,6 @@ Efficiency principles:
 - Simplification opportunities: [TBD]
 
 ---
-<<<<<<< .merge_file_md5JwD
 title: "frameworks"
 type: note
 tags: [documentation]
@@ -57,6 +53,4 @@ updated: 2026-09-26
 qmd: "frameworks"
 issues: []
 discussions: []
-=======
->>>>>>> .merge_file_lktRcR
 *Generated: 2026-08-04*

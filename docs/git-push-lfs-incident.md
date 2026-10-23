@@ -7,10 +7,7 @@ title: "Git push bloccato da oggetto Git LFS mancante"
 type: incident
 created: 2026-07-28
 updated: 2026-07-28
-<<<<<<< .merge_file_JPHaPf
-=======
 status: draft
->>>>>>> .merge_file_0Pt7mr
 ---
 
 # Git push bloccato da oggetto Git LFS mancante

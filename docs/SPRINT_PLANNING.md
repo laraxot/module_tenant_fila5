@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "sprint planning"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_nKhZR0
-=======
 status: draft
->>>>>>> .merge_file_EHiYPp
 ---
 # Tenant Module - Sprint Planning
 

@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "duplicate methods"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_E8BjGl
-=======
 status: draft
->>>>>>> .merge_file_zZRLnw
 ---
 # Metodi duplicati — Tenant
 

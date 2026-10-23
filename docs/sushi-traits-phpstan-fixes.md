@@ -10,10 +10,7 @@ updated: 2026-08-24
 qmd: "sushi traits phpstan fixes"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_2YMCUV
-=======
 status: draft
->>>>>>> .merge_file_XjfEyh
 ---
 # Correzioni Trait Sushi - PHPStan Level 10
 

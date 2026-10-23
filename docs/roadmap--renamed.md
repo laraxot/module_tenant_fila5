@@ -7,10 +7,7 @@ updated: 2026-09-26
 qmd: "roadmap renamed"
 issues: []
 discussions: []
-<<<<<<< .merge_file_0m49vM
-=======
 status: draft
->>>>>>> .merge_file_GaiQei
 ---
 
 # 🎯 TENANT MODULE - ROADMAP 2025
@@ -22,7 +19,6 @@ status: draft
 **Filament**: 🚧 4.x Compatibile  
 
 ---
-<<<<<<< .merge_file_0m49vM
 
 title: "roadmap renamed"
 type: note
@@ -32,8 +28,6 @@ updated: 2026-09-26
 qmd: "roadmap renamed"
 issues: []
 discussions: []
-=======
->>>>>>> .merge_file_GaiQei
 ## 🎯 MODULE OVERVIEW
 
 Il modulo **Tenant** [descrizione del modulo].
