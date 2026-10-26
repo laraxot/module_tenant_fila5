@@ -9,11 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "documentation consolidation"
 related:
-<<<<<<< .merge_file_BYrVwa
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_UAYNA3
 ---
 # Consolidamento documentazione
 

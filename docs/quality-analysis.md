@@ -73,8 +73,5 @@ related:
 
 - [PHPStan Analysis](../../xot/docs/phpstan-analysis-[date].md)
 - [Quality Guide](../../xot/docs/php-quality-guide.md)
-<<<<<<< .merge_file_pa79Gq
 - [CI/CD Workflow](../.github/workflows/quality.yml)
-=======
 - [CI/CD Workflow](../../../../.github/workflows/quality.yml)
->>>>>>> .merge_file_MzFFjg

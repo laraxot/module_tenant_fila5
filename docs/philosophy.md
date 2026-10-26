@@ -3,8 +3,8 @@ title: "philosophy"
 type: note
 tags: [documentation]
 created: 2026-09-26
-updated: 2026-09-26
-qmd: "philosophy"
+updated: 2026-10-25
+qmd: "tenant philosophy isolamento multi tenancy"
 issues: []
 discussions: []
 status: draft
@@ -16,14 +16,6 @@ status: draft
 
 ---
 
-title: "philosophy"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "philosophy"
-issues: []
-discussions: []
 ## Zen
 
 **"One app, many tenants. Data isolation is non-negotiable."**

@@ -9,11 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "vision"
 related:
-<<<<<<< .merge_file_3CkJVi
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_5lcE71
 ---
 # Visione - Tenant Module
 

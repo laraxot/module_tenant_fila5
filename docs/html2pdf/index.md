@@ -9,11 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "index"
 related:
-<<<<<<< .merge_file_TAgx0g
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_pLMoIK
 ---
 # Html2Pdf - Panoramica e Installazione
 

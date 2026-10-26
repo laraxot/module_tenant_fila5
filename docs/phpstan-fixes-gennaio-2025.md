@@ -100,7 +100,7 @@ if (isset($extra_conf['connections'][$default]) && is_array($extra_conf['connect
 - Migliore gestione degli errori di configurazione
 
 ## Collegamenti Correlati
-- [Architettura Modulo Tenant](./architecture.md)
+- [Architettura Modulo Tenant](bmad/architecture-tenant.md)
 - [SushiToJsons Trait](./sushi-to-jsons-trait.md)
 - [Tenant Service](./tenant-service.md)
 

@@ -9,11 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "chaos readiness"
 related:
-<<<<<<< .merge_file_YtktUX
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_EZ7Bpl
 ---
 # Tenant Chaos Readiness - 2026-03-02
 

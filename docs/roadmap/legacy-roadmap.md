@@ -9,11 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "legacy roadmap"
 related:
-<<<<<<< .merge_file_N6BM4h
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_QtlAKx
 ---
 # Roadmap Modulo Tenant - Completamento e Miglioramenti
 

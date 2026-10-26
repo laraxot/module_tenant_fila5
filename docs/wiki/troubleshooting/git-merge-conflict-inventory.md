@@ -9,11 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "git merge conflict inventory"
 related:
-<<<<<<< .merge_file_JBGnFM
   - "./phpstan-corrections-january.md"
-=======
   - "../../phpstan-corrections-january.md"
->>>>>>> .merge_file_cpzMqH
 ---
 # Git Conflict Inventory
 

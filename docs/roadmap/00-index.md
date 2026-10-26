@@ -9,11 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "00 index"
 related:
-<<<<<<< .merge_file_BrUPpV
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_UWS5jc
 ---
 # Roadmap Index - Tenant
 

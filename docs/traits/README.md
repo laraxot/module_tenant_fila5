@@ -37,13 +37,8 @@ Core module for the FixCity Platform.
 | Lingua | Link |
 |--------|------|
 | 🇮🇹 Presentazione | Questo file (`README.md`) |
-<<<<<<< .merge_file_SgJoH7
-| 🇬🇧 Business card | [docs/readme-en.md](./docs/readme-en.md) |
-| 📚 Wiki tecnica | [./docs/wiki/](./docs/) |
-=======
-| 🇬🇧 Business card | [docs/readme-en.md](../readme-en.md) |
-| 📚 Wiki tecnica | [./docs/wiki/](..) |
->>>>>>> .merge_file_5Uhcft
+| 🇬🇧 Business card | [Business card](../readme-en.md) |
+| 📚 Wiki tecnica | [Wiki tecnica](../wiki/) |
 
 ---
 

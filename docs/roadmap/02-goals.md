@@ -9,11 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "02 goals"
 related:
-<<<<<<< .merge_file_Y814RT
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_Vj0aOH
 ---
 # Goals - Tenant
 

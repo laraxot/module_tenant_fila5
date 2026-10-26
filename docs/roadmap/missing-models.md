@@ -9,11 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "missing models"
 related:
-<<<<<<< .merge_file_Bj5R0u
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_4rdZhM
 ---
 # Modelli mancanti e completamento schema
 

@@ -9,11 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "roadmap q4"
 related:
-<<<<<<< .merge_file_rsk67T
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_24cy9a
 ---
 # Tenant Module Roadmap (2025 Q4)
 

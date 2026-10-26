@@ -7,11 +7,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "testsushiseeder phpstan mixed type"
 related:
-<<<<<<< .merge_file_Il9ldq
   - "./phpstan-corrections-january.md"
-=======
   - "../../phpstan-corrections-january.md"
->>>>>>> .merge_file_vlPOMo
 ---
 # Bugfix: TestSushiSeeder PHPStan Mixed Type Errors
 

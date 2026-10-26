@@ -9,11 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "01 current state"
 related:
-<<<<<<< .merge_file_CmtGfL
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_2tI5h4
 ---
 # Current State - Tenant
 

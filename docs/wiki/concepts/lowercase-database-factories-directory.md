@@ -10,13 +10,10 @@ updated: 2026-07-01
 qmd: "tenant database factories lowercase no Factories_ CamelCase seeders migrations"
 related:
   - ./lowercase-tests-directory.md
-<<<<<<< .merge_file_LGRue4
   - ../../../../../docs/wiki/concepts/database-folder-lowercase-rule.md
   - ../../../../../docs/wiki/concepts/module-structure-organization-rule.md
-=======
   - ../../../../../../docs/wiki/concepts/database-folder-lowercase-rule.md
   - ../../../../../../docs/wiki/concepts/module-structure-organization-rule.md
->>>>>>> .merge_file_8yOUzO
   - ../log.md
 ---
 
@@ -32,11 +29,8 @@ Il modulo Tenant usa **solo** cartelle `database/` in minuscolo, allineate a Lar
 | `database/seeders/` | `database/Seeders/` |
 | `database/migrations/` | `database/Migrations/` |
 
-<<<<<<< .merge_file_LGRue4
 Regola progetto: [database-folder-lowercase-rule.md](../../../../../docs/wiki/concepts/database-folder-lowercase-rule.md).
-=======
 Regola progetto: [database-folder-lowercase-rule.md](../../../../../../docs/wiki/concepts/database-folder-lowercase-rule.md).
->>>>>>> .merge_file_8yOUzO
 
 ## Perché `Factories_/` non deve esistere
 

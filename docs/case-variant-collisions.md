@@ -3,18 +3,15 @@ title: "case variant collisions"
 type: note
 tags: [documentation]
 created: 2026-09-26
-<<<<<<< .merge_file_5kaLzv
 updated: 2026-09-26
 qmd: "case variant collisions"
 issues: []
 discussions: []
-=======
 updated: 2026-10-20
 qmd: "case variant collisions"
 issues: []
 discussions: []
 status: draft
->>>>>>> .merge_file_3IkryN
 ---
 
 # Collisioni di nome per sola differenza di maiuscole

@@ -6,11 +6,8 @@ module: "Tenant"
 type: concept
 tags: [testing]
 created: 2026-07-14
-<<<<<<< .merge_file_4owgZS
 updated: 2026-08-24
-=======
 updated: 2026-10-20
->>>>>>> .merge_file_TMqNlC
 qmd: "testing"
 related:
   - "./phpstan-corrections-january.md"
@@ -24,13 +21,10 @@ related:
 - [TENANT-7.2 — contratti dei test harness](./stories/7.2.phpstan-test-harness-contracts.story.md)
   possiede i 40 findings residui nei test di configurazione, Sushi e coverage.
 
-<<<<<<< .merge_file_4owgZS
-=======
 - [Regressione dei test dopo il pull, 2026-10-20](./stories/phpstan-test-wave-tenant.story.md):
   `tests/TestCase.php` e 9 file di test erano tornati a una generazione senza helper e
   senza tipi (733 errori); ripristinata la generazione tipizzata, 0 errori sul modulo.
 
->>>>>>> .merge_file_TMqNlC
 ### Esito TENANT-7.2
 
 La baseline cold di 40 findings è stata portata a zero. Config e resolver vengono ristretti
@@ -48,8 +42,6 @@ non `Model` nudo — `SushiToCsv` → `Sigma\Models\WebService`, `SushiToPhpArra
 restano in memoria (`forceFill` / file tmp + mock di `GetTenantFilePathAction`).
 `setAttribute()` nel trait resta il contratto Eloquent delle colonne dinamiche.
 
-<<<<<<< .merge_file_4owgZS
-=======
 ### Helper di `Modules\Tenant\Tests\TestCase`
 
 I test Pest del modulo chiamano metodi statici di `TestCase`, non funzioni libere
@@ -61,7 +53,6 @@ Sushi di test), `createTenant()` / `tenantModel()`, `setServerNameForTenantTest(
 `tenantDbUnavailable()` (oggi `true`: i test che scrivono sul DB tenant si saltano) e
 `skipCurrentTest()`. Un helper nuovo va qui, tipizzato, non in un file `Support`.
 
->>>>>>> .merge_file_TMqNlC
 ## Overview
 
 This document provides testing guidelines and examples for the Tenant module in Laraxot.
@@ -326,11 +317,8 @@ protected function createApplication()
 
 - [Testing Setup Guide](../../../docs/testing-setup.md)
 - [Testing Best Practices](../../../docs/testing-best-practices.md)
-<<<<<<< .merge_file_4owgZS
 - [Troubleshooting Guide](../../../docs/troubleshooting.md)
-=======
 - [Troubleshooting Guide](../../../../docs/troubleshooting.md)
->>>>>>> .merge_file_TMqNlC
 
 ## Testing Examples
 

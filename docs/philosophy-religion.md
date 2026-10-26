@@ -1,10 +1,10 @@
 ---
-title: "PHILOSOPHY"
+title: "Tenant philosophy, religion e zen"
 type: note
 tags: [documentation]
 created: 2026-09-26
-updated: 2026-09-26
-qmd: "PHILOSOPHY"
+updated: 2026-10-25
+qmd: "tenant philosophy religion zen isolamento multi tenancy"
 issues: []
 discussions: []
 status: draft
@@ -19,14 +19,6 @@ status: draft
 
 ---
 
-title: "PHILOSOPHY"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "PHILOSOPHY"
-issues: []
-discussions: []
 ## RELIGIONE: The Sacred Dogmas of Multi-Tenancy
 
 Multi-tenancy is not a technical feature—it is a **religious commitment** to certain immutable truths.

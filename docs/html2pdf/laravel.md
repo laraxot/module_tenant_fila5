@@ -9,11 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "laravel"
 related:
-<<<<<<< .merge_file_UKw5jE
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_JD24TW
 ---
 # Integrazione con Laravel e Best Practices
 
