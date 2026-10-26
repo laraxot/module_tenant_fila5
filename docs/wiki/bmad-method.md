@@ -11,6 +11,7 @@ qmd: "bmad method"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # BMAD Method v6.3 operativo nel progetto
 

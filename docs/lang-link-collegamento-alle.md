@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "lang link 1"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Collegamento alle Traduzioni del Modulo Tenant

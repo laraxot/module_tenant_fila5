@@ -8,6 +8,7 @@ updated: "2026-05-26"
 related:
   - "../../../../docs/wiki/rules/agent-confidence-protocol.md"
   - "../../../../../docs/wiki/rules/agent-confidence-protocol.md"
+qmd: "massima confidenza agente tenant"
 ---
 
 # Massima confidenza agente

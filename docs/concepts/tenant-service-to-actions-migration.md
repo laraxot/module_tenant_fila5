@@ -11,6 +11,7 @@ updated: "2026-10-08"
 related:
   - ../README.md
   - ../../../../../docs/wiki/rules/no-services-rule.md
+status: draft
 ---
 
 # TenantService → Actions

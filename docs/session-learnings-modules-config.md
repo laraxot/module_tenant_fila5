@@ -18,6 +18,7 @@ related:
   - ../Xot/docs/wiki/concepts/module-filament-panel-triad.md
   - ../Xot/docs/wiki/concepts/basemodel-connection-religion.md
   - ../WorkOrder/docs/profile-schema-ownership.md
+status: draft
 ---
 
 # Lezioni 2026-07-27 — moduli, tenant, config

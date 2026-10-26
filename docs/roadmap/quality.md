@@ -11,6 +11,7 @@ qmd: "quality"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Checklist qualità - Tenant Module
 

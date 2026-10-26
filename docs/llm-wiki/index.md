@@ -11,6 +11,7 @@ qmd: "index"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Tenant Module Wiki Index
 

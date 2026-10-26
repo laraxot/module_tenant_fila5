@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "prd"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Product Requirements Document (PRD) - Tenant Module
 

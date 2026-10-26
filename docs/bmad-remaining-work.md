@@ -8,6 +8,8 @@ updated: 2026-10-26
 tags: [bmad, tenant, module, stories, remaining-work]
 related:
   - ../../docs/second-brain/project/bmad-architecture.md
+status: draft
+qmd: "tenant module   bmad stories & remaining work tenant"
 ---
 
 # Tenant Module — BMAD Stories & Remaining Work

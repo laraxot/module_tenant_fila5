@@ -11,6 +11,8 @@ qmd: "02 next"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: superseded
+superseded_by: next.md
 ---
 # Next (Module Tenant)
 

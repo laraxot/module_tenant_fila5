@@ -11,5 +11,6 @@ qmd: "sushi to json plan"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 

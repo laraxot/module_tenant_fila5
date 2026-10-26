@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "index generated"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Tenant Module Documentation Index
@@ -391,15 +392,6 @@ Log analysis and audit trails.
 Visual references and UI screenshots.
 
 ---
-
-title: "index generated"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "index generated"
-issues: []
-discussions: []
 ## Recently Updated
 
 **Last 20 files by modification date**

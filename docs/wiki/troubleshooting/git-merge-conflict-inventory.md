@@ -11,6 +11,7 @@ qmd: "git merge conflict inventory"
 related:
   - "./phpstan-corrections-january.md"
   - "../../phpstan-corrections-january.md"
+status: draft
 ---
 # Git Conflict Inventory
 

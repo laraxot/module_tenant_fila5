@@ -11,6 +11,7 @@ qmd: "03 workstreams"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Workstreams - Tenant
 

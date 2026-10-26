@@ -11,6 +11,8 @@ qmd: "04 milestones"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: superseded
+superseded_by: milestones.md
 ---
 # Milestones - Tenant
 

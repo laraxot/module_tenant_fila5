@@ -11,6 +11,7 @@ qmd: "legacy roadmap"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Roadmap Modulo Tenant - Completamento e Miglioramenti
 

@@ -11,6 +11,7 @@ qmd: "log"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Tenant Activity Log
 

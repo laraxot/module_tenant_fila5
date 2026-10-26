@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "translations"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Traduzioni del Modulo Tenant
 

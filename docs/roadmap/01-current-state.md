@@ -11,6 +11,8 @@ qmd: "01 current state"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: superseded
+superseded_by: current-state.md
 ---
 # Current State - Tenant
 

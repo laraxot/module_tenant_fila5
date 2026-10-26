@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "00 index"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Tenant Module — Documentation Index
 

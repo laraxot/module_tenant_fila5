@@ -13,6 +13,7 @@ related:
   - ../../../../docs/wiki/concepts/no-app-support-monorepo-migration.md
   - ../../../../../../docs/wiki/concepts/no-app-support-monorepo-migration.md
   - config-merge-philosophy.md
+status: draft
 ---
 
 # Tenant — `app/Services/` senza PHP attivo

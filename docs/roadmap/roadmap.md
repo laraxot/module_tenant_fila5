@@ -11,6 +11,7 @@ qmd: "roadmap"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Tenant Module Roadmap (2025 Q4)
 

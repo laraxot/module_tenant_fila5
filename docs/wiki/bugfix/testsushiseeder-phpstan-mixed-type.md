@@ -9,6 +9,8 @@ qmd: "testsushiseeder phpstan mixed type"
 related:
   - "./phpstan-corrections-january.md"
   - "../../phpstan-corrections-january.md"
+status: superseded
+superseded_by: ../../bugfix/testsushiseeder-phpstan-mixed-type.md
 ---
 # Bugfix: TestSushiSeeder PHPStan Mixed Type Errors
 

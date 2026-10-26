@@ -41,7 +41,6 @@ Doc verificati e presenti in `docs/`:
 <!-- Merged from INDEX.md, which collided with this file on case-insensitive filesystems. -->
 
 ---
-title: Tenant Module Documentation Index
 module: Tenant
 status: production
 last_updated: 2026-07-28

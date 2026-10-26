@@ -10,7 +10,8 @@ created: {{date}}
 updated: {{date}}
 tags: [article, paper, documentation]
 related: []
-status: draft
+status: superseded
+superseded_by: ../../llm-wiki/_templates/source.md
 ---
 
 # {{title}}

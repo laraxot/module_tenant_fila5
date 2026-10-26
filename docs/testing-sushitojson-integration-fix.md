@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "testing sushitojson integration fix"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Fix: SushiToJsonIntegrationTest - Database Connection Configuration
 

@@ -11,5 +11,6 @@ qmd: "sushi to json completion summary"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 

@@ -11,6 +11,7 @@ qmd: "tenant isolation"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Isolamento tenant e configurazioni
 

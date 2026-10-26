@@ -1,3 +1,11 @@
+---
+title: "Tenant — completion backlog"
+type: note
+status: draft
+updated: 2026-10-26
+tags: [docs, tenant]
+qmd: "tenant   completion backlog tenant"
+---
 # Tenant — completion backlog
 
 Status: partial and evidence-driven. This file is the canonical owner-local list for future work.

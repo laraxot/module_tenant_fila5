@@ -6,6 +6,7 @@ source_of_truth: false
 canonical: ./to-integrate.md
 updated: 2026-10-23
 qmd: "to integrate underscore alias canonical"
+tags: [docs, tenant, _integration]
 ---
 
 # to_integrate

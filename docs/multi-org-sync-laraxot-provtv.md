@@ -9,6 +9,7 @@ created: "2026-07-21"
 updated: "2026-07-29"
 related:
   - "../../../bashscripts/tools/prompts/02-gitmodules-sync.md"
+status: draft
 ---
 
 # Sincronizzazione multi-organizzazione (laraxot + provtv)

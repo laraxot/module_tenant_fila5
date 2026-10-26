@@ -8,6 +8,7 @@ type: report
 module: Tenant
 updated: 2026-09-01
 qmd: "cosa migliorare tenant phpstan phpmd phpinsights coverage debito priorita"
+status: draft
 ---
 
 # Cosa migliorare — modulo Tenant

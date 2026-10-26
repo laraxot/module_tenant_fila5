@@ -11,6 +11,7 @@ qmd: "trait method implementation"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Trait Method Implementation Rules
 

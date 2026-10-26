@@ -9,6 +9,8 @@ qmd: "architecture rules"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: superseded
+superseded_by: ../architecture-rules.md
 ---
 # Architectural Rules & Guidelines
 

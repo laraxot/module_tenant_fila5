@@ -15,6 +15,7 @@ sources:
   - ../../structure.md
 confidence: high
 updated: 2026-10-25
+status: draft
 ---
 
 # Tenant Module — Overview

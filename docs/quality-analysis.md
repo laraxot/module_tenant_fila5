@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "quality analysis"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Analisi Qualità - Modulo Tenant
 

@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+use Modules\Tenant\Actions\GetTenantNameAction;
 use ReflectionObject;
 use Sushi\Sushi;
 use Symfony\Component\Finder\SplFileInfo;
@@ -105,28 +106,46 @@ trait SushiToJsons
      */
     private function collectRowsFromJsonFiles(string $tbl): array
     {
-        $path = app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl);
-        if (! File::isDirectory($path)) {
-            return [];
-        }
-
         $rows = [];
-        foreach (File::allFiles($path) as $file) {
-            $row = $this->getRowFromJsonFile($file);
-            if ($row === null) {
+        $relativePath = 'database/content/'.$tbl;
+        $tenantPath = app(GetTenantFilePathAction::class)->execute($relativePath);
+        $tenantName = app(GetTenantNameAction::class)->execute();
+        $sources = [$tenantPath, base_path('Themes/Sixteen/config/'.$tenantName.'/'.$relativePath)];
+
+        // Tenant JSON is the override layer; module JSON is the versioned baseline.
+        foreach (File::directories(base_path('Modules')) as $modulePath) {
+            if (! is_string($modulePath)) {
                 continue;
             }
 
-            $relativePathname = $file->getRelativePathname();
-
-            if (Str::contains($relativePathname, '/')) {
-                $row = $this->prefixRowKeys($row, Str::of($relativePathname)->beforeLast('/')->replace('/', '.')->toString());
-            }
-
-            $rows[] = $row;
+            $sources[] = $modulePath.'/config/'.$relativePath;
+            $sources[] = $modulePath.'/'.$relativePath;
         }
 
-        return $rows;
+        foreach (array_unique($sources) as $path) {
+            if (! File::isDirectory($path)) {
+                continue;
+            }
+
+            foreach (File::allFiles($path) as $file) {
+                $row = $this->getRowFromJsonFile($file);
+                if ($row === null) {
+                    continue;
+                }
+
+                $relativePathname = $file->getRelativePathname();
+                if (Str::contains($relativePathname, '/')) {
+                    $row = $this->prefixRowKeys($row, Str::of($relativePathname)->beforeLast('/')->replace('/', '.')->toString());
+                }
+
+                $id = $row['id'] ?? null;
+                $key = is_string($id) || is_int($id) ? (string) $id : $file->getPathname();
+                $rows[$key] ??= $row;
+            }
+        }
+
+        /** @var array<int, array<string, mixed>> $rows */
+        return array_values($rows);
     }
 
     /**

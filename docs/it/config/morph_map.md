@@ -11,6 +11,8 @@ qmd: "morph map"
 related:
   - "./phpstan-corrections-january.md"
   - "../../phpstan-corrections-january.md"
+status: superseded
+superseded_by: archive/morph-map.md
 ---
 <?php
 

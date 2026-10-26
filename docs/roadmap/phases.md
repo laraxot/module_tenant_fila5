@@ -11,6 +11,7 @@ qmd: "phases"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Fasi di sviluppo - Tenant Module
 

@@ -11,6 +11,7 @@ qmd: "styling"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Guida agli Stili, Tabelle e Immagini
 

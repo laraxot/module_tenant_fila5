@@ -12,6 +12,7 @@ related:
   - ../../docs/wiki/concepts/llm-wiki-operational-discipline.md
   - ../../../../docs/wiki/rules/on-demand-pattern.md
   - ../../../../docs/wiki/concepts/llm-wiki-operational-discipline.md
+status: draft
 ---
 
 # On-Demand Pattern — Module **Tenant**

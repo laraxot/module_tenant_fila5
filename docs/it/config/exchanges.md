@@ -11,6 +11,7 @@ qmd: "exchanges"
 related:
   - "./phpstan-corrections-january.md"
   - "../../phpstan-corrections-january.md"
+status: draft
 ---
 <?php
 

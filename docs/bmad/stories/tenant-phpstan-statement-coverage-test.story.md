@@ -9,6 +9,7 @@ related:
   - 8.2-phpstan-l10-tenant-sushi-fixes.story.md
 tags: [tenant, phpstan, sushi-to-json, test]
 qmd: "tenant phpstan statement coverage loadexistingdata assert"
+updated: 2026-10-21
 ---
 
 # Tenant — PHPStan TenantStatementCoverageTest

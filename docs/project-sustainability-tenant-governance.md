@@ -5,6 +5,7 @@ module: Tenant
 status: decision-input
 updated: 2026-10-15
 tags: [sustainability, tenant, isolation, bmad]
+qmd: "governance tenant (ownership tenant) tenant"
 ---
 
 # Governance tenant (ownership Tenant)

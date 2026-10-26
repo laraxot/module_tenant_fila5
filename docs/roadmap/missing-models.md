@@ -11,6 +11,7 @@ qmd: "missing models"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Modelli mancanti e completamento schema
 

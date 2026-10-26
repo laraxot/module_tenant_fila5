@@ -10,6 +10,7 @@ updated: 2026-07-27
 qmd: "index"
 related:
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Tenant Module LLM Wiki
 

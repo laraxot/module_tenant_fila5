@@ -11,6 +11,7 @@ qmd: "agents"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Tenant {{TYPE^}} LLM Wiki Agent Instructions
 

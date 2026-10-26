@@ -9,6 +9,7 @@ qmd: "ai methodologies"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # AI Methodologies Handbook
 

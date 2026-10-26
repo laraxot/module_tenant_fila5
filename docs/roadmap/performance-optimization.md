@@ -11,6 +11,7 @@ qmd: "performance optimization"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Performance e ottimizzazioni
 

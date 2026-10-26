@@ -4,6 +4,9 @@ module: Tenant
 type: reference
 tags: [config, settings, customization]
 last_updated: 2026-08-04
+status: draft
+updated: 2026-10-15
+qmd: "tenant module configuration reference tenant"
 ---
 
 # Tenant Module Configuration Reference

@@ -11,6 +11,7 @@ qmd: "01 current state"
 related:
   - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Current State - Tenant
 

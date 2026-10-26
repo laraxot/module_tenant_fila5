@@ -15,6 +15,7 @@ related:
   - ../../../../../../docs/wiki/concepts/database-folder-lowercase-rule.md
   - ../../../../../../docs/wiki/concepts/module-structure-organization-rule.md
   - ../log.md
+status: draft
 ---
 
 # Directory database lowercase — factories
