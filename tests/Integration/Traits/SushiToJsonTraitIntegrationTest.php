@@ -45,10 +45,7 @@ beforeEach(function (): void {
         File::delete(TestCase::sushiJsonPath());
     }
 
-    $directory = dirname(TestCase::sushiJsonPath());
-    if (File::exists($directory)) {
-        File::deleteDirectory($directory);
-    }
+    // Mai deleteDirectory: e' la cartella database/content REALE del tenant (pagine e sezioni CMS).
 });
 
 afterEach(function (): void {
@@ -56,10 +53,7 @@ afterEach(function (): void {
         File::delete(TestCase::sushiJsonPath());
     }
 
-    $directory = dirname(TestCase::sushiJsonPath());
-    if (File::exists($directory)) {
-        File::deleteDirectory($directory);
-    }
+    // Mai deleteDirectory: e' la cartella database/content REALE del tenant (pagine e sezioni CMS).
 
 });
 
@@ -360,9 +354,6 @@ describe('Sushi To Json Trait Integration', function (): void {
         // Pulisce il secondo tenant
         File::delete($secondJsonPath);
 
-        $directory = dirname($secondJsonPath);
-        if (File::exists($directory)) {
-            File::deleteDirectory($directory);
-        }
+        // Mai deleteDirectory: e' la cartella database/content REALE del tenant (pagine e sezioni CMS).
     });
 });
