@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "index"
 related:
-<<<<<<< .merge_file_TWK2oT
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_47boiL
+status: draft
 ---
 # Tenant Module Wiki Index
 
@@ -60,11 +58,8 @@ _No troubleshooting pages created yet_
 ### Related Project Concepts
 
 - [Laraxot Architecture](../../docs/wiki/concepts/laraxot-architecture.md)
-<<<<<<< .merge_file_TWK2oT
 - [Actions Over Services](../../docs/wiki/concepts/actions-over-services.md)
-=======
 - [Actions Over Services](../../../../../docs/wiki/concepts/actions-over-services.md)
->>>>>>> .merge_file_47boiL
 - [PHPStan Level 10](../../docs/wiki/concepts/phpstan-level10.md)
 
 ## Module's Role in Project

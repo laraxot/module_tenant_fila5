@@ -1,3 +1,11 @@
+---
+title: "Risoluzione Conflitti Git - Modulo Tenant"
+type: note
+status: draft
+updated: 2026-10-18
+tags: [docs, tenant]
+qmd: "risoluzione conflitti git - modulo tenant tenant"
+---
 # Risoluzione Conflitti Git - Modulo Tenant
 
 ## Panoramica

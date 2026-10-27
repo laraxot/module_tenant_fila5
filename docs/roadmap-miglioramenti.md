@@ -7,10 +7,7 @@ updated: 2026-09-26
 qmd: "roadmap miglioramenti"
 issues: []
 discussions: []
-<<<<<<< .merge_file_CfpH00
-=======
 status: draft
->>>>>>> .merge_file_XbW6Xq
 ---
 
 # Tenant — cosa migliorerei se questo modulo fosse mio per un mese
@@ -76,16 +73,5 @@ onesti e SCOPRIRE quanto debito c'è davvero, invece di continuare a
 presumere che "zero segnalazioni" voglia dire "zero problemi".
 
 ---
-<<<<<<< .merge_file_CfpH00
-title: "roadmap miglioramenti"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "roadmap miglioramenti"
-issues: []
-discussions: []
-=======
->>>>>>> .merge_file_XbW6Xq
 *Analisi generata il 2026-09-01, dati verificati sul codice (grep/find), non
 sulla documentazione esistente.*

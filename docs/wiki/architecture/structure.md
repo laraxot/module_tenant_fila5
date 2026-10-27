@@ -7,10 +7,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "structure"
 related:
-<<<<<<< .merge_file_FP08qf
   - "./phpstan-corrections-january.md"
-=======
   - "../../phpstan-corrections-january.md"
->>>>>>> .merge_file_DNsPpx
+status: draft
 ---
 

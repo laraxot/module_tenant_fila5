@@ -6,10 +6,7 @@ module: "Tenant"
 tags: [docs, tenant, bmad]
 created: 2026-10-06
 updated: 2026-10-06
-<<<<<<< .merge_file_KwFih6
-=======
 qmd: "tenant   scopo modulo tenant"
->>>>>>> .merge_file_Y0Wvrd
 ---
 
 # Tenant — Scopo modulo

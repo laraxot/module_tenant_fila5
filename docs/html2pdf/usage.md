@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "usage"
 related:
-<<<<<<< .merge_file_RJF6bG
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_WkiOn5
+status: draft
 ---
 # Utilizzo Base e Layout
 

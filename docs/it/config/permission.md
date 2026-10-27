@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "permission"
 related:
-<<<<<<< .merge_file_if6EKC
   - "./phpstan-corrections-january.md"
-=======
   - "../../phpstan-corrections-january.md"
->>>>>>> .merge_file_Pt7G3r
+status: draft
 ---
 <?php
 

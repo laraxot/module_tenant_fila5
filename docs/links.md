@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "links"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_WxsvEv
-=======
 status: draft
->>>>>>> .merge_file_nvzyP8
 ---
 Laravel Multi-Tenant Applications with Ecotone
 

@@ -9,11 +9,10 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "03 later"
 related:
-<<<<<<< .merge_file_nTjyTZ
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_zijS3d
+status: superseded
+superseded_by: later.md
 ---
 # Later (Module Tenant)
 

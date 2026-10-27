@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "dry kiss analysis "
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_saKWGG
-=======
 status: draft
->>>>>>> .merge_file_dvtNVI
 ---
 # DRY & KISS Analysis - Modulo Tenant
 

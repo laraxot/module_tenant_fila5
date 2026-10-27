@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "tenant name to pub theme"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_iIFdgr
-=======
 status: draft
->>>>>>> .merge_file_DhO0fR
 ---
 # Dal nome tenant al tema pubblico (pub_theme)
 

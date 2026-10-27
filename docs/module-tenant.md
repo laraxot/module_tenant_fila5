@@ -10,10 +10,8 @@ discussions: []
 module: theme
 topic: module_tenant
 canonical: ../../../Themes/docs/shared-components/.gitkeep-Modules
-<<<<<<< .merge_file_dIqSlo
-=======
-status: stub
->>>>>>> .merge_file_tN9rLL
+status: superseded
+superseded_by: lang-link.md
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/.gitkeep-Modules

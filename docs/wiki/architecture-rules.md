@@ -7,11 +7,10 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "architecture rules"
 related:
-<<<<<<< .merge_file_yFFe4s
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_aKFPmD
+status: superseded
+superseded_by: ../architecture-rules.md
 ---
 # Architectural Rules & Guidelines
 

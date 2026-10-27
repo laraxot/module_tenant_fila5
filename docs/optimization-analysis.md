@@ -10,9 +10,6 @@ updated: 2026-07-14
 qmd: "optimization analysis"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_RnhM31
-=======
 status: draft
->>>>>>> .merge_file_G0LcDK
 ---
 

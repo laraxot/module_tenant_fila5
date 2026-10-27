@@ -7,10 +7,7 @@ title: "Quality gates — Modules/Tenant"
 type: report
 created: 2026-07-28
 updated: 2026-07-28
-<<<<<<< .merge_file_o6sTYV
-=======
 status: draft
->>>>>>> .merge_file_57bdG2
 ---
 
 # Quality gates — Modules/Tenant

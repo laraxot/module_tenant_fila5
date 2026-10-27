@@ -12,10 +12,7 @@ discussions:
 related:
   - ../../../Xot/docs/wiki/concepts/phpstan-pest-bridge-discipline.md
   - ../../../Xot/docs/wiki/rules/module-testcase-xotbase-hierarchy.md
-<<<<<<< .merge_file_LtcYqt
-=======
 status: draft
->>>>>>> .merge_file_t3owfk
 ---
 
 # Testing in Tenant

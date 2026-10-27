@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "advanced"
 related:
-<<<<<<< .merge_file_WVTmuf
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_62qNls
+status: draft
 ---
 # Funzionalità Avanzate
 

@@ -3,14 +3,11 @@ title: "philosophy"
 type: note
 tags: [documentation]
 created: 2026-09-26
-updated: 2026-09-26
-qmd: "philosophy"
+updated: 2026-10-25
+qmd: "tenant philosophy isolamento multi tenancy"
 issues: []
 discussions: []
-<<<<<<< .merge_file_AcJbeZ
-=======
 status: draft
->>>>>>> .merge_file_6cdL5s
 ---
 
 # Tenant Module: Multi-Tenancy Architecture
@@ -18,18 +15,7 @@ status: draft
 > **Data Isolation & Routing** — Tenant context, domain-to-database mapping, query scoping.
 
 ---
-<<<<<<< .merge_file_AcJbeZ
 
-title: "philosophy"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "philosophy"
-issues: []
-discussions: []
-=======
->>>>>>> .merge_file_6cdL5s
 ## Zen
 
 **"One app, many tenants. Data isolation is non-negotiable."**

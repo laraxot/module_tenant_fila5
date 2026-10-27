@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "testsushiseeder phpstan mixed type"
 related:
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Bugfix: TestSushiSeeder PHPStan Mixed Type Errors
 

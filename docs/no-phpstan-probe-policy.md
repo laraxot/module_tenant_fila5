@@ -8,10 +8,7 @@ qmd: "no phpstan probe policy"
 issues: []
 discussions: []
 description: Divieto di creare cartelle o file probe per PHPStan in questo modulo.
-<<<<<<< .merge_file_sySNZS
-=======
 status: draft
->>>>>>> .merge_file_bjyPWk
 ---
 
 # No PHPStan probe files in Tenant

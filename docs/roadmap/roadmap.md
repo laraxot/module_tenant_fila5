@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "roadmap"
 related:
-<<<<<<< .merge_file_UAsxdA
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_cC4agg
+status: draft
 ---
 # Tenant Module Roadmap (2025 Q4)
 

@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "social"
 related:
-<<<<<<< .merge_file_UtYh41
   - "./phpstan-corrections-january.md"
-=======
   - "../../phpstan-corrections-january.md"
->>>>>>> .merge_file_u2WYq5
+status: draft
 ---
 <?php
 
@@ -44,11 +42,8 @@ return [
 
 ## Collegamenti tra versioni di social.md
 * [social.md](../../../tenant/docs/it/config/social.md)
-<<<<<<< .merge_file_UtYh41
 * [social.md](../../../cms/docs/blocks/social.md)
-=======
 * [social.md](../../../../Cms/docs/blocks/social.md)
->>>>>>> .merge_file_u2WYq5
 
 ### Versione Incoming
 

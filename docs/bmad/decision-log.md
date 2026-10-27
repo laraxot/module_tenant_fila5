@@ -5,12 +5,9 @@ status: active
 module: "Tenant"
 tags: [docs, tenant, bmad]
 created: 2026-10-06
-<<<<<<< .merge_file_HJTwH1
 updated: 2026-10-06
-=======
 updated: 2026-10-19
 qmd: "decision log - modulo tenant tenant"
->>>>>>> .merge_file_lzfGM5
 ---
 
 # Decision Log - Modulo Tenant

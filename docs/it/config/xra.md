@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "xra"
 related:
-<<<<<<< .merge_file_j7qRQ7
   - "./phpstan-corrections-january.md"
-=======
   - "../../phpstan-corrections-january.md"
->>>>>>> .merge_file_T5mBmv
+status: draft
 ---
 <?php
 
@@ -37,11 +35,8 @@ return [
 ];
 ## Collegamenti tra versioni di xra.md
 * [xra.md](../../../xot/docs/install/xra.md)
-<<<<<<< .merge_file_j7qRQ7
 * [xra.md](../../../tenant/docs/it/xra.md)
-=======
 * [xra.md](../xra.md)
->>>>>>> .merge_file_T5mBmv
 * [xra.md](../../../tenant/docs/it/config/xra.md)
 
 ### Versione Incoming

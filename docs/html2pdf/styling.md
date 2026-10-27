@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "styling"
 related:
-<<<<<<< .merge_file_tuxZ5N
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_Z4Wky5
+status: draft
 ---
 # Guida agli Stili, Tabelle e Immagini
 

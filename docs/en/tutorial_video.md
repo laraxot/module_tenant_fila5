@@ -9,10 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "tutorial video"
 related:
-<<<<<<< .merge_file_zJDAL5
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_Wr2CTQ
+status: superseded
+superseded_by: tutorial-video.md
 ---
 https://www.youtube.com/watch?v=_eyz7rvwLTQ

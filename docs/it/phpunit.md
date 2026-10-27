@@ -9,10 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "phpunit"
 related:
-<<<<<<< .merge_file_wv5bHn
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_vJdjpL
+status: draft
 ---
 https://iwasherefirst2.medium.com/how-to-test-eloquent-models-in-a-laravel-package-3dbf30b44a19

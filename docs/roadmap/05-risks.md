@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "05 risks"
 related:
-<<<<<<< .merge_file_zYQrrw
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_z4BDmb
+status: draft
 ---
 # Risks - Tenant
 

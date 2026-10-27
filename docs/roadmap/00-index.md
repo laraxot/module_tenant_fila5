@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "00 index"
 related:
-<<<<<<< .merge_file_BrUPpV
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_UWS5jc
+status: draft
 ---
 # Roadmap Index - Tenant
 
@@ -39,7 +37,6 @@ Questo piano copre il module **Tenant** e le sue integrazioni principali.
 <!-- Merged from 00-INDEX.md, which collided with this file on case-insensitive filesystems. -->
 
 ---
-title: "Roadmap Index - Tenant"
 module: "Tenant"
 type: concept
 tags: [00, INDEX]

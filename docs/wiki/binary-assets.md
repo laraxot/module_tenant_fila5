@@ -1,15 +1,13 @@
 ---
 title: "binary-assets.md"
 type: concept
-status: active
 module: "Tenant"
 tags: [docs, tenant, bmad]
 created: 2026-10-06
 updated: 2026-10-06
-<<<<<<< .merge_file_19FX4l
-=======
 qmd: "asset binari tenant"
->>>>>>> .merge_file_L15sbK
+status: superseded
+superseded_by: ../binary-assets.md
 ---
 
 # Asset binari

@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "activitylog"
 related:
-<<<<<<< .merge_file_FrdZzB
   - "./phpstan-corrections-january.md"
-=======
   - "../../phpstan-corrections-january.md"
->>>>>>> .merge_file_LwjDOM
+status: draft
 ---
 <?php
 

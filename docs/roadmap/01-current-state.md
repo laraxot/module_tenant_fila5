@@ -9,11 +9,10 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "01 current state"
 related:
-<<<<<<< .merge_file_UIPPkf
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_i762Im
+status: superseded
+superseded_by: current-state.md
 ---
 # Current State - Tenant
 

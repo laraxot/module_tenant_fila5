@@ -7,11 +7,10 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "inadmin helper autoload"
 related:
-<<<<<<< .merge_file_j8rGJf
   - "./phpstan-corrections-january.md"
-=======
   - "../../phpstan-corrections-january.md"
->>>>>>> .merge_file_4cNySW
+status: superseded
+superseded_by: ../../bugfix/inadmin-helper-autoload.md
 ---
 # Bugfix: `inAdmin()` undefined during `package:discover`
 

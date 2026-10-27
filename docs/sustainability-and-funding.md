@@ -4,6 +4,7 @@ type: bmad-reference
 status: decision-input
 updated: 2026-10-15
 tags: [tenant, sustainability, bmad, isolation]
+qmd: "confine tenant tenant"
 ---
 
 <!--

@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "passport"
 related:
-<<<<<<< .merge_file_4QYtx8
   - "./phpstan-corrections-january.md"
-=======
   - "../../phpstan-corrections-january.md"
->>>>>>> .merge_file_MvBLOx
+status: draft
 ---
 # Laravel Passport Configuration (Version 13.4.x)
 

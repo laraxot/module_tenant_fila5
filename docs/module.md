@@ -10,10 +10,7 @@ qmd: "Tenant module doctrine BMAD analysis purpose religion philosophy policy wh
 related:
   - "../../Xot/docs/module.md"
   - "../../Platform/docs/module.md"
-<<<<<<< .merge_file_9TTwU9
-=======
 status: draft
->>>>>>> .merge_file_ww1Ao0
 ---
 
 # Tenant Module — Doctrine

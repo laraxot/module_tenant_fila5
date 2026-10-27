@@ -8,6 +8,7 @@ updated: 2026-07-14
 qmd: "readme en"
 related:
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # 🏢 Tenant — English presentation
 

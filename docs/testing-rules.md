@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "testing rules"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_cvW16u
-=======
 status: draft
->>>>>>> .merge_file_W0IKcZ
 ---
 # Testing Rules Summary
 

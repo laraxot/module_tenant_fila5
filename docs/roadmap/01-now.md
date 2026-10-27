@@ -9,11 +9,10 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "01 now"
 related:
-<<<<<<< .merge_file_mhCOVz
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_sErBjE
+status: superseded
+superseded_by: now.md
 ---
 # Now (Module Tenant)
 

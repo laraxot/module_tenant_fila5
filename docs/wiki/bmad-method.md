@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "bmad method"
 related:
-<<<<<<< .merge_file_DzLhK7
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_YLsT8c
+status: draft
 ---
 # BMAD Method v6.3 operativo nel progetto
 

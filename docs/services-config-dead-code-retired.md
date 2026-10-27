@@ -6,18 +6,15 @@ module: "Tenant"
 type: concept
 tags: [services, config, dead, code]
 created: 2026-07-14
-<<<<<<< .merge_file_fOIsfi
 updated: 2026-07-14
 qmd: "services config dead code retired"
 related:
   - "./phpstan-corrections-january.md"
-=======
 updated: 2026-10-20
 qmd: "services config dead code retired"
 related:
   - "./phpstan-corrections-january.md"
 status: draft
->>>>>>> .merge_file_NBbjiX
 ---
 # Services/Config retired — usare Actions
 
@@ -34,8 +31,6 @@ status: draft
 Consumer aggiornati: `Modules/User/app/Datas/{PasswordData,SocialProviderData}.php`, `Modules/User/app/Filament/Pages/Password.php`, `Modules/Notify/app/Providers/NotifyServiceProvider.php` (import morto rimosso), `Modules/User/resources/views/pages/index.blade.php` (import morto rimosso).
 
 Dettagli investigazione completa: `docs/chat/xot-merge-conflicts-coordination.md`.
-<<<<<<< .merge_file_fOIsfi
-=======
 
 ## Aggiornamento 2026-10-20: i file sono tornati
 
@@ -52,4 +47,3 @@ Dettagli: [stories/services-to-actions-tenant.story.md](stories/services-to-acti
 Dopo `rg` produzione (escluse docs/tests): zero chiamanti vivi a `TenantService` (commenti in Notify SMS Data / SmtpData; Cms Breadcrumb gia' su Action).
 Eliminati di nuovo: `TenantService.php`, `ConfigResolverRegistry`, `ConfigResolverInterface`, tre resolver.
 `HereService` (unico ex-chiamante) era gia' sparito con il cluster Geo.
->>>>>>> .merge_file_NBbjiX

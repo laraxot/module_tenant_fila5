@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "runninginconsole check removal sumy"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_Es0rWQ
-=======
 status: draft
->>>>>>> .merge_file_JQ3Kkl
 ---
 # Rimozione runningInConsole Check - Riepilogo
 

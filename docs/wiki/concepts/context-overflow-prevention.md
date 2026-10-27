@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "context overflow prevention"
 related:
-<<<<<<< .merge_file_OStkcP
   - "./phpstan-corrections-january.md"
-=======
   - "../../phpstan-corrections-january.md"
->>>>>>> .merge_file_OggQ6x
+status: draft
 ---
 ## Context Overflow Prevention
 

@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "log"
 related:
-<<<<<<< .merge_file_fHOv6z
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_PkyPVg
+status: draft
 ---
 # Tenant Activity Log
 

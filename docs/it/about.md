@@ -10,6 +10,7 @@ title: About Tenant
 description: About Tenant
 extends: _layouts.documentation
 section: content
+status: draft
 ---
 
 # module_tenant
@@ -97,11 +98,8 @@ Una classe TenantScope per facilmente applicare il tenant corrente come scopo gl
 Per ulteriori informazioni su come utilizzare il modulo, consulta la documentazione ufficiale sul sito web del suo autore o sulla pagina GitHub del progetto.
 ## Collegamenti tra versioni di about.md
 * [about.md](../../../xot/docs/about.md)
-<<<<<<< .merge_file_IdbIyY
 * [about.md](../../../tenant/docs/en/about.md)
-=======
 * [about.md](../en/about.md)
->>>>>>> .merge_file_kXFaDb
 * [about.md](../../../tenant/docs/it/about.md)
 
 ### Versione Incoming

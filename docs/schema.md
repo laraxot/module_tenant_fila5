@@ -8,10 +8,7 @@ discussions: []
 title: "Module Schema"
 module: "Tenant"
 created: "2026-04-15T08:28:50Z"
-<<<<<<< .merge_file_1ER9u3
-=======
 status: draft
->>>>>>> .merge_file_9S0ted
 ---
 
 # Tenant Module Schema

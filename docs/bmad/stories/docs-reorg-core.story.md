@@ -3,11 +3,8 @@ title: "Riorganizzazione docs core Tenant"
 type: story
 tags: [docs, bmad, tenant, reorganization]
 qmd: "riorganizzazione docs core Tenant"
-<<<<<<< .merge_file_RoCJbu
-=======
 status: draft
 updated: 2026-10-09
->>>>>>> .merge_file_v7QOQo
 ---
 
 # Story — riorganizzazione docs core: Tenant

@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "organizzativa money"
 related:
-<<<<<<< .merge_file_IOAqWu
   - "./phpstan-corrections-january.md"
-=======
   - "../../phpstan-corrections-january.md"
->>>>>>> .merge_file_jj6aKT
+status: draft
 ---
 ## Organizzativa Money
 

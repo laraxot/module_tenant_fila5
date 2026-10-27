@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "cyclomatic complexity report"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_BaQefk
-=======
 status: draft
->>>>>>> .merge_file_tkwhTU
 ---
 # Cyclomatic Complexity Report - Module: Tenant
 

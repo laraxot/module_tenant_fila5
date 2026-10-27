@@ -7,10 +7,7 @@ updated: 2026-09-26
 qmd: "module analysis"
 issues: []
 discussions: []
-<<<<<<< .merge_file_NO47Uw
-=======
 status: draft
->>>>>>> .merge_file_hlY30j
 ---
 
 # Modulo Tenant - Multi-Tenancy Management
@@ -354,18 +351,6 @@ $reports = CrossTenantService::aggregateData([
 - [Database Design Patterns](https://aka.ms/vs-code-extensions/database-design-patterns)
 
 ---
-<<<<<<< .merge_file_NO47Uw
-
-title: "module analysis"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "module analysis"
-issues: []
-discussions: []
-=======
->>>>>>> .merge_file_hlY30j
 **
 **Versione**: v2.2.0-beta  
 **Stato**: Production Ready with Enterprise Scaling

@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "translations"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Traduzioni del Modulo Tenant
 
@@ -68,7 +69,6 @@ return [
 ## Collegamenti tra versioni di translations.md
 * [translations.md](../../../chart/docs/translations.md)
 * [translations.md](../../../reporting/docs/translations.md)
-<<<<<<< .merge_file_kdbSgR
 * [translations.md](../../../gdpr/docs/translations.md)
 * [translations.md](../../../notify/docs/translations.md)
 * [translations.md](../../../xot/docs/roadmap/lang/translations.md)
@@ -82,7 +82,6 @@ return [
 * [translations.md](../../../media/docs/translations.md)
 * [translations.md](../../../tenant/docs/translations.md)
 * [translations.md](../../../activity/docs/translations.md)
-=======
 * [translations.md](../../Gdpr/docs/translations.md)
 * [translations.md](../../Notify/docs/translations.md)
 * [translations.md](../../../xot/docs/roadmap/lang/translations.md)
@@ -96,6 +95,5 @@ return [
 * [translations.md](../../Media/docs/translations.md)
 * [translations.md](../../../tenant/docs/translations.md)
 * [translations.md](../../Activity/docs/translations.md)
->>>>>>> .merge_file_mGIr1S
 * [translations.md](../../../patient/docs/translations.md)
 * [translations.md](../../../cms/docs/translations.md)

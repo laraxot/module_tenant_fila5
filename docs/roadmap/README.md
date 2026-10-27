@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "README"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Tenant Module Roadmap
@@ -37,22 +38,10 @@ discussions: []
 | Lingua | Link |
 |--------|------|
 | 🇮🇹 Presentazione | Questo file (`README.md`) |
-<<<<<<< .merge_file_GYJxH4
 | 🇬🇧 Business card | [docs/readme-en.md](./docs/readme-en.md) |
 | 📚 Wiki tecnica | [./docs/wiki/](./docs/) |
-=======
 | 🇬🇧 Business card | [docs/readme-en.md](../readme-en.md) |
 | 📚 Wiki tecnica | [./docs/wiki/](..) |
->>>>>>> .merge_file_NcChmN
 
 ---
-
-title: "README"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "README"
-issues: []
-discussions: []
 **Modulo** `Tenant` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5

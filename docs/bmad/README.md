@@ -1,6 +1,4 @@
 ---
-<<<<<<< .merge_file_ZaHezw
-=======
 type: concept
 title: "Tenant — Multi-Tenancy"
 description: "Modulo per il multi-tenancy, isolamento dati per tenant"
@@ -80,26 +78,11 @@ Le applicazioni SaaS moderne hanno bisogno di multi-tenancy per servire più cli
 ## Nota da README precedente
 
 ---
->>>>>>> .merge_file_LXsPWz
-title: "README"
-type: note
-tags: [documentation]
-created: 2026-10-06
-updated: 2026-10-06
-qmd: "README"
-issues: []
-discussions: []
-<<<<<<< .merge_file_ZaHezw
-=======
 status: draft
->>>>>>> .merge_file_LXsPWz
 ---
 
 # Tenant bmad docs
 
-<<<<<<< .merge_file_ZaHezw
-This folder contains BMAD method documentation for the Tenant module.
-=======
 ## Kit BMAD owner (canonico)
 
 - [BMAD Planning](../bmad-planning.md)
@@ -109,4 +92,3 @@ This folder contains BMAD method documentation for the Tenant module.
 - [Decision log](./decision-log.md)
 
 This folder contains BMAD method documentation for the Tenant module.
->>>>>>> .merge_file_LXsPWz

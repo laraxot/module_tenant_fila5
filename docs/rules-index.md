@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "rules index"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_WeMKfz
-=======
 status: draft
->>>>>>> .merge_file_jwxeYg
 ---
 # Rules Index
 

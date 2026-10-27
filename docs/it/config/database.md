@@ -9,11 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "database"
 related:
-<<<<<<< .merge_file_nxWbwv
   - "./phpstan-corrections-january.md"
-=======
   - "../../phpstan-corrections-january.md"
->>>>>>> .merge_file_6PAsuH
+status: draft
 ---
 <?php
 

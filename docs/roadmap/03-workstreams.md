@@ -9,11 +9,10 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "03 workstreams"
 related:
-<<<<<<< .merge_file_c699dv
   - "./phpstan-corrections-january.md"
-=======
   - "../phpstan-corrections-january.md"
->>>>>>> .merge_file_lKHBCR
+status: superseded
+superseded_by: workstreams.md
 ---
 # Workstreams - Tenant
 

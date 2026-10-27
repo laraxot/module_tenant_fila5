@@ -1,15 +1,13 @@
 ---
 title: "bugfix-larastan-tenant-model-collision.md"
 type: concept
-status: active
 module: "Tenant"
 tags: [docs, tenant, bmad]
 created: 2026-10-06
 updated: 2026-10-06
-<<<<<<< .merge_file_sWobgp
-=======
 qmd: "bugfix: phpstan `assign.propertytype`   tenantfactory duplicata confonde il tipo tenant tenant"
->>>>>>> .merge_file_Dannhm
+status: superseded
+superseded_by: ../bugfix-larastan-tenant-model-collision.md
 ---
 
 # Bugfix: PHPStan `assign.propertyType` — TenantFactory duplicata confonde il tipo Tenant

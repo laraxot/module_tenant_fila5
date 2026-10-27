@@ -10,10 +10,7 @@ updated: 2026-07-14
 qmd: "nested resources"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_QkjJuT
-=======
 status: draft
->>>>>>> .merge_file_qJtqS4
 ---
 # Tenant Module - Nested Resource Implementation Guide
 

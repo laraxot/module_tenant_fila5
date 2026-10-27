@@ -9,11 +9,10 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "morph map"
 related:
-<<<<<<< .merge_file_TiCZCC
   - "./phpstan-corrections-january.md"
-=======
   - "../../phpstan-corrections-january.md"
->>>>>>> .merge_file_2ZZfhM
+status: superseded
+superseded_by: archive/morph-map.md
 ---
 <?php
 

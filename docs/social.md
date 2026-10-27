@@ -10,9 +10,6 @@ updated: 2026-07-14
 qmd: "social"
 related:
   - "./phpstan-corrections-january.md"
-<<<<<<< .merge_file_BA5zxY
-=======
 status: draft
->>>>>>> .merge_file_qgVCAF
 ---
 

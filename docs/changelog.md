@@ -7,10 +7,7 @@ updated: 2026-09-26
 qmd: "changelog"
 issues: []
 discussions: []
-<<<<<<< .merge_file_G92oL5
-=======
 status: draft
->>>>>>> .merge_file_zlUa3O
 ---
 
 # Changelog
