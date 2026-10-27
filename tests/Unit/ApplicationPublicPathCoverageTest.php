@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant\Unit;
+namespace Modules\Tenant\Tests\Unit;
 
 use App\Application;
-use Tests\Modules\Tenant\TestCase;
+use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 use function Safe\mkdir;

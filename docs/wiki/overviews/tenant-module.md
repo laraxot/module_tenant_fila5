@@ -9,11 +9,13 @@ type: overview
 module: Tenant
 sources:
   - ../../module.md
-  - ../../../PHILOSOPHY.md
+  - ../../philosophy.md
+  - ../../philosophy-religion.md
   - ../../configuration.md
   - ../../structure.md
 confidence: high
-updated: 2026-04-15
+updated: 2026-10-25
+status: draft
 ---
 
 # Tenant Module — Overview

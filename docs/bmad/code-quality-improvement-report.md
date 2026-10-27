@@ -15,6 +15,7 @@ related:
   - "../../../../docs/stories/STORY-001-code-quality-moduli-temi.md"
   - "../../../../../docs/wiki/memories/module-github-remote-discipline.md"
   - "../wiki/memories/github-remote-collision-wrong-base.md"
+status: draft
 ---
 
 # Code Quality Improvement Report — Tenant

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant\Unit;
+namespace Modules\Tenant\Tests\Unit;
 
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\Domain;
-use Tests\Modules\Tenant\TestCase;
+use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
@@ -16,7 +16,7 @@ describe('Domain Model', function (): void {
     test('_domain_model_can_be_instantiated', function (): void {
         $domain = new Domain;
 
-        Assert::assertInstanceOf(Domain::class, $domain);
+        Assert::assertSame(Domain::class, $domain::class);
     });
 
     test('_get_rows_method_works_correctly', function (): void {

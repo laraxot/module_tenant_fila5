@@ -4,8 +4,9 @@ type: reference
 tags: [tenant, api, contracts, services]
 created: 2026-07-09
 updated: 2026-07-09
-status: draft
 qmd: "api reference: tenant module tenant"
+status: superseded
+superseded_by: ../api.md
 ---
 
 # API Reference: Tenant Module
@@ -426,7 +427,7 @@ User::withoutGlobalScopes()->all();  // Requires permission
 ---
 
 ## Related Documentation
-- [Architecture Overview](./architecture.md)
+- [Architecture Overview](./ARCHITECTURE.md)
 - [Setup & Configuration](./SETUP.md)
 - [Troubleshooting](troubleshooting.md)
 - [Best Practices](./BEST_PRACTICES.md)

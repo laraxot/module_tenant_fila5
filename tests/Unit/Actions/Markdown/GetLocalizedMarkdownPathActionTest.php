@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant\Unit\Actions\Markdown;
+namespace Modules\Tenant\Tests\Unit\Actions\Markdown;
 
 use Illuminate\Support\Facades\App;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\Markdown\GetLocalizedMarkdownPathAction;
-use Tests\Modules\Tenant\TestCase;
+use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 use function Safe\file_put_contents;

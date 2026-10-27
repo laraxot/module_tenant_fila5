@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "translations"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Traduzioni del Modulo Tenant
 
@@ -68,6 +69,19 @@ return [
 ## Collegamenti tra versioni di translations.md
 * [translations.md](../../../chart/docs/translations.md)
 * [translations.md](../../../reporting/docs/translations.md)
+* [translations.md](../../../gdpr/docs/translations.md)
+* [translations.md](../../../notify/docs/translations.md)
+* [translations.md](../../../xot/docs/roadmap/lang/translations.md)
+* [translations.md](../../../xot/docs/translations.md)
+* [translations.md](../../../dental/docs/translations.md)
+* [translations.md](../../../user/docs/translations.md)
+* [translations.md](../../../ui/docs/translations.md)
+* [translations.md](../../../lang/docs/packages/translations.md)
+* [translations.md](../../../lang/docs/translations.md)
+* [translations.md](../../../job/docs/translations.md)
+* [translations.md](../../../media/docs/translations.md)
+* [translations.md](../../../tenant/docs/translations.md)
+* [translations.md](../../../activity/docs/translations.md)
 * [translations.md](../../Gdpr/docs/translations.md)
 * [translations.md](../../Notify/docs/translations.md)
 * [translations.md](../../../xot/docs/roadmap/lang/translations.md)

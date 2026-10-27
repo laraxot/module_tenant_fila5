@@ -2,84 +2,58 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Modules\Tenant\Models\Tenant;
-use Modules\Tenant\Models\TenantSetting;
-use Tests\TestCase;
+namespace Modules\Tenant\Tests\Feature;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+use InvalidArgumentException;
+use Mockery\MockInterface;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+use Modules\Tenant\Actions\GetTenantNameAction;
+use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-describe('Tenant Config Isolation', function () {
-    it('isolates config between tenants', function () {
-        $tenant1 = Tenant::factory()->create(['name' => 'tenant-a']);
-        $tenant2 = Tenant::factory()->create(['name' => 'tenant-b']);
+uses(TestCase::class);
 
-        // Create config for tenant-a
-        $configDirA = base_path("tenants/{$tenant1->name}/config");
-        \Illuminate\Support\Facades\File::makeDirectory($configDirA, 0755, true);
-        \Illuminate\Support\Facades\File::put($configDirA . '/app.php', "<?php return ['name' => 'Tenant A App'];");
-
-        // Create config for tenant-b
-        $configDirB = base_path("tenants/{$tenant2->name}/config");
-        \Illuminate\Support\Facades\File::makeDirectory($configDirB, 0755, true);
-        \Illuminate\Support\Facades\File::put($configDirB . '/app.php', "<?php return ['name' => 'Tenant B App'];");
-
-        $configA = include $configDirA . '/app.php';
-        $configB = include $configDirB . '/app.php';
-
-        expect($configA['name'])->toBe('Tenant A App');
-        expect($configB['name'])->toBe('Tenant B App');
-        expect($configA['name'])->not->toBe($configB['name']);
+it('isolates tenant file paths per tenant context', function (): void {
+    /** @var TestCase $this */
+    $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
+        $mock->allows(['execute' => 'tenant-a']);
     });
 
-    it('isolates settings between tenants', function () {
-        $tenant1 = Tenant::factory()->create(['name' => 'tenant-a']);
-        $tenant2 = Tenant::factory()->create(['name' => 'tenant-b']);
+    $pathA = app(GetTenantFilePathAction::class)->execute('settings.json');
 
-        TenantSetting::create([
-            'tenant_id' => $tenant1->id,
-            'key' => 'theme',
-            'value' => 'dark',
-        ]);
-
-        TenantSetting::create([
-            'tenant_id' => $tenant2->id,
-            'key' => 'theme',
-            'value' => 'light',
-        ]);
-
-        $setting1 = TenantSetting::where('tenant_id', $tenant1->id)->where('key', 'theme')->first();
-        $setting2 = TenantSetting::where('tenant_id', $tenant2->id)->where('key', 'theme')->first();
-
-        expect($setting1->value)->toBe('dark');
-        expect($setting2->value)->toBe('light');
+    $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
+        $mock->allows(['execute' => 'tenant-b']);
     });
 
-    it('tenant settings do not leak', function () {
-        $tenant1 = Tenant::factory()->create(['name' => 'tenant-a']);
-        $tenant2 = Tenant::factory()->create(['name' => 'tenant-b']);
+    $pathB = app(GetTenantFilePathAction::class)->execute('settings.json');
 
-        TenantSetting::create([
-            'tenant_id' => $tenant1->id,
-            'key' => 'secret',
-            'value' => 'tenant-a-secret',
-        ]);
+    Assert::assertStringContainsString('tenant-a', $pathA);
+    Assert::assertStringContainsString('tenant-b', $pathB);
+    Assert::assertNotSame($pathA, $pathB);
+});
 
-        $tenant2Settings = TenantSetting::where('tenant_id', $tenant2->id)->get();
-
-        expect($tenant2Settings)->toBeEmpty();
+it('rejects path traversal in tenant filename', function (): void {
+    /** @var TestCase $this */
+    $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
+        $mock->allows(['execute' => 'tenant-a']);
     });
 
-    it('tenant config directory structure is separate', function () {
-        $tenant1 = Tenant::factory()->create(['name' => 'tenant-a']);
-        $tenant2 = Tenant::factory()->create(['name' => 'tenant-b']);
+    try {
+        app(GetTenantFilePathAction::class)->execute('../../etc/passwd');
+    } catch (InvalidArgumentException $exception) {
+        Assert::assertSame('Tenant filename must be a relative path without traversal segments.', $exception->getMessage());
 
-        $path1 = $tenant1->configPath();
-        $path2 = $tenant2->configPath();
+        return;
+    }
 
-        expect($path1)->not->toBe($path2);
-        expect($path1)->toContain('tenant-a');
-        expect($path2)->toContain('tenant-b');
-    });
+    Assert::fail('Expected path traversal to be rejected.');
+});
+
+it('rejects malicious server name with path traversal', function (): void {
+    config(['app.url' => 'http://localhost']);
+    TestCase::setServerNameForTenantTest('../../evil.com');
+
+    $result = app(GetTenantNameAction::class)->execute();
+
+    Assert::assertSame('localhost', $result);
 });

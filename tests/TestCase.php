@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant;
+namespace Modules\Tenant\Tests;
 
 use Closure;
 use Illuminate\Database\QueryException;
@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Mockery\Expectation;
+use Mockery\ExpectationInterface;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Database\Factories\TenantFactory;
@@ -20,10 +21,9 @@ use Modules\Tenant\Models\BaseModel;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Providers\TenantServiceProvider;
-use Tests\Modules\Tenant\Fixtures\TestSushiModelForPath;
 use Modules\User\Providers\UserServiceProvider;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
-use Tests\Modules\Xot\XotBaseTestCase;
+use Modules\Xot\Tests\XotBaseTestCase;
 use PHPUnit\Framework\Assert;
 use Webmozart\Assert\Assert as WebmozartAssert;
 
@@ -125,17 +125,6 @@ abstract class TestCase extends XotBaseTestCase
         return $decoded;
     }
 
-    /**
-     * Modello Sushi di test con path JSON esplicito (isolamento tenant nei Integration test).
-     */
-    public static function makeTestSushiModelForPath(string $jsonPath): TestSushiModelForPath
-    {
-        $model = new TestSushiModelForPath;
-        $model->setJsonPath($jsonPath);
-
-        return $model;
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -211,14 +200,14 @@ abstract class TestCase extends XotBaseTestCase
         return (self::$createTestData)();
     }
 
-    public static function expectMockery(MockInterface $mock, string $method): Expectation
+    /**
+     * @return Expectation Il docblock di Mockery 1.6 dice Expectation, ma a runtime shouldReceive()
+     *                     restituisce CompositeExpectation (stessi metodi, inoltrati da __call):
+     *                     il tipo nativo e' l'interfaccia comune, un instanceof Expectation lanciava sempre.
+     */
+    public static function expectMockery(MockInterface $mock, string $method): ExpectationInterface
     {
-        $expectation = $mock->allows($method);
-        if (! $expectation instanceof Expectation) {
-            throw new \RuntimeException('Unexpected mockery expectation type.');
-        }
-
-        return $expectation;
+        return $mock->shouldReceive($method);
     }
 
     /**

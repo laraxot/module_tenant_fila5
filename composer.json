@@ -52,6 +52,11 @@
       "Modules\\Tenant\\Database\\Seeders\\": "database/seeders/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Tenant\\Tests\\": "tests/"
+    }
+  },
   "scripts": {
     "post-autoload-dump1": [
       "@php vendor/bin/testbench package:discover --ansi"

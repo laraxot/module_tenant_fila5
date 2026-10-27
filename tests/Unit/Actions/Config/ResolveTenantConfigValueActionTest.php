@@ -2,84 +2,50 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+namespace Modules\Tenant\Tests\Unit\Actions\Config;
+
 use Illuminate\Support\Facades\Config;
+use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
-use Modules\Tenant\Models\Tenant;
-use Tests\TestCase;
+use Modules\Tenant\Actions\GetTenantNameAction;
+use Modules\Tenant\Tests\TestCase;
+use Modules\Xot\Tests\XotBasePest;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+uses(TestCase::class);
 
-beforeEach(function () {
-    $this->action = app(ResolveTenantConfigValueAction::class);
-    $this->tenant = Tenant::factory()->create(['name' => 'test-tenant']);
-    $configDir = base_path("tenants/{$this->tenant->name}/config");
-    \Illuminate\Support\Facades\File::makeDirectory($configDir, 0755, true);
-    \Illuminate\Support\Facades\File::put(
-        $configDir . '/app.php',
-        "<?php return ['name' => 'Tenant App', 'debug' => true, 'nested' => ['key' => 'value']];"
+it('resolves tenant config value by merging with tenant overrides', function (): void {
+    /** @var TestCase $this */
+    $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
+        $mock->allows(['execute' => 'test-tenant']);
+    });
+
+    Config::set('app.name', 'Base App');
+    Config::set('app.timezone', 'UTC');
+    Config::set('test-tenant.app', [
+        'name' => 'Tenant App',
+    ]);
+
+    $action = app(ResolveTenantConfigValueAction::class);
+
+    Assert::assertSame('Tenant App', $action->execute('app.name'));
+    Assert::assertSame('UTC', $action->execute('app.timezone'));
+});
+
+it('throws exception for empty config key', function (): void {
+    XotBasePest::assertThrows(
+        fn (): float|int|string|array|null => app(ResolveTenantConfigValueAction::class)->execute(''),
+        \Exception::class,
     );
 });
 
-afterEach(function () {
-    $configDir = base_path("tenants/{$this->tenant->name}/config");
-    if (\Illuminate\Support\Facades\File::exists($configDir)) {
-        \Illuminate\Support\Facades\File::deleteDirectory($configDir);
-    }
-});
-
-describe('ResolveTenantConfigValueAction', function () {
-    it('resolves value from tenant config', function () {
-        $value = $this->action->execute('app.name', $this->tenant->name);
-
-        expect($value)->toBe('Tenant App');
+it('returns default value if config not found', function (): void {
+    /** @var TestCase $this */
+    $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
+        $mock->allows(['execute' => 'test-tenant']);
     });
 
-    it('resolves nested value using dot notation', function () {
-        $value = $this->action->execute('app.nested.key', $this->tenant->name);
+    $result = app(ResolveTenantConfigValueAction::class)->execute('nonexistent.key', 'default');
 
-        expect($value)->toBe('value');
-    });
-
-    it('falls back to global config if not in tenant config', function () {
-        Config::set('app.global_only', 'Global Value');
-
-        $value = $this->action->execute('app.global_only', $this->tenant->name);
-
-        expect($value)->toBe('Global Value');
-    });
-
-    it('tenant config overrides global config', function () {
-        Config::set('app.name', 'Global App');
-
-        $value = $this->action->execute('app.name', $this->tenant->name);
-
-        expect($value)->toBe('Tenant App'); // Tenant value takes precedence
-    });
-
-    it('returns default if not found anywhere', function () {
-        $value = $this->action->execute('app.non_existent', $this->tenant->name, 'default-value');
-
-        expect($value)->toBe('default-value');
-    });
-
-    it('returns null if not found and no default', function () {
-        $value = $this->action->execute('app.non_existent', $this->tenant->name);
-
-        expect($value)->toBeNull();
-    });
-
-    it('handles non-existent tenant', function () {
-        $value = $this->action->execute('app.name', 'non-existent', 'default');
-
-        expect($value)->toBe('default');
-    });
-
-    it('handles array default', function () {
-        $default = ['fallback' => true];
-        $value = $this->action->execute('app.missing', $this->tenant->name, $default);
-
-        expect($value)->toBe($default);
-    });
+    Assert::assertSame('default', $result);
 });

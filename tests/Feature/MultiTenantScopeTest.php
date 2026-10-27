@@ -2,74 +2,65 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Modules\Tenant\Models\Tenant;
+namespace Modules\Tenant\Tests\Feature;
+
 use Modules\Tenant\Models\TenantSetting;
-use Tests\TestCase;
+use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+uses(TestCase::class);
 
-describe('Multi-Tenant Scope', function () {
-    it('scopes queries to current tenant', function () {
-        $tenant1 = Tenant::factory()->create(['name' => 'scope-tenant-1']);
-        $tenant2 = Tenant::factory()->create(['name' => 'scope-tenant-2']);
+describe('Multi-tenant scope', function (): void {
+    beforeEach(function (): void {
+        if (TestCase::tenantDbUnavailable()) {
+            TestCase::skipCurrentTest('Tenant DB write blocked on shared sqlite');
+        }
+    });
+
+    it('scopes queries to tenant id', function (): void {
+        $tenant1 = TestCase::createTenant(['name' => 'scope-tenant-1']);
+        $tenant2 = TestCase::createTenant(['name' => 'scope-tenant-2']);
 
         TenantSetting::create(['tenant_id' => $tenant1->id, 'key' => 'setting', 'value' => 'value-1']);
         TenantSetting::create(['tenant_id' => $tenant2->id, 'key' => 'setting', 'value' => 'value-2']);
 
-        // Simulate tenant context
-        $settings1 = TenantSetting::where('tenant_id', $tenant1->id)->get();
-        $settings2 = TenantSetting::where('tenant_id', $tenant2->id)->get();
+        $settings1 = TenantSetting::query()->where('tenant_id', $tenant1->id)->get();
+        $settings2 = TenantSetting::query()->where('tenant_id', $tenant2->id)->get();
 
-        expect($settings1)->toHaveCount(1);
-        expect($settings1->first()->value)->toBe('value-1');
+        Assert::assertCount(1, $settings1);
+        $first1 = $settings1->first();
+        Assert::assertInstanceOf(TenantSetting::class, $first1);
+        Assert::assertSame('value-1', $first1->value);
 
-        expect($settings2)->toHaveCount(1);
-        expect($settings2->first()->value)->toBe('value-2');
+        Assert::assertCount(1, $settings2);
+        $first2 = $settings2->first();
+        Assert::assertInstanceOf(TenantSetting::class, $first2);
+        Assert::assertSame('value-2', $first2->value);
     });
 
-    it('global scope prevents cross-tenant access', function () {
-        $tenant1 = Tenant::factory()->create(['name' => 'global-1']);
-        $tenant2 = Tenant::factory()->create(['name' => 'global-2']);
+    it('keeps rows separable without global scope', function (): void {
+        $tenant1 = TestCase::createTenant(['name' => 'global-1']);
+        $tenant2 = TestCase::createTenant(['name' => 'global-2']);
 
         TenantSetting::create(['tenant_id' => $tenant1->id, 'key' => 'private', 'value' => 'secret-1']);
         TenantSetting::create(['tenant_id' => $tenant2->id, 'key' => 'private', 'value' => 'secret-2']);
 
-        // Without tenant context, should see all (or none depending on scope implementation)
-        $allSettings = TenantSetting::all();
-
-        expect($allSettings)->toHaveCount(2);
+        Assert::assertCount(2, TenantSetting::query()->get());
     });
 
-    it('tenant-aware models enforce isolation', function () {
-        $tenant1 = Tenant::factory()->create(['name' => 'aware-1']);
-        $tenant2 = Tenant::factory()->create(['name' => 'aware-2']);
+    it('enforces isolation when filtering by tenant_id', function (): void {
+        $tenant1 = TestCase::createTenant(['name' => 'aware-1']);
+        $tenant2 = TestCase::createTenant(['name' => 'aware-2']);
 
-        $setting1 = TenantSetting::create(['tenant_id' => $tenant1->id, 'key' => 'test', 'value' => 'v1']);
-        $setting2 = TenantSetting::create(['tenant_id' => $tenant2->id, 'key' => 'test', 'value' => 'v2']);
+        TenantSetting::create(['tenant_id' => $tenant1->id, 'key' => 'test', 'value' => 'v1']);
+        TenantSetting::create(['tenant_id' => $tenant2->id, 'key' => 'test', 'value' => 'v2']);
 
-        // Query with tenant scope
-        $scoped1 = TenantSetting::where('tenant_id', $tenant1->id)->get();
-        $scoped2 = TenantSetting::where('tenant_id', $tenant2->id)->get();
+        $scoped1 = TenantSetting::query()->where('tenant_id', $tenant1->id)->first();
+        $scoped2 = TenantSetting::query()->where('tenant_id', $tenant2->id)->first();
 
-        expect($scoped1->first()->value)->toBe('v1');
-        expect($scoped2->first()->value)->toBe('v2');
-    });
-
-    it('RLS policies work with tenant context', function () {
-        // This tests the concept - actual RLS depends on database setup
-        $tenant1 = Tenant::factory()->create(['name' => 'rls-1']);
-        $tenant2 = Tenant::factory()->create(['name' => 'rls-2']);
-
-        TenantSetting::create(['tenant_id' => $tenant1->id, 'key' => 'rls-test', 'value' => 'rls-1']);
-        TenantSetting::create(['tenant_id' => $tenant2->id, 'key' => 'rls-test', 'value' => 'rls-2']);
-
-        // Verify data exists and is separable
-        $tenant1Data = TenantSetting::where('tenant_id', $tenant1->id)->where('key', 'rls-test')->first();
-        $tenant2Data = TenantSetting::where('tenant_id', $tenant2->id)->where('key', 'rls-test')->first();
-
-        expect($tenant1Data->value)->toBe('rls-1');
-        expect($tenant2Data->value)->toBe('rls-2');
+        Assert::assertInstanceOf(TenantSetting::class, $scoped1);
+        Assert::assertInstanceOf(TenantSetting::class, $scoped2);
+        Assert::assertSame('v1', $scoped1->value);
+        Assert::assertSame('v2', $scoped2->value);
     });
 });

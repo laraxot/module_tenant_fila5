@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant\Integration\Traits;
+namespace Modules\Tenant\Tests\Integration\Traits;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Models\TestSushiModel;
-use Tests\Modules\Tenant\TestCase;
+use Modules\Tenant\Tests\TestCase;
 
 use function Safe\json_encode;
 

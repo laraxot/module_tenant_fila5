@@ -1,70 +1,25 @@
-# NWIDART MODULAR STRUCTURE - CRITICAL RULE
-
-**STATUS**: MANDATORY - Violation = Architect Error  
-**Last Updated**: 2026-10-15  
-**Severity**: CRITICAL
-
 ---
-
-## THE RULE
-
-**EVERY MODULE MUST CONTAIN ITS OWN `/tests/` DIRECTORY**
-
-```
-✅ CORRECT:
-laravel/Modules/Xot/
-  ├── tests/
-  │   ├── Feature/
-  │   ├── Unit/
-  │   └── TestCase.php
-  ├── app/
-  ├── config/
-  ├── composer.json
-  └── README.md
-
-❌ WRONG:
-laravel/tests/Modules/Xot/
-  ← This violates Nwidart principle of module independence
-```
-
+title: "Nwidart modular structure — test ownership"
+type: note
+status: draft
+updated: 2026-10-19
+tags: [docs, tenant, rules]
+qmd: "nwidart modular structure   test ownership tenant"
 ---
+# Nwidart modular structure — test ownership
 
-## WHY THIS MATTERS
+**Status:** mandatory; canonical rule is
+`laravel/Modules/<Module>/tests/`.
 
-Nwidart Modules = **Each module is a standalone package**
+Each module owns its tests, bootstrap and fixtures below its lowercase `tests/`
+directory. Run focused tests from `laravel/` with
+`./vendor/bin/pest Modules/Tenant/tests`.
 
-- Each has `vendor/` (composer.json)
-- Each has `config/` 
-- Each has `tests/` **INSIDE the module**
-- Each is independently deployable
-- Each is independently testable
+`laravel/tests/` remains valid for application-wide, cross-module and theme
+tests. Existing `laravel/tests/Modules/<Module>/` trees are legacy or
+application-owned until inventoried; do not create new module tests there and
+do not delete or move them automatically.
 
-**Centralizing tests breaks this principle.**
-
----
-
-## ANTI-PATTERN
-
-❌ Never create: `laravel/tests/Modules/<Modulo>/`  
-❌ Never assume Laravel structure for modules  
-❌ Never centralize module tests  
-❌ Never split module structure across directories  
-
----
-
-## VERIFICATION CHECKLIST
-
-- [ ] `Modules/Xot/tests/` exists
-- [ ] `Modules/Xot/composer.json` exists
-- [ ] No `laravel/tests/Modules/Xot/` directory
-- [ ] Tests run with: `php artisan test --path=Modules/Xot/tests`
-- [ ] Coverage measurable: `php artisan test --coverage --path=Modules/Xot/tests`
-
----
-
-## HISTORY
-
-**2026-10-15**: Critical error in session - suggested centralizing tests in `laravel/tests/Modules/`  
-**CORRECTION**: Documented this rule to prevent future violations  
-**IMPACT**: This is fundamental to Nwidart architecture
-
+The old version of this rule incorrectly treated the central tree as forbidden
+and is retained only in git history. The correction followed verification of
+the current module directories, namespaces, bootstraps and Pest configuration.

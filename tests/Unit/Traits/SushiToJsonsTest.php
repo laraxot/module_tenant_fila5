@@ -2,116 +2,81 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Modules\Tenant\Models\Traits\SushiToJsons;
-use Modules\Tenant\Models\Tenant;
-use Tests\TestCase;
+namespace Modules\Tenant\Tests\Unit\Traits;
 
-class SushiToJsonsTestModel
-{
-    use SushiToJsons;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
+use Mockery;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+use Modules\Tenant\Tests\TestCase;
+use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonsCoverageModel;
+use PHPUnit\Framework\Assert;
 
-    protected $table = 'sushi_jsons_test';
-    protected $primaryKey = 'id';
-    public $incrementing = true;
-    protected $keyType = 'int';
+use function Safe\json_encode;
 
-    protected function getJsonPaths(): array
-    {
-        return [
-            base_path("tenants/{tenant}/data/sushi-1.json"),
-            base_path("tenants/{tenant}/data/sushi-2.json"),
-        ];
-    }
+uses(TestCase::class);
 
-    protected function getColumns(): array
-    {
-        return [
-            'id' => 'integer',
-            'name' => 'string',
-            'source' => 'string',
-        ];
-    }
-}
+beforeEach(function (): void {
+    $directory = storage_path('tests/sushi-jsons');
+    File::deleteDirectory($directory);
+    File::makeDirectory($directory, 0755, true, true);
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+    TestCase::$testDirectory = $directory;
+    File::put($directory.'/1.json', json_encode(['id' => 1, 'name' => 'From JSON 1', 'meta' => 'file-1']));
+    File::put($directory.'/2.json', json_encode(['id' => 2, 'name' => 'From JSON 2', 'meta' => 'file-2']));
 
-beforeEach(function () {
-    $this->tenant = Tenant::factory()->create(['name' => 'test-tenant']);
-    $dataDir = base_path("tenants/{$this->tenant->name}/data");
-    \Illuminate\Support\Facades\File::makeDirectory($dataDir, 0755, true);
-    \Illuminate\Support\Facades\File::put(
-        $dataDir . '/sushi-1.json',
-        json_encode([
-            ['id' => 1, 'name' => 'From JSON 1', 'source' => 'file-1'],
-            ['id' => 2, 'name' => 'From JSON 1b', 'source' => 'file-1'],
-        ])
+    $contentRoot = $directory;
+    $mock = Mockery::mock(GetTenantFilePathAction::class);
+    // allows(['execute' => $closure]) restituirebbe la closure; andReturnUsing la esegue.
+    TestCase::expectMockery($mock, 'execute')->andReturnUsing(
+        static function (string $filename) use ($contentRoot): string {
+            if (str_starts_with($filename, 'database/content/sushi_jsons_coverage')) {
+                return $contentRoot;
+            }
+
+            return $contentRoot.'/'.$filename;
+        }
     );
-    \Illuminate\Support\Facades\File::put(
-        $dataDir . '/sushi-2.json',
-        json_encode([
-            ['id' => 3, 'name' => 'From JSON 2', 'source' => 'file-2'],
-        ])
-    );
+    app()->instance(GetTenantFilePathAction::class, $mock);
+
+    config(['sushi.cache-path' => $directory]);
+
+    // Dopo il mock: flushEventListeners() fa `new static`, e il boot di Sushi legge i json.
+    SushiToJsonsCoverageModel::flushEventListeners();
+    Model::clearBootedModels();
 });
 
-afterEach(function () {
-    $dataDir = base_path("tenants/{$this->tenant->name}/data");
-    if (\Illuminate\Support\Facades\File::exists($dataDir)) {
-        \Illuminate\Support\Facades\File::deleteDirectory($dataDir);
-    }
+afterEach(function (): void {
+    File::deleteDirectory(TestCase::$testDirectory);
+    Mockery::close();
 });
 
-describe('SushiToJsons Trait', function () {
-    it('loads and merges data from multiple JSON files', function () {
-        $model = new SushiToJsonsTestModel();
-        $model->setTenant($this->tenant->name);
+it('merges rows from multiple json files', function (): void {
+    $rows = (new SushiToJsonsCoverageModel)->getSushiRows();
 
-        $rows = $model->getRows();
+    Assert::assertCount(2, $rows);
+    Assert::assertSame('From JSON 1', $rows[0]['name']);
+    Assert::assertSame('file-2', $rows[1]['meta']);
+});
 
-        expect($rows)->toBeArray()->toHaveCount(3);
-        expect($rows[0]['source'])->toBe('file-1');
-        expect($rows[2]['source'])->toBe('file-2');
-    });
+it('queries merged json sushi data', function (): void {
+    $fromFile1 = SushiToJsonsCoverageModel::query()->where('meta', 'file-1')->get();
 
-    it('returns correct columns', function () {
-        $model = new SushiToJsonsTestModel();
-        $columns = $model->getColumns();
+    Assert::assertCount(1, $fromFile1);
+});
 
-        expect($columns)->toHaveKeys(['id', 'name', 'source']);
-    });
+it('finds row by id across json files', function (): void {
+    $found = SushiToJsonsCoverageModel::query()->find(2);
 
-    it('queries merged data', function () {
-        $model = new SushiToJsonsTestModel();
-        $model->setTenant($this->tenant->name);
+    Assert::assertNotNull($found);
+    Assert::assertSame('From JSON 2', $found->name);
+});
 
-        $fromFile1 = $model->where('source', 'file-1')->get();
+it('returns empty rows when json directory has no files', function (): void {
+    File::deleteDirectory(TestCase::$testDirectory);
+    File::makeDirectory(TestCase::$testDirectory, 0755, true, true);
 
-        expect($fromFile1)->toHaveCount(2);
-    });
+    $rows = (new SushiToJsonsCoverageModel)->getSushiRows();
 
-    it('finds by ID across files', function () {
-        $model = new SushiToJsonsTestModel();
-        $model->setTenant($this->tenant->name);
-
-        $found = $model->find(3);
-
-        expect($found->source)->toBe('file-2');
-    });
-
-    it('handles missing files gracefully', function () {
-        $tenant2 = Tenant::factory()->create(['name' => 'partial-json']);
-        $dataDir = base_path("tenants/{$tenant2->name}/data");
-        \Illuminate\Support\Facades\File::makeDirectory($dataDir, 0755, true);
-        \Illuminate\Support\Facades\File::put($dataDir . '/sushi-1.json', json_encode([['id' => 1, 'name' => 'Only One', 'source' => 'file-1']]));
-        // sushi-2.json missing
-
-        $model = new SushiToJsonsTestModel();
-        $model->setTenant($tenant2->name);
-
-        $rows = $model->getRows();
-
-        expect($rows)->toHaveCount(1);
-    });
+    Assert::assertSame([], $rows);
 });

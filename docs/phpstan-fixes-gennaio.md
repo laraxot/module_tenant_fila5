@@ -1,10 +1,10 @@
 ---
-title: "phpstan fixes gennaio "
+title: "phpstan fixes gennaio"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "phpstan fixes gennaio "
+qmd: "phpstan fixes gennaio"
 issues: []
 discussions: []
 status: draft
@@ -100,6 +100,7 @@ if (isset($extra_conf['connections'][$default]) && is_array($extra_conf['connect
 - Migliore gestione degli errori di configurazione
 
 ## Collegamenti Correlati
-- [Architettura Modulo Tenant](./architecture.md)
+- [Architettura Modulo Tenant](./ARCHITECTURE.md)
 - [SushiToJsons Trait](./sushi-to-jsons-trait.md)
 - [Tenant Service](./tenant-service.md)
+

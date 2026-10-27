@@ -2,93 +2,70 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Modules\Tenant\Models\Traits\SushiToPhpArray;
-use Modules\Tenant\Models\Tenant;
-use Tests\TestCase;
+namespace Modules\Tenant\Tests\Unit\Traits;
 
-class SushiToPhpArrayTestModel
-{
-    use SushiToPhpArray;
+use Illuminate\Database\Eloquent\Model;
+use Mockery;
+use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
+use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
+use Modules\Tenant\Tests\TestCase;
+use Modules\Tenant\Tests\Unit\Fixtures\SushiPhpArrayCatalogProbe;
+use Modules\Tenant\Tests\Unit\Fixtures\SushiToPhpArrayConnectionProbe;
+use PHPUnit\Framework\Assert;
 
-    protected $table = 'sushi_php_array_test';
-    protected $primaryKey = 'id';
-    public $incrementing = true;
-    protected $keyType = 'int';
+uses(TestCase::class);
 
-    protected function getPhpArrayPath(): string
-    {
-        return base_path("tenants/{tenant}/data/sushi-php-array.php");
-    }
-
-    protected function getColumns(): array
-    {
-        return [
-            'id' => 'integer',
-            'title' => 'string',
-            'price' => 'float',
-        ];
-    }
-}
-
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
-
-beforeEach(function () {
-    $this->tenant = Tenant::factory()->create(['name' => 'test-tenant']);
-    $dataDir = base_path("tenants/{$this->tenant->name}/data");
-    \Illuminate\Support\Facades\File::makeDirectory($dataDir, 0755, true);
-    \Illuminate\Support\Facades\File::put(
-        $dataDir . '/sushi-php-array.php',
-        '<?php return [' . PHP_EOL .
-        "    ['id' => 1, 'title' => 'Product A', 'price' => 99.99]," . PHP_EOL .
-        "    ['id' => 2, 'title' => 'Product B', 'price' => 149.50]," . PHP_EOL .
-        '];'
-    );
+beforeEach(function (): void {
+    SushiToPhpArrayConnectionProbe::flushEventListeners();
+    Model::clearBootedModels();
 });
 
-afterEach(function () {
-    $dataDir = base_path("tenants/{$this->tenant->name}/data");
-    if (\Illuminate\Support\Facades\File::exists($dataDir)) {
-        \Illuminate\Support\Facades\File::deleteDirectory($dataDir);
-    }
+afterEach(function (): void {
+    Mockery::close();
 });
 
-describe('SushiToPhpArray Trait', function () {
-    it('loads data from PHP array file', function () {
-        $model = new SushiToPhpArrayTestModel();
-        $model->setTenant($this->tenant->name);
+it('loads rows from tenant php config array', function (): void {
+    $mock = Mockery::mock(GetTenantConfigArrayAction::class);
+    $mock->allows([
+        'execute' => [
+            ['id' => 1, 'title' => 'Item A', 'price' => '10'],
+            ['id' => 2, 'title' => 'Item B', 'price' => '20'],
+        ],
+    ]);
+    app()->instance(GetTenantConfigArrayAction::class, $mock);
+    app()->instance(FilterConfigStringKeysAction::class, new FilterConfigStringKeysAction);
 
-        $rows = $model->getRows();
+    SushiPhpArrayCatalogProbe::flushEventListeners();
+    Model::clearBootedModels();
 
-        expect($rows)->toBeArray()->toHaveCount(2);
-        expect($rows[0]['title'])->toBe('Product A');
-        expect($rows[0]['price'])->toBe(99.99);
-    });
+    $rows = (new SushiPhpArrayCatalogProbe)->getSushiRows();
 
-    it('returns correct columns', function () {
-        $model = new SushiToPhpArrayTestModel();
-        $columns = $model->getColumns();
+    Assert::assertCount(2, $rows);
+    Assert::assertSame('Item A', $rows[0]['title']);
+});
 
-        expect($columns)->toHaveKeys(['id', 'title', 'price']);
-    });
+it('queries sushi php array rows', function (): void {
+    $mock = Mockery::mock(GetTenantConfigArrayAction::class);
+    $mock->allows([
+        'execute' => [
+            ['id' => 1, 'title' => 'Query Me', 'price' => '5'],
+        ],
+    ]);
+    app()->instance(GetTenantConfigArrayAction::class, $mock);
+    app()->instance(FilterConfigStringKeysAction::class, new FilterConfigStringKeysAction);
 
-    it('queries with where', function () {
-        $model = new SushiToPhpArrayTestModel();
-        $model->setTenant($this->tenant->name);
+    SushiPhpArrayCatalogProbe::flushEventListeners();
+    Model::clearBootedModels();
 
-        $expensive = $model->where('price', '>', 100)->get();
+    $found = SushiPhpArrayCatalogProbe::query()->where('title', 'Query Me')->first();
 
-        expect($expensive)->toHaveCount(1);
-        expect($expensive->first()->title)->toBe('Product B');
-    });
+    Assert::assertNotNull($found);
+    Assert::assertSame('Query Me', $found->title);
+});
 
-    it('finds by ID', function () {
-        $model = new SushiToPhpArrayTestModel();
-        $model->setTenant($this->tenant->name);
+it('uses fixed rows when getRows is overridden on probe', function (): void {
+    $rows = (new SushiToPhpArrayConnectionProbe)->getRows();
 
-        $found = $model->find(2);
-
-        expect($found->title)->toBe('Product B');
-    });
+    Assert::assertCount(1, $rows);
+    Assert::assertSame('ttt', $rows[0]['name']);
 });

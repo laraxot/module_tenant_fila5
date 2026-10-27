@@ -2,7 +2,9 @@
 type: note
 tags: [documentation]
 created: 2026-09-26
-updated: 2026-10-15
+updated: 2026-09-26
+qmd: "README"
+updated: 2026-10-14
 qmd: "tenant module readme host config directory sushi json resolve"
 issues: []
 discussions: []
@@ -115,7 +117,7 @@ This directory contains documentation for the module.
 
 ## Structure
 
-- **architecture.md** - Module architecture and design patterns
+- **bmad/architecture-tenant.md** - Module architecture and design patterns
 - **README.md** - This file
 
 ## Guidelines
@@ -125,14 +127,3 @@ Documentation should be:
 - Example-driven
 - Updated with code changes
 - Use Markdown format (.md)
-
-## Standing order (qualita' + docs)
-
-- **PHPStan a zero** sul codice del modulo: non ignorare errori, non abbassare il livello, non modificare `phpstan.neon` del progetto. Qualita' + docs + BMAD sono standing order, non opzionali.
-- **Cartella test**: solo `tests/` (minuscolo). `Tests/` e' vietato (case-collision su macOS/Windows e confusione PSR-4).
-- **Nomi `.md`**: kebab-case minuscolo, niente date/timestamp nel nome, unica eccezione `README.md`. Se esistono `readme.md` e `README.md`, resta solo `README.md`.
-- **Docs**: solo dentro `docs/` gia' esistente; consolida invece di moltiplicare file; link relativi; focus su scopo/perche'/business logic (DRY + KISS).
-- **Git**: forward-only (patch in avanti); no reset/revert/checkout come scorciatoia.
-- **BMAD + second brain**: indici e decisioni vivono in `docs/` del modulo; aggiornali quando cambia il perche', non solo il come.
-
-Vedi anche: [00-index.md](./00-index.md) · [index.md](./index.md)

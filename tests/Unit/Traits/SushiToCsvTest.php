@@ -2,103 +2,77 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Modules\Tenant\Models\Traits\SushiToCsv;
-use Modules\Tenant\Models\Tenant;
-use Tests\TestCase;
+namespace Modules\Tenant\Tests\Unit\Traits;
 
-class SushiToCsvTestModel
-{
-    use SushiToCsv;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
+use Mockery;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+use Modules\Tenant\Tests\TestCase;
+use Modules\Tenant\Tests\Unit\Fixtures\CatalogSushiCsvModel;
+use PHPUnit\Framework\Assert;
 
-    protected $table = 'sushi_csv_test';
-    protected $primaryKey = 'id';
-    public $incrementing = true;
-    protected $keyType = 'int';
+uses(TestCase::class);
 
-    protected function getCsvPath(): string
-    {
-        return base_path("tenants/{tenant}/data/sushi-test.csv");
-    }
+beforeEach(function (): void {
+    $directory = storage_path('tests/sushi-csv');
+    File::deleteDirectory($directory);
+    File::makeDirectory($directory, 0755, true, true);
 
-    protected function getColumns(): array
-    {
-        return [
-            'id' => 'integer',
-            'name' => 'string',
-            'category' => 'string',
-        ];
-    }
-}
-
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
-
-beforeEach(function () {
-    $this->tenant = Tenant::factory()->create(['name' => 'test-tenant']);
-    $dataDir = base_path("tenants/{$this->tenant->name}/data");
-    \Illuminate\Support\Facades\File::makeDirectory($dataDir, 0755, true);
-    \Illuminate\Support\Facades\File::put(
-        $dataDir . '/sushi-test.csv',
-        "id,name,category\n" .
-        "1,Item A,Electronics\n" .
-        "2,Item B,Clothing\n" .
-        "3,Item C,Electronics\n"
+    TestCase::$testDirectory = $directory;
+    $csvPath = $directory.'/catalog.csv';
+    File::put(
+        $csvPath,
+        "id,name\n1,Item A\n2,Item B\n3,Item C\n"
     );
+
+    $mock = Mockery::mock(GetTenantFilePathAction::class);
+    $mock->allows(['execute' => $csvPath]);
+    app()->instance(GetTenantFilePathAction::class, $mock);
+
+    config(['sushi.cache-path' => $directory]);
+
+    // Dopo il mock: flushEventListeners() fa `new static`, e il boot di Sushi legge il CSV.
+    CatalogSushiCsvModel::flushEventListeners();
+    Model::clearBootedModels();
 });
 
-afterEach(function () {
-    $dataDir = base_path("tenants/{$this->tenant->name}/data");
-    if (\Illuminate\Support\Facades\File::exists($dataDir)) {
-        \Illuminate\Support\Facades\File::deleteDirectory($dataDir);
-    }
+afterEach(function (): void {
+    File::deleteDirectory(TestCase::$testDirectory);
+    Mockery::close();
 });
 
-describe('SushiToCsv Trait', function () {
-    it('loads data from CSV file', function () {
-        $model = new SushiToCsvTestModel();
-        $model->setTenant($this->tenant->name);
+it('loads rows from tenant csv via getSushiRows', function (): void {
+    $model = new CatalogSushiCsvModel;
+    $rows = $model->getSushiRows();
 
-        $rows = $model->getRows();
+    Assert::assertCount(3, $rows);
+    Assert::assertSame('Item A', $rows[0]['name']);
+});
 
-        expect($rows)->toBeArray()->toHaveCount(3);
-        expect($rows[0]['name'])->toBe('Item A');
-        expect($rows[0]['category'])->toBe('Electronics');
-    });
+it('exposes csv path resolved through GetTenantFilePathAction', function (): void {
+    $model = new CatalogSushiCsvModel;
 
-    it('parses CSV headers correctly', function () {
-        $model = new SushiToCsvTestModel();
-        $columns = $model->getColumns();
+    Assert::assertStringEndsWith('catalog.csv', $model->getCsvPath());
+});
 
-        expect($columns)->toHaveKeys(['id', 'name', 'category']);
-    });
+it('queries sushi csv rows with eloquent where', function (): void {
+    $found = CatalogSushiCsvModel::query()->where('name', 'Item B')->first();
 
-    it('queries with where on CSV data', function () {
-        $model = new SushiToCsvTestModel();
-        $model->setTenant($this->tenant->name);
+    Assert::assertNotNull($found);
+    Assert::assertSame('Item B', $found->name);
+});
 
-        $electronics = $model->where('category', 'Electronics')->get();
+it('finds row by primary key', function (): void {
+    $found = CatalogSushiCsvModel::query()->find(2);
 
-        expect($electronics)->toHaveCount(2);
-        expect($electronics->pluck('name'))->toContain('Item A', 'Item C');
-    });
+    Assert::assertNotNull($found);
+    Assert::assertSame('Item B', $found->name);
+});
 
-    it('finds by ID', function () {
-        $model = new SushiToCsvTestModel();
-        $model->setTenant($this->tenant->name);
+it('throws when csv file is missing', function (): void {
+    File::delete(TestCase::$testDirectory.'/catalog.csv');
 
-        $found = $model->find(2);
-
-        expect($found->name)->toBe('Item B');
-    });
-
-    it('handles missing CSV file', function () {
-        $tenant2 = Tenant::factory()->create(['name' => 'no-csv']);
-        $model = new SushiToCsvTestModel();
-        $model->setTenant($tenant2->name);
-
-        $rows = $model->getRows();
-
-        expect($rows)->toBeArray()->toBeEmpty();
-    });
+    expect(fn () => (new CatalogSushiCsvModel)->getSushiRows())
+        ->toThrow(\League\Csv\Exception::class);
 });

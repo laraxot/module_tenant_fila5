@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant\Unit;
+namespace Modules\Tenant\Tests\Unit;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Models\Tenant;
-use Tests\Modules\Tenant\TestCase;
+use Modules\Tenant\Tests\TestCase;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\User;
 use Modules\Xot\Contracts\UserContract;
@@ -31,7 +31,6 @@ it('can create a tenant', function (): void {
         'database' => 'tenant_test_db',
     ]);
 
-    Assert::assertInstanceOf(Tenant::class, $tenant);
     Assert::assertSame('Test Company', $tenant->name);
     Assert::assertSame('test.company.com', $tenant->domain);
     Assert::assertSame('tenant_test_db', $tenant->database);

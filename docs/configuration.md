@@ -396,6 +396,6 @@ ConfigurationResolver::clearCache(); // Clear all tenant caches
 
 ## Related Documentation
 
-- [Architecture Reference](architecture.md)
+- [Architecture Reference](ARCHITECTURE.md)
 - [Module README](../README.md)
 - [Testing Guide](../tests/Feature/README.md)

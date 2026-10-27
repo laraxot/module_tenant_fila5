@@ -55,10 +55,11 @@ last_updated: 2026-07-28
 ## Navigation
 
 - [Overview](README.md) — Module description and quick start
-- [Architecture](architecture.md) — System design and isolation strategies
+- [Architecture](ARCHITECTURE.md) — System design and isolation strategies
 - [API Reference](api.md) — Core models, contracts, and services
 - [Patterns](patterns.md) — Design patterns and best practices
 - [Troubleshooting](troubleshooting.md) — Common issues and solutions
+- [Contributing](../../docs/wiki/how-to/contributing.md) — Development guidelines
 - [Contributing](../../docs/wiki/how-to/contributing.md) _(target mancante, verificato 2026-10-14)_ — Development guidelines
 
 ---
@@ -132,6 +133,7 @@ Each tenant operates in complete isolation:
 
 ## Related Modules
 
+- **[Xot](../../Xot/docs/index.md)** — Core framework and abstractions
 - **[Xot](../../Xot/docs/00-INDEX.md)** — Core framework and abstractions
 - **[User](../../User/docs/index.md)** — User management and authentication
 
@@ -145,12 +147,13 @@ Each tenant operates in complete isolation:
 4. Add troubleshooting entries for known issues
 5. Keep migrations atomic and reversible
 
+For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/contributing.md).
 For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/contributing.md) _(target mancante, verificato 2026-10-14)_.
 
 
 ---
 
-## Contenuto assorbito da `index.md`
+## Contenuto assorbito da `INDEX.md`
 
 # Documentation Index
 

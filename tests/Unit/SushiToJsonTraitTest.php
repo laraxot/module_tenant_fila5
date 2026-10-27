@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant\Unit;
+namespace Modules\Tenant\Tests\Unit;
 
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +11,7 @@ use Mockery;
 use Mockery\Expectation;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Models\TestSushiModel;
-use Tests\Modules\Tenant\TestCase;
+use Modules\Tenant\Tests\TestCase;
 
 use function Safe\json_encode;
 

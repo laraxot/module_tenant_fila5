@@ -2,10 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant\Integration;
+namespace Modules\Tenant\Tests\Integration;
 
 use Illuminate\Support\Facades\File;
-use Tests\Modules\Tenant\TestCase;
+use Modules\Tenant\Models\TestSushiModel;
+use Modules\Tenant\Tests\Fixtures\TestSushiModelForPath;
+use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
 
@@ -19,6 +21,14 @@ function tenantJsonPath(string $tenantName): string
     }
 
     return $dir.'/test_sushi.json';
+}
+
+function makeTestSushiModelForPath(string $jsonPath): TestSushiModel
+{
+    $model = new TestSushiModelForPath;
+    $model->setJsonPath($jsonPath);
+
+    return $model;
 }
 
 /**
@@ -57,8 +67,8 @@ test('creates json file with tenant isolation', function (): void {
     $tenant1Path = tenantJsonPath('tenant1');
     $tenant2Path = tenantJsonPath('tenant2');
 
-    $model1 = TestCase::makeTestSushiModelForPath($tenant1Path);
-    $model2 = TestCase::makeTestSushiModelForPath($tenant2Path);
+    $model1 = makeTestSushiModelForPath($tenant1Path);
+    $model2 = makeTestSushiModelForPath($tenant2Path);
 
     $model1->saveToJson([
         1 => ['id' => 1, 'name' => 'Tenant 1 Item', 'description' => 'Item specifico per tenant 1', 'status' => 'active'],
@@ -81,8 +91,8 @@ test('creates json file with tenant isolation', function (): void {
 });
 
 test('loads data with tenant isolation', function (): void {
-    $model1 = TestCase::makeTestSushiModelForPath(tenantJsonPath('tenant1'));
-    $model2 = TestCase::makeTestSushiModelForPath(tenantJsonPath('tenant2'));
+    $model1 = makeTestSushiModelForPath(tenantJsonPath('tenant1'));
+    $model2 = makeTestSushiModelForPath(tenantJsonPath('tenant2'));
 
     $model1->saveToJson([
         1 => ['id' => 1, 'name' => 'Tenant 1 Item 1', 'status' => 'active'],
@@ -104,7 +114,7 @@ test('loads data with tenant isolation', function (): void {
 });
 
 test('handles complex data structures', function (): void {
-    $model = TestCase::makeTestSushiModelForPath(tenantJsonPath('complex'));
+    $model = makeTestSushiModelForPath(tenantJsonPath('tenant1'));
 
     $complexData = [
         1 => [
@@ -125,7 +135,7 @@ test('handles complex data structures', function (): void {
 });
 
 test('handles large datasets efficiently', function (): void {
-    $model = TestCase::makeTestSushiModelForPath(tenantJsonPath('large'));
+    $model = makeTestSushiModelForPath(tenantJsonPath('tenant1'));
 
     $largeData = [];
     for ($i = 1; $i <= 500; $i++) {
@@ -146,12 +156,11 @@ test('works with different tenant configurations', function (): void {
         File::makeDirectory($customDir, 0o755, true, true);
     }
 
-    $customPath = $customDir.'/test_sushi.json';
-    $model = TestCase::makeTestSushiModelForPath($customPath);
+    $model = makeTestSushiModelForPath($customDir.'/test_sushi.json');
 
     Assert::assertTrue($model->saveToJson([
         1 => ['id' => 1, 'name' => 'Custom Tenant Item', 'status' => 'active'],
     ]));
 
-    Assert::assertFileExists($customPath);
+    Assert::assertFileExists($customDir.'/test_sushi.json');
 });

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant;
+namespace Modules\Tenant\Tests;
 
 use Modules\Tenant\Models\Tenant;
 

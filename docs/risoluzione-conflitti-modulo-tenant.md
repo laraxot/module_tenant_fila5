@@ -165,7 +165,7 @@ Questo errore indica che ci sono ancora conflitti git non risolti in altri modul
 
 ## Collegamenti Utili
 
-- [Documentazione Principale Tenant](module-tenant.md)
+- [Documentazione Principale Tenant](module_tenant.md)
 - [Rapporti PHPStan](phpstan/)
 - [Panoramica della Risoluzione dei Conflitti](../../../docs/risoluzione_conflitti_git.md)
 

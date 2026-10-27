@@ -10,6 +10,10 @@ updated: 2026-07-14
 qmd: "services config dead code retired"
 related:
   - "./phpstan-corrections-january.md"
+updated: 2026-10-20
+qmd: "services config dead code retired"
+related:
+  - "./phpstan-corrections-january.md"
 status: draft
 ---
 # Services/Config retired — usare Actions
@@ -27,3 +31,19 @@ status: draft
 Consumer aggiornati: `Modules/User/app/Datas/{PasswordData,SocialProviderData}.php`, `Modules/User/app/Filament/Pages/Password.php`, `Modules/Notify/app/Providers/NotifyServiceProvider.php` (import morto rimosso), `Modules/User/resources/views/pages/index.blade.php` (import morto rimosso).
 
 Dettagli investigazione completa: `docs/chat/xot-merge-conflicts-coordination.md`.
+
+## Aggiornamento 2026-10-20: i file sono tornati
+
+Il pull del 2026-10-20 ha riportato `app/Services/TenantService.php`,
+`app/Services/Config/ConfigResolverRegistry.php`, `Contracts/ConfigResolverInterface.php` e i tre
+resolver. Non e' una scelta: e' la quarta volta che un sync li ripristina (vedi anche
+[stories/tenant-services-to-actions.story.md](stories/tenant-services-to-actions.story.md)).
+Per ora sono stati corretti sul posto per PHPStan, senza toccare il comportamento, perche'
+`HereService` e i caller live sono spariti; Services/Config e TenantService eliminati di nuovo il 2026-10-20.
+Dettagli: [stories/services-to-actions-tenant.story.md](stories/services-to-actions-tenant.story.md).
+
+## Verifica 2026-10-20: eliminati di nuovo
+
+Dopo `rg` produzione (escluse docs/tests): zero chiamanti vivi a `TenantService` (commenti in Notify SMS Data / SmtpData; Cms Breadcrumb gia' su Action).
+Eliminati di nuovo: `TenantService.php`, `ConfigResolverRegistry`, `ConfigResolverInterface`, tre resolver.
+`HereService` (unico ex-chiamante) era gia' sparito con il cluster Geo.

@@ -52,7 +52,7 @@ interface HasSushiToJson
      *
      * @return array<int, array<string, mixed>>
      */
-    public function getRows();
+    public function getRows(): array;
 
     /**
      * Percorso assoluto del file JSON che alimenta la tabella in-memory.
@@ -64,15 +64,8 @@ interface HasSushiToJson
     public function getJsonFile(): string;
 
     /**
-     * Schema delle colonne della tabella in-memory, come definito da Sushi.
-     *
-     * Sovrascritto dal trait `SushiToJson` con il tipo esplicito per eliminare
-     * l'`mixed` restituito dalla firma vendor `Sushi::getSchema()`.
-     *
-     * @return array<string, string>
-     */
-    /**
-     * Schema delle colonne della tabella in-memory, come definito da Sushi.
+     * Schema delle colonne della tabella in-memory (Sushi).
+     * Il trait `SushiToJson` tipizza esplicitamente per eliminare il mixed vendor.
      *
      * @return array<string, string>
      */

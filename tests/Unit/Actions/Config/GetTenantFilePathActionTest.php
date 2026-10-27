@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant\Unit\Actions\Config;
+namespace Modules\Tenant\Tests\Unit\Actions\Config;
 
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\GetTenantNameAction;
-use Tests\Modules\Tenant\TestCase;
+use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);

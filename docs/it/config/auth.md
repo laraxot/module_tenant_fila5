@@ -9,7 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "auth"
 related:
+  - "./phpstan-corrections-january.md"
   - "../../phpstan-corrections-january.md"
+status: draft
 ---
 <?php
 
@@ -123,6 +125,7 @@ return [
 
 ## Collegamenti tra versioni di auth.md
 * [auth.md](../../../xot/docs/install/auth.md)
+* [auth.md](../../../user/docs/lang/en/auth.md)
 * [auth.md](../../../../User/docs/lang/en/auth.md)
 * [auth.md](../../../tenant/docs/it/config/auth.md)
 

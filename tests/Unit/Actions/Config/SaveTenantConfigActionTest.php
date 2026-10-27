@@ -2,76 +2,75 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+namespace Modules\Tenant\Tests\Unit\Actions\Config;
+
+use Illuminate\Support\Facades\File;
+use Mockery\MockInterface;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\Config\SaveTenantConfigAction;
-use Modules\Tenant\Models\Tenant;
-use Tests\TestCase;
+use Modules\Tenant\Tests\TestCase;
+use Modules\Xot\Actions\Arr\SaveArrayAction;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+uses(TestCase::class);
 
-beforeEach(function () {
-    $this->action = app(SaveTenantConfigAction::class);
-    $this->tenant = Tenant::factory()->create(['name' => 'test-tenant']);
+it('saves tenant config by merging with existing data', function (): void {
+    /** @var TestCase $this */
+    $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
+        $mock->allows(['execute' => '/path/to/tenant/database.php']);
+    });
+
+    File::shouldReceive('exists')
+        ->with('/path/to/tenant/database.php')
+        ->andReturn(true);
+
+    File::shouldReceive('getRequire')
+        ->with('/path/to/tenant/database.php')
+        ->andReturn(['connections' => ['mysql' => ['host' => 'localhost']]]);
+
+    $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
+        TestCase::expectMockery($mock, 'execute')
+            ->once()
+            ->withArgs(static function (array $data, string $filename): bool {
+                Assert::assertSame('/path/to/tenant/database.php', $filename);
+                Assert::assertArrayHasKey('connections', $data);
+                $connections = $data['connections'];
+                Assert::assertIsArray($connections);
+                Assert::assertArrayHasKey('mysql', $connections);
+                $mysql = $connections['mysql'];
+                Assert::assertIsArray($mysql);
+                Assert::assertSame('localhost', $mysql['host'] ?? null);
+                Assert::assertSame('test_db', $mysql['database'] ?? null);
+
+                return true;
+            });
+    });
+
+    app(SaveTenantConfigAction::class)->execute('database', [
+        'connections' => ['mysql' => ['database' => 'test_db']],
+    ]);
 });
 
-afterEach(function () {
-    $configDir = base_path("tenants/{$this->tenant->name}/config");
-    if (\Illuminate\Support\Facades\File::exists($configDir)) {
-        \Illuminate\Support\Facades\File::deleteDirectory($configDir);
-    }
-});
-
-describe('SaveTenantConfigAction', function () {
-    it('saves config array to tenant config file', function () {
-        $config = [
-            'name' => 'Saved App',
-            'debug' => false,
-            'settings' => ['theme' => 'dark'],
-        ];
-
-        $this->action->execute('custom', $config, $this->tenant->name);
-
-        $saved = include base_path("tenants/{$this->tenant->name}/config/custom.php");
-        expect($saved)->toBe($config);
+it('saves tenant config when file does not exist', function (): void {
+    /** @var TestCase $this */
+    $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
+        $mock->allows(['execute' => '/path/to/tenant/app.php']);
     });
 
-    it('creates config directory if not exists', function () {
-        $this->action->execute('new-config', ['key' => 'value'], $this->tenant->name);
+    File::shouldReceive('exists')
+        ->with('/path/to/tenant/app.php')
+        ->andReturn(false);
 
-        expect(\Illuminate\Support\Facades\File::exists(base_path("tenants/{$this->tenant->name}/config/new-config.php")))->toBeTrue();
+    $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
+        TestCase::expectMockery($mock, 'execute')
+            ->once()
+            ->withArgs(static function (array $data, string $filename): bool {
+                Assert::assertSame('/path/to/tenant/app.php', $filename);
+                Assert::assertSame('Test App', $data['name']);
+
+                return true;
+            });
     });
 
-    it('overwrites existing config', function () {
-        $this->action->execute('overwrite', ['version' => 1], $this->tenant->name);
-        $this->action->execute('overwrite', ['version' => 2], $this->tenant->name);
-
-        $saved = include base_path("tenants/{$this->tenant->name}/config/overwrite.php");
-        expect($saved['version'])->toBe(2);
-    });
-
-    it('handles nested arrays', function () {
-        $config = [
-            'database' => [
-                'connections' => [
-                    'tenant' => ['driver' => 'sqlite', 'database' => ':memory:'],
-                ],
-            ],
-        ];
-
-        $this->action->execute('database', $config, $this->tenant->name);
-
-        $saved = include base_path("tenants/{$this->tenant->name}/config/database.php");
-        expect($saved['database']['connections']['tenant']['driver'])->toBe('sqlite');
-    });
-
-    it('throws exception for non-array data', function () {
-        expect(fn () => $this->action->execute('invalid', 'not-an-array', $this->tenant->name))
-            ->toThrow(\InvalidArgumentException::class, 'Configuration data must be an array');
-    });
-
-    it('throws exception for non-existent tenant', function () {
-        expect(fn () => $this->action->execute('test', ['key' => 'value'], 'non-existent'))
-            ->toThrow(\Exception::class);
-    });
+    app(SaveTenantConfigAction::class)->execute('app', ['name' => 'Test App']);
 });

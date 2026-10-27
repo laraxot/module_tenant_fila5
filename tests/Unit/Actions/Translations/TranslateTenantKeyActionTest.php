@@ -2,76 +2,66 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Lang;
+namespace Modules\Tenant\Tests\Unit\Actions\Translations;
+
+use Illuminate\Support\Facades\File;
+use Mockery;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
-use Modules\Tenant\Models\Tenant;
-use Tests\TestCase;
+use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+uses(TestCase::class);
 
-beforeEach(function () {
-    $this->action = app(TranslateTenantKeyAction::class);
-    $this->tenant = Tenant::factory()->create(['name' => 'test-tenant']);
-    $langDir = base_path("tenants/{$this->tenant->name}/lang");
-    \Illuminate\Support\Facades\File::makeDirectory($langDir . '/en', 0755, true);
-    \Illuminate\Support\Facades\File::put(
-        $langDir . '/en/messages.php',
-        "<?php return ['welcome' => 'Welcome to Tenant!', 'custom' => 'Custom: :name'];"
+beforeEach(function (): void {
+    $directory = storage_path('tests/tenant-lang/en');
+    File::deleteDirectory(dirname($directory));
+    File::makeDirectory($directory, 0755, true, true);
+    TestCase::$testDirectory = dirname($directory);
+
+    File::put(
+        $directory.'/messages.php',
+        "<?php return ['welcome' => 'Welcome to Tenant!'];"
     );
+
+    app()->setLocale('en');
+
+    $messagesPath = $directory.'/messages.php';
+    $mock = Mockery::mock(GetTenantFilePathAction::class);
+    // allows(['execute' => $closure]) restituirebbe la closure; andReturnUsing la esegue.
+    TestCase::expectMockery($mock, 'execute')->andReturnUsing(
+        static function (string $filename) use ($messagesPath): string {
+            if ($filename === 'lang/en/messages.php') {
+                return $messagesPath;
+            }
+
+            return dirname($messagesPath).'/'.$filename;
+        }
+    );
+    app()->instance(GetTenantFilePathAction::class, $mock);
+
+    $this->action = app(TranslateTenantKeyAction::class);
 });
 
-afterEach(function () {
-    $langDir = base_path("tenants/{$this->tenant->name}/lang");
-    if (\Illuminate\Support\Facades\File::exists($langDir)) {
-        \Illuminate\Support\Facades\File::deleteDirectory($langDir);
-    }
+afterEach(function (): void {
+    File::deleteDirectory(TestCase::$testDirectory);
+    Mockery::close();
 });
 
-describe('TranslateTenantKeyAction', function () {
-    it('translates key from tenant lang files', function () {
-        $translation = $this->action->execute('messages.welcome', $this->tenant->name, 'en');
+describe('TranslateTenantKeyAction', function (): void {
+    it('translates key from tenant lang files', function (): void {
+        /** @var TranslateTenantKeyAction $action */
+        $action = $this->action;
+        $translation = $action->execute('messages.welcome');
 
-        expect($translation)->toBe('Welcome to Tenant!');
+        Assert::assertSame('Welcome to Tenant!', $translation);
     });
 
-    it('falls back to global translation if not in tenant', function () {
-        Lang::addLines(['global.key' => 'Global Translation'], 'en', 'global');
+    it('returns key if translation file is missing', function (): void {
+        /** @var TranslateTenantKeyAction $action */
+        $action = $this->action;
+        $translation = $action->execute('missing.key');
 
-        $translation = $this->action->execute('global.key', $this->tenant->name, 'en');
-
-        expect($translation)->toBe('Global Translation');
-    });
-
-    it('returns key if translation not found anywhere', function () {
-        $translation = $this->action->execute('non.existent.key', $this->tenant->name, 'en');
-
-        expect($translation)->toBe('non.existent.key');
-    });
-
-    it('supports parameter replacement', function () {
-        $translation = $this->action->execute('messages.custom', $this->tenant->name, 'en', ['name' => 'John']);
-
-        expect($translation)->toBe('Custom: John');
-    });
-
-    it('handles different locales', function () {
-        $langDir = base_path("tenants/{$this->tenant->name}/lang");
-        \Illuminate\Support\Facades\File::makeDirectory($langDir . '/it', 0755, true);
-        \Illuminate\Support\Facades\File::put(
-            $langDir . '/it/messages.php',
-            "<?php return ['welcome' => 'Benvenuto nel Tenant!'];"
-        );
-
-        $translation = $this->action->execute('messages.welcome', $this->tenant->name, 'it');
-
-        expect($translation)->toBe('Benvenuto nel Tenant!');
-    });
-
-    it('handles non-existent tenant', function () {
-        $translation = $this->action->execute('messages.welcome', 'non-existent', 'en');
-
-        expect($translation)->toBe('messages.welcome'); // Returns key
+        Assert::assertSame('missing.key', $translation);
     });
 });

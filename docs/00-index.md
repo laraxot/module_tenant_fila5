@@ -9,9 +9,8 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "00 index"
 related:
-  - "./phpstan.md"
-  - "./phpstan-standards.md"
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Tenant Module — Documentation Index
 
@@ -20,12 +19,6 @@ related:
 **Status**: Multi-tenant core module
 
 ---
-
-## Qualità / PHPStan
-
-- Canonica: [phpstan.md](./phpstan.md)
-- Tipi Sushi: [phpstan-standards.md](./phpstan-standards.md)
-- Prompt repo: [11-phpstan.md](../../../../bashscripts/docs/prompts/11-phpstan.md)
 
 ## 🎯 Quick Start
 

@@ -2,72 +2,61 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+namespace Modules\Tenant\Tests\Unit\Models;
+
+use Mockery\MockInterface;
+use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\Domain;
-use Modules\Tenant\Models\Tenant;
-use Tests\TestCase;
+use Modules\Tenant\Models\TenantDomain;
+use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+uses(TestCase::class);
 
-describe('Domain Model', function () {
-    beforeEach(function () {
-        $this->tenant = Tenant::factory()->create();
+describe('Domain sushi models', function (): void {
+    test('domain model exposes rows from GetDomainsArrayAction', function (): void {
+        TestCase::mockAppService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
+            $mock->allows([
+                'execute' => [
+                    ['id' => 'tenant.example.com', 'name' => 'tenant.example.com'],
+                ],
+            ]);
+        });
+
+        $rows = (new Domain)->getRows();
+
+        Assert::assertCount(1, $rows);
+        Assert::assertSame('tenant.example.com', $rows[0]['name']);
     });
 
-    it('creates domain with required fields', function () {
-        $domain = Domain::create([
-            'tenant_id' => $this->tenant->id,
-            'domain' => 'tenant.example.com',
-            'is_primary' => true,
-        ]);
+    test('tenant domain model mirrors domain registry rows', function (): void {
+        TestCase::mockAppService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
+            $mock->allows([
+                'execute' => [
+                    ['id' => 'primary.example.com', 'name' => 'primary.example.com'],
+                    ['id' => 'alias.example.com', 'name' => 'alias.example.com'],
+                ],
+            ]);
+        });
 
-        expect($domain)->toBeInstanceOf(Domain::class);
-        expect($domain->domain)->toBe('tenant.example.com');
-        expect($domain->is_primary)->toBeTrue();
+        $rows = (new TenantDomain)->getRows();
+
+        Assert::assertCount(2, $rows);
+        Assert::assertSame('alias.example.com', $rows[1]['name']);
     });
 
-    it('belongs to tenant', function () {
-        $domain = Domain::factory()->create(['tenant_id' => $this->tenant->id]);
+    test('tenant domain sushi query resolves host by name column', function (): void {
+        TestCase::mockAppService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
+            $mock->allows([
+                'execute' => [
+                    ['id' => 'secure.example.com', 'name' => 'secure.example.com'],
+                ],
+            ]);
+        });
 
-        expect($domain->tenant)->toBeInstanceOf(Tenant::class);
-        expect($domain->tenant->id)->toBe($this->tenant->id);
-    });
+        $found = TenantDomain::query()->where('name', 'secure.example.com')->first();
 
-    it('has unique domain', function () {
-        Domain::factory()->create(['domain' => 'unique.example.com', 'tenant_id' => $this->tenant->id]);
-
-        expect(fn () => Domain::factory()->create(['domain' => 'unique.example.com', 'tenant_id' => $this->tenant->id]))
-            ->toThrow(\Illuminate\Database\QueryException::class);
-    });
-
-    it('casts ssl_status', function () {
-        $domain = Domain::create([
-            'tenant_id' => $this->tenant->id,
-            'domain' => 'ssl.example.com',
-            'ssl_status' => 'active',
-        ]);
-
-        expect($domain->ssl_status)->toBe('active');
-    });
-
-    it('defaults is_primary to false', function () {
-        $domain = Domain::create([
-            'tenant_id' => $this->tenant->id,
-            'domain' => 'secondary.example.com',
-        ]);
-
-        expect($domain->is_primary)->toBeFalse();
-    });
-
-    it('only one primary domain per tenant', function () {
-        Domain::factory()->create(['tenant_id' => $this->tenant->id, 'is_primary' => true, 'domain' => 'primary1.com']);
-        Domain::factory()->create(['tenant_id' => $this->tenant->id, 'is_primary' => true, 'domain' => 'primary2.com']);
-
-        // The second one should become primary, first should be demoted
-        // This depends on implementation - test the expected behavior
-        $primaries = Domain::where('tenant_id', $this->tenant->id)->where('is_primary', true)->get();
-        // Implementation may vary - just verify structure
-        expect($primaries)->not->toBeEmpty();
+        Assert::assertNotNull($found);
+        Assert::assertSame('secure.example.com', $found->name);
     });
 });

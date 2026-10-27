@@ -10,9 +10,12 @@ namespace Modules\Tenant\Models\Traits;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+use Modules\Tenant\Actions\GetTenantNameAction;
 use ReflectionObject;
 use Sushi\Sushi;
+use Symfony\Component\Finder\SplFileInfo;
 use Webmozart\Assert\Assert;
 
 use function Safe\json_encode;
@@ -97,26 +100,93 @@ trait SushiToJsons
     }
 
     /**
+     * Legge ogni `database/content/<tabella>/**.json` come una riga.
+     *
      * @return array<int, array<string, mixed>>
      */
     private function collectRowsFromJsonFiles(string $tbl): array
     {
-        $files = File::glob(app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl).'/*.json') ?: [];
-
-        /** @var array<int, array<string, mixed>> $rows */
         $rows = [];
+        $relativePath = 'database/content/'.$tbl;
+        $tenantPath = app(GetTenantFilePathAction::class)->execute($relativePath);
+        $tenantName = app(GetTenantNameAction::class)->execute();
+        $sources = [$tenantPath, base_path('Themes/Sixteen/config/'.$tenantName.'/'.$relativePath)];
 
-        foreach ($files as $file) {
-            if (! is_string($file)) {
+        // Tenant JSON is the override layer; module JSON is the versioned baseline.
+        foreach (File::directories(base_path('Modules')) as $modulePath) {
+            if (! is_string($modulePath)) {
                 continue;
             }
-            $row = $this->mapJsonFileToRow($file);
-            if ($row !== null) {
-                $rows[] = $row;
+
+            $sources[] = $modulePath.'/config/'.$relativePath;
+            $sources[] = $modulePath.'/'.$relativePath;
+        }
+
+        // Chi ha tenuto lo slug per primo (cartella sorgente). Un override vale per identita' logica, non per id: il prefisso della
+        // sottocartella cambia l'id (`tickets/index.json` -> `tickets.tickets-index`, il baseline piatto resta `tickets-index`) e
+        // con la sola chiave id il tenant AGGIUNGEVA una riga invece di sostituire il baseline (500/503 su login e segnalazioni, 2026-10-26).
+        $slugOwners = [];
+
+        foreach (array_unique($sources) as $path) {
+            if (! File::isDirectory($path)) {
+                continue;
+            }
+
+            foreach (File::allFiles($path) as $file) {
+                $row = $this->getRowFromJsonFile($file);
+                if ($row === null) {
+                    continue;
+                }
+
+                $relativePathname = $file->getRelativePathname();
+                if (Str::contains($relativePathname, '/')) {
+                    $row = $this->prefixRowKeys($row, Str::of($relativePathname)->beforeLast('/')->replace('/', '.')->toString());
+                }
+
+                // Due file con lo stesso slug nella STESSA cartella restano due righe: e' un errore vero e `findUniqueBySlug` lo segnala.
+                $slug = $row['slug'] ?? null;
+                if (is_string($slug) && $slug !== '' && ($slugOwners[$slug] ??= $path) !== $path) {
+                    continue;
+                }
+
+                $id = $row['id'] ?? null;
+                $key = is_string($id) || is_int($id) ? (string) $id : $file->getPathname();
+                $rows[$key] ??= $row;
             }
         }
 
-        return $rows;
+        /** @var array<int, array<string, mixed>> $rows */
+        return array_values($rows);
+    }
+
+    /**
+     * @return array<string, mixed>|null
+     */
+    private function getRowFromJsonFile(SplFileInfo $file): ?array
+    {
+        if ($file->getExtension() !== 'json') {
+            return null;
+        }
+
+        return $this->mapJsonFileToRow($file->getPathname());
+    }
+
+    /**
+     * Una riga in sottocartella (`a/b/1.json`) espone id e slug come `a.b.<valore>`.
+     *
+     * @param  array<string, mixed>  $row
+     * @return array<string, mixed>
+     */
+    private function prefixRowKeys(array $row, string $prefix): array
+    {
+        foreach (['id', 'slug'] as $key) {
+            $value = $row[$key] ?? null;
+            if (is_string($value) || is_int($value)) {
+                $row[$key] = $prefix.'.'.$value;
+            }
+        }
+
+        return $row;
     }
 
     /**

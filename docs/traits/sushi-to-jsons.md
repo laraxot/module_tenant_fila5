@@ -10,5 +10,6 @@ updated: 2026-07-14
 qmd: "sushi to jsons"
 related:
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 

@@ -9,6 +9,7 @@ qmd: "coverage"
 related:
   - "../phpstan-corrections-january.md"
   - "../stories/phpstan-tenant-fix.md"
+status: draft
 ---
 # Tenant Module Test Coverage
 

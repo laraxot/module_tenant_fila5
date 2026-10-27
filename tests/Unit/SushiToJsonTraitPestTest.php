@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant\Unit;
+namespace Modules\Tenant\Tests\Unit;
 
 use Exception;
 use Illuminate\Support\Facades\File;
-use Tests\Modules\Tenant\TestCase;
-use Tests\Modules\Xot\XotBasePest;
+use Modules\Tenant\Tests\TestCase;
+use Modules\Xot\Tests\XotBasePest;
 use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;

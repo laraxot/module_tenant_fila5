@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Tenant\Fixtures;
+namespace Modules\Tenant\Tests\Fixtures;
 
 use Modules\Tenant\Models\TestSushiModel;
 
-/** Path JSON iniettabile per isolamento tenant nei test Sushi→JSON. */
 final class TestSushiModelForPath extends TestSushiModel
 {
     private string $jsonPath = '';

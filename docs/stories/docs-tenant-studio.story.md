@@ -16,7 +16,7 @@ related:
 # Docs Tenant: studio del codice e correzione degli ingressi
 
 ## Richiesta
-Fase BMAD documentazione/qualita' (DOC-010 + DOC-002): capire come funziona davvero la multi-tenancy, correggere `README.md`, `00-index.md`, `index.md` con fatti verificati, marcare come stale i docs falsi, annotare i link rotti.
+Fase BMAD documentazione/qualita' (DOC-010 + DOC-002): capire come funziona davvero la multi-tenancy, correggere `README.md`, `00-INDEX.md`, `index.md` con fatti verificati, marcare come stale i docs falsi, annotare i link rotti.
 
 ## Analisi
 Il "tenant" non e' una riga di database: e' una cartella `laravel/config/<host invertito>/`.
@@ -29,7 +29,7 @@ Il "tenant" non e' una riga di database: e' una cartella `laravel/config/<host i
 
 ## Modifiche
 - `README.md`: sezioni "Scopo" e "Politica" riscritte; aggiunti quick start (provato), cosa non c'e', chi lo usa, Filament e dati, test. `status` da `core-multi-tenancy` a `active`, licenza da `Proprietary` a `MIT` (come `composer.json`).
-- `00-index.md`: quick start, albero config, concetti (scoping non implementato), mappa delle directory (canoniche, evidence, legacy), 2 link morti annotati, `status: active`.
+- `00-INDEX.md`: quick start, albero config, concetti (scoping non implementato), mappa delle directory (canoniche, evidence, legacy), 2 link morti annotati, `status: active`.
 - `index.md`: link a Xot ripuntato a `../../Xot/docs/00-INDEX.md` (esiste); 2 link a `contributing.md` annotati.
 - `docs-organizer.py stale --fix` su 6 pagine wiki (Architecture, TenantIdentification, ConfigurationDistribution e le copie in minuscolo): citano `TenantService`, sottodomini, cache Redis e `config('app.tenant_default')` che non esistono.
 

@@ -9,7 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "xra"
 related:
+  - "./phpstan-corrections-january.md"
   - "../../phpstan-corrections-january.md"
+status: draft
 ---
 <?php
 
@@ -33,6 +35,7 @@ return [
 ];
 ## Collegamenti tra versioni di xra.md
 * [xra.md](../../../xot/docs/install/xra.md)
+* [xra.md](../../../tenant/docs/it/xra.md)
 * [xra.md](../xra.md)
 * [xra.md](../../../tenant/docs/it/config/xra.md)
 

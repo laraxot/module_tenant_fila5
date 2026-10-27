@@ -2,151 +2,224 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Modules\Tenant\Models\Traits\SushiToJson;
-use Modules\Tenant\Models\Tenant;
-use Tests\TestCase;
+namespace Modules\Tenant\Tests\Unit\Traits;
 
-// Test model using SushiToJson
-class SushiToJsonTestModel
+use Exception;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\File;
+use Mockery;
+use Mockery\Expectation;
+use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+use Modules\Tenant\Models\TestSushiModel;
+use Modules\Tenant\Tests\TestCase;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
+
+use function Safe\json_decode;
+use function Safe\json_encode;
+
+uses(TestCase::class, DatabaseTransactions::class);
+
+/**
+ * @param  array<array-key, mixed>  $data
+ */
+function writeSushiJsonFile(string $path, array $data): void
 {
-    use SushiToJson;
-
-    protected $table = 'sushi_json_test';
-    protected $primaryKey = 'id';
-    public $incrementing = true;
-    protected $keyType = 'int';
-
-    protected function getJsonPath(): string
-    {
-        return base_path("tenants/{tenant}/data/sushi-test.json");
-    }
-
-    protected function getColumns(): array
-    {
-        return [
-            'id' => 'integer',
-            'name' => 'string',
-            'email' => 'string',
-            'active' => 'boolean',
-        ];
-    }
+    $directory = dirname($path);
+    File::makeDirectory($directory, 0755, true, true);
+    File::put($path, json_encode($data, JSON_PRETTY_PRINT));
 }
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+beforeEach(function (): void {
+    /** @var TestCase $this */
+    $this->model = new TestSushiModel;
+    TestCase::$testDirectory = storage_path('tests/sushi-json');
+    TestCase::$testJsonPath = TestCase::$testDirectory.'/test_sushi.json';
 
-beforeEach(function () {
-    $this->tenant = Tenant::factory()->create(['name' => 'test-tenant']);
-    $dataDir = base_path("tenants/{$this->tenant->name}/data");
-    \Illuminate\Support\Facades\File::makeDirectory($dataDir, 0755, true);
-    \Illuminate\Support\Facades\File::put(
-        $dataDir . '/sushi-test.json',
-        json_encode([
-            ['id' => 1, 'name' => 'John Doe', 'email' => 'john@example.com', 'active' => true],
-            ['id' => 2, 'name' => 'Jane Smith', 'email' => 'jane@example.com', 'active' => false],
-        ])
-    );
-});
+    if (! File::exists(TestCase::$testDirectory)) {
+        File::makeDirectory(TestCase::$testDirectory, 0755, true, true);
+    }
 
-afterEach(function () {
-    $dataDir = base_path("tenants/{$this->tenant->name}/data");
-    if (\Illuminate\Support\Facades\File::exists($dataDir)) {
-        \Illuminate\Support\Facades\File::deleteDirectory($dataDir);
+    $jsonPath = TestCase::$testJsonPath;
+    $mock = Mockery::mock(GetTenantFilePathAction::class);
+    $mock->allows(['execute' => $jsonPath]);
+    app()->instance(GetTenantFilePathAction::class, $mock);
+
+    if (File::exists(TestCase::$testJsonPath)) {
+        File::delete(TestCase::$testJsonPath);
     }
 });
 
-describe('SushiToJson Trait', function () {
-    it('loads data from JSON file', function () {
-        $model = new SushiToJsonTestModel();
-        $model->setTenant($this->tenant->name);
+afterEach(function (): void {
+    /** @var TestCase $this */
+    if (File::exists(TestCase::$testJsonPath)) {
+        File::delete(TestCase::$testJsonPath);
+    }
 
-        $rows = $model->getRows();
+    if (File::exists(TestCase::$testDirectory)) {
+        File::deleteDirectory(TestCase::$testDirectory);
+    }
 
-        expect($rows)->toBeArray()->toHaveCount(2);
-        expect($rows[0]['id'])->toBe(1);
-        expect($rows[0]['name'])->toBe('John Doe');
-        expect($rows[1]['email'])->toBe('jane@example.com');
-    });
+    Mockery::close();
+});
 
-    it('returns correct columns schema', function () {
-        $model = new SushiToJsonTestModel();
+it('returns correct json file path', function (): void {
+    /** @var TestCase $this */
+    expect($this->sushiModel()->getJsonFile())->toBe(TestCase::$testJsonPath);
+});
 
-        $columns = $model->getColumns();
+it('returns empty array when json file not exists', function (): void {
+    /** @var TestCase $this */
+    $rows = $this->sushiModel()->getSushiRows();
 
-        expect($columns)->toBeArray()
-            ->toHaveKeys(['id', 'name', 'email', 'active']);
-        expect($columns['id'])->toBe('integer');
-        expect($columns['active'])->toBe('boolean');
-    });
+    expect($rows)->toBe([]);
+});
 
-    it('queries data with where', function () {
-        $model = new SushiToJsonTestModel();
-        $model->setTenant($this->tenant->name);
+it('throws exception when json data is invalid', function (): void {
+    /** @var TestCase $this */
+    File::put(TestCase::$testJsonPath, 'invalid json content');
 
-        $activeUsers = $model->where('active', true)->get();
+    expect(fn () => $this->sushiModel()->getSushiRows())
+        ->toThrow(Exception::class);
+});
 
-        expect($activeUsers)->toHaveCount(1);
-        expect($activeUsers->first()->name)->toBe('John Doe');
-    });
+it('loads valid json data correctly', function (): void {
+    /** @var TestCase $this */
+    $testData = [
+        '1' => [
+            'id' => 1,
+            'name' => 'Test Item 1',
+            'description' => 'Description 1',
+            'status' => 'active',
+            'metadata' => ['key' => 'value1'],
+        ],
+        '2' => [
+            'id' => 2,
+            'name' => 'Test Item 2',
+            'description' => 'Description 2',
+            'status' => 'inactive',
+            'metadata' => ['key' => 'value2'],
+        ],
+    ];
 
-    it('queries data with orderBy', function () {
-        $model = new SushiToJsonTestModel();
-        $model->setTenant($this->tenant->name);
+    writeSushiJsonFile(TestCase::$testJsonPath, $testData);
 
-        $ordered = $model->orderBy('name', 'desc')->get();
+    $rows = $this->sushiModel()->getSushiRows();
 
-        expect($ordered->first()->name)->toBe('John Doe');
-    });
+    expect($rows)->toHaveCount(2);
+    expect($this->jsonRecordAt($rows, 1)['name'])->toBe('Test Item 1');
+    expect($this->jsonRecordAt($rows, 2)['name'])->toBe('Test Item 2');
+});
 
-    it('queries data with limit', function () {
-        $model = new SushiToJsonTestModel();
-        $model->setTenant($this->tenant->name);
+it('normalizes nested arrays in json data', function (): void {
+    /** @var TestCase $this */
+    $testData = [
+        '1' => [
+            'id' => 1,
+            'name' => 'Test Item',
+            'metadata' => ['nested' => ['deep' => 'value']],
+            'tags' => ['tag1', 'tag2'],
+        ],
+    ];
 
-        $limited = $model->limit(1)->get();
+    writeSushiJsonFile(TestCase::$testJsonPath, $testData);
 
-        expect($limited)->toHaveCount(1);
-    });
+    $rows = $this->sushiModel()->getSushiRows();
+    $row = $this->jsonRecordAt($rows, 1);
 
-    it('finds by primary key', function () {
-        $model = new SushiToJsonTestModel();
-        $model->setTenant($this->tenant->name);
+    expect($row['metadata'])->toBeString();
+    expect($row['tags'])->toBeString();
+    expect(json_decode(SafeStringCastAction::cast($row['metadata']), true))->toBe(['nested' => ['deep' => 'value']]);
+    expect(json_decode(SafeStringCastAction::cast($row['tags']), true))->toBe(['tag1', 'tag2']);
+});
 
-        $found = $model->find(1);
+it('saves data to json file successfully', function (): void {
+    /** @var TestCase $this */
+    $testData = [
+        1 => ['id' => 1, 'name' => 'Test Item'],
+        2 => ['id' => 2, 'name' => 'Another Item'],
+    ];
 
-        expect($found)->not->toBeNull();
-        expect($found->id)->toBe(1);
-        expect($found->name)->toBe('John Doe');
-    });
+    $result = $this->sushiModel()->saveToJson($testData);
 
-    it('returns null for non-existent ID', function () {
-        $model = new SushiToJsonTestModel();
-        $model->setTenant($this->tenant->name);
+    expect($result)->toBeTrue();
+    expect(File::exists(TestCase::$testJsonPath))->toBeTrue();
 
-        $found = $model->find(999);
+    $savedData = $this->readJsonFileAsArray(TestCase::$testJsonPath);
 
-        expect($found)->toBeNull();
-    });
+    expect($savedData)->toHaveCount(2);
+    expect($this->jsonRecordAt($savedData, 1)['name'])->toBe('Test Item');
+});
 
-    it('handles missing JSON file', function () {
-        $tenant2 = Tenant::factory()->create(['name' => 'no-json']);
-        $model = new SushiToJsonTestModel();
-        $model->setTenant($tenant2->name);
+it('creates directory if not exists when saving', function (): void {
+    /** @var TestCase $this */
+    if (File::exists(TestCase::$testDirectory)) {
+        File::deleteDirectory(TestCase::$testDirectory);
+    }
 
-        $rows = $model->getRows();
+    $testData = [1 => ['id' => 1, 'name' => 'Test']];
 
-        expect($rows)->toBeArray()->toBeEmpty();
-    });
+    $result = $this->sushiModel()->saveToJson($testData);
 
-    it('handles malformed JSON', function () {
-        $dataDir = base_path("tenants/{$this->tenant->name}/data");
-        \Illuminate\Support\Facades\File::put($dataDir . '/sushi-test.json', 'invalid json');
+    expect($result)->toBeTrue();
+    expect(File::exists(dirname(TestCase::$testJsonPath)))->toBeTrue();
+    expect(File::exists(TestCase::$testJsonPath))->toBeTrue();
+});
 
-        $model = new SushiToJsonTestModel();
-        $model->setTenant($this->tenant->name);
+it('returns false when saving fails', function (): void {
+    /** @var TestCase $this */
+    $expectation = File::partialMock()->shouldReceive('put');
+    if ($expectation instanceof Expectation) {
+        $expectation->andThrow(new \RuntimeException('write failed'));
+    }
 
-        $rows = $model->getRows();
+    $result = $this->sushiModel()->saveToJson([1 => ['id' => 1, 'name' => 'Test']]);
 
-        expect($rows)->toBeArray()->toBeEmpty();
-    });
+    expect($result)->toBeFalse();
+});
+
+it('loads existing data correctly', function (): void {
+    /** @var TestCase $this */
+    $testData = [
+        '1' => ['id' => 1, 'name' => 'Existing Item'],
+    ];
+
+    writeSushiJsonFile(TestCase::$testJsonPath, $testData);
+
+    $existingData = $this->sushiModel()->loadExistingData();
+
+    expect($existingData)->toHaveCount(1);
+    expect($this->jsonRecordAt($existingData, 1)['name'])->toBe('Existing Item');
+});
+
+it('returns empty array when no existing data', function (): void {
+    /** @var TestCase $this */
+    $existingData = $this->sushiModel()->loadExistingData();
+
+    expect($existingData)->toBe([]);
+});
+
+it('works with sushi package integration', function (): void {
+    /** @var TestCase $this */
+    $testData = [
+        '1' => [
+            'id' => 1,
+            'name' => 'Sushi Item 1',
+            'description' => 'Description 1',
+            'status' => 'active',
+        ],
+        '2' => [
+            'id' => 2,
+            'name' => 'Sushi Item 2',
+            'description' => 'Description 2',
+            'status' => 'inactive',
+        ],
+    ];
+
+    writeSushiJsonFile(TestCase::$testJsonPath, $testData);
+
+    $rows = $this->sushiModel()->getSushiRows();
+
+    expect($rows)->toHaveCount(2);
+    expect($this->jsonRecordAt($rows, 1)['name'])->toBe('Sushi Item 1');
+    expect($this->jsonRecordAt($rows, 2)['name'])->toBe('Sushi Item 2');
 });
