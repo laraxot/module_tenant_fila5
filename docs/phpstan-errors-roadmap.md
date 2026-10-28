@@ -7,10 +7,12 @@ updated: 2026-09-26
 qmd: "phpstan errors roadmap"
 issues: []
 discussions: []
-status: draft
+status: stale
 ---
 
 # PHPStan Level 10 Errors Roadmap - Tenant Module
+
+> Nota (docs-audit): conteggi storici. Stato attuale: PHPStan su `Modules` = 0 errori (verifica di sessione). I percorsi `Modules/Tenant/Tests/...` qui sotto sono oggi `Modules/Tenant/tests/...` (minuscolo, come esistono sul disco).
 
 **Modulo**: Tenant  
 **Livello PHPStan**: 10  

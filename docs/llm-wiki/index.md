@@ -58,7 +58,6 @@ _No troubleshooting pages created yet_
 ### Related Project Concepts
 
 - [Laraxot Architecture](../../docs/wiki/concepts/laraxot-architecture.md)
-- [Actions Over Services](../../docs/wiki/concepts/actions-over-services.md)
 - [Actions Over Services](../../../../../docs/wiki/concepts/actions-over-services.md)
 - [PHPStan Level 10](../../docs/wiki/concepts/phpstan-level10.md)
 
@@ -66,4 +65,4 @@ _No troubleshooting pages created yet_
 
 _Tenant provides specific functionality for the Laraxot ecosystem._
 
-See [project wiki](../../docs/wiki/index.md) for cross-module integration.
+See [project wiki](../../../../../docs/wiki/index.md) for cross-module integration.
