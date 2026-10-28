@@ -23,7 +23,7 @@ status: draft
 ## 🎯 Quick Start
 
 **Multi-tenancy 101**: [TenantIdentification.md](./wiki/tenantidentification.md) — How tenants are identified and isolated  
-**Architecture**: [Architecture.md](./wiki/Architecture.md) — System design and data flow  
+**Architecture**: [Architecture.md](./wiki/architecture.md) — System design and data flow  
 **Configuration**: See **Multi-Tenant Config** section below ⬇️
 
 ---
@@ -32,7 +32,7 @@ status: draft
 
 ### Wiki (Sacred — Do Not Delete)
 - **[wiki/index.md](./wiki/index.md)** — Operating manual for LLM agents
-- **[wiki/Architecture.md](./wiki/Architecture.md)** — Multi-tenant system design
+- **[wiki/Architecture.md](./wiki/architecture.md)** — Multi-tenant system design
 - **[wiki/TenantIdentification.md](./wiki/tenantidentification.md)** — How tenants are identified
 - **[wiki/ConfigurationDistribution.md](./wiki/configurationdistribution.md)** — Config per tenant
 - **[wiki/schema.md](./wiki/schema.md)** — Database schema reference
@@ -125,7 +125,7 @@ For deep understanding of multi-tenant configuration:
 ## 🔗 Related Modules
 
 - **[User Module](../../User/docs/00-index.md)** — Authentication per tenant
-- **[Xot Module](../../Xot/docs/00-index.md)** — Base classes for tenant awareness
+- **[Xot Module](../../Xot/docs/00-INDEX.md)** — Base classes for tenant awareness
 - **[Theme System](../../../Themes/)** — Theme per tenant support
 
 ---

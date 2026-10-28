@@ -4,13 +4,11 @@ type: architecture
 tags: [tenant, multi-tenancy, architecture, core]
 created: 2026-07-09
 updated: 2026-10-25
-status: stale
+status: draft
 qmd: "tenant architecture multi tenancy routing domain isolamento"
 ---
 
 # Architecture: Tenant Module
-
-> Nota (docs-audit): copia di [../ARCHITECTURE.md](../ARCHITECTURE.md), stesso avviso: descrive un design ipotetico (`BelongsToTenant`, `TenantService`, `TenantMiddleware`, `TenantBootServiceProvider` non esistono nel codice). Fonte vera: [../README.md](../README.md).
 
 ## Overview
 
@@ -250,7 +248,7 @@ Per-tenant configuration files override system defaults, enabling customization 
 ## Related Files
 
 - [API Reference](./api.md)
-- [Setup Guide](./setup-guide.md)
-- [Troubleshooting](../troubleshooting.md)
-- [Best Practices](../best-practices.md)
+- [Setup Guide](./SETUP.md)
+- [Troubleshooting](./TROUBLESHOOTING.md)
+- [Best Practices](./BEST_PRACTICES.md)
 - Module Tests: `tests/Feature/TenantBusinessLogicTest.php`, `tests/Unit/Actions/`

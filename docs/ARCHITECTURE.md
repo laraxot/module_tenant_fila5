@@ -7,12 +7,10 @@ type: architecture
 tags: [tenant, multi-tenancy, architecture, core]
 created: 2026-07-09
 updated: 2026-07-09
-status: stale
+status: draft
 ---
 
 # Architecture: Tenant Module
-
-> Nota (docs-audit): design ipotetico, non allineato al codice. Verificato con grep su `app/`, `config/`, `routes/` del modulo: non esistono `BelongsToTenant`, `BelongsToTenantsScope`, `TenantService` (ritirato a favore delle Actions), `TenantMiddleware`, `TenantBootServiceProvider`; `app/Http/Middleware/` e' vuota e `storage/tenants/{tenant_id}/config.php` non e' un percorso usato dal codice. Il tenant reale e' la cartella `config/<host invertito>/` scelta da `Actions\GetTenantNameAction`: fonte vera in [README.md](./README.md). Le Actions `GetTenantNameAction`, `SaveTenantConfigAction`, `GetTenantConfigArrayAction`, `ResolveTenantConfigValueAction` esistono, ma firme e comportamento descritti sotto vanno verificati sul codice. `bmad/architecture-tenant.md` e' una copia di questo file.
 
 ## Overview
 
@@ -252,7 +250,7 @@ Per-tenant configuration files override system defaults, enabling customization 
 ## Related Files
 
 - [API Reference](./api.md)
-- [Setup Guide](./bmad/setup-guide.md)
+- [Setup Guide](./SETUP.md)
 - [Troubleshooting](./troubleshooting.md)
-- [Best Practices](./best-practices.md)
+- [Best Practices](./BEST_PRACTICES.md)
 - Module Tests: `tests/Feature/TenantBusinessLogicTest.php`, `tests/Unit/Actions/`

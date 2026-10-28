@@ -36,7 +36,7 @@ i dati dell'altro, e di farlo cambiando configurazione invece che codice.**
 
 ## La regola che conta piu' di tutte
 
-**`GetTenantFilePathAction` (`Modules\Tenant\Actions\Config`) non e' `base_path()`.**
+**`TenantService::filePath()` non e' `base_path()`.**
 
 `base_path()` restituisce la radice dell'applicazione e ignora il tenant. Usarlo dove
 serve un percorso per-tenant fa leggere e scrivere all'ente A i file dell'ente B — e
@@ -46,7 +46,7 @@ E' il tipo di errore peggiore che questo progetto conosca: **muto**. La stessa f
 di `public_path()` che deve puntare a `public_html/`.
 
 Il trait `SushiToJsons` implementa gia' `getJsonFile()` **correttamente**, usando
-`GetTenantFilePathAction` (il vecchio `TenantService::filePath()` e' stato ritirato). Ci sono precedenti documentati di modelli che lo hanno
+`TenantService::filePath()`. Ci sono precedenti documentati di modelli che lo hanno
 riscritto con `base_path()`, rompendo il multi-tenancy in silenzio. La regola operativa
 e' quindi: **prima di scrivere un metodo in un modello, leggere i trait che il modello
 gia' usa.**

@@ -108,51 +108,33 @@ trait SushiToJsons
     {
         $rows = [];
         $relativePath = 'database/content/'.$tbl;
-        $tenantPath = app(GetTenantFilePathAction::class)->execute($relativePath);
+        $path = app(GetTenantFilePathAction::class)->execute($relativePath);
         $tenantName = app(GetTenantNameAction::class)->execute();
-        $sources = [$tenantPath, base_path('Themes/Sixteen/config/'.$tenantName.'/'.$relativePath)];
+        $files=File::allFiles($path);
 
-        // Tenant JSON is the override layer; module JSON is the versioned baseline.
-        foreach (File::directories(base_path('Modules')) as $modulePath) {
-            if (! is_string($modulePath)) {
+        $failed=[];
+
+        foreach ($files as $file) {
+            $row = $this->getRowFromJsonFile($file);
+            if ($row === null) {
+                $failed[]=$file->getPathname();
                 continue;
             }
 
-            $sources[] = $modulePath.'/config/'.$relativePath;
-            $sources[] = $modulePath.'/'.$relativePath;
-        }
+            $relativePathname = $file->getRelativePathname();
+            if (Str::contains($relativePathname, '/')) {
+                $row = $this->prefixRowKeys($row, Str::of($relativePathname)->beforeLast('/')->replace('/', '.')->toString());
+            }
 
-        // Chi ha tenuto lo slug per primo (cartella sorgente). Un override vale per identita' logica, non per id: il prefisso della
-        // sottocartella cambia l'id (`tickets/index.json` -> `tickets.tickets-index`, il baseline piatto resta `tickets-index`) e
-        // con la sola chiave id il tenant AGGIUNGEVA una riga invece di sostituire il baseline (500/503 su login e segnalazioni, 2026-10-26).
-        $slugOwners = [];
-
-        foreach (array_unique($sources) as $path) {
-            if (! File::isDirectory($path)) {
+            // Due file con lo stesso slug nella STESSA cartella restano due righe: e' un errore vero e `findUniqueBySlug` lo segnala.
+            $slug = $row['slug'] ?? null;
+            if (is_string($slug) && $slug !== '' && ($slugOwners[$slug] ??= $path) !== $path) {
                 continue;
             }
 
-            foreach (File::allFiles($path) as $file) {
-                $row = $this->getRowFromJsonFile($file);
-                if ($row === null) {
-                    continue;
-                }
-
-                $relativePathname = $file->getRelativePathname();
-                if (Str::contains($relativePathname, '/')) {
-                    $row = $this->prefixRowKeys($row, Str::of($relativePathname)->beforeLast('/')->replace('/', '.')->toString());
-                }
-
-                // Due file con lo stesso slug nella STESSA cartella restano due righe: e' un errore vero e `findUniqueBySlug` lo segnala.
-                $slug = $row['slug'] ?? null;
-                if (is_string($slug) && $slug !== '' && ($slugOwners[$slug] ??= $path) !== $path) {
-                    continue;
-                }
-
-                $id = $row['id'] ?? null;
-                $key = is_string($id) || is_int($id) ? (string) $id : $file->getPathname();
-                $rows[$key] ??= $row;
-            }
+            $id = $row['id'] ?? null;
+            $key = is_string($id) || is_int($id) ? (string) $id : $file->getPathname();
+            $rows[]= $row;
         }
 
         /** @var array<int, array<string, mixed>> $rows */
@@ -196,11 +178,13 @@ trait SushiToJsons
     {
         $json = File::json($file);
         if (! is_array($json)) {
+            dddx($file);
             return null;
         }
 
         $schema = $this->resolveSchema();
         if ($schema === []) {
+            dddx($file);
             return null;
         }
 
