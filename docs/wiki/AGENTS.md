@@ -1,7 +1,7 @@
 ---
 issues: []
 discussions: []
-title: "Tenant {{TYPE^}} LLM Wiki Agent Instructions"
+title: "Tenant Module LLM Wiki Agent Instructions"
 module: "Tenant"
 type: concept
 tags: [AGENTS]
@@ -13,7 +13,7 @@ related:
 status: superseded
 superseded_by: ../llm-wiki/AGENTS.md
 ---
-# Tenant {{TYPE^}} LLM Wiki Agent Instructions
+# Tenant Module LLM Wiki Agent Instructions
 
 > **Module/Theme:** Tenant
 > **Scope:** Tenant-specific knowledge only

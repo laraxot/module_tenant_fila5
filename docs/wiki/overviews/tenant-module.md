@@ -13,12 +13,14 @@ sources:
   - ../../philosophy-religion.md
   - ../../configuration.md
   - ../../structure.md
-confidence: high
+confidence: low
 updated: 2026-10-25
-status: draft
+status: stale
 ---
 
 # Tenant Module — Overview
+
+> Nota (docs-audit): panoramica ipotetica, non allineata al codice. Non esistono classi `TenantResolver`, `TenantMiddleware`, `TenantManager`, `TenantRepository`, `TenantConfigService`, `TenantLifecycleService`, `TenantDatabaseManager`, `ConnectionManager`, `MigrationManager`, `SchemaIsolationService`, `XraData`; non c'e' identificazione per sottodominio/header/API key ne' tabella `TenantUser` nel modulo. Il tenant reale e' la cartella `config/<host invertito>/` scelta da `Actions\GetTenantNameAction`: fonte vera in [README.md](../../README.md).
 
 > **Ruolo**: Multi-tenancy per monolite Laraxot — isolamento completo dati, DB-per-tenant, domain routing, configurazione per-tenant.
 
