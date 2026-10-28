@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Modules\Tenant\Models\Contracts\HasSushiToJson;
 use Modules\Xot\Actions\Arr\EnsureKeysAction;
-use Modules\Xot\Actions\Array\SaveArrayAction;
+use Modules\Xot\Actions\Arr\SaveArrayAction;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
