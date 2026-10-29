@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
-use Modules\Tenant\Actions\GetTenantNameAction;
 use ReflectionObject;
 use Sushi\Sushi;
 use Symfony\Component\Finder\SplFileInfo;
@@ -109,15 +108,15 @@ trait SushiToJsons
         $rows = [];
         $relativePath = 'database/content/'.$tbl;
         $path = app(GetTenantFilePathAction::class)->execute($relativePath);
-        $tenantName = app(GetTenantNameAction::class)->execute();
-        $files=File::allFiles($path);
+        if (! File::isDirectory($path)) {
+            return $rows;
+        }
 
-        $failed=[];
+        $slugOwners = [];
 
-        foreach ($files as $file) {
+        foreach (File::allFiles($path) as $file) {
             $row = $this->getRowFromJsonFile($file);
             if ($row === null) {
-                $failed[]=$file->getPathname();
                 continue;
             }
 
@@ -132,13 +131,10 @@ trait SushiToJsons
                 continue;
             }
 
-            $id = $row['id'] ?? null;
-            $key = is_string($id) || is_int($id) ? (string) $id : $file->getPathname();
-            $rows[]= $row;
+            $rows[] = $row;
         }
 
-        /** @var array<int, array<string, mixed>> $rows */
-        return array_values($rows);
+        return $rows;
     }
 
     /**
@@ -178,13 +174,11 @@ trait SushiToJsons
     {
         $json = File::json($file);
         if (! is_array($json)) {
-            dddx($file);
             return null;
         }
 
         $schema = $this->resolveSchema();
         if ($schema === []) {
-            dddx($file);
             return null;
         }
 
