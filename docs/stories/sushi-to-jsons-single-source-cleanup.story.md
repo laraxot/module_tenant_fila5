@@ -88,3 +88,13 @@ mai niente. Non e' un errore e dipende da come l'upstream vuole chiudere la risc
 `maxIdFromRows()`, `applyAuditFields()`, `maxIdFromDatabase()`, che il trait non ha piu', e uno
 riceve `null` a `SushiToJson.php:64`. Prima di questa modifica non giravano nemmeno, perche' il
 `dddx` fermava il processo prima.
+
+## Test aggiunto dopo la revisione sulle linee guida (2026-10-29)
+
+La revisione richiesta dall'utente ha trovato un buco: nessun test copriva il controllo `File::isDirectory()` rimesso
+(pilastro 10 e workflow dei bugfix: test per il codice modificato). Aggiunto in `tests/Unit/Traits/SushiToJsonsTest.php`
+"returns empty rows when json directory does not exist", accanto al test sulla cartella vuota.
+
+Il test e' scritto dopo la correzione: farlo fallire sul codice di `33465888` richiederebbe di riportare indietro il file,
+e git va solo in avanti. Il fallimento con quel codice e' gia' provato sopra (tinker su `Menu` e `Page` di Cms:
+`DirectoryNotFoundException`). Esito: `SushiToJsonsTest` 5 passati, 8 asserzioni; PHPStan, Pint e PHPMD puliti sul file.
