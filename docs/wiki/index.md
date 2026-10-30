@@ -52,6 +52,7 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 | [lowercase-database-factories-directory](./concepts/lowercase-database-factories-directory.md) | Concept | `database/factories/` canonico; `Factories_` vietata | 2026-07-01 |
 | [lowercase-tests-directory](./concepts/lowercase-tests-directory.md) | Concept | Cartella test canonica minuscola | 2026-06-30 |
 | [xotbase-table-columns-enforcement](./concepts/xotbase-table-columns-enforcement.md) | Concept | 1 Table file — DomainsTable populated | 2026-05-07 |
+| [sushi-json-row-source](./concepts/sushi-json-row-source.md) | Concept | Sorgente tenant delle righe Sushi JSON | |
 
 ## Best Practices
 

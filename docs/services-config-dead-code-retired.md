@@ -6,10 +6,6 @@ module: "Tenant"
 type: concept
 tags: [services, config, dead, code]
 created: 2026-07-14
-updated: 2026-07-14
-qmd: "services config dead code retired"
-related:
-  - "./phpstan-corrections-january.md"
 updated: 2026-10-20
 qmd: "services config dead code retired"
 related:

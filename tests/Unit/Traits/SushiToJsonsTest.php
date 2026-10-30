@@ -80,3 +80,13 @@ it('returns empty rows when json directory has no files', function (): void {
 
     Assert::assertSame([], $rows);
 });
+
+it('returns empty rows when the tenant has no directory for the table', function (): void {
+    // Un tenant non ha la cartella di ogni tabella (techplanner: solo `pages` e `sections`): `File::allFiles()` su una
+    // cartella assente lancia DirectoryNotFoundException, la tabella deve restare vuota.
+    File::deleteDirectory(TestCase::$testDirectory);
+
+    $rows = (new SushiToJsonsCoverageModel)->getSushiRows();
+
+    Assert::assertSame([], $rows);
+});

@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
-use Modules\Tenant\Actions\GetTenantNameAction;
 use ReflectionObject;
 use Sushi\Sushi;
 use Symfony\Component\Finder\SplFileInfo;
@@ -109,15 +108,14 @@ trait SushiToJsons
         $rows = [];
         $relativePath = 'database/content/'.$tbl;
         $path = app(GetTenantFilePathAction::class)->execute($relativePath);
-        $tenantName = app(GetTenantNameAction::class)->execute();
-        $files=File::allFiles($path);
+        // Un tenant puo' non avere la cartella di una tabella (es. `localhost` ha solo `pages`): tabella vuota, non eccezione del Finder.
+        if (! File::isDirectory($path)) {
+            return [];
+        }
 
-        $failed=[];
-
-        foreach ($files as $file) {
+        foreach (File::allFiles($path) as $file) {
             $row = $this->getRowFromJsonFile($file);
             if ($row === null) {
-                $failed[]=$file->getPathname();
                 continue;
             }
 
@@ -126,19 +124,10 @@ trait SushiToJsons
                 $row = $this->prefixRowKeys($row, Str::of($relativePathname)->beforeLast('/')->replace('/', '.')->toString());
             }
 
-            // Due file con lo stesso slug nella STESSA cartella restano due righe: e' un errore vero e `findUniqueBySlug` lo segnala.
-            $slug = $row['slug'] ?? null;
-            if (is_string($slug) && $slug !== '' && ($slugOwners[$slug] ??= $path) !== $path) {
-                continue;
-            }
-
-            $id = $row['id'] ?? null;
-            $key = is_string($id) || is_int($id) ? (string) $id : $file->getPathname();
-            $rows[]= $row;
+            $rows[] = $row;
         }
 
-        /** @var array<int, array<string, mixed>> $rows */
-        return array_values($rows);
+        return $rows;
     }
 
     /**
@@ -178,13 +167,11 @@ trait SushiToJsons
     {
         $json = File::json($file);
         if (! is_array($json)) {
-            dddx($file);
             return null;
         }
 
         $schema = $this->resolveSchema();
         if ($schema === []) {
-            dddx($file);
             return null;
         }
 
