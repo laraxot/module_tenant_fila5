@@ -10,6 +10,8 @@ updated: 2026-07-14
 qmd: "documentation consolidation"
 related:
   - "./phpstan-corrections-january.md"
+  - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Consolidamento documentazione
 

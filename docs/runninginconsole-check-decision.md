@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "runninginconsole check decision"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction
 

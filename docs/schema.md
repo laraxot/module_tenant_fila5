@@ -8,6 +8,7 @@ discussions: []
 title: "Module Schema"
 module: "Tenant"
 created: "2026-04-15T08:28:50Z"
+status: draft
 ---
 
 # Tenant Module Schema

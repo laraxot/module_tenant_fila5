@@ -31,7 +31,6 @@ it('can create a tenant', function (): void {
         'database' => 'tenant_test_db',
     ]);
 
-    Assert::assertInstanceOf(Tenant::class, $tenant);
     Assert::assertSame('Test Company', $tenant->name);
     Assert::assertSame('test.company.com', $tenant->domain);
     Assert::assertSame('tenant_test_db', $tenant->database);

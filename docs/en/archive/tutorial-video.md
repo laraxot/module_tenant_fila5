@@ -7,6 +7,8 @@ updated: 2026-09-26
 qmd: "tutorial video"
 issues: []
 discussions: []
+status: superseded
+superseded_by: ../tutorial-video.md
 ---
 
 https://www.youtube.com/watch?v=_eyz7rvwLTQ

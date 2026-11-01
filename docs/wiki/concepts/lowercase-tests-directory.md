@@ -10,6 +10,7 @@ updated: 2026-06-30
 qmd: "tenant lowercase tests directory no Tests duplicate pest phpstan"
 related:
   - ../../../../../Xot/docs/wiki/concepts/composer-root-skeleton-modular.md
+status: draft
 ---
 
 # Lowercase Tests Directory

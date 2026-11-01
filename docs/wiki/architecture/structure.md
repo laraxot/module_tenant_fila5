@@ -8,5 +8,7 @@ updated: 2026-07-14
 qmd: "structure"
 related:
   - "./phpstan-corrections-january.md"
+  - "../../phpstan-corrections-january.md"
+status: draft
 ---
 

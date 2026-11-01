@@ -13,6 +13,7 @@ related:
   - "../../../app/Actions/GetTenantNameAction.php"
   - "../../../app/Actions/Config/GetTenantFilePathAction.php"
   - "../../../../Xot/app/Actions/Filament/GetModulesNavigationItems.php"
+status: draft
 ---
 
 # Modules Statuses — due file indipendenti, non uno solo

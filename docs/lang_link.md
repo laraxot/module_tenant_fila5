@@ -10,6 +10,8 @@ discussions: []
 module: theme
 topic: lang_link
 canonical: ../../../Themes/docs/shared-components/.gitkeep-Modules
+status: superseded
+superseded_by: lang-link.md
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/.gitkeep-Modules

@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "roadmap "
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Tenant Module Roadmap 2026
 

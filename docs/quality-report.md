@@ -8,6 +8,7 @@ module: Tenant
 created: 2026-08-24
 updated: 2026-08-24
 qmd: "Tenant quality report phpstan pest coverage test ratio"
+status: draft
 ---
 
 # Quality Report — Tenant

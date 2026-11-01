@@ -45,10 +45,7 @@ beforeEach(function (): void {
         File::delete(TestCase::sushiJsonPath());
     }
 
-    $directory = dirname(TestCase::sushiJsonPath());
-    if (File::exists($directory)) {
-        File::deleteDirectory($directory);
-    }
+    // Mai deleteDirectory: e' la cartella database/content REALE del tenant (pagine e sezioni CMS).
 });
 
 afterEach(function (): void {
@@ -56,10 +53,7 @@ afterEach(function (): void {
         File::delete(TestCase::sushiJsonPath());
     }
 
-    $directory = dirname(TestCase::sushiJsonPath());
-    if (File::exists($directory)) {
-        File::deleteDirectory($directory);
-    }
+    // Mai deleteDirectory: e' la cartella database/content REALE del tenant (pagine e sezioni CMS).
 
 });
 
@@ -159,8 +153,6 @@ describe('Sushi To Json Trait Integration', function (): void {
         $decodedMetadata = json_decode(TestCase::sushiRowById($rows, 1)['metadata'], true);
         Assert::assertIsArray($decodedMetadata);
         Assert::assertSame($testData['1']['metadata'], $decodedMetadata);
-        Assert::assertSame(['tag1', 'tag2', 'tag3'], $decodedMetadata['tags']);
-        Assert::assertSame('deep_value', $decodedMetadata['nested']['level1']['level2']['level3']);
     });
 
     test('manages file permissions correctly', function (): void {
@@ -362,9 +354,6 @@ describe('Sushi To Json Trait Integration', function (): void {
         // Pulisce il secondo tenant
         File::delete($secondJsonPath);
 
-        $directory = dirname($secondJsonPath);
-        if (File::exists($directory)) {
-            File::deleteDirectory($directory);
-        }
+        // Mai deleteDirectory: e' la cartella database/content REALE del tenant (pagine e sezioni CMS).
     });
 });

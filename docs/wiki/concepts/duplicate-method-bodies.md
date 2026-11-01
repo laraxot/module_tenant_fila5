@@ -12,6 +12,7 @@ qmd: "duplicate method bodies Tenant identical hash DRY"
 related:
   - ../../../../../../docs/wiki/duplicate-method-bodies-census.md
   - ./method-name-homonyms.md
+status: draft
 ---
 
 # Corpi metodo duplicati — Tenant

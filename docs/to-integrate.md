@@ -10,5 +10,6 @@ updated: 2026-07-14
 qmd: "to integrate"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 https://filamentphp.com/plugins/andrew-wallo-companies

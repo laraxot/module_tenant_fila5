@@ -9,6 +9,8 @@ updated: 2026-05-11
 tags: [qmd, search, docs, performance]
 related:
   - ../../docs/wiki/concepts/llm-wiki-operational-discipline.md
+  - ../../../../docs/wiki/concepts/llm-wiki-operational-discipline.md
+status: draft
 ---
 
 # QMD Setup per Module **Tenant**
@@ -67,7 +69,8 @@ qmd search "form" -c tenant  # Solo questo modulo
 
 - [Global QMD Config](../qmd.md) (root docs)
 - [Operational Discipline](../../docs/wiki/concepts/llm-wiki-operational-discipline.md)
-- [On-Demand Pattern](./ON-DEMAND-PATTERN.md)
+- [Operational Discipline](../../../../docs/wiki/concepts/llm-wiki-operational-discipline.md)
+- [On-Demand Pattern](./on-demand-pattern.md)
 
 ---
 *Cache: ~/.cache/qmd-cache/ | Index: ~/.cache/qmd-cache/index*

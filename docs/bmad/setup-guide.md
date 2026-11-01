@@ -12,6 +12,7 @@ qmd: "tenant setup install config migrate test"
 related:
   - README.md
   - quick-reference.md
+status: draft
 ---
 
 # Tenant — Setup Guide

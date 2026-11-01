@@ -7,6 +7,7 @@ type: index
 tags: [concepts, Tenant]
 created: 2026-05-11
 updated: 2026-07-27
+status: draft
 ---
 
 # concepts Index — Tenant
@@ -29,4 +30,4 @@ Concetti specifici del modulo Tenant. Carica on-demand via `qmd search` o consul
 
 ## Regola progetto
 
-- [database-folder-lowercase-rule.md](../../../../../docs/wiki/concepts/database-folder-lowercase-rule.md)
+- [database-folder-lowercase-rule.md](../../../../../../docs/wiki/concepts/database-folder-lowercase-rule.md)

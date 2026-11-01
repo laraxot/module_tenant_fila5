@@ -13,8 +13,9 @@ related:
   - ../../../../../../docs/wiki/concepts/sacred-artifacts-never-delete.md
   - ../../../../../../docs/project/incidents/tenant-config-accidental-delete.md
   - ../../../../../../docs/project/incidents/config-directory-mismatch.md
-  - ../ConfigurationDistribution.md
+  - ../configurationdistribution.md
   - ../../../app/Actions/GetTenantNameAction.php
+status: draft
 ---
 
 # Ripristino config tenant — incidente 2026-07-01

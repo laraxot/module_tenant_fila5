@@ -10,6 +10,7 @@ title: About Tenant
 description: About Tenant
 extends: _layouts.documentation
 section: content
+status: draft
 ---
 
 # module_tenant
@@ -98,6 +99,7 @@ Per ulteriori informazioni su come utilizzare il modulo, consulta la documentazi
 ## Collegamenti tra versioni di about.md
 * [about.md](../../../xot/docs/about.md)
 * [about.md](../../../tenant/docs/en/about.md)
+* [about.md](../en/about.md)
 * [about.md](../../../tenant/docs/it/about.md)
 
 ### Versione Incoming

@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "architecture rules"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Architectural Rules & Guidelines
 

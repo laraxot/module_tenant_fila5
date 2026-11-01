@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "product strategy"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Tenant Module - Product Strategy
 

@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "resolve tenant config console debate"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # ResolveTenantConfigValueAction - Console Check Debate
 

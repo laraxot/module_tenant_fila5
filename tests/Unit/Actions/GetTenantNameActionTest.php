@@ -2,90 +2,69 @@
 
 declare(strict_types=1);
 
-namespace Modules\Tenant\Tests\Unit\Actions;
-
 use Modules\Tenant\Actions\GetTenantNameAction;
-use Modules\Tenant\Tests\TestCase;
-use PHPUnit\Framework\Assert;
-
-use function Safe\mkdir;
-use function Safe\rmdir;
+use Tests\TestCase;
 
 uses(TestCase::class);
 
-/** @var list<string> $createdConfigPaths */
-$createdConfigPaths = [];
+test('get tenant name action returns correct tenant name from server name', function () {
+    $_SERVER['SERVER_NAME'] = 'myapp.example.com';
 
-beforeEach(function (): void {
-    config(['app.url' => 'http://localhost']);
+    $action = new GetTenantNameAction;
+    $result = $action->execute();
+
+    expect($result)->toBe('com/example/myapp');
 });
 
-afterEach(function () use (&$createdConfigPaths): void {
-    TestCase::setServerNameForTenantTest(null);
+test('get tenant name action handles www prefix correctly', function () {
+    $_SERVER['SERVER_NAME'] = 'www.myapp.example.com';
 
-    foreach ($createdConfigPaths as $path) {
-        if (is_dir($path)) {
-            rmdir($path);
-        }
-    }
-    $createdConfigPaths = [];
+    $action = new GetTenantNameAction;
+    $result = $action->execute();
+
+    expect($result)->toBe('com/example/myapp');
 });
 
-function ensureTenantConfigDir(string $relativePath): string
-{
-    /** @var list<string> $createdConfigPaths */
-    global $createdConfigPaths;
+test('get tenant name action falls back to default when server name is localhost', function () {
+    $_SERVER['SERVER_NAME'] = '127.0.0.1';
 
-    $path = config_path(str_replace('/', DIRECTORY_SEPARATOR, $relativePath));
-    if (! is_dir($path)) {
-        mkdir($path, 0755, true);
-        $createdConfigPaths[] = $path;
-    }
+    $action = new GetTenantNameAction;
+    $result = $action->execute();
 
-    return $path;
-}
-
-test('get tenant name action returns correct tenant name from server name', function (): void {
-    ensureTenantConfigDir('com/example/myapp');
-    TestCase::setServerNameForTenantTest('myapp.example.com');
-
-    $result = app(GetTenantNameAction::class)->execute();
-
-    Assert::assertSame('com/example/myapp', $result);
+    expect($result)->toBe('localhost');
 });
 
-test('get tenant name action handles www prefix correctly', function (): void {
-    ensureTenantConfigDir('com/example/myapp');
-    TestCase::setServerNameForTenantTest('www.myapp.example.com');
-
-    $result = app(GetTenantNameAction::class)->execute();
-
-    Assert::assertSame('com/example/myapp', $result);
-});
-
-test('get tenant name action falls back to default when server name is localhost', function (): void {
-    TestCase::setServerNameForTenantTest('127.0.0.1');
-
-    $result = app(GetTenantNameAction::class)->execute();
-
-    Assert::assertSame('localhost', $result);
-});
-
-test('get tenant name action uses app url config when server name not set', function (): void {
-    ensureTenantConfigDir('test/myapp');
-    TestCase::setServerNameForTenantTest(null);
+test('get tenant name action uses app url config when server name not set', function () {
+    unset($_SERVER['SERVER_NAME']);
     config(['app.url' => 'https://myapp.test']);
 
-    $result = app(GetTenantNameAction::class)->execute();
+    $action = new GetTenantNameAction;
+    $result = $action->execute();
 
-    Assert::assertSame('test/myapp', $result);
+    expect($result)->toBe('test/myapp');
 });
 
-test('get tenant name action handles empty app url config', function (): void {
-    TestCase::setServerNameForTenantTest(null);
+test('get tenant name action handles empty app url config', function () {
+    unset($_SERVER['SERVER_NAME']);
     config(['app.url' => '']);
 
-    $result = app(GetTenantNameAction::class)->execute();
+    $action = new GetTenantNameAction;
+    $result = $action->execute();
 
-    Assert::assertContains($result, ['', 'localhost']);
+    expect($result)->toBe('localhost');
+});
+
+test('host fixcity.eu usa il tenant canonico e non l alias del symlink', function () {
+    $previousServer = $_SERVER['SERVER_NAME'] ?? null;
+    $_SERVER['SERVER_NAME'] = 'fixcity.eu';
+
+    try {
+        expect(app(GetTenantNameAction::class)->execute())->toBe('local/fixcity');
+    } finally {
+        if (is_string($previousServer)) {
+            $_SERVER['SERVER_NAME'] = $previousServer;
+        } else {
+            unset($_SERVER['SERVER_NAME']);
+        }
+    }
 });

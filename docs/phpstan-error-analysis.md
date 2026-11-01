@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan error analysis"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan Error Analysis for Tenant Module

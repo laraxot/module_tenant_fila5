@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "ponytail audit over engineering"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Ponytail audit — Tenant (over-engineering)
 

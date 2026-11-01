@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Mockery\Expectation;
+use Mockery\ExpectationInterface;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Database\Factories\TenantFactory;
@@ -199,14 +200,14 @@ abstract class TestCase extends XotBaseTestCase
         return (self::$createTestData)();
     }
 
-    public static function expectMockery(MockInterface $mock, string $method): Expectation
+    /**
+     * @return Expectation Il docblock di Mockery 1.6 dice Expectation, ma a runtime shouldReceive()
+     *                     restituisce CompositeExpectation (stessi metodi, inoltrati da __call):
+     *                     il tipo nativo e' l'interfaccia comune, un instanceof Expectation lanciava sempre.
+     */
+    public static function expectMockery(MockInterface $mock, string $method): ExpectationInterface
     {
-        $expectation = $mock->allows($method);
-        if (! $expectation instanceof Expectation) {
-            throw new \RuntimeException('Unexpected mockery expectation type.');
-        }
-
-        return $expectation;
+        return $mock->shouldReceive($method);
     }
 
     /**

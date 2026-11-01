@@ -10,6 +10,7 @@ type: prd
 module: Tenant
 related:
   - ./livewire-inventory.md
+status: draft
 ---
 
 # PRD Tenant

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "coverage"
 issues: []
 discussions: []
+status: draft
 ---
 title: "Tenant Module Test Coverage"
 module: "Tenant"
@@ -140,6 +141,21 @@ File toccati: `app/Filament/Resources/DomainResource.php` (solo cleanup import, 
 gia' WIP altrui), `app/Filament/Resources/DomainResource/Schemas/DomainForm.php` (gia' WIP
 altrui, non ritoccato), `app/Filament/Resources/DomainResource/Schemas/DomainInfolist.php`
 (idem), `tests/Unit/TenantCoverageBoostTest.php`, `tests/Unit/TenantStatementCoverageTest.php`.
+
+### 2026-10-29 (story `docs/stories/sushi-to-jsons-single-source-cleanup.story.md`)
+
+Il `<source>` di `phpunit.xml` copre tutti i moduli, quindi il totale (1,5%) non dice nulla su Tenant. La misura e'
+ristretta al file toccato con `--coverage-filter=Modules/Tenant/app/Models/Traits` (driver Xdebug,
+`XDEBUG_MODE=coverage`, cache di `bootstrap/cache` saltate):
+
+| File | Senza il test nuovo | Con il test nuovo |
+|---|---|---|
+| `app/Models/Traits/SushiToJsons.php` | 45,2% (`SushiToJsonsTest`, 4 test) | 46,2% (5 test, 8 asserzioni) |
+
+Il test nuovo, "returns empty rows when json directory does not exist", copre la riga 112 (`return $rows` quando la
+cartella del tenant manca). Comando:
+`pest Modules/Tenant/tests/Unit/Traits/SushiToJsonsTest.php --coverage --min=0 --coverage-filter=Modules/Tenant/app/Models/Traits`
+(per la misura "senza", `--exclude-filter='does not exist'`).
 
 ## Test Categories
 - Unit Tests

@@ -8,6 +8,8 @@ updated: 2026-07-14
 qmd: "00 index"
 related:
   - "./phpstan-corrections-january.md"
+  - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Tenant Module — Documentation Index
 
@@ -38,9 +40,11 @@ related:
 - **[roadmap/00-index.md](./roadmap/00-index.md)** — Q4 2025 roadmap and phases
 - **[roadmap/vision.md](./roadmap/vision.md)** — Long-term vision
 - **[roadmap/tenant-isolation.md](./roadmap/tenant-isolation.md)** — Data isolation strategy
+- **[roadmap/vision.md](../roadmap/vision.md)** — Long-term vision
+- **[roadmap/tenant-isolation.md](../roadmap/tenant-isolation.md)** — Data isolation strategy
 
 ### Product & Strategy
-- **[PRD.md](./PRD.md)** — Product requirements document
+- **[prd.md](../prd.md)** — Product requirements document
 - **[philosophy.md](./philosophy.md)** — Core principles
 - **[README.md](./README.md)** — Module overview and local knowledge map
 
@@ -124,6 +128,9 @@ For deep understanding of multi-tenant configuration:
 - **[User Module](../../User/docs/00-index.md)** — Authentication per tenant
 - **[Xot Module](../../Xot/docs/00-index.md)** — Base classes for tenant awareness
 - **[Theme System](../../../Themes/)** — Theme per tenant support
+- **[User Module](../../../User/docs/00-index.md)** — Authentication per tenant
+- **[Xot Module](../../../Xot/docs/00-INDEX.md)** — Base classes for tenant awareness
+- **[Theme System](../../../../Themes)** — Theme per tenant support
 
 ---
 

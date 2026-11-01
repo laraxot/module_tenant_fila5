@@ -10,6 +10,7 @@ type: brainstorming
 module: Tenant
 related:
   - ./livewire-inventory.md
+status: draft
 ---
 
 # Brainstorming Tenant

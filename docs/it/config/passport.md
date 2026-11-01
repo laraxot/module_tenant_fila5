@@ -10,6 +10,8 @@ updated: 2026-07-14
 qmd: "passport"
 related:
   - "./phpstan-corrections-january.md"
+  - "../../phpstan-corrections-january.md"
+status: draft
 ---
 # Laravel Passport Configuration (Version 13.4.x)
 

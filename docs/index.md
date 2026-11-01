@@ -10,6 +10,7 @@ updated: 2026-07-24
 qmd: "index modulo tenant bridge readme"
 related:
   - "./README.md"
+status: draft
 ---
 
 # Indice della Documentazione - Modulo Tenant
@@ -27,7 +28,7 @@ Doc verificati e presenti in `docs/`:
 - [core-functionality.md](./core-functionality.md)
 - [configuration.md](./configuration.md)
 - [filament-resources.md](./filament-resources.md)
-- [API.md](./API.md)
+- [API.md](./api.md)
 - [translations.md](./translations.md)
 - [phpstan-cluster.md](./phpstan-cluster.md)
 - [testing.md](./testing.md)
@@ -40,7 +41,6 @@ Doc verificati e presenti in `docs/`:
 <!-- Merged from INDEX.md, which collided with this file on case-insensitive filesystems. -->
 
 ---
-title: Tenant Module Documentation Index
 module: Tenant
 status: production
 last_updated: 2026-07-28
@@ -56,10 +56,11 @@ last_updated: 2026-07-28
 
 - [Overview](README.md) — Module description and quick start
 - [Architecture](ARCHITECTURE.md) — System design and isolation strategies
-- [API Reference](API.md) — Core models, contracts, and services
-- [Patterns](PATTERNS.md) — Design patterns and best practices
-- [Troubleshooting](TROUBLESHOOTING.md) — Common issues and solutions
+- [API Reference](api.md) — Core models, contracts, and services
+- [Patterns](patterns.md) — Design patterns and best practices
+- [Troubleshooting](troubleshooting.md) — Common issues and solutions
 - [Contributing](../../docs/wiki/how-to/contributing.md) — Development guidelines
+- [Contributing](../../docs/wiki/how-to/contributing.md) _(target mancante, verificato 2026-10-14)_ — Development guidelines
 
 ---
 
@@ -133,6 +134,7 @@ Each tenant operates in complete isolation:
 ## Related Modules
 
 - **[Xot](../../Xot/docs/index.md)** — Core framework and abstractions
+- **[Xot](../../Xot/docs/00-INDEX.md)** — Core framework and abstractions
 - **[User](../../User/docs/index.md)** — User management and authentication
 
 ---
@@ -146,6 +148,7 @@ Each tenant operates in complete isolation:
 5. Keep migrations atomic and reversible
 
 For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/contributing.md).
+For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/contributing.md) _(target mancante, verificato 2026-10-14)_.
 
 
 ---

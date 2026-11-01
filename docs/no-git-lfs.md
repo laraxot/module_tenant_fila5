@@ -8,6 +8,7 @@ type: guideline
 module: Tenant
 updated: 2026-09-01
 qmd: "git lfs vietato gitattributes prototipo binari blob normali tenant puntatori immagini"
+status: draft
 ---
 
 # Git LFS non si usa in questo progetto

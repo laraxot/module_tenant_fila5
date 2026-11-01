@@ -11,6 +11,7 @@ module: Tenant
 related:
   - ./livewire-inventory.md
   - ./livewire-widget-prd.md
+status: draft
 ---
 
 # Tech spec Tenant

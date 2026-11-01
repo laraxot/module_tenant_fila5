@@ -9,7 +9,8 @@ created: 2026-07-14
 updated: 2026-07-27
 qmd: "index"
 related:
-  - "./phpstan-corrections-january.md"
+  - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Tenant Module LLM Wiki
 
@@ -28,8 +29,8 @@ Indice operativo del wiki Tenant.
 
 ## Regole collegate
 
-- [forbidden-folders-rule](../../../../docs/wiki/concepts/forbidden-folders.md): Vincoli strutturali strict.
-- [llm-wiki-standard](../../../../docs/project/karpathy-llm-wiki-adoption.md): Mapping repository e ciclo di vita conoscenza.
+- [forbidden-folders-rule](../../../../../docs/wiki/concepts/forbidden-folders.md): Vincoli strutturali strict.
+- [llm-wiki-standard](../../../../../docs/project/karpathy-llm-wiki-adoption.md): Mapping repository e ciclo di vita conoscenza.
 - [laravel-multi-tenancy](../../../../docs/wiki/concepts/laravel-multi-tenancy.md): Multi-tenancy patterns.
 - [lowercase-tests-directory](./concepts/lowercase-tests-directory.md): solo `tests/`, mai `Tests/`.
 - [lowercase-database-factories-directory](./concepts/lowercase-database-factories-directory.md): solo `database/factories|seeders|migrations` minuscolo; mai `Factories_/`.
@@ -51,6 +52,7 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 | [lowercase-database-factories-directory](./concepts/lowercase-database-factories-directory.md) | Concept | `database/factories/` canonico; `Factories_` vietata | 2026-07-01 |
 | [lowercase-tests-directory](./concepts/lowercase-tests-directory.md) | Concept | Cartella test canonica minuscola | 2026-06-30 |
 | [xotbase-table-columns-enforcement](./concepts/xotbase-table-columns-enforcement.md) | Concept | 1 Table file — DomainsTable populated | 2026-05-07 |
+| [sushi-json-row-source](./concepts/sushi-json-row-source.md) | Concept | Sorgente tenant delle righe Sushi JSON | |
 
 ## Best Practices
 
@@ -66,8 +68,8 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 
 ## False Friends
 
-- `dehydrated(false)` sembra mantenere il campo nei dati ma blocca il salvataggio (vedi [coordinate-picker-filament5-save-pattern](../../Geo/docs/wiki/concepts/coordinate-picker-filament5-save-pattern.md))
-- `live()` in Filament non rende il campo sempre live - serve `$applyStateBindingModifiers()` (vedi [coordinate-picker-state-binding-rule](../../Geo/docs/wiki/concepts/coordinate-picker-state-binding-rule.md))
+- `dehydrated(false)` sembra mantenere il campo nei dati ma blocca il salvataggio (vedi [coordinate-picker-filament5-save-pattern](../../../Geo/docs/wiki/concepts/coordinate-picker-filament5-save-pattern.md))
+- `live()` in Filament non rende il campo sempre live - serve `$applyStateBindingModifiers()` (vedi [coordinate-picker-state-binding-rule](../../../Geo/docs/wiki/concepts/coordinate-picker-state-binding-rule.md))
 
 ## Troubleshooting
 

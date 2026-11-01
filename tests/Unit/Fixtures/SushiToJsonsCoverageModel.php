@@ -8,6 +8,8 @@ use Modules\Tenant\Models\BaseModelJsons;
 
 /**
  * Fixture di coverage: stesso trait dell'host reale `BaseModelJsons`.
+ *
+ * @property string|null $name
  */
 final class SushiToJsonsCoverageModel extends BaseModelJsons
 {

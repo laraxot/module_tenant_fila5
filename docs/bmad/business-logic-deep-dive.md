@@ -7,7 +7,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "business logic deep dive"
 related:
-  - "./phpstan-corrections-january.md"
+  - "../phpstan-corrections-january.md"
+status: superseded
+superseded_by: ../business-logic-deep-dive.md
 ---
 # Tenant Module - Business Logic Deep Dive
 

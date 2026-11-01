@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "configuration logic analysis"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Configuration System Architecture - Tenant Module
 

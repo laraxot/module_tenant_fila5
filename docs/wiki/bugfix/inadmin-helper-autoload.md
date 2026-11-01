@@ -8,6 +8,9 @@ updated: 2026-07-14
 qmd: "inadmin helper autoload"
 related:
   - "./phpstan-corrections-january.md"
+  - "../../phpstan-corrections-january.md"
+status: superseded
+superseded_by: ../../bugfix/inadmin-helper-autoload.md
 ---
 # Bugfix: `inAdmin()` undefined during `package:discover`
 

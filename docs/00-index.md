@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "00 index"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Tenant Module — Documentation Index
 
@@ -42,7 +43,7 @@ related:
 - **[roadmap/tenant-isolation.md](./roadmap/tenant-isolation.md)** — Data isolation strategy
 
 ### Product & Strategy
-- **[PRD.md](./PRD.md)** — Product requirements document
+- **[PRD.md](./prd.md)** — Product requirements document
 - **[philosophy.md](./philosophy.md)** — Core principles
 - **[README.md](./README.md)** — Module overview and local knowledge map
 
@@ -124,7 +125,7 @@ For deep understanding of multi-tenant configuration:
 ## 🔗 Related Modules
 
 - **[User Module](../../User/docs/00-index.md)** — Authentication per tenant
-- **[Xot Module](../../Xot/docs/00-index.md)** — Base classes for tenant awareness
+- **[Xot Module](../../Xot/docs/00-INDEX.md)** — Base classes for tenant awareness
 - **[Theme System](../../../Themes/)** — Theme per tenant support
 
 ---

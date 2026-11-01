@@ -119,9 +119,9 @@ a una delle due non raggiunge l'altra. Va tenuta una sola Action —
 cd laravel && grep -rn 'getSnakeName()' Modules/Tenant/app | wc -l   # obiettivo: 1
 ```
 
-### 2. Sciogliere `TenantService` — non ha chiamanti
+### 2. Non ricreare `TenantService` — la conversione è completata
 
-`app/Services/TenantService.php` è una facade di **11 metodi statici** che delegano
+Il precedente `app/Services/TenantService.php` era una facade di **11 metodi statici** che delegavano
 tutti ad Action già esistenti (il docblock lo dichiara: *«Business logic delegata
 alle Actions»*). Fuori dal modulo Tenant, `TenantService::` compare in **due**
 posti, entrambi commentati (`Modules/User/resources/views/pages/index.blade.php:17`,

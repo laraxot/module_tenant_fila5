@@ -8,6 +8,7 @@ type: report
 module: Tenant
 updated: 2026-09-01
 qmd: "cosa migliorare tenant phpstan phpmd phpinsights coverage debito priorita"
+status: draft
 ---
 
 # Cosa migliorare — modulo Tenant
@@ -55,4 +56,5 @@ php -r 'echo count(require "vendor/composer/autoload_classmap.php");'   # ~25358
 ```
 
 Quadro comparativo di tutte le unità: [`docs/quality-audit.md`](../../../../docs/quality-audit.md).
+Quadro comparativo di tutte le unità: [`docs/quality-audit.md`](quality-audit.md).
 
