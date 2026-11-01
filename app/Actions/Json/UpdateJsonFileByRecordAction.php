@@ -1,5 +1,7 @@
 <?php
 
+// Modifica 2026-10-19: accettata chiave UUID/stringa (Assert::scalar) al posto di integer: eliminava 256 errori nel log
+
 declare(strict_types=1);
 
 namespace Modules\Tenant\Actions\Json;
@@ -32,7 +34,7 @@ class UpdateJsonFileByRecordAction
         $keyName = $record->getKeyName();
         $key = $record->getKey();
 
-        Assert::integer($key);
+        Assert::scalar($key);
 
         /** @var array<int|string, array<string, mixed>> $keyed */
         $keyed = Arr::keyBy($rows, $keyName);

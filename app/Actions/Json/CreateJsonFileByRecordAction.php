@@ -32,9 +32,8 @@ class CreateJsonFileByRecordAction
 
         $keyName = $record->getKeyName();
 
-        $max = max(Arr::pluck($rows, $keyName) ?: [0]);
-
-        Assert::integer($max);
+        // Modifica 2026-10-19: gli id letti dal JSON sono stringhe numeriche ('1'): cast prima del controllo.
+        $max = (int) max(Arr::pluck($rows, $keyName) ?: [0]);
 
         $newId = $max + 1;
 
