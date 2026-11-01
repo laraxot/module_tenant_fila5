@@ -105,12 +105,15 @@ trait SushiToJsons
      */
     private function collectRowsFromJsonFiles(string $tbl): array
     {
-        $path = app(GetTenantFilePathAction::class)->execute('database/content/'.$tbl);
+        $rows = [];
+        $relativePath = 'database/content/'.$tbl;
+        $path = app(GetTenantFilePathAction::class)->execute($relativePath);
         if (! File::isDirectory($path)) {
-            return [];
+            return $rows;
         }
 
-        $rows = [];
+        $slugOwners = [];
+
         foreach (File::allFiles($path) as $file) {
             $row = $this->getRowFromJsonFile($file);
             if ($row === null) {
@@ -118,9 +121,14 @@ trait SushiToJsons
             }
 
             $relativePathname = $file->getRelativePathname();
-
             if (Str::contains($relativePathname, '/')) {
                 $row = $this->prefixRowKeys($row, Str::of($relativePathname)->beforeLast('/')->replace('/', '.')->toString());
+            }
+
+            // Due file con lo stesso slug nella STESSA cartella restano due righe: e' un errore vero e `findUniqueBySlug` lo segnala.
+            $slug = $row['slug'] ?? null;
+            if (is_string($slug) && $slug !== '' && ($slugOwners[$slug] ??= $path) !== $path) {
+                continue;
             }
 
             $rows[] = $row;

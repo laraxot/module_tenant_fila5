@@ -9,7 +9,9 @@ created: 2026-07-14
 updated: 2026-07-14
 qmd: "tenant isolation"
 related:
+  - "./phpstan-corrections-january.md"
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Isolamento tenant e configurazioni
 

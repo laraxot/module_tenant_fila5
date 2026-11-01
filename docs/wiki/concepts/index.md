@@ -7,6 +7,7 @@ type: index
 tags: [concepts, Tenant]
 created: 2026-05-11
 updated: 2026-07-27
+status: draft
 ---
 
 # concepts Index — Tenant

@@ -1,3 +1,11 @@
+---
+title: "Nwidart modular structure — test ownership"
+type: note
+status: draft
+updated: 2026-10-19
+tags: [docs, tenant, rules]
+qmd: "nwidart modular structure   test ownership tenant"
+---
 # Nwidart modular structure — test ownership
 
 **Status:** mandatory; canonical rule is

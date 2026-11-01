@@ -81,7 +81,7 @@ Select and maintain the appropriate multi-tenancy database architecture.
 - [ ] Configure connection factory
 - [ ] Create base models with correct table references
 - [ ] Test isolation with multi-tenant data
-- [ ] Document strategy in ARCHITECTURE.md
+- [ ] Document strategy in bmad/architecture-tenant.md
 - [ ] Implement backup/restore per strategy
 
 ---
@@ -328,11 +328,11 @@ public function test_users_isolated_by_tenant()
 
 ## References
 
-- [Architecture](ARCHITECTURE.md) — Detailed system design
-- [Troubleshooting](TROUBLESHOOTING.md) — Common issues
-- [API Reference](API.md) — Model and service signatures
+- [Architecture](bmad/architecture-tenant.md) — Detailed system design
+- [Troubleshooting](troubleshooting.md) — Common issues
+- [API Reference](api.md) — Model and service signatures
 - [Contributing Guide](../../docs/wiki/how-to/contributing.md) — Development guidelines
 
 ---
 
-Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](TROUBLESHOOTING.md)
+Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)

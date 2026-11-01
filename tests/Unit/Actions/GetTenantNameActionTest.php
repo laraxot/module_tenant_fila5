@@ -53,3 +53,18 @@ test('get tenant name action handles empty app url config', function () {
 
     expect($result)->toBe('localhost');
 });
+
+test('host fixcity.eu usa il tenant canonico e non l alias del symlink', function () {
+    $previousServer = $_SERVER['SERVER_NAME'] ?? null;
+    $_SERVER['SERVER_NAME'] = 'fixcity.eu';
+
+    try {
+        expect(app(GetTenantNameAction::class)->execute())->toBe('local/fixcity');
+    } finally {
+        if (is_string($previousServer)) {
+            $_SERVER['SERVER_NAME'] = $previousServer;
+        } else {
+            unset($_SERVER['SERVER_NAME']);
+        }
+    }
+});

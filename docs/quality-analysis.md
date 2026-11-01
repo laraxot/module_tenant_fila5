@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "quality analysis"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Analisi Qualità - Modulo Tenant
 
@@ -73,4 +74,5 @@ related:
 
 - [PHPStan Analysis](../../xot/docs/phpstan-analysis-[date].md)
 - [Quality Guide](../../xot/docs/php-quality-guide.md)
+- [CI/CD Workflow](../.github/workflows/quality.yml)
 - [CI/CD Workflow](../../../../.github/workflows/quality.yml)

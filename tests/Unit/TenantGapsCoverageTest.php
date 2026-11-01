@@ -46,7 +46,8 @@ test('GetTenantNameAction hits shortened parts when nested host config exists', 
     File::ensureDirectoryExists($cfgRoot.'/com/example');
     TestCase::setServerNameForTenantTest('www.foo.example.com');
     Assert::assertSame('com/example', app(GetTenantNameAction::class)->execute());
-    File::deleteDirectory($cfgRoot.'/com');
+    // solo la cartella creata dal test: config/com contiene configurazioni tenant reali
+    File::deleteDirectory($cfgRoot.'/com/example');
     TestCase::setServerNameForTenantTest(null);
 });
 
@@ -220,14 +221,16 @@ test('GetTenantNameAction covers null parts and default-host miss/hit', function
     $_SERVER['SERVER_NAME'] = 'www.zzz.example.com';
     File::ensureDirectoryExists($cfgRoot.'/com/example');
     Assert::assertSame('com/example', app(GetTenantNameAction::class)->execute());
-    File::deleteDirectory($cfgRoot.'/com');
+    // solo la cartella creata dal test: config/com contiene configurazioni tenant reali
+    File::deleteDirectory($cfgRoot.'/com/example');
 
     TestCase::setServerNameForTenantTest(null);
     unset($_SERVER['SERVER_NAME']);
     File::ensureDirectoryExists($cfgRoot.'/test/defaulthost');
     config(['app.url' => 'https://defaulthost.test']);
     Assert::assertSame('test/defaulthost', app(GetTenantNameAction::class)->execute());
-    File::deleteDirectory($cfgRoot.'/test');
+    // solo la cartella creata dal test: config/test contiene configurazioni tenant reali
+    File::deleteDirectory($cfgRoot.'/test/defaulthost');
 });
 
 test('Sushi audit fields with named auth model and csv scalar id', function (): void {

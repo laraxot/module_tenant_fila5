@@ -6,10 +6,12 @@ module: "Tenant"
 type: concept
 tags: [testing]
 created: 2026-07-14
+updated: 2026-08-24
 updated: 2026-10-20
 qmd: "testing"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Testing Documentation
 
@@ -316,6 +318,7 @@ protected function createApplication()
 
 - [Testing Setup Guide](../../../docs/testing-setup.md)
 - [Testing Best Practices](../../../docs/testing-best-practices.md)
+- [Troubleshooting Guide](../../../docs/troubleshooting.md)
 - [Troubleshooting Guide](../../../../docs/troubleshooting.md)
 
 ## Testing Examples

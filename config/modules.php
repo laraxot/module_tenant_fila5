@@ -146,7 +146,6 @@ return [
             'event' => ['path' => 'app/Events', 'generate' => false],
             'enums' => ['path' => 'app/Enums', 'generate' => false],
             'exceptions' => ['path' => 'app/Exceptions', 'generate' => false],
-            'jobs' => ['path' => 'app/Jobs', 'generate' => false],
             'helpers' => ['path' => 'app/Helpers', 'generate' => false],
             'interfaces' => ['path' => 'app/Interfaces', 'generate' => false],
             'listener' => ['path' => 'app/Listeners', 'generate' => false],
@@ -159,7 +158,6 @@ return [
             'resource' => ['path' => 'app/Transformers', 'generate' => false],
             'route-provider' => ['path' => 'app/Providers', 'generate' => true],
             'rules' => ['path' => 'app/Rules', 'generate' => false],
-            'services' => ['path' => 'app/Services', 'generate' => false],
             'scopes' => ['path' => 'app/Models/Scopes', 'generate' => false],
             'traits' => ['path' => 'app/Traits', 'generate' => false],
             // app/Http/

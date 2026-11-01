@@ -2,6 +2,8 @@
 type: note
 tags: [documentation]
 created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
 updated: 2026-10-14
 qmd: "tenant module readme host config directory sushi json resolve"
 issues: []
@@ -115,7 +117,7 @@ This directory contains documentation for the module.
 
 ## Structure
 
-- **architecture.md** - Module architecture and design patterns
+- **bmad/architecture-tenant.md** - Module architecture and design patterns
 - **README.md** - This file
 
 ## Guidelines

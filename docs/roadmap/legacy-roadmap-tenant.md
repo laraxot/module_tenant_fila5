@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "legacy roadmap 2"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Roadmap Tenant

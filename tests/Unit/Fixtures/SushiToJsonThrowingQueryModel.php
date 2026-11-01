@@ -11,10 +11,7 @@ use RuntimeException;
  */
 final class SushiToJsonThrowingQueryModel extends SushiToJsonCoverageModel
 {
-    /**
-     * @return never
-     */
-    public static function query()
+    public static function query(): never
     {
         throw new RuntimeException('forced query failure for coverage');
     }
