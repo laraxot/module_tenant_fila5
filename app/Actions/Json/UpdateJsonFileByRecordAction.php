@@ -1,7 +1,5 @@
 <?php
 
-// Modifica 2026-10-19: accettata chiave UUID/stringa (Assert::scalar) al posto di integer: eliminava 256 errori nel log
-
 declare(strict_types=1);
 
 namespace Modules\Tenant\Actions\Json;
@@ -32,9 +30,8 @@ class UpdateJsonFileByRecordAction
         $record->setAttribute('updated_at', now());
 
         $keyName = $record->getKeyName();
-        $key = $record->getKey();
-
-        Assert::scalar($key);
+        // La chiave puo' essere un UUID oltre che un intero: bool e float invece non sono chiavi di array valide.
+        $key = Assert::validArrayKey($record->getKey());
 
         /** @var array<int|string, array<string, mixed>> $keyed */
         $keyed = Arr::keyBy($rows, $keyName);
