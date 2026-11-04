@@ -6,10 +6,8 @@ namespace Modules\Tenant\Filament\Pages;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
-use Modules\Xot\Filament\Pages\BaseSettingPage;
-
-use Filament\Forms\Components\Toggle;
 use Modules\Tenant\Datas\TenantConfigData;
+use Modules\Xot\Filament\Pages\BaseSettingPage;
 
 /**
  * Impostazioni di Tenant (`config/{tenant}/tenant.php`), solo super-admin.
