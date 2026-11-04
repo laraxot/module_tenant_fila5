@@ -35,8 +35,8 @@ Indice operativo del wiki Tenant.
 - [lowercase-tests-directory](./concepts/lowercase-tests-directory.md): solo `tests/`, mai `Tests/`.
 - [lowercase-database-factories-directory](./concepts/lowercase-database-factories-directory.md): solo `database/factories|seeders|migrations` minuscolo; mai `Factories_/`.
 - [services-to-queueable-actions](./concepts/no-app-support-queueable-actions.md): mapping completo `TenantService` → `app(...)->execute()` e regola no injection tra Actions.
-- [tenant-module-status-registry](../tenant-module-status-registry.md) — registry `modules_statuses.json` per overlay tenant (`config/local/workorder/`)
-- [runtime-config-religion-hub](../../../../Themes/docs/shared-components/runtime-config-religion-hub.md) — hub cross-modulo (permission, config.php, statuses)
+- [tenant-module-status-registry](../tenant-module-status-registry.md): registry `modules_statuses.json` per overlay tenant (`config/local/workorder/`)
+- [runtime-config-religion-hub](../../../../Themes/docs/shared-components/runtime-config-religion-hub.md): hub cross-modulo (permission, config.php, statuses)
 
 ## Scopo Tenant Module
 
@@ -51,7 +51,7 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 | [tenant-config-restoration-incident](./concepts/tenant-config-restoration-incident.md) | Troubleshooting | Ripristino config tenant 2026-07-01 | 2026-07-01 |
 | [lowercase-database-factories-directory](./concepts/lowercase-database-factories-directory.md) | Concept | `database/factories/` canonico; `Factories_` vietata | 2026-07-01 |
 | [lowercase-tests-directory](./concepts/lowercase-tests-directory.md) | Concept | Cartella test canonica minuscola | 2026-06-30 |
-| [xotbase-table-columns-enforcement](./concepts/xotbase-table-columns-enforcement.md) | Concept | 1 Table file — DomainsTable populated | 2026-05-07 |
+| [xotbase-table-columns-enforcement](./concepts/xotbase-table-columns-enforcement.md) | Concept | 1 Table file: DomainsTable populated | 2026-05-07 |
 | [sushi-json-row-source](./concepts/sushi-json-row-source.md) | Concept | Sorgente tenant delle righe Sushi JSON | |
 
 ## Best Practices
@@ -64,7 +64,7 @@ Gestione multi-tenancy, isolamento dati, tenant scoping e provisioning.
 
 - NON creare Service classes - usare Actions (vedi [actions-over-services-governance](https://github.com/laraxot/platform/blob/main/.opencode/skills/actions-over-services-governance/SKILL.md))
 - NON usare `dehydrated(false)` nei trait - blocca salvataggio (vedi Geo CoordinatePicker fix)
-- NON confondere `modules_statuses.json` root con overlay tenant — per workorder vale `config/local/workorder/modules_statuses.json` (vedi [tenant-module-status-registry](../tenant-module-status-registry.md))
+- NON confondere `modules_statuses.json` root con overlay tenant: per workorder vale `config/local/workorder/modules_statuses.json` (vedi [tenant-module-status-registry](../tenant-module-status-registry.md))
 
 ## False Friends
 
@@ -81,4 +81,4 @@ Aggiornato: 2026-07-27
 
 ## Shared Second Brain Discipline
 
-- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) — local docs/wiki operating contract aligned with root LLM Wiki discipline.
+- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md): local docs/wiki operating contract aligned with root LLM Wiki discipline.

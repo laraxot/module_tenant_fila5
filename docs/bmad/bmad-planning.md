@@ -1,5 +1,5 @@
 ---
-title: "BMAD Planning — Tenant"
+title: "BMAD Planning: Tenant"
 type: bmad-planning
 status: active
 module: Tenant

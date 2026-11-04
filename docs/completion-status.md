@@ -42,7 +42,7 @@ Problemi trasversali (valgono per tutto il progetto): vedi `project-completion-s
 | review | [Tenant: contratti PHPStan dei test harness](docs/stories/7.2.phpstan-test-harness-contracts.story.md) |
 | review | [Tenant: unique/exists sui modelli Sushi (connessione per nome)](docs/stories/7.4.sushi-connection-by-name.story.md) |
 | ready-for-dev | [[STORY] Tenant: parita' di TenantService e Services/Config con le Action successore](docs/stories/services-parity-audit-tenant.story.md) |
-| ready-for-dev | [Tenant — Unit Tests for claude-audit 100/100](docs/stories/tenant-unit-tests-claude-audit.story.md) |
+| ready-for-dev | [Tenant: Unit Tests for claude-audit 100/100](docs/stories/tenant-unit-tests-claude-audit.story.md) |
 | todo | [Profilo di test per le connessioni tenant](docs/stories/tenant-test-connection-profile.story.md) |
 | backlog | [Continuazione domani](docs/bmad/stories/continuazione-domani.story.md) |
 | backlog | [Multi-tenant scope isolation (tenant_id in queries)](docs/stories/3.5.multi-tenant-scope-isolation.story.md) |
@@ -52,7 +52,7 @@ Problemi trasversali (valgono per tutto il progetto): vedi `project-completion-s
 | backlog | [Isolamento tenant dei contenuti editoriali](docs/stories/inbound-tenant-content-isolation.story.md) |
 | draft | [Riorganizzazione docs core Tenant](docs/bmad/stories/docs-reorg-core.story.md) |
 | active | [8.2-phpstan-l10-tenant-sushi-fixes.story.md](docs/bmad/stories/8.2-phpstan-l10-tenant-sushi-fixes.story.md) |
-| blocked | [Tenant — PHPStan TenantStatementCoverageTest loadExistingData](docs/bmad/stories/tenant-phpstan-statement-coverage-test.story.md) |
+| blocked | [Tenant: PHPStan TenantStatementCoverageTest loadExistingData](docs/bmad/stories/tenant-phpstan-statement-coverage-test.story.md) |
 | active | [7.5-create-json-max-oneliner.story.md](docs/stories/7.5-create-json-max-oneliner.story.md) |
 | senza-status | [01.Tenant phpstan fix.story](docs/stories/01.Tenant-phpstan-fix.story.md) |
 | senza-status | [sushitojson-test-fixtures.story.md](docs/stories/sushitojson-test-fixtures.story.md) |

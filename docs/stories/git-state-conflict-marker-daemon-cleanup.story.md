@@ -6,14 +6,14 @@ qmd: "git state conflict marker daemon cleanup.story"
 issues: []
 discussions: []
 id: tenant-git-state-conflict-marker-daemon-cleanup
-title: "Tenant — pulizia marker di conflitto reintrodotti dal daemon auto-commit"
+title: "Tenant: pulizia marker di conflitto reintrodotti dal daemon auto-commit"
 type: chore
 scope: module:Tenant
 status: done
 date: 2026-09-22
 ---
 
-# Tenant — pulizia stato git (marker di conflitto residui)
+# Tenant: pulizia stato git (marker di conflitto residui)
 
 ## Diagnosi
 
@@ -21,13 +21,13 @@ date: 2026-09-22
 rebase in corso: `.git/rebase-merge` e `.git/rebase-apply` assenti). Nessuna
 divergenza `dev`/`laraxot/dev` (0 ahead / 0 behind).
 
-Root cause: un commit precedente (`4d7ffe3` — "fix(Tenant): pulizia marker di
+Root cause: un commit precedente (`4d7ffe3`: "fix(Tenant): pulizia marker di
 conflitto residui in docs/") aveva gia' ripulito correttamente 8 file
 (`docs/00-INDEX.md`, `docs/INDEX.md`, `docs/PATTERNS.md`, `docs/README.md`,
 `docs/TROUBLESHOOTING.md`, `docs/architecture.md` e le 4 story
 3.5/3.8/5.8/6.1). Due commit successivi (`7c6e6f1`, `c3deab5`, entrambi autore
 `marco76tv`, messaggio `.`) hanno **reintrodotto** gli stessi marker di
-conflitto in forma annidata sopra il contenuto gia' pulito — pattern
+conflitto in forma annidata sopra il contenuto gia' pulito: pattern
 riconducibile al "daemon auto-commit locale" gia' noto (rifonde marker
 letterali su push rejected). Il remote `laraxot/dev` stesso porta gli stessi
 marker committati (verificato con `git fetch laraxot` + `git show
@@ -52,18 +52,18 @@ story private della YAML frontmatter (`id`, `epic`, `story`, `scope`,
   il vecchio contenuto lungo (sezioni Quick Start/Architecture/Usage
   Examples/Testing) e il nuovo template standard "Cosa offre / Confini
   architetturali / Integrazione rapida / Documentazione / Qualita e
-  manutenzione" — verificato confrontando con `Xot/README.md`,
+  manutenzione": verificato confrontando con `Xot/README.md`,
   `Media/README.md`, `Notify/README.md`: tutti gia' migrati al nuovo template
   con lo stesso frontmatter (`id/type/category/tags/issues/discussions`,
   rollout 2026-09-14). Tenuto il nuovo template (contenuto lungo gia'
   preservato in `docs/README.md`/`docs/architecture.md`). Corretti anche due
   link Markdown malformati nella sezione "Documentazione"
-  (`[Regole del progetto../../../docs/wiki/` senza `](` di chiusura) — unico
+  (`[Regole del progetto../../../docs/wiki/` senza `](` di chiusura): unico
   modulo su 18 con questo bug, non presente negli altri README gia' migrati.
 - `.gitignore`: il working tree modificato aveva cambiato `/.ai*` in `/_ai*`.
   Verificato con `git log -S` che `/.ai*` e' il valore originale intenzionale
   (introdotto identico in 3 commit) e che `Rating/.gitignore` e
-  `UI/.gitignore` usano tuttora `/.ai*` — ripristinato. Mantenuto invece
+  `UI/.gitignore` usano tuttora `/.ai*`: ripristinato. Mantenuto invece
   `graphify-out` → `graphify-out/` (slash finale), coerente con la
   standardizzazione gia' fatta su tutti i 18 moduli (story
   `Xot/graphify-out-gitignore-all-modules`, sprint-status.yaml).

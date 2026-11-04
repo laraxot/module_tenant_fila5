@@ -1,5 +1,5 @@
 ---
-title: "Tenant — Brainstorming BMAD (indice e decisioni)"
+title: "Tenant: Brainstorming BMAD (indice e decisioni)"
 type: note
 module: Tenant
 tags:
@@ -19,9 +19,9 @@ bmad: true
 status: active
 ---
 
-# Tenant — Brainstorming
+# Tenant: Brainstorming
 
-> **SUMMARY** — Decisioni prese, questioni aperte e opzioni scartate del modulo `Tenant`,
+> **SUMMARY**: Decisioni prese, questioni aperte e opzioni scartate del modulo `Tenant`,
 > ancorate a file e simboli reali. Il brainstorming di dettaglio per area è negli shard.
 
 ## Shard

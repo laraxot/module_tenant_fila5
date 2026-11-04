@@ -16,9 +16,9 @@ status: draft
 
 ## Stories PHPStan attive
 
-- [TENANT-7.1 — boundary Sushi](./stories/7.1.phpstan-sushi-boundaries.story.md) possiede
+- [TENANT-7.1: boundary Sushi](./stories/7.1.phpstan-sushi-boundaries.story.md) possiede
   trait, Action e consumer domain.
-- [TENANT-7.2 — contratti dei test harness](./stories/7.2.phpstan-test-harness-contracts.story.md)
+- [TENANT-7.2: contratti dei test harness](./stories/7.2.phpstan-test-harness-contracts.story.md)
   possiede i 40 findings residui nei test di configurazione, Sushi e coverage.
 
 - [Regressione dei test dopo il pull, 2026-10-20](./stories/phpstan-test-wave-tenant.story.md):
@@ -37,7 +37,7 @@ row JSON scalare passata a `saveToJson`) sono stati rimossi dai test senza allar
 contratti applicativi. Il gate mirato produce **75 pass e 311 asserzioni**.
 
 Famiglia A (story 4.26): le fixture e le classi anonime **estendono l'host reale del trait**,
-non `Model` nudo — `SushiToCsv` → `Sigma\Models\WebService`, `SushiToPhpArray` →
+non `Model` nudo: `SushiToCsv` → `Sigma\Models\WebService`, `SushiToPhpArray` →
 `User\Models\SocialProvider`, `SushiToJsons` → `Tenant\Models\BaseModelJsons`. I test
 restano in memoria (`forceFill` / file tmp + mock di `GetTenantFilePathAction`).
 `setAttribute()` nel trait resta il contratto Eloquent delle colonne dinamiche.
@@ -424,7 +424,7 @@ Following these guidelines will ensure your Tenant module tests are:
 
 Remember: Good tests are the foundation of reliable software development.
 
-## Coverage — gate 100%
+## Coverage: gate 100%
 
 **Perché:** il tenant risolve path, config, morph map e persistenza Sushi per-tenant.
 Senza coverage completa sui resolver/action/trait, un tenant sbagliato può leggere
@@ -441,7 +441,7 @@ XDEBUG_MODE=coverage ./vendor/bin/pest -c Modules/Tenant/phpunit.xml --coverage 
 
 ### Strategia
 
-1. Pest only, `uses(TestCase::class)` — **no** `RefreshDatabase` (sqlite tenant condiviso → skip su lock).
+1. Pest only, `uses(TestCase::class)`: **no** `RefreshDatabase` (sqlite tenant condiviso → skip su lock).
 2. Unit: Actions, Resolvers, Providers, Policy, trait Sushi via **named subclasses** in `tests/Unit/Fixtures/`.
 3. Assertion reali; niente `@codeCoverageIgnore`.
 4. Feature/Integration/Performance: skip condizionato se DB/fixture indisponibili.

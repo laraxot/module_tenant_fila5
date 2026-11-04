@@ -1,7 +1,7 @@
 ---
 issues: []
 discussions: []
-title: "Conflict Resolution — Module Tenant"
+title: "Conflict Resolution: Module Tenant"
 module: "Tenant"
 type: concept
 tags: [conflict, resolution]
@@ -12,7 +12,7 @@ related:
   - "./phpstan-corrections-january.md"
 status: draft
 ---
-# Conflict Resolution — Module Tenant
+# Conflict Resolution: Module Tenant
 
 ## Summary
 - **Files resolved**: 2

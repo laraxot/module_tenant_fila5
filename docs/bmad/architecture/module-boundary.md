@@ -1,5 +1,5 @@
 ---
-title: "Tenant — architettura BMAD"
+title: "Tenant: architettura BMAD"
 type: architecture
 status: active
 module: Tenant
@@ -9,7 +9,7 @@ qmd: "Tenant architettura confini componenti PHP Laravel Filament"
 tags: [docs, tenant, bmad]
 ---
 tags: [docs, tenant, bmad]
-# Tenant — architettura
+# Tenant: architettura
 
 ## Scopo osservato
 

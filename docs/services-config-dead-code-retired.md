@@ -1,7 +1,7 @@
 ---
 issues: []
 discussions: []
-title: "Services/Config retired — usare Actions"
+title: "Services/Config retired: usare Actions"
 module: "Tenant"
 type: concept
 tags: [services, config, dead, code]
@@ -12,7 +12,7 @@ related:
   - "./phpstan-corrections-january.md"
 status: draft
 ---
-# Services/Config retired — usare Actions
+# Services/Config retired: usare Actions
 
 `Modules/Tenant/app/Services/Config/` (4 file: `ConfigStringKeyFilter.php` + 3 resolver in `Resolvers/`) e' stato archiviato in `Modules/Tenant/docs/archive/Services.old/` (2026-07-14). Era layer Services vietato dalla regola non negoziabile del progetto (Services → Actions), e referenziava anche 3 classi già cancellate da un agente precedente senza `git rm` (`TenantService.php`, `Config/ConfigResolverRegistry.php`, `Config/Contracts/ConfigResolverInterface.php`), causando `Internal error: Could not read file` in PHPStan.
 

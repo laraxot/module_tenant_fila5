@@ -5,7 +5,7 @@ updated: 2026-09-26
 qmd: "livewire widget tech spec"
 issues: []
 discussions: []
-title: "Tech spec — Tenant"
+title: "Tech spec: Tenant"
 type: tech-spec
 module: Tenant
 related:

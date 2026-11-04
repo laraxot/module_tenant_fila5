@@ -1,5 +1,5 @@
 ---
-title: "Lacune di completamento — Tenant"
+title: "Lacune di completamento: Tenant"
 type: audit
 status: open
 created: 2026-10-28
@@ -10,7 +10,7 @@ related:
   - "../../Xot/docs/project-completion-readiness.md"
 ---
 
-# Lacune di completamento — Tenant
+# Lacune di completamento: Tenant
 
 ## Esito
 
@@ -66,13 +66,13 @@ Lettura read-only delle 28 story locali (`*.story.md`): 19 hanno uno stato diver
 
 ### Esempi prioritari da riconciliare
 
-- `blocked` — [`tenant-phpstan-statement-coverage-test.story.md`](bmad/stories/tenant-phpstan-statement-coverage-test.story.md)
-- `in-progress` — [`7.1.phpstan-sushi-boundaries.story.md`](stories/7.1.phpstan-sushi-boundaries.story.md)
-- `active` — [`7.5-create-json-max-oneliner.story.md`](stories/7.5-create-json-max-oneliner.story.md)
-- `active` — [`8.2-phpstan-l10-tenant-sushi-fixes.story.md`](bmad/stories/8.2-phpstan-l10-tenant-sushi-fixes.story.md)
-- `ready-for-dev` — [`services-parity-audit-tenant.story.md`](stories/services-parity-audit-tenant.story.md)
-- `ready-for-dev` — [`tenant-unit-tests-claude-audit.story.md`](stories/tenant-unit-tests-claude-audit.story.md)
-- `review` — [`7.2.phpstan-test-harness-contracts.story.md`](stories/7.2.phpstan-test-harness-contracts.story.md)
-- `review` — [`7.4.sushi-connection-by-name.story.md`](stories/7.4.sushi-connection-by-name.story.md)
+- `blocked`: [`tenant-phpstan-statement-coverage-test.story.md`](bmad/stories/tenant-phpstan-statement-coverage-test.story.md)
+- `in-progress`: [`7.1.phpstan-sushi-boundaries.story.md`](stories/7.1.phpstan-sushi-boundaries.story.md)
+- `active`: [`7.5-create-json-max-oneliner.story.md`](stories/7.5-create-json-max-oneliner.story.md)
+- `active`: [`8.2-phpstan-l10-tenant-sushi-fixes.story.md`](bmad/stories/8.2-phpstan-l10-tenant-sushi-fixes.story.md)
+- `ready-for-dev`: [`services-parity-audit-tenant.story.md`](stories/services-parity-audit-tenant.story.md)
+- `ready-for-dev`: [`tenant-unit-tests-claude-audit.story.md`](stories/tenant-unit-tests-claude-audit.story.md)
+- `review`: [`7.2.phpstan-test-harness-contracts.story.md`](stories/7.2.phpstan-test-harness-contracts.story.md)
+- `review`: [`7.4.sushi-connection-by-name.story.md`](stories/7.4.sushi-connection-by-name.story.md)
 
 Prima di lavorare su questi elementi, verificare lo stato canonico nello sprint status, claim/lock e dipendenze. Una story senza `status` non va considerata automaticamente completata.

@@ -2,7 +2,7 @@
 qmd: "xotbase table columns enforcement"
 issues: []
 discussions: []
-title: "XotBaseResourceTable Columns Enforcement — Tenant Module"
+title: "XotBaseResourceTable Columns Enforcement: Tenant Module"
 type: concept
 sources: []
 confidence: high
@@ -20,4 +20,4 @@ status: draft
 
 Resources: Domain
 
-- **DomainsTable**: id, name (Sushi model — columns defined in `getRows()` or `$fillable`)
+- **DomainsTable**: id, name (Sushi model: columns defined in `getRows()` or `$fillable`)

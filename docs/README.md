@@ -6,7 +6,7 @@ updated: 2026-10-14
 qmd: "tenant module readme host config directory sushi json resolve"
 issues: []
 discussions: []
-title: "Tenant — Multi-Tenancy"
+title: "Tenant: Multi-Tenancy"
 description: "Modulo per il multi-tenancy, isolamento dati per tenant"
 module: "Tenant"
 alias: "tenant"
@@ -24,7 +24,7 @@ extended_by: 0
 documentation_date: "2026-05-27"
 ---
 
-# Tenant — Multi-Tenancy
+# Tenant: Multi-Tenancy
 
 ## Scopo
 
@@ -107,7 +107,7 @@ Le applicazioni SaaS moderne hanno bisogno di multi-tenancy per servire più cli
 
 ---
 
-*Documento generato secondo le convenzioni del progetto — modulo `Tenant` — data 2026-05-27*
+*Documento generato secondo le convenzioni del progetto: modulo `Tenant`: data 2026-05-27*
 ---
 # Documentation
 
