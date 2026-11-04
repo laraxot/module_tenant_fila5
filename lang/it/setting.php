@@ -12,6 +12,22 @@ return [
         'sort' => 99,
     ],
     'title' => 'Impostazioni',
+    'fields' => [
+        'title' => [
+            'label' => 'Nome del sito',
+            'placeholder' => 'Il nome che compare nei pannelli',
+            'helper_text' => 'Nome del brand: barra dei pannelli di amministrazione, titolo e nome del sito nel front office, dati strutturati.',
+            'tooltip' => '',
+            'description' => '',
+        ],
+        'logo_height' => [
+            'label' => 'Altezza del logo',
+            'placeholder' => '2em',
+            'helper_text' => 'Altezza del logo nei pannelli di amministrazione: un numero con px, em o rem (es. 2em, 32px).',
+            'tooltip' => '',
+            'description' => '',
+        ],
+    ],
     'actions' => [
         'save' => [
             'label' => 'Salva',

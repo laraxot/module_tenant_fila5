@@ -1,14 +1,18 @@
 ---
 title: SettingPage di Tenant, pagina impostazioni senza campi
 qmd: "Tenant SettingPage configurazione tenant BaseSettingPage Filament"
-status: in-progress
+status: superseded
 module: Tenant (owner)
 created: 2026-11-04
 related:
+  - ./setting-page-campi-reali.story.md
   - ../../../Xot/docs/bmad/stories/setting-page-tutti-i-moduli.story.md
 ---
 
 # SettingPage di Tenant
+
+> Superata da [setting-page-campi-reali](./setting-page-campi-reali.story.md): il form vuoto e i tre campi senza lettore
+> (`enabled`, `domain_routing`, `default_locale`) sono stati sostituiti da `title` e `logo_height` del file `metatag`.
 
 ## Fase BMAD
 

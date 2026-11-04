@@ -12,6 +12,22 @@ return [
         'sort' => 99,
     ],
     'title' => 'Settings',
+    'fields' => [
+        'title' => [
+            'label' => 'Site name',
+            'placeholder' => 'The name shown in the panels',
+            'helper_text' => 'Brand name: admin panel top bar, title and site name in the front office, structured data.',
+            'tooltip' => '',
+            'description' => '',
+        ],
+        'logo_height' => [
+            'label' => 'Logo height',
+            'placeholder' => '2em',
+            'helper_text' => 'Logo height in the admin panels: a number with px, em or rem (e.g. 2em, 32px).',
+            'tooltip' => '',
+            'description' => '',
+        ],
+    ],
     'actions' => [
         'save' => [
             'label' => 'Save',
