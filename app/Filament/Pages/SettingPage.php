@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Filament\Pages;
 
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Modules\Xot\Filament\Pages\BaseSettingPage;
 
 /**
@@ -14,10 +16,14 @@ use Modules\Xot\Filament\Pages\BaseSettingPage;
 class SettingPage extends BaseSettingPage
 {
     /**
-     * @return array<string, never>
+     * @return array<string, Select|Toggle>
      */
     protected function getFormSchema(): array
     {
-        return [];
+        return [
+            'enabled' => Toggle::make('enabled')->default(true),
+            'domain_routing' => Toggle::make('domain_routing')->default(true),
+            'default_locale' => Select::make('default_locale')->options(['it' => 'Italiano', 'en' => 'English'])->required(),
+        ];
     }
 }
