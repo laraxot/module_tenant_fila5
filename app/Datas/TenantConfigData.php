@@ -13,11 +13,7 @@ class TenantConfigData extends Data
     use MakesFromTenantConfig;
 
     public bool $enabled = true;
-<<<<<<< HEAD
-=======
-
     public bool $domain_routing = true;
 
     public string $default_locale = 'it';
->>>>>>> 16b68b44c3e07a868e8e2810331670e6c5342a9c
 }
