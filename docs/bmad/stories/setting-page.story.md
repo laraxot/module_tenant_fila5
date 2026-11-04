@@ -1,11 +1,11 @@
 ---
 title: SettingPage di Tenant, pagina impostazioni senza campi
 qmd: "Tenant SettingPage configurazione tenant BaseSettingPage Filament"
-status: done
+status: in-progress
 module: Tenant (owner)
 created: 2026-11-04
 related:
-  - ../../../Xot/docs/stories/setting-page-tutti-i-moduli.story.md
+  - ../../../Xot/docs/bmad/stories/setting-page-tutti-i-moduli.story.md
 ---
 
 # SettingPage di Tenant
@@ -13,7 +13,7 @@ related:
 ## Fase BMAD
 
 Build. Decisione dell'utente (2026-11-04): la pagina Impostazioni va in tutti i moduli. Storia
-di decisione in Xot: `Modules/Xot/docs/stories/setting-page-tutti-i-moduli.story.md`.
+di decisione in Xot: `Modules/Xot/docs/bmad/stories/setting-page-tutti-i-moduli.story.md`.
 
 ## Intento
 
