@@ -1,5 +1,5 @@
 ---
-title: "Sostenibilità — governance multi-tenant"
+title: "Sostenibilità: governance multi-tenant"
 type: concept
 module: Tenant
 status: decision-input
@@ -24,7 +24,7 @@ dominio: quali partner, se c’è «sostieni», se i loghi globali Laraxot appai
 ## Regole proposte
 
 1. **Opt-in esplicito** per blocco partner/CTA nel footer del tenant
-2. Contenuto in `config/<tenant>/database/content/` — non in config globale
+2. Contenuto in `config/<tenant>/database/content/`: non in config globale
 3. Vietato ereditare automaticamente sponsor da un altro tenant
 4. Scadenze/revoche: record non pubblicabile resta fuori dalla proiezione FO
 5. Tenant di demo può avere `enabled: false` senza UI vuota rumorosa

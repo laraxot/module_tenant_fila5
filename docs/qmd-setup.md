@@ -2,7 +2,7 @@
 qmd: "qmd setup"
 issues: []
 discussions: []
-title: "QMD Setup — Module Tenant"
+title: "QMD Setup: Module Tenant"
 type: documentation
 created: 2026-05-11
 updated: 2026-05-11
@@ -38,7 +38,7 @@ qmd search "<topic>"
 ### Cache Location
 
 - **Cache path**: ${HOME}/.cache/qmd-cache/
-- **Fuori dal repo**: ✅ OK — non committata
+- **Fuori dal repo**: ✅ OK: non committata
 - **Pulizia cache**: `rm -rf ~/.cache/qmd-cache/`
 
 ### Performance Tips
@@ -53,7 +53,7 @@ qmd index rebuild --force
 qmd search "form" -c tenant  # Solo questo modulo
 \`\`\`
 
-3. **Evita query troppo generiche** — più specifico = risultati migliori
+3. **Evita query troppo generiche**: più specifico = risultati migliori
 
 ## Integrazione con l'On-Demand Pattern
 

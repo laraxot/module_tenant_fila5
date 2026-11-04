@@ -157,10 +157,10 @@ $safeForm = $form;
 
 `SushiToJson::intValue(mixed)` riceve `$row['id']` da JSON (`array<string, mixed>`) e `Model::getAttribute('id')`. `SushiToCsv::csvValue(mixed)` serializza celle da payload CSV/JSON. Non è un shortcut: è il bordo opaco. Sostituire con `SafeIntCastAction` cambierebbe i default (bool/array).
 
-## SushiToCsv — League/CSV 9.27: `createFromPath()` è deprecato
+## SushiToCsv: League/CSV 9.27: `createFromPath()` è deprecato
 
 Aggiornamento 2026-08-19. Con `league/csv` 9.28.0 installata, PHPStan riportava quattro
-`staticMethod.deprecated` su `app/Models/Traits/SushiToCsv.php` — gli unici errori reali
+`staticMethod.deprecated` su `app/Models/Traits/SushiToCsv.php`: gli unici errori reali
 rimasti nel modulo.
 
 `AbstractCsv::createFromPath()` è deprecato dalla **9.27.0**, insieme a
@@ -173,7 +173,7 @@ rimasti nel modulo.
 $reader = Reader::createFromPath($this->getCsvPath(), 'r');
 $writer = Writer::createFromPath($model->getCsvPath(), 'w+');
 
-// dopo — stessa firma ($filename, $mode, $context)
+// dopo: stessa firma ($filename, $mode, $context)
 $reader = Reader::from($this->getCsvPath(), 'r');
 $writer = Writer::from($model->getCsvPath(), 'w+');
 ```
@@ -182,7 +182,7 @@ Nessun cambiamento di comportamento: `createFromPath()` internamente faceva già
 `new static(Stream::from($path, $open_mode, $context))`, che è il ramo `default` del `match`
 dentro `from()`.
 
-Il trait è consumato da `Modules\Sigma\Models\WebService` — il modulo `Sigma` ha una copia
+Il trait è consumato da `Modules\Sigma\Models\WebService`: il modulo `Sigma` ha una copia
 di test del trait in `tests/TestTraits/TestSushiToCsv.php` che **non** è stata allineata:
 se un giorno quella copia viene esercitata dal gate, riporterà le stesse deprecazioni.
 
@@ -194,7 +194,7 @@ non un difetto del modulo).
 
 - [../../../../docs/phpstan-level10-achievement.md](../../../../docs/phpstan-level10-achievement.md)
 - [Sushi Package Documentation](https://github.com/calebporzio/sushi)
-- [league/csv 9.27 — deprecazione dei costruttori nominati](https://csv.thephpleague.com/9.0/connections/instantiation/)
+- [league/csv 9.27: deprecazione dei costruttori nominati](https://csv.thephpleague.com/9.0/connections/instantiation/)
 
 ---
 

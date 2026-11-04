@@ -10,7 +10,7 @@ updated: "2026-05-22"
 status: draft
 ---
 
-# Contratto wiki locale — stub
+# Contratto wiki locale: stub
 
 Politica LLM‑wiki condivisa: **fonte canonica** con il corpo del contratto nella wiki modulo **Xot**:
 

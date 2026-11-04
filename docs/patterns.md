@@ -328,10 +328,10 @@ public function test_users_isolated_by_tenant()
 
 ## References
 
-- [Architecture](bmad/architecture-tenant.md) — Detailed system design
-- [Troubleshooting](troubleshooting.md) — Common issues
-- [API Reference](api.md) — Model and service signatures
-- [Contributing Guide](../../docs/wiki/how-to/contributing.md) — Development guidelines
+- [Architecture](bmad/architecture-tenant.md): Detailed system design
+- [Troubleshooting](troubleshooting.md): Common issues
+- [API Reference](api.md): Model and service signatures
+- [Contributing Guide](../../docs/wiki/how-to/contributing.md): Development guidelines
 
 ---
 

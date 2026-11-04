@@ -9,7 +9,7 @@ updated: 2026-10-06
 qmd: "tenant   bmad status tenant"
 ---
 
-# Tenant — BMAD Status
+# Tenant: BMAD Status
 - PHPStan: 0 errori
 - Inventario docs/: bmad/ molto esteso; wiki/ duplicati maiuscole
 - Wiki: docs/wiki/module-purpose.md creato

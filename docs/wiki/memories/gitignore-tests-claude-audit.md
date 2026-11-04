@@ -1,5 +1,5 @@
 ---
-title: "gitignore Tests vs tests — claude-audit"
+title: "gitignore Tests vs tests: claude-audit"
 type: memory
 module: Tenant
 tags: [tenant, gitignore, claude-audit, pest]

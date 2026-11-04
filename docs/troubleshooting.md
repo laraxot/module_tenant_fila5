@@ -484,10 +484,10 @@ php artisan migrate --database=tenant_123
 
 ## Related Documentation
 
-- [Patterns](patterns.md) — Design patterns to follow
-- [Architecture](bmad/architecture-tenant.md) — System design
-- [README](README.md) — Overview and usage
-- [API Reference](api.md) — Model and service signatures
+- [Patterns](patterns.md): Design patterns to follow
+- [Architecture](bmad/architecture-tenant.md): System design
+- [README](README.md): Overview and usage
+- [API Reference](api.md): Model and service signatures
 
 ---
 

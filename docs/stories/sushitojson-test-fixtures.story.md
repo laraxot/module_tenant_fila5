@@ -6,8 +6,8 @@ SushiToJson persiste dati in file JSON isolati per tenant. `TestSushiModelForPat
 
 ## Contratto
 
-- `makeTestSushiModelForPath(string $jsonPath)` — path obbligatorio.
-- `TestSushiModelForPath::setJsonPath()` + override `getJsonFile()` — il trait legge solo `getJsonFile()`.
+- `makeTestSushiModelForPath(string $jsonPath)`: path obbligatorio.
+- `TestSushiModelForPath::setJsonPath()` + override `getJsonFile()`: il trait legge solo `getJsonFile()`.
 
 ## Causa errore PHPStan (arguments.count)
 

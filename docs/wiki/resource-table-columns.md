@@ -10,7 +10,7 @@ discussions: []
 status: draft
 ---
 
-# Colonne delle Resource — verifica 2026-09-10
+# Colonne delle Resource: verifica 2026-09-10
 
 ## Evidenze e decisioni
 
