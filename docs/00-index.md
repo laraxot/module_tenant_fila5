@@ -131,3 +131,7 @@ For deep understanding of multi-tenant configuration:
 ---
 
 **Next Step**: Read [wiki/TenantIdentification.md](./wiki/tenantidentification.md) to understand how the current request is associated with a tenant.
+
+## Cosa manca per completare
+
+[completion-status.md](./completion-status.md): indicatori misurati, problemi noti e story aperte (2026-10-28).
