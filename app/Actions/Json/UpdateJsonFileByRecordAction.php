@@ -30,9 +30,8 @@ class UpdateJsonFileByRecordAction
         $record->setAttribute('updated_at', now());
 
         $keyName = $record->getKeyName();
-        $key = $record->getKey();
-
-        Assert::integer($key);
+        // La chiave puo' essere un UUID oltre che un intero: bool e float invece non sono chiavi di array valide.
+        $key = Assert::validArrayKey($record->getKey());
 
         /** @var array<int|string, array<string, mixed>> $keyed */
         $keyed = Arr::keyBy($rows, $keyName);
