@@ -12,7 +12,7 @@ created: 2026-09-28
 updated: 2026-09-28
 qmd: "tenant config resolver morph map database isolation connection"
 related:
-  - ../architecture.md
+  - ../../ARCHITECTURE.md
   - module-boundary.md
   - ../quick-reference.md
 status: draft

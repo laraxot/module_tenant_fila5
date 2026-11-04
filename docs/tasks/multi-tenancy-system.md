@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "001 multi tenancy system"
 related:
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 # Task 001: Implement Multi-Tenancy System
 

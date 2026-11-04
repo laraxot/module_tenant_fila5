@@ -1,12 +1,13 @@
 ---
 title: "code-quality-report.md"
 type: concept
-status: active
 module: "Tenant"
 tags: [docs, tenant, bmad]
 created: 2026-10-06
 updated: 2026-10-06
 qmd: "code quality   modulo tenant tenant"
+status: superseded
+superseded_by: ../code-quality-report.md
 ---
 
 # Code quality — modulo Tenant

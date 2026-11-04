@@ -5,7 +5,7 @@ status: active
 module: "Tenant"
 tags: [docs, tenant, bmad]
 created: 2026-10-06
-updated: 2026-10-06
+updated: 2026-10-19
 qmd: "decision log - modulo tenant tenant"
 ---
 
@@ -21,6 +21,19 @@ qmd: "decision log - modulo tenant tenant"
 - **Conseguenze:** Implicazioni della decisione
 
 ## Registro delle decisioni
+
+### 2026-10-19
+**Decisione:** un host il cui config è un symlink usa il path reale come nome tenant.
+**Stato:** APPROVATA
+**Impatto:** Alto
+**Alternatives considerate:**
+- Caricare anche `eu.fixcity.*` oltre a `local.fixcity.*`
+- Aggiungere colonne mancanti su `fixcity_data.users`
+**Conseguenze:**
+- `fixcity.eu` risolve `local/fixcity` e la connessione `user` resta `fixcity_user`
+- La registrazione scrive `users.type` nel database degli utenti
+
+
 
 ### 2026-09-29
 **Decisione:** [Esempio: Utilizzare Filament Widget invece di Livewire per i componenti di UI]

@@ -11,6 +11,7 @@ related:
   - ../../../../../../docs/wiki/PHPSTAN-INDEX.md
   - ../../../Xot/docs/wiki/concepts/phpstan-pest-bridge-discipline.md
   - ../../testing-rules.md
+status: draft
 ---
 
 # PHPStan fix patterns — Tenant

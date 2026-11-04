@@ -8,6 +8,8 @@ updated: 2026-07-14
 qmd: "readme.it"
 related:
   - "../phpstan-corrections-january.md"
+status: superseded
+superseded_by: ../readme.it.md
 ---
 # Tenant
 

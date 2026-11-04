@@ -78,14 +78,6 @@ Le applicazioni SaaS moderne hanno bisogno di multi-tenancy per servire più cli
 ## Nota da README precedente
 
 ---
-title: "README"
-type: note
-tags: [documentation]
-created: 2026-10-06
-updated: 2026-10-06
-qmd: "README"
-issues: []
-discussions: []
 status: draft
 ---
 

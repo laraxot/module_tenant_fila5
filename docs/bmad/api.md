@@ -4,8 +4,9 @@ type: reference
 tags: [tenant, api, contracts, services]
 created: 2026-07-09
 updated: 2026-07-09
-status: draft
 qmd: "api reference: tenant module tenant"
+status: superseded
+superseded_by: ../api.md
 ---
 
 # API Reference: Tenant Module

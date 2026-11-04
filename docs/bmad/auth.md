@@ -8,5 +8,6 @@ updated: 2026-07-14
 qmd: "auth"
 related:
   - "../phpstan-corrections-january.md"
+status: draft
 ---
 

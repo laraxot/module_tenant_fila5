@@ -1,13 +1,14 @@
 ---
 title: "Code redundancy audit — Tenant"
 type: source
-status: draft
 tags: [code-audit, redundancy, dry, second-brain, module]
 created: "2026-05-26"
 updated: "2026-05-26"
 owner: "Tenant"
 issue: "https://github.com/provtv/base_ptv_fila5_mono/issues/150"
 qmd: "code redundancy audit   tenant tenant"
+status: superseded
+superseded_by: ../code-redundancy-audit.md
 ---
 
 # Code redundancy audit — Tenant

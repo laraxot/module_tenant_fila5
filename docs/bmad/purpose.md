@@ -1,7 +1,6 @@
 ---
 title: "Tenant — scopo del modulo e come raggiungerlo meglio"
 type: concept
-status: active
 created: 2026-09-02
 tags: [tenant, purpose, multi-tenancy, dominio, configurazione, sushi]
 qmd: "tenant scopo modulo multi tenancy dominio configurazione sushi json tenantservice filepath"
@@ -13,6 +12,8 @@ issues:
 discussions:
   # DA CREARE — vedi sopra.
   - "https://github.com/provtv/module_tenant_fila5/discussions/"
+status: superseded
+superseded_by: ../purpose.md
 ---
 
 # Tenant — perche' esiste
