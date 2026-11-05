@@ -6,6 +6,7 @@ namespace Modules\Tenant\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\Tenant\Models\Traits\TenantSettingRelations;
 
 /**
  * @property string|null $tenant_id
@@ -22,6 +23,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class TenantSetting extends BaseModel
 {
+    use TenantSettingRelations;
+
     protected $fillable = [
         'tenant_id',
         'key',
@@ -29,9 +32,4 @@ class TenantSetting extends BaseModel
         'type',
     ];
 
-    /** @return BelongsTo<Tenant, $this> */
-    public function tenant(): BelongsTo
-    {
-        return $this->belongsTo(Tenant::class);
-    }
 }

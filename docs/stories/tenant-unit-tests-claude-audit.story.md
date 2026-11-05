@@ -1,5 +1,5 @@
 ---
-title: "Tenant — Unit Tests for claude-audit 100/100"
+title: "Tenant: Unit Tests for claude-audit 100/100"
 type: story
 module: Tenant
 epic: "claude-audit-perfection"
@@ -18,7 +18,7 @@ related:
   - "../../../docs/wiki/guidelines/claude-audit-static-free-tier.md"
 ---
 
-# Tenant — Unit Tests for claude-audit 100/100
+# Tenant: Unit Tests for claude-audit 100/100
 
 ## Fase BMAD
 

@@ -36,7 +36,7 @@ verificata con un run reale su Tenant; la story precedente `tenant-mixed-type-re
 (2026-09-04) aveva gia' portato il modulo a 0 errori.
 
 Nota: durante il primo tentativo di run, PHPStan ha fallito il bootstrap con un ParseError
-("Unclosed '{' on line 215") durante la discovery dei pannelli Filament di AiAssistant — causa
+("Unclosed '{' on line 215") durante la discovery dei pannelli Filament di AiAssistant: causa
 piu' probabile: scrittura concorrente di un altro agente su un file autoloaded in quel momento
 (torn read). `php -l` su tutti i file coinvolti non ha trovato errori di sintassi persistenti;
 un secondo run e' bastato per completare senza errori. Segnalato per consapevolezza, nessuna
@@ -49,7 +49,7 @@ via XotData invece del model concreto):
 
 - 7 model (`Tenant`, `Domain`, `TenantDomain`, `TenantSubscription`, `DatabaseConfig`,
   `TestSushiModel`, `TenantSetting`) avevano `@property-read User|null $creator/$updater`
-  stray nel docblock — nessuna relazione `creator()`/`updater()` e' mai definita in questi
+  stray nel docblock: nessuna relazione `creator()`/`updater()` e' mai definita in questi
   model (ne' via trait `Updater`, ne' a mano), quindi l'annotazione era morta/errata e in
   conflitto con la dichiarazione corretta gia' presente su `BaseModel`
   (`@property ProfileContract|null $creator/$updater`). Rimossa in tutti e 7 i file, con
@@ -58,7 +58,7 @@ via XotData invece del model concreto):
   presente in `Modules/User/app/Models/BaseTeam.php` (`XotData::make()->getUserClass()`,
   return type `HasMany<Model&UserContract, $this>`).
 - `TenantSetting::$value` era documentato come `mixed`; la migration
-  (`create_tenant_settings_table`) dichiara la colonna come `text()` senza cast — ristretto a
+  (`create_tenant_settings_table`) dichiara la colonna come `text()` senza cast: ristretto a
   `string|null`.
 - Verificati (non modificati) i 4 usi nativi di `mixed` residui segnalati come follow-up in
   `tenant-mixed-type-reduction.story.md` (`SushiToCsv::resolveRowIdKey/csvValue`,
@@ -66,7 +66,7 @@ via XotData invece del model concreto):
   quattro ricevono un valore da un'API framework che a sua volta dichiara `mixed` senza cast
   nativo (`Model::getKey()`, `Model::getAttribute()`, `config()`), e lo restringono subito con
   guardie a runtime (`is_int`/`is_string`/`Assert::scalar`/`is_numeric`). Restringere il
-  parametro sarebbe stato un narrowing disonesto rispetto al contratto reale del chiamante —
+  parametro sarebbe stato un narrowing disonesto rispetto al contratto reale del chiamante -
   confermata la conclusione della story precedente, nessun cambio.
 
 Verifica: PHPStan 0/0, PHPMD (`./tools/phpmd.sh Modules/Tenant/app text phpmd.xml`) nessuna
@@ -74,19 +74,19 @@ violazione nei file toccati (uniche 4 violazioni pre-esistenti, non toccate, in
 `Providers/{RouteServiceProvider,TenantServiceProvider}.php`, naming `module_dir`/`module_ns`
 ereditato dal template XotBase). Pest: vedi `coverage.md`.
 
-## Esito 2026-09-07 (sessione claude sonnet 5 — campagna "PHPStan zero", riverifica)
+## Esito 2026-09-07 (sessione claude sonnet 5: campagna "PHPStan zero", riverifica)
 
 Il modulo era tornato a **3 errori reali** (non regressione di questa sessione: un altro
-agente aveva un WIP non committato — coerente col fix repo-wide gia' chiuso in
-`Modules/Xot/docs/stories/18.19.xotbaseresource-final-getformschema-table-illegal-override-repo-wide-fix.story.md` —
+agente aveva un WIP non committato: coerente col fix repo-wide gia' chiuso in
+`Modules/Xot/docs/stories/18.19.xotbaseresource-final-getformschema-table-illegal-override-repo-wide-fix.story.md` -
 che rimuoveva l'override inline morto `DomainResource::getFormSchema()` e convertiva
 `DomainForm::getFormSchema()`/`DomainInfolist::getInfolistSchema()` da `static` a metodo di
 istanza, coerente col parent astratto, ma senza aggiornare i 3 chiamanti nei test che li
-invocavano ancora staticamente — errore PHPStan `method.staticCall`).
+invocavano ancora staticamente: errore PHPStan `method.staticCall`).
 
 **Causa radice**: `XotBaseResourceForm::getFormSchema()` / `XotBaseResourceInfolist::getInfolistSchema()`
 sono `abstract public function` (istanza, mai `static`); chiamarli con `Class::metodo()` e'
-un `Error` PHP 8 **fatale a runtime**, non solo un problema di tipizzazione — verificato
+un `Error` PHP 8 **fatale a runtime**, non solo un problema di tipizzazione: verificato
 isolando i 2 file di test con `git stash` mirato e ri-eseguendo le sole righe incriminate.
 
 **Fix**: nei 3 call-site nei test, sostituita la chiamata statica con la risoluzione

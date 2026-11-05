@@ -1,5 +1,5 @@
 ---
-title: "Tenant — PHPStan TenantStatementCoverageTest loadExistingData"
+title: "Tenant: PHPStan TenantStatementCoverageTest loadExistingData"
 type: story
 module: Tenant
 status: blocked
@@ -12,7 +12,7 @@ qmd: "tenant phpstan statement coverage loadexistingdata assert"
 updated: 2026-10-21
 ---
 
-# Tenant — PHPStan TenantStatementCoverageTest
+# Tenant: PHPStan TenantStatementCoverageTest
 
 ## Scopo funzionale
 
@@ -20,7 +20,7 @@ updated: 2026-10-21
 
 ## Problema PHPStan (noto)
 
-`TenantStatementCoverageTest.php:334` — `Assert::assertSame([], $model->loadExistingData())` ridondante: il ritorno è già `array` stretto; dopo `File::put($jsonPath, 'null')` e `getSushiRows()` che lancia, l’assert non aggiunge vincolo utile a PHPStan (`assertSame` con `[]` sempre vero sul lato destro inferito).
+`TenantStatementCoverageTest.php:334`: `Assert::assertSame([], $model->loadExistingData())` ridondante: il ritorno è già `array` stretto; dopo `File::put($jsonPath, 'null')` e `getSushiRows()` che lancia, l’assert non aggiunge vincolo utile a PHPStan (`assertSame` con `[]` sempre vero sul lato destro inferito).
 
 ## Fix previsto (non applicato)
 
@@ -31,7 +31,7 @@ Sostituire con assert comportamentale, ad esempio:
 
 Nessun `@phpstan-ignore`.
 
-## STOP — lock modulo
+## STOP: lock modulo
 
 **Data:** 2026-10-21
 

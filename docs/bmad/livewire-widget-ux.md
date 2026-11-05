@@ -5,7 +5,7 @@ updated: 2026-09-26
 qmd: "livewire widget ux"
 issues: []
 discussions: []
-title: "UX — Tenant"
+title: "UX: Tenant"
 type: ux-design
 module: Tenant
 related:

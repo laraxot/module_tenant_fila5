@@ -21,7 +21,7 @@ status: draft
 
 ## RELIGIONE: The Sacred Dogmas of Multi-Tenancy
 
-Multi-tenancy is not a technical feature—it is a **religious commitment** to certain immutable truths.
+Multi-tenancy is not a technical feature-it is a **religious commitment** to certain immutable truths.
 
 ### The Four Sacred Covenants
 
@@ -204,7 +204,7 @@ We reject RLS because it requires **discipline and code review on every single q
 }
 ```
 
-**Not a database**, not in Redis—this is **file-system based config**.
+**Not a database**, not in Redis-this is **file-system based config**.
 
 Why? Because:
 - ✅ Survives restarts (not ephemeral)
@@ -316,7 +316,7 @@ class UserController {
 
 **2. The Invisible Handmaid**
 
-Isolation should work like gravity—always present, never noticed:
+Isolation should work like gravity-always present, never noticed:
 
 ```php
 // These all work correctly WITHOUT any tenant awareness:
@@ -610,7 +610,7 @@ $tenant = session('tenant_id');  // What if session is wrong?
 ```
 
 **Rules:**
-- [ ] Identify tenant from domain, headers, or routing—NOT session
+- [ ] Identify tenant from domain, headers, or routing-NOT session
 - [ ] Verify user's tenant matches request tenant
 - [ ] Use route model binding for tenant scoping
 - [ ] Test with wrong session/wrong domain combinations
@@ -1241,7 +1241,7 @@ test('raw queries are not isolation-enforced (expected failure)', function() {
         // This will see Alice! Raw queries bypass Eloquent
         expect(count($users))->toBeGreaterThan(1);
     });
-})->todo('Raw queries bypass isolation—use Eloquent always');
+})->todo('Raw queries bypass isolation-use Eloquent always');
 ```
 
 #### 4. Background Job Tests

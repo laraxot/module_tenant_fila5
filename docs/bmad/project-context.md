@@ -1,5 +1,5 @@
 ---
-title: "Project context — Tenant"
+title: "Project context: Tenant"
 type: constitution
 module: Tenant
 track: bmad-method
@@ -14,7 +14,7 @@ related:
   - ./filament-blueprint.md
 ---
 
-# Costituzione — Tenant
+# Costituzione: Tenant
 
 Isolare identita, contenuti, policy e configurazione provider per ogni comune.
 

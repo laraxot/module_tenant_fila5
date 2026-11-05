@@ -9,14 +9,17 @@ use Illuminate\Support\Arr;
 use Modules\Tenant\Models\Contracts\HasSushiToJson;
 use Modules\Xot\Actions\Arr\EnsureKeysAction;
 use Modules\Xot\Actions\Arr\SaveArrayAction;
+<<<<<<< .merge_file_LkuZ6L
+=======
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
+>>>>>>> .merge_file_3Jn0QC
 use Spatie\QueueableAction\QueueableAction;
-use Webmozart\Assert\Assert;
 
 /**
  * Aggiunge al file JSON del tenant la riga corrispondente al record in creazione.
  *
  * L'id non viene assegnato dal database (Sushi usa SQLite in memoria): il
- * record riceve `max(id esistenti) + 1`. Il fallback `?: [0]` copre il file
+ * record riceve `max(id esistenti) + 1`. Lo `0` iniziale copre il file
  * vuoto, dove `max()` su array senza elementi leverebbe una ValueError.
  */
 class CreateJsonFileByRecordAction
@@ -32,11 +35,10 @@ class CreateJsonFileByRecordAction
 
         $keyName = $record->getKeyName();
 
-        $max = max(Arr::pluck($rows, $keyName) ?: [0]);
+        // Gli id letti dal JSON possono essere stringhe numeriche ('1'): SafeIntCastAction li porta a int.
+        $ids = array_map(SafeIntCastAction::cast(...), Arr::pluck($rows, $keyName));
 
-        Assert::integer($max);
-
-        $newId = $max + 1;
+        $newId = max([0, ...$ids]) + 1;
 
         $record->setAttribute($keyName, $newId);
 

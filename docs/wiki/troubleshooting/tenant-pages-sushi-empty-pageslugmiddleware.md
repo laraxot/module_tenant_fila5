@@ -1,5 +1,5 @@
 ---
-title: "GetTenantNameAction — path safety typo fix"
+title: "GetTenantNameAction: path safety typo fix"
 type: troubleshooting
 tags: [tenant, pageslugmiddleware, sushi, cms]
 created: 2026-07-13
@@ -15,7 +15,7 @@ related:
 status: draft
 ---
 
-# Tenant name — Page Sushi vuoto → auth JSON ignorato
+# Tenant name: Page Sushi vuoto → auth JSON ignorato
 
 ## Sintomo
 

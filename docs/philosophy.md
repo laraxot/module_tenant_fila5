@@ -12,7 +12,7 @@ status: draft
 
 # Tenant Module: Multi-Tenancy Architecture
 
-> **Data Isolation & Routing** — Tenant context, domain-to-database mapping, query scoping.
+> **Data Isolation & Routing**: Tenant context, domain-to-database mapping, query scoping.
 
 ---
 
@@ -25,10 +25,10 @@ status: draft
 ## Quick
 
 ### Models (9)
-- **Tenant** — Organization (name, slug, database config, domain list)
-- **Domain** — Route URL to tenant (domain, tenant_id)
-- **DatabaseConfig** — Custom DB per tenant (host, port, database, user)
-- **BaseModelJsons** — Tenant-scoped model with JSON attrs
+- **Tenant**: Organization (name, slug, database config, domain list)
+- **Domain**: Route URL to tenant (domain, tenant_id)
+- **DatabaseConfig**: Custom DB per tenant (host, port, database, user)
+- **BaseModelJsons**: Tenant-scoped model with JSON attrs
 
 ### Pattern
 ```
@@ -46,16 +46,16 @@ Response
 ```
 
 ### Actions (1)
-- `GetTenantNameAction` — Resolve tenant name from context
+- `GetTenantNameAction`: Resolve tenant name from context
 
 ---
 
 ## Routing Strategy
 
 **Three modes**:
-1. **Multi-domain** — acme.app.com, beta.app.com (different tenants)
-2. **Sub-domain** — acme.example.com, beta.example.com (one host)
-3. **Path-based** — /acme, /beta (shared host)
+1. **Multi-domain**: acme.app.com, beta.app.com (different tenants)
+2. **Sub-domain**: acme.example.com, beta.example.com (one host)
+3. **Path-based**: /acme, /beta (shared host)
 
 All map to Tenant via Domain table.
 
