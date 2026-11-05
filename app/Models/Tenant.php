@@ -129,6 +129,11 @@ class Tenant extends BaseModel
 
     public function getNameAttribute(): ?string
     {
+        return $this->getName();
+    }
+
+    public function getName(): ?string
+    {
         $name = $this->attributes['name'] ?? null;
 
         return is_string($name) ? $name : null;
@@ -138,6 +143,11 @@ class Tenant extends BaseModel
      * Restituisce l'URL del tenant.
      */
     public function getUrlAttribute(): string
+    {
+        return $this->getUrl();
+    }
+
+    public function getUrl(): string
     {
         $url = $this->domain ?? config('app.url');
 
