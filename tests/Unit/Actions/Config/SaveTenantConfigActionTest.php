@@ -74,3 +74,37 @@ it('saves tenant config when file does not exist', function (): void {
 
     app(SaveTenantConfigAction::class)->execute('app', ['name' => 'Test App']);
 });
+
+it('replaces lists instead of merging them by index', function (): void {
+    /** @var TestCase $this */
+    $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
+        $mock->allows(['execute' => '/path/to/tenant/progressioni.php']);
+    });
+
+    File::shouldReceive('exists')
+        ->with('/path/to/tenant/progressioni.php')
+        ->andReturn(true);
+
+    File::shouldReceive('getRequire')
+        ->with('/path/to/tenant/progressioni.php')
+        ->andReturn([
+            'anni' => [2023, 2024, 2025],
+            'name' => 'Progressioni',
+        ]);
+
+    $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
+        TestCase::expectMockery($mock, 'execute')
+            ->once()
+            ->withArgs(static function (array $data, string $filename): bool {
+                Assert::assertSame('/path/to/tenant/progressioni.php', $filename);
+                // Una lista salvata dal form e' lo stato completo: i vecchi elementi non devono restare.
+                Assert::assertSame([2026], $data['anni']);
+                // Le chiavi associative non inviate dal form restano.
+                Assert::assertSame('Progressioni', $data['name']);
+
+                return true;
+            });
+    });
+
+    app(SaveTenantConfigAction::class)->execute('progressioni', ['anni' => [2026]]);
+});
