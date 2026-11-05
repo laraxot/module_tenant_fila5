@@ -5,10 +5,6 @@ declare(strict_types=1);
 namespace Modules\Tenant\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-<<<<<<< HEAD
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-=======
->>>>>>> laraxot/dev
 use Modules\Tenant\Models\Traits\TenantSettingRelations;
 
 /**
@@ -34,8 +30,4 @@ class TenantSetting extends BaseModel
         'value',
         'type',
     ];
-<<<<<<< HEAD
-
-=======
->>>>>>> laraxot/dev
 }

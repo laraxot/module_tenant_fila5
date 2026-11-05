@@ -1,25 +1,13 @@
-<<<<<<< HEAD
-*.png !text !filter !merge !diff
-*.svg !text !filter !merge !diff
-*.jpg !text !filter !merge !diff
-*.jpeg !text !filter !merge !diff
-*.gif !text !filter !merge !diff
-*.webp !text !filter !merge !diff
-=======
-# Prototype: laravel/Modules/* e laravel/Themes/*
-# Canon: bashscripts/ai/wiki/rules/no-git-lfs.md
-# Sync: bash bashscripts/templates/sync-gitattributes-modules.sh
-#
-# Git LFS VIETATO. Binari = blob git normali.
-# Mai: filter=lfs / diff=lfs / merge=lfs
-
+# Git LFS is forbidden in this repository. Binary files remain normal Git blobs.
+# This file is the canonical root policy for modules and themes.
 * text=auto
 *.css linguist-vendored
 *.scss linguist-vendored
 *.js linguist-vendored
 CHANGELOG.md export-ignore
-# Binary files (regular git blobs — NO git-lfs)
-# `binary` + `!filter` azzera eventuali filtri LFS ereditati
+
+# `binary` implies no text normalization, diff, or merge driver.
+# `!filter` disables any inherited Git LFS filter.
 *.png binary !filter
 *.jpg binary !filter
 *.jpeg binary !filter
@@ -38,4 +26,3 @@ CHANGELOG.md export-ignore
 *.phar binary !filter
 *.db binary !filter
 *.sqlite binary !filter
->>>>>>> laraxot/dev
