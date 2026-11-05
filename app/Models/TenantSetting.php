@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace Modules\Tenant\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+=======
+>>>>>>> laraxot/dev
+use Modules\Tenant\Models\Traits\TenantSettingRelations;
 
 /**
  * @property string|null $tenant_id
@@ -22,16 +26,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class TenantSetting extends BaseModel
 {
+    use TenantSettingRelations;
+
     protected $fillable = [
         'tenant_id',
         'key',
         'value',
         'type',
     ];
+<<<<<<< HEAD
 
-    /** @return BelongsTo<Tenant, $this> */
-    public function tenant(): BelongsTo
-    {
-        return $this->belongsTo(Tenant::class);
-    }
+=======
+>>>>>>> laraxot/dev
 }
