@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace Modules\Tenant\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+<<<<<<< .merge_file_ZBXBQX
+=======
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+>>>>>>> .merge_file_95fGqf
 use Illuminate\Support\Carbon;
 use Modules\Tenant\Models\Traits\TenantSubscriptionRelations;
 

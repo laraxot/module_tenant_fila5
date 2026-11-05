@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace Modules\Tenant\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+<<<<<<< .merge_file_nWApMQ
+=======
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+>>>>>>> .merge_file_e8ABzt
 use Modules\Tenant\Models\Traits\TenantSettingRelations;
 
 /**
@@ -30,4 +34,9 @@ class TenantSetting extends BaseModel
         'value',
         'type',
     ];
+<<<<<<< .merge_file_nWApMQ
 }
+=======
+
+}
+>>>>>>> .merge_file_e8ABzt
