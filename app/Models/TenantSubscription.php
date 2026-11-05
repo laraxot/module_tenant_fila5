@@ -7,6 +7,7 @@ namespace Modules\Tenant\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
+use Modules\Tenant\Models\Traits\TenantSubscriptionRelations;
 
 /**
  * @property string|null $tenant_id
@@ -30,6 +31,8 @@ use Illuminate\Support\Carbon;
  */
 class TenantSubscription extends BaseModel
 {
+    use TenantSubscriptionRelations;
+
     protected $fillable = [
         'tenant_id',
         'plan_name',
@@ -43,12 +46,6 @@ class TenantSubscription extends BaseModel
         'next_billing_date',
         'expires_at',
     ];
-
-    /** @return BelongsTo<Tenant, $this> */
-    public function tenant(): BelongsTo
-    {
-        return $this->belongsTo(Tenant::class);
-    }
 
     /**
      * Get the attributes that should be cast.

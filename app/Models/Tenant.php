@@ -11,9 +11,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
-use Modules\Xot\Contracts\UserContract;
-use Modules\Xot\Datas\XotData;
+use Modules\Tenant\Models\Traits\TenantMutators;
+use Modules\Tenant\Models\Traits\TenantRelations;
 
 /**
  * Modello Tenant per la gestione multi-tenant dell'applicazione.
@@ -48,6 +47,9 @@ use Modules\Xot\Datas\XotData;
  */
 class Tenant extends BaseModel
 {
+    use TenantMutators;
+    use TenantRelations;
+
     /**
      * Gli attributi che sono mass assignable.
      */
@@ -70,22 +72,6 @@ class Tenant extends BaseModel
         'vat_number',
         'last_activity_at',
     ];
-
-    /**
-     * Relazione con gli utenti associati al tenant.
-     *
-     * @return HasMany<Model&UserContract, $this>
-     */
-    public function users(): HasMany
-    {
-        /** @var class-string<Model&UserContract> $userClass */
-        $userClass = XotData::make()->getUserClass();
-
-        /** @var HasMany<Model&UserContract, $this> $relation */
-        $relation = $this->hasMany($userClass);
-
-        return $relation;
-    }
 
     // Commented out - Patient and Dental modules not available
     // /**
@@ -112,46 +98,6 @@ class Tenant extends BaseModel
         $isActive = $this->attributes['is_active'] ?? false;
 
         return (bool) $isActive;
-    }
-
-    /**
-     * Genera lo slug dal nome se non fornito.
-     */
-    public function setNameAttribute(string $value): void
-    {
-        $this->attributes['name'] = $value;
-
-        $slug = $this->attributes['slug'] ?? null;
-        if (! is_string($slug) || $slug === '') {
-            $this->attributes['slug'] = Str::slug($value);
-        }
-    }
-
-    public function getNameAttribute(): ?string
-    {
-        return $this->getName();
-    }
-
-    public function getName(): ?string
-    {
-        $name = $this->attributes['name'] ?? null;
-
-        return is_string($name) ? $name : null;
-    }
-
-    /**
-     * Restituisce l'URL del tenant.
-     */
-    public function getUrlAttribute(): string
-    {
-        return $this->getUrl();
-    }
-
-    public function getUrl(): string
-    {
-        $url = $this->domain ?? config('app.url');
-
-        return is_string($url) ? $url : 'http://localhost';
     }
 
     /**
