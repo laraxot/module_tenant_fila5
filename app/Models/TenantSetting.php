@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Tenant\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Tenant\Models\Traits\TenantSettingRelations;
 
 /**
@@ -31,5 +30,4 @@ class TenantSetting extends BaseModel
         'value',
         'type',
     ];
-
 }
