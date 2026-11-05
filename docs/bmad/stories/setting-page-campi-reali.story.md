@@ -62,3 +62,12 @@ cosi' non possono divergere in silenzio.
   assente): 210 passati.
 - PHPStan livello max sui file toccati: 0 errori. Pint: passed.
 - Non verificato: il rendering del form nel pannello (nessun browser). Il test controlla schema, chiavi, etichette e regole.
+
+## Regressione dal pull del 2026-11-05
+
+Il commit `.` `697c93ad` del modulo (2026-11-05 06:50 UTC) ha riscritto solo `TenantConfigData` con la bozza scartata (`enabled`,
+`domain_routing`, `default_locale`, file `tenant.php`), lasciando `SettingPage` e il test sulla versione `metatag`: il HEAD del modulo
+era incoerente (`getConfigName()` avrebbe dato `tenant`, default del trait `MakesFromTenantConfig`). Nel rebase del mono
+(`335a04e8a8 pull submodules` su `ba49a440`) il file era in conflitto add/add: risolto con il lato upstream del mono, identico a
+`982440f0`. Verifica: `TenantConfigDataTest` 19/19, PHPStan 0 errori sui file. Da committare anche nel repo del modulo (Tenant risulta
+`M app/Datas/TenantConfigData.php`), altrimenti il prossimo pull lo riporta indietro.
