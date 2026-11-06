@@ -23,7 +23,9 @@ it('resolves a module connection cloned from the default on the same Connection 
     unset($connections[$name]);
     Config::set('database.connections', $connections);
 
-    app()->getProvider(TenantServiceProvider::class)?->registerDB();
+    $provider = app()->getProvider(TenantServiceProvider::class);
+    Assert::assertInstanceOf(TenantServiceProvider::class, $provider);
+    $provider->registerDB();
 
     Assert::assertSame(DB::connection($default), DB::connection($name));
 });

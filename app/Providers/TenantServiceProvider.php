@@ -67,7 +67,6 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
         /** @var array<string, mixed> $data */
         $data = $this->loadTenantDatabaseConfig($preMergeDefaultConn);
-<<<<<<< .merge_file_6q4TOv
         /** @var array<string, mixed> $explicitConnections */
         $explicitConnections = Arr::get($data, 'connections', []);
         $data = Arr::set($data, 'connections', $this->mergeModuleConnections($data, $preMergeDefaultConn));
@@ -106,14 +105,6 @@ class TenantServiceProvider extends XotBaseServiceProvider
         }
     }
 
-=======
-        $data = Arr::set($data, 'connections', $this->mergeModuleConnections($data, $preMergeDefaultConn));
-
-        Config::set('database', $data);
-        $this->reconnectDatabaseUnlessTesting();
-    }
-
->>>>>>> .merge_file_TlYrWu
     #[Override]
     public function register(): void
     {

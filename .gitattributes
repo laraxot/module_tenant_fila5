@@ -1,23 +1,11 @@
-<<<<<<< .merge_file_VTPoDN
-# Git LFS is forbidden in this repository. Binary files remain normal Git blobs.
-# This file is the canonical root policy for modules and themes.
-=======
-# Prototype: laravel/Modules/* e laravel/Themes/*
-# Canon: bashscripts/ai/wiki/rules/no-git-lfs.md
-# Sync: bash bashscripts/templates/sync-gitattributes-modules.sh
-#
-# Git LFS VIETATO. Binari = blob git normali.
-# Mai: filter=lfs / diff=lfs / merge=lfs
-
->>>>>>> .merge_file_bqZUvV
+# Git LFS is forbidden. Binary files remain normal Git blobs.
 * text=auto
 *.css linguist-vendored
 *.scss linguist-vendored
 *.js linguist-vendored
 CHANGELOG.md export-ignore
 
-# `binary` implies no text normalization, diff, or merge driver.
-# `!filter` disables any inherited Git LFS filter.
+# Binary files are regular Git blobs; !filter disables inherited Git LFS.
 *.png binary !filter
 *.jpg binary !filter
 *.jpeg binary !filter
@@ -36,3 +24,4 @@ CHANGELOG.md export-ignore
 *.phar binary !filter
 *.db binary !filter
 *.sqlite binary !filter
+
