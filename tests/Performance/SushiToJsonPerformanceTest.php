@@ -2,46 +2,41 @@
 
 declare(strict_types=1);
 
-namespace Modules\Tenant\Tests\Performance;
-
-use Exception;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
-use Mockery;
 use Modules\Tenant\Models\TestSushiModel;
-use Modules\Tenant\Tests\TestCase;
-use PHPUnit\Framework\Assert;
+use Modules\Tenant\Services\TenantService;
 
-use function Safe\json_decode;
-
-uses(TestCase::class, DatabaseTransactions::class);
-
-beforeEach(function (): void {
-    /** @var TestCase $this */
+uses(Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function () {
+    // Configura il modello di test
     $this->model = new TestSushiModel;
-    TestCase::$testDirectory = storage_path('tests/sushi-json');
-    TestCase::$testJsonPath = TestCase::$testDirectory.'/test_sushi.json';
 
-    if (! File::exists(TestCase::$testDirectory)) {
-        File::makeDirectory(TestCase::$testDirectory, 0755, true, true);
-    }
-});
+    // Configura percorsi di test
+    $this->testDirectory = storage_path('tests/sushi-json-performance');
+    $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 
-afterEach(function (): void {
-    /** @var TestCase $this */
-    if (File::exists(TestCase::$testJsonPath)) {
-        File::delete(TestCase::$testJsonPath);
+    // Crea directory di test
+    if (! File::exists($this->testDirectory)) {
+        File::makeDirectory($this->testDirectory, 0755, true, true);
     }
 
-    if (File::exists(TestCase::$testDirectory)) {
-        File::deleteDirectory(TestCase::$testDirectory);
+    // Mock TenantService per i test
+    $this->mock(TenantService::class, function ($mock): void {
+        $mock->shouldReceive('filePath')->with('database/content/test_sushi.json')->andReturn($this->testJsonPath);
+    });
+})->afterEach(function () {
+    // Cleanup file di test
+    if (File::exists($this->testJsonPath)) {
+        File::delete($this->testJsonPath);
     }
 
-    Mockery::close();
+    if (File::exists($this->testDirectory)) {
+        File::deleteDirectory($this->testDirectory);
+    }
 });
 
 /**
- * @return array<int, array<string, mixed>>
+ * Crea dati di test con dimensioni specifiche.
  */
 function createTestData(int $recordCount): array
 {
@@ -77,67 +72,63 @@ function createTestData(int $recordCount): array
 }
 
 it('handles small datasets efficiently', function (): void {
-    /** @var TestCase $this */
     $smallData = createTestData(10);
 
     $startTime = microtime(true);
-    $result = $this->sushiModel()->saveToJson($smallData);
+    $result = $this->model->saveToJson($smallData);
     $saveTime = microtime(true) - $startTime;
 
     expect($result)->toBeTrue();
-    expect($saveTime)->toBeLessThan(5.0); // Salvataggio dataset piccolo deve essere molto veloce
+    expect($saveTime)->toBeLessThan(0.1); // Salvataggio dataset piccolo deve essere molto veloce
 
     // Testa caricamento
     $startTime = microtime(true);
-    $loadedData = $this->sushiModel()->getSushiRows();
+    $loadedData = $this->model->getSushiRows();
     $loadTime = microtime(true) - $startTime;
 
     expect($loadedData)->toHaveCount(10);
-    expect($loadTime)->toBeLessThan(5.0); // Caricamento dataset piccolo deve essere istantaneo
-});
+    expect($loadTime)->toBeLessThan(0.05); // Caricamento dataset piccolo deve essere istantaneo
+})->group('small-dataset');
 
 it('handles medium datasets efficiently', function (): void {
-    /** @var TestCase $this */
     $mediumData = createTestData(100);
 
     $startTime = microtime(true);
-    $result = $this->sushiModel()->saveToJson($mediumData);
+    $result = $this->model->saveToJson($mediumData);
     $saveTime = microtime(true) - $startTime;
 
     expect($result)->toBeTrue();
-    expect($saveTime)->toBeLessThan(25.0); // Salvataggio dataset medio deve essere veloce
+    expect($saveTime)->toBeLessThan(0.5); // Salvataggio dataset medio deve essere veloce
 
     // Testa caricamento
     $startTime = microtime(true);
-    $loadedData = $this->sushiModel()->getSushiRows();
+    $loadedData = $this->model->getSushiRows();
     $loadTime = microtime(true) - $startTime;
 
     expect($loadedData)->toHaveCount(100);
-    expect($loadTime)->toBeLessThan(10.0); // Caricamento dataset medio deve essere veloce
-});
+    expect($loadTime)->toBeLessThan(0.2); // Caricamento dataset medio deve essere veloce
+})->group('medium-dataset');
 
 it('handles large datasets efficiently', function (): void {
-    /** @var TestCase $this */
     $largeData = createTestData(1000);
 
     $startTime = microtime(true);
-    $result = $this->sushiModel()->saveToJson($largeData);
+    $result = $this->model->saveToJson($largeData);
     $saveTime = microtime(true) - $startTime;
 
     expect($result)->toBeTrue();
-    expect($saveTime)->toBeLessThan(100.0); // Salvataggio dataset grande deve essere accettabile
+    expect($saveTime)->toBeLessThan(2.0); // Salvataggio dataset grande deve essere accettabile
 
     // Testa caricamento
     $startTime = microtime(true);
-    $loadedData = $this->sushiModel()->getSushiRows();
+    $loadedData = $this->model->getSushiRows();
     $loadTime = microtime(true) - $startTime;
 
     expect($loadedData)->toHaveCount(1000);
-    expect($loadTime)->toBeLessThan(50.0); // Caricamento dataset grande deve essere accettabile
-});
+    expect($loadTime)->toBeLessThan(1.0); // Caricamento dataset grande deve essere accettabile
+})->group('large-dataset');
 
 it('manages memory usage efficiently', function (): void {
-    /** @var TestCase $this */
     $initialMemory = memory_get_usage();
 
     // Crea dataset grande
@@ -147,14 +138,14 @@ it('manages memory usage efficiently', function (): void {
     $dataCreationMemory = $memoryAfterDataCreation - $initialMemory;
 
     // Salva i dati
-    $result = $this->sushiModel()->saveToJson($largeData);
+    $result = $this->model->saveToJson($largeData);
     expect($result)->toBeTrue();
 
     $memoryAfterSave = memory_get_usage();
     $saveMemory = $memoryAfterSave - $memoryAfterDataCreation;
 
     // Carica i dati
-    $loadedData = $this->sushiModel()->getSushiRows();
+    $loadedData = $this->model->getSushiRows();
     expect($loadedData)->toHaveCount(500);
 
     $finalMemory = memory_get_usage();
@@ -167,65 +158,54 @@ it('manages memory usage efficiently', function (): void {
 
     // Verifica che la memoria sia stata liberata
     expect($finalMemory)->toBeLessThan($initialMemory + (100 * 1024 * 1024)); // Memoria finale non deve essere eccessiva
-});
+})->group('memory-usage');
 
 it('handles different file sizes efficiently', function (): void {
-    /** @var TestCase $this */
     $sizes = [10, 50, 100, 250, 500];
 
     foreach ($sizes as $size) {
         $testData = createTestData($size);
 
         $startTime = microtime(true);
-        $result = $this->sushiModel()->saveToJson($testData);
+        $result = $this->model->saveToJson($testData);
         $saveTime = microtime(true) - $startTime;
 
         expect($result)->toBeTrue();
 
         // Verifica dimensione file
-        $fileSize = File::size($this->sushiJsonPath());
+        $fileSize = File::size($this->testJsonPath);
         expect($fileSize)->toBeGreaterThan(0); // File deve avere dimensione maggiore di 0
 
         // Verifica che il tempo di salvataggio sia proporzionale alla dimensione
-        $expectedMaxTime = max($size * 0.05, 5.0);
-        expect($saveTime)->toBeLessThan($expectedMaxTime);
+        $expectedMaxTime = $size * 0.001; // 1ms per record
+        expect($saveTime)->toBeLessThan($expectedMaxTime); // Salvataggio $size record deve essere veloce
 
         // Testa caricamento
         $startTime = microtime(true);
-        $loadedData = $this->sushiModel()->getSushiRows();
+        $loadedData = $this->model->getSushiRows();
         $loadTime = microtime(true) - $startTime;
 
         expect($loadedData)->toHaveCount($size);
 
-        $expectedMaxLoadTime = max($size * 0.05, 5.0);
-        expect($loadTime)->toBeLessThan($expectedMaxLoadTime);
+        // Verifica che il tempo di caricamento sia proporzionale alla dimensione
+        $expectedMaxLoadTime = $size * 0.0005; // 0.5ms per record
+        expect($loadTime)->toBeLessThan($expectedMaxLoadTime); // Caricamento $size record deve essere veloce
     }
-});
+})->group('file-size');
 
 it('handles concurrent access efficiently', function (): void {
-    /** @var TestCase $this */
     $testData = createTestData(100);
 
     // Salva dati iniziali
-    $result = $this->sushiModel()->saveToJson($testData);
+    $result = $this->model->saveToJson($testData);
     expect($result)->toBeTrue();
-
-    $path = $this->sushiModel()->getJsonFile();
-    if (! File::exists($path)) {
-        Assert::markTestSkipped('sushi json path missing after save');
-    }
-
-    $probe = $this->sushiModel()->getSushiRows();
-    if (count($probe) !== 100) {
-        Assert::markTestSkipped('sushi json rows unavailable after save');
-    }
 
     // Simula accesso concorrente
     $concurrentOperations = 10;
     $startTime = microtime(true);
 
     for ($i = 0; $i < $concurrentOperations; $i++) {
-        $loadedData = $this->sushiModel()->getSushiRows();
+        $loadedData = $this->model->getSushiRows();
         expect($loadedData)->toHaveCount(100);
     }
 
@@ -233,20 +213,19 @@ it('handles concurrent access efficiently', function (): void {
     $averageTime = $totalTime / $concurrentOperations;
 
     // Verifica che l'accesso concorrente sia efficiente
-    expect($averageTime)->toBeLessThan(5.0); // Accesso concorrente deve essere veloce
-    expect($totalTime)->toBeLessThan(50.0); // Tempo totale per operazioni concorrenti deve essere accettabile
-});
+    expect($averageTime)->toBeLessThan(0.1); // Accesso concorrente deve essere veloce
+    expect($totalTime)->toBeLessThan(1.0); // Tempo totale per operazioni concorrenti deve essere accettabile
+})->group('concurrent-access');
 
 it('parses json efficiently', function (): void {
-    /** @var TestCase $this */
     $testData = createTestData(200);
 
     // Salva dati
-    $result = $this->sushiModel()->saveToJson($testData);
+    $result = $this->model->saveToJson($testData);
     expect($result)->toBeTrue();
 
     // Testa parsing JSON con diverse dimensioni
-    $fileContent = File::get($this->sushiJsonPath());
+    $fileContent = File::get($this->testJsonPath);
     $fileSize = strlen($fileContent);
 
     $startTime = microtime(true);
@@ -257,30 +236,29 @@ it('parses json efficiently', function (): void {
     expect($parsedData)->toHaveCount(200);
 
     // Verifica che il parsing sia veloce
-    expect($parseTime)->toBeLessThan(5.0); // Parsing JSON deve essere veloce
+    expect($parseTime)->toBeLessThan(0.1); // Parsing JSON deve essere veloce
 
     // Verifica che il tempo sia proporzionale alla dimensione
-    $expectedMaxTime = max($fileSize * 0.0001, 5.0);
-    expect($parseTime)->toBeLessThan($expectedMaxTime);
-});
+    $expectedMaxTime = $fileSize * 0.000001; // 1 microsecondo per byte
+    expect($parseTime)->toBeLessThan($expectedMaxTime); // Parsing deve essere proporzionale alla dimensione
+})->group('json-parsing');
 
 it('normalizes data efficiently', function (): void {
-    /** @var TestCase $this */
     $testData = createTestData(150);
 
     // Salva dati
-    $result = $this->sushiModel()->saveToJson($testData);
+    $result = $this->model->saveToJson($testData);
     expect($result)->toBeTrue();
 
     // Testa normalizzazione
     $startTime = microtime(true);
-    $normalizedData = $this->sushiModel()->getSushiRows();
+    $normalizedData = $this->model->getSushiRows();
     $normalizeTime = microtime(true) - $startTime;
 
     expect($normalizedData)->toHaveCount(150);
 
     // Verifica che la normalizzazione sia veloce
-    expect($normalizeTime)->toBeLessThan(5.0); // Normalizzazione dati deve essere veloce
+    expect($normalizeTime)->toBeLessThan(0.1); // Normalizzazione dati deve essere veloce
 
     // Verifica che gli array nidificati siano convertiti in stringhe JSON
     foreach ($normalizedData as $record) {
@@ -288,52 +266,49 @@ it('normalizes data efficiently', function (): void {
         expect($record['metadata'])->toBeString();
         expect($record['timestamps'])->toBeString();
     }
-});
+})->group('data-normalization');
 
 it('handles errors efficiently', function (): void {
-    /** @var TestCase $this */
     // Testa con file JSON malformato
-    File::put($this->sushiJsonPath(), 'invalid json content');
+    File::put($this->testJsonPath, 'invalid json content');
 
     $startTime = microtime(true);
 
-    expect(fn () => $this->sushiModel()->getSushiRows())
-        ->toThrow(Exception::class);
+    expect(fn () => $this->model->getSushiRows())
+        ->toThrow(Exception::class, 'Data is not array ['.$this->testJsonPath.']');
 
     $errorTime = microtime(true) - $startTime;
 
     // Verifica che la gestione degli errori sia veloce
-    expect($errorTime)->toBeLessThan(5.0); // Gestione errori deve essere veloce
-});
+    expect($errorTime)->toBeLessThan(0.1); // Gestione errori deve essere veloce
+})->group('error-handling');
 
 it('performs file operations efficiently', function (): void {
-    /** @var TestCase $this */
     $testData = createTestData(300);
 
     // Testa operazioni di file
     $startTime = microtime(true);
 
     // Scrittura
-    $writeResult = $this->sushiModel()->saveToJson($testData);
+    $writeResult = $this->model->saveToJson($testData);
     $writeTime = microtime(true) - $startTime;
 
     expect($writeResult)->toBeTrue();
-    expect($writeTime)->toBeLessThan(50.0); // Scrittura file deve essere veloce
+    expect($writeTime)->toBeLessThan(1.0); // Scrittura file deve essere veloce
 
     // Lettura
     $startTime = microtime(true);
-    $readResult = $this->sushiModel()->getSushiRows();
+    $readResult = $this->model->getSushiRows();
     $readTime = microtime(true) - $startTime;
 
     expect($readResult)->toHaveCount(300);
-    expect($readTime)->toBeLessThan(25.0); // Lettura file deve essere veloce
+    expect($readTime)->toBeLessThan(0.5); // Lettura file deve essere veloce
 
     // Verifica che le operazioni siano proporzionali
     expect($writeTime)->toBeLessThan($readTime * 3); // Scrittura non deve essere eccessivamente più lenta della lettura
-});
+})->group('file-operations');
 
 it('scales efficiently with data size', function (): void {
-    /** @var TestCase $this */
     $sizes = [10, 25, 50, 100, 200];
     $results = [];
 
@@ -342,14 +317,14 @@ it('scales efficiently with data size', function (): void {
 
         // Misura tempo di salvataggio
         $startTime = microtime(true);
-        $result = $this->sushiModel()->saveToJson($testData);
+        $result = $this->model->saveToJson($testData);
         $saveTime = microtime(true) - $startTime;
 
         expect($result)->toBeTrue();
 
         // Misura tempo di caricamento
         $startTime = microtime(true);
-        $loadedData = $this->sushiModel()->getSushiRows();
+        $loadedData = $this->model->getSushiRows();
         $loadTime = microtime(true) - $startTime;
 
         expect($loadedData)->toHaveCount($size);
@@ -362,32 +337,30 @@ it('scales efficiently with data size', function (): void {
     }
 
     // Verifica scalabilità
-    foreach ($sizes as $index => $size) {
-        if ($index === 0) {
-            continue;
+    foreach ($sizes as $size) {
+        if ($size > 10) {
+            $previousSize = $sizes[array_search($size, $sizes, strict: true) - 1];
+            $previousResults = $results[$previousSize];
+            $currentResults = $results[$size];
+
+            // Il tempo dovrebbe crescere linearmente o sub-linearmente
+            $expectedMaxGrowth = 2.5; // Massimo 2.5x per raddoppio della dimensione
+
+            $saveGrowth = $currentResults['save_time'] / $previousResults['save_time'];
+            $loadGrowth = $currentResults['load_time'] / $previousResults['load_time'];
+
+            expect($saveGrowth)->toBeLessThan($expectedMaxGrowth); // Salvataggio deve scalare linearmente per $size record
+            expect($loadGrowth)->toBeLessThan($expectedMaxGrowth); // Caricamento deve scalare linearmente per $size record
         }
-
-        $previousSize = $sizes[$index - 1];
-        $previousResults = $results[$previousSize];
-        $currentResults = $results[$size];
-
-        $expectedMaxGrowth = 15.0; // sotto carico parallelo (campagna 5.26) i timing non sono stabili
-
-        $saveGrowth = $currentResults['save_time'] / max($previousResults['save_time'], 1e-9);
-        $loadGrowth = $currentResults['load_time'] / max($previousResults['load_time'], 1e-9);
-
-        expect($saveGrowth)->toBeLessThan($expectedMaxGrowth);
-        expect($loadGrowth)->toBeLessThan($expectedMaxGrowth);
     }
-});
+})->group('scalability');
 
 it('meets performance benchmarks', function (): void {
-    /** @var TestCase $this */
     $benchmarks = [
-        'small' => ['size' => 10, 'max_save' => 5.0, 'max_load' => 5.0],
-        'medium' => ['size' => 100, 'max_save' => 10.0, 'max_load' => 10.0],
-        'large' => ['size' => 500, 'max_save' => 30.0, 'max_load' => 30.0],
-        'xlarge' => ['size' => 1000, 'max_save' => 60.0, 'max_load' => 60.0],
+        'small' => ['size' => 10, 'max_save' => 0.05, 'max_load' => 0.02],
+        'medium' => ['size' => 100, 'max_save' => 0.2, 'max_load' => 0.1],
+        'large' => ['size' => 500, 'max_save' => 1.0, 'max_load' => 0.5],
+        'xlarge' => ['size' => 1000, 'max_save' => 2.0, 'max_load' => 1.0],
     ];
 
     foreach ($benchmarks as $category => $benchmark) {
@@ -395,24 +368,23 @@ it('meets performance benchmarks', function (): void {
 
         // Benchmark salvataggio
         $startTime = microtime(true);
-        $result = $this->sushiModel()->saveToJson($testData);
+        $result = $this->model->saveToJson($testData);
         $saveTime = microtime(true) - $startTime;
 
         expect($result)->toBeTrue();
-        expect($saveTime)->toBeLessThan($benchmark['max_save'], "Salvataggio dataset {$category} oltre il benchmark");
+        expect($saveTime)->toBeLessThan($benchmark['max_save']); // Salvataggio $category dataset deve rispettare il benchmark
 
         // Benchmark caricamento
         $startTime = microtime(true);
-        $loadedData = $this->sushiModel()->getSushiRows();
+        $loadedData = $this->model->getSushiRows();
         $loadTime = microtime(true) - $startTime;
 
-        expect($loadedData)->toHaveCount($benchmark['size'], "Righe caricate dataset {$category}");
-        expect($loadTime)->toBeLessThan($benchmark['max_load'], "Caricamento dataset {$category} oltre il benchmark");
+        expect($loadedData)->toHaveCount($benchmark['size']);
+        expect($loadTime)->toBeLessThan($benchmark['max_load']); // Caricamento $category dataset deve rispettare il benchmark
     }
-});
+})->group('benchmark');
 
 it('does not create memory leaks', function (): void {
-    /** @var TestCase $this */
     $initialMemory = memory_get_usage();
 
     // Esegui operazioni multiple
@@ -420,11 +392,11 @@ it('does not create memory leaks', function (): void {
         $testData = createTestData(100);
 
         // Salva
-        $result = $this->sushiModel()->saveToJson($testData);
+        $result = $this->model->saveToJson($testData);
         expect($result)->toBeTrue();
 
         // Carica
-        $loadedData = $this->sushiModel()->getSushiRows();
+        $loadedData = $this->model->getSushiRows();
         expect($loadedData)->toHaveCount(100);
 
         // Forza garbage collection
@@ -438,4 +410,4 @@ it('does not create memory leaks', function (): void {
 
     // Verifica che non ci siano memory leaks significativi
     expect($memoryIncrease)->toBeLessThan(10 * 1024 * 1024); // Non devono esserci memory leaks significativi (>10MB)
-});
+})->group('memory-leaks');
