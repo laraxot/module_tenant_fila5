@@ -44,7 +44,6 @@ use Modules\Xot\Contracts\UserContract;
  * @method static Builder<static>|Tenant newQuery()
  * @method static Builder<static>|Tenant query()
  *
- * @mixin \Eloquent
  */
 class Tenant extends BaseModel
 {
