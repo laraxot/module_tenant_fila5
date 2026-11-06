@@ -36,7 +36,7 @@ use Modules\Xot\Contracts\UserContract;
  * @property string|null $tax_code
  * @property string|null $vat_number
  * @property-read string $url
- * @property-read Collection<int, Model&\Modules\Xot\Contracts\UserContract> $users
+ * @property-read Collection<int, Model&UserContract> $users
  * @property-read int|null $users_count
  *
  * @method static \Modules\Tenant\Database\Factories\TenantFactory factory($count = null, $state = [])

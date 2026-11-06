@@ -23,9 +23,13 @@ it('resolves a module connection cloned from the default on the same Connection 
     unset($connections[$name]);
     Config::set('database.connections', $connections);
 
+<<<<<<< .merge_file_Iu8ojT
     $provider = app()->getProvider(TenantServiceProvider::class);
     Assert::assertInstanceOf(TenantServiceProvider::class, $provider);
     $provider->registerDB();
+=======
+    app(TenantServiceProvider::class)->registerDB();
+>>>>>>> .merge_file_UochG4
 
     Assert::assertSame(DB::connection($default), DB::connection($name));
 });
