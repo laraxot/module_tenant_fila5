@@ -37,3 +37,8 @@ così da **non lasciare mai il registro scritto senza il conferimento, o il cont
 ## Dev agent record
 
 - 2026-11-05 — Claude: `aliasModuleConnectionsToDefault()` registra `DB::extend($modulo, fn () => DB::connection($default))` per i soli moduli senza connessione esplicita. Test in `tests/Feature/ModuleConnectionAliasTest.php` (da eseguire con vendor).
+- 2026-11-05 — swarm PHPStan (moduli piccoli): `ModuleConnectionAliasTest` dava `method.notFound` perche' `app()->getProvider(...)` e' tipizzato
+  `?ServiceProvider` e `registerDB()` e' di `TenantServiceProvider`. Il `?->` era anche un difetto del test: se il provider non fosse registrato la
+  chiamata sarebbe saltata in silenzio. Ora `Assert::assertInstanceOf(TenantServiceProvider::class, $provider)` poi `$provider->registerDB()`:
+  asserzione sull'alias invariata, nessuna Reflection (`registerDB()` e' pubblico; `aliasModuleConnectionsToDefault()` resta privato, esercitato da `registerDB()`).
+  Verifica: PHPStan 0 errori sul file; Pest `ModuleConnectionAliasTest` 2 passed (4 assertions).
