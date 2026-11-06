@@ -19,7 +19,6 @@ use Modules\Tenant\Models\Traits\TenantSettingRelations;
  * @method static Builder<static>|TenantSetting newQuery()
  * @method static Builder<static>|TenantSetting query()
  *
- * @mixin \Eloquent
  */
 class TenantSetting extends BaseModel
 {

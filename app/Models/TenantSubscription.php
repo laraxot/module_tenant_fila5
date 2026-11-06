@@ -27,7 +27,6 @@ use Modules\Tenant\Models\Traits\TenantSubscriptionRelations;
  * @method static Builder<static>|TenantSubscription newQuery()
  * @method static Builder<static>|TenantSubscription query()
  *
- * @mixin \Eloquent
  */
 class TenantSubscription extends BaseModel
 {
