@@ -46,6 +46,17 @@ trait SushiToJson
     }
 
     /**
+     * Schema delle colonne della tabella in-memory (Sushi).
+     * Override tipizzato di Sushi::getSchema() — il vendor non dichiara il tipo di ritorno.
+     *
+     * @return array<string, string>
+     */
+    public function getSchema()
+    {
+        return $this->schema ?? [];
+    }
+
+    /**
      * Metodo richiesto da Sushi per popolare la tabella in-memory.
      * Delegato a getSushiRows() per mantenere separazione semantica.
      *
