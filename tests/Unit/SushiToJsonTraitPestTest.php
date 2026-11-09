@@ -7,8 +7,9 @@ namespace Modules\Tenant\Tests\Unit;
 use Exception;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\TestSushiModel;
-use Modules\Tenant\Services\TenantService;
-use Tests\TestCase;
+use Modules\Tenant\Tests\TestCase;
+
+use function Safe\json_encode;
 
 /**
  * @property TestSushiModel $model
@@ -30,10 +31,8 @@ beforeEach(function () {
         File::makeDirectory($this->testDirectory, 0o755, true, true);
     }
 
-    // Mock TenantService per i test
-    $this->mock(TenantService::class, function ($mock) {
-        $mock->shouldReceive('filePath')->with('database/content/test_sushi.json')->andReturn($this->testJsonPath);
-    });
+    // TestSushiModel in ambiente testing risolve sempre storage_path('tests/sushi-json/test_sushi.json')
+    // (vedi getJsonFile()): nessun mock di TenantService necessario.
 });
 
 afterEach(function () {
@@ -81,7 +80,6 @@ describe('SushiToJson Trait', function () {
 
         $rows = $this->model->loadExistingData();
 
-        expect($rows)->toBeArray();
         expect($rows)->toHaveCount(2);
         expect($rows['1']['name'])->toBe('Test Item 1');
         expect($rows['2']['name'])->toBe('Test Item 2');
@@ -90,7 +88,6 @@ describe('SushiToJson Trait', function () {
     it('returns empty array when file not exists', function () {
         $rows = $this->model->getSushiRows();
 
-        expect($rows)->toBeArray();
         expect($rows)->toBeEmpty();
     })->group('getSushiRows', 'traits', 'sushi-json');
 
@@ -121,7 +118,6 @@ describe('SushiToJson Trait', function () {
 
         $rows = $this->model->getSushiRows();
 
-        expect($rows)->toBeArray();
         expect($rows)->toHaveKey('1');
         expect($rows['1'])->toHaveKey('id');
         expect($rows['1'])->toHaveKey('name');

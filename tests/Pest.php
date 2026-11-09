@@ -44,6 +44,9 @@ pest()->extend(TestCase::class)->in('Feature', 'Unit', 'Integration', 'Performan
  * |
  */
 
+/**
+ * @param  array<string, mixed>  $attributes
+ */
 function createTenant(array $attributes = []): Tenant
 {
     /** @var Tenant $tenant */
@@ -53,6 +56,9 @@ function createTenant(array $attributes = []): Tenant
     return $tenant;
 }
 
+/**
+ * @param  array<string, mixed>  $attributes
+ */
 function makeTenant(array $attributes = []): Tenant
 {
     /** @var Tenant $tenant */

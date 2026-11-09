@@ -2,28 +2,24 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
-use Modules\Tenant\Models\TestSushiModel;
-use Modules\Tenant\Services\TenantService;
+use Modules\Tenant\Tests\Fixtures\TestSushiModelForPath;
+use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function () {
-    // Configura il modello di test
-    $this->model = new TestSushiModel;
+use function Safe\json_decode;
 
-    // Configura percorsi di test
+uses(TestCase::class)->beforeEach(function () {
+    // Configura il modello di test con path JSON esplicito
     $this->testDirectory = storage_path('tests/sushi-json-performance');
     $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 
     // Crea directory di test
     if (! File::exists($this->testDirectory)) {
-        File::makeDirectory($this->testDirectory, 0755, true, true);
+        File::makeDirectory($this->testDirectory, 0o755, true, true);
     }
 
-    // Mock TenantService per i test
-    $this->mock(TenantService::class, function ($mock): void {
-        $mock->shouldReceive('filePath')->with('database/content/test_sushi.json')->andReturn($this->testJsonPath);
-    });
+    $this->model = (new TestSushiModelForPath)->setJsonPath($this->testJsonPath);
 })->afterEach(function () {
     // Cleanup file di test
     if (File::exists($this->testJsonPath)) {
@@ -37,6 +33,8 @@ uses(Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function ()
 
 /**
  * Crea dati di test con dimensioni specifiche.
+ *
+ * @return array<int, array<string, mixed>>
  */
 function createTestData(int $recordCount): array
 {
@@ -232,7 +230,7 @@ it('parses json efficiently', function (): void {
     $parsedData = json_decode($fileContent, true);
     $parseTime = microtime(true) - $startTime;
 
-    expect($parsedData)->toBeArray();
+    Assert::assertIsArray($parsedData);
     expect($parsedData)->toHaveCount(200);
 
     // Verifica che il parsing sia veloce
@@ -262,15 +260,15 @@ it('normalizes data efficiently', function (): void {
 
     // Verifica che gli array nidificati siano convertiti in stringhe JSON
     foreach ($normalizedData as $record) {
-        expect($record['tags'])->toBeString();
-        expect($record['metadata'])->toBeString();
-        expect($record['timestamps'])->toBeString();
+        Assert::assertIsString($record['tags'] ?? null);
+        Assert::assertIsString($record['metadata'] ?? null);
+        Assert::assertIsString($record['timestamps'] ?? null);
     }
 })->group('data-normalization');
 
 it('handles errors efficiently', function (): void {
-    // Testa con file JSON malformato
-    File::put($this->testJsonPath, 'invalid json content');
+    // Testa con file JSON che non contiene un array di record
+    File::put($this->testJsonPath, '"not an array"');
 
     $startTime = microtime(true);
 
@@ -339,7 +337,9 @@ it('scales efficiently with data size', function (): void {
     // Verifica scalabilità
     foreach ($sizes as $size) {
         if ($size > 10) {
-            $previousSize = $sizes[array_search($size, $sizes, strict: true) - 1];
+            $index = array_search($size, $sizes, strict: true);
+            Assert::assertIsInt($index);
+            $previousSize = $sizes[$index - 1];
             $previousResults = $results[$previousSize];
             $currentResults = $results[$size];
 
@@ -363,7 +363,7 @@ it('meets performance benchmarks', function (): void {
         'xlarge' => ['size' => 1000, 'max_save' => 2.0, 'max_load' => 1.0],
     ];
 
-    foreach ($benchmarks as $category => $benchmark) {
+    foreach ($benchmarks as $benchmark) {
         $testData = createTestData($benchmark['size']);
 
         // Benchmark salvataggio

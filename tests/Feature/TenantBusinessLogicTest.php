@@ -2,22 +2,20 @@
 
 declare(strict_types=1);
 
-uses(TestCase::class);
-
-uses(TestCase::class);
-
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TenantDomain;
 use Modules\Tenant\Models\TenantSetting;
 use Modules\Tenant\Models\TenantSubscription;
 use Modules\Tenant\Tests\TestCase;
 use Modules\User\Models\User;
-use Webmozart\Assert\Assert;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
 
 it('can create and manage tenants', function (): void {
     // Arrange
     $user = User::factory()->create();
-    Assert::isInstanceOf($user, User::class);
+    Assert::assertInstanceOf(User::class, $user);
 
     // Act
     $tenant = Tenant::factory()->create([
@@ -25,7 +23,7 @@ it('can create and manage tenants', function (): void {
         'slug' => 'test-studio',
         'is_active' => true,
     ]);
-    Assert::isInstanceOf($tenant, Tenant::class);
+    Assert::assertInstanceOf(Tenant::class, $tenant);
 
     // Assert
     $this->assertDatabaseHas('tenants', [
@@ -42,7 +40,7 @@ it('can create and manage tenants', function (): void {
 it('can manage tenant domains', function (): void {
     // Arrange
     $tenant = Tenant::factory()->create();
-    Assert::isInstanceOf($tenant, Tenant::class);
+    Assert::assertInstanceOf(Tenant::class, $tenant);
 
     // Act
     $domain = TenantDomain::factory()->create([
@@ -51,7 +49,7 @@ it('can manage tenant domains', function (): void {
         'is_primary' => true,
         'status' => 'active',
     ]);
-    Assert::isInstanceOf($domain, TenantDomain::class);
+    Assert::assertInstanceOf(TenantDomain::class, $domain);
 
     // Assert
     $this->assertDatabaseHas('tenant_domains', [
@@ -210,7 +208,7 @@ it('can handle tenant domain verification', function (): void {
 
     // Assert
     $domainFresh = $domain->fresh();
-    Assert::isInstanceOf($domainFresh, TenantDomain::class);
+    Assert::assertInstanceOf(TenantDomain::class, $domainFresh);
     expect($domainFresh->status)->toBe('active');
     expect($domainFresh->verified_at)->not()->toBeNull();
     expect($domainFresh->verification_token)->toBeNull();
@@ -234,16 +232,24 @@ it('can manage tenant storage limits', function (): void {
 
     expect($subscription->max_storage_gb)->toBe(100);
     expect($subscription->current_storage_gb)->toBe(25);
-    expect($subscription->max_storage_gb - $subscription->current_storage_gb)->toBe(75);
+    $maxStorage = $subscription->max_storage_gb;
+    $currentStorage = $subscription->current_storage_gb;
+    Assert::assertNotNull($maxStorage);
+    Assert::assertNotNull($currentStorage);
+    expect($maxStorage - $currentStorage)->toBe(75);
 
     // Act - Update storage usage
     $subscription->update(['current_storage_gb' => 50]);
 
     // Assert
     $subFresh = $subscription->fresh();
-    Assert::isInstanceOf($subFresh, TenantSubscription::class);
+    Assert::assertInstanceOf(TenantSubscription::class, $subFresh);
     expect($subFresh->current_storage_gb)->toBe(50);
-    expect($subFresh->max_storage_gb - $subFresh->current_storage_gb)->toBe(50);
+    $freshMaxStorage = $subFresh->max_storage_gb;
+    $freshCurrentStorage = $subFresh->current_storage_gb;
+    Assert::assertNotNull($freshMaxStorage);
+    Assert::assertNotNull($freshCurrentStorage);
+    expect($freshMaxStorage - $freshCurrentStorage)->toBe(50);
 });
 
 it('can manage tenant user limits', function (): void {
@@ -264,16 +270,24 @@ it('can manage tenant user limits', function (): void {
 
     expect($subscription->max_users)->toBe(50);
     expect($subscription->current_users)->toBe(10);
-    expect($subscription->max_users - $subscription->current_users)->toBe(40);
+    $maxUsers = $subscription->max_users;
+    $currentUsers = $subscription->current_users;
+    Assert::assertNotNull($maxUsers);
+    Assert::assertNotNull($currentUsers);
+    expect($maxUsers - $currentUsers)->toBe(40);
 
     // Act - Add more users
     $subscription->update(['current_users' => 25]);
 
     // Assert
     $subFresh = $subscription->fresh();
-    Assert::isInstanceOf($subFresh, TenantSubscription::class);
+    Assert::assertInstanceOf(TenantSubscription::class, $subFresh);
     expect($subFresh->current_users)->toBe(25);
-    expect($subFresh->max_users - $subFresh->current_users)->toBe(25);
+    $freshMaxUsers = $subFresh->max_users;
+    $freshCurrentUsers = $subFresh->current_users;
+    Assert::assertNotNull($freshMaxUsers);
+    Assert::assertNotNull($freshCurrentUsers);
+    expect($freshMaxUsers - $freshCurrentUsers)->toBe(25);
 });
 
 it('can handle tenant subscription expiration', function (): void {
@@ -291,14 +305,16 @@ it('can handle tenant subscription expiration', function (): void {
         'status' => 'active',
     ]);
 
-    expect($subscription->expires_at->isPast())->toBeTrue();
+    $expiresAt = $subscription->expires_at;
+    Assert::assertNotNull($expiresAt);
+    expect($expiresAt->isPast())->toBeTrue();
 
     // Act - Mark as expired
     $subscription->update(['status' => 'expired']);
 
     // Assert
     $subFresh = $subscription->fresh();
-    Assert::isInstanceOf($subFresh, TenantSubscription::class);
+    Assert::assertInstanceOf(TenantSubscription::class, $subFresh);
     expect($subFresh->status)->toBe('expired');
 });
 
@@ -388,9 +404,10 @@ it('can track tenant activity', function (): void {
 
     // Assert
     $fresh = $tenant->fresh();
-    Assert::isInstanceOf($fresh, Tenant::class);
-    expect($fresh->last_activity_at)->not()->toBeNull();
-    expect($fresh->last_activity_at->isToday())->toBeTrue();
+    Assert::assertInstanceOf(Tenant::class, $fresh);
+    $lastActivityAt = $fresh->last_activity_at;
+    Assert::assertNotNull($lastActivityAt);
+    expect($lastActivityAt->isToday())->toBeTrue();
 });
 
 it('can manage tenant billing cycles', function (): void {
@@ -412,7 +429,9 @@ it('can manage tenant billing cycles', function (): void {
 
     expect($subscription->billing_cycle)->toBe('monthly');
     expect($subscription->billing_amount)->toBe(99.99);
-    expect($subscription->next_billing_date->isFuture())->toBeTrue();
+    $nextBillingDate = $subscription->next_billing_date;
+    Assert::assertNotNull($nextBillingDate);
+    expect($nextBillingDate->isFuture())->toBeTrue();
 
     // Act - Update billing cycle
     $subscription->update([
@@ -423,8 +442,10 @@ it('can manage tenant billing cycles', function (): void {
 
     // Assert
     $subFresh = $subscription->fresh();
-    Assert::isInstanceOf($subFresh, TenantSubscription::class);
+    Assert::assertInstanceOf(TenantSubscription::class, $subFresh);
     expect($subFresh->billing_cycle)->toBe('yearly');
     expect($subFresh->billing_amount)->toBe(999.99);
-    expect($subFresh->next_billing_date?->isFuture())->toBeTrue();
+    $freshNextBillingDate = $subFresh->next_billing_date;
+    Assert::assertNotNull($freshNextBillingDate);
+    expect($freshNextBillingDate->isFuture())->toBeTrue();
 });

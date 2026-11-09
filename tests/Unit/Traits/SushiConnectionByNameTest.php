@@ -33,19 +33,19 @@ beforeEach(function (): void {
     TestSushiModel::flushEventListeners();
     Model::clearBootedModels();
 
-    TestCase::$testDirectory = storage_path('tests/sushi-json');
-    TestCase::$testJsonPath = TestCase::$testDirectory.'/test_sushi.json';
+    $this->testDirectory = storage_path('tests/sushi-json');
+    $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 
-    File::deleteDirectory(TestCase::$testDirectory);
-    File::makeDirectory(TestCase::$testDirectory, 0755, true, true);
+    File::deleteDirectory($this->testDirectory);
+    File::makeDirectory($this->testDirectory, 0755, true, true);
 
     // Mai il file condiviso di storage/framework/cache: se il primo migrate fallisce Sushi lo lascia vuoto
     // ma "aggiornato", e da allora ogni richiesta risponde "no such table".
-    config(['sushi.cache-path' => TestCase::$testDirectory]);
+    config(['sushi.cache-path' => $this->testDirectory]);
 });
 
 afterEach(function (): void {
-    File::deleteDirectory(TestCase::$testDirectory);
+    File::deleteDirectory($this->testDirectory);
 });
 
 it('resolves the connection named after the model to the live sushi connection', function (string $modelClass): void {
@@ -64,7 +64,7 @@ it('resolves the connection named after the model to the live sushi connection',
 ]);
 
 it('validates unique against the rows read from the json file', function (): void {
-    File::put(TestCase::$testJsonPath, json_encode([
+    File::put($this->testJsonPath, json_encode([
         [
             'id' => 1,
             'name' => 'ttt',
@@ -85,7 +85,7 @@ it('validates unique against the rows read from the json file', function (): voi
 });
 
 it('lets a record keep its own value when unique ignores it like filament does', function (): void {
-    File::put(TestCase::$testJsonPath, json_encode([
+    File::put($this->testJsonPath, json_encode([
         [
             'id' => 1,
             'name' => 'ttt',
@@ -101,7 +101,7 @@ it('lets a record keep its own value when unique ignores it like filament does',
 });
 
 it('validates exists against the rows read from the json file', function (): void {
-    File::put(TestCase::$testJsonPath, json_encode([
+    File::put($this->testJsonPath, json_encode([
         [
             'id' => 1,
             'name' => 'ttt',
@@ -118,7 +118,7 @@ it('validates exists against the rows read from the json file', function (): voi
 it('rejects a duplicate right after the first record is created into a missing json file', function (): void {
     TestSushiModel::create(['name' => 'ttt']);
 
-    $rows = json_decode(File::get(TestCase::$testJsonPath), true);
+    $rows = json_decode(File::get($this->testJsonPath), true);
     $duplicate = Validator::make(
         ['name' => 'ttt'],
         ['name' => [Rule::unique(TestSushiModel::class, 'name')]],
@@ -129,11 +129,11 @@ it('rejects a duplicate right after the first record is created into a missing j
 });
 
 it('creates the first record when the json file exists but is empty', function (): void {
-    File::put(TestCase::$testJsonPath, '');
+    File::put($this->testJsonPath, '');
 
     TestSushiModel::create(['name' => 'ttt']);
 
-    $rows = json_decode(File::get(TestCase::$testJsonPath), true);
+    $rows = json_decode(File::get($this->testJsonPath), true);
 
     expect($rows)->toHaveCount(1);
 });

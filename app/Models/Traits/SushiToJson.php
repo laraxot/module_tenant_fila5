@@ -53,7 +53,22 @@ trait SushiToJson
      */
     public function getSchema()
     {
-        return $this->schema ?? [];
+        $schema = $this->schema ?? [];
+        if (! \is_array($schema)) {
+            return [];
+        }
+
+        /** @var array<string, string> $typedSchema */
+        $typedSchema = [];
+        foreach ($schema as $key => $type) {
+            if (! \is_string($key)) {
+                continue;
+            }
+
+            $typedSchema[$key] = \is_string($type) ? $type : 'string';
+        }
+
+        return $typedSchema;
     }
 
     /**
@@ -217,7 +232,7 @@ trait SushiToJson
      *
      * @return int ID successivo disponibile
      */
-    protected function getNextId(): int
+    public function getNextId(): int
     {
         $existingData = $this->loadExistingData();
 
@@ -304,7 +319,8 @@ trait SushiToJson
 
             // Update existing record
             $existingData = $modelWithTrait->loadExistingData();
-            $id = (int) ($modelWithTrait->getAttribute('id') ?? 0);
+            $rawId = $modelWithTrait->getAttribute('id');
+            $id = is_numeric($rawId) ? ((int) $rawId) : 0;
 
             if ($id > 0) {
                 $index = $modelWithTrait->findRowIndexById($existingData, $id);
@@ -321,7 +337,8 @@ trait SushiToJson
         static::deleting(function ($model): void {
             /** @var static $modelWithTrait */
             $modelWithTrait = $model;
-            $id = (int) ($modelWithTrait->getAttribute('id') ?? 0);
+            $rawId = $modelWithTrait->getAttribute('id');
+            $id = is_numeric($rawId) ? ((int) $rawId) : 0;
 
             if ($id > 0) {
                 $existingData = $modelWithTrait->loadExistingData();
@@ -345,7 +362,12 @@ trait SushiToJson
     protected function findRowIndexById(array $rows, int $id): ?int
     {
         foreach ($rows as $index => $row) {
-            if (is_array($row) && ((int) ($row['id'] ?? 0)) === $id) {
+            if (! is_array($row)) {
+                continue;
+            }
+
+            $rawId = $row['id'] ?? null;
+            if (is_numeric($rawId) && ((int) $rawId) === $id) {
                 return (int) $index;
             }
         }
@@ -356,7 +378,7 @@ trait SushiToJson
     /**
      * Ottiene l'ID dell'utente autenticato per i campi di audit.
      */
-    protected function authId(): int|string|null
+    public function authId(): int|string|null
     {
         if (\function_exists('authId')) {
             return authId();

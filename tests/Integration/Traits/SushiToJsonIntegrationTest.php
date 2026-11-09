@@ -4,44 +4,39 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Integration\Traits;
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
-use Modules\Tenant\Services\TenantService;
+use Modules\Tenant\Tests\Fixtures\TestSushiModelForPath;
+use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function () {
+use function Safe\json_decode;
+use function Safe\json_encode;
+
+uses(TestCase::class)->beforeEach(function () {
     // Crea un tenant di test
     $this->tenant = Tenant::factory()->create([
         'name' => 'test-tenant',
         'domain' => 'test.example.com',
     ]);
+    Assert::assertInstanceOf(Tenant::class, $this->tenant);
 
     // Imposta il tenant corrente
-    app('tenant')->setCurrent($this->tenant);
+    $this->setCurrentTenant($this->tenant);
 
     $this->model = new TestSushiModel;
-    $this->testJsonPath = TenantService::filePath('database/content/test_sushi.json');
+    $this->testJsonPath = storage_path('tests/sushi-json/test_sushi.json');
+    $this->testDirectory = dirname($this->testJsonPath);
 
     // Pulisce eventuali file di test esistenti
     if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
     }
-
-    // Rimuove la directory se esiste
-    $directory = dirname($this->testJsonPath);
-    if (File::exists($directory)) {
-        File::deleteDirectory($directory);
-    }
 })->afterEach(function () {
     // Pulisce i file di test
     if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
-    }
-
-    $directory = dirname($this->testJsonPath);
-    if (File::exists($directory)) {
-        File::deleteDirectory($directory);
     }
 });
 
@@ -61,15 +56,17 @@ it('creates json file with tenant isolation', function (): void {
     expect(File::exists($this->testJsonPath))->toBeTrue();
 
     // Verifica che il file sia nella directory del tenant corretto
-    $expectedPath = TenantService::filePath('database/content/test_sushi.json');
+    $expectedPath = storage_path('tests/sushi-json/test_sushi.json');
     expect($this->testJsonPath)->toBe($expectedPath);
 
     // Verifica che il contenuto sia corretto
     $savedContent = File::get($this->testJsonPath);
     $savedData = json_decode($savedContent, true);
+    Assert::assertIsArray($savedData);
 
     expect($savedData)->toBe($testData);
-    expect($savedData['1']['tenant_id'])->toBe($this->tenant->id);
+    $savedRow = $this->jsonRecordAt($savedData, '1');
+    Assert::assertSame($this->tenant->id, $savedRow['tenant_id'] ?? null);
 });
 
 it('loads data with tenant isolation', function (): void {
@@ -88,7 +85,7 @@ it('loads data with tenant isolation', function (): void {
 
     // Crea il file JSON di test
     $directory = dirname($this->testJsonPath);
-    File::makeDirectory($directory, 0755, true, true);
+    File::makeDirectory($directory, 0o755, true, true);
     File::put($this->testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
 
     $rows = $this->model->getSushiRows();
@@ -98,7 +95,7 @@ it('loads data with tenant isolation', function (): void {
 
     // Verifica che tutti gli elementi appartengano al tenant corrente
     foreach ($rows as $row) {
-        expect($row['tenant_id'])->toBe($this->tenant->id);
+        Assert::assertSame($this->tenant->id, $row['tenant_id'] ?? null);
     }
 });
 
@@ -130,21 +127,26 @@ it('handles complex data structures', function (): void {
 
     // Crea il file JSON di test
     $directory = dirname($this->testJsonPath);
-    File::makeDirectory($directory, 0755, true, true);
+    File::makeDirectory($directory, 0o755, true, true);
     File::put($this->testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
 
     $rows = $this->model->getSushiRows();
+    $row = $this->jsonRecordAt($rows, '1');
 
-    expect($rows)->toHaveKey('1');
-    expect($rows['1']['name'])->toBe('Complex Item');
+    Assert::assertSame('Complex Item', $row['name'] ?? null);
 
     // Verifica che gli array nidificati siano stati convertiti in stringhe JSON
-    expect($rows['1']['metadata'])->toBeString();
+    $metadata = $row['metadata'] ?? null;
+    Assert::assertIsString($metadata);
 
-    $decodedMetadata = json_decode($rows['1']['metadata'], true);
-    expect($decodedMetadata)->toBe($testData['1']['metadata']);
-    expect($decodedMetadata['tags'])->toBe(['tag1', 'tag2', 'tag3']);
-    expect($decodedMetadata['nested']['level1']['level2']['level3'])->toBe('deep_value');
+    $decodedMetadata = json_decode($metadata, true);
+    Assert::assertIsArray($decodedMetadata);
+    Assert::assertSame($testData['1']['metadata'], $decodedMetadata);
+    Assert::assertSame(['tag1', 'tag2', 'tag3'], $decodedMetadata['tags']);
+    $nested = $decodedMetadata['nested'];
+    $level1 = $nested['level1'];
+    $level2 = $level1['level2'];
+    Assert::assertSame('deep_value', $level2['level3']);
 });
 
 it('manages file permissions correctly', function (): void {
@@ -163,7 +165,6 @@ it('manages file permissions correctly', function (): void {
 
     // Verifica che il file sia leggibile
     $content = File::get($this->testJsonPath);
-    expect($content)->toBeString();
     expect($content)->not->toBeEmpty();
 });
 
@@ -187,15 +188,14 @@ it('handles concurrent access safely', function (): void {
     expect($result3)->toBeTrue();
 
     // Verifica che tutti i dati siano stati salvati correttamente
-    $finalContent = File::get($this->testJsonPath);
-    $finalData = json_decode($finalContent, true);
+    $finalData = $this->readJsonFileAsArray($this->testJsonPath);
 
     expect($finalData)->toHaveKey('1');
     expect($finalData)->toHaveKey('2');
     expect($finalData)->toHaveKey('3');
-    expect($finalData['1']['name'])->toBe('Concurrent Item 1');
-    expect($finalData['2']['name'])->toBe('Concurrent Item 2');
-    expect($finalData['3']['name'])->toBe('Concurrent Item 3');
+    Assert::assertSame('Concurrent Item 1', $this->jsonRecordAt($finalData, '1')['name'] ?? null);
+    Assert::assertSame('Concurrent Item 2', $this->jsonRecordAt($finalData, '2')['name'] ?? null);
+    Assert::assertSame('Concurrent Item 3', $this->jsonRecordAt($finalData, '3')['name'] ?? null);
 });
 
 it('handles large datasets efficiently', function (): void {
@@ -237,9 +237,9 @@ it('handles large datasets efficiently', function (): void {
     expect($loadTime)->toBeLessThan(2.0); // Dovrebbe essere caricato in meno di 2 secondi
 
     // Verifica alcuni elementi specifici
-    expect($rows[1]['name'])->toBe('Large Item 1');
-    expect($rows[500]['name'])->toBe('Large Item 500');
-    expect($rows[1000]['name'])->toBe('Large Item 1000');
+    Assert::assertSame('Large Item 1', $this->jsonRecordAt($rows, '1')['name'] ?? null);
+    Assert::assertSame('Large Item 500', $this->jsonRecordAt($rows, '500')['name'] ?? null);
+    Assert::assertSame('Large Item 1000', $this->jsonRecordAt($rows, '1000')['name'] ?? null);
 });
 
 it('handles unicode and special characters', function (): void {
@@ -265,16 +265,19 @@ it('handles unicode and special characters', function (): void {
 
     // Carica i dati e verifica che i caratteri speciali siano preservati
     $rows = $this->model->getSushiRows();
+    $row = $this->jsonRecordAt($rows, '1');
 
-    expect($rows)->toHaveKey('1');
-    expect($rows['1']['name'])->toBe('Item con caratteri speciali: à, è, ì, ò, ù');
-    expect($rows['1']['description'])->toBe('Descrizione con emoji 🚀 e simboli €$£¥');
+    Assert::assertSame('Item con caratteri speciali: à, è, ì, ò, ù', $row['name'] ?? null);
+    Assert::assertSame('Descrizione con emoji 🚀 e simboli €$£¥', $row['description'] ?? null);
 
     // Verifica i metadati
-    $metadata = json_decode($rows['1']['metadata'], true);
-    expect($metadata['special_chars'])->toBe('Caratteri: <>&"\'');
-    expect($metadata['unicode'])->toBe('Unicode: 你好世界 🌍');
-    expect($metadata['numbers'])->toBe('1234567890');
+    $metadataValue = $row['metadata'] ?? null;
+    Assert::assertIsString($metadataValue);
+    $metadata = json_decode($metadataValue, true);
+    Assert::assertIsArray($metadata);
+    Assert::assertSame('Caratteri: <>&"\'', $metadata['special_chars'] ?? null);
+    Assert::assertSame('Unicode: 你好世界 🌍', $metadata['unicode'] ?? null);
+    Assert::assertSame('1234567890', $metadata['numbers'] ?? null);
 });
 
 it('handles empty and null values', function (): void {
@@ -306,45 +309,51 @@ it('handles empty and null values', function (): void {
     expect($rows)->toHaveKey('2');
 
     // Verifica il primo elemento
-    expect($rows['1']['name'])->toBe('');
-    expect($rows['1']['description'])->toBeNull();
-    expect($rows['1']['metadata'])->toBe('[]');
+    $row1 = $this->jsonRecordAt($rows, '1');
+    Assert::assertSame('', $row1['name'] ?? null);
+    Assert::assertNull($row1['description'] ?? null);
+    Assert::assertSame('[]', $row1['metadata'] ?? null);
 
     // Verifica il secondo elemento
-    expect($rows['2']['name'])->toBe('Valid Item');
-    expect($rows['2']['description'])->toBe('Valid Description');
-    expect($rows['2']['metadata'])->toBeNull();
-    expect($rows['2']['status'])->toBe('');
+    $row2 = $this->jsonRecordAt($rows, '2');
+    Assert::assertSame('Valid Item', $row2['name'] ?? null);
+    Assert::assertSame('Valid Description', $row2['description'] ?? null);
+    Assert::assertNull($row2['metadata'] ?? null);
+    Assert::assertSame('', $row2['status'] ?? null);
 });
 
 it('works with different tenant configurations', function (): void {
     // Crea un secondo tenant per testare l'isolamento
-    $secondTenant = Tenant::factory()->create([
+    $this->secondTenant = Tenant::factory()->create([
         'name' => 'second-tenant',
         'domain' => 'second.example.com',
     ]);
+    Assert::assertInstanceOf(Tenant::class, $this->secondTenant);
 
     // Imposta il secondo tenant come corrente
-    app('tenant')->setCurrent($secondTenant);
+    $this->setCurrentTenant($this->secondTenantModel());
 
-    $secondModel = new TestSushiModel;
-    $secondJsonPath = TenantService::filePath('database/content/test_sushi.json');
+    // Usiamo modelli con path esplicito per simulare il file JSON di ogni tenant
+    $firstJsonPath = storage_path('tests/sushi-json/tenant-first/test_sushi.json');
+    $secondJsonPath = storage_path('tests/sushi-json/tenant-second/test_sushi.json');
+
+    $secondModel = (new TestSushiModelForPath)->setJsonPath($secondJsonPath);
 
     $testData = [
         '1' => [
             'id' => 1,
             'name' => 'Second Tenant Item',
-            'tenant_id' => $secondTenant->id,
+            'tenant_id' => $this->secondTenantModel()->id,
         ],
     ];
 
     $result = $secondModel->saveToJson($testData);
 
     expect($result)->toBeTrue();
-    expect($secondJsonPath)->not->toBe($this->testJsonPath);
+    expect($secondJsonPath)->not->toBe($firstJsonPath);
 
     // Verifica che i file siano separati
-    expect(File::exists($this->testJsonPath))->toBeFalse(); // Primo tenant
+    expect(File::exists($firstJsonPath))->toBeFalse(); // Primo tenant
     expect(File::exists($secondJsonPath))->toBeTrue(); // Secondo tenant
 
     // Pulisce il secondo tenant
