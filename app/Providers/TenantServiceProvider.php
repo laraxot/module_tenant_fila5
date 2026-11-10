@@ -114,7 +114,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
      * Alias della default solo finche' la config del modulo e' quella della default: una config
      * ridefinita a runtime (es. un test su un file sqlite proprio) apre la sua connessione.
      *
-     * @param  array<string, mixed>  $config
+     * @param  array<mixed>  $config  config che Laravel passa al resolver di `DB::extend()` (callable non tipizzato)
      */
     private static function resolveModuleConnection(array $config, string $connectionName, string $defaultConnection): ConnectionInterface
     {
@@ -131,7 +131,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
      * `name` e' escluso perche' differisce per costruzione (e' il nome della connessione);
      * `==` confronta le chiavi senza badare all'ordine.
      *
-     * @param  array<string, mixed>  $moduleConfig
+     * @param  array<mixed>  $moduleConfig
      */
     private static function hasSameDatabaseConfig(array $moduleConfig, ConnectionInterface $default): bool
     {
