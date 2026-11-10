@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Providers;
 
+use Illuminate\Database\Connection;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -102,8 +103,45 @@ class TenantServiceProvider extends XotBaseServiceProvider
             }
 
             DB::purge($name);
-            DB::extend($name, static fn (): ConnectionInterface => DB::connection($defaultConnection));
+            DB::extend(
+                $name,
+                static fn (array $config, string $connectionName): ConnectionInterface => self::resolveModuleConnection($config, $connectionName, $defaultConnection),
+            );
         }
+    }
+
+    /**
+     * Alias della default solo finche' la config del modulo e' quella della default: una config
+     * ridefinita a runtime (es. un test su un file sqlite proprio) apre la sua connessione.
+     *
+     * @param  array<string, mixed>  $config
+     */
+    private static function resolveModuleConnection(array $config, string $connectionName, string $defaultConnection): ConnectionInterface
+    {
+        $default = DB::connection($defaultConnection);
+
+        if (self::hasSameDatabaseConfig($config, $default)) {
+            return $default;
+        }
+
+        return app('db.factory')->make($config, $connectionName);
+    }
+
+    /**
+     * `name` e' escluso perche' differisce per costruzione (e' il nome della connessione);
+     * `==` confronta le chiavi senza badare all'ordine.
+     *
+     * @param  array<string, mixed>  $moduleConfig
+     */
+    private static function hasSameDatabaseConfig(array $moduleConfig, ConnectionInterface $default): bool
+    {
+        if (! $default instanceof Connection) {
+            return false;
+        }
+
+        $defaultConfig = $default->getConfig();
+
+        return \is_array($defaultConfig) && Arr::except($moduleConfig, ['name']) == Arr::except($defaultConfig, ['name']);
     }
 
     #[Override]
