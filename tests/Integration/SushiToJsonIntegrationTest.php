@@ -32,7 +32,7 @@ function makeTestSushiModelForPath(string $jsonPath): TestSushiModel
 }
 
 /**
- * @param  array<array-key, array<string, mixed>>  $rows
+ * @param  array<array-key, mixed>  $rows
  */
 function rowNameById(array $rows, int $id): string
 {
@@ -83,8 +83,8 @@ test('creates json file with tenant isolation', function (): void {
 
     Assert::assertFileExists($tenant2Path);
 
-    $tenant1Data = TestCase::decodeTenantJsonFile($tenant1Path);
-    $tenant2Data = TestCase::decodeTenantJsonFile($tenant2Path);
+    $tenant1Data = $this->decodeTenantJsonFile($tenant1Path);
+    $tenant2Data = $this->decodeTenantJsonFile($tenant2Path);
 
     Assert::assertSame('Tenant 1 Item', rowNameById($tenant1Data, 1));
     Assert::assertSame('Tenant 2 Item', rowNameById($tenant2Data, 1));

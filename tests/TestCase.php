@@ -5,341 +5,335 @@ declare(strict_types=1);
 namespace Modules\Tenant\Tests;
 
 use Closure;
-use Illuminate\Database\QueryException;
-use Illuminate\Foundation\Application;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\ServiceProvider;
+use Mockery;
 use Mockery\Expectation;
-use Mockery\ExpectationInterface;
 use Mockery\MockInterface;
-use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
-use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Models\BaseModel;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Providers\TenantServiceProvider;
 use Modules\User\Providers\UserServiceProvider;
-use Modules\Xot\Actions\Cast\SafeIntCastAction;
-use Modules\Xot\Tests\XotBaseTestCase;
+use Modules\Xot\Providers\XotServiceProvider;
+use Modules\Xot\Tests\CreatesApplication;
 use PHPUnit\Framework\Assert;
-use Webmozart\Assert\Assert as WebmozartAssert;
+use Throwable;
 
 use function Safe\json_decode;
 use function Safe\putenv;
 
 /**
- * @property TestSushiModel|null $model
- * @property BaseModel|null $baseModel
- * @property string $testJsonPath
- * @property string $testDirectory
- * @property Closure(): array<array-key, array<string, mixed>>|null $createTestData
+ * Base test case for Tenant module.
+ *
+ * Uses MySQL from .env.testing.
+ * All module connections are mapped by TenantServiceProvider.
+ * Migrations must be run ONCE externally: php artisan migrate --env=testing
+ * DatabaseTransactions handles rollback between tests.
  */
-abstract class TestCase extends XotBaseTestCase
+abstract class TestCase extends BaseTestCase
 {
+    use CreatesApplication;
     use DatabaseTransactions;
 
-    /** @var list<string> */
-    protected $connectionsToTransact = ['tenant'];
-
-    public static ?TestSushiModel $sushiModel = null;
-
-    public static ?BaseModel $sushiBaseModel = null;
-
-    public static ?Tenant $tenant = null;
-
-    public static ?Tenant $secondTenant = null;
-
-    public static string $testJsonPath = '';
-
-    public static string $testDirectory = '';
-
-    /** @var Closure(): array<array-key, array<string, mixed>> */
-    public static Closure $createTestData;
+    /**
+     * Tenant corrente impostato dal test.
+     */
+    public Tenant $tenant;
 
     /**
-     * Lo sqlite condiviso non contiene per forza le tabelle del modulo Tenant:
-     * le migration non vengono lanciate dai test. I test DB vanno saltati, non falliti.
+     * Secondo tenant usato dai test di isolamento.
      */
+    public Tenant $secondTenant;
+
     /**
-     * Story 5.26 parallel campaign: lo sqlite condiviso va in SQLITE_BUSY con N pest.
-     * Feature/Integration DB-write → skip; coverage da Unit puri.
-     * Riaprire write-test quando [5.25] schema isolato per processo.
+     * Istanza Sushi condivisa dai test del trait.
      */
-    public static function tenantDbUnavailable(): bool
+    public ?TestSushiModel $sushiModel = null;
+
+    /**
+     * Modello Sushi istanziato nel beforeEach del file di test.
+     */
+    public TestSushiModel $model;
+
+    /**
+     * Istanza anonima di BaseModel usata dai test unitari dei modelli base.
+     */
+    public BaseModel $baseModel;
+
+    /**
+     * Directory di test per i file JSON Sushi.
+     */
+    public string $testDirectory = '';
+
+    /**
+     * Percorso del file JSON di test.
+     */
+    public string $testJsonPath = '';
+
+    /**
+     * Factory closure che produce il dataset Sushi di default.
+     *
+     * @var Closure(): array<int|string, array<string, mixed>>
+     */
+    public Closure $createTestData;
+
+    /**
+     * @param  Application  $app
+     * @return array<int, class-string>
+     */
+    protected function getPackageProviders($app): array
     {
-        return true;
+        return [
+            XotServiceProvider::class,
+            UserServiceProvider::class,
+            TenantServiceProvider::class,
+        ];
     }
 
-    public static function setServerNameForTenantTest(?string $name): void
-    {
-        if ($name === null) {
-            putenv('SERVER_NAME');
-            unset($_SERVER['SERVER_NAME']);
-
-            return;
-        }
-
-        putenv('SERVER_NAME='.$name);
-        $_SERVER['SERVER_NAME'] = $name;
-    }
-
     /**
-     * @param  array<string, mixed>  $attributes
+     * Verifica se la connessione DB `tenant` e' raggiungibile.
      */
-    public static function createTenant(array $attributes = []): Tenant
+    public function tenantDbUnavailable(): bool
     {
         try {
-            /** @var TenantFactory $factory */
-            $factory = Tenant::factory();
-            $tenant = $factory->create($attributes);
-            WebmozartAssert::isInstanceOf($tenant, Tenant::class);
+            DB::connection('tenant')->select('select 1');
 
-            return $tenant;
-        } catch (QueryException $exception) {
-            $message = $exception->getMessage();
-            if (
-                str_contains($message, 'database is locked')
-                || str_contains($message, 'no column named')
-            ) {
-                Assert::markTestSkipped(
-                    'Tenant DB write blocked on shared sqlite: '.$message
-                );
-            }
-
-            throw $exception;
+            return false;
+        } catch (Throwable) {
+            return true;
         }
     }
 
     /**
-     * @return array<int, array<string, mixed>>
+     * Salta il test corrente con una motivazione.
      */
-    public static function decodeTenantJsonFile(string $path): array
+    public function skipCurrentTest(string $reason): void
     {
-        $decoded = json_decode(File::get($path), true);
-        Assert::assertIsArray($decoded);
-
-        /** @var array<int, array<string, mixed>> $decoded */
-        return $decoded;
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $database = self::sharedSqlitePath();
-
-        /** @var array<string, array<string, mixed>> $connections */
-        $connections = config('database.connections', []);
-
-        foreach (array_keys($connections) as $connection) {
-            if (config("database.connections.{$connection}.driver") !== 'sqlite') {
-                continue;
-            }
-
-            $this->app['config']->set("database.connections.{$connection}.database", $database);
-            DB::purge($connection);
-        }
-
-        self::$sushiModel = new TestSushiModel;
-        self::$createTestData = static fn (): array => [];
-    }
-
-    public static function tenantModel(): Tenant
-    {
-        Assert::assertInstanceOf(Tenant::class, self::$tenant);
-
-        return self::$tenant;
-    }
-
-    public static function secondTenantModel(): Tenant
-    {
-        Assert::assertInstanceOf(Tenant::class, self::$secondTenant);
-
-        return self::$secondTenant;
-    }
-
-    public static function tenantId(): string
-    {
-        $id = self::tenantModel()->id;
-        Assert::assertIsString($id);
-
-        return $id;
-    }
-
-    public static function sushiModel(): TestSushiModel
-    {
-        Assert::assertInstanceOf(TestSushiModel::class, self::$sushiModel);
-
-        return self::$sushiModel;
-    }
-
-    public static function sushiJsonPath(): string
-    {
-        if (self::$testJsonPath !== '') {
-            return self::$testJsonPath;
-        }
-
-        return app(GetTenantFilePathAction::class)->execute('database/content/test_sushi.json');
-    }
-
-    public static function sushiTestDirectory(): string
-    {
-        if (self::$testDirectory !== '') {
-            return self::$testDirectory;
-        }
-
-        return dirname(self::sushiJsonPath());
-    }
-
-    /** @return array<array-key, array<string, mixed>> */
-    public static function sushiTestData(): array
-    {
-        return (self::$createTestData)();
+        $this->markTestSkipped($reason);
     }
 
     /**
-     * @return Expectation Il docblock di Mockery 1.6 dice Expectation, ma a runtime shouldReceive()
-     *                     restituisce CompositeExpectation (stessi metodi, inoltrati da __call):
-     *                     il tipo nativo e' l'interfaccia comune, un instanceof Expectation lanciava sempre.
+     * Alias di markTestSkipped usato dai test del modulo.
      */
-    public static function expectMockery(MockInterface $mock, string $method): ExpectationInterface
+    public function skipTest(string $reason): void
     {
-        return $mock->shouldReceive($method);
+        $this->markTestSkipped($reason);
     }
 
     /**
+     * Imposta il tenant corrente per il test.
+     */
+    public function setCurrentTenant(Tenant $tenant): void
+    {
+        $this->tenant = $tenant;
+
+        if ($this->app->bound('tenant')) {
+            $context = $this->app->make('tenant');
+            if ($context instanceof TenantContextSetter) {
+                $context->setCurrent($tenant);
+            }
+        }
+    }
+
+    /**
+     * Restituisce il tenant corrente impostato dal test.
+     */
+    public function tenantModel(): Tenant
+    {
+        return $this->tenant;
+    }
+
+    /**
+     * Restituisce il secondo tenant impostato dal test.
+     */
+    public function secondTenantModel(): Tenant
+    {
+        return $this->secondTenant;
+    }
+
+    /**
+     * Restituisce il modello Sushi di test, creandolo se necessario.
+     */
+    public function sushiModel(): TestSushiModel
+    {
+        return $this->sushiModel ?? new TestSushiModel;
+    }
+
+    /**
+     * Percorso del file JSON di test corrente.
+     */
+    public function sushiJsonPath(): string
+    {
+        return $this->testJsonPath;
+    }
+
+    /**
+     * Dataset Sushi di default prodotto dalla closure di test.
+     *
+     * @return array<int|string, array<string, mixed>>
+     */
+    public function sushiTestData(): array
+    {
+        /** @var array<int|string, array<string, mixed>> $data */
+        $data = ($this->createTestData)();
+
+        return $data;
+    }
+
+    /**
+     * Trova una riga per il campo `id`.
+     *
      * @param  array<array-key, mixed>  $rows
      * @return array<string, mixed>
      */
-    public static function sushiRowById(array $rows, int|string $key): array
+    public function sushiRowById(array $rows, int $id): array
     {
-        $id = is_int($key) ? $key : (is_numeric($key) ? SafeIntCastAction::cast($key) : 0);
-
         foreach ($rows as $row) {
             if (! is_array($row)) {
                 continue;
             }
 
             $rowId = $row['id'] ?? null;
-            if (is_numeric($rowId) && SafeIntCastAction::cast($rowId) === $id) {
-                /** @var array<string, mixed> $row */
-                return $row;
+            if (is_numeric($rowId) && (int) $rowId === $id) {
+                /** @var array<string, mixed> $typedRow */
+                $typedRow = $row;
+
+                return $typedRow;
             }
         }
 
-        if (is_string($key) && array_key_exists($key, $rows)) {
-            $candidate = $rows[$key];
-            if (is_array($candidate)) {
-                /** @var array<string, mixed> $candidate */
-                return $candidate;
-            }
-        }
-
-        return [];
-    }
-
-    public static function setCurrentTenant(Tenant $tenant): void
-    {
-        $context = app('tenant');
-
-        if (is_object($context) && method_exists($context, 'setCurrent')) {
-            $context->setCurrent($tenant);
-        }
-    }
-
-    /** @return array<array-key, array<string, mixed>> */
-    public static function readJsonFileAsArray(string $path): array
-    {
-        $decoded = json_decode(File::get($path), true);
-        Assert::assertIsArray($decoded);
-
-        /** @var array<array-key, array<string, mixed>> $decoded */
-        return $decoded;
-    }
-
-    public static function baseModelInstance(): BaseModel
-    {
-        Assert::assertInstanceOf(BaseModel::class, self::$sushiBaseModel);
-
-        return self::$sushiBaseModel;
+        throw new \RuntimeException("Sushi row with id {$id} not found.");
     }
 
     /**
-     * @param  array<array-key, mixed>  $rows
+     * Estrae il record alla chiave data (i lookup numerici sono normalizzati da PHP).
+     *
+     * @param  array<array-key, mixed>  $data
      * @return array<string, mixed>
      */
-    public static function jsonRecordAt(array $rows, int|string $key): array
+    public function jsonRecordAt(array $data, int|string $key): array
     {
-        return self::sushiRowById($rows, $key);
+        $record = $data[$key] ?? null;
+        Assert::assertIsArray($record);
+
+        /** @var array<string, mixed> $typedRecord */
+        $typedRecord = $record;
+
+        return $typedRecord;
     }
 
     /**
-     * @return array<string, mixed>
+     * Legge un file JSON e lo restituisce come array.
+     *
+     * @return array<array-key, mixed>
      */
-    public static function decodeJsonString(string $json): array
+    public function readJsonFileAsArray(string $path): array
+    {
+        return $this->decodeJsonString(File::get($path));
+    }
+
+    /**
+     * Decodifica una stringa JSON in array.
+     *
+     * @return array<array-key, mixed>
+     */
+    public function decodeJsonString(string $json): array
     {
         $decoded = json_decode($json, true);
         Assert::assertIsArray($decoded);
 
-        /** @var array<string, mixed> $decoded */
         return $decoded;
     }
 
     /**
-     * @param  array<string, mixed>  $data
+     * Legge un file JSON tenant e lo restituisce come array.
+     *
+     * @return array<array-key, mixed>
      */
-    public function assertDatabaseHasRow(string $table, array $data, ?string $connection = null): void
+    public function decodeTenantJsonFile(string $path): array
     {
-        $this->assertDatabaseHas($table, $data, $connection ?? 'tenant');
+        return $this->decodeJsonString(File::get($path));
     }
 
     /**
-     * @template T of object
-     *
-     * @param  class-string<T>  $abstract
-     * @param  (Closure(MockInterface&T): void)|null  $callback
-     * @return MockInterface&T
+     * Imposta `$_SERVER['SERVER_NAME']` per simulare il dominio tenant.
      */
-    public static function mockAppService(string $abstract, ?Closure $callback = null): MockInterface
+    public function setServerNameForTenantTest(?string $serverName): void
     {
-        /** @var MockInterface&T $mock */
-        $mock = \Mockery::mock($abstract);
+        if ($serverName === null) {
+            unset($_SERVER['SERVER_NAME']);
+            putenv('SERVER_NAME');
 
-        if ($callback !== null) {
-            $callback($mock);
+            return;
         }
 
-        app()->instance($abstract, $mock);
+        $_SERVER['SERVER_NAME'] = $serverName;
+        putenv('SERVER_NAME='.$serverName);
+    }
+
+    /**
+     * Esegue un comando Artisan e ne restituisce il codice di uscita.
+     */
+    public function runArtisanCommand(string $command): int
+    {
+        return Artisan::call($command);
+    }
+
+    /**
+     * Mocka un servizio/action nel container e applica la configurazione Mockery.
+     *
+     * @param  class-string  $class
+     * @param  Closure(MockInterface): void  $configure
+     */
+    public function mockAppService(string $class, Closure $configure): MockInterface
+    {
+        $mock = Mockery::mock($class);
+        $configure($mock);
+        $this->app->instance($class, $mock);
 
         return $mock;
     }
 
-    public static function skipCurrentTest(string $message = ''): never
+    /**
+     * Alias di {@see mockAppService()} usato dai test del modulo.
+     *
+     * @param  class-string  $class
+     * @param  Closure(MockInterface): void  $configure
+     */
+    public function mockService(string $class, Closure $configure): MockInterface
     {
-        Assert::markTestSkipped($message);
+        return $this->mockAppService($class, $configure);
     }
 
     /**
-     * @param  array<string, mixed>  $parameters
+     * Crea un'istanza di Tenant tramite factory.
+     *
+     * @param  array<string, mixed>  $attributes
      */
-    public static function runArtisanCommand(string $command, array $parameters = []): int
+    public function createTenant(array $attributes = []): Tenant
     {
-        /** @var int $exitCode */
-        $exitCode = Artisan::call($command, $parameters);
+        /** @var Tenant $tenant */
+        $tenant = Tenant::factory()->create($attributes);
+        Assert::assertInstanceOf(Tenant::class, $tenant);
 
-        return $exitCode;
+        return $tenant;
     }
 
-    /** @return array<int, class-string<ServiceProvider>> */
-    protected function getPackageProviders(Application $app): array
+    /**
+     * Registra un'aspettativa Mockery su un mock esistente.
+     *
+     * Statico: usabile anche dentro closure `static function` dei mock.
+     */
+    public static function expectMockery(MockInterface $mock, string $method): Expectation
     {
-        return [
-            ...parent::getPackageProviders($app),
-            UserServiceProvider::class,
-            TenantServiceProvider::class,
-        ];
+        $expectation = $mock->shouldReceive($method);
+        Assert::assertInstanceOf(Expectation::class, $expectation);
+
+        return $expectation;
     }
 }

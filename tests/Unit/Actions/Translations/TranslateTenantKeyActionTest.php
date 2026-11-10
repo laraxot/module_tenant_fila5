@@ -17,7 +17,7 @@ beforeEach(function (): void {
     $directory = storage_path('tests/tenant-lang/en');
     File::deleteDirectory(dirname($directory));
     File::makeDirectory($directory, 0755, true, true);
-    TestCase::$testDirectory = dirname($directory);
+    $this->testDirectory = dirname($directory);
 
     File::put(
         $directory.'/messages.php',
@@ -44,7 +44,7 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
-    File::deleteDirectory(TestCase::$testDirectory);
+    File::deleteDirectory($this->testDirectory);
     Mockery::close();
 });
 

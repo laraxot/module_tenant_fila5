@@ -21,7 +21,7 @@ beforeEach(function (): void {
     File::deleteDirectory($directory);
     File::makeDirectory($directory, 0755, true, true);
 
-    TestCase::$testDirectory = $directory;
+    $this->testDirectory = $directory;
     File::put($directory.'/1.json', json_encode(['id' => 1, 'name' => 'From JSON 1', 'meta' => 'file-1']));
     File::put($directory.'/2.json', json_encode(['id' => 2, 'name' => 'From JSON 2', 'meta' => 'file-2']));
 
@@ -47,7 +47,7 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
-    File::deleteDirectory(TestCase::$testDirectory);
+    File::deleteDirectory($this->testDirectory);
     Mockery::close();
 });
 
@@ -73,8 +73,8 @@ it('finds row by id across json files', function (): void {
 });
 
 it('returns empty rows when json directory has no files', function (): void {
-    File::deleteDirectory(TestCase::$testDirectory);
-    File::makeDirectory(TestCase::$testDirectory, 0755, true, true);
+    File::deleteDirectory($this->testDirectory);
+    File::makeDirectory($this->testDirectory, 0755, true, true);
 
     $rows = (new SushiToJsonsCoverageModel)->getSushiRows();
 
@@ -85,7 +85,7 @@ it('returns empty rows when json directory has no files', function (): void {
 // controllo e File::allFiles() lanciava DirectoryNotFoundException al primo uso del modello (Cms Menu e
 // Page in locale): story sushi-to-jsons-single-source-cleanup.
 it('returns empty rows when json directory does not exist', function (): void {
-    File::deleteDirectory(TestCase::$testDirectory);
+    File::deleteDirectory($this->testDirectory);
 
     $rows = (new SushiToJsonsCoverageModel)->getSushiRows();
 

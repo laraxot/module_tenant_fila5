@@ -12,14 +12,14 @@ uses(TestCase::class);
 
 describe('Multi-tenant scope', function (): void {
     beforeEach(function (): void {
-        if (TestCase::tenantDbUnavailable()) {
-            TestCase::skipCurrentTest('Tenant DB write blocked on shared sqlite');
+        if ($this->tenantDbUnavailable()) {
+            $this->skipCurrentTest('Tenant DB write blocked on shared sqlite');
         }
     });
 
     it('scopes queries to tenant id', function (): void {
-        $tenant1 = TestCase::createTenant(['name' => 'scope-tenant-1']);
-        $tenant2 = TestCase::createTenant(['name' => 'scope-tenant-2']);
+        $tenant1 = $this->createTenant(['name' => 'scope-tenant-1']);
+        $tenant2 = $this->createTenant(['name' => 'scope-tenant-2']);
 
         TenantSetting::create(['tenant_id' => $tenant1->id, 'key' => 'setting', 'value' => 'value-1']);
         TenantSetting::create(['tenant_id' => $tenant2->id, 'key' => 'setting', 'value' => 'value-2']);
@@ -39,8 +39,8 @@ describe('Multi-tenant scope', function (): void {
     });
 
     it('keeps rows separable without global scope', function (): void {
-        $tenant1 = TestCase::createTenant(['name' => 'global-1']);
-        $tenant2 = TestCase::createTenant(['name' => 'global-2']);
+        $tenant1 = $this->createTenant(['name' => 'global-1']);
+        $tenant2 = $this->createTenant(['name' => 'global-2']);
 
         TenantSetting::create(['tenant_id' => $tenant1->id, 'key' => 'private', 'value' => 'secret-1']);
         TenantSetting::create(['tenant_id' => $tenant2->id, 'key' => 'private', 'value' => 'secret-2']);
@@ -49,8 +49,8 @@ describe('Multi-tenant scope', function (): void {
     });
 
     it('enforces isolation when filtering by tenant_id', function (): void {
-        $tenant1 = TestCase::createTenant(['name' => 'aware-1']);
-        $tenant2 = TestCase::createTenant(['name' => 'aware-2']);
+        $tenant1 = $this->createTenant(['name' => 'aware-1']);
+        $tenant2 = $this->createTenant(['name' => 'aware-2']);
 
         TenantSetting::create(['tenant_id' => $tenant1->id, 'key' => 'test', 'value' => 'v1']);
         TenantSetting::create(['tenant_id' => $tenant2->id, 'key' => 'test', 'value' => 'v2']);
