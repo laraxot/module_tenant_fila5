@@ -141,12 +141,8 @@ it('handles complex data structures', function (): void {
 
     $decodedMetadata = json_decode($metadata, true);
     Assert::assertIsArray($decodedMetadata);
+    // Il confronto strict sull'intero array copre anche `tags` e `nested.level1.level2.level3`.
     Assert::assertSame($testData['1']['metadata'], $decodedMetadata);
-    Assert::assertSame(['tag1', 'tag2', 'tag3'], $decodedMetadata['tags']);
-    $nested = $decodedMetadata['nested'];
-    $level1 = $nested['level1'];
-    $level2 = $level1['level2'];
-    Assert::assertSame('deep_value', $level2['level3']);
 });
 
 it('manages file permissions correctly', function (): void {
