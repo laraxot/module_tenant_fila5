@@ -9,11 +9,8 @@ use Illuminate\Support\Facades\File;
 use League\Csv\Exception;
 use Mockery;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
-use Modules\Tenant\Tests\TestCase;
 use Modules\Tenant\Tests\Unit\Fixtures\CatalogSushiCsvModel;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 beforeEach(function (): void {
     $directory = storage_path('tests/sushi-csv');

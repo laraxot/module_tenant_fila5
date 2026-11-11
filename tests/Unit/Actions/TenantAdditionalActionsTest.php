@@ -7,10 +7,7 @@ namespace Modules\Tenant\Tests\Unit\Actions;
 use Modules\Tenant\Actions\Models\ResolveTenantModelInstanceAction;
 use Modules\Tenant\Actions\Modules\GetTenantModulesAction;
 use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
-use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 describe('Tenant Additional Actions Coverage', function (): void {
     test('GetTenantModulesAction is accessible', function (): void {

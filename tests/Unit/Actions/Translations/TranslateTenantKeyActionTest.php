@@ -11,8 +11,6 @@ use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
-
 beforeEach(function (): void {
     $directory = storage_path('tests/tenant-lang/en');
     File::deleteDirectory(dirname($directory));

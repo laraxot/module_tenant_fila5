@@ -8,10 +8,7 @@ use Mockery;
 use Mockery\Expectation;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\Domain;
-use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 afterEach(function (): void {
     Mockery::close();

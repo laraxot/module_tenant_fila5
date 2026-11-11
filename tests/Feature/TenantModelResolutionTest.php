@@ -8,10 +8,7 @@ use Illuminate\Support\Facades\File;
 use Mockery;
 use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
-use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 describe('Tenant model resolution via config files', function (): void {
     afterEach(function (): void {

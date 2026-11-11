@@ -8,13 +8,12 @@ use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Tests\Fixtures\TestSushiModelForPath;
-use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 use function Safe\json_decode;
 use function Safe\json_encode;
 
-uses(TestCase::class)->beforeEach(function () {
+beforeEach(function () {
     // Crea un tenant di test
     $this->tenant = Tenant::factory()->create([
         'name' => 'test-tenant',
