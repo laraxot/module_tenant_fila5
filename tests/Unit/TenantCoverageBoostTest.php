@@ -120,13 +120,13 @@ describe('Tenant coverage boost — Filament and policy surface', function (): v
     test('tenant policies enforce business rules', function (): void {
         /** @var MockInterface&UserContract $superAdmin */
         $superAdmin = Mockery::mock(UserContract::class);
-        TestCase::expectMockery($superAdmin, 'hasRole')->with('super-admin')->andReturn(true);
-        TestCase::expectMockery($superAdmin, 'hasPermissionTo')->andReturn(false);
+        $superAdmin->shouldReceive('hasRole')->with('super-admin')->andReturn(true);
+        $superAdmin->shouldReceive('hasPermissionTo')->andReturn(false);
 
         /** @var MockInterface&UserContract $editor */
         $editor = Mockery::mock(UserContract::class);
-        TestCase::expectMockery($editor, 'hasRole')->with('super-admin')->andReturn(false);
-        TestCase::expectMockery($editor, 'hasPermissionTo')->andReturnUsing(
+        $editor->shouldReceive('hasRole')->with('super-admin')->andReturn(false);
+        $editor->shouldReceive('hasPermissionTo')->andReturnUsing(
             static fn (string $permission): bool => in_array($permission, ['domain.view', 'domain.update'], true),
         );
 
@@ -155,7 +155,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
         File::put($baseDir.'/database/content/catalog/1.json', json_encode(['name' => 'Alpha', 'meta' => ['x' => 1]]));
 
         $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
-            TestCase::expectMockery($mock, 'execute')->andReturnUsing(
+            $mock->shouldReceive('execute')->andReturnUsing(
                 static fn (string $path): string => $baseDir.'/'.ltrim($path, '/'),
             );
         });
@@ -176,7 +176,7 @@ describe('Tenant coverage boost — Sushi file traits', function (): void {
         File::put($baseDir.'/catalog.csv', "id,name\n1,Alpha\n2,Beta\n");
 
         $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($baseDir): void {
-            TestCase::expectMockery($mock, 'execute')->andReturnUsing(
+            $mock->shouldReceive('execute')->andReturnUsing(
                 static fn (string $path): string => $baseDir.'/'.basename($path),
             );
         });

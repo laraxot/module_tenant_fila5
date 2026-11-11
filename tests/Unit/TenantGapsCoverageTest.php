@@ -63,7 +63,7 @@ test('TranslateTenantKeyAction returns resolved string translation', function ()
     File::put($dir.'/lang/it/messages.php', "<?php\nreturn ['ok' => 'Ciao'];\n");
 
     $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($dir): void {
-        TestCase::expectMockery($mock, 'execute')->andReturnUsing(
+        $mock->shouldReceive('execute')->andReturnUsing(
             static fn (string $path): string => $dir.'/'.$path,
         );
     });
@@ -92,7 +92,7 @@ test('SushiToJson private helpers cover early returns and audit nulls', function
     $base = sys_get_temp_dir().'/sushi_json_gap_'.uniqid('', true);
     File::ensureDirectoryExists($base.'/database/content');
     $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($base): void {
-        TestCase::expectMockery($mock, 'execute')->andReturnUsing(
+        $mock->shouldReceive('execute')->andReturnUsing(
             static fn (string $path): string => $base.'/'.ltrim($path, '/'),
         );
     });
@@ -239,7 +239,7 @@ test('Sushi audit fields with named auth model and csv scalar id', function (): 
     File::ensureDirectoryExists($base.'/database/content');
 
     $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($base, $csvPath): void {
-        TestCase::expectMockery($mock, 'execute')->andReturnUsing(static function (string $path) use ($base, $csvPath): string {
+        $mock->shouldReceive('execute')->andReturnUsing(static function (string $path) use ($base, $csvPath): string {
             if (str_ends_with($path, '.csv')) {
                 return $csvPath;
             }
@@ -344,7 +344,7 @@ test('final remaining statement branches', function (): void {
     $this->setServerNameForTenantTest(null);
 
     $this->mockAppService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
-        TestCase::expectMockery($mock, 'execute')->andReturn(99);
+        $mock->shouldReceive('execute')->andReturn(99);
     });
     expect(fn (): string => app(ResolveTenantModelClassAction::class)->execute('widget'))
         ->toThrow(Exception::class);
@@ -379,7 +379,7 @@ test('final remaining statement branches', function (): void {
     File::ensureDirectoryExists($base.'/database/content/sushi_jsons_noschema');
     File::put($base.'/database/content/sushi_jsons_noschema/1.json', json_encode(['name' => 'x'], JSON_THROW_ON_ERROR));
     $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($base): void {
-        TestCase::expectMockery($mock, 'execute')->andReturnUsing(
+        $mock->shouldReceive('execute')->andReturnUsing(
             static fn (string $path): string => $base.'/'.ltrim($path, '/'),
         );
     });

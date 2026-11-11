@@ -19,7 +19,9 @@ beforeEach(function () {
     }
 
     $this->model = (new TestSushiModelForPath)->setJsonPath($this->testJsonPath);
-})->afterEach(function () {
+});
+
+afterEach(function () {
     // Cleanup file di test
     if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);

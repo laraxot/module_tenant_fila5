@@ -26,7 +26,7 @@ beforeEach(function (): void {
     $contentRoot = $directory;
     $mock = Mockery::mock(GetTenantFilePathAction::class);
     // allows(['execute' => $closure]) restituirebbe la closure; andReturnUsing la esegue.
-    TestCase::expectMockery($mock, 'execute')->andReturnUsing(
+    $mock->shouldReceive('execute')->andReturnUsing(
         static function (string $filename) use ($contentRoot): string {
             if (str_starts_with($filename, 'database/content/sushi_jsons_coverage')) {
                 return $contentRoot;

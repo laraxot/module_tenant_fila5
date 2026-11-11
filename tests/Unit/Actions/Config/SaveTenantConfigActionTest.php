@@ -27,7 +27,7 @@ it('saves tenant config by merging with existing data', function (): void {
         ->andReturn(['connections' => ['mysql' => ['host' => 'localhost']]]);
 
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
-        TestCase::expectMockery($mock, 'execute')
+        $mock->shouldReceive('execute')
             ->once()
             ->withArgs(static function (array $data, string $filename): bool {
                 Assert::assertSame('/path/to/tenant/database.php', $filename);
@@ -60,7 +60,7 @@ it('saves tenant config when file does not exist', function (): void {
         ->andReturn(false);
 
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
-        TestCase::expectMockery($mock, 'execute')
+        $mock->shouldReceive('execute')
             ->once()
             ->withArgs(static function (array $data, string $filename): bool {
                 Assert::assertSame('/path/to/tenant/app.php', $filename);
@@ -91,7 +91,7 @@ it('replaces lists instead of merging them by index', function (): void {
         ]);
 
     $this->mockService(SaveArrayAction::class, static function (MockInterface $mock): void {
-        TestCase::expectMockery($mock, 'execute')
+        $mock->shouldReceive('execute')
             ->once()
             ->withArgs(static function (array $data, string $filename): bool {
                 Assert::assertSame('/path/to/tenant/progressioni.php', $filename);

@@ -32,7 +32,9 @@ beforeEach(function () {
     if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
     }
-})->afterEach(function () {
+});
+
+afterEach(function () {
     // Pulisce i file di test
     if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);
