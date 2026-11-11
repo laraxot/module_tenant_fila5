@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Mockery;
-use Mockery\ExpectationInterface;
+use Mockery\Expectation;
 use Mockery\MockInterface;
 use Modules\Tenant\Models\BaseModel;
 use Modules\Tenant\Models\Tenant;
@@ -329,11 +329,11 @@ abstract class TestCase extends BaseTestCase
      *
      * Statico: usabile anche dentro closure `static function` dei mock.
      */
-    public static function expectMockery(MockInterface $mock, string $method): ExpectationInterface
+    public static function expectMockery(MockInterface $mock, string $method): Expectation
     {
-        // Mockery 1.6 restituisce una CompositeExpectation anche per un solo metodo: si accetta il contratto comune.
+        // shouldReceive() con metodi espliciti restituisce sempre una Expectation concreta.
         $expectation = $mock->shouldReceive($method);
-        Assert::assertInstanceOf(ExpectationInterface::class, $expectation);
+        Assert::assertInstanceOf(Expectation::class, $expectation);
 
         return $expectation;
     }
