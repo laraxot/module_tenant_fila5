@@ -1,5 +1,5 @@
 ---
-title: "Tenant — brainstorming BMAD"
+title: "Tenant: brainstorming BMAD"
 type: brainstorming
 status: active
 module: Tenant
@@ -9,7 +9,7 @@ qmd: "Tenant brainstorming rischi opportunità domande aperte"
 tags: [docs, tenant, bmad]
 ---
 tags: [docs, tenant, bmad]
-# Tenant — brainstorming
+# Tenant: brainstorming
 
 ## Punto di partenza
 

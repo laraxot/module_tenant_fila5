@@ -248,7 +248,7 @@ Il modulo Tenant rappresenta l'**eccellenza architettuale** del progetto Laraxot
 - ✅ **Scalabilità infinita** con complessità costante
 
 > "Tre tabelle, infinite possibilità. La semplicità è la sofisticazione suprema."
-> — Zen del Minimalismo Architetturale
+>: Zen del Minimalismo Architetturale
 
 **Questo modulo è un esempio da seguire per tutti gli altri moduli!** 🙏
 

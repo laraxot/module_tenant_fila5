@@ -1,5 +1,5 @@
 ---
-title: "Filament Blueprint — Tenant"
+title: "Filament Blueprint: Tenant"
 type: filament-blueprint
 status: active
 module: Tenant
@@ -19,7 +19,7 @@ i confini di dominio.
 
 ## Regole non negoziabili
 
-1. Estendere solo `XotBaseResource` / `XotBaseWidget` / basi Xot — mai classi Filament dirette.
+1. Estendere solo `XotBaseResource` / `XotBaseWidget` / basi Xot: mai classi Filament dirette.
 2. Nessun `->label()` hardcoded: chiavi in `lang/<locale>/` del modulo.
 3. Business logic nelle Actions del modulo, non nei form hooks grassi.
 4. FO: widget montati esplicitamente; non abusare `discoverWidgets` per chrome.

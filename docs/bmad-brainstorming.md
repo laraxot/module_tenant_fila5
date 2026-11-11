@@ -1,5 +1,5 @@
 ---
-title: "BMAD Brainstorming — Tenant"
+title: "BMAD Brainstorming: Tenant"
 type: bmad-brainstorming
 status: synthesized
 module: Tenant
@@ -47,7 +47,7 @@ Quale ordine di risoluzione tenant e non negoziabile per evitare data leak cross
 | Eliminate | Duplicazioni di verita (second store, Livewire legacy, Controllers) | H | H |
 | Reverse | Progettare dai failure mode privacy/authz prima delle feature | H | H |
 
-## Reverse brainstorming — come romperlo
+## Reverse brainstorming: come romperlo
 
 - Copiare planning Ticket in questo owner (gia successo: stub da correggere).
 - Mettere business rules nel tema o Controllers.
@@ -64,4 +64,4 @@ Quale ordine di risoluzione tenant e non negoziabile per evitare data leak cross
 
 ## Prossimo step BMAD
 
-Vedi [bmad-planning.md](./bmad-planning.md) — eseguire la Wave 1 e aggiornare il decision-log owner.
+Vedi [bmad-planning.md](./bmad-planning.md): eseguire la Wave 1 e aggiornare il decision-log owner.

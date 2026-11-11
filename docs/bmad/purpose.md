@@ -1,22 +1,22 @@
 ---
-title: "Tenant — scopo del modulo e come raggiungerlo meglio"
+title: "Tenant: scopo del modulo e come raggiungerlo meglio"
 type: concept
 created: 2026-09-02
 tags: [tenant, purpose, multi-tenancy, dominio, configurazione, sushi]
 qmd: "tenant scopo modulo multi tenancy dominio configurazione sushi json tenantservice filepath"
 updated: 2026-09-02
 issues:
-  # DA CREARE — `gh` non autenticato: mai numeri inventati.
+  # DA CREARE: `gh` non autenticato: mai numeri inventati.
   # gh issue create --repo provtv/module_tenant_fila5 --title "<argomento del file>"
   - "https://github.com/provtv/module_tenant_fila5/issues/"
 discussions:
-  # DA CREARE — vedi sopra.
+  # DA CREARE: vedi sopra.
   - "https://github.com/provtv/module_tenant_fila5/discussions/"
 status: superseded
 superseded_by: ../purpose.md
 ---
 
-# Tenant — perche' esiste
+# Tenant: perche' esiste
 
 ## Lo scopo in una frase
 
@@ -25,12 +25,12 @@ i dati dell'altro, e di farlo cambiando configurazione invece che codice.**
 
 ## L'evidenza
 
-- `Domain`, `TenantDomain` — il tenant si riconosce **dall'URL**: e' la strategia meno
+- `Domain`, `TenantDomain`: il tenant si riconosce **dall'URL**: e' la strategia meno
   invasiva e la meno fragile.
-- `TenantSetting` — cio' che varia fra enti e' un dato.
-- `DatabaseConfig` — isolamento che puo' arrivare fino a basi dati separate.
-- `TenantSubscription` — un tenant ha un ciclo di vita.
-- `BaseModelJsons`, `TestSushiModel` — configurazione da file JSON letta come se fosse
+- `TenantSetting`: cio' che varia fra enti e' un dato.
+- `DatabaseConfig`: isolamento che puo' arrivare fino a basi dati separate.
+- `TenantSubscription`: un tenant ha un ciclo di vita.
+- `BaseModelJsons`, `TestSushiModel`: configurazione da file JSON letta come se fosse
   una tabella (Sushi).
 - Solo 52 file PHP: **la potenza sta nella posizione, non nel volume**. E' attraversato
   da ogni richiesta.
@@ -40,7 +40,7 @@ i dati dell'altro, e di farlo cambiando configurazione invece che codice.**
 **`TenantService::filePath()` non e' `base_path()`.**
 
 `base_path()` restituisce la radice dell'applicazione e ignora il tenant. Usarlo dove
-serve un percorso per-tenant fa leggere e scrivere all'ente A i file dell'ente B — e
+serve un percorso per-tenant fa leggere e scrivere all'ente A i file dell'ente B: e
 non produce nessun errore: il file esiste, il codice funziona, i dati sono di un altro.
 
 E' il tipo di errore peggiore che questo progetto conosca: **muto**. La stessa famiglia
@@ -87,7 +87,7 @@ manifesta lontano dal punto in cui e' stato scritto.
 E' il secondo piu' esteso del progetto ed e' una buona base. Il rischio non e' la
 scarsita', e' l'invecchiamento.
 
-## Confini — cosa **non** appartiene a Tenant
+## Confini: cosa **non** appartiene a Tenant
 
 - I **permessi dentro** un ente: User.
 - Le **regole di dominio** che variano fra enti: modulo di dominio, che le legge da
@@ -96,5 +96,5 @@ scarsita', e' l'invecchiamento.
 
 ## Collegamenti
 
-- `docs/wiki/memories/public-path-is-public-html.md` — la stessa famiglia di errori muti
-- `bashscripts/ai/.agents/rules/common/laravel-traits.md` — leggere i trait prima di scrivere
+- `docs/wiki/memories/public-path-is-public-html.md`: la stessa famiglia di errori muti
+- `bashscripts/ai/.agents/rules/common/laravel-traits.md`: leggere i trait prima di scrivere

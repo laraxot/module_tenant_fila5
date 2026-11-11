@@ -14,7 +14,7 @@ uses(TestCase::class);
 
 describe('Tenant domain routing (sushi registry)', function (): void {
     beforeEach(function (): void {
-        TestCase::mockAppService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
+        $this->mockAppService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
             $mock->allows([
                 'execute' => [
                     ['id' => 'tenant.example.com', 'name' => 'tenant.example.com'],

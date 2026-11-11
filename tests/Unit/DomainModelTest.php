@@ -20,7 +20,7 @@ describe('Domain Model', function (): void {
     });
 
     test('_get_rows_method_works_correctly', function (): void {
-        TestCase::mockAppService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
+        $this->mockAppService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {
             $mock->allows([
                 'execute' => [
                     ['id' => 1, 'name' => 'test-domain.com'],

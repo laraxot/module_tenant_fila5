@@ -14,9 +14,9 @@ qmd: "tenant module configuration reference tenant"
 ## Overview
 
 The Tenant module configuration is split across three files:
-1. **config/config.php** — Module meta, navigation, features
-2. **config/database.php** — Database strategy and connection management
-3. **config/metatag.php** — Per-tenant meta tag configuration
+1. **config/config.php**: Module meta, navigation, features
+2. **config/database.php**: Database strategy and connection management
+3. **config/metatag.php**: Per-tenant meta tag configuration
 
 All values can be overridden at runtime via `TenantSetting` model.
 

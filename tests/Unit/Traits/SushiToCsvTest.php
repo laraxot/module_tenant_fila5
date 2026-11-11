@@ -6,6 +6,7 @@ namespace Modules\Tenant\Tests\Unit\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
+use League\Csv\Exception;
 use Mockery;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Tenant\Tests\TestCase;
@@ -19,7 +20,7 @@ beforeEach(function (): void {
     File::deleteDirectory($directory);
     File::makeDirectory($directory, 0755, true, true);
 
-    TestCase::$testDirectory = $directory;
+    $this->testDirectory = $directory;
     $csvPath = $directory.'/catalog.csv';
     File::put(
         $csvPath,
@@ -38,7 +39,7 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
-    File::deleteDirectory(TestCase::$testDirectory);
+    File::deleteDirectory($this->testDirectory);
     Mockery::close();
 });
 
@@ -71,8 +72,8 @@ it('finds row by primary key', function (): void {
 });
 
 it('throws when csv file is missing', function (): void {
-    File::delete(TestCase::$testDirectory.'/catalog.csv');
+    File::delete($this->testDirectory.'/catalog.csv');
 
     expect(fn () => (new CatalogSushiCsvModel)->getSushiRows())
-        ->toThrow(\League\Csv\Exception::class);
+        ->toThrow(Exception::class);
 });

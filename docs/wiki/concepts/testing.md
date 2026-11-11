@@ -25,7 +25,7 @@ status: draft
 
 - `DatabaseTransactions` su `sqlite`, `tenant`, `user`
 - Helper: `tenantModel()`, `secondTenantModel()`, `sushiModel()`, `sushiJsonPath()`, `setCurrentTenant()`
-- **Non** ridefinire `mockService()` — usare quello di `XotBaseTestCase`
+- **Non** ridefinire `mockService()`: usare quello di `XotBaseTestCase`
 - **Non** re-dichiarare `$model` / `$baseModel` con tipi stretti: il parent espone `mixed` (PHPStan covarianza)
 
 ## PHPStan (2026-06-13)
