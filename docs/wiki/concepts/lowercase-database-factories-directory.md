@@ -1,7 +1,7 @@
 ---
 issues: []
 discussions: []
-title: Directory database lowercase — factories
+title: Directory database lowercase: factories
 type: concept
 module: Tenant
 tags: [tenant, database, factories, structure, laravel-modules]
@@ -18,7 +18,7 @@ related:
 status: draft
 ---
 
-# Directory database lowercase — factories
+# Directory database lowercase: factories
 
 Il modulo Tenant usa **solo** cartelle `database/` in minuscolo, allineate a Laravel e `composer.json` PSR-4.
 

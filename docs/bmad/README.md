@@ -1,6 +1,6 @@
 ---
 type: concept
-title: "Tenant — Multi-Tenancy"
+title: "Tenant: Multi-Tenancy"
 description: "Modulo per il multi-tenancy, isolamento dati per tenant"
 module: "Tenant"
 alias: "tenant"
@@ -23,7 +23,7 @@ qmd: "tenant   multi-tenancy tenant"
 type: concept
 tags: [docs, tenant, bmad]
 
-# Tenant — Multi-Tenancy
+# Tenant: Multi-Tenancy
 
 ## Scopo
 
@@ -71,7 +71,7 @@ Le applicazioni SaaS moderne hanno bisogno di multi-tenancy per servire più cli
 
 ---
 
-*Documento generato secondo le convenzioni del progetto — modulo `Tenant` — data 2026-05-27*
+*Documento generato secondo le convenzioni del progetto: modulo `Tenant`: data 2026-05-27*
 
 ---
 

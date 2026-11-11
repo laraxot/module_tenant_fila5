@@ -1,5 +1,5 @@
 ---
-title: "Sostenibilità — responsabilità Tenant"
+title: "Sostenibilità: responsabilità Tenant"
 type: bmad-reference
 status: decision-input
 updated: 2026-10-15

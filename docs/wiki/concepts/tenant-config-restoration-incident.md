@@ -18,7 +18,7 @@ related:
 status: draft
 ---
 
-# Ripristino config tenant — incidente 2026-07-01
+# Ripristino config tenant: incidente 2026-07-01
 
 ## Cosa è successo
 
@@ -36,7 +36,7 @@ Senza questi file il tenant non ha override DB, moduli, metatag, contenuti Orbit
 
 ## Ripristino
 
-Commit `6b83dfdb2` — contenuto identico a pre-delete (`git diff 8a3fdd530^..HEAD` su `laravel/config/` = 0 righe di contenuto).
+Commit `6b83dfdb2`: contenuto identico a pre-delete (`git diff 8a3fdd530^..HEAD` su `laravel/config/` = 0 righe di contenuto).
 
 ## Prevenzione
 

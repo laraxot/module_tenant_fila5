@@ -5,7 +5,7 @@ updated: 2026-09-26
 qmd: "livewire inventory"
 issues: []
 discussions: []
-title: "Inventario Http/Livewire → Filament widget — Tenant"
+title: "Inventario Http/Livewire → Filament widget: Tenant"
 type: inventory
 module: Tenant
 status: approved
@@ -19,7 +19,7 @@ related:
   - ../../Xot/docs/bmad/livewire-widget-project-context.md
 ---
 
-# Inventario: Livewire HTTP → Filament — modulo Tenant
+# Inventario: Livewire HTTP → Filament: modulo Tenant
 
 **Solo documentazione. Nessun PHP toccato in questo audit.**
 
@@ -63,7 +63,7 @@ Il widget di cambio team nel chrome è `Modules\User\Filament\Widgets\Team\TeamC
 
 | Classe | Alias/hook | Gemello widget | Cluster | Nota |
 |---|---|---|---|---|
-| — | — | — | — | Nessuna classe `Http\Livewire` nel modulo: niente da classificare |
+|: |: |: |: | Nessuna classe `Http\Livewire` nel modulo: niente da classificare |
 
 **Cluster A: zero candidati.** **Cluster B: zero candidati.** **Cluster C: zero componenti.**
 

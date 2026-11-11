@@ -1,5 +1,5 @@
 ---
-title: "no app/Support — Tenant QueueableAction"
+title: "no app/Support: Tenant QueueableAction"
 type: concept
 tags: [tenant, actions, queueable-action, support, config, migration]
 created: 2026-07-12
@@ -16,7 +16,7 @@ related:
 status: draft
 ---
 
-# Tenant — `app/Services/` senza PHP attivo
+# Tenant: `app/Services/` senza PHP attivo
 
 | Legacy | Action |
 |--------|--------|
@@ -25,7 +25,7 @@ status: draft
 
 ## TenantService → Action dirette (2026-07)
 
-`TenantService` (facade statica) **eliminata**. I caller usano `app(SomeAction::class)->execute(...)` — **non** `handle()`.
+`TenantService` (facade statica) **eliminata**. I caller usano `app(SomeAction::class)->execute(...)`: **non** `handle()`.
 
 | Ex `TenantService::` | Action |
 |----------------------|--------|
