@@ -8,10 +8,7 @@ use Mockery\MockInterface;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Models\TenantDomain;
-use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 describe('Domain sushi models', function (): void {
     test('domain model exposes rows from GetDomainsArrayAction', function (): void {

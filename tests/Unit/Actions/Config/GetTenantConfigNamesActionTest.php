@@ -6,11 +6,8 @@ namespace Modules\Tenant\Tests\Unit\Actions\Config;
 
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
-use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 use Symfony\Component\Finder\SplFileInfo;
-
-uses(TestCase::class);
 
 it('gets tenant config names', function (): void {
     $file1 = mock(SplFileInfo::class);
