@@ -32,8 +32,6 @@ use ReflectionMethod;
 
 use function Safe\putenv;
 
-uses(TestCase::class);
-
 // expectMockery() is declared once in TenantCoverageBoostTest.php (same namespace)
 // and reused here across the Pest test run.
 

@@ -33,8 +33,6 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
-uses(TestCase::class);
-
 afterEach(function (): void {
     Mockery::close();
 });

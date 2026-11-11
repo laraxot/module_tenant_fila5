@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Tests\Fixtures\TestSushiModelForPath;
-use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 use function Safe\json_decode;
 
-uses(TestCase::class)->beforeEach(function () {
+beforeEach(function () {
     // Configura il modello di test con path JSON esplicito
     $this->testDirectory = storage_path('tests/sushi-json-performance');
     $this->testJsonPath = $this->testDirectory.'/test_sushi.json';

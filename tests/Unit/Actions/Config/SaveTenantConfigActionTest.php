@@ -12,8 +12,6 @@ use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Arr\SaveArrayAction;
 use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
-
 it('saves tenant config by merging with existing data', function (): void {
     /** @var TestCase $this */
     $this->mockService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {

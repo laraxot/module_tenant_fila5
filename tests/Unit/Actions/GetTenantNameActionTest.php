@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace Modules\Tenant\Tests\Unit\Actions;
 
 use Modules\Tenant\Actions\GetTenantNameAction;
+<<<<<<< .merge_file_K0R4oT
 use Modules\Tenant\Tests\TestCase;
 
 uses(TestCase::class);
+=======
+>>>>>>> .merge_file_G7ZRCP
 
 test('get tenant name action returns correct tenant name from server name', function () {
     $_SERVER['SERVER_NAME'] = 'myapp.example.com';

@@ -4,12 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests\Unit;
 
-use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Process\Process;
-
-uses(TestCase::class);
 
 /*
  * `laravel/config/local/<tenant>/` e' versionata apposta: e' la config per tenant che
