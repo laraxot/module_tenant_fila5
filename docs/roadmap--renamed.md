@@ -7,8 +7,6 @@ updated: 2026-09-26
 qmd: "roadmap renamed"
 issues: []
 discussions: []
-status: superseded
-superseded_by: roadmap-renamed.md
 ---
 
 # 🎯 TENANT MODULE - ROADMAP 2025
