@@ -27,6 +27,9 @@ class GetTenantFilePathAction
         // Durante i test ogni Model::create() scriverebbe un file li' dentro e lo finirebbe in git: si usa
         // una copia usa-e-getta sotto storage. Le altre config del tenant (database.php, xra.php...) restano reali.
         if (app()->runningUnitTests() && str_starts_with($normalizedFilename, 'database/content/')) {
+<<<<<<< .merge_file_YpZ9P0
+            $path = storage_path('framework/testing/tenant-content/'.$tenantName.'/'.$filename);
+=======
             $sourcePath = $path;
             self::prepareTestingContent($tenantName);
             $path = storage_path('framework/testing/tenant-content/'.$tenantName.'/'.$filename);
@@ -39,6 +42,7 @@ class GetTenantFilePathAction
                 File::ensureDirectoryExists(dirname($path));
                 File::copy($sourcePath, $path);
             }
+>>>>>>> .merge_file_svPVd4
         }
 
         return str_replace(['/', '\\'], [\DIRECTORY_SEPARATOR, \DIRECTORY_SEPARATOR], $path);
