@@ -24,7 +24,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property string $domain
  * @property string $database
  * @property string $slug
- * @property array|null $settings
+ * @property array<string, mixed>|null $settings
  * @property bool $is_active
  * @property string|null $logo
  * @property \Carbon\Carbon|null $last_activity_at
@@ -36,10 +36,12 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Tenant newModelQuery()
  * @method static Builder<static>|Tenant newQuery()
  * @method static Builder<static>|Tenant query()
+<<<<<<< .merge_file_H04Wti
+=======
  * @method static Tenant|null first()
  * @method static Collection<int, Tenant> get()
- * @method static Tenant create(array $attributes = [])
- * @method static Tenant firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Tenant create(array<string, mixed> $attributes = [])
+ * @method static Tenant firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|Tenant where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|Tenant whereNotNull((string|Expression) $columns)
  * @method static int count(string $columns = '*')
@@ -64,6 +66,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Tenant whereSettings($value)
  *
  * @mixin \Eloquent
+>>>>>>> .merge_file_Eh2jmz
  */
 class Tenant extends BaseModel
 {
@@ -94,10 +97,15 @@ class Tenant extends BaseModel
 
     /**
      * Relazione con gli utenti associati al tenant.
+     *
+     * @return HasMany<User, $this>
      */
     public function users(): HasMany
     {
-        return $this->hasMany(User::class);
+        /** @var HasMany<User, $this> $relation */
+        $relation = $this->hasMany(User::class);
+
+        return $relation;
     }
 
     // Commented out - Patient and Dental modules not available

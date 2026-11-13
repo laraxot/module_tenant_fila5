@@ -7,7 +7,7 @@ namespace Modules\Tenant\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
-use Modules\Tenant\Database\Factories\DomainFactory;
+use Modules\Tenant\Database\Factories\TenantDomainFactory;
 use Modules\Xot\Contracts\ProfileContract;
 use Sushi\Sushi;
 
@@ -21,6 +21,13 @@ use Sushi\Sushi;
  * @property string|null $verification_token
  * @property Carbon|null $verified_at
  *
+<<<<<<< .merge_file_mvDzk3
+ * @method static Builder<static>|TenantDomain newModelQuery()
+ * @method static Builder<static>|TenantDomain newQuery()
+ * @method static Builder<static>|TenantDomain query()
+ * @method static Builder<static>|TenantDomain whereId($value)
+ * @method static Builder<static>|TenantDomain whereName($value)
+=======
  * @method static Builder|TenantDomain newModelQuery()
  * @method static Builder|TenantDomain newQuery()
  * @method static Builder|TenantDomain query()
@@ -36,9 +43,10 @@ use Sushi\Sushi;
  * @property ProfileContract|null $updater
  * @property ProfileContract|null $deleter
  *
- * @method static DomainFactory factory($count = null, $state = [])
+ * @method static TenantDomainFactory factory($count = null, $state = [])
  *
  * @mixin \Eloquent
+>>>>>>> .merge_file_PpJ6XD
  */
 class TenantDomain extends BaseModel
 {
@@ -56,6 +64,8 @@ class TenantDomain extends BaseModel
 
     /**
      * Model Rows.
+     *
+     * @return array<int, array<string, mixed>>
      */
     public function getRows(): array
     {
