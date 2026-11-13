@@ -21,6 +21,8 @@ use Sushi\Sushi;
  * @property string|null $verification_token
  * @property Carbon|null $verified_at
  *
+<<<<<<< .merge_file_3fWstK
+=======
 <<<<<<< .merge_file_mvDzk3
  * @method static Builder<static>|TenantDomain newModelQuery()
  * @method static Builder<static>|TenantDomain newQuery()
@@ -28,6 +30,7 @@ use Sushi\Sushi;
  * @method static Builder<static>|TenantDomain whereId($value)
  * @method static Builder<static>|TenantDomain whereName($value)
 =======
+>>>>>>> .merge_file_Du3tZa
  * @method static Builder|TenantDomain newModelQuery()
  * @method static Builder|TenantDomain newQuery()
  * @method static Builder|TenantDomain query()

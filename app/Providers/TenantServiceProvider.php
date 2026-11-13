@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Providers;
 
+<<<<<<< .merge_file_b6m4wY
+use Illuminate\Database\Connection;
+=======
 <<<<<<< .merge_file_R09Zio
 =======
 use Illuminate\Database\Connection;
 >>>>>>> .merge_file_ENee1N
+>>>>>>> .merge_file_m0F4O4
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -106,14 +110,20 @@ class TenantServiceProvider extends XotBaseServiceProvider
             }
 
             DB::purge($name);
+<<<<<<< .merge_file_b6m4wY
+=======
 <<<<<<< .merge_file_R09Zio
             DB::extend($name, static fn (): ConnectionInterface => DB::connection($defaultConnection));
 =======
+>>>>>>> .merge_file_m0F4O4
             DB::extend(
                 $name,
                 static fn (array $config, string $connectionName): ConnectionInterface => self::resolveModuleConnection($config, $connectionName, $defaultConnection),
             );
+<<<<<<< .merge_file_b6m4wY
+=======
 >>>>>>> .merge_file_ENee1N
+>>>>>>> .merge_file_m0F4O4
         }
     }
 

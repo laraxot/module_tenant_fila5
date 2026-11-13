@@ -28,6 +28,8 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
+<<<<<<< .merge_file_V6ZgHs
+=======
 <<<<<<< .merge_file_sW47xN
  * @method static \Modules\Tenant\Database\Factories\TestSushiModelFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel newModelQuery()
@@ -43,6 +45,7 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TestSushiModel whereUpdatedBy($value)
 =======
+>>>>>>> .merge_file_ssgJJL
  * @method static TestSushiModelFactory factory($count = null, $state = [])
  * @method static Builder<static>|TestSushiModel newModelQuery()
  * @method static Builder<static>|TestSushiModel newQuery()
