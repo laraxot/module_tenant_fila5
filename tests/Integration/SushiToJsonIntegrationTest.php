@@ -7,11 +7,8 @@ namespace Modules\Tenant\Tests\Integration;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Tests\Fixtures\TestSushiModelForPath;
-use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 function tenantJsonPath(string $tenantName): string
 {
@@ -32,7 +29,7 @@ function makeTestSushiModelForPath(string $jsonPath): TestSushiModel
 }
 
 /**
- * @param  array<array-key, array<string, mixed>>  $rows
+ * @param  array<array-key, mixed>  $rows
  */
 function rowNameById(array $rows, int $id): string
 {
@@ -83,8 +80,8 @@ test('creates json file with tenant isolation', function (): void {
 
     Assert::assertFileExists($tenant2Path);
 
-    $tenant1Data = TestCase::decodeTenantJsonFile($tenant1Path);
-    $tenant2Data = TestCase::decodeTenantJsonFile($tenant2Path);
+    $tenant1Data = $this->decodeTenantJsonFile($tenant1Path);
+    $tenant2Data = $this->decodeTenantJsonFile($tenant2Path);
 
     Assert::assertSame('Tenant 1 Item', rowNameById($tenant1Data, 1));
     Assert::assertSame('Tenant 2 Item', rowNameById($tenant2Data, 1));

@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "modular monolithlines"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Modular Monolith Guidelines for Laravel
 

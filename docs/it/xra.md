@@ -1,11 +1,4 @@
 ---
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "xra"
-issues: []
-discussions: []
 title: Il file xra.php
 description: Il file xra.php
 extends: _layouts.documentation
@@ -59,6 +52,9 @@ Di default viene utilizzata **laravel\Themes\adm_theme\Resources\views\admin\das
 ### Versione HEAD
 
 ## Collegamenti tra versioni di xra.md
+* [xra.md](../../../Xot/docs/install/xra.md)
+* [xra.md](../../../Tenant/docs/it/xra.md)
+* [xra.md](../../../Tenant/docs/it/config/xra.md)
 * [xra.md](../../../xot/docs/install/xra.md)
 * [xra.md](../../../tenant/docs/it/xra.md)
 * [xra.md](../../../tenant/docs/it/config/xra.md)

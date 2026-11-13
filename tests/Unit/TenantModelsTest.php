@@ -15,23 +15,20 @@ use Modules\Xot\Contracts\UserContract;
 use PHPUnit\Framework\Assert;
 use Webmozart\Assert\Assert as WebmozartAssert;
 
-uses(TestCase::class);
-
 beforeEach(function (): void {
     /** @var TestCase $this */
-    if (TestCase::tenantDbUnavailable()) {
+    if ($this->tenantDbUnavailable()) {
         $this->skipTest('DB `tenant` non raggiungibile: blocco di ambiente.');
     }
 });
 
 it('can create a tenant', function (): void {
-    $tenant = TestCase::createTenant([
+    $tenant = $this->createTenant([
         'name' => 'Test Company',
         'domain' => 'test.company.com',
         'database' => 'tenant_test_db',
     ]);
 
-    Assert::assertInstanceOf(Tenant::class, $tenant);
     Assert::assertSame('Test Company', $tenant->name);
     Assert::assertSame('test.company.com', $tenant->domain);
     Assert::assertSame('tenant_test_db', $tenant->database);
@@ -61,7 +58,7 @@ it('can create a tenant with settings', function (): void {
 });
 
 it('exposes users relationship', function (): void {
-    $tenant = TestCase::createTenant([
+    $tenant = $this->createTenant([
         'name' => 'User Tenant',
         'domain' => 'user.example.com',
     ]);
@@ -81,7 +78,7 @@ it('exposes users relationship', function (): void {
 });
 
 it('can create multiple users for a tenant', function (): void {
-    $tenant = TestCase::createTenant([
+    $tenant = $this->createTenant([
         'name' => 'Multi User Tenant',
         'domain' => 'multi.example.com',
     ]);
@@ -97,8 +94,8 @@ it('can create multiple users for a tenant', function (): void {
 });
 
 it('reports active state via isActive', function (): void {
-    $active = TestCase::createTenant(['is_active' => true]);
-    $inactive = TestCase::createTenant(['is_active' => false]);
+    $active = $this->createTenant(['is_active' => true]);
+    $inactive = $this->createTenant(['is_active' => false]);
 
     Assert::assertTrue($active->isActive());
     Assert::assertFalse($inactive->isActive());

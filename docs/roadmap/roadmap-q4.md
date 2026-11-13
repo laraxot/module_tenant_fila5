@@ -10,6 +10,9 @@ updated: 2026-07-14
 qmd: "roadmap q4"
 related:
   - "./phpstan-corrections-january.md"
+  - "../phpstan-corrections-january.md"
+status: superseded
+superseded_by: roadmap.md
 ---
 # Tenant Module Roadmap (2025 Q4)
 

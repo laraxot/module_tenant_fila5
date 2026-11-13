@@ -8,17 +8,14 @@ use Mockery;
 use Mockery\Expectation;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\Domain;
-use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 afterEach(function (): void {
     Mockery::close();
 });
 
 test('domain model can be instantiated', function (): void {
-    Assert::assertInstanceOf(Domain::class, new Domain);
+    Assert::assertSame(Domain::class, (new Domain)::class);
 });
 
 test('get rows method works correctly', function (): void {

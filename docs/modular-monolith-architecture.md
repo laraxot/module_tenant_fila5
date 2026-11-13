@@ -10,6 +10,7 @@ updated: 2026-07-14
 qmd: "modular monolith architecture"
 related:
   - "./phpstan-corrections-january.md"
+status: draft
 ---
 # Modular Monolith Architecture for Tenant Module
 

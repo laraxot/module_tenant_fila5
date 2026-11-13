@@ -6,6 +6,7 @@ module: "Tenant"
 tags: [docs, tenant, bmad]
 created: 2026-10-06
 updated: 2026-10-06
+qmd: "collisioni di nome per sola differenza di maiuscole tenant"
 ---
 
 # Collisioni di nome per sola differenza di maiuscole

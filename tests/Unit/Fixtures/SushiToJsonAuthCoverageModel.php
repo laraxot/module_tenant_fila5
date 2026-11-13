@@ -9,7 +9,7 @@ namespace Modules\Tenant\Tests\Unit\Fixtures;
  */
 final class SushiToJsonAuthCoverageModel extends SushiToJsonCoverageModel
 {
-    protected function authId(): int
+    public function authId(): int
     {
         return 42;
     }

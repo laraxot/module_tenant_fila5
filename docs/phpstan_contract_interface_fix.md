@@ -7,6 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan contract interface fix"
 issues: []
 discussions: []
+status: superseded
+superseded_by: phpstan-contract-interface-fix.md
 ---
 
 # PHPStan Contract Interface Fix

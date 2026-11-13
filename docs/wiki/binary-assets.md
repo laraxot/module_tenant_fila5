@@ -1,19 +1,13 @@
 ---
 title: "binary-assets.md"
-type: concept
-status: active
-module: "Tenant"
-tags: [docs, tenant, bmad]
-created: 2026-10-06
-updated: 2026-10-06
+type: alias
+status: superseded
+canonical: "bmad/binary-assets.md"
+qmd: "binary-assets alias superseded"
 ---
 
-# Asset binari
+# binary-assets.md
 
-Gli asset binari sono file normali del repository.
+Documento identico al canonico: [binary-assets.md](../bmad/binary-assets.md).
 
-Regole:
-- non aggiungere filtri o backend di storage esterno in `.gitattributes`;
-- non committare file pointer al posto del contenuto reale;
-- se un asset manca, recuperare il binario originale e committarlo direttamente;
-- prima del push verificare che immagini, font, archivi e PDF siano contenuti reali.
+Canonico: `laravel/Modules/Tenant/docs/bmad/binary-assets.md`. Qui non ci sono istruzioni: seguire il file collegato.

@@ -22,17 +22,15 @@ use Modules\Tenant\Tests\Unit\Fixtures\SqliteTenantConfigValueResolverStub;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToCsvCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonAuthCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonCoverageModel;
-use Modules\Tenant\Tests\Unit\Fixtures\TenantConfigValueResolverStub;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonsCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonsNoSchemaModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonThrowingQueryModel;
+use Modules\Tenant\Tests\Unit\Fixtures\TenantConfigValueResolverStub;
 use Nwidart\Modules\Facades\Module;
 use PHPUnit\Framework\Assert;
 use ReflectionMethod;
 
 use function Safe\putenv;
-
-uses(TestCase::class);
 
 // expectMockery() is declared once in TenantCoverageBoostTest.php (same namespace)
 // and reused here across the Pest test run.
@@ -44,14 +42,15 @@ afterEach(function (): void {
 test('GetTenantNameAction hits shortened parts when nested host config exists', function (): void {
     $cfgRoot = base_path('config');
     File::ensureDirectoryExists($cfgRoot.'/com/example');
-    TestCase::setServerNameForTenantTest('www.foo.example.com');
+    $this->setServerNameForTenantTest('www.foo.example.com');
     Assert::assertSame('com/example', app(GetTenantNameAction::class)->execute());
-    File::deleteDirectory($cfgRoot.'/com');
-    TestCase::setServerNameForTenantTest(null);
+    // solo la cartella creata dal test: config/com contiene configurazioni tenant reali
+    File::deleteDirectory($cfgRoot.'/com/example');
+    $this->setServerNameForTenantTest(null);
 });
 
 test('TranslateTenantKeyAction returns key when lang file missing', function (): void {
-    TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
+    $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
         $mock->allows(['execute' => sys_get_temp_dir().'/tenant-lang-missing-'.uniqid().'.php']);
     });
 
@@ -63,8 +62,8 @@ test('TranslateTenantKeyAction returns resolved string translation', function ()
     File::ensureDirectoryExists($dir.'/lang/it');
     File::put($dir.'/lang/it/messages.php', "<?php\nreturn ['ok' => 'Ciao'];\n");
 
-    TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($dir): void {
-        TestCase::expectMockery($mock, 'execute')->andReturnUsing(
+    $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($dir): void {
+        $mock->shouldReceive('execute')->andReturnUsing(
             static fn (string $path): string => $dir.'/'.$path,
         );
     });
@@ -79,7 +78,7 @@ test('GetTenantModulesAction wraps invalid json decode errors', function (): voi
     File::ensureDirectoryExists($dir);
     File::put($dir.'/modules_statuses.json', '{not-json');
 
-    TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($dir): void {
+    $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($dir): void {
         $mock->allows(['execute' => $dir.'/modules_statuses.json']);
     });
 
@@ -92,8 +91,8 @@ test('GetTenantModulesAction wraps invalid json decode errors', function (): voi
 test('SushiToJson private helpers cover early returns and audit nulls', function (): void {
     $base = sys_get_temp_dir().'/sushi_json_gap_'.uniqid('', true);
     File::ensureDirectoryExists($base.'/database/content');
-    TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($base): void {
-        TestCase::expectMockery($mock, 'execute')->andReturnUsing(
+    $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($base): void {
+        $mock->shouldReceive('execute')->andReturnUsing(
             static fn (string $path): string => $base.'/'.ltrim($path, '/'),
         );
     });
@@ -157,7 +156,7 @@ test('SushiToCsv private helpers cover scalar id and header skip', function (): 
     $csvPath = $base.'/sushi_csv_coverage.csv';
     File::put($csvPath, "id,name\n1,A\n");
 
-    TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($csvPath): void {
+    $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($csvPath): void {
         $mock->allows(['execute' => $csvPath]);
     });
 
@@ -210,24 +209,26 @@ test('SushiToJsons covers empty schema map and glob false path via reflection', 
 test('GetTenantNameAction covers null parts and default-host miss/hit', function (): void {
     $cfgRoot = base_path('config');
 
-    TestCase::setServerNameForTenantTest('example.com');
+    $this->setServerNameForTenantTest('example.com');
     Assert::assertIsString(app(GetTenantNameAction::class)->execute());
 
-    TestCase::setServerNameForTenantTest('a.b.c.example.com');
+    $this->setServerNameForTenantTest('a.b.c.example.com');
     Assert::assertIsString(app(GetTenantNameAction::class)->execute());
 
     putenv('SERVER_NAME');
     $_SERVER['SERVER_NAME'] = 'www.zzz.example.com';
     File::ensureDirectoryExists($cfgRoot.'/com/example');
     Assert::assertSame('com/example', app(GetTenantNameAction::class)->execute());
-    File::deleteDirectory($cfgRoot.'/com');
+    // solo la cartella creata dal test: config/com contiene configurazioni tenant reali
+    File::deleteDirectory($cfgRoot.'/com/example');
 
-    TestCase::setServerNameForTenantTest(null);
+    $this->setServerNameForTenantTest(null);
     unset($_SERVER['SERVER_NAME']);
     File::ensureDirectoryExists($cfgRoot.'/test/defaulthost');
     config(['app.url' => 'https://defaulthost.test']);
     Assert::assertSame('test/defaulthost', app(GetTenantNameAction::class)->execute());
-    File::deleteDirectory($cfgRoot.'/test');
+    // solo la cartella creata dal test: config/test contiene configurazioni tenant reali
+    File::deleteDirectory($cfgRoot.'/test/defaulthost');
 });
 
 test('Sushi audit fields with named auth model and csv scalar id', function (): void {
@@ -237,8 +238,8 @@ test('Sushi audit fields with named auth model and csv scalar id', function (): 
     File::put($csvPath, "id,name,updated_at,updated_by,created_at,created_by\n1,Alpha,,,,\n");
     File::ensureDirectoryExists($base.'/database/content');
 
-    TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($base, $csvPath): void {
-        TestCase::expectMockery($mock, 'execute')->andReturnUsing(static function (string $path) use ($base, $csvPath): string {
+    $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($base, $csvPath): void {
+        $mock->shouldReceive('execute')->andReturnUsing(static function (string $path) use ($base, $csvPath): string {
             if (str_ends_with($path, '.csv')) {
                 return $csvPath;
             }
@@ -337,13 +338,13 @@ test('final remaining statement branches', function (): void {
     Assert::assertNull($resolveDefaultHost->invoke($tenantNameAction, ''));
     Assert::assertNull($resolveDefaultHost->invoke($tenantNameAction, 'no.such.tenant.config.path.xyz'));
 
-    TestCase::setServerNameForTenantTest('nomatch.invalid');
+    $this->setServerNameForTenantTest('nomatch.invalid');
     config(['app.url' => 'https://also.invalid.test']);
     Assert::assertSame('localhost', app(GetTenantNameAction::class)->execute());
-    TestCase::setServerNameForTenantTest(null);
+    $this->setServerNameForTenantTest(null);
 
-    TestCase::mockAppService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
-        TestCase::expectMockery($mock, 'execute')->andReturn(99);
+    $this->mockAppService(ResolveTenantConfigValueAction::class, static function (MockInterface $mock): void {
+        $mock->shouldReceive('execute')->andReturn(99);
     });
     expect(fn (): string => app(ResolveTenantModelClassAction::class)->execute('widget'))
         ->toThrow(Exception::class);
@@ -377,8 +378,8 @@ test('final remaining statement branches', function (): void {
     $base = sys_get_temp_dir().'/jsons_noschema_'.uniqid('', true);
     File::ensureDirectoryExists($base.'/database/content/sushi_jsons_noschema');
     File::put($base.'/database/content/sushi_jsons_noschema/1.json', json_encode(['name' => 'x'], JSON_THROW_ON_ERROR));
-    TestCase::mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($base): void {
-        TestCase::expectMockery($mock, 'execute')->andReturnUsing(
+    $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock) use ($base): void {
+        $mock->shouldReceive('execute')->andReturnUsing(
             static fn (string $path): string => $base.'/'.ltrim($path, '/'),
         );
     });

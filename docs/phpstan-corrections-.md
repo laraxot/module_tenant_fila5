@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan corrections "
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan Corrections - Tenant Module - Gennaio 2025
@@ -15,15 +16,6 @@ discussions: []
 **Errori Risolti**: 1
 
 ---
-
-title: "phpstan corrections "
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "phpstan corrections "
-issues: []
-discussions: []
 ## 🔧 Correzioni Implementate
 
 ### TenantService - Missing getConfigNames() Method

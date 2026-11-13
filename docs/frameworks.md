@@ -7,9 +7,10 @@ updated: 2026-09-26
 qmd: "frameworks"
 issues: []
 discussions: []
+status: draft
 ---
 
-# Tenant — Framework Integration Notes
+# Tenant: Framework Integration Notes
 
 Integration guidelines for caveman, graphify, bmad-method, headroom, ponytail.
 
@@ -25,7 +26,7 @@ Surgical editing patterns:
 ## Architecture (graphify)
 
 Dependency analysis:
-- Module dependencies: [TBD — graphify analysis]
+- Module dependencies: [TBD: graphify analysis]
 - Circular deps: [TBD]
 - Cross-theme usage: [TBD]
 
@@ -44,12 +45,4 @@ Efficiency principles:
 - Simplification opportunities: [TBD]
 
 ---
-title: "frameworks"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "frameworks"
-issues: []
-discussions: []
 *Generated: 2026-08-04*
