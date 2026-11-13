@@ -20,7 +20,7 @@ beforeEach(function (): void {
     File::deleteDirectory($directory);
     File::makeDirectory($directory, 0755, true, true);
 
-    $this->testDirectory = $directory;
+    TestCase::$testDirectory = $directory;
     $csvPath = $directory.'/catalog.csv';
     File::put(
         $csvPath,
@@ -39,7 +39,7 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
-    File::deleteDirectory($this->testDirectory);
+    File::deleteDirectory(TestCase::$testDirectory);
     Mockery::close();
 });
 
@@ -72,7 +72,7 @@ it('finds row by primary key', function (): void {
 });
 
 it('throws when csv file is missing', function (): void {
-    File::delete($this->testDirectory.'/catalog.csv');
+    File::delete(TestCase::$testDirectory.'/catalog.csv');
 
     expect(fn () => (new CatalogSushiCsvModel)->getSushiRows())
         ->toThrow(Exception::class);
