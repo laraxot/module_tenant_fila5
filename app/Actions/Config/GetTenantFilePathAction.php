@@ -22,6 +22,13 @@ class GetTenantFilePathAction
         $tenantName = app(GetTenantNameAction::class)->execute();
         $path = base_path('config/'.$tenantName.'/'.$filename);
 
+        // I contenuti JSON (Sushi: pagine, sezioni, menu...) sono dati del sito, versionati in config/<tenant>.
+        // Durante i test ogni Model::create() scriverebbe un file li' dentro e lo finirebbe in git: si usa
+        // una copia usa-e-getta sotto storage. Le altre config del tenant (database.php, xra.php...) restano reali.
+        if (app()->runningUnitTests() && str_starts_with($normalizedFilename, 'database/content/')) {
+            $path = storage_path('framework/testing/tenant-content/'.$tenantName.'/'.$filename);
+        }
+
         return str_replace(['/', '\\'], [\DIRECTORY_SEPARATOR, \DIRECTORY_SEPARATOR], $path);
     }
 }
