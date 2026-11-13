@@ -36,6 +36,11 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Tenant newModelQuery()
  * @method static Builder<static>|Tenant newQuery()
  * @method static Builder<static>|Tenant query()
+<<<<<<< .merge_file_WRaLXJ
+=======
+<<<<<<< .merge_file_H04Wti
+=======
+>>>>>>> .merge_file_C7AREo
  * @method static Tenant|null first()
  * @method static Collection<int, Tenant> get()
  * @method static Tenant create(array<string, mixed> $attributes = [])
@@ -64,6 +69,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Tenant whereSettings($value)
  *
  * @mixin \Eloquent
+>>>>>>> .merge_file_Eh2jmz
  */
 class Tenant extends BaseModel
 {
