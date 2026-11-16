@@ -30,6 +30,24 @@ PHPStan/Pest proporzionati.
 | Marker di conflitto | 0 |
 | Label/tooltip letterali Filament | 0 |
 
+
+## Analisi Funzionale e Scopo di Dominio
+
+### Perché Esiste (Scopo Fondamentale)
+Multi-tenancy e isolamento dei dati per differenti strutture o aziende del consorzio.
+
+### Valore di Business e Utilità
+Permette l'esecuzione di più istanze su unico codebase garantendo la netta separazione dei dati e configurazioni.
+
+### Architettura e Pattern Laraxot
+Scoping automatico tramite trait HasTenants; resolver di connessione dedicato; override configurazioni per tenant senza toccare il core.
+
+### Standard di Qualità e Conformità
+- **PHPStan**: Confermato a Level Max con 0 errori.
+- **Filament**: Conformità Filament 5 con estensione delle classi XotBase*.
+- **Naming**: Convenzione kebab-case rigorosa per tutti i documenti e classi PSR-4.
+- **Trans**: Traduzioni dinamiche via Lang, nessun testo hardcoded.
+
 ## Audit per dimensione
 
 ### Architettura e confini
