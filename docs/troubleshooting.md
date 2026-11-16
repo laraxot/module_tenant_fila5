@@ -3,7 +3,7 @@ type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "troubleshooting"
+qmd: "TROUBLESHOOTING"
 issues: []
 discussions: []
 title: Tenant Module Troubleshooting Guide
@@ -492,3 +492,5 @@ php artisan migrate --database=tenant_123
 ---
 
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](PATTERNS.md)
+---
+Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Patterns](PATTERNS.md)

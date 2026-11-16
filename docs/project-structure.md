@@ -1,5 +1,5 @@
 ---
-qmd: "project structure"
+qmd: "PROJECT STRUCTURE"
 issues: []
 discussions: []
 title: "Project Structure — Module Tenant"
