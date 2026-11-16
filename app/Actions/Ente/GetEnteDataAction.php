@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Actions\Ente;
 
-<<<<<<< .merge_file_8f8fRQ
-=======
-use Illuminate\Support\Str;
->>>>>>> .merge_file_s5BAsx
 use Modules\Tenant\Datas\EnteData;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -86,20 +82,12 @@ class GetEnteDataAction
         }
 
         // tolti i caratteri di controllo tranne a capo e tabulazione (l'indirizzo e gli orari possono andare su piu' righe)
-<<<<<<< .merge_file_8f8fRQ
         return trim(preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/', '', $value));
-=======
-        return Str::of($value)->replaceMatches('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/', '')->trim()->toString();
->>>>>>> .merge_file_s5BAsx
     }
 
     private function phone(string $value): string
     {
-<<<<<<< .merge_file_8f8fRQ
         $digits = preg_replace('/[\s.\-()\/]/', '', $value);
-=======
-        $digits = Str::of($value)->replaceMatches('/[\s.\-()\/]/', '')->toString();
->>>>>>> .merge_file_s5BAsx
 
         return preg_match('/^\+?\d{3,15}$/', $digits) === 1 ? $value : '';
     }

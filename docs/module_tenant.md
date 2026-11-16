@@ -1,13 +1,15 @@
 ---
 title: "module tenant"
-type: alias
-status: superseded
-canonical: "module-tenant.md"
-qmd: "module_tenant alias superseded"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "module tenant"
+issues: []
+discussions: []
+module: theme
+topic: module_tenant
+canonical: ../../../Themes/docs/shared-components/.gitkeep-Modules
 ---
 
-# module tenant
-
-Documento identico al canonico: [module-tenant.md](module-tenant.md).
-
-Canonico: `laravel/Modules/Tenant/docs/module-tenant.md`. Qui non ci sono istruzioni: seguire il file collegato.
+See canonical documentation: ../../../Themes/docs/shared-components/.gitkeep-Modules

@@ -12,17 +12,16 @@ use Spatie\QueueableAction\QueueableAction;
 use function Safe\realpath;
 
 /**
- * Action per ottenere il nome del tenant basato sul server name.
+ * Ricava il nome tenant dall'host (SERVER_NAME / app.url).
+ *
+ * Pattern: dominio invertito e slugato (`foo.example.com` → `com/example/foo`), poi lookup
+ * in `config/<path>`. Se l'host è un symlink (es. `eu/fixcity` → `local/fixcity`), la chiave
+ * di config deve usare il path reale, non l'alias — altrimenti Laravel non trova i file.
  */
 class GetTenantNameAction
 {
     use QueueableAction;
 
-    /**
-     * Esegue l'action per ottenere il nome del tenant.
-     *
-     * @return string Il nome del tenant
-     */
     public function execute(): string
     {
         $default = config('app.url');
@@ -42,33 +41,11 @@ class GetTenantNameAction
             ->reverse()
             ->values();
 
-<<<<<<< .merge_file_Vvc8uV
-        // Prova il percorso completo
-        $config_file = $this->buildConfigPath($parts);
-        if (file_exists($config_file)) {
-            return $parts->implode('/');
-        }
+        return $this->resolveFromParts($parts)
+            ?? $this->resolveFromDefaultHost($default)
+            ?? 'localhost';
+    }
 
-        // Prova il percorso senza l'ultimo segmento se ci sono più di 2 parti
-        if ($parts->count() > 2) {
-            /** @var Collection<int, string> $shortened_parts */
-            $shortened_parts = $parts->slice(0, -1);
-            $config_file = $this->buildConfigPath($shortened_parts);
-            if (file_exists($config_file)) {
-                return $shortened_parts->implode('/');
-            }
-        }
-
-        // Fallback al default
-        $part = explode('.', $default);
-        $inverted = array_reverse($part);
-        $default_path = implode('/', $inverted);
-        if ($default_path !== '' && file_exists(base_path('config/'.$default_path))) {
-            return $default_path;
-        }
-
-        return 'localhost';
-=======
     /**
      * @param  Collection<int, string>  $parts
      */
@@ -108,7 +85,7 @@ class GetTenantNameAction
 
     /**
      * Un host può essere un symlink verso la config già caricata da Laravel.
-     * La chiave di config usa il path reale (`local.fixcity`), non l'alias (`eu.fixcity`).
+     * La chiave di config usa il path reale (`local/fixcity`), non l'alias (`eu/fixcity`).
      */
     private function tenantNameFromPath(string $path): string
     {
@@ -132,15 +109,8 @@ class GetTenantNameAction
         $relative = ltrim(substr($path, strlen(config_path())), DIRECTORY_SEPARATOR);
 
         return str_replace(DIRECTORY_SEPARATOR, '/', $relative);
->>>>>>> .merge_file_jVVEVi
     }
 
-    /**
-     * Ottiene il nome del server con fallback al default.
-     *
-     * @param  string  $default  Il valore di default da usare
-     * @return string Il nome del server
-     */
     private function getServerName(string $default): string
     {
         if (
@@ -155,10 +125,7 @@ class GetTenantNameAction
     }
 
     /**
-     * Costruisce il percorso di configurazione.
-     *
-     * @param  Collection<int, string>  $parts  Le parti del percorso
-     * @return string Il percorso completo
+     * @param  Collection<int, string>  $parts
      */
     private function buildConfigPath(Collection $parts): string
     {

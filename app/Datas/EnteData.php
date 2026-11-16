@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Datas;
 
-<<<<<<< .merge_file_xcgO0A
-=======
-use Illuminate\Support\Str;
->>>>>>> .merge_file_722TJJ
 use Modules\Tenant\Actions\Ente\GetEnteDataAction;
 use Spatie\LaravelData\Data;
 
@@ -88,11 +84,7 @@ class EnteData extends Data
             return null;
         }
 
-<<<<<<< .merge_file_xcgO0A
         $target = $scheme === 'tel:' ? preg_replace('/[^\d+]/', '', $value) : $value;
-=======
-        $target = $scheme === 'tel:' ? Str::of($value)->replaceMatches('/[^\d+]/', '')->toString() : $value;
->>>>>>> .merge_file_722TJJ
 
         return ['label' => $value, 'href' => $scheme.$target];
     }
