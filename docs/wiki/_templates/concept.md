@@ -10,6 +10,8 @@ created: {{date}}
 updated: {{date}}
 tags: [tag1, tag2]
 related: []
+status: superseded
+superseded_by: ../../llm-wiki/_templates/concept.md
 ---
 
 # {{title}}

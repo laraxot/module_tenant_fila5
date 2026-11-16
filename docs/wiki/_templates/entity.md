@@ -10,6 +10,8 @@ created: {{date}}
 updated: {{date}}
 tags: [person, organization, module]
 related: []
+status: superseded
+superseded_by: ../../llm-wiki/_templates/entity.md
 ---
 
 # {{title}}
