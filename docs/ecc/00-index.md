@@ -1,22 +1,16 @@
 ---
-title: "ECC — indice operativo Tenant"
+title: "Indice ECC — Tenant"
 type: index
-status: in-progress
+status: active
 updated: 2026-11-16
 module: Tenant
-qmd: "ECC indice Tenant verification gates"
+qmd: "indice ECC Tenant audit checklist"
 ---
 
-# ECC — modulo Tenant
+# Indice ECC — Tenant
 
-Collega le verifiche ECC al workflow PTVX (BMAD → lock → fix → PHPStan/Pest → docs).
+- [Audit ECC](./tenant-ecc-audit.md) — mappa finding → capability ECC.
+- [Audit BMAD profondo](../bmad/audits/tenant-audit.md) — SSoT dei finding.
+- [Indice BMAD](../bmad/00-index.md)
 
-| Controllo | Stato | Evidenza |
-|---|---|---|
-| Inventario statico | verificato | ../bmad/audits/tenant-audit.md |
-| PHPStan | 0 su tree Modules (2026-11-16) | comando in audit |
-| Pest | pending | ambiente testing |
-| Security review | pending | story figlie P0/P1 |
-| Docs pack | aggiornato | questo indice + audit ECC |
-
-Dettaglio: [tenant-ecc-audit.md](./tenant-ecc-audit.md)
+Contratto globale: `laravel/Modules/Xot/docs/ecc/00-index.md`.
