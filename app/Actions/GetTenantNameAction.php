@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Safe\Exceptions\FilesystemException;
 use Spatie\QueueableAction\QueueableAction;
 
+use function Safe\parse_url;
 use function Safe\realpath;
 
 /**
@@ -30,10 +31,9 @@ class GetTenantNameAction
             $default = 'localhost';
         }
 
-        $default = Str::after($default, '//');
+        $default = $this->hostFromUrl($default);
 
-        $server_name = $this->getServerName($default);
-        $server_name = Str::of($server_name)->replace('www.', '')->toString();
+        $server_name = Str::of($this->getServerName($default))->replace('www.', '')->toString();
 
         /** @var Collection<int, string> $parts */
         $parts = collect(explode('.', $server_name))
@@ -113,15 +113,51 @@ class GetTenantNameAction
 
     private function getServerName(string $default): string
     {
+        $serverName = $_SERVER['SERVER_NAME'] ?? null;
         if (
-            isset($_SERVER['SERVER_NAME']) &&
-                $_SERVER['SERVER_NAME'] !== '127.0.0.1' &&
-                is_string($_SERVER['SERVER_NAME'])
+            \is_string($serverName) &&
+                $serverName !== '' &&
+                ! \in_array($serverName, ['127.0.0.1', '::1', 'localhost'], true)
         ) {
-            return $_SERVER['SERVER_NAME'];
+            return $serverName;
+        }
+
+        // `php artisan serve` e proxy inversi lasciano in SERVER_NAME l'indirizzo di bind
+        // (127.0.0.1), mentre l'host richiesto arriva solo nell'header Host. Senza leggerlo
+        // ogni dominio ricade sul tenant di fallback e le pagine CMS rispondono 404.
+        $requestHost = $this->requestHost();
+        if ($requestHost !== null) {
+            return $requestHost;
         }
 
         return $default;
+    }
+
+    private function requestHost(): ?string
+    {
+        // In console e code non esiste una richiesta HTTP: niente header Host da leggere.
+        if (app()->runningInConsole()) {
+            return null;
+        }
+
+        try {
+            $host = request()->getHost();
+        } catch (\Throwable) {
+            return null;
+        }
+
+        return \is_string($host) && $host !== '' ? $host : null;
+    }
+
+    /**
+     * `app.url` puo' portare scheme, porta e path (`https://foo.test:8443/app`): il tenant
+     * si ricava solo dall'host.
+     */
+    private function hostFromUrl(string $url): string
+    {
+        $host = parse_url($url, PHP_URL_HOST);
+
+        return \is_string($host) && $host !== '' ? $host : $url;
     }
 
     /**
