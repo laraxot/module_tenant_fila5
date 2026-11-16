@@ -97,3 +97,8 @@ scarsita', e' l'invecchiamento.
 
 - `docs/wiki/memories/public-path-is-public-html.md` — la stessa famiglia di errori muti
 - `bashscripts/ai/.agents/rules/common/laravel-traits.md` — leggere i trait prima di scrivere
+
+## Documentazione correlata
+
+- [Audit BMAD](./bmad/audit.md)
+- [ECC](./ecc/tenant-ecc-audit.md)

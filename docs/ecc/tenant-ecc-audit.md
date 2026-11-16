@@ -1,61 +1,54 @@
 ---
-id: Tenant/ecc-audit
-title: "ECC — audit operativo del modulo Tenant"
-status: in-progress
+title: "ECC audit operativo — Tenant"
+type: ecc-audit
+status: review
+updated: 2026-11-16
 module: Tenant
-qmd: "Tenant ECC audit verification security testing"
-references:
-  - ../bmad/audit.md
-  - 00-index.md
+qmd: "ECC audit Tenant verification security testing laravel"
 ---
 
-# ECC audit operativo modulo Tenant
+# ECC audit operativo — Tenant
 
 ## Contratto PTVX
 
-Questo documento seleziona le verifiche ECC applicabili al modulo `Tenant`
-senza sostituire AGENTS.md, BMAD o le regole locali. ECC deve produrre una
-correzione minima, source-first, con lock prima dell'edit e gate dopo l'edit.
+ECC non sostituisce AGENTS.md/BMAD. Ogni finding: story BMAD, lock, fix causa,
+PHPStan + Pest, aggiornamento docs/QMD.
 
 ## Checklist
 
-- [ ] `clean-code`: metodi piccoli, DRY, KISS, nessun wrapper inutile.
-- [ ] `security-review`: policy, input, mass assignment, export, log e privacy.
-- [ ] `laravel-verification`: route, config, migration additive e container.
-- [ ] `verification-loop`: PHPStan level max + Pest mirato + diff check.
-- [ ] `tdd-workflow`: test di regressione prima o insieme alla correzione.
-- [ ] `documentation-sync`: story BMAD, indice modulo e QMD aggiornati.
-- [ ] `context-engineering`: usare QMD/graphify prima e registrare il perché dopo.
+- [ ] `clean-code`: DRY/KISS, Actions su Services, niente wrapper inutili
+- [ ] `security-review`: policy, mass assignment, export, log, privacy, tenant
+- [ ] `laravel-verification`: route, config, migration additive, container
+- [ ] `verification-loop`: PHPStan level max + Pest mirato
+- [ ] `tdd-workflow`: regressione sui finding P0
+- [ ] `documentation-sync`: story + indici + qmd
+- [ ] `context-engineering`: QMD/graphify prima; registrare il perché dopo
 
-## Input del modulo
+## Input misurato (2026-11-16)
 
-- PHP app: 56
-- test: 65
-- policy: 2
-- resource Filament: 1
-- action: 19
+| Voce | N |
+|---|---:|
+| app PHP | 56 |
+| test | 65 |
+| resources | 1 |
+| actions | 19 |
+| services | 0 |
+| policies (files approx) | 4 |
 
-## Procedura per ogni finding
+## Gate osservati
 
-1. Recuperare contesto da QMD e caller con `rg`.
-2. Creare o aggiornare la story in `docs/bmad/stories`.
-3. Acquisire lock sui file disgiunti.
-4. Correggere la causa, non il messaggio PHPStan.
-5. Eseguire il test minimo e poi i gate del modulo.
-6. Registrare evidenza, limiti e follow-up nella story.
+- PHPStan `Modules` (2026-11-16): 0 errori
+- Pest: pending (ambiente testing)
 
 ## Anti-pattern vietati
 
-- baseline PHPStan o `@phpstan-ignore` senza motivazione verificata;
-- test svuotati per nascondere un errore;
-- migrazioni distruttive o accesso a dati sacri;
-- screenshot, dati o comportamento inventati;
-- documenti con date/timestamp nel nome;
-- modifica di file già lockati da un altro agente.
+- baseline/`@phpstan-ignore` senza motivazione
+- test svuotati per silenziare errori
+- migrate:fresh / RefreshDatabase / --force
+- docs con date nel nome file
+- comportamento o screenshot inventati
 
-## Esito
+## Riferimenti
 
-Baseline ECC creata. Il modulo non è dichiarato conforme finché gli acceptance
-criteria del documento BMAD corrispondente non risultano verificati con output
-dei gate.
-
+- [00-index](./00-index.md)
+- [BMAD audit](../bmad/audit.md)
