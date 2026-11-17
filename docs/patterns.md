@@ -329,12 +329,12 @@ public function test_users_isolated_by_tenant()
 ## References
 
 - [Architecture](ARCHITECTURE.md) — Detailed system design
-- [Troubleshooting](TROUBLESHOOTING.md) — Common issues
+- [Troubleshooting](troubleshooting.md) — Common issues
 - [API Reference](API.md) — Model and service signatures
 - [Contributing Guide](../../docs/wiki/how-to/contributing.md) — Development guidelines
 
 ---
 
-Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](TROUBLESHOOTING.md)
+Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
 ---
-Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Troubleshooting](TROUBLESHOOTING.md)
+Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)

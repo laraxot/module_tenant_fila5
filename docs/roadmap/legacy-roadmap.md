@@ -298,7 +298,7 @@ Completare il modulo Tenant con tutti i modelli mancanti, migliorare qualità e 
 
 ## 🔗 Collegamenti
 
-- [Filosofia Tenant](./philosophy.md)
+- [Filosofia Tenant](../philosophy.md)
 - [Business Logic Deep Dive](./business-logic-deep-dive.md)
 - [Configuration Guide](./configuration.md)
 
