@@ -7,6 +7,10 @@ use Modules\Tenant\Actions\Json\CreateJsonFileByRecordAction;
 use Modules\Tenant\Models\Contracts\HasSushiToJson;
 use Modules\Tenant\Tests\TestCase;
 
+use function Safe\file_put_contents;
+use function Safe\tempnam;
+use function Safe\unlink;
+
 uses(TestCase::class);
 
 /*
@@ -44,5 +48,5 @@ it('computes the next id when stored ids are strings', function (): void {
     app(CreateJsonFileByRecordAction::class)->execute($record);
 
     expect($record->getKey())->toBe(12);
-    @unlink($file);
+    unlink($file);
 });
