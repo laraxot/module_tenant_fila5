@@ -8,12 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Mockery;
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
-use Modules\Tenant\Tests\TestCase;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiPhpArrayCatalogProbe;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToPhpArrayConnectionProbe;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 beforeEach(function (): void {
     SushiToPhpArrayConnectionProbe::flushEventListeners();

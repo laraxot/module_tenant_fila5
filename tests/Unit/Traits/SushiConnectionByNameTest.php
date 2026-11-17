@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Modules\Tenant\Models\TestSushiModel;
-use Modules\Tenant\Tests\TestCase;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToCsvConnectionProbe;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonsCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToPhpArrayConnectionProbe;
@@ -18,8 +17,6 @@ use Webmozart\Assert\Assert;
 
 use function Safe\json_decode;
 use function Safe\json_encode;
-
-uses(TestCase::class);
 
 /**
  * Regressione: `Rule::unique(Model::class)` (quindi anche il `->unique()` di Filament) su un modello

@@ -15,8 +15,6 @@ use Modules\Xot\Contracts\UserContract;
 use PHPUnit\Framework\Assert;
 use Webmozart\Assert\Assert as WebmozartAssert;
 
-uses(TestCase::class);
-
 beforeEach(function (): void {
     /** @var TestCase $this */
     if ($this->tenantDbUnavailable()) {

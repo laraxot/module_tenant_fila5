@@ -10,14 +10,13 @@ use Illuminate\Support\Facades\File;
 use Mockery;
 use Mockery\MockInterface;
 use Modules\Tenant\Models\TestSushiModel;
-use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 use ReflectionMethod;
 
 use function Safe\json_decode;
 use function Safe\json_encode;
 
-uses(TestCase::class)->beforeEach(function () {
+beforeEach(function () {
     $this->model = new TestSushiModel;
     $this->testJsonPath = storage_path('tests/sushi-json/test_sushi.json');
 
@@ -31,7 +30,9 @@ uses(TestCase::class)->beforeEach(function () {
     if (File::exists($directory)) {
         File::deleteDirectory($directory);
     }
-})->afterEach(function () {
+});
+
+afterEach(function () {
     // Pulisce i file di test
     if (File::exists($this->testJsonPath)) {
         File::delete($this->testJsonPath);

@@ -15,8 +15,6 @@ use Modules\Tenant\Tests\TestCase;
 
 use function Safe\json_encode;
 
-uses(TestCase::class);
-
 beforeEach(function (): void {
     /** @var TestCase $this */
     $this->model = new TestSushiModel;

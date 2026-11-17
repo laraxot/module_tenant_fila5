@@ -1,10 +1,7 @@
 ---
-title: agent edit discipline: puntatore
+title: agent edit discipline — puntatore
 type: reference
 updated: 2026-05-19
-status: draft
-tags: [docs, tenant, wiki]
-qmd: "disciplina edit e qualità (puntatore) tenant"
 ---
 tags: [docs, tenant, bmad]
 
@@ -16,8 +13,6 @@ Stub **DRY**: policy nella wiki di progetto; discussione e ragionamenti in GitHu
 
 - Regola canonica: [../../../../docs/wiki/rules/validation-post-edit-rule.md](../../../../docs/wiki/rules/validation-post-edit-rule.md)
 - How-to issue ↔ wiki: [../../../../docs/wiki/how-to/github-issue-agent-discipline.md](../../../../docs/wiki/how-to/github-issue-agent-discipline.md)
-- Regola canonica: [../../../../docs/wiki/rules/validation-post-edit-rule.md](../../../../../docs/wiki/rules/validation-post-edit-rule.md)
-- How-to issue ↔ wiki: [../../../../docs/wiki/how-to/github-issue-agent-discipline.md](../../../../../docs/wiki/how-to/github-issue-agent-discipline.md)
 - Prompt LLM: [../../../../bashscripts/tools/prompts/llm-wiki.txt](../../../../bashscripts/tools/prompts/llm-wiki.txt) §3 (FLVP)
 
 ## Perché questo file

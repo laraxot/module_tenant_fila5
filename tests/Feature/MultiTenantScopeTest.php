@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace Modules\Tenant\Tests\Feature;
 
 use Modules\Tenant\Models\TenantSetting;
-use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 describe('Multi-tenant scope', function (): void {
     beforeEach(function (): void {

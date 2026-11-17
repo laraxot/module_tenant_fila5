@@ -7,7 +7,6 @@ namespace Modules\Tenant\Tests\Unit;
 use Exception;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\TestSushiModel;
-use Modules\Tenant\Tests\TestCase;
 
 use function Safe\json_encode;
 
@@ -16,8 +15,6 @@ use function Safe\json_encode;
  * @property string $testDirectory
  * @property string $testJsonPath
  */
-uses(TestCase::class);
-
 beforeEach(function () {
     // Configura il modello di test
     $this->model = new TestSushiModel;

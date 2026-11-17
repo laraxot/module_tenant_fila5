@@ -11,8 +11,6 @@ use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
-
 beforeEach(function (): void {
     $directory = storage_path('tests/tenant-lang/en');
     File::deleteDirectory(dirname($directory));
@@ -29,7 +27,7 @@ beforeEach(function (): void {
     $messagesPath = $directory.'/messages.php';
     $mock = Mockery::mock(GetTenantFilePathAction::class);
     // allows(['execute' => $closure]) restituirebbe la closure; andReturnUsing la esegue.
-    TestCase::expectMockery($mock, 'execute')->andReturnUsing(
+    $mock->shouldReceive('execute')->andReturnUsing(
         static function (string $filename) use ($messagesPath): string {
             if ($filename === 'lang/en/messages.php') {
                 return $messagesPath;
