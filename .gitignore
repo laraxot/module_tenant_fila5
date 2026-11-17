@@ -120,7 +120,6 @@ Thumbs.db
 # DOCUMENTATION CACHE
 # ==============================================
 docs/phpstan/
-docs/cache/
 
 # ==============================================
 # OLD DIRECTORIES (LEGACY CLEANUP)
@@ -161,7 +160,6 @@ test_tenants.sql
 laravel
 public_html
 lang/lang/
-_docs/
 _docs/
 Tests/
 
