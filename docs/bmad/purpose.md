@@ -4,8 +4,8 @@ type: concept
 status: active
 created: 2026-09-02
 tags: [tenant, purpose, multi-tenancy, dominio, configurazione, sushi]
-qmd: "tenant scopo modulo multi tenancy dominio configurazione sushi json tenantservice filepath"
-updated: 2026-09-02
+qmd: "tenant scopo modulo multi tenancy dominio configurazione sushi json gettenantfilepathaction"
+updated: 2026-11-16
 issues:
   # DA CREARE — `gh` non autenticato: mai numeri inventati.
   # gh issue create --repo provtv/module_tenant_fila5 --title "<argomento del file>"
@@ -31,12 +31,12 @@ i dati dell'altro, e di farlo cambiando configurazione invece che codice.**
 - `TenantSubscription` — un tenant ha un ciclo di vita.
 - `BaseModelJsons`, `TestSushiModel` — configurazione da file JSON letta come se fosse
   una tabella (Sushi).
-- Solo 52 file PHP: **la potenza sta nella posizione, non nel volume**. E' attraversato
+- Solo 56 file PHP: **la potenza sta nella posizione, non nel volume**. E' attraversato
   da ogni richiesta.
 
 ## La regola che conta piu' di tutte
 
-**`TenantService::filePath()` non e' `base_path()`.**
+**`GetTenantFilePathAction` non e' `base_path()`.**
 
 `base_path()` restituisce la radice dell'applicazione e ignora il tenant. Usarlo dove
 serve un percorso per-tenant fa leggere e scrivere all'ente A i file dell'ente B — e
@@ -46,7 +46,7 @@ E' il tipo di errore peggiore che questo progetto conosca: **muto**. La stessa f
 di `public_path()` che deve puntare a `public_html/`.
 
 Il trait `SushiToJsons` implementa gia' `getJsonFile()` **correttamente**, usando
-`TenantService::filePath()`. Ci sono precedenti documentati di modelli che lo hanno
+`GetTenantFilePathAction`. Ci sono precedenti documentati di modelli che lo hanno
 riscritto con `base_path()`, rompendo il multi-tenancy in silenzio. La regola operativa
 e' quindi: **prima di scrivere un metodo in un modello, leggere i trait che il modello
 gia' usa.**
@@ -72,6 +72,8 @@ Se il dominio non corrisponde a nessun tenant e il sistema sceglie il primo o il
 predefinito, si serve un ente con i dati di un altro.
 
 **Azione:** dominio sconosciuto → errore esplicito. Mai un fallback silenzioso.
+
+**Stato verificato (2026-11-16):** [GetTenantNameAction.php](../../app/Actions/GetTenantNameAction.php) ripiega sul tenant di default e `TrustHosts` non è attivo — vedi TEN-P1-01 in [audits/tenant-audit.md](./audits/tenant-audit.md) ed Epic A in [epics.md](./epics.md).
 
 ### 4. La configurazione da JSON va validata all'avvio
 
