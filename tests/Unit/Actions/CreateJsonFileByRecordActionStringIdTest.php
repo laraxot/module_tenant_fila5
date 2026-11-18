@@ -5,13 +5,10 @@ declare(strict_types=1);
 use Illuminate\Database\Eloquent\Model;
 use Modules\Tenant\Actions\Json\CreateJsonFileByRecordAction;
 use Modules\Tenant\Models\Contracts\HasSushiToJson;
-use Modules\Tenant\Tests\TestCase;
 
 use function Safe\file_put_contents;
 use function Safe\tempnam;
 use function Safe\unlink;
-
-uses(TestCase::class);
 
 /*
  * I file JSON dei modelli Sushi salvano gli id come stringhe ("4"): l'id successivo va calcolato
