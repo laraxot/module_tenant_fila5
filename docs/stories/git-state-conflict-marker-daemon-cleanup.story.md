@@ -23,7 +23,7 @@ divergenza `dev`/`laraxot/dev` (0 ahead / 0 behind).
 
 Root cause: un commit precedente (`4d7ffe3` — "fix(Tenant): pulizia marker di
 conflitto residui in docs/") aveva gia' ripulito correttamente 8 file
-(`docs/00-INDEX.md`, `docs/INDEX.md`, `docs/PATTERNS.md`, `docs/README.md`,
+(`docs/00-index.md`, `docs/index.md`, `docs/PATTERNS.md`, `docs/README.md`,
 `docs/TROUBLESHOOTING.md`, `docs/architecture.md` e le 4 story
 3.5/3.8/5.8/6.1). Due commit successivi (`7c6e6f1`, `c3deab5`, entrambi autore
 `marco76tv`, messaggio `.`) hanno **reintrodotto** gli stessi marker di
@@ -36,15 +36,15 @@ andato a buon fine con marker letterali dentro.
 
 Un working tree gia' modificato (non mio, presumibilmente da un run
 precedente) tentava di ripulire di nuovo ma **cancellava contenuto reale**
-invece di limitarsi a rimuovere i marker: `docs/INDEX.md` e `docs/README.md`
+invece di limitarsi a rimuovere i marker: `docs/index.md` e `docs/README.md`
 azzerati a 0 byte, `docs/architecture.md` troncato di 257 righe (perso l'intero
-capitolo "Architecture: Tenant Module" merged da `ARCHITECTURE.md`), le 4
+capitolo "Architecture: Tenant Module" merged da `architecture.md`), le 4
 story private della YAML frontmatter (`id`, `epic`, `story`, `scope`,
 `epic_title`).
 
 ## Azione
 
-- Ripristinati `docs/00-INDEX.md`, `docs/INDEX.md`, `docs/PATTERNS.md`,
+- Ripristinati `docs/00-index.md`, `docs/index.md`, `docs/PATTERNS.md`,
   `docs/README.md`, `docs/TROUBLESHOOTING.md`, `docs/architecture.md` e le 4
   story esattamente al contenuto gia' verificato in `4d7ffe3` (nessuna perdita,
   frontmatter preservato).
