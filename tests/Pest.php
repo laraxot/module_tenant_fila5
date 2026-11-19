@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Modules\Tenant\Models\Tenant;
-use Modules\Tenant\Tests\TestCase;
 use Webmozart\Assert\Assert;
 
 /*
@@ -16,8 +15,6 @@ use Webmozart\Assert\Assert;
  * | need to change it using the "pest()" function to bind a different classes or traits.
  * |
  */
-
-pest()->extend(TestCase::class)->in('Feature', 'Unit', 'Integration', 'Performance');
 
 /*
  * |--------------------------------------------------------------------------

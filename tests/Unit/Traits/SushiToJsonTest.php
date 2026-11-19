@@ -10,11 +10,14 @@ use Illuminate\Support\Facades\File;
 use Mockery;
 use Mockery\MockInterface;
 use Modules\Tenant\Models\TestSushiModel;
+use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 use ReflectionMethod;
 
 use function Safe\json_decode;
 use function Safe\json_encode;
+
+uses(TestCase::class);
 
 beforeEach(function () {
     $this->model = new TestSushiModel;
