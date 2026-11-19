@@ -28,18 +28,18 @@ The root level contains strategic documents, analyses, and consolidated guides:
 - [00-index.md](00-index.md)
 - [API.md](API.md)
 - [ARCHITECTURE.md](ARCHITECTURE.md)
-- [LICENSE-full.md](LICENSE-full.md)
+- [LICENSE-full.md](license-full.md)
 - [METODI_DUPLICATI_ANALISI.md](METODI_DUPLICATI_ANALISI.md)
-- [PRD.md](PRD.md)
-- [PRODUCT_LAUNCH_PLAN.md](PRODUCT_LAUNCH_PLAN.md)
-- [PRODUCT_ROADMAP.md](PRODUCT_ROADMAP.md)
-- [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md)
+- [PRD.md](prd.md)
+- [PRODUCT_LAUNCH_PLAN.md](product_launch_plan.md)
+- [PRODUCT_ROADMAP.md](product_roadmap.md)
+- [PRODUCT_STRATEGY.md](product_strategy.md)
 - [README.md](README.md)
-- [REDUNDANCY_ANALYSIS.md](REDUNDANCY_ANALYSIS.md)
-- [SPRINT_PLANNING.md](SPRINT_PLANNING.md)
-- [SUSHI_TO_JSON_FIX_PLAN.md](SUSHI_TO_JSON_FIX_PLAN.md)
+- [REDUNDANCY_ANALYSIS.md](redundancy_analysis.md)
+- [SPRINT_PLANNING.md](sprint_planning.md)
+- [SUSHI_TO_JSON_FIX_PLAN.md](sushi_to_json_fix_plan.md)
 - [TODO.md](TODO.md)
-- [USER_RESEARCH.md](USER_RESEARCH.md)
+- [USER_RESEARCH.md](user_research.md)
 - [about.md](about.md)
 - [activitylog.md](activitylog.md)
 - [ai-methodologies.md](ai-methodologies.md)
@@ -219,7 +219,7 @@ Consolidated root-level markdown documentation:
 - [license.md](root-md-files/license.md)
 - [links.md](root-md-files/links.md)
 - [readme-en.md](root-md-files/readme-en.md)
-- [readme-it.md](root-md-files/readme-it.md)
+- [readme-it.md](raw/root-import/readme-it.md)
 - [readme-it-1.md](root-md-files/readme-it-1.md)
 - [readme-it-2.md](root-md-files/readme-it-2.md)
 - [readme.en.md](root-md-files/readme.en.md)
@@ -260,7 +260,7 @@ Legacy and superseded documentation:
 - [license.md](archived/license.md)
 - [links.md](archived/links.md)
 - [readme-en.md](archived/readme-en.md)
-- [readme-it.md](archived/readme-it.md)
+- [readme-it.md](raw/root-import/readme-it.md)
 - [readme.en.md](archived/readme.en.md)
 - [readme.it.md](archived/readme.it.md)
 - [tenant.md](archived/tenant.md)
@@ -303,7 +303,7 @@ Documents pending integration:
 - [to-integrate.md](_integration/to-integrate.md)
 - [to-integrate-1.md](_integration/to-integrate-1.md)
 - [to-integrate_1.md](_integration/to-integrate_1.md)
-- [to_integrate.md](_integration/to_integrate.md)
+- [to_integrate.md](_integration/archive/to_integrate.md)
 
 ### HTML to PDF (6 files)
 
@@ -401,10 +401,10 @@ discussions: []
 | 2026-07-28 | [00-INDEX.md](00-INDEX.md) | root |
 | 2026-07-28 | [API.md](API.md) | root |
 | 2026-07-28 | [ARCHITECTURE.md](ARCHITECTURE.md) | root |
-| 2026-07-28 | [PRD.md](PRD.md) | root |
+| 2026-07-28 | [PRD.md](prd.md) | root |
 | 2026-07-28 | [README.md](README.md) | root |
-| 2026-07-28 | [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md) | root |
-| 2026-07-28 | [SPRINT_PLANNING.md](SPRINT_PLANNING.md) | root |
+| 2026-07-28 | [PRODUCT_STRATEGY.md](product_strategy.md) | root |
+| 2026-07-28 | [SPRINT_PLANNING.md](sprint_planning.md) | root |
 | 2026-07-28 | [TODO.md](TODO.md) | root |
 | 2026-07-28 | [best-practices.md](best-practices.md) | root |
 | 2026-07-28 | [changelog.md](changelog.md) | root |

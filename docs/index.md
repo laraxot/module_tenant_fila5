@@ -57,8 +57,8 @@ last_updated: 2026-07-28
 - [Overview](README.md) — Module description and quick start
 - [Architecture](ARCHITECTURE.md) — System design and isolation strategies
 - [API Reference](API.md) — Core models, contracts, and services
-- [Patterns](PATTERNS.md) — Design patterns and best practices
-- [Troubleshooting](TROUBLESHOOTING.md) — Common issues and solutions
+- [Patterns](patterns.md) — Design patterns and best practices
+- [Troubleshooting](troubleshooting.md) — Common issues and solutions
 - [Contributing](../../docs/wiki/how-to/contributing.md) — Development guidelines
 
 ---

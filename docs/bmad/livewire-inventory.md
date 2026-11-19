@@ -23,7 +23,7 @@ related:
 
 **Solo documentazione. Nessun PHP toccato in questo audit.**
 
-Questo file è la SSoT del modulo Tenant per la campagna di conversione Livewire → Filament widget. Formato e metodo ripresi da [Modules/Cms/docs/bmad/livewire-inventory.md](../../Cms/docs/bmad/livewire-inventory.md).
+Questo file è la SSoT del modulo Tenant per la campagna di conversione Livewire → Filament widget. Formato e metodo ripresi da [Modules/Cms/docs/bmad/livewire-inventory.md](livewire-inventory.md).
 
 ## Metodo (codice, non assunzione)
 

@@ -36,12 +36,12 @@ related:
 
 ### Roadmap
 - **[roadmap/00-index.md](./roadmap/00-index.md)** — Q4 2025 roadmap and phases
-- **[roadmap/vision.md](./roadmap/vision.md)** — Long-term vision
-- **[roadmap/tenant-isolation.md](./roadmap/tenant-isolation.md)** — Data isolation strategy
+- **[roadmap/vision.md](../roadmap/vision.md)** — Long-term vision
+- **[roadmap/tenant-isolation.md](../roadmap/tenant-isolation.md)** — Data isolation strategy
 
 ### Product & Strategy
-- **[PRD.md](./PRD.md)** — Product requirements document
-- **[philosophy.md](./philosophy.md)** — Core principles
+- **[PRD.md](../prd.md)** — Product requirements document
+- **[philosophy.md](../philosophy.md)** — Core principles
 - **[README.md](./README.md)** — Module overview and local knowledge map
 
 ---
