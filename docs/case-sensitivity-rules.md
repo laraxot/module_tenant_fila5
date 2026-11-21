@@ -10,7 +10,6 @@ updated: 2026-07-14
 qmd: "case sensitivity rules"
 related:
   - "./phpstan-corrections-january.md"
-status: draft
 ---
 # Case Sensitivity Rules - Tenant Module
 

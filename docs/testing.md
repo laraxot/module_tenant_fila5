@@ -6,24 +6,19 @@ module: "Tenant"
 type: concept
 tags: [testing]
 created: 2026-07-14
-updated: 2026-10-20
+updated: 2026-08-24
 qmd: "testing"
 related:
   - "./phpstan-corrections-january.md"
-status: draft
 ---
 # Testing Documentation
 
 ## Stories PHPStan attive
 
-- [TENANT-7.1: boundary Sushi](./stories/7.1.phpstan-sushi-boundaries.story.md) possiede
+- [TENANT-7.1 — boundary Sushi](./stories/7.1.phpstan-sushi-boundaries.story.md) possiede
   trait, Action e consumer domain.
-- [TENANT-7.2: contratti dei test harness](./stories/7.2.phpstan-test-harness-contracts.story.md)
+- [TENANT-7.2 — contratti dei test harness](./stories/7.2.phpstan-test-harness-contracts.story.md)
   possiede i 40 findings residui nei test di configurazione, Sushi e coverage.
-
-- [Regressione dei test dopo il pull, 2026-10-20](./stories/phpstan-test-wave-tenant.story.md):
-  `tests/TestCase.php` e 9 file di test erano tornati a una generazione senza helper e
-  senza tipi (733 errori); ripristinata la generazione tipizzata, 0 errori sul modulo.
 
 ### Esito TENANT-7.2
 
@@ -37,21 +32,10 @@ row JSON scalare passata a `saveToJson`) sono stati rimossi dai test senza allar
 contratti applicativi. Il gate mirato produce **75 pass e 311 asserzioni**.
 
 Famiglia A (story 4.26): le fixture e le classi anonime **estendono l'host reale del trait**,
-non `Model` nudo: `SushiToCsv` → `Sigma\Models\WebService`, `SushiToPhpArray` →
+non `Model` nudo — `SushiToCsv` → `Sigma\Models\WebService`, `SushiToPhpArray` →
 `User\Models\SocialProvider`, `SushiToJsons` → `Tenant\Models\BaseModelJsons`. I test
 restano in memoria (`forceFill` / file tmp + mock di `GetTenantFilePathAction`).
 `setAttribute()` nel trait resta il contratto Eloquent delle colonne dinamiche.
-
-### Helper di `Modules\Tenant\Tests\TestCase`
-
-I test Pest del modulo chiamano metodi statici di `TestCase`, non funzioni libere
-(`tests/Pest.php` e' solo un commento: Pest legge un solo `Pest.php`, quello della root).
-I principali: `mockAppService($classe, $callback)` (mock Mockery registrato nel container
-con `app()->instance`), `expectMockery($mock, $metodo)` (espettativa tipizzata),
-`sushiModel()` / `sushiJsonPath()` / `sushiTestData()` / `sushiRowById()` (fixture del modello
-Sushi di test), `createTenant()` / `tenantModel()`, `setServerNameForTenantTest()`,
-`tenantDbUnavailable()` (oggi `true`: i test che scrivono sul DB tenant si saltano) e
-`skipCurrentTest()`. Un helper nuovo va qui, tipizzato, non in un file `Support`.
 
 ## Overview
 
@@ -77,6 +61,20 @@ Modules/Tenant/tests/
 - **Pest.php** - Pest configuration and extensions
 - **Feature/** - Feature tests for Tenant functionality
 - **Unit/** - Unit tests for Tenant components
+
+## Binding del TestCase
+
+Ogni file di test che usa l'applicazione o i metodi di `Modules\Tenant\Tests\TestCase` lo lega da solo:
+
+```php
+use Modules\Tenant\Tests\TestCase;
+
+uses(TestCase::class);
+```
+
+Mai `uses(...)->in(...)` in `tests/Pest.php`: il runner di root non lo esegue (i test restano senza
+applicazione) e con `--test-directory` raddoppia il binding (`TestCaseAlreadyInUse`). Decisione e guardia:
+[ADR pest-testcase-binding-per-file](../../Xot/docs/adr/pest-testcase-binding-per-file.md).
 
 ## Testing Configuration
 
@@ -318,7 +316,6 @@ protected function createApplication()
 - [Testing Setup Guide](../../../docs/testing-setup.md)
 - [Testing Best Practices](../../../docs/testing-best-practices.md)
 - [Troubleshooting Guide](../../../docs/troubleshooting.md)
-- [Troubleshooting Guide](../../../../docs/troubleshooting.md)
 
 ## Testing Examples
 
@@ -424,7 +421,7 @@ Following these guidelines will ensure your Tenant module tests are:
 
 Remember: Good tests are the foundation of reliable software development.
 
-## Coverage: gate 100%
+## Coverage — gate 100%
 
 **Perché:** il tenant risolve path, config, morph map e persistenza Sushi per-tenant.
 Senza coverage completa sui resolver/action/trait, un tenant sbagliato può leggere
@@ -441,7 +438,7 @@ XDEBUG_MODE=coverage ./vendor/bin/pest -c Modules/Tenant/phpunit.xml --coverage 
 
 ### Strategia
 
-1. Pest only, `uses(TestCase::class)`: **no** `RefreshDatabase` (sqlite tenant condiviso → skip su lock).
+1. Pest only, `uses(TestCase::class)` — **no** `RefreshDatabase` (sqlite tenant condiviso → skip su lock).
 2. Unit: Actions, Resolvers, Providers, Policy, trait Sushi via **named subclasses** in `tests/Unit/Fixtures/`.
 3. Assertion reali; niente `@codeCoverageIgnore`.
 4. Feature/Integration/Performance: skip condizionato se DB/fixture indisponibili.

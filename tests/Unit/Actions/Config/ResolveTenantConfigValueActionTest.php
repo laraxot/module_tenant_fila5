@@ -12,8 +12,6 @@ use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Tests\XotBasePest;
 use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
-
 it('resolves tenant config value by merging with tenant overrides', function (): void {
     /** @var TestCase $this */
     $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {

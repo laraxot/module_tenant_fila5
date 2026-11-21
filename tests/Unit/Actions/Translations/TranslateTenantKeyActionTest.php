@@ -11,13 +11,11 @@ use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
-
 beforeEach(function (): void {
     $directory = storage_path('tests/tenant-lang/en');
     File::deleteDirectory(dirname($directory));
     File::makeDirectory($directory, 0755, true, true);
-    TestCase::$testDirectory = dirname($directory);
+    $this->testDirectory = dirname($directory);
 
     File::put(
         $directory.'/messages.php',
@@ -29,7 +27,7 @@ beforeEach(function (): void {
     $messagesPath = $directory.'/messages.php';
     $mock = Mockery::mock(GetTenantFilePathAction::class);
     // allows(['execute' => $closure]) restituirebbe la closure; andReturnUsing la esegue.
-    TestCase::expectMockery($mock, 'execute')->andReturnUsing(
+    $mock->shouldReceive('execute')->andReturnUsing(
         static function (string $filename) use ($messagesPath): string {
             if ($filename === 'lang/en/messages.php') {
                 return $messagesPath;
@@ -44,7 +42,7 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
-    File::deleteDirectory(TestCase::$testDirectory);
+    File::deleteDirectory($this->testDirectory);
     Mockery::close();
 });
 

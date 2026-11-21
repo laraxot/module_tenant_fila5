@@ -10,7 +10,6 @@ updated: 2026-07-14
 qmd: "business logic deep dive"
 related:
   - "./phpstan-corrections-january.md"
-status: draft
 ---
 # Tenant Module - Business Logic Deep Dive
 

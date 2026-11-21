@@ -51,7 +51,7 @@ it('rejects path traversal in tenant filename', function (): void {
 
 it('rejects malicious server name with path traversal', function (): void {
     config(['app.url' => 'http://localhost']);
-    TestCase::setServerNameForTenantTest('../../evil.com');
+    $this->setServerNameForTenantTest('../../evil.com');
 
     $result = app(GetTenantNameAction::class)->execute();
 

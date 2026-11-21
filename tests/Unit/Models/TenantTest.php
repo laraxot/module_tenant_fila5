@@ -13,8 +13,8 @@ uses(TestCase::class);
 
 describe('Tenant model', function (): void {
     it('creates tenant with required fields', function (): void {
-        if (TestCase::tenantDbUnavailable()) {
-            TestCase::skipCurrentTest('Tenant DB write blocked on shared sqlite');
+        if ($this->tenantDbUnavailable()) {
+            $this->skipCurrentTest('Tenant DB write blocked on shared sqlite');
         }
 
         $tenant = Tenant::create([
@@ -38,8 +38,8 @@ describe('Tenant model', function (): void {
     });
 
     it('casts settings to array when column exists', function (): void {
-        if (TestCase::tenantDbUnavailable()) {
-            TestCase::skipCurrentTest('Tenant DB write blocked on shared sqlite');
+        if ($this->tenantDbUnavailable()) {
+            $this->skipCurrentTest('Tenant DB write blocked on shared sqlite');
         }
 
         /** @var TenantFactory $factory */
@@ -64,11 +64,11 @@ describe('Tenant model', function (): void {
     });
 
     it('creates tenant via typed factory helper', function (): void {
-        if (TestCase::tenantDbUnavailable()) {
-            TestCase::skipCurrentTest('Tenant DB write blocked on shared sqlite');
+        if ($this->tenantDbUnavailable()) {
+            $this->skipCurrentTest('Tenant DB write blocked on shared sqlite');
         }
 
-        $tenant = TestCase::createTenant(['name' => 'factory-tenant']);
+        $tenant = $this->createTenant(['name' => 'factory-tenant']);
 
         Assert::assertSame('factory-tenant', $tenant->name);
     });

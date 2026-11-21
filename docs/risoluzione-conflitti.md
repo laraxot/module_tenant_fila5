@@ -10,7 +10,6 @@ updated: 2026-07-14
 qmd: "risoluzione conflitti"
 related:
   - "./phpstan-corrections-january.md"
-status: draft
 ---
 # Risoluzione Conflitti nel Modulo Tenant
 
@@ -167,6 +166,6 @@ Questo errore indica che ci sono ancora conflitti git non risolti in altri modul
 
 ## Collegamenti Utili
 
-- [Documentazione Principale Tenant](module_tenant.md)
+- [Documentazione Principale Tenant](archive/module_tenant.md)
 - [Rapporti PHPStan](phpstan/)
 - [Panoramica della Risoluzione dei Conflitti](../../../../docs/risoluzione_conflitti_git.md)

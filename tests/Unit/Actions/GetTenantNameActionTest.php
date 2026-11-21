@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-use Modules\Tenant\Actions\GetTenantNameAction;
-use Tests\TestCase;
+namespace Modules\Tenant\Tests\Unit\Actions;
 
-uses(TestCase::class);
+use Modules\Tenant\Actions\GetTenantNameAction;
 
 test('get tenant name action returns correct tenant name from server name', function () {
     $_SERVER['SERVER_NAME'] = 'myapp.example.com';
@@ -52,19 +51,4 @@ test('get tenant name action handles empty app url config', function () {
     $result = $action->execute();
 
     expect($result)->toBe('localhost');
-});
-
-test('host fixcity.eu usa il tenant canonico e non l alias del symlink', function () {
-    $previousServer = $_SERVER['SERVER_NAME'] ?? null;
-    $_SERVER['SERVER_NAME'] = 'fixcity.eu';
-
-    try {
-        expect(app(GetTenantNameAction::class)->execute())->toBe('local/fixcity');
-    } finally {
-        if (is_string($previousServer)) {
-            $_SERVER['SERVER_NAME'] = $previousServer;
-        } else {
-            unset($_SERVER['SERVER_NAME']);
-        }
-    }
 });

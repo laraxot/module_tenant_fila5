@@ -10,7 +10,6 @@ title: Il file xra.php
 description: Il file xra.php
 extends: _layouts.documentation
 section: content
-status: draft
 ---
 
 # Il file xra.php {#il-file-xra}
@@ -63,7 +62,6 @@ Di default viene utilizzata **laravel\Themes\adm_theme\Resources\views\admin\das
 * [xra.md](../../../xot/docs/install/xra.md)
 * [xra.md](../../../tenant/docs/it/xra.md)
 * [xra.md](../../../tenant/docs/it/config/xra.md)
-* [xra.md](config/xra.md)
 
 ### Versione Incoming
 

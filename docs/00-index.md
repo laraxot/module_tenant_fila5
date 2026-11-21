@@ -1,7 +1,7 @@
 ---
 issues: []
 discussions: []
-title: "Tenant Module: Documentation Index"
+title: "Tenant Module — Documentation Index"
 module: "Tenant"
 type: concept
 tags: [00, INDEX]
@@ -10,9 +10,8 @@ updated: 2026-07-14
 qmd: "00 index"
 related:
   - "./phpstan-corrections-january.md"
-status: draft
 ---
-# Tenant Module: Documentation Index
+# Tenant Module — Documentation Index
 
 **Path**: `laravel/Modules/Tenant/docs/`  
 **Updated**: 2026-07-01  
@@ -22,30 +21,34 @@ status: draft
 
 ## 🎯 Quick Start
 
-**Multi-tenancy 101**: [TenantIdentification.md](./wiki/tenantidentification.md): How tenants are identified and isolated  
-**Architecture**: [Architecture.md](./wiki/architecture.md): System design and data flow  
+**Multi-tenancy 101**: [TenantIdentification.md](./wiki/tenantidentification.md) — How tenants are identified and isolated  
+**Architecture**: [Architecture.md](./wiki/architecture.md) — System design and data flow  
 **Configuration**: See **Multi-Tenant Config** section below ⬇️
 
 ---
 
 ## 📋 Hub Canonici (Core Files)
 
-### Wiki (Sacred: Do Not Delete)
-- **[wiki/index.md](./wiki/index.md)**: Operating manual for LLM agents
-- **[wiki/Architecture.md](./wiki/architecture.md)**: Multi-tenant system design
-- **[wiki/TenantIdentification.md](./wiki/tenantidentification.md)**: How tenants are identified
-- **[wiki/ConfigurationDistribution.md](./wiki/configurationdistribution.md)**: Config per tenant
-- **[wiki/schema.md](./wiki/schema.md)**: Database schema reference
+### Wiki (Sacred — Do Not Delete)
+- **[wiki/index.md](./wiki/index.md)** — Operating manual for LLM agents
+- **[wiki/Architecture.md](./wiki/architecture.md)** — Multi-tenant system design
+- **[wiki/TenantIdentification.md](./wiki/tenantidentification.md)** — How tenants are identified
+- **[wiki/ConfigurationDistribution.md](./wiki/configurationdistribution.md)** — Config per tenant
+---
+- **[wiki/Architecture.md](./wiki/Architecture.md)** — Multi-tenant system design
+- **[wiki/TenantIdentification.md](./wiki/TenantIdentification.md)** — How tenants are identified
+- **[wiki/ConfigurationDistribution.md](./wiki/ConfigurationDistribution.md)** — Config per tenant
+- **[wiki/schema.md](./wiki/schema.md)** — Database schema reference
 
 ### Roadmap
-- **[roadmap/00-index.md](./roadmap/00-index.md)**: Q4 2025 roadmap and phases
-- **[roadmap/vision.md](./roadmap/vision.md)**: Long-term vision
-- **[roadmap/tenant-isolation.md](./roadmap/tenant-isolation.md)**: Data isolation strategy
+- **[roadmap/00-index.md](./roadmap/00-index.md)** — Q4 2025 roadmap and phases
+- **[roadmap/vision.md](./roadmap/vision.md)** — Long-term vision
+- **[roadmap/tenant-isolation.md](./roadmap/tenant-isolation.md)** — Data isolation strategy
 
 ### Product & Strategy
-- **[PRD.md](./prd.md)**: Product requirements document
-- **[philosophy.md](./philosophy.md)**: Core principles
-- **[README.md](./README.md)**: Module overview and local knowledge map
+- **[PRD.md](prd.md)** — Product requirements document
+- **[philosophy.md](./philosophy.md)** — Core principles
+- **[README.md](./README.md)** — Module overview and local knowledge map
 
 ---
 
@@ -64,25 +67,25 @@ laravel/config/
 ```
 
 **Each tenant context includes**:
-- `app.php`: Locale, timezone, app name per tenant
-- `database.php`: Separate DB connection per tenant
-- `services.php`: API credentials per tenant
-- `modules.php`: Active modules per tenant
-- `modules_statuses.json`: Module status overrides
-- `morph_map.php`: Model registry (CRITICAL: never delete)
+- `app.php` — Locale, timezone, app name per tenant
+- `database.php` — Separate DB connection per tenant
+- `services.php` — API credentials per tenant
+- `modules.php` — Active modules per tenant
+- `modules_statuses.json` — Module status overrides
+- `morph_map.php` — Model registry (CRITICAL — never delete)
 
 ### Why This Architecture
 
-1. **Data Isolation**: Each tenant has own database or schema
-2. **Environment Separation**: Different APIs/credentials per deployment
-3. **Module Availability**: Different features per tenant
-4. **Local Development**: `localhost/` provides isolated dev environment
+1. **Data Isolation** — Each tenant has own database or schema
+2. **Environment Separation** — Different APIs/credentials per deployment
+3. **Module Availability** — Different features per tenant
+4. **Local Development** — `localhost/` provides isolated dev environment
 
 ### Related Memory Files
 
 For deep understanding of multi-tenant configuration:
-- **[config-architecture-multi-tenant](../../../../.claude/config_architecture_documentation.md)**: Detailed architecture guide
-- **[error_config_deletion_2026_07_01](../../../../.claude/error_config_deletion_2026_07_01.md)**: Critical lessons learned
+- **[config-architecture-multi-tenant](../../../../.claude/config_architecture_documentation.md)** — Detailed architecture guide
+- **[error_config_deletion_2026_07_01](../../../../.claude/error_config_deletion_2026_07_01.md)** — Critical lessons learned
 
 > **CRITICAL RULE**: Never delete files under `laravel/config/`. These are KNOWN tenant configurations, not speculative code. Always grep before deleting any config file.
 
@@ -101,10 +104,11 @@ For deep understanding of multi-tenant configuration:
 
 | Rule | Source |
 |------|--------|
-| No Services: use Actions | [wiki/concepts/](./wiki/concepts/) |
+| No Services — use Actions | [wiki/concepts/](./wiki/concepts/) |
 | Tenant scoping automatic | [TenantIdentification.md](./wiki/tenantidentification.md) |
 | Config per tenant required | [ConfigurationDistribution.md](./wiki/configurationdistribution.md) |
 | No hardcoded credentials | Via `laravel/config/{tenant}/` |
+| Modelli Sushi: `unique`/`exists` richiedono la connessione per nome | [stories/7.4.sushi-connection-by-name.story.md](./stories/7.4.sushi-connection-by-name.story.md), [bmad/sushi-model-pitfalls.md](./bmad/sushi-model-pitfalls.md) |
 
 ---
 
@@ -124,14 +128,22 @@ For deep understanding of multi-tenant configuration:
 
 ## 🔗 Related Modules
 
-- **[User Module](../../User/docs/00-index.md)**: Authentication per tenant
-- **[Xot Module](../../Xot/docs/00-INDEX.md)**: Base classes for tenant awareness
-- **[Theme System](../../../Themes/)**: Theme per tenant support
+- **[User Module](../../User/docs/00-index.md)** — Authentication per tenant
+- **[Xot Module](../../Xot/docs/00-index.md)** — Base classes for tenant awareness
+- **[Theme System](../../../Themes/)** — Theme per tenant support
 
 ---
 
 **Next Step**: Read [wiki/TenantIdentification.md](./wiki/tenantidentification.md) to understand how the current request is associated with a tenant.
 
-## Cosa manca per completare
+## Documentazione BMAD del modulo
 
-[completion-status.md](./completion-status.md): indicatori misurati, problemi noti e story aperte (2026-10-28).
+Aggiornata il 2026-10-07 dopo la risoluzione dei marker di merge nei docs (versioni composte, non scelte a un lato).
+
+- [Brainstorming](bmad/brainstorming.md): decisioni, questioni aperte, opzioni scartate.
+- [Architecture](bmad/architecture.md)
+- [Quick reference](bmad/quick-reference.md)
+- [Setup guide](bmad/setup-guide.md)
+- Story: cartella [bmad/stories/](bmad/stories/).
+- Story PHPStan 2026-10-08: [categoria nei benchmark Sushi](stories/2026-10-08-phpstan-tenant-sushi-benchmark-category.story.md).
+- Story Services 2026-10-08: [TenantService e Services/Config eliminati](stories/2026-10-08-services-to-actions-tenant.story.md).

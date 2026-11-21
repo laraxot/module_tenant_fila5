@@ -10,7 +10,6 @@ updated: 2026-07-24
 qmd: "index modulo tenant bridge readme"
 related:
   - "./README.md"
-status: draft
 ---
 
 # Indice della Documentazione - Modulo Tenant
@@ -19,7 +18,7 @@ status: draft
 > mai esistiti (`architecture/`, `models/`, `forms/`, `phpstan/index.md`, `actions/index.md`, `console/index.md`,
 > `enums/index.md`, `filament/index.md`, `services/index.md`, `traits/index.md`, `domain-management.md`,
 > `data-isolation.md`, `separate-databases.md`, ecc.). Consolidato: usare **[README.md](./README.md)** come
-> punto di ingresso: a sua volta corretto in questa sessione perché descriveva un'architettura
+> punto di ingresso — a sua volta corretto in questa sessione perché descriveva un'architettura
 > (`TenantService`, `TenantSwitcher`, `SetTenant`, `BelongsToTenant`) in gran parte non implementata nel codice.
 
 Doc verificati e presenti in `docs/`:
@@ -28,7 +27,7 @@ Doc verificati e presenti in `docs/`:
 - [core-functionality.md](./core-functionality.md)
 - [configuration.md](./configuration.md)
 - [filament-resources.md](./filament-resources.md)
-- [API.md](./api.md)
+- [API.md](./API.md)
 - [translations.md](./translations.md)
 - [phpstan-cluster.md](./phpstan-cluster.md)
 - [testing.md](./testing.md)
@@ -41,6 +40,7 @@ Doc verificati e presenti in `docs/`:
 <!-- Merged from INDEX.md, which collided with this file on case-insensitive filesystems. -->
 
 ---
+title: Tenant Module Documentation Index
 module: Tenant
 status: production
 last_updated: 2026-07-28
@@ -54,13 +54,12 @@ last_updated: 2026-07-28
 
 ## Navigation
 
-- [Overview](README.md): Module description and quick start
-- [Architecture](ARCHITECTURE.md): System design and isolation strategies
-- [API Reference](api.md): Core models, contracts, and services
-- [Patterns](patterns.md): Design patterns and best practices
-- [Troubleshooting](troubleshooting.md): Common issues and solutions
-- [Contributing](../../docs/wiki/how-to/contributing.md): Development guidelines
-- [Contributing](../../docs/wiki/how-to/contributing.md) _(target mancante, verificato 2026-10-14)_: Development guidelines
+- [Overview](README.md) — Module description and quick start
+- [Architecture](ARCHITECTURE.md) — System design and isolation strategies
+- [API Reference](API.md) — Core models, contracts, and services
+- [Patterns](patterns.md) — Design patterns and best practices
+- [Troubleshooting](troubleshooting.md) — Common issues and solutions
+- [Contributing](../../docs/wiki/how-to/contributing.md) — Development guidelines
 
 ---
 
@@ -133,9 +132,8 @@ Each tenant operates in complete isolation:
 
 ## Related Modules
 
-- **[Xot](../../Xot/docs/index.md)**: Core framework and abstractions
-- **[Xot](../../Xot/docs/00-INDEX.md)**: Core framework and abstractions
-- **[User](../../User/docs/index.md)**: User management and authentication
+- **[Xot](../../Xot/docs/index.md)** — Core framework and abstractions
+- **[User](../../User/docs/index.md)** — User management and authentication
 
 ---
 
@@ -148,7 +146,6 @@ Each tenant operates in complete isolation:
 5. Keep migrations atomic and reversible
 
 For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/contributing.md).
-For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/contributing.md) _(target mancante, verificato 2026-10-14)_.
 
 
 ---
