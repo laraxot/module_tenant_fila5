@@ -335,6 +335,6 @@ public function test_users_isolated_by_tenant()
 
 ---
 
-Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
+Navigation: [Documentation Index](./README.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
 ---
-Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
+Navigation: [Documentation Index](./README.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
