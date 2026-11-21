@@ -24,6 +24,7 @@ discussions: []
 
 The root level contains strategic documents, analyses, and consolidated guides:
 
+<<<<<<< .merge_file_PKRxLY
 - [00-INDEX.md](00-INDEX.md)
 - [00-index.md](00-index.md)
 - [API.md](API.md)
@@ -40,6 +41,24 @@ The root level contains strategic documents, analyses, and consolidated guides:
 - [SUSHI_TO_JSON_FIX_PLAN.md](sushi_to_json_fix_plan.md)
 - [TODO.md](TODO.md)
 - [USER_RESEARCH.md](user_research.md)
+=======
+- [00-index.md](00-index.md)
+- [00-index.md](00-index.md)
+- [API.md](api.md)
+- [architecture.md](architecture.md)
+- [LICENSE-full.md](license-full.md)
+- [metodi_duplicati_analisi.md](metodi_duplicati_analisi.md)
+- [PRD.md](prd.md)
+- [product_launch_plan.md](product_launch_plan.md)
+- [product_roadmap.md](product_roadmap.md)
+- [product_strategy.md](product_strategy.md)
+- [README.md](README.md)
+- [redundancy_analysis.md](redundancy_analysis.md)
+- [sprint_planning.md](sprint_planning.md)
+- [SUSHI_TO_JSON_FIX_PLAN.md](sushi_to_json_fix_plan.md)
+- [TODO.md](todo.md)
+- [user_research.md](user_research.md)
+>>>>>>> .merge_file_Ry5Jxo
 - [about.md](about.md)
 - [activitylog.md](activitylog.md)
 - [ai-methodologies.md](ai-methodologies.md)
@@ -56,7 +75,11 @@ The root level contains strategic documents, analyses, and consolidated guides:
 - [business-logic-deep-dive.md](business-logic-deep-dive.md)
 - [case-sensitivity-rules.md](case-sensitivity-rules.md)
 - [changelog-root.md](changelog-root.md)
+<<<<<<< .merge_file_PKRxLY
 - [changelog.md](changelog.md)
+=======
+- [CHANGELOG.md](CHANGELOG.md)
+>>>>>>> .merge_file_Ry5Jxo
 - [chaos-monkey-tenant-isolation-checklist.md](chaos-monkey-tenant-isolation-checklist.md)
 - [code-quality-improvement-report.md](code-quality-improvement-report.md)
 - [code-quality-report.md](code-quality-report.md)
@@ -86,10 +109,17 @@ Comprehensive wiki system with concepts, how-to guides, rules, and troubleshooti
   - [log.md](wiki/log.md)
   - [bmad-method.md](wiki/bmad-method.md)
   - [README.md](wiki/README.md)
+<<<<<<< .merge_file_PKRxLY
   - [Architecture.md](wiki/architecture.md)
 
 **Concepts** (16 files)
   - [INDEX.md](wiki/concepts/INDEX.md)
+=======
+  - [architecture.md](wiki/architecture.md)
+
+**Concepts** (16 files)
+  - [index.md](wiki/concepts/index.md)
+>>>>>>> .merge_file_Ry5Jxo
   - [context-overflow-prevention.md](wiki/concepts/context-overflow-prevention.md)
   - [organizzativa-money.md](wiki/concepts/organizzativa-money.md)
   - [duplicate-method-bodies.md](wiki/concepts/duplicate-method-bodies.md)
@@ -113,7 +143,11 @@ Comprehensive wiki system with concepts, how-to guides, rules, and troubleshooti
   - [phpstan-fixes.md](wiki/troubleshooting/phpstan-fixes.md)
 
 **Memories** (3 files)
+<<<<<<< .merge_file_PKRxLY
   - [INDEX.md](wiki/memories/INDEX.md)
+=======
+  - [index.md](wiki/memories/index.md)
+>>>>>>> .merge_file_Ry5Jxo
   - [github-remote-collision-wrong-base.md](wiki/memories/github-remote-collision-wrong-base.md)
   - [gitignore-tests-claude-audit.md](wiki/memories/gitignore-tests-claude-audit.md)
 
@@ -127,15 +161,25 @@ Comprehensive wiki system with concepts, how-to guides, rules, and troubleshooti
 
 **Other** (6 files)
   - [overviews/tenant-module.md](wiki/overviews/tenant-module.md)
+<<<<<<< .merge_file_PKRxLY
   - [commands/INDEX.md](wiki/commands/INDEX.md)
   - [skills/INDEX.md](wiki/skills/INDEX.md)
   - [rules/INDEX.md](wiki/rules/INDEX.md)
+=======
+  - [commands/index.md](wiki/commands/index.md)
+  - [skills/index.md](wiki/skills/index.md)
+  - [rules/index.md](wiki/rules/index.md)
+>>>>>>> .merge_file_Ry5Jxo
 
 ### Roadmap (41 files)
 
 Strategic planning and vision documents:
 
+<<<<<<< .merge_file_PKRxLY
 - [00-INDEX.md](roadmap/00-INDEX.md)
+=======
+- [00-index.md](roadmap/00-index.md)
+>>>>>>> .merge_file_Ry5Jxo
 - [00-overview.md](roadmap/00-overview.md)
 - [01-current-state.md](roadmap/01-current-state.md)
 - [01-now.md](roadmap/01-now.md)
@@ -169,9 +213,20 @@ Raw source documents and import sources:
 
 **Root Import** (40 files)
   - [alternatives-1.md](raw/root-import/alternatives-1.md)
+<<<<<<< .merge_file_PKRxLY
   - [changelog-1.md](raw/root-import/changelog-1.md)
   - [changelog-2.md](raw/root-import/changelog-2.md)
   - [license.md](raw/root-import/license.md)
+=======
+<<<<<<< .merge_file_zScWzu
+  - [changelog.md](raw/root-import/changelog.md)
+  - [changelog.md](raw/root-import/changelog.md)
+=======
+  - [changelog-1.md](raw/root-import/changelog-1.md)
+  - [changelog-2.md](raw/root-import/changelog-2.md)
+>>>>>>> .merge_file_KTO3Eg
+  - [LICENSE.md](raw/root-import/license.md)
+>>>>>>> .merge_file_Ry5Jxo
   - [readme-en-1.md](raw/root-import/readme-en-1.md)
   - [readme.en.md](raw/root-import/readme.en.md)
   - [readme.it.md](raw/root-import/readme.it.md)
@@ -215,8 +270,13 @@ Consolidated root-level markdown documentation:
 - [README.en.md](root-md-files/README.en.md)
 - [README.it.md](root-md-files/README.it.md)
 - [alternatives.md](root-md-files/alternatives.md)
+<<<<<<< .merge_file_PKRxLY
 - [changelog.md](root-md-files/changelog.md)
 - [license.md](root-md-files/license.md)
+=======
+- [CHANGELOG.md](root-md-files/CHANGELOG.md)
+- [LICENSE.md](root-md-files/LICENSE.md)
+>>>>>>> .merge_file_Ry5Jxo
 - [links.md](root-md-files/links.md)
 - [readme-en.md](root-md-files/readme-en.md)
 - [readme-it.md](raw/root-import/readme-it.md)
@@ -256,8 +316,13 @@ Legacy and superseded documentation:
 
 - [README.md](archived/README.md)
 - [alternatives.md](archived/alternatives.md)
+<<<<<<< .merge_file_PKRxLY
 - [changelog.md](archived/changelog.md)
 - [license.md](archived/license.md)
+=======
+- [CHANGELOG.md](archived/CHANGELOG.md)
+- [LICENSE.md](archived/LICENSE.md)
+>>>>>>> .merge_file_Ry5Jxo
 - [links.md](archived/links.md)
 - [readme-en.md](archived/readme-en.md)
 - [readme-it.md](raw/root-import/readme-it.md)
@@ -289,7 +354,11 @@ Machine learning and documentation knowledge base:
 - [AGENTS.md](llm-wiki/AGENTS.md)
 - [index.md](llm-wiki/index.md)
 - [log.md](llm-wiki/log.md)
+<<<<<<< .merge_file_PKRxLY
 - [agents.md](llm-wiki/agents.md)
+=======
+- [AGENTS.md](llm-wiki/AGENTS.md)
+>>>>>>> .merge_file_Ry5Jxo
 - [_templates/concept.md](llm-wiki/_templates/concept.md)
 - [_templates/entity.md](llm-wiki/_templates/entity.md)
 - [_templates/source.md](llm-wiki/_templates/source.md)
@@ -312,7 +381,11 @@ Documentation for HTML to PDF conversion:
 - [advanced.md](html2pdf/advanced.md)
 - [index.md](html2pdf/index.md)
 - [laravel.md](html2pdf/laravel.md)
+<<<<<<< .merge_file_PKRxLY
 - [security.md](html2pdf/security.md)
+=======
+- [SECURITY.md](html2pdf/security.md)
+>>>>>>> .merge_file_Ry5Jxo
 - [styling.md](html2pdf/styling.md)
 - [usage.md](html2pdf/usage.md)
 
@@ -398,6 +471,7 @@ discussions: []
 
 | Date | File | Category |
 |------|------|----------|
+<<<<<<< .merge_file_PKRxLY
 | 2026-07-28 | [00-INDEX.md](00-INDEX.md) | root |
 | 2026-07-28 | [API.md](API.md) | root |
 | 2026-07-28 | [ARCHITECTURE.md](ARCHITECTURE.md) | root |
@@ -408,6 +482,18 @@ discussions: []
 | 2026-07-28 | [TODO.md](TODO.md) | root |
 | 2026-07-28 | [best-practices.md](best-practices.md) | root |
 | 2026-07-28 | [changelog.md](changelog.md) | root |
+=======
+| 2026-07-28 | [00-index.md](00-index.md) | root |
+| 2026-07-28 | [API.md](api.md) | root |
+| 2026-07-28 | [architecture.md](architecture.md) | root |
+| 2026-07-28 | [PRD.md](prd.md) | root |
+| 2026-07-28 | [README.md](README.md) | root |
+| 2026-07-28 | [product_strategy.md](product_strategy.md) | root |
+| 2026-07-28 | [sprint_planning.md](sprint_planning.md) | root |
+| 2026-07-28 | [TODO.md](todo.md) | root |
+| 2026-07-28 | [best-practices.md](best-practices.md) | root |
+| 2026-07-28 | [CHANGELOG.md](CHANGELOG.md) | root |
+>>>>>>> .merge_file_Ry5Jxo
 | 2026-07-28 | [configuration.md](configuration.md) | root |
 | 2026-07-28 | [core-functionality.md](core-functionality.md) | root |
 | 2026-07-28 | [design-patterns.md](design-patterns.md) | root |

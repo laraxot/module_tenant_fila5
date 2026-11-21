@@ -32,7 +32,7 @@ Questo piano copre il module **Tenant** e le sue integrazioni principali.
 
 ---
 
-<!-- Merged from 00-INDEX.md, which collided with this file on case-insensitive filesystems. -->
+<!-- Merged from 00-index.md, which collided with this file on case-insensitive filesystems. -->
 
 ---
 title: "Roadmap Index - Tenant"

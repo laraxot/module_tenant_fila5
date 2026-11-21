@@ -46,7 +46,7 @@ Tenant esiste perché il modello multi-tenant richiede isolamento a livello di d
 
 ## Gap
 
-- ARCHITECTURE.md mancante nella root del modulo
+- architecture.md mancante nella root del modulo
 - Azioni per il lifecycle del tenant (create, update, delete, migrate, rollback) limitate
 - Test suite multi-tenant incompleta
 - Nessuno strumento di audit per isolamento tenant

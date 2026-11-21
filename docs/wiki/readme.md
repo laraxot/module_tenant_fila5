@@ -1,5 +1,9 @@
 ---
+<<<<<<< .merge_file_HwuWxF
 title: "readme.md"
+=======
+title: "README.md"
+>>>>>>> .merge_file_0SqvMC
 type: concept
 status: active
 module: "Tenant"

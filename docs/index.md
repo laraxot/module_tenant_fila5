@@ -27,7 +27,11 @@ Doc verificati e presenti in `docs/`:
 - [core-functionality.md](./core-functionality.md)
 - [configuration.md](./configuration.md)
 - [filament-resources.md](./filament-resources.md)
+<<<<<<< .merge_file_ykW6oA
 - [API.md](./API.md)
+=======
+- [API.md](./api.md)
+>>>>>>> .merge_file_Ho0zqX
 - [translations.md](./translations.md)
 - [phpstan-cluster.md](./phpstan-cluster.md)
 - [testing.md](./testing.md)
@@ -37,7 +41,11 @@ Doc verificati e presenti in `docs/`:
 
 ---
 
+<<<<<<< .merge_file_ykW6oA
 <!-- Merged from INDEX.md, which collided with this file on case-insensitive filesystems. -->
+=======
+<!-- Merged from index.md, which collided with this file on case-insensitive filesystems. -->
+>>>>>>> .merge_file_Ho0zqX
 
 ---
 title: Tenant Module Documentation Index
@@ -55,11 +63,19 @@ last_updated: 2026-07-28
 ## Navigation
 
 - [Overview](README.md) — Module description and quick start
+<<<<<<< .merge_file_ykW6oA
 - [Architecture](ARCHITECTURE.md) — System design and isolation strategies
 - [API Reference](API.md) — Core models, contracts, and services
 - [Patterns](patterns.md) — Design patterns and best practices
 - [Troubleshooting](troubleshooting.md) — Common issues and solutions
 - [Contributing](../../docs/wiki/how-to/contributing.md) — Development guidelines
+=======
+- [Architecture](architecture.md) — System design and isolation strategies
+- [API Reference](api.md) — Core models, contracts, and services
+- [Patterns](patterns.md) — Design patterns and best practices
+- [Troubleshooting](troubleshooting.md) — Common issues and solutions
+- [Contributing](../../docs/wiki/how-to/CONTRIBUTING.md) — Development guidelines
+>>>>>>> .merge_file_Ho0zqX
 
 ---
 
@@ -91,7 +107,11 @@ last_updated: 2026-07-28
 | Date | File | Category |
 |------|------|----------|
 | 2026-07-28 | README.md | Documentation |
+<<<<<<< .merge_file_ykW6oA
 | 2026-07-28 | ARCHITECTURE.md | Documentation |
+=======
+| 2026-07-28 | architecture.md | Documentation |
+>>>>>>> .merge_file_Ho0zqX
 | 2026-07-28 | API.md | Documentation |
 | 2026-07-28 | PATTERNS.md | Documentation |
 | 2026-07-28 | TROUBLESHOOTING.md | Documentation |
@@ -132,7 +152,11 @@ Each tenant operates in complete isolation:
 
 ## Related Modules
 
+<<<<<<< .merge_file_ykW6oA
 - **[Xot](../../Xot/docs/index.md)** — Core framework and abstractions
+=======
+- **[Xot](../../Xot/docs/INDEX.md)** — Core framework and abstractions
+>>>>>>> .merge_file_Ho0zqX
 - **[User](../../User/docs/index.md)** — User management and authentication
 
 ---
@@ -145,12 +169,21 @@ Each tenant operates in complete isolation:
 4. Add troubleshooting entries for known issues
 5. Keep migrations atomic and reversible
 
+<<<<<<< .merge_file_ykW6oA
 For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/contributing.md).
 
 
 ---
 
 ## Contenuto assorbito da `INDEX.md`
+=======
+For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/CONTRIBUTING.md).
+
+
+---
+
+## Contenuto assorbito da `index.md`
+>>>>>>> .merge_file_Ho0zqX
 
 # Documentation Index
 

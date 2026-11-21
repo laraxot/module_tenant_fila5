@@ -1,10 +1,18 @@
 ---
+<<<<<<< .merge_file_lr62B7
 title: "architecture"
+=======
+title: "Architecture"
+>>>>>>> .merge_file_6RspFj
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< .merge_file_lr62B7
 qmd: "architecture"
+=======
+qmd: "Architecture"
+>>>>>>> .merge_file_6RspFj
 issues: []
 discussions: []
 module: Tenant
