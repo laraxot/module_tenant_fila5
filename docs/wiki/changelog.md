@@ -1,5 +1,5 @@
 ---
-title: "changelog.md"
+title: "CHANGELOG.md"
 type: concept
 status: active
 module: "Tenant"

@@ -6,7 +6,10 @@ namespace Modules\Tenant\Tests\Unit\Models;
 
 use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Models\Tenant;
+use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
 
 describe('Tenant model', function (): void {
     it('creates tenant with required fields', function (): void {

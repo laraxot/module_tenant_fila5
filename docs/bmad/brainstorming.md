@@ -25,6 +25,7 @@ status: active
 > ancorate a file e simboli reali (riverificate il 2026-11-16: le voci su
 > `ConfigResolverRegistry`, `StandardConfigResolver` e `TenantService` erano obsolete e
 > sono state rimosse — `app/Services` non esiste, la logica è in Action).
+> Il brainstorming di dettaglio per area è negli shard.
 
 ## Shard
 

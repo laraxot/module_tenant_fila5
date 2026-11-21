@@ -4,6 +4,8 @@ type: epics
 status: active
 updated: 2026-11-16
 module: Tenant
+tags: [docs, tenant, bmad]
+created: 2026-10-06
 qmd: "epics Tenant TrustHosts tenant admin perimetro DatabaseConfig encrypted pulizia sushi docs collisioni maiuscole"
 ---
 

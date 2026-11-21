@@ -62,6 +62,20 @@ Modules/Tenant/tests/
 - **Feature/** - Feature tests for Tenant functionality
 - **Unit/** - Unit tests for Tenant components
 
+## Binding del TestCase
+
+Ogni file di test che usa l'applicazione o i metodi di `Modules\Tenant\Tests\TestCase` lo lega da solo:
+
+```php
+use Modules\Tenant\Tests\TestCase;
+
+uses(TestCase::class);
+```
+
+Mai `uses(...)->in(...)` in `tests/Pest.php`: il runner di root non lo esegue (i test restano senza
+applicazione) e con `--test-directory` raddoppia il binding (`TestCaseAlreadyInUse`). Decisione e guardia:
+[ADR pest-testcase-binding-per-file](../../Xot/docs/adr/pest-testcase-binding-per-file.md).
+
 ## Testing Configuration
 
 ### TestCase Configuration

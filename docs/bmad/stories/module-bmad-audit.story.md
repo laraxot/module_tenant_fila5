@@ -12,8 +12,8 @@ qmd: "story BMAD audit modulo Tenant inventario finding gate PHPStan Pest skip"
 ## Acceptance
 
 - [x] Inventario source-first misurato (2026-11-16).
-- [x] Finding P0/P1/P2 con `path:line` in [audits/tenant-audit.md](../audits/tenant-audit.md) (0 / 3 / 8).
-- [x] Pack BMAD: purpose, architecture, decision-log, epics, brainstorming, indice.
+- [x] Finding P0/P1/P2 con `path:line` in [audits/tenant-audit.md](../audits/tenant-audit.md) (0 / 3 / 9).
+- [x] Audit + piano in `docs/bmad/`; pack BMAD: purpose, architecture, decision-log, epics, brainstorming, indice.
 - [x] Pack ECC in [docs/ecc](../../ecc/00-index.md).
 - [x] PHPStan `Modules/Tenant`: 0 errori.
 - [ ] Pest modulo: **skip documentato** (bootstrap bloccato, DB test `10.100.200.53` non raggiungibile). Da rieseguire in ambiente testing stabile.
@@ -26,4 +26,4 @@ qmd: "story BMAD audit modulo Tenant inventario finding gate PHPStan Pest skip"
 
 ## Esito
 
-Audit completato, nessun codice, DB o import toccato. Aperti i 3 P1.
+Baseline audit aggiornata: audit completato, nessun codice, DB o import toccato. PHPStan `Modules/Tenant` a 0. Aperti Pest e i 3 P1.

@@ -21,8 +21,8 @@ related:
 
 ## 🎯 Quick Start
 
-**Multi-tenancy 101**: [TenantIdentification.md](./wiki/tenantidentification.md) — How tenants are identified and isolated  
-**Architecture**: [Architecture.md](./wiki/architecture.md) — System design and data flow  
+**Multi-tenancy 101**: [tenantidentification.md](./wiki/tenantidentification.md) — How tenants are identified and isolated  
+**Architecture**: [architecture.md](./wiki/architecture.md) — System design and data flow  
 **Configuration**: See **Multi-Tenant Config** section below ⬇️
 
 ---
@@ -31,13 +31,13 @@ related:
 
 ### Wiki (Sacred — Do Not Delete)
 - **[wiki/index.md](./wiki/index.md)** — Operating manual for LLM agents
-- **[wiki/Architecture.md](./wiki/architecture.md)** — Multi-tenant system design
-- **[wiki/TenantIdentification.md](./wiki/tenantidentification.md)** — How tenants are identified
-- **[wiki/ConfigurationDistribution.md](./wiki/configurationdistribution.md)** — Config per tenant
+- **[wiki/architecture.md](./wiki/architecture.md)** — Multi-tenant system design
+- **[wiki/tenantidentification.md](./wiki/tenantidentification.md)** — How tenants are identified
+- **[wiki/configurationdistribution.md](./wiki/configurationdistribution.md)** — Config per tenant
 ---
-- **[wiki/Architecture.md](./wiki/Architecture.md)** — Multi-tenant system design
-- **[wiki/TenantIdentification.md](./wiki/TenantIdentification.md)** — How tenants are identified
-- **[wiki/ConfigurationDistribution.md](./wiki/ConfigurationDistribution.md)** — Config per tenant
+- **[wiki/architecture.md](./wiki/architecture.md)** — Multi-tenant system design
+- **[wiki/tenantidentification.md](./wiki/tenantidentification.md)** — How tenants are identified
+- **[wiki/configurationdistribution.md](./wiki/configurationdistribution.md)** — Config per tenant
 - **[wiki/schema.md](./wiki/schema.md)** — Database schema reference
 
 ### Roadmap
@@ -46,7 +46,7 @@ related:
 - **[roadmap/tenant-isolation.md](./roadmap/tenant-isolation.md)** — Data isolation strategy
 
 ### Product & Strategy
-- **[PRD.md](./PRD.md)** — Product requirements document
+- **[PRD.md](prd.md)** — Product requirements document
 - **[philosophy.md](./philosophy.md)** — Core principles
 - **[README.md](./README.md)** — Module overview and local knowledge map
 
@@ -94,7 +94,7 @@ For deep understanding of multi-tenant configuration:
 ## 🧠 Core Concepts
 
 **Tenant Scoping**: All queries are scoped to current tenant automatically  
-**Tenant Resolution**: Determined by domain/header/request context (see TenantIdentification.md)  
+**Tenant Resolution**: Determined by domain/header/request context (see tenantidentification.md)  
 **Data Boundaries**: Foreign keys enforce tenant isolation at DB level  
 **Config Hierarchy**: Environment-specific overrides per tenant
 
@@ -105,8 +105,8 @@ For deep understanding of multi-tenant configuration:
 | Rule | Source |
 |------|--------|
 | No Services — use Actions | [wiki/concepts/](./wiki/concepts/) |
-| Tenant scoping automatic | [TenantIdentification.md](./wiki/tenantidentification.md) |
-| Config per tenant required | [ConfigurationDistribution.md](./wiki/configurationdistribution.md) |
+| Tenant scoping automatic | [tenantidentification.md](./wiki/tenantidentification.md) |
+| Config per tenant required | [configurationdistribution.md](./wiki/configurationdistribution.md) |
 | No hardcoded credentials | Via `laravel/config/{tenant}/` |
 | Modelli Sushi: `unique`/`exists` richiedono la connessione per nome | [stories/7.4.sushi-connection-by-name.story.md](./stories/7.4.sushi-connection-by-name.story.md), [bmad/sushi-model-pitfalls.md](./bmad/sushi-model-pitfalls.md) |
 
@@ -134,7 +134,7 @@ For deep understanding of multi-tenant configuration:
 
 ---
 
-**Next Step**: Read [wiki/TenantIdentification.md](./wiki/tenantidentification.md) to understand how the current request is associated with a tenant.
+**Next Step**: Read [wiki/tenantidentification.md](./wiki/tenantidentification.md) to understand how the current request is associated with a tenant.
 
 ## Documentazione BMAD del modulo
 

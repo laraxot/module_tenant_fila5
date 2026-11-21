@@ -1,6 +1,11 @@
 ---
+tags: [documentation]
+created: 2026-09-26
 title: "Tenant — Architettura BMAD"
 type: architecture
+scope: Tenant
+epic: 5.124-bmad-user-module-perfection-study
+bmad_version: v3.30.1
 status: active
 updated: 2026-11-16
 module: Tenant
@@ -9,7 +14,9 @@ qmd: "architettura Tenant risoluzione tenant host config per ente sushi json pro
 
 # Tenant — Architettura
 
-Scopo e perché: [purpose.md](./purpose.md). Dettaglio risoluzione: [architecture/tenant-config-resolution.md](./architecture/tenant-config-resolution.md), confini: [architecture/module-boundary.md](./architecture/module-boundary.md). Finding: [audits/tenant-audit.md](./audits/tenant-audit.md).
+## Scopo
+
+Multi-tenant: più enti da una sola installazione. Scopo e perché: [purpose.md](./purpose.md). Dettaglio risoluzione: [architecture/tenant-config-resolution.md](./architecture/tenant-config-resolution.md), confini: [architecture/module-boundary.md](./architecture/module-boundary.md). Finding: [audits/tenant-audit.md](./audits/tenant-audit.md).
 
 ## Flusso (verificato sul codice, 2026-11-16)
 

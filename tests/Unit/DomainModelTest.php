@@ -7,7 +7,10 @@ namespace Modules\Tenant\Tests\Unit;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\Domain;
+use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
 
 describe('Domain Model', function (): void {
     test('_domain_model_can_be_instantiated', function (): void {
