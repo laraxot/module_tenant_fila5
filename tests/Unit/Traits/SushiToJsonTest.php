@@ -10,12 +10,21 @@ use Illuminate\Support\Facades\File;
 use Mockery;
 use Mockery\MockInterface;
 use Modules\Tenant\Models\TestSushiModel;
+<<<<<<< .merge_file_j7hMMY
+=======
+use Modules\Tenant\Tests\TestCase;
+>>>>>>> .merge_file_QQDWVj
 use PHPUnit\Framework\Assert;
 use ReflectionMethod;
 
 use function Safe\json_decode;
 use function Safe\json_encode;
 
+<<<<<<< .merge_file_j7hMMY
+=======
+uses(TestCase::class);
+
+>>>>>>> .merge_file_QQDWVj
 beforeEach(function () {
     $this->model = new TestSushiModel;
     $this->testJsonPath = storage_path('tests/sushi-json/test_sushi.json');

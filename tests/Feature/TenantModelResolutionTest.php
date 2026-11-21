@@ -8,8 +8,16 @@ use Illuminate\Support\Facades\File;
 use Mockery;
 use Modules\Tenant\Actions\Config\GetTenantConfigArrayAction;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
+<<<<<<< .merge_file_qcJvBt
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> .merge_file_KJIKOi
 describe('Tenant model resolution via config files', function (): void {
     afterEach(function (): void {
         if ($this->testDirectory !== '' && File::exists($this->testDirectory)) {

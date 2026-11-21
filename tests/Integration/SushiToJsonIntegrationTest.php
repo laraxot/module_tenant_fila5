@@ -7,9 +7,18 @@ namespace Modules\Tenant\Tests\Integration;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Tests\Fixtures\TestSushiModelForPath;
+<<<<<<< .merge_file_gZHZ0C
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Tenant\Tests\TestCase;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> .merge_file_IZDfEb
 function tenantJsonPath(string $tenantName): string
 {
     $dir = storage_path('tests/sushi-json/'.$tenantName);

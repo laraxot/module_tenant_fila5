@@ -3,9 +3,7 @@ title: "Architecture: Tenant Module"
 type: architecture
 tags: [tenant, multi-tenancy, architecture, core]
 created: 2026-07-09
-updated: 2026-10-25
-status: draft
-qmd: "tenant architecture multi tenancy routing domain isolamento"
+updated: 2026-07-09
 ---
 
 # Architecture: Tenant Module
@@ -247,8 +245,8 @@ Per-tenant configuration files override system defaults, enabling customization 
 
 ## Related Files
 
-- [API Reference](./api.md)
+- [API Reference](./API.md)
 - [Setup Guide](./SETUP.md)
-- [Troubleshooting](./TROUBLESHOOTING.md)
+- [Troubleshooting](../troubleshooting.md)
 - [Best Practices](./BEST_PRACTICES.md)
 - Module Tests: `tests/Feature/TenantBusinessLogicTest.php`, `tests/Unit/Actions/`

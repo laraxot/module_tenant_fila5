@@ -8,8 +8,16 @@ use Mockery\MockInterface;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Models\TenantDomain;
+<<<<<<< .merge_file_62R0Un
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> .merge_file_2ZvJMy
 describe('Domain sushi models', function (): void {
     test('domain model exposes rows from GetDomainsArrayAction', function (): void {
         $this->mockAppService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {

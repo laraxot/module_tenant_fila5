@@ -6,8 +6,16 @@ namespace Modules\Tenant\Tests\Unit\Models;
 
 use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Models\Tenant;
+<<<<<<< .merge_file_AV3eXT
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> .merge_file_AFtmWg
 describe('Tenant model', function (): void {
     it('creates tenant with required fields', function (): void {
         if ($this->tenantDbUnavailable()) {

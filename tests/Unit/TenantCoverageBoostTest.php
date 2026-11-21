@@ -24,6 +24,10 @@ use Modules\Tenant\Models\Domain;
 use Modules\Tenant\Models\Policies\DomainPolicy;
 use Modules\Tenant\Models\Policies\TenantBasePolicy;
 use Modules\Tenant\Models\Tenant;
+<<<<<<< .merge_file_d4wpDn
+=======
+use Modules\Tenant\Tests\TestCase;
+>>>>>>> .merge_file_S29Mf9
 use Modules\Tenant\Tests\Unit\Fixtures\CatalogSushiCsvModel;
 use Modules\Tenant\Tests\Unit\Fixtures\CatalogSushiJsonsModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToPhpArrayCoverageModel;
@@ -32,6 +36,11 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
+<<<<<<< .merge_file_d4wpDn
+=======
+uses(TestCase::class);
+
+>>>>>>> .merge_file_S29Mf9
 afterEach(function (): void {
     Mockery::close();
 });

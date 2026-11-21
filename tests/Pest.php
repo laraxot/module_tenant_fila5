@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Modules\Tenant\Models\Tenant;
+<<<<<<< .merge_file_62pkLv
 use Modules\Tenant\Tests\TestCase;
 use Webmozart\Assert\Assert;
 
@@ -37,6 +38,15 @@ use Webmozart\Assert\Assert;
  * @see Modules/Tenant/docs/testing.md#binding-del-testcase
  */
 uses(TestCase::class)->in(__DIR__);
+=======
+use Webmozart\Assert\Assert;
+
+/*
+ * Nessun binding del TestCase qui: ogni file di test lega Modules\Tenant\Tests\TestCase con uses().
+ *
+ * @see Modules/Tenant/docs/testing.md#binding-del-testcase
+ */
+>>>>>>> .merge_file_rWe6uW
 
 /*
  * |--------------------------------------------------------------------------

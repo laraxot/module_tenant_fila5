@@ -74,6 +74,7 @@ class Tenant extends BaseModel
      */
     use HasUuids;
 
+<<<<<<< .merge_file_LM4Ot7
     /**
      * La tabella `tenants` vive sulla connessione `user`, non su quella del modulo.
      *
@@ -101,6 +102,8 @@ class Tenant extends BaseModel
      */
     protected $connection = 'user';
 
+=======
+>>>>>>> .merge_file_vL9aMx
     public $incrementing = false;
 
     protected $keyType = 'string';

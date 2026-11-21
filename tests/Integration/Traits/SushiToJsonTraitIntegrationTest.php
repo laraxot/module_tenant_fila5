@@ -10,11 +10,20 @@ use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Tests\Fixtures\TestSushiModelForPath;
+<<<<<<< .merge_file_2sE3lI
+=======
+use Modules\Tenant\Tests\TestCase;
+>>>>>>> .merge_file_4Kqwai
 use PHPUnit\Framework\Assert;
 
 use function Safe\json_decode;
 use function Safe\json_encode;
 
+<<<<<<< .merge_file_2sE3lI
+=======
+uses(TestCase::class);
+
+>>>>>>> .merge_file_4Kqwai
 beforeEach(function (): void {
     if ($this->tenantDbUnavailable()) {
         $this->skipCurrentTest('DB `tenant` non raggiungibile: blocco di ambiente.');

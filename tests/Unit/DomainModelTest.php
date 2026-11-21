@@ -7,8 +7,16 @@ namespace Modules\Tenant\Tests\Unit;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\Domain;
+<<<<<<< .merge_file_UvEDlS
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> .merge_file_9GQMWD
 describe('Domain Model', function (): void {
     test('_domain_model_can_be_instantiated', function (): void {
         $domain = new Domain;

@@ -5,8 +5,16 @@ declare(strict_types=1);
 namespace Modules\Tenant\Tests\Feature;
 
 use Modules\Tenant\Models\TenantSetting;
+<<<<<<< .merge_file_WF3bz7
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> .merge_file_GJsCY8
 describe('Multi-tenant scope', function (): void {
     beforeEach(function (): void {
         if ($this->tenantDbUnavailable()) {

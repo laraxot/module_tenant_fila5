@@ -15,6 +15,11 @@ use Modules\Xot\Contracts\UserContract;
 use PHPUnit\Framework\Assert;
 use Webmozart\Assert\Assert as WebmozartAssert;
 
+<<<<<<< .merge_file_xIzaCq
+=======
+uses(TestCase::class);
+
+>>>>>>> .merge_file_Yqh3A0
 beforeEach(function (): void {
     /** @var TestCase $this */
     if ($this->tenantDbUnavailable()) {

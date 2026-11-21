@@ -7,8 +7,16 @@ namespace Modules\Tenant\Tests\Feature;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\TenantDomain;
+<<<<<<< .merge_file_gRK0xp
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Tenant\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> .merge_file_vmjrjX
 describe('Tenant domain routing (sushi registry)', function (): void {
     beforeEach(function (): void {
         $this->mockAppService(GetDomainsArrayAction::class, static function (MockInterface $mock): void {

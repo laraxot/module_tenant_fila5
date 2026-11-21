@@ -169,8 +169,13 @@ Raw source documents and import sources:
 
 **Root Import** (40 files)
   - [alternatives-1.md](raw/root-import/alternatives-1.md)
+<<<<<<< .merge_file_re5jP0
   - [changelog.md](raw/root-import/changelog.md)
   - [changelog.md](raw/root-import/changelog.md)
+=======
+  - [changelog-1.md](raw/root-import/changelog-1.md)
+  - [changelog-2.md](raw/root-import/changelog-2.md)
+>>>>>>> .merge_file_wu9Xjm
   - [LICENSE.md](raw/root-import/license.md)
   - [readme-en-1.md](raw/root-import/readme-en-1.md)
   - [readme.en.md](raw/root-import/readme.en.md)

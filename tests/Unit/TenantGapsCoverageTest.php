@@ -17,6 +17,10 @@ use Modules\Tenant\Actions\Modules\GetTenantModulesAction;
 use Modules\Tenant\Actions\Translations\TranslateTenantKeyAction;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Providers\TenantServiceProvider;
+<<<<<<< .merge_file_VCX3ox
+=======
+use Modules\Tenant\Tests\TestCase;
+>>>>>>> .merge_file_at8A3h
 use Modules\Tenant\Tests\Unit\Fixtures\SqliteTenantConfigValueResolverStub;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToCsvCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonAuthCoverageModel;
@@ -31,6 +35,11 @@ use ReflectionMethod;
 
 use function Safe\putenv;
 
+<<<<<<< .merge_file_VCX3ox
+=======
+uses(TestCase::class);
+
+>>>>>>> .merge_file_at8A3h
 // expectMockery() is declared once in TenantCoverageBoostTest.php (same namespace)
 // and reused here across the Pest test run.
 

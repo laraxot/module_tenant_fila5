@@ -29,6 +29,10 @@ use Modules\Tenant\Models\TenantDomain;
 use Modules\Tenant\Models\TenantSubscription;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Providers\TenantServiceProvider;
+<<<<<<< .merge_file_ql7X26
+=======
+use Modules\Tenant\Tests\TestCase;
+>>>>>>> .merge_file_XYSAJq
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToCsvCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonCoverageModel;
 use Modules\Tenant\Tests\Unit\Fixtures\SushiToJsonsCoverageModel;
@@ -41,6 +45,11 @@ use ReflectionMethod;
 
 use function Safe\putenv;
 
+<<<<<<< .merge_file_ql7X26
+=======
+uses(TestCase::class);
+
+>>>>>>> .merge_file_XYSAJq
 afterEach(function (): void {
     Mockery::close();
 });

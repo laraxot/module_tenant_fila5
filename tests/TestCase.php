@@ -41,6 +41,7 @@ abstract class TestCase extends BaseTestCase
     use DatabaseTransactions;
 
     /**
+<<<<<<< .merge_file_j3IuEz
      * Le connessioni che la transazione di test deve coprire.
      *
      * ## Perche' serve dichiararle
@@ -82,6 +83,8 @@ abstract class TestCase extends BaseTestCase
     ];
 
     /**
+=======
+>>>>>>> .merge_file_gtrmA7
      * Tenant corrente impostato dal test.
      */
     public Tenant $tenant;

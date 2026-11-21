@@ -8,11 +8,20 @@ use Illuminate\Support\Facades\File;
 use Modules\Tenant\Models\Tenant;
 use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Tests\Fixtures\TestSushiModelForPath;
+<<<<<<< .merge_file_lwTrwY
+=======
+use Modules\Tenant\Tests\TestCase;
+>>>>>>> .merge_file_nOCQcY
 use PHPUnit\Framework\Assert;
 
 use function Safe\json_decode;
 use function Safe\json_encode;
 
+<<<<<<< .merge_file_lwTrwY
+=======
+uses(TestCase::class);
+
+>>>>>>> .merge_file_nOCQcY
 beforeEach(function () {
     // Crea un tenant di test
     $this->tenant = Tenant::factory()->create([

@@ -11,6 +11,11 @@ use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+<<<<<<< .merge_file_gQ49mb
+=======
+uses(TestCase::class);
+
+>>>>>>> .merge_file_0JMIUh
 it('isolates tenant file paths per tenant context', function (): void {
     /** @var TestCase $this */
     $this->mockService(GetTenantNameAction::class, static function (MockInterface $mock): void {
