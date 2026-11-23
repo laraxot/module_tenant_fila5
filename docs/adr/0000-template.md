@@ -1,33 +1,37 @@
 ---
 status: proposed
 date: YYYY-MM-DD
-decision-makers: []
+decision-makers:
 ---
 
-# ADR — <decisione in una riga>
+<!-- MADR breve adattato al modulo. Scrivi un ADR solo per una decisione difficile da invertire, sorprendente e frutto di un trade-off reale. -->
 
-## Contesto e problema
+# <!-- Titolo: il problema risolto e la soluzione scelta -->
 
-Quale fatto verificato rende necessaria la decisione? Chiudi con la domanda a cui risponde.
+## Context and Problem Statement
 
-## Driver della decisione
+<!-- Fatti verificabili e domanda decisionale. -->
 
-- <vincolo, rischio o obiettivo>
+## Decision Drivers
 
-## Alternative considerate
+- <!-- vincolo, rischio o obiettivo -->
 
-- <opzione e motivo per cui è seria>
-- <opzione e motivo per cui è seria>
+## Considered Options
 
-## Decisione
+- <!-- opzione seria 1 -->
+- <!-- opzione seria 2 -->
 
-Scelta: **<opzione>**, perché <driver principale>.
+## Decision Outcome
 
-## Conseguenze
+Scelta: **<!-- opzione -->**, perché <!-- driver -->.
 
-- Positiva: <effetto>
-- Negativa/debito: <effetto>
+### Consequences
 
-## Conferma
+- Buono, perché <!-- effetto -->
+- Cattivo, perché <!-- costo o debito -->
 
-Indica test, static check o controllo ripetibile che dimostra il rispetto della decisione.
+### Confirmation
+
+<!-- Test Pest, PHPStan, guard source-level o review ripetibile. La presenza dell'ADR non prova l'implementazione. -->
+
+<!-- Collegare story BMAD owner-local; lock prima dell'edit; qmd update dopo. -->
