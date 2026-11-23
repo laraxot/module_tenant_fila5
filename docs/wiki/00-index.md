@@ -19,13 +19,21 @@ related:
 
 ## 🎯 Quick Start
 
+<<<<<<< .merge_file_M5tPhj
 <<<<<<< .merge_file_yzqeQB
+=======
+<<<<<<< .merge_file_2uUuNC
+>>>>>>> .merge_file_Ksmmoy
 **Multi-tenancy 101**: [TenantIdentification.md](./wiki/tenantidentification.md) — How tenants are identified and isolated  
 **Architecture**: [Architecture.md](./wiki/architecture.md) — System design and data flow  
 =======
 **Multi-tenancy 101**: [tenantidentification.md](./wiki/tenantidentification.md) — How tenants are identified and isolated  
 **Architecture**: [architecture.md](./wiki/architecture.md) — System design and data flow  
+<<<<<<< .merge_file_M5tPhj
 >>>>>>> .merge_file_4xcKau
+=======
+>>>>>>> .merge_file_EhG3XZ
+>>>>>>> .merge_file_Ksmmoy
 **Configuration**: See **Multi-Tenant Config** section below ⬇️
 
 ---
@@ -34,7 +42,11 @@ related:
 
 ### Wiki (Sacred — Do Not Delete)
 - **[wiki/index.md](./wiki/index.md)** — Operating manual for LLM agents
+<<<<<<< .merge_file_M5tPhj
 <<<<<<< .merge_file_yzqeQB
+=======
+<<<<<<< .merge_file_2uUuNC
+>>>>>>> .merge_file_Ksmmoy
 - **[wiki/Architecture.md](./wiki/architecture.md)** — Multi-tenant system design
 - **[wiki/TenantIdentification.md](./wiki/tenantidentification.md)** — How tenants are identified
 - **[wiki/ConfigurationDistribution.md](./wiki/configurationdistribution.md)** — Config per tenant
@@ -42,7 +54,11 @@ related:
 - **[wiki/architecture.md](./wiki/architecture.md)** — Multi-tenant system design
 - **[wiki/tenantidentification.md](./wiki/tenantidentification.md)** — How tenants are identified
 - **[wiki/configurationdistribution.md](./wiki/configurationdistribution.md)** — Config per tenant
+<<<<<<< .merge_file_M5tPhj
 >>>>>>> .merge_file_4xcKau
+=======
+>>>>>>> .merge_file_EhG3XZ
+>>>>>>> .merge_file_Ksmmoy
 - **[wiki/schema.md](./wiki/schema.md)** — Database schema reference
 
 ### Roadmap
@@ -110,13 +126,21 @@ For deep understanding of multi-tenant configuration:
 | Rule | Source |
 |------|--------|
 | No Services — use Actions | [wiki/concepts/](./wiki/concepts/) |
+<<<<<<< .merge_file_M5tPhj
 <<<<<<< .merge_file_yzqeQB
+=======
+<<<<<<< .merge_file_2uUuNC
+>>>>>>> .merge_file_Ksmmoy
 | Tenant scoping automatic | [TenantIdentification.md](./wiki/tenantidentification.md) |
 | Config per tenant required | [ConfigurationDistribution.md](./wiki/configurationdistribution.md) |
 =======
 | Tenant scoping automatic | [tenantidentification.md](./wiki/tenantidentification.md) |
 | Config per tenant required | [configurationdistribution.md](./wiki/configurationdistribution.md) |
+<<<<<<< .merge_file_M5tPhj
 >>>>>>> .merge_file_4xcKau
+=======
+>>>>>>> .merge_file_EhG3XZ
+>>>>>>> .merge_file_Ksmmoy
 | No hardcoded credentials | Via `laravel/config/{tenant}/` |
 
 ---

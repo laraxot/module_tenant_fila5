@@ -485,7 +485,11 @@ php artisan migrate --database=tenant_123
 ## Related Documentation
 
 - [Patterns](patterns.md) — Design patterns to follow
+<<<<<<< .merge_file_DJCV3P
 <<<<<<< .merge_file_SjSWyC
+=======
+<<<<<<< .merge_file_lQpJKz
+>>>>>>> .merge_file_CAq0rr
 - [Architecture](ARCHITECTURE.md) — System design
 - [README](README.md) — Overview and usage
 - [API Reference](API.md) — Model and service signatures
@@ -493,14 +497,26 @@ php artisan migrate --database=tenant_123
 - [Architecture](architecture.md) — System design
 - [README](README.md) — Overview and usage
 - [API Reference](api.md) — Model and service signatures
+<<<<<<< .merge_file_DJCV3P
 >>>>>>> .merge_file_d9pxoM
+=======
+>>>>>>> .merge_file_DnlbYy
+>>>>>>> .merge_file_CAq0rr
 
 ---
 
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](patterns.md)
 ---
+<<<<<<< .merge_file_DJCV3P
 <<<<<<< .merge_file_SjSWyC
 Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Patterns](patterns.md)
 =======
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](patterns.md)
 >>>>>>> .merge_file_d9pxoM
+=======
+<<<<<<< .merge_file_lQpJKz
+Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Patterns](patterns.md)
+=======
+Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](patterns.md)
+>>>>>>> .merge_file_DnlbYy
+>>>>>>> .merge_file_CAq0rr

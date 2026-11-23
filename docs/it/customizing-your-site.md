@@ -94,7 +94,11 @@ class Foo extends bar
 * [customizing-your-site.md](../../../ui/project_docs/customizing-your-site.md)
 * [customizing-your-site.md](../../../tenant/project_docs/it/customizing-your-site.md)
 * [customizing-your-site.md](../../../cms/project_docs/customizing-your-site.md)
+<<<<<<< .merge_file_xrxDru
 <<<<<<< .merge_file_f5vOG8
+=======
+<<<<<<< .merge_file_f9lG74
+>>>>>>> .merge_file_40Udmb
 * [customizing-your-site.md](../../../gdpr/docs/customizing-your-site.md)
 * [customizing-your-site.md](../../../xot/docs/customizing-your-site.md)
 * [customizing-your-site.md](../../../ui/docs/customizing-your-site.md)
@@ -106,7 +110,11 @@ class Foo extends bar
 * [customizing-your-site.md](../../../ui/docs/customizing-your-site.md)
 * [customizing-your-site.md](customizing-your-site.md)
 * [customizing-your-site.md](../../../Cms/docs/customizing-your-site.md)
+<<<<<<< .merge_file_xrxDru
 >>>>>>> .merge_file_X1wHWk
+=======
+>>>>>>> .merge_file_SUskF6
+>>>>>>> .merge_file_40Udmb
 
 ### Versione Incoming
 

@@ -1,9 +1,17 @@
 ---
+<<<<<<< .merge_file_Ey4171
 <<<<<<< .merge_file_RqMswK
 title: "changelog.md"
 =======
 title: "CHANGELOG.md"
 >>>>>>> .merge_file_svb675
+=======
+<<<<<<< .merge_file_Gk5QOK
+title: "changelog.md"
+=======
+title: "CHANGELOG.md"
+>>>>>>> .merge_file_80rWAW
+>>>>>>> .merge_file_2bSbMG
 type: concept
 status: active
 module: "Tenant"

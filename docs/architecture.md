@@ -352,11 +352,19 @@ $this->mock(DomainResolver::class)
 
 ---
 
+<<<<<<< .merge_file_WixvKZ
 <<<<<<< .merge_file_Jzzt59
 <!-- Merged from ARCHITECTURE.md, which collided with this file on case-insensitive filesystems. -->
 =======
 <!-- Merged from architecture.md, which collided with this file on case-insensitive filesystems. -->
 >>>>>>> .merge_file_WJNCct
+=======
+<<<<<<< .merge_file_qXV8Np
+<!-- Merged from ARCHITECTURE.md, which collided with this file on case-insensitive filesystems. -->
+=======
+<!-- Merged from architecture.md, which collided with this file on case-insensitive filesystems. -->
+>>>>>>> .merge_file_GevPOV
+>>>>>>> .merge_file_5wxPfs
 
 ---
 title: "Architecture: Tenant Module"
@@ -604,7 +612,11 @@ Per-tenant configuration files override system defaults, enabling customization 
 
 ## Related Files
 
+<<<<<<< .merge_file_WixvKZ
 <<<<<<< .merge_file_Jzzt59
+=======
+<<<<<<< .merge_file_qXV8Np
+>>>>>>> .merge_file_5wxPfs
 - [API Reference](./API.md)
 - [Setup Guide](./SETUP.md)
 - [Troubleshooting](troubleshooting.md)
@@ -614,6 +626,10 @@ Per-tenant configuration files override system defaults, enabling customization 
 - [Setup Guide](./SETUP.md)
 - [Troubleshooting](troubleshooting.md)
 - [Best Practices](./best_practices.md)
+<<<<<<< .merge_file_WixvKZ
 >>>>>>> .merge_file_WJNCct
+=======
+>>>>>>> .merge_file_GevPOV
+>>>>>>> .merge_file_5wxPfs
 - Module Tests: `tests/Feature/TenantBusinessLogicTest.php`, `tests/Unit/Actions/`
 ---

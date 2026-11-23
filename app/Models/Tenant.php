@@ -74,6 +74,33 @@ class Tenant extends BaseModel
      */
     use HasUuids;
 
+    /**
+     * La tabella `tenants` vive sulla connessione `user`, non su quella del modulo.
+     *
+     * `BaseModel` di questo modulo dichiara `$connection = 'tenant'`, e per tre delle
+     * quattro tabelle del modulo e' giusto — `database_configs`, `tenant_settings` e
+     * `tenant_subscriptions` stanno dove quella connessione punta. `tenants` e' l'unica
+     * eccezione, perche' la creano le migration di **Modules/User** (ce ne sono tre, piu'
+     * un file parcheggiato: base_quaeris_fila5#2) sulla connessione `user`, come il
+     * commento sopra gia' dichiarava senza trarne la conseguenza.
+     *
+     * Senza questa riga ogni lettura finiva su `quaeris_data_test.tenants`, che non
+     * esiste:
+     *
+     *     SQLSTATE[42S02]: Base table or view not found: 1146
+     *     Table 'quaeris_data_test.tenants' doesn't exist
+     *
+     * Erano **42 dei 75 fallimenti** della suite del modulo (base_quaeris_fila5#228).
+     *
+     * Il nome della connessione e' scritto a mano e non letto da configurazione: e' una
+     * scelta, non una dimenticanza. Questo model non e' il tenant di questo progetto —
+     * quello e' `Modules\Quaeris\Models\Customer`, come dichiara
+     * `XotData::getTenantClass()` — e nessun codice applicativo fuori dal modulo lo usa.
+     * Renderlo configurabile aggiungerebbe un punto di variazione per un model che
+     * nessuno monta in produzione.
+     */
+    protected $connection = 'user';
+
     public $incrementing = false;
 
     protected $keyType = 'string';

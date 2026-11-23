@@ -7,8 +7,8 @@ namespace Modules\Tenant\Tests\Unit\Actions\Models;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
 use Modules\Tenant\Actions\Models\ResolveTenantModelInstanceAction;
-use Modules\Tenant\Tests\TestCase;
 use Nwidart\Modules\Facades\Module;
+use Modules\Tenant\Tests\TestCase;
 
 uses(TestCase::class);
 

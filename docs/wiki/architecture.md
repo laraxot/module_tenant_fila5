@@ -1,18 +1,34 @@
 ---
+<<<<<<< .merge_file_ieIplX
 <<<<<<< .merge_file_7BBxgi
 title: "architecture"
 =======
 title: "Architecture"
 >>>>>>> .merge_file_ZslPvX
+=======
+<<<<<<< .merge_file_lr62B7
+title: "architecture"
+=======
+title: "Architecture"
+>>>>>>> .merge_file_6RspFj
+>>>>>>> .merge_file_Lp3I1N
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< .merge_file_ieIplX
 <<<<<<< .merge_file_7BBxgi
 qmd: "architecture"
 =======
 qmd: "Architecture"
 >>>>>>> .merge_file_ZslPvX
+=======
+<<<<<<< .merge_file_lr62B7
+qmd: "architecture"
+=======
+qmd: "Architecture"
+>>>>>>> .merge_file_6RspFj
+>>>>>>> .merge_file_Lp3I1N
 issues: []
 discussions: []
 module: Tenant
