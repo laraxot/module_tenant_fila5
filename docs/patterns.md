@@ -81,19 +81,8 @@ Select and maintain the appropriate multi-tenancy database architecture.
 - [ ] Configure connection factory
 - [ ] Create base models with correct table references
 - [ ] Test isolation with multi-tenant data
-<<<<<<< .merge_file_uDEwwm
-<<<<<<< .merge_file_m7eiXt
 - [ ] Document strategy in ARCHITECTURE.md
-=======
 - [ ] Document strategy in architecture.md
->>>>>>> .merge_file_Y9l6b3
-=======
-<<<<<<< .merge_file_iK9zhP
-- [ ] Document strategy in ARCHITECTURE.md
-=======
-- [ ] Document strategy in architecture.md
->>>>>>> .merge_file_qr7tP0
->>>>>>> .merge_file_Fokzjt
 - [ ] Implement backup/restore per strategy
 
 ---
@@ -340,40 +329,17 @@ public function test_users_isolated_by_tenant()
 
 ## References
 
-<<<<<<< .merge_file_uDEwwm
-<<<<<<< .merge_file_m7eiXt
-=======
-<<<<<<< .merge_file_iK9zhP
->>>>>>> .merge_file_Fokzjt
 - [Architecture](ARCHITECTURE.md) — Detailed system design
 - [Troubleshooting](troubleshooting.md) — Common issues
 - [API Reference](API.md) — Model and service signatures
 - [Contributing Guide](../../docs/wiki/how-to/contributing.md) — Development guidelines
-=======
 - [Architecture](architecture.md) — Detailed system design
 - [Troubleshooting](troubleshooting.md) — Common issues
 - [API Reference](api.md) — Model and service signatures
 - [Contributing Guide](../../docs/wiki/how-to/CONTRIBUTING.md) — Development guidelines
-<<<<<<< .merge_file_uDEwwm
->>>>>>> .merge_file_Y9l6b3
-=======
->>>>>>> .merge_file_qr7tP0
->>>>>>> .merge_file_Fokzjt
 
 ---
 
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
 ---
-<<<<<<< .merge_file_uDEwwm
-<<<<<<< .merge_file_m7eiXt
 Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
-=======
-Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
->>>>>>> .merge_file_Y9l6b3
-=======
-<<<<<<< .merge_file_iK9zhP
-Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
-=======
-Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
->>>>>>> .merge_file_qr7tP0
->>>>>>> .merge_file_Fokzjt

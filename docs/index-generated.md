@@ -26,11 +26,6 @@ The root level contains strategic documents, analyses, and consolidated guides:
 
 - [00-index.md](00-index.md)
 - [00-index.md](00-index.md)
-<<<<<<< .merge_file_k5umex
-<<<<<<< .merge_file_AtqfhU
-=======
-<<<<<<< .merge_file_OgwqLv
->>>>>>> .merge_file_22sGpN
 - [API.md](API.md)
 - [ARCHITECTURE.md](ARCHITECTURE.md)
 - [LICENSE-full.md](license-full.md)
@@ -45,7 +40,6 @@ The root level contains strategic documents, analyses, and consolidated guides:
 - [SUSHI_TO_JSON_FIX_PLAN.md](sushi_to_json_fix_plan.md)
 - [TODO.md](TODO.md)
 - [USER_RESEARCH.md](user_research.md)
-=======
 - [API.md](api.md)
 - [architecture.md](architecture.md)
 - [LICENSE-full.md](license-full.md)
@@ -60,11 +54,6 @@ The root level contains strategic documents, analyses, and consolidated guides:
 - [SUSHI_TO_JSON_FIX_PLAN.md](sushi_to_json_fix_plan.md)
 - [TODO.md](todo.md)
 - [user_research.md](user_research.md)
-<<<<<<< .merge_file_k5umex
->>>>>>> .merge_file_UBtcGT
-=======
->>>>>>> .merge_file_PGP1ch
->>>>>>> .merge_file_22sGpN
 - [about.md](about.md)
 - [activitylog.md](activitylog.md)
 - [ai-methodologies.md](ai-methodologies.md)
@@ -194,13 +183,10 @@ Raw source documents and import sources:
 
 **Root Import** (40 files)
   - [alternatives-1.md](raw/root-import/alternatives-1.md)
-<<<<<<< .merge_file_re5jP0
   - [changelog.md](raw/root-import/changelog.md)
   - [changelog.md](raw/root-import/changelog.md)
-=======
   - [changelog-1.md](raw/root-import/changelog-1.md)
   - [changelog-2.md](raw/root-import/changelog-2.md)
->>>>>>> .merge_file_wu9Xjm
   - [LICENSE.md](raw/root-import/license.md)
   - [readme-en-1.md](raw/root-import/readme-en-1.md)
   - [readme.en.md](raw/root-import/readme.en.md)
@@ -319,19 +305,8 @@ Machine learning and documentation knowledge base:
 - [AGENTS.md](llm-wiki/AGENTS.md)
 - [index.md](llm-wiki/index.md)
 - [log.md](llm-wiki/log.md)
-<<<<<<< .merge_file_k5umex
-<<<<<<< .merge_file_AtqfhU
 - [agents.md](llm-wiki/agents.md)
-=======
 - [AGENTS.md](llm-wiki/AGENTS.md)
->>>>>>> .merge_file_UBtcGT
-=======
-<<<<<<< .merge_file_OgwqLv
-- [agents.md](llm-wiki/agents.md)
-=======
-- [AGENTS.md](llm-wiki/AGENTS.md)
->>>>>>> .merge_file_PGP1ch
->>>>>>> .merge_file_22sGpN
 - [_templates/concept.md](llm-wiki/_templates/concept.md)
 - [_templates/entity.md](llm-wiki/_templates/entity.md)
 - [_templates/source.md](llm-wiki/_templates/source.md)
@@ -440,11 +415,6 @@ discussions: []
 
 | Date | File | Category |
 |------|------|----------|
-<<<<<<< .merge_file_k5umex
-<<<<<<< .merge_file_AtqfhU
-=======
-<<<<<<< .merge_file_OgwqLv
->>>>>>> .merge_file_22sGpN
 | 2026-07-28 | [00-INDEX.md](00-INDEX.md) | root |
 | 2026-07-28 | [API.md](API.md) | root |
 | 2026-07-28 | [ARCHITECTURE.md](ARCHITECTURE.md) | root |
@@ -453,7 +423,6 @@ discussions: []
 | 2026-07-28 | [PRODUCT_STRATEGY.md](product_strategy.md) | root |
 | 2026-07-28 | [SPRINT_PLANNING.md](sprint_planning.md) | root |
 | 2026-07-28 | [TODO.md](TODO.md) | root |
-=======
 | 2026-07-28 | [00-index.md](00-index.md) | root |
 | 2026-07-28 | [API.md](api.md) | root |
 | 2026-07-28 | [architecture.md](architecture.md) | root |
@@ -462,11 +431,6 @@ discussions: []
 | 2026-07-28 | [product_strategy.md](product_strategy.md) | root |
 | 2026-07-28 | [sprint_planning.md](sprint_planning.md) | root |
 | 2026-07-28 | [TODO.md](todo.md) | root |
-<<<<<<< .merge_file_k5umex
->>>>>>> .merge_file_UBtcGT
-=======
->>>>>>> .merge_file_PGP1ch
->>>>>>> .merge_file_22sGpN
 | 2026-07-28 | [best-practices.md](best-practices.md) | root |
 | 2026-07-28 | [CHANGELOG.md](CHANGELOG.md) | root |
 | 2026-07-28 | [configuration.md](configuration.md) | root |

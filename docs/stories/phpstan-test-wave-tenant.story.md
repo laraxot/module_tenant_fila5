@@ -132,38 +132,16 @@ I test girano (`XDEBUG_MODE=off ./vendor/bin/pest --no-coverage Modules/Tenant/t
 
 ## Docs aggiornate
 
-<<<<<<< .merge_file_M0Mqk0
-<<<<<<< .merge_file_nQZIDT
 - `docs/00-INDEX.md`: link rotto a una story inesistente rimosso, riga "Services eliminati" corretta, story nuova linkata, conteggio `stories/` portato a 22.
-=======
 - `docs/00-index.md`: link rotto a una story inesistente rimosso, riga "Services eliminati" corretta, story nuova linkata, conteggio `stories/` portato a 22.
->>>>>>> .merge_file_ZGVjS9
-=======
-<<<<<<< .merge_file_XoFNUK
-- `docs/00-INDEX.md`: link rotto a una story inesistente rimosso, riga "Services eliminati" corretta, story nuova linkata, conteggio `stories/` portato a 22.
-=======
-- `docs/00-index.md`: link rotto a una story inesistente rimosso, riga "Services eliminati" corretta, story nuova linkata, conteggio `stories/` portato a 22.
->>>>>>> .merge_file_HA6cXt
->>>>>>> .merge_file_RwLWhL
 - `docs/case-variant-collisions.md`: esito della coppia `domaintest.php`; restano due coppie nei seeder (`DomainsSeeder.php`, `TestSushiSeeder.php`).
 - `docs/testing.md`: elenco degli helper di `TestCase` e link a questa story.
 - `docs/services-config-dead-code-retired.md`: aggiornamento 2026-10-20, i file sono tornati.
 
 ### Duplicati segnalati, non toccati
 
-<<<<<<< .merge_file_M0Mqk0
-<<<<<<< .merge_file_nQZIDT
 - Indici: `00-INDEX.md`, `00-index.md`, `INDEX.md`, `index.md`; generati: `INDEX_GENERATED.md`, `index-generated.md`, `index_generated.md`.
-=======
 - Indici: `00-index.md`, `00-index.md`, `index.md`, `index.md`; generati: `INDEX_GENERATED.md`, `index-generated.md`, `index_generated.md`.
->>>>>>> .merge_file_ZGVjS9
-=======
-<<<<<<< .merge_file_XoFNUK
-- Indici: `00-INDEX.md`, `00-index.md`, `INDEX.md`, `index.md`; generati: `INDEX_GENERATED.md`, `index-generated.md`, `index_generated.md`.
-=======
-- Indici: `00-index.md`, `00-index.md`, `index.md`, `index.md`; generati: `INDEX_GENERATED.md`, `index-generated.md`, `index_generated.md`.
->>>>>>> .merge_file_HA6cXt
->>>>>>> .merge_file_RwLWhL
 - Nomi troncati o con variante: `arr-first-vs-collect-first-decision.md` / `...-ision.md`, `runninginconsole-check-decision.md` / `...-ision.md`, `runninginconsole-check-removal-summary.md` / `...-sumy.md`.
 - Conflitti: `conflict-resolution.md`, `conflict-resolution-fixes.md`, `conflict_resolution_fixes.md`, `conflict-resolutiones.md`.
 - `confidence-guidelines.md` / `confidence_guidelines.md`.

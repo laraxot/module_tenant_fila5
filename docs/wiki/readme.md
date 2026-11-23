@@ -1,17 +1,5 @@
 ---
-<<<<<<< .merge_file_wyK4EI
-<<<<<<< .merge_file_eKh7Qm
 title: "readme.md"
-=======
-title: "README.md"
->>>>>>> .merge_file_7Pv0bF
-=======
-<<<<<<< .merge_file_HwuWxF
-title: "readme.md"
-=======
-title: "README.md"
->>>>>>> .merge_file_0SqvMC
->>>>>>> .merge_file_YGt6ya
 type: concept
 status: active
 module: "Tenant"

@@ -2,19 +2,7 @@
 qmd: "Index"
 issues: []
 discussions: []
-<<<<<<< .merge_file_ezd9Bk
-<<<<<<< .merge_file_f0tZPx
 title: "concepts index — Tenant"
-=======
-title: "Index"
->>>>>>> .merge_file_wu6uoA
-=======
-<<<<<<< .merge_file_LVanhl
-title: "concepts index — Tenant"
-=======
-title: "Index"
->>>>>>> .merge_file_84XFC7
->>>>>>> .merge_file_3j1CaV
 type: index
 tags: [concepts, Tenant]
 created: 2026-05-11
