@@ -1,8 +1,8 @@
 ---
-qmd: "index"
+qmd: "Index"
 issues: []
 discussions: []
-title: "Memories Index"
+title: "Index"
 type: index
 created: 2026-05-11
 updated: 2026-07-27
@@ -37,7 +37,7 @@ Le Memories progettuali vivono qui, nel wiki del Module **Tenant**, e vengono ca
 
 - La sorgente di verita' per le Memories e' sempre il wiki locale
 - Non embeddare Memories nei prompt di avvio
-- Per Memories globali, consulta il [wiki root](../../docs/wiki/memories/INDEX.md)
+- Per Memories globali, consulta il [wiki root](../../docs/wiki/memories/index.md)
 
 ## Memories locali (ricorrenti)
 

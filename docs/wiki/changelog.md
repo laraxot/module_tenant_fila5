@@ -1,5 +1,9 @@
 ---
+<<<<<<< .merge_file_RqMswK
 title: "changelog.md"
+=======
+title: "CHANGELOG.md"
+>>>>>>> .merge_file_svb675
 type: concept
 status: active
 module: "Tenant"

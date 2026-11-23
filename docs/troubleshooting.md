@@ -485,12 +485,22 @@ php artisan migrate --database=tenant_123
 ## Related Documentation
 
 - [Patterns](patterns.md) — Design patterns to follow
+<<<<<<< .merge_file_SjSWyC
 - [Architecture](ARCHITECTURE.md) — System design
 - [README](README.md) — Overview and usage
 - [API Reference](API.md) — Model and service signatures
+=======
+- [Architecture](architecture.md) — System design
+- [README](README.md) — Overview and usage
+- [API Reference](api.md) — Model and service signatures
+>>>>>>> .merge_file_d9pxoM
 
 ---
 
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](patterns.md)
 ---
+<<<<<<< .merge_file_SjSWyC
 Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Patterns](patterns.md)
+=======
+Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](patterns.md)
+>>>>>>> .merge_file_d9pxoM

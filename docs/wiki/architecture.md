@@ -1,10 +1,18 @@
 ---
+<<<<<<< .merge_file_7BBxgi
 title: "architecture"
+=======
+title: "Architecture"
+>>>>>>> .merge_file_ZslPvX
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< .merge_file_7BBxgi
 qmd: "architecture"
+=======
+qmd: "Architecture"
+>>>>>>> .merge_file_ZslPvX
 issues: []
 discussions: []
 module: Tenant
