@@ -37,7 +37,7 @@ Baseline audit aggiornata. PHPStan tree `Modules` a 0. Pest e chiusura P0/P1 ape
 ## Riferimenti
 
 - [audit](../audit.md) · [piano](../piano-miglioramento.md) (parzialmente superato) · [ECC](../../ecc/tenant-ecc-audit.md)
-- Story con data nel nome `module-bmad-audit-20260928.story.md`: duplicato storico, da rimuovere in Epic E.
+- Story con data nel nome `module-bmad-baseline-audit.story.md`: duplicato storico, da rimuovere in Epic E.
 
 ## Esito
 
