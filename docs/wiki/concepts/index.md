@@ -1,5 +1,5 @@
 ---
-qmd: "index"
+qmd: "Index"
 issues: []
 discussions: []
 title: "concepts index — Tenant"

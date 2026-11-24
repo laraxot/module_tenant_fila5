@@ -28,6 +28,7 @@ Doc verificati e presenti in `docs/`:
 - [configuration.md](./configuration.md)
 - [filament-resources.md](./filament-resources.md)
 - [API.md](./API.md)
+- [API.md](./api.md)
 - [translations.md](./translations.md)
 - [phpstan-cluster.md](./phpstan-cluster.md)
 - [testing.md](./testing.md)
@@ -57,9 +58,14 @@ last_updated: 2026-07-28
 - [Overview](README.md) — Module description and quick start
 - [Architecture](ARCHITECTURE.md) — System design and isolation strategies
 - [API Reference](API.md) — Core models, contracts, and services
-- [Patterns](PATTERNS.md) — Design patterns and best practices
-- [Troubleshooting](TROUBLESHOOTING.md) — Common issues and solutions
+- [Patterns](patterns.md) — Design patterns and best practices
+- [Troubleshooting](troubleshooting.md) — Common issues and solutions
 - [Contributing](../../docs/wiki/how-to/contributing.md) — Development guidelines
+- [Architecture](architecture.md) — System design and isolation strategies
+- [API Reference](api.md) — Core models, contracts, and services
+- [Patterns](patterns.md) — Design patterns and best practices
+- [Troubleshooting](troubleshooting.md) — Common issues and solutions
+- [Contributing](../../docs/wiki/how-to/CONTRIBUTING.md) — Development guidelines
 
 ---
 
@@ -133,6 +139,7 @@ Each tenant operates in complete isolation:
 ## Related Modules
 
 - **[Xot](../../Xot/docs/index.md)** — Core framework and abstractions
+- **[Xot](../../Xot/docs/INDEX.md)** — Core framework and abstractions
 - **[User](../../User/docs/index.md)** — User management and authentication
 
 ---
@@ -146,11 +153,18 @@ Each tenant operates in complete isolation:
 5. Keep migrations atomic and reversible
 
 For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/contributing.md).
+For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/contributing.md).
 
 
 ---
 
 ## Contenuto assorbito da `INDEX.md`
+For detailed development guidance, see [Contributing Guide](../../docs/wiki/how-to/CONTRIBUTING.md).
+
+
+---
+
+## Contenuto assorbito da `index.md`
 
 # Documentation Index
 

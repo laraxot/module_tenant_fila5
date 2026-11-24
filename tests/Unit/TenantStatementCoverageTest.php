@@ -42,6 +42,7 @@ use ReflectionMethod;
 
 use function Safe\putenv;
 
+uses(TestCase::class);
 afterEach(function (): void {
     Mockery::close();
 });
