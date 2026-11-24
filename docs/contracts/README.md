@@ -1,38 +1,22 @@
 ---
-title: "Contratti"
+title: "Contratti — Tenant"
 type: index
-tags: [contracts, actions, interfaces]
-created: 2026-11-18
-updated: 2026-11-18
+owner: Tenant
+updated: 2026-11-24
+qmd: "Tenant contract comportamentali isolamento risoluzione tenant invarianti TENANT-INV"
 ---
 
-# Contratti
+# Contratti — Tenant
 
-## Metodo Harness
+Un contract descrive una singola operazione del modulo Tenant da cui dipende l'isolamento tra tenant: risoluzione del tenant corrente, calcolo dei percorsi dei suoi file, persistenza della sua configurazione. Documenta il comportamento **implementato**. Standard: [contract-authoring-standard](../../../Xot/docs/contracts/contract-authoring-standard.md); governance: [ADR 0012](../../../Xot/docs/adr/0012-behavioral-contract-governance.md).
 
-Un contratto descrive una singola operazione pubblica con effetti collaterali, chiamate esterne o invarianti di dominio. Documenta il comportamento osservabile, inclusi errori e non-goals, senza trasformare ogni metodo interno in un contratto.
+## Formato
 
-Ogni invariante ha un ID stabile nel formato `TENANT-INV-N`; il test Pest corrispondente usa lo stesso ID come group. La classe implementatrice deve contenere `@contract docs/contracts/<file>.md`; contratto, codice e test cambiano nello stesso commit.
+Frontmatter `type: contract` e `action: "Modules\\Tenant\\Actions\\..."`; sezioni nell'ordine `## Input`, `## Output`, `## Invarianti`, `## Effetti collaterali`, `## Errori`, `## Non fa`. Ogni invariante ha ID `TENANT-<AREA>-INV-<N>` e un test Pest con `->group('<ID>')`. Registro con copertura e comandi: [INDEX.md](INDEX.md).
 
-Cosa promette la superficie pubblica di questo pacchetto: le Action che scrivono dati, chiamano servizi esterni o hanno
-effetti collaterali, e le interfacce (`app/Contracts`). Regola: `Modules/Xot/docs/rules/action-behavioral-contract.md`.
+## File presenti
 
-## Contratto di comportamento di un'Action
-
-Un file per Action, nome in kebab-case della classe (`create-ticket-action.md`), frontmatter `type: contract` e
-`action: <FQCN>`, e queste sei sezioni nell'ordine:
-
-```markdown
-## Input
-## Output
-## Invarianti
-## Effetti collaterali
-## Errori
-## Non fa
-```
-
-Il docblock dell'Action rimanda al file con la riga `Contratto di comportamento: docs/contracts/<file>.md`.
-Chi cambia il comportamento aggiorna il contratto nello stesso commit.
-
-## Contratti
-
+- [get-tenant-name-action](get-tenant-name-action.md)
+- [get-tenant-file-path-action](get-tenant-file-path-action.md)
+- [save-tenant-config-action](save-tenant-config-action.md)
+- Template: [_template](_template.md)
