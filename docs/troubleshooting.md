@@ -488,6 +488,9 @@ php artisan migrate --database=tenant_123
 - [Architecture](ARCHITECTURE.md) — System design
 - [README](README.md) — Overview and usage
 - [API Reference](API.md) — Model and service signatures
+- [Architecture](architecture.md) — System design
+- [README](README.md) — Overview and usage
+- [API Reference](api.md) — Model and service signatures
 
 ---
 

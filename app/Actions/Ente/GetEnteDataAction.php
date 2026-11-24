@@ -18,6 +18,9 @@ use function Safe\preg_replace;
  * aver tolto spazi, punti, trattini, parentesi e barre. Email e PEC: indirizzo ASCII semplice (niente `?`, `&`, `%` che in un `mailto:`
  * aggiungerebbero parametri). URL: solo `http` o `https` con host, senza spazi, virgolette o parentesi angolari. Social: solo le reti con
  * un'icona nello sprite Design Comuni. Ogni testo puo' essere una stringa o una mappa per lingua.
+ *
+ * @see docs/contracts/get-ente-data-action.md
+ * @contract docs/contracts/get-ente-data-action.md
  */
 class GetEnteDataAction
 {

@@ -135,7 +135,7 @@ If tables already exist in production via external management:
    - Where table schemas are defined (other repo, DBaaS, etc.)
    - Onboarding steps for local dev setup
 
-2. Create `docs/SCHEMA.md` with explicit DDL for each table
+2. Create `docs/schema.md` with explicit DDL for each table
 
 3. Add setup script: `bashscripts/setup/tenant-connection.sh`
 

@@ -8,6 +8,9 @@ use Mockery\MockInterface;
 use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
 use Modules\Tenant\Actions\Models\ResolveTenantModelInstanceAction;
 use Nwidart\Modules\Facades\Module;
+use Modules\Tenant\Tests\TestCase;
+
+uses(TestCase::class);
 
 describe('ResolveTenantModelInstanceAction', function (): void {
     it('throws for unknown model name', function (): void {
