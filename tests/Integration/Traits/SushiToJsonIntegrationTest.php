@@ -15,6 +15,7 @@ use function Safe\json_decode;
 use function Safe\json_encode;
 
 uses(TestCase::class);
+
 beforeEach(function () {
     // Crea un tenant di test
     $this->tenant = Tenant::factory()->create([
