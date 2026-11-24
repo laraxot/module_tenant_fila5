@@ -332,4 +332,4 @@ See [Contributing Guide](../../docs/wiki/how-to/CONTRIBUTING.md) for details.
 
 ---
 
-Navigation: [Project Home](../../docs/index.md) | [Modules](../../docs/modules/README.md) | [Documentation Index](index.md)
+Navigation: [Project Home](../Lang/docs/wiki/index-3.md) | [Modules](../../docs/modules/README.md) | [Documentation Index](index-3.md)

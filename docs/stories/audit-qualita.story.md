@@ -24,8 +24,8 @@ connessioni di modulo sulla connessione default in `TenantServiceProvider::regis
       fuori da `legacy/`, `archive/`, `raw/`; i link interni al modulo sono stati riscritti.
 - [x] Nessuna data nei nomi dei `.md` (es. `phpstan-fixes-2025-10-13.md` → `phpstan-fixes.md`, data in `created:`).
       Le collisioni sono state unite nel file senza data (contenuti quasi identici scartati).
-- [x] Un solo indice: `docs/README.md`. Rimossi `index.md`, `INDEX.md`, `00-index.md`, `index-generated.md`,
-      `index_generated.md`; i link verso di essi puntano ora al README.
+- [x] Un solo indice: `docs/README.md`. Rimossi `index.md`, `INDEX.md`, `00-index.md`, `index-generated-3.md`,
+      `index-generated-3.md`; i link verso di essi puntano ora al README.
 - [x] README: corrette affermazioni non vere rispetto al codice (`BaseTenant` sta nel modulo User, `users()` e'
       `HasMany`, il pivot e' `TenantUser` del modulo User senza colonna `permissions`); aggiunta la sezione
       "Come funziona (verificato sul codice)" e l'indice.

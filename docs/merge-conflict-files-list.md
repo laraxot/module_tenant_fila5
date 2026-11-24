@@ -51,10 +51,10 @@ This file contains a comprehensive list of files with merge conflict markers (`<
 - ./laravel/Modules/Geo/docs/wiki/agents-2.md
 
 ### progetto corrente Module (4 files)
-- ./laravel/Modules/Project/docs/wiki/index.md
+- ../../Lang/docs/wiki/index-3.md
 - ./laravel/Modules/Project/docs/wiki/log.md
 - ./laravel/Modules/Project/resources/views/filament/widgets/ticket-create-wizard.blade.php
-- ./laravel/Modules/Project/docs/wiki/index.md
+- ../../Lang/docs/wiki/index-3.md
 
 ### Notify Module (3 files)
 - ./laravel/Modules/Notify/docs/wiki/index.md
