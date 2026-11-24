@@ -17,6 +17,7 @@ use function Safe\json_decode;
 use function Safe\json_encode;
 
 uses(TestCase::class);
+
 beforeEach(function (): void {
     if ($this->tenantDbUnavailable()) {
         $this->skipCurrentTest('DB `tenant` non raggiungibile: blocco di ambiente.');

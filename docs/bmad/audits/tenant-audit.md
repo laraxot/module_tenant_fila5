@@ -4,16 +4,16 @@ type: audit
 status: review
 updated: 2026-11-16
 module: Tenant
-<<<<<<< .merge_file_m1K82H
-qmd: "audit approfondito Tenant inventario PHPStan Pest policy Filament Actions"
+<<<<<<< .merge_file_RDwQrY
+qmd: "audit approfondito Tenant risoluzione tenant Host header TrustHosts policy bypass tenant admin DatabaseConfig password sushi PHPStan Pest"
 =======
 qmd: "audit approfondito Tenant inventario risoluzione tenant Host header TrustHosts policy bypass tenant admin DatabaseConfig password sushi Filament Actions PHPStan Pest"
->>>>>>> .merge_file_ZxD2yH
+>>>>>>> .merge_file_JaXCLH
 ---
 
 # Audit approfondito — Tenant
 
-<<<<<<< .merge_file_m1K82H
+<<<<<<< .merge_file_RDwQrY
 ## Metodo
 
 Source-first (2026-11-16): inventario filesystem, `rg` su policy/marker/label,
@@ -56,7 +56,23 @@ inventata. Pest dichiarato solo se eseguito.
 ```bash
 cd laravel
 php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules/Tenant
+# Pest solo fuori da 10.100.200.15 e con DB testing raggiungibile
+./vendor/bin/pest Modules/Tenant/tests --no-coverage
+```
+
+PHPStan `Modules` (2026-11-16): **0 errori** sul tree completo.
+
+## Piano
+
+Vedi [piano-miglioramento.md](../piano-miglioramento.md).
+
+## Riferimenti
+
+- [audit.md](../audit.md)
+- [ECC](../../ecc/tenant-ecc-audit.md)
+- [Story](../stories/module-bmad-audit.story.md)
 =======
+>>>>>>> .merge_file_JaXCLH
 SSoT dei finding del modulo. Sintesi: [audit.md](../audit.md) · ECC: [tenant-ecc-audit.md](../../ecc/tenant-ecc-audit.md) · Story: [module-bmad-audit.story.md](../stories/module-bmad-audit.story.md) · Piano: [piano-miglioramento.md](../piano-miglioramento.md).
 
 ## Perché esiste (business)
@@ -127,28 +143,13 @@ Nessuno confermato.
 ```bash
 cd laravel
 php -d memory_limit=4G ./vendor/bin/phpstan analyse Modules/Tenant --no-progress   # exit 0
->>>>>>> .merge_file_ZxD2yH
 # Pest solo fuori da 10.100.200.15 e con DB testing raggiungibile
 ./vendor/bin/pest Modules/Tenant/tests --no-coverage
 ```
 
-<<<<<<< .merge_file_m1K82H
-PHPStan `Modules` (2026-11-16): **0 errori** sul tree completo.
-
-## Piano
-
-Vedi [piano-miglioramento.md](../piano-miglioramento.md).
-
-## Riferimenti
-
-- [audit.md](../audit.md)
-- [ECC](../../ecc/tenant-ecc-audit.md)
-- [Story](../stories/module-bmad-audit.story.md)
-=======
 - **PHPStan Tenant: 0 errori** (level max, `ignoreErrors` vuoto, tests inclusi).
 - **Pest Tenant: SKIP documentato.** Bootstrap Pest bloccato (singolo test Rating >150 s a 1% CPU, run completo Rating timeout 420 s; `DB_HOST=10.100.200.53:3306` non raggiungibile, load medio ~95). Nessun DB distruttivo; host non produttivo.
 
 ## Prossimi passi
 
 [epics.md](../epics.md): Epic A (host fidato) → B (perimetro `tenant::admin`) → C (credenziali) → D (pulizia) → E (docs).
->>>>>>> .merge_file_ZxD2yH

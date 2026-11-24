@@ -1,22 +1,32 @@
 ---
-title: "Contratti — Tenant"
+title: "Contratti"
 type: index
-owner: Tenant
-updated: 2026-11-24
-qmd: "Tenant contract comportamentali isolamento risoluzione tenant invarianti TENANT-INV"
+tags: [contracts, actions, interfaces]
+created: 2026-11-18
+updated: 2026-11-18
 ---
 
-# Contratti — Tenant
+# Contratti
 
-Un contract descrive una singola operazione del modulo Tenant da cui dipende l'isolamento tra tenant: risoluzione del tenant corrente, calcolo dei percorsi dei suoi file, persistenza della sua configurazione. Documenta il comportamento **implementato**. Standard: [contract-authoring-standard](../../../Xot/docs/contracts/contract-authoring-standard.md); governance: [ADR 0012](../../../Xot/docs/adr/0012-behavioral-contract-governance.md).
+Cosa promette la superficie pubblica di questo pacchetto: le Action che scrivono dati, chiamano servizi esterni o hanno
+effetti collaterali, e le interfacce (`app/Contracts`). Regola: `Modules/Xot/docs/rules/action-behavioral-contract.md`.
 
-## Formato
+## Contratto di comportamento di un'Action
 
-Frontmatter `type: contract` e `action: "Modules\\Tenant\\Actions\\..."`; sezioni nell'ordine `## Input`, `## Output`, `## Invarianti`, `## Effetti collaterali`, `## Errori`, `## Non fa`. Ogni invariante ha ID `TENANT-<AREA>-INV-<N>` e un test Pest con `->group('<ID>')`. Registro con copertura e comandi: [INDEX.md](INDEX.md).
+Un file per Action, nome in kebab-case della classe (`create-ticket-action.md`), frontmatter `type: contract` e
+`action: <FQCN>`, e queste sei sezioni nell'ordine:
 
-## File presenti
+```markdown
+## Input
+## Output
+## Invarianti
+## Effetti collaterali
+## Errori
+## Non fa
+```
 
-- [get-tenant-name-action](get-tenant-name-action.md)
-- [get-tenant-file-path-action](get-tenant-file-path-action.md)
-- [save-tenant-config-action](save-tenant-config-action.md)
-- Template: [_template](_template.md)
+Il docblock dell'Action rimanda al file con la riga `Contratto di comportamento: docs/contracts/<file>.md`.
+Chi cambia il comportamento aggiorna il contratto nello stesso commit.
+
+## Contratti
+

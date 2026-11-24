@@ -2,49 +2,6 @@
 title: "Decision log — Tenant"
 type: decision-log
 status: active
-<<<<<<< .merge_file_nf3lDG
-module: "Tenant"
-tags: [docs, tenant, bmad]
-created: 2026-10-06
-updated: 2026-10-06
----
-
-# Decision Log - Modulo Tenant
-
-## Formato
-
-- **Data:** YYYY-MM-DD
-- **Decisione:** Breve descrizione della decisione presa
-- **Stato:** PROPOSTA, APPROVATA, RIFIUTATA, OBSOLETA
-- **Impatto:** Alto/Medio/Basso
-- **Alternatives considerate:** Elenco delle alternative valutate
-- **Conseguenze:** Implicazioni della decisione
-
-## Registro delle decisioni
-
-### 2026-09-29
-**Decisione:** [Esempio: Utilizzare Filament Widget invece di Livewire per i componenti di UI]
-**Stato:** APPROVATA
-**Impatto:** Alto
-**Alternatives considerate:** 
-- Mantenere Livewire
-- Utilizzare componenti Blade tradizionali
-**Conseguenze:** 
-- Migliore integrazione con Filament
-- Riduzione della complessità del codice
-- Necessità di migrare componenti esistenti
-
-### 2026-09-30
-**Decisione:** [Esempio: Adottare la convenzione "una chiave per riga" per gli array PHP]
-**Stato:** APPROVATA
-**Impatto:** Medio
-**Alternatives considerate:** 
-- Array inline
-- Array multi-linea senza convenzione fissa
-**Conseguenze:** 
-- Migliore leggibilità e gestione dei conflitti in git
-- Necessità di refactor esistente
-=======
 updated: 2026-11-16
 module: Tenant
 tags: [docs, tenant, bmad]
@@ -68,10 +25,12 @@ Verificate sul codice il 2026-11-16. Finding: [audits/tenant-audit.md](./audits/
 | D-08 | Servizi = Action (`app/Services` non esiste) | Attiva | regola PTVX actions-over-services | `rg` 0 service; 19 Action |
 | D-09 | Proposta: `TrustHosts` attivo o vhost esplicito | PROPOSTA (Epic A) | chiude TEN-P1-01 | — |
 | D-10 | Proposta: `password` con cast `encrypted` + `$hidden`, migrazione additiva | PROPOSTA (Epic C) | chiude TEN-P1-03 | — |
+<<<<<<< .merge_file_7oaMWA
+=======
 
 ## Formato delle nuove voci
 
 - **ID** progressivo `D-NN`, **Decisione** in una riga.
 - **Stato:** PROPOSTA, ATTIVA (approvata), RIFIUTATA, OBSOLETA.
 - **Perché:** motivo e alternative considerate; **Evidenza:** file o simbolo reale.
->>>>>>> .merge_file_TR0l0h
+>>>>>>> .merge_file_JNeplD

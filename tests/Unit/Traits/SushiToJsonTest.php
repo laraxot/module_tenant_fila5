@@ -18,6 +18,7 @@ use function Safe\json_decode;
 use function Safe\json_encode;
 
 uses(TestCase::class);
+
 beforeEach(function () {
     $this->model = new TestSushiModel;
     $this->testJsonPath = storage_path('tests/sushi-json/test_sushi.json');

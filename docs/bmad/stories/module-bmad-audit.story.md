@@ -4,18 +4,14 @@ status: review
 updated: 2026-11-16
 module: Tenant
 bmad: true
-<<<<<<< .merge_file_hfzCGn
-qmd: "story BMAD audit modulo Tenant inventario gate"
-=======
 qmd: "story BMAD audit modulo Tenant inventario finding gate PHPStan Pest skip"
->>>>>>> .merge_file_9yanzH
 ---
 
 # Story: audit BMAD del modulo Tenant
 
 ## Acceptance
 
-<<<<<<< .merge_file_hfzCGn
+<<<<<<< .merge_file_iqb5jp
 - [x] Inventario source-first (2026-11-16).
 - [x] Audit + piano in `docs/bmad/`.
 - [x] Pack ECC in `docs/ecc/`.
@@ -32,6 +28,7 @@ qmd: "story BMAD audit modulo Tenant inventario finding gate PHPStan Pest skip"
 
 Baseline audit aggiornata. PHPStan tree `Modules` a 0. Pest e chiusura P0/P1 aperti.
 =======
+>>>>>>> .merge_file_XdH1I8
 - [x] Inventario source-first misurato (2026-11-16).
 - [x] Finding P0/P1/P2 con `path:line` in [audits/tenant-audit.md](../audits/tenant-audit.md) (0 / 3 / 9).
 - [x] Audit + piano in `docs/bmad/`; pack BMAD: purpose, architecture, decision-log, epics, brainstorming, indice.
@@ -47,5 +44,8 @@ Baseline audit aggiornata. PHPStan tree `Modules` a 0. Pest e chiusura P0/P1 ape
 
 ## Esito
 
+<<<<<<< .merge_file_iqb5jp
+Audit completato, nessun codice, DB o import toccato. Aperti i 3 P1.
+=======
 Baseline audit aggiornata: audit completato, nessun codice, DB o import toccato. PHPStan `Modules/Tenant` a 0. Aperti Pest e i 3 P1.
->>>>>>> .merge_file_9yanzH
+>>>>>>> .merge_file_XdH1I8

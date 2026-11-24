@@ -41,47 +41,6 @@ abstract class TestCase extends BaseTestCase
     use DatabaseTransactions;
 
     /**
-     * Le connessioni che la transazione di test deve coprire.
-     *
-     * ## Perche' serve dichiararle
-     *
-     * `DatabaseTransactions` da solo avvolge **soltanto la connessione
-     * predefinita**. Tutto cio' che un test scrive sulle altre viene
-     * **committato**, e resta li' per la corsa successiva: il sintomo e'
-     * `UniqueConstraintViolationException` su un test che il giorno prima
-     * passava, cioe' il modo peggiore di fallire — sembra una regressione del
-     * codice e invece e' sporcizia della corsa precedente.
-     *
-     * Erano **20 dei 62 fallimenti** residui di questa suite
-     * (base_quaeris_fila5#228).
-     *
-     * ## Perche' queste quattro e non tutte le 27
-     *
-     * Questo progetto configura 27 connessioni MySQL, quasi tutte verso lo
-     * stesso database. Avvolgerle tutte vorrebbe dire 27 transazioni parallele
-     * sulle stesse righe, cioe' attese di lock fra connessioni dello stesso
-     * test. Qui bastano quelle su cui il modulo scrive davvero:
-     *
-     * - `mysql`   — la predefinita;
-     * - `tenant`  — quella di `Modules\Tenant\Models\BaseModel`, dove stanno
-     *               `database_configs`, `tenant_settings`, `tenant_subscriptions`;
-     * - `user`    — dove sta `tenants`, creata dalle migration di Modules/User
-     *               (vedi il commento in `Modules\Tenant\Models\Tenant`);
-     * - `quaeris_data` — scritta dalle factory condivise.
-     *
-     * Se un test nuovo scrive su un'altra connessione e lascia righe dietro, va
-     * aggiunta qui, non va tolto il vincolo che la scopre.
-     *
-     * @var list<string>
-     */
-    protected $connectionsToTransact = [
-        'mysql',
-        'tenant',
-        'user',
-        'quaeris_data',
-    ];
-
-    /**
      * Tenant corrente impostato dal test.
      */
     public Tenant $tenant;
