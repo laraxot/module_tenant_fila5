@@ -19,6 +19,15 @@ related:
   una transazione che scrive su due moduli non è atomica: il commit avviene connessione per connessione.
 - Domanda: come tenere la possibilità del database separato senza perdere le transazioni tra moduli?
 
+## Driver della decisione
+
+- Separabilità: i modelli dichiarano la connessione col nome del modulo, così un'installazione può spostare un modulo su un altro
+  database con la sola config.
+- Atomicità: nel caso comune tutti i moduli stanno sullo stesso database, e una transazione che scrive su due moduli deve essere
+  atomica; con una connessione PHP per modulo il commit avviene connessione per connessione.
+- Nessun two-phase commit: le transazioni annidate su più connessioni non danno atomicità.
+- Costo di sessione: una connessione per modulo apre una sessione al database per modulo, per richiesta.
+
 ## Decisione
 
 In `TenantServiceProvider::registerDB()`:
@@ -40,6 +49,14 @@ In `TenantServiceProvider::registerDB()`:
 - Pro: `DB::transaction()` copre scritture su più moduli; una sola sessione per richiesta nel caso comune.
 - Contro: chi dichiara un modulo su un database diverso perde l'atomicità con gli altri moduli; nessuna FK tra database
   diversi (vedi l'ADR `user-id-string-columns-without-cross-db-fk` del modulo Employee).
+
+## Conferma
+
+La decisione è rispettata finché `ModuleConnectionAliasTest` resta verde: una config di modulo uguale alla default risolve alla stessa
+istanza `Connection`, una config diversa apre una connessione propria. La logica sta in
+`Modules/Tenant/app/Providers/TenantServiceProvider.php` (`mergeModuleConnections()`, `aliasModuleConnectionsToDefault()`,
+`hasSameDatabaseConfig()`); un modulo che dichiara una connessione propria nel `database.php` del tenant esce dall'alias per scelta
+di chi configura.
 
 ## Verifica
 
