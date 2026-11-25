@@ -1,7 +1,7 @@
 ---
 issues: []
 discussions: []
-title: "Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction"
+title: "Decisione: Rimozione runningInConsole Check in GetTenantConfigValueAction"
 module: "Tenant"
 type: concept
 tags: [runninginconsole, check, decision]
@@ -11,11 +11,11 @@ qmd: "runninginconsole check decision"
 related:
   - "./phpstan-corrections-january.md"
 ---
-# Decisione: Rimozione runningInConsole Check in ResolveTenantConfigValueAction
+# Decisione: Rimozione runningInConsole Check in GetTenantConfigValueAction
 
 **Data**: 2025-01-22
 **Metodologia**: Super Mucca - La Litigata Interna
-**File**: `app/Actions/Config/ResolveTenantConfigValueAction.php`
+**File**: `app/Actions/Config/GetTenantConfigValueAction.php`
 
 ---
 
@@ -181,7 +181,7 @@ php artisan tenant:do-something --tenant=acme
 
 // Internamente chiama:
 TenantService::config('app.name')
-  → ResolveTenantConfigValueAction::execute('app.name')
+  → GetTenantConfigValueAction::execute('app.name')
   → ❌ Con runningInConsole check: ritorna config base
   → ✅ Senza check: fa merge e ritorna config tenant
 ```

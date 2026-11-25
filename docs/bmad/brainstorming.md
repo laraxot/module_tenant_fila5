@@ -43,7 +43,7 @@ status: active
 | Decisione | Dove e verificata |
 |----------|-------------------|
 | Solo chiavi stringa entrano in config/morph map | `app/Actions/Config/FilterConfigStringKeysAction.php`, usato in `TenantServiceProvider::loadTenantDatabaseConfig()` e `registerMorphMap()` |
-| La config per-tenant si legge via Action | `app/Actions/Config/ResolveTenantConfigValueAction.php`, `GetTenantConfigArrayAction.php` |
+| La config per-tenant si legge via Action | `app/Actions/Config/GetTenantConfigValueAction.php`, `GetTenantConfigArrayAction.php` |
 | Alias morph che punta a classe inesistente vengono scartati, non fanno crash del boot | `TenantServiceProvider::buildMorphMap()` con `@class_exists` |
 | La connessione DB non viene riconnessa in ambiente di test | `TenantServiceProvider::reconnectDatabaseUnlessTesting()` |
 | Le connessioni di modulo sono alias della default (una transazione) | `TenantServiceProvider::aliasModuleConnectionsToDefault()` |

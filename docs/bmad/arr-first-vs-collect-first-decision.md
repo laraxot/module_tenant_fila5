@@ -13,7 +13,7 @@ related:
 
 **Data**: 2025-01-22
 **Metodologia**: Super Mucca - La Litigata Interna
-**File**: `app/Actions/Config/ResolveTenantConfigValueAction.php`
+**File**: `app/Actions/Config/GetTenantConfigValueAction.php`
 
 ---
 

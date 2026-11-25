@@ -35,7 +35,7 @@ class NomeAction
 - Il trait `QueueableAction` aggiunge `dispatch()` e usa `__invoke` o `execute()`.
 - Package: `spatie/laravel-queueable-action` (già installato in `vendor/`).
 
-Esempio reale nel progetto: `Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction` (usa QueueableAction, execute(), dispatch()).
+Esempio reale nel progetto: `Modules\Tenant\Actions\Config\GetTenantConfigValueAction` (usa QueueableAction, execute(), dispatch()).
 
 ---
 
@@ -62,12 +62,12 @@ Esempio reale nel progetto: `Modules\Tenant\Actions\Config\ResolveTenantConfigVa
 - È già un **fasade statico** che delega l'implementazione a QueueableActions esistenti:
   - `getName()` → `GetTenantNameAction::execute()`
   - `filePath()` → `GetTenantFilePathAction::execute()` *(vedi azione esistente)*
-  - `config()` → `ResolveTenantConfigValueAction::execute()`
+  - `config()` → `GetTenantConfigValueAction::execute()`
   - `getConfig()` → `FilterConfigStringKeysAction::execute()`
   - `saveConfig()` → `SaveTenantConfigAction::execute()`
   - `getConfigNames()` → `GetTenantConfigNamesAction::execute()`
-  - `modelClass()` → `ResolveTenantModelClassAction::execute()`
-  - `model()` → `ResolveTenantModelInstanceAction::execute()`
+  - `modelClass()` → `GetTenantModelClassAction::execute()`
+  - `model()` → `GetTenantModelInstanceAction::execute()`
   - `localizedMarkdownPath()` → `GetLocalizedMarkdownPathAction::execute()`
 - Convertire TenantService stesso a QueueableAction **romperebbe l'API statica** usata in tutto il progetto (es. `TenantService::config('app.name')`, `TenantService::getName()`).
 - Il pattern QueueableAction prevede un **singolo metodo `execute()`** con uno scopo specifico. TenantService è una **classe multi-scopo**.
@@ -146,10 +146,10 @@ Queste azioni sono **già** QueueableActions e rappresentano l'implementazione r
 | `GetTenantConfigArrayAction` | `Actions/Config/GetTenantConfigArrayAction.php` | `TenantService::getConfig()` |
 | `SaveTenantConfigAction` | `Actions/Config/SaveTenantConfigAction.php` | `TenantService::saveConfig()` |
 | `GetTenantConfigNamesAction` | `Actions/Config/GetTenantConfigNamesAction.php` | `TenantService::getConfigNames()` |
-| `ResolveTenantConfigValueAction` | `Actions/Config/ResolveTenantConfigValueAction.php` | `TenantService::config()` |
+| `GetTenantConfigValueAction` | `Actions/Config/GetTenantConfigValueAction.php` | `TenantService::config()` |
 | `FilterConfigStringKeysAction` | `Actions/Config/FilterConfigStringKeysAction.php` | utilità riuso in più azioni |
-| `ResolveTenantModelClassAction` | `Actions/Models/ResolveTenantModelClassAction.php` | `TenantService::modelClass()` |
-| `ResolveTenantModelInstanceAction` | `Actions/Models/ResolveTenantModelInstanceAction.php` | `TenantService::model()` |
+| `GetTenantModelClassAction` | `Actions/Models/GetTenantModelClassAction.php` | `TenantService::modelClass()` |
+| `GetTenantModelInstanceAction` | `Actions/Models/GetTenantModelInstanceAction.php` | `TenantService::model()` |
 | `GetLocalizedMarkdownPathAction` | `Actions/Markdown/GetLocalizedMarkdownPathAction.php` | `TenantService::localizedMarkdownPath()` |
 | `MergeRecursiveStringKeyConfigAction` | `Actions/Config/MergeRecursiveStringKeyConfigAction.php` | utilità riuso in più azioni |
 

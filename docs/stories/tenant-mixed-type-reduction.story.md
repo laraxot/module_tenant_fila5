@@ -47,7 +47,7 @@ all'apertura del task.
   `is_string($key)`).
 - Tentativo di allineare `app/Services/TenantService.php::config()` a
   `array<string, mixed>` **revertito**: PHPStan segnalava `return.type` reale perche' la
-  action delegata (`ResolveTenantConfigValueAction`, file sporco/non toccabile) resta
+  action delegata (`GetTenantConfigValueAction`, file sporco/non toccabile) resta
   tipizzata `array<mixed>`. Restringere solo il chiamante sarebbe stato un typing non
   onesto — vedi nota `var-override-before-git-log-check` sul non forzare narrowing che il
   runtime non garantisce.
@@ -74,7 +74,7 @@ reduction (best-effort)".
 - I 4 usi di `mixed` nativo (parametro/return type-hintati, priorita' massima per la
   convenzione del progetto) restano in file attualmente in WIP concorrente:
   `app/Models/Traits/SushiToCsv.php:153,217`, `app/Models/Traits/SushiToJson.php:451`,
-  `app/Actions/Config/ResolveTenantConfigValueAction.php:68`. Da riprendere in una sessione
+  `app/Actions/Config/GetTenantConfigValueAction.php:68`. Da riprendere in una sessione
   successiva quando quel WIP sara' committato/pushato.
 
 ### Aggiornamento 2026-09-06 (sessione claude sonnet 5, `phpstan-tenant-fix.md`)

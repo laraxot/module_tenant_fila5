@@ -146,8 +146,8 @@ $config = (new GetTenantConfigArrayAction())(
 
 ---
 
-### `ResolveTenantConfigValueAction`
-**Location:** `app/Actions/Config/ResolveTenantConfigValueAction.php`
+### `GetTenantConfigValueAction`
+**Location:** `app/Actions/Config/GetTenantConfigValueAction.php`
 **Purpose:** Get single config value with system fallback
 **Queueable:** Yes
 
@@ -163,7 +163,7 @@ $config = (new GetTenantConfigArrayAction())(
 
 **Example:**
 ```php
-$name = (new ResolveTenantConfigValueAction())('app.name', 'Default App');
+$name = (new GetTenantConfigValueAction())('app.name', 'Default App');
 // Returns 'Tenant Custom' if set, else system 'app.name', else 'Default App'
 ```
 

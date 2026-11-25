@@ -29,13 +29,13 @@ related:
 |----------------------|--------|
 | `getName()` | `GetTenantNameAction` |
 | `filePath($f)` | `GetTenantFilePathAction` |
-| `config($k,$d)` | `ResolveTenantConfigValueAction` |
+| `config($k,$d)` | `GetTenantConfigValueAction` |
 | `getConfigPath($k)` | `GetTenantConfigPathAction` |
 | `getConfig($n)` | `GetTenantConfigArrayAction` |
 | `saveConfig($n,$d)` | `SaveTenantConfigAction` |
 | `getConfigNames()` | `GetTenantConfigNamesAction` |
-| `modelClass($n)` | `ResolveTenantModelClassAction` |
-| `model($n)` | `ResolveTenantModelInstanceAction` |
+| `modelClass($n)` | `GetTenantModelClassAction` |
+| `model($n)` | `GetTenantModelInstanceAction` |
 | `trans($k)` | `TranslateTenantKeyAction` |
 | `allModules()` | `GetTenantModulesAction` |
 

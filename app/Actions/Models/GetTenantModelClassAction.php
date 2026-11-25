@@ -6,7 +6,7 @@ namespace Modules\Tenant\Actions\Models;
 
 use Exception;
 use Illuminate\Support\Str;
-use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
+use Modules\Tenant\Actions\Config\GetTenantConfigValueAction;
 use Modules\Tenant\Actions\Config\SaveTenantConfigAction;
 use Modules\Xot\Actions\Model\GetAllModelsByModuleNameAction;
 use Nwidart\Modules\Facades\Module;
@@ -18,7 +18,7 @@ use Spatie\QueueableAction\QueueableAction;
  *
  * @contract docs/contracts/resolve-tenant-model-class-action.md
  */
-class ResolveTenantModelClassAction
+class GetTenantModelClassAction
 {
     use QueueableAction;
 
@@ -26,7 +26,7 @@ class ResolveTenantModelClassAction
     {
         $name = Str::snake(Str::singular($name));
 
-        $class = app(ResolveTenantConfigValueAction::class)->execute('morph_map.'.$name);
+        $class = app(GetTenantConfigValueAction::class)->execute('morph_map.'.$name);
 
         if ($class === null) {
             $class = $this->resolveAndPersistModelClass($name);

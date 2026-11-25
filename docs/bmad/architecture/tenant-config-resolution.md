@@ -27,12 +27,12 @@ related:
 
 1. `TenantServiceProvider::registerDB()` (riga 61) risolve la connessione di default.
 2. `loadTenantDatabaseConfig()` (riga 117) legge la chiave `database` con
-   `ResolveTenantConfigValueAction` e la filtra con `FilterConfigStringKeysAction`.
+   `GetTenantConfigValueAction` e la filtra con `FilterConfigStringKeysAction`.
 3. `mergeModuleConnections()` (riga 138) produce la configurazione di connessione finale.
 4. `registerMorphMap()` (riga 51) legge la chiave `morph_map`, la filtra e chiama
    `Relation::morphMap(self::buildMorphMap(...))`.
 5. `mergeConfigs()` (riga 83) itera `GetTenantConfigNamesAction` e carica ogni config con
-   `ResolveTenantConfigValueAction`.
+   `GetTenantConfigValueAction`.
 
 ## Registry dei resolver
 
@@ -64,7 +64,7 @@ Contratto: `app/Services/Config/Contracts/ConfigResolverInterface.php`.
 
 | Azione | Path |
 |--------|------|
-| `ResolveTenantConfigValueAction` | `app/Actions/Config/ResolveTenantConfigValueAction.php` |
+| `GetTenantConfigValueAction` | `app/Actions/Config/GetTenantConfigValueAction.php` |
 | `GetTenantConfigArrayAction` | `app/Actions/Config/GetTenantConfigArrayAction.php` |
 | `GetTenantConfigNamesAction` | `app/Actions/Config/GetTenantConfigNamesAction.php` |
 | `GetTenantConfigPathAction` | `app/Actions/Config/GetTenantConfigPathAction.php` |
@@ -75,7 +75,7 @@ Contratto: `app/Services/Config/Contracts/ConfigResolverInterface.php`.
 
 ## Copertura test esistente
 
-- `tests/Unit/Actions/Config/ResolveTenantConfigValueActionTest.php`
+- `tests/Unit/Actions/Config/GetTenantConfigValueActionTest.php`
 - `tests/Unit/Actions/Config/GetTenantConfigArrayActionTest.php`
 - `tests/Unit/Actions/Config/GetTenantConfigNamesActionTest.php`
 - `tests/Unit/Actions/Config/GetTenantConfigPathActionTest.php`

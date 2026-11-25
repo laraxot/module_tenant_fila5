@@ -15,7 +15,7 @@ use Spatie\QueueableAction\QueueableAction;
  *
  * @contract docs/contracts/resolve-tenant-config-value-action.md
  */
-class ResolveTenantConfigValueAction
+class GetTenantConfigValueAction
 {
     use QueueableAction;
 

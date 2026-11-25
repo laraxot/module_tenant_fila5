@@ -274,7 +274,7 @@ reversed:  local / <nome progetto>
 
 **Usage**:
 ```php
-// In ResolveTenantConfigValueAction
+// In GetTenantConfigValueAction
 $tenantName = app(GetTenantNameAction::class)->execute();
 // $tenantName = "local/<nome progetto>"
 
@@ -364,7 +364,7 @@ Cercare e correggere in TUTTI i doc:
 ## 📚 References
 
 - [GetTenantNameAction Source](../app/Actions/GetTenantNameAction.php)
-- [ResolveTenantConfigValueAction](../app/Actions/Config/ResolveTenantConfigValueAction.php)
+- [GetTenantConfigValueAction](../app/Actions/Config/GetTenantConfigValueAction.php)
 - [Java Package Naming](https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html)
 - [Android Package Naming](https://developer.android.com/studio/build/application-id)
 - [Apple Bundle Identifiers](https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleidentifier)

@@ -12,7 +12,7 @@ related:
 # Decisione: Arr::first() vs collect()->first()
 
 **Metodologia**: Super Mucca - La Litigata Interna
-**File**: `app/Actions/Config/ResolveTenantConfigValueAction.php`
+**File**: `app/Actions/Config/GetTenantConfigValueAction.php`
 
 ---
 

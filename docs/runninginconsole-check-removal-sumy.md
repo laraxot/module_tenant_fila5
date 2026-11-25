@@ -13,7 +13,7 @@ related:
 ---
 # Rimozione runningInConsole Check - Riepilogo
 
-**File**: `app/Actions/Config/ResolveTenantConfigValueAction.php`
+**File**: `app/Actions/Config/GetTenantConfigValueAction.php`
 **Status**: ✅ Completato
 
 ---

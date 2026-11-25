@@ -29,10 +29,10 @@ related:
 - StaticAccess warnings (facades) - **Normale**, non critico
 - UnusedFormalParameter - Parametri non utilizzati in Policy
 - CyclomaticComplexity alto in:
-  - `ResolveTenantConfigValueAction::execute()` - Complexity 15 (threshold 10)
+  - `GetTenantConfigValueAction::execute()` - Complexity 15 (threshold 10)
   - `SushiToCsv::bootSushiToCsv()` - Complexity 27 (threshold 10)
 - NPathComplexity alto:
-  - `ResolveTenantConfigValueAction::execute()` - NPath 720 (threshold 200)
+  - `GetTenantConfigValueAction::execute()` - NPath 720 (threshold 200)
   - `SushiToCsv::bootSushiToCsv()` - NPath 54080 (threshold 200)
 - ExcessiveMethodLength:
   - `SushiToCsv::bootSushiToCsv()` - 137 righe (threshold 100)
@@ -49,7 +49,7 @@ related:
 
 ### Alta Priorità
 1. **Refactoring metodi complessi**:
-   - `ResolveTenantConfigValueAction::execute()` - Suddividere in metodi più piccoli
+   - `GetTenantConfigValueAction::execute()` - Suddividere in metodi più piccoli
    - `SushiToCsv::bootSushiToCsv()` - Ridurre complessità, estrarre logica
 
 ### Media Priorità

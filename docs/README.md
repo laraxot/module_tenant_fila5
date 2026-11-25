@@ -79,7 +79,7 @@ Le applicazioni SaaS moderne hanno bisogno di multi-tenancy per servire più cli
 - **Risoluzione del tenant**: `Actions/GetTenantNameAction` legge `SERVER_NAME` (o l'header Host, o `app.url`),
   inverte il dominio (`foo.example.com` → `com/example/foo`) e cerca la cartella in `config/`;
   i symlink sono risolti al path reale. Fallback: `localhost`.
-- **Config del tenant**: `Actions/Config/ResolveTenantConfigValueAction` unisce la config base con quella del tenant;
+- **Config del tenant**: `Actions/Config/GetTenantConfigValueAction` unisce la config base con quella del tenant;
   `Actions/Config/SaveTenantConfigAction` e' il punto unico di scrittura.
 - **Database**: `Providers/TenantServiceProvider::registerDB()` crea una connessione per ogni modulo copiando la default
   e la **alias sulla stessa istanza** della default (una sola sessione/transazione); le connessioni dichiarate

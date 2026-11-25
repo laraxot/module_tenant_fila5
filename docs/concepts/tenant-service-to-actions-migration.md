@@ -27,13 +27,13 @@ related:
 | `TenantService::saveConfig($name, $data)` | `app(SaveTenantConfigAction::class)->execute($name, $data)` |
 | `TenantService::trans($key)` | `app(TranslateTenantKeyAction::class)->execute($key)` |
 | `TenantService::allModules()` | `app(GetTenantModulesAction::class)->execute()` |
-| `TenantService::config($key)` | `app(ResolveTenantConfigValueAction::class)->execute($key)` |
+| `TenantService::config($key)` | `app(GetTenantConfigValueAction::class)->execute($key)` |
 | `TenantService::getName()` | `app(GetTenantNameAction::class)->execute()` |
 | `TenantService::filePath($filename)` | `app(GetTenantFilePathAction::class)->execute($filename)` |
 | `TenantService::getConfigPath($key)` | `app(GetTenantConfigPathAction::class)->execute($key)` |
 | `TenantService::getConfigNames()` | `app(GetTenantConfigNamesAction::class)->execute()` |
-| `TenantService::modelClass($name)` | `app(ResolveTenantModelClassAction::class)->execute($name)` |
-| `TenantService::model($name)` | `app(ResolveTenantModelInstanceAction::class)->execute($name)` |
+| `TenantService::modelClass($name)` | `app(GetTenantModelClassAction::class)->execute($name)` |
+| `TenantService::model($name)` | `app(GetTenantModelInstanceAction::class)->execute($name)` |
 
 ## Perché
 
@@ -45,9 +45,9 @@ I file eliminati erano tornati nel working tree (HEAD `6b31874` e' una squash ch
 sostituzioni sopra, piu':
 
 - `app/Services/Config/**` (`ConfigResolverRegistry`, i tre resolver, `ConfigResolverInterface`, `ConfigStringKeyFilter`): catena mai collegata
-  e con semantica diversa da `ResolveTenantConfigValueAction` (con `database` perde le connessioni). Non convertita in Action: eliminata.
+  e con semantica diversa da `GetTenantConfigValueAction` (con `database` perde le connessioni). Non convertita in Action: eliminata.
 - `app/Actions/TenantAction.php`: copia della facade, zero chiamanti.
-- Unico chiamante vivo, `Geo/app/Services/HereService.php`, passato a `ResolveTenantConfigValueAction`.
+- Unico chiamante vivo, `Geo/app/Services/HereService.php`, passato a `GetTenantConfigValueAction`.
 
 La modifica Tenant non aggiorna quel caller esterno: Geo resta fuori ownership. La compatibilità è preservata
 per il comportamento effettivo perché l'Action sostitutiva è già il percorso usato dal modulo Tenant e dal

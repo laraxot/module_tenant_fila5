@@ -34,12 +34,12 @@ related:
 
 | Azione | Path |
 |--------|------|
-| Risolvere un valore config | `app/Actions/Config/ResolveTenantConfigValueAction.php` |
+| Risolvere un valore config | `app/Actions/Config/GetTenantConfigValueAction.php` |
 | Elenco chiavi config | `app/Actions/Config/GetTenantConfigNamesAction.php` |
 | Config come array | `app/Actions/Config/GetTenantConfigArrayAction.php` |
 | Salvare config | `app/Actions/Config/SaveTenantConfigAction.php` |
-| Classi modello tenant-aware | `app/Actions/Models/ResolveTenantModelClassAction.php` |
-| Istanza modello tenant-aware | `app/Actions/Models/ResolveTenantModelInstanceAction.php` |
+| Classi modello tenant-aware | `app/Actions/Models/GetTenantModelClassAction.php` |
+| Istanza modello tenant-aware | `app/Actions/Models/GetTenantModelInstanceAction.php` |
 | Domini come array | `app/Actions/Domains/GetDomainsArrayAction.php` |
 | Moduli del tenant | `app/Actions/Modules/GetTenantModulesAction.php` |
 | Traduzione tenant | `app/Actions/Translations/TranslateTenantKeyAction.php` |

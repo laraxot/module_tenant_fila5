@@ -27,7 +27,7 @@ Report locale (2026-07-17). Metodo: `phpstan analyse` livello max, `phpmd` (rule
 - Modules/Tenant/app/Actions/Translations/TranslateTenantKeyAction.php
 - Modules/Tenant/app/Actions/Modules/GetTenantModulesAction.php
 - Modules/Tenant/app/Actions/Config/SaveTenantConfigAction.php
-- Modules/Tenant/app/Actions/Config/ResolveTenantConfigValueAction.php
+- Modules/Tenant/app/Actions/Config/GetTenantConfigValueAction.php
 - Modules/Tenant/app/Actions/Config/GetTenantConfigArrayAction.php
 - Modules/Tenant/app/Actions/Config/GetTenantConfigNamesAction.php
 

@@ -1,7 +1,7 @@
 ---
 issues: []
 discussions: []
-title: "ResolveTenantConfigValueAction - Console Check Debate"
+title: "GetTenantConfigValueAction - Console Check Debate"
 module: "Tenant"
 type: concept
 tags: [resolve, tenant, config, console]
@@ -11,7 +11,7 @@ qmd: "resolve tenant config console debate"
 related:
   - "./phpstan-corrections-january.md"
 ---
-# ResolveTenantConfigValueAction - Console Check Debate
+# GetTenantConfigValueAction - Console Check Debate
 
 **Status**: 🔥 FURIOUS INTERNAL DEBATE
 **Issue**: `runningInConsole()` check breaks tenant functionality
@@ -21,7 +21,7 @@ related:
 
 ## 🔴 Il Problema Critico
 
-Nel file `ResolveTenantConfigValueAction.php` esisteva questo blocco:
+Nel file `GetTenantConfigValueAction.php` esisteva questo blocco:
 
 ```php
 if (app()->runningInConsole()) {
@@ -244,10 +244,10 @@ if (! is_string($group) || $group === '') {
 ./vendor/bin/phpstan analyse Modules/Tenant/app/Actions/Config/ --level=10
 
 # Laravel Pint
-./vendor/bin/pint Modules/Tenant/app/Actions/Config/ResolveTenantConfigValueAction.php
+./vendor/bin/pint Modules/Tenant/app/Actions/Config/GetTenantConfigValueAction.php
 
 # PHP Syntax
-php -l Modules/Tenant/app/Actions/Config/ResolveTenantConfigValueAction.php
+php -l Modules/Tenant/app/Actions/Config/GetTenantConfigValueAction.php
 ```
 
 ---

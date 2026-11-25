@@ -229,7 +229,7 @@ Route::middleware(TenantMiddleware::class)->group(function () {
 All business logic lives in `Actions/` namespace as `QueueableAction`.
 
 ```php
-class ResolveTenantDomainAction {
+class GetTenantDomainAction {
     use QueueableAction;
     
     public function execute(string $domain): ?Tenant {
@@ -471,7 +471,7 @@ Per-tenant configuration files override system defaults, enabling customization 
 - **Caching:** Applied (via Laravel cache)
 - **Returns:** Complete merged config array
 
-#### `ResolveTenantConfigValueAction`
+#### `GetTenantConfigValueAction`
 - **Purpose:** Get single config value with fallback to system default
 - **Parameters:** `string $key`, `mixed $default = null`
 - **Returns:** Resolved value

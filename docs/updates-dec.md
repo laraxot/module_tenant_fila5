@@ -18,12 +18,12 @@ related:
 - **Helper Functions**: Added `getAllModulesModels` and `array_merge_recursive_distinct` to `Modules/Xot/helpers/Helper.php` to resolve undefined function errors.
 - **TenantService Refactor**: Adhering to the "Fat Model, Skinny Controller" (and Service) philosophy, all business logic has been extracted into dedicated Action classes:
     - `GetTenantFilePathAction`
-    - `ResolveTenantConfigValueAction`
+    - `GetTenantConfigValueAction`
     - `GetTenantConfigPathAction`
     - `GetTenantConfigArrayAction`
     - `SaveTenantConfigAction`
-    - `ResolveTenantModelClassAction`
-    - `ResolveTenantModelInstanceAction`
+    - `GetTenantModelClassAction`
+    - `GetTenantModelInstanceAction`
     - `GetLocalizedMarkdownPathAction`
     - `TranslateTenantKeyAction`
     - `GetTenantConfigNamesAction`

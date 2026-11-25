@@ -6,7 +6,7 @@ namespace Modules\Tenant\Tests\Unit\Actions\Config;
 
 use Illuminate\Support\Facades\Config;
 use Mockery\MockInterface;
-use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
+use Modules\Tenant\Actions\Config\GetTenantConfigValueAction;
 use Modules\Tenant\Actions\GetTenantNameAction;
 use Modules\Tenant\Tests\TestCase;
 use Modules\Xot\Tests\XotBasePest;
@@ -24,7 +24,7 @@ it('resolves tenant config value by merging with tenant overrides', function ():
         'name' => 'Tenant App',
     ]);
 
-    $action = app(ResolveTenantConfigValueAction::class);
+    $action = app(GetTenantConfigValueAction::class);
 
     Assert::assertSame('Tenant App', $action->execute('app.name'));
     Assert::assertSame('UTC', $action->execute('app.timezone'));
@@ -32,7 +32,7 @@ it('resolves tenant config value by merging with tenant overrides', function ():
 
 it('throws exception for empty config key', function (): void {
     XotBasePest::assertThrows(
-        fn (): float|int|string|array|null => app(ResolveTenantConfigValueAction::class)->execute(''),
+        fn (): float|int|string|array|null => app(GetTenantConfigValueAction::class)->execute(''),
         \Exception::class,
     );
 });
@@ -43,7 +43,7 @@ it('returns default value if config not found', function (): void {
         $mock->allows(['execute' => 'test-tenant']);
     });
 
-    $result = app(ResolveTenantConfigValueAction::class)->execute('nonexistent.key', 'default');
+    $result = app(GetTenantConfigValueAction::class)->execute('nonexistent.key', 'default');
 
     Assert::assertSame('default', $result);
 });

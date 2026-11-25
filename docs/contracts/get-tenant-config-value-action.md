@@ -1,16 +1,16 @@
 ---
-title: "ResolveTenantConfigValueAction — contratto"
+title: "GetTenantConfigValueAction — contratto"
 type: contract
 owner: Tenant
 status: accepted
 updated: 2026-11-24
-action: "Modules\\Tenant\\Actions\\Config\\ResolveTenantConfigValueAction"
-qmd: "ResolveTenantConfigValueAction valore config tenant override gruppo Config::set merge default eccezione"
+action: "Modules\\Tenant\\Actions\\Config\\GetTenantConfigValueAction"
+qmd: "GetTenantConfigValueAction valore config tenant override gruppo Config::set merge default eccezione"
 ---
 
-# ResolveTenantConfigValueAction
+# GetTenantConfigValueAction
 
-Risolve un valore di configurazione sovrapponendo la config del tenant a quella di base. Codice: `app/Actions/Config/ResolveTenantConfigValueAction.php:13-63`.
+Risolve un valore di configurazione sovrapponendo la config del tenant a quella di base. Codice: `app/Actions/Config/GetTenantConfigValueAction.php:13-63`.
 
 ## Input
 
@@ -25,8 +25,8 @@ Risolve un valore di configurazione sovrapponendo la config del tenant a quella 
 
 | ID | Regola | Prova nel codice | Test esistente |
 |---|---|---|---|
-| `TENANT-RESOLVE-INV-1` | Chiave vuota o gruppo vuoto lancia `Exception`. | righe 33-36 | `tests/Unit/Actions/Config/ResolveTenantConfigValueActionTest.php` |
-| `TENANT-RESOLVE-INV-2` | Il gruppo è fuso con `<tenant>.<gruppo>` e i valori del tenant prevalgono (`array_replace_recursive`). | righe 38-52 | `tests/Unit/Actions/Config/ResolveTenantConfigValueActionTest.php` |
+| `TENANT-RESOLVE-INV-1` | Chiave vuota o gruppo vuoto lancia `Exception`. | righe 33-36 | `tests/Unit/Actions/Config/GetTenantConfigValueActionTest.php` |
+| `TENANT-RESOLVE-INV-2` | Il gruppo è fuso con `<tenant>.<gruppo>` e i valori del tenant prevalgono (`array_replace_recursive`). | righe 38-52 | `tests/Unit/Actions/Config/GetTenantConfigValueActionTest.php` |
 | `TENANT-RESOLVE-INV-3` | Un valore non scalare né array (ad esempio bool o oggetto) lancia `Exception`. | righe 58-62 | nessuno |
 
 ## Effetti collaterali
