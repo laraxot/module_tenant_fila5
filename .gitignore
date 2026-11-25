@@ -197,3 +197,10 @@ tests/graphify-out/
 # screenshot di comparazione visiva (artefatti locali)
 docs/project/visual-comparison/
 docs/visual-comparison/
+
+# fila5-guard: mai nel repo di un modulo/tema
+/laravel/
+graphify-out/
+/tests/coverage/
+/tests/coverage.xml/
+/tests/*coverage*.xml
