@@ -19,7 +19,7 @@ section: content
 
 ## Collegamenti tra versioni di links.md
 * [links.md](../../../Gdpr/docs/links.md)
-* [links.md](../../../Notify/docs/links.md)
+* [links.md](../../../Notify/docs/raw/root-import/links-1.md)
 * [links.md](../../../xot/docs/ci/links.md)
 * [links.md](../../../xot/docs/open_sources/links.md)
 * [links.md](../../../Lang/docs/links.md)

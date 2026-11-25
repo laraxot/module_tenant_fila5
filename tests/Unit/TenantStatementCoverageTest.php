@@ -191,7 +191,6 @@ describe('Tenant statement coverage — models and policies', function (): void 
         $noSlug = new Tenant;
         $noSlug->name = 'Beta';
         Assert::assertSame('beta', $noSlug->slug);
-
     });
 
     test('TenantDomain TenantSetting TenantSubscription relation helpers', function (): void {
