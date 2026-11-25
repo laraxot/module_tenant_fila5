@@ -12,8 +12,25 @@ scope: module:Tenant
 status: done
 date: 2026-09-22
 ---
-
 # Tenant — pulizia stato git (marker di conflitto residui)
+
+## Context and Problem Statement
+
+Problema e obiettivo sono descritti nel Decision Outcome (migrazione automatica a MADR).
+
+## Decision Drivers
+
+- Richiesta utente / acceptance criteria della story
+- Vincoli BMAD, second brain, Pest gate e dati sacri
+
+## Considered Options
+
+- Status quo (non fare)
+- Implementare come descritto nel Decision Outcome
+
+## Decision Outcome
+
+Scelta: **implementare**, perché i driver sopra.
 
 ## Diagnosi
 
@@ -82,3 +99,13 @@ Il "daemon auto-commit" che produce commit ".", autore `marco76tv` o
 remote pre-`35353af` (improbabile ora, ma controllare `git log --oneline -5`
 prima di assumere pulito), NON fare `git checkout -- <file>` alla cieca:
 verificare prima con `git show <ref>:<path>` quale versione e' quella buona.
+
+
+### Consequences
+
+- Buono, perché chiude il gap descritto nel Context
+- Cattivo, perché richiede write-back docs, lock e quality gate
+
+### Confirmation
+
+Aggiungere prova ripetibile (Pest exit code + conteggio, PHPStan, o skip host documentato).

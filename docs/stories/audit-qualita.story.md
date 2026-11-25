@@ -8,8 +8,25 @@ updated: 2026-11-19
 issues: ["https://github.com/laraxot/base_techplanner_fila5/issues/64"]
 qmd: "audit qualita story tenant"
 ---
-
 # Story: audit qualita' del modulo Tenant
+
+## Context and Problem Statement
+
+Problema e obiettivo sono descritti nel Decision Outcome (migrazione automatica a MADR).
+
+## Decision Drivers
+
+- Richiesta utente / acceptance criteria della story
+- Vincoli BMAD, second brain, Pest gate e dati sacri
+
+## Considered Options
+
+- Status quo (non fare)
+- Implementare come descritto nel Decision Outcome
+
+## Decision Outcome
+
+Scelta: **implementare**, perché i driver sopra.
 
 ## Contesto
 
@@ -49,3 +66,13 @@ connessioni di modulo sulla connessione default in `TenantServiceProvider::regis
       condiviso (`laraxot/module_tenant_fila5`), verificare gli altri progetti prima di rimuoverli.
 - [ ] `docs/` contiene ancora molte cartelle storiche (`raw/`, `legacy/`, `bmad/` con copie della root):
       consolidarle richiede lettura dei contenuti, non solo dedup.
+
+
+### Consequences
+
+- Buono, perché chiude il gap descritto nel Context
+- Cattivo, perché richiede write-back docs, lock e quality gate
+
+### Confirmation
+
+Aggiungere prova ripetibile (Pest exit code + conteggio, PHPStan, o skip host documentato).

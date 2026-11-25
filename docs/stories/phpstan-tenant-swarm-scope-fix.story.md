@@ -23,8 +23,25 @@ related:
   - "tenant-mixed-type-reduction.story.md"
   - "7.2.phpstan-test-harness-contracts.story.md"
 ---
-
 # PHPStan swarm — perimetro Tenant: scope, causa radice, fix
+
+## Context and Problem Statement
+
+Problema e obiettivo sono descritti nel Decision Outcome (migrazione automatica a MADR).
+
+## Decision Drivers
+
+- Richiesta utente / acceptance criteria della story
+- Vincoli BMAD, second brain, Pest gate e dati sacri
+
+## Considered Options
+
+- Status quo (non fare)
+- Implementare come descritto nel Decision Outcome
+
+## Decision Outcome
+
+Scelta: **implementare**, perché i driver sopra.
 
 Agente swarm, scope disgiunto `laravel/Modules/Tenant/`.
 Prompt: `bashscripts/docs/prompts/11-phpstan.md`, `46-multi-agent-module-swarm.md`,
@@ -157,3 +174,21 @@ non esiste piu' nel working tree — nessun intervento necessario.
    su sqlite condiviso — esito atteso: skip, non fail).
 3. Valutare rimozione `tests/Support/helpers.php` dopo `rg tenantMockExpectation` su
    tutti i moduli/temi e `md-filenames.py`/QMD update (non eseguiti qui per vincolo).
+
+
+### Consequences
+
+- Buono, perché chiude il gap descritto nel Context
+- Cattivo, perché richiede write-back docs, lock e quality gate
+
+### Confirmation
+
+- Lettura statica completa dei 7 file + firme reali (`XotData`, `XotBaseModel`,
+  `RelationX`, `BaseTenant`, migrazioni FK): tutti i 6+1 item del ground truth
+  risultano gia' risolti nel working tree (anche i numeri di riga del JSON non
+  corrispondono piu' ai file: i file sono cambiati in avanti dopo il report).
+- `php -l`, `phpstan analyse Modules/Tenant`, Pest mirato **non eseguibili da questa
+  sessione**: `default.bash`/Daytona richiede `DAYTONA_API_KEY` (assente), quindi
+  niente shell, niente `rg` per i chiamanti oltre i file letti, niente lock script.
+  Gate esecutivi affidati al coordinatore (vedi Handoff). Nessun file modificato in
+  questa sessione — niente lock da rilasciare, niente commit (vietati nello swarm).

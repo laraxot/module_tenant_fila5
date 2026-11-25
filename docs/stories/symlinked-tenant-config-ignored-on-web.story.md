@@ -11,8 +11,25 @@ related:
 tags: [tenant, config, symlink, regression, database, log, livewire]
 qmd: "symlinked tenant config ignored on web"
 ---
-
 # Config del tenant ignorata via web e pulizia del log
+
+## Context and Problem Statement
+
+Problema e obiettivo sono descritti nel Decision Outcome (migrazione automatica a MADR).
+
+## Decision Drivers
+
+- Richiesta utente / acceptance criteria della story
+- Vincoli BMAD, second brain, Pest gate e dati sacri
+
+## Considered Options
+
+- Status quo (non fare)
+- Implementare come descritto nel Decision Outcome
+
+## Decision Outcome
+
+Scelta: **implementare**, perché i driver sopra.
 
 ## Sintomo
 
@@ -59,3 +76,13 @@ Rimozione dal log: solo errori verificati come risolti, entry intera (intestazio
 - `Aborted`, `db:table-metadata`: comandi CLI lanciati male, non bug.
 - 3 migrazioni **pending** (`add_metadata_to_consents`, `create_socialite_users`, `create_inbound_emails`): non lanciate
   (dati sacri: decide l'utente).
+
+
+### Consequences
+
+- Buono, perché chiude il gap descritto nel Context
+- Cattivo, perché richiede write-back docs, lock e quality gate
+
+### Confirmation
+
+Aggiungere prova ripetibile (Pest exit code + conteggio, PHPStan, o skip host documentato).

@@ -9,8 +9,25 @@ status: done
 type: story
 created: 2026-09-11
 ---
-
 # XotBaseResourceTable model audit - Tenant/DomainsTable
+
+## Context and Problem Statement
+
+Problema e obiettivo sono descritti nel Decision Outcome (migrazione automatica a MADR).
+
+## Decision Drivers
+
+- Richiesta utente / acceptance criteria della story
+- Vincoli BMAD, second brain, Pest gate e dati sacri
+
+## Considered Options
+
+- Status quo (non fare)
+- Implementare come descritto nel Decision Outcome
+
+## Decision Outcome
+
+Scelta: **implementare**, perché i driver sopra.
 
 **Scope**: `app/Filament/Resources/DomainResource/Tables/DomainsTable.php` (batch cross-modulo Tenant/Limesurvey/Lang/AI, audit `protected static string $model` + colonne).
 
@@ -23,3 +40,13 @@ created: 2026-09-11
 **Verifica**: `php -l` non necessario (file non toccato). `vendor/bin/phpstan analyse Modules/Tenant/app/Filament/Resources/DomainResource/Tables/DomainsTable.php --no-progress` → 0 errori (eseguito insieme agli altri 3 file del batch).
 
 **Resta da fare**: niente per questo file.
+
+
+### Consequences
+
+- Buono, perché chiude il gap descritto nel Context
+- Cattivo, perché richiede write-back docs, lock e quality gate
+
+### Confirmation
+
+Aggiungere prova ripetibile (Pest exit code + conteggio, PHPStan, o skip host documentato).

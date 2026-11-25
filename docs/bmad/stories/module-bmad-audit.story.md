@@ -6,8 +6,25 @@ module: Tenant
 bmad: true
 qmd: "story BMAD audit modulo Tenant inventario finding gate PHPStan Pest skip"
 ---
-
 # Story: audit BMAD del modulo Tenant
+
+## Context and Problem Statement
+
+Problema e obiettivo sono descritti nel Decision Outcome (migrazione automatica a MADR).
+
+## Decision Drivers
+
+- Richiesta utente / acceptance criteria della story
+- Vincoli BMAD, second brain, Pest gate e dati sacri
+
+## Considered Options
+
+- Status quo (non fare)
+- Implementare come descritto nel Decision Outcome
+
+## Decision Outcome
+
+Scelta: **implementare**, perché i driver sopra.
 
 ## Acceptance
 
@@ -42,3 +59,13 @@ Baseline audit aggiornata. PHPStan tree `Modules` a 0. Pest e chiusura P0/P1 ape
 ## Esito
 
 Audit completato, nessun codice, DB o import toccato. Aperti i 3 P1.
+
+
+### Consequences
+
+- Buono, perché chiude il gap descritto nel Context
+- Cattivo, perché richiede write-back docs, lock e quality gate
+
+### Confirmation
+
+Aggiungere prova ripetibile (Pest exit code + conteggio, PHPStan, o skip host documentato).

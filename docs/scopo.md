@@ -130,7 +130,7 @@ tenant chiama l'Action direttamente — `GetTenantConfigArrayAction` è usata in
 file, fra cui `Xot\Datas\XotData:89` e `User\Datas\PasswordData:49`.
 
 La facade non semplifica niente e viola la policy no-services
-([actions-over-services](../../../../docs/wiki/rules/actions-over-services.md)):
+([actions-over-services](../../../../docs/wiki/rules/0017-actions-over-services.md)):
 si cancella, dopo aver spostato in Action le poche righe non ancora delegate. Stesso
 esame per le altre 6 classi sotto `app/Services/Config/`: i tre `*Resolver` sono
 strategie con interfaccia, non use case — se restano, devono uscire da
@@ -239,7 +239,7 @@ grep -rl '^use Modules\\User\\' --include='*.php' Modules/Tenant/app | wc -l    
 ## Collegamenti
 
 - [basemodel-connection-mandatory](../../../../bashscripts/ai/wiki/memories/architecture-models-actions.md#basemodel-connection-mandatory) — perché ogni `BaseModel` dichiara la sua connection, e chi gliela fornisce
-- [actions-over-services](../../../../docs/wiki/rules/actions-over-services.md) — la policy violata da `app/Services/`
+- [actions-over-services](../../../../docs/wiki/rules/0017-actions-over-services.md) — la policy violata da `app/Services/`
 - [circular-dependency-prevention](../../../../docs/wiki/rules/circular-dependency-prevention.md) — perché i PHPDoc verso Ptv vanno chiusi ora che sono tre
 - [data-sacred-no-destructive-db](../../../../docs/wiki/rules/data-sacred-no-destructive-db.md) — vincolo su qualunque intervento alle 3 migrazioni
 - [Xot — scopo](../../Xot/docs/scopo.md) · [User — scopo](../../User/docs/scopo.md) · [Sigma — scopo](../../Sigma/docs/scopo.md)

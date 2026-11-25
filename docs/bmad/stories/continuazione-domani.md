@@ -18,8 +18,25 @@ related:
   - ../../stories/21-1-replace-profile-model-with-contract.md
   - ../../stories/git-state-conflict-marker-daemon-cleanup.story.md
 ---
-
 # Tenant — Continuazione Domani
+
+## Context and Problem Statement
+
+Problema e obiettivo sono descritti nel Decision Outcome (migrazione automatica a MADR).
+
+## Decision Drivers
+
+- Richiesta utente / acceptance criteria della story
+- Vincoli BMAD, second brain, Pest gate e dati sacri
+
+## Considered Options
+
+- Status quo (non fare)
+- Implementare come descritto nel Decision Outcome
+
+## Decision Outcome
+
+Scelta: **implementare**, perché i driver sopra.
 
 ## Stato verificato ora (sessione 2026-09-22)
 
@@ -52,3 +69,13 @@ nessuna azione necessaria, stesso pattern gia' visto il 2026-09-06 su AiAssistan
 ## Second brain
 
 `qmd query` su "Tenant sushi phpstan 7.1 7.2 40 findings zero" prima di riprendere (per non ri-diagnosticare da zero il disallineamento status); `qmd update` dopo la chiusura del punto 1.
+
+
+### Consequences
+
+- Buono, perché chiude il gap descritto nel Context
+- Cattivo, perché richiede write-back docs, lock e quality gate
+
+### Confirmation
+
+Aggiungere prova ripetibile (Pest exit code + conteggio, PHPStan, o skip host documentato).

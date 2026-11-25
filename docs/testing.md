@@ -74,7 +74,7 @@ uses(TestCase::class);
 
 Mai `uses(...)->in(...)` in `tests/Pest.php`: il runner di root non lo esegue (i test restano senza
 applicazione) e con `--test-directory` raddoppia il binding (`TestCaseAlreadyInUse`). Decisione e guardia:
-[ADR pest-testcase-binding-per-file](../../Xot/docs/adr/pest-testcase-binding-per-file.md).
+[ADR pest-testcase-binding-per-file](../../Xot/docs/adr/0034-pest-testcase-binding-per-file.md).
 
 ## Testing Configuration
 

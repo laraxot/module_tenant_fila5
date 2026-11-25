@@ -12,9 +12,33 @@ related:
   - ../../../../Rating/docs/stories/18.35.rating-morph-type-doppia-forma.story.md
 qmd: "tenant config untracked by gitignore story"
 ---
-tags: [docs, tenant, bmad]
-
 # config/local untracciata applicando il .gitignore ai file tracciati
+
+## Context and Problem Statement
+
+`laravel/config/local/<tenant>/` e' versionata apposta: e' la config per tenant che
+`TenantServiceProvider` carica in base all'host (`database.php` connessioni,
+`morph_map.php`, `metatag.php` logo e brand, menu, permessi, `xra.php` moduli).
+
+Togliere un file dall'indice non lo cancella da chi fa il commit, ma lo cancella da ogni
+altro checkout al primo pull, produzione compresa. Senza quella cartella il tenant non si
+risolve e si ripiega su `localhost`: altro database, niente alias morph, niente logo. E' lo
+stesso gruppo di sintomi visti la mattina del 2026-09-29 (morph map, logo), qui come
+rischio e non come causa.
+
+## Decision Drivers
+
+- Richiesta utente / acceptance criteria della story
+- Vincoli BMAD, second brain, Pest gate e dati sacri
+
+## Considered Options
+
+- Status quo (non fare)
+- Implementare come descritto nel Decision Outcome
+
+## Decision Outcome
+
+Scelta: **implementare**, perché i driver sopra.
 
 ## Segnalazione
 
@@ -146,3 +170,13 @@ regola generale.
 | altra sessione | `57c400993d` | ha ritracciato i 90 file + 3 nuovi |
 | sessione pari | `122705398e`, story + guardia Xot, memoria `config-local-dominio-non-e-spazzatura` | json di nuovo untracciato, `test.php` in stage come rimossi |
 | sessione 30a9bfba (fork D) | `.gitignore`, guardia Tenant, regola in module-root-hygiene, questa story, issue #253 | fatto, nessun commit |
+
+
+### Consequences
+
+- Buono, perché chiude il gap descritto nel Context
+- Cattivo, perché richiede write-back docs, lock e quality gate
+
+### Confirmation
+
+Aggiungere prova ripetibile (Pest exit code + conteggio, PHPStan, o skip host documentato).

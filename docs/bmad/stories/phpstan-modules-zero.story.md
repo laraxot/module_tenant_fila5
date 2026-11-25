@@ -10,8 +10,25 @@ tags:
 qmd: "phpstan module Tenant zero errors quality guardian swarm"
 updated: "2026-11-16"
 ---
-
 # Story: PHPStan zero — Tenant
+
+## Context and Problem Statement
+
+Problema e obiettivo sono descritti nel Decision Outcome (migrazione automatica a MADR).
+
+## Decision Drivers
+
+- Richiesta utente / acceptance criteria della story
+- Vincoli BMAD, second brain, Pest gate e dati sacri
+
+## Considered Options
+
+- Status quo (non fare)
+- Implementare come descritto nel Decision Outcome
+
+## Decision Outcome
+
+Scelta: **implementare**, perché i driver sopra.
 
 ## Scopo
 
@@ -48,3 +65,17 @@ Esito: **0 file_errors**.
 
 - Standing order BMAD / Pest / array PHP
 - Swarm quality-guardian sessione 2026-11-16
+
+
+### Consequences
+
+- Buono, perché chiude il gap descritto nel Context
+- Cattivo, perché richiede write-back docs, lock e quality gate
+
+### Confirmation
+
+```bash
+cd laravel && php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules/Tenant --no-progress
+```
+
+Esito: **0 file_errors**.

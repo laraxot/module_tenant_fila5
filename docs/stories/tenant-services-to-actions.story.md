@@ -22,8 +22,25 @@ related:
   - ../../../../bashscripts/ai/wiki/rules/multi-agent-same-repo-race.md
   - ../../../../bashscripts/ai/wiki/rules/module-repos-huge-uncommitted-drift.md
 ---
-
 # Tenant: eliminazione app/Services, conversione a QueueableAction
+
+## Context and Problem Statement
+
+Problema e obiettivo sono descritti nel Decision Outcome (migrazione automatica a MADR).
+
+## Decision Drivers
+
+- Richiesta utente / acceptance criteria della story
+- Vincoli BMAD, second brain, Pest gate e dati sacri
+
+## Considered Options
+
+- Status quo (non fare)
+- Implementare come descritto nel Decision Outcome
+
+## Decision Outcome
+
+Scelta: **implementare**, perché i driver sopra.
 
 ## Contesto
 
@@ -167,3 +184,28 @@ M  tests/Unit/TenantGapsCoverageTest.php
 M  docs/coverage.md
 A  docs/stories/tenant-services-to-actions.story.md
 ```
+
+
+### Consequences
+
+- Buono, perché chiude il gap descritto nel Context
+- Cattivo, perché richiede write-back docs, lock e quality gate
+
+### Confirmation
+
+- **PHPStan**: baseline vera (`clear-result-cache` + `analyse Modules/Tenant
+  --no-progress --error-format=table`) → 0 errori. Dopo il diff, stesso comando bloccato
+  dalla collisione sopra (6 errori, tutti nei 7 file estranei); verifica alternativa sui
+  134 file del modulo esclusi quelli → 0 errori. Nessun nuovo errore introdotto da questo
+  diff.
+- **PHPMD**: run sull'intero modulo va in crash su una classe anonima pre-esistente
+  (noto, vedi `quality-tooling-real-commands.md`). Run mirato sui 3 file di test
+  modificati: nessuna violazione.
+- **Pest**: `./vendor/bin/pest Modules/Tenant/tests -c Modules/Tenant/phpunit.xml
+  --no-coverage --filter "TenantCoverageBoostTest|TenantStatementCoverageTest|TenantGapsCoverageTest"`
+  → 29 passed, 12 failed. Tutti i 12 fallimenti sono `RuntimeException: Unexpected
+  mockery expectation type.` in `tests/TestCase.php:208` (`expectMockery()`), helper
+  pre-esistente e gia' modificato-non-committato dalla sessione concorrente prima
+  dell'inizio di questo task; nessuno dei fallimenti cade su una riga toccata da questo
+  diff (verificato riga per riga) e il nuovo blocco di test aggiunto da questa sessione
+  passa.

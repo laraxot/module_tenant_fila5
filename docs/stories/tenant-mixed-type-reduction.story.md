@@ -18,8 +18,25 @@ related:
   - ../../../../bashscripts/ai/wiki/rules/type-coverage-non-conta-mixed.md
   - ../../../../bashscripts/ai/wiki/rules/multi-agent-same-repo-race.md
 ---
-
 # Tenant: riduzione uso mixed dove il tipo reale e' noto
+
+## Context and Problem Statement
+
+Problema e obiettivo sono descritti nel Decision Outcome (migrazione automatica a MADR).
+
+## Decision Drivers
+
+- Richiesta utente / acceptance criteria della story
+- Vincoli BMAD, second brain, Pest gate e dati sacri
+
+## Considered Options
+
+- Status quo (non fare)
+- Implementare come descritto nel Decision Outcome
+
+## Decision Outcome
+
+Scelta: **implementare**, perché i driver sopra.
 
 ## Contesto
 
@@ -96,3 +113,22 @@ In tutti e 4 i casi il corpo della funzione fa immediatamente narrowing a runtim
 e' esattamente il pattern raccomandato per confinare un `mixed` di provenienza framework, non
 un caso di "mixed non ancora sostituito". Nessun cambio applicato — follow-up chiuso come
 "confermato corretto", non come "da fare".
+
+
+### Consequences
+
+- Buono, perché chiude il gap descritto nel Context
+- Cattivo, perché richiede write-back docs, lock e quality gate
+
+### Confirmation
+
+- PHPStan (`./vendor/bin/phpstan analyse Modules/Tenant --no-progress --error-format=table`):
+  0 errori prima, 0 errori dopo.
+- PHPMD: run sull'intero modulo crasha (bug noto, vedi memoria
+  `quality-tooling-real-commands`); run scoped al file cambiato: nessuna violazione.
+- Pest (`./vendor/bin/pest Modules/Tenant/tests -c Modules/Tenant/phpunit.xml --no-coverage`):
+  81 passed / 64 failed / 28 skipped. I fallimenti sono pre-esistenti (file in WIP
+  concorrente mai toccati in questa sessione, es. `tests/Unit/Traits/SushiToJsonTest.php`,
+  errore `Accessing static property ... as non static`). Il test dedicato al file
+  modificato in questa story, `tests/Unit/Actions/Config/FilterConfigStringKeysActionTest.php`,
+  passa isolato (2/2).

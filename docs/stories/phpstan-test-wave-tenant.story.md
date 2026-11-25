@@ -25,8 +25,25 @@ owned_scope:
   - "laravel/Modules/Tenant/app/Models/Traits/SushiToJsons.php"
   - "laravel/Modules/Tenant/app/Services/**"
 ---
-
 # Tenant: regressione PHPStan dei test dopo il pull del 2026-10-20
+
+## Context and Problem Statement
+
+Problema e obiettivo sono descritti nel Decision Outcome (migrazione automatica a MADR).
+
+## Decision Drivers
+
+- Richiesta utente / acceptance criteria della story
+- Vincoli BMAD, second brain, Pest gate e dati sacri
+
+## Considered Options
+
+- Status quo (non fare)
+- Implementare come descritto nel Decision Outcome
+
+## Decision Outcome
+
+Scelta: **implementare**, perché i driver sopra.
 
 Lane `tenant` del run descritto in [phpstan-test-wave-regression](../../../Xot/docs/stories/phpstan-test-wave-regression.story.md). Fase BMAD: implementazione e quality gate.
 
@@ -143,3 +160,13 @@ I test girano (`XDEBUG_MODE=off ./vendor/bin/pest --no-coverage Modules/Tenant/t
 - Nomi troncati o con variante: `arr-first-vs-collect-first-decision.md` / `...-ision.md`, `runninginconsole-check-decision.md` / `...-ision.md`, `runninginconsole-check-removal-summary.md` / `...-sumy.md`.
 - Conflitti: `conflict-resolution.md`, `conflict-resolution-fixes.md`, `conflict_resolution_fixes.md`, `conflict-resolutiones.md`.
 - `confidence-guidelines.md` / `confidence_guidelines.md`.
+
+
+### Consequences
+
+- Buono, perché chiude il gap descritto nel Context
+- Cattivo, perché richiede write-back docs, lock e quality gate
+
+### Confirmation
+
+Aggiungere prova ripetibile (Pest exit code + conteggio, PHPStan, o skip host documentato).

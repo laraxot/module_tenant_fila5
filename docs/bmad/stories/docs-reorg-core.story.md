@@ -4,8 +4,25 @@ type: story
 tags: [docs, bmad, tenant, reorganization]
 qmd: "riorganizzazione docs core Tenant"
 ---
-
 # Story — riorganizzazione docs core: Tenant
+
+## Context and Problem Statement
+
+Problema e obiettivo sono descritti nel Decision Outcome (migrazione automatica a MADR).
+
+## Decision Drivers
+
+- Richiesta utente / acceptance criteria della story
+- Vincoli BMAD, second brain, Pest gate e dati sacri
+
+## Considered Options
+
+- Status quo (non fare)
+- Implementare come descritto nel Decision Outcome
+
+## Decision Outcome
+
+Scelta: **implementare**, perché i driver sopra.
 
 - **ID:** `2026-10-09-docs-reorg-core-tenant`
 - **Status:** done
@@ -27,3 +44,13 @@ Legacy: [`docs/_integration`](../../_integration/), [`docs/raw`](../../raw/), [`
 ## Esito
 
 I numerosi duplicati e le varianti di casing non sono stati cancellati o fusi: serve una decisione editoriale per determinarne la fonte autorevole.
+
+
+### Consequences
+
+- Buono, perché chiude il gap descritto nel Context
+- Cattivo, perché richiede write-back docs, lock e quality gate
+
+### Confirmation
+
+Aggiungere prova ripetibile (Pest exit code + conteggio, PHPStan, o skip host documentato).
