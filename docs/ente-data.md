@@ -3,6 +3,7 @@ title: "Dati dell'ente (EnteData e GetEnteDataAction)"
 type: reference
 module: Tenant
 tags: [ente, dcp-289, sync, regressioni]
+qmd: "dati dell ente entedata getentedataaction tenant pulizia str replacematches regressione sync modules"
 ---
 
 # Dati dell'ente

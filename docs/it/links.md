@@ -22,7 +22,6 @@ section: content
 * [links.md](../../../Notify/docs/links.md)
 * [links.md](../../../xot/docs/ci/links.md)
 * [links.md](../../../xot/docs/open_sources/links.md)
-* [links.md](../../../User/docs/links.md)
 * [links.md](../../../Lang/docs/links.md)
 * [links.md](../../../Job/docs/links.md)
 * [links.md](links/links.md)

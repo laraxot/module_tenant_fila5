@@ -1,10 +1,11 @@
 ---
 title: "Contratto — CreateJsonFileByRecordAction"
 type: contract
-action: "Modules\Tenant\Actions\Json\CreateJsonFileByRecordAction"
+action: 'Modules\Tenant\Actions\Json\CreateJsonFileByRecordAction'
 tags: [contract, action, tenant, sushi, json]
 created: 2026-11-24
 updated: 2026-11-24
+qmd: "contratto createjsonfilebyrecordaction tenant input output invarianti effetti collaterali errori updatejsonfilebyrecordaction deletejsonfilebyrecordaction void"
 ---
 
 # CreateJsonFileByRecordAction
