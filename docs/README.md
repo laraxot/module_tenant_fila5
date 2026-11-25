@@ -96,7 +96,7 @@ Questo README e' l'**unico indice** della cartella `docs/` (rimossi `index.md`, 
 - [BMAD](./bmad/00-index.md) · [Audit](./bmad/audit.md) · [Piano di miglioramento](./bmad/piano-miglioramento.md)
 - [ECC](./ecc/00-index.md)
 - [Regole](./rules-index.md)
-- [Story](./stories/) · [Audit qualita' corrente](./stories/audit-qualita.story.md)
+- [Story](./stories/) · [Audit qualita' corrente](stories/0011-audit-qualita.story.md)
 - [Wiki](./wiki/)
 
 Regole sui nomi: kebab-case, **nessuna data nel nome** di file o cartelle (la data va nel frontmatter).
