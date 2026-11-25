@@ -9,7 +9,7 @@ tags: [tenant, modules, config, activator, navigation, multi-tenant]
 created: 2026-07-27
 updated: 2026-07-27
 related:
-  - ../../Xot/docs/wiki/concepts/module-config-config-php.md
+  - ../../../../bashscripts/ai/wiki/concepts/modules-structure-rules.md#module-config-config-php
   - ../app/Actions/Modules/GetTenantModulesAction.php
   - ../app/Actions/Config/GetTenantFilePathAction.php
   - ../../Xot/app/Actions/Filament/GetModulesNavigationItems.php

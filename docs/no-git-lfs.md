@@ -50,7 +50,7 @@ bash bashscripts/templates/sync-gitattributes-modules.sh
 
 ```gitattributes
 # Prototipo .gitattributes per laravel/Modules/* e laravel/Themes/*
-# Canon: bashscripts/ai/wiki/rules/no-git-lfs.md
+# Canon: bashscripts/ai/wiki/rules/git-workflow.md
 # Sync:  bash bashscripts/templates/sync-gitattributes-modules.sh
 #
 # Git LFS VIETATO. I binari sono blob git normali.
@@ -177,5 +177,5 @@ problema.
 
 ## Canone
 
-`bashscripts/ai/wiki/rules/no-git-lfs.md` — regola completa, storico degli incidenti e
+`bashscripts/ai/wiki/rules/git-workflow.md` — regola completa, storico degli incidenti e
 procedura per gli oggetti mancanti in push.

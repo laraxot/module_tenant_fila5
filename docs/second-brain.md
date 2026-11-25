@@ -21,6 +21,6 @@ Stub **puntatore**: disciplina e link esterni curati stanno nella wiki di proget
 
 ## Link operativi (relativi al repo)
 
-- Modello: [../../../../docs/wiki/concepts/second-brain-operating-model.md](../../../../docs/wiki/concepts/second-brain-operating-model.md)
-- Guida wiki modulo: [../../../../docs/wiki/how-to/module-wiki-documentation.md](../../../../docs/wiki/how-to/module-wiki-documentation.md)
-- Benchmark lettura esterna (Karpathy, Obsidian, PARA, …): [../../../../docs/wiki/sources/second-brain-external-benchmarks.md](../../../../docs/wiki/sources/second-brain-external-benchmarks.md)
+- Modello: [../../../../bashscripts/ai/wiki/concepts/second-brain-llm-wiki.md#second-brain-operating-model](../../../../bashscripts/ai/wiki/concepts/second-brain-llm-wiki.md#second-brain-operating-model)
+- Guida wiki modulo: [../../../../bashscripts/ai/wiki/how-to/wiki-qmd-search.md#module-wiki-documentation](../../../../bashscripts/ai/wiki/how-to/wiki-qmd-search.md#module-wiki-documentation)
+- Benchmark lettura esterna (Karpathy, Obsidian, PARA, …): [../../../../bashscripts/ai/wiki/sources/sources.md#second-brain-external-benchmarks](../../../../bashscripts/ai/wiki/sources/sources.md#second-brain-external-benchmarks)

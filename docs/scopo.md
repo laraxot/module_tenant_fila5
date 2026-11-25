@@ -238,7 +238,7 @@ grep -rl '^use Modules\\User\\' --include='*.php' Modules/Tenant/app | wc -l    
 
 ## Collegamenti
 
-- [basemodel-connection-mandatory](../../../../docs/wiki/memories/basemodel-connection-mandatory.md) — perché ogni `BaseModel` dichiara la sua connection, e chi gliela fornisce
+- [basemodel-connection-mandatory](../../../../bashscripts/ai/wiki/memories/architecture-models-actions.md#basemodel-connection-mandatory) — perché ogni `BaseModel` dichiara la sua connection, e chi gliela fornisce
 - [actions-over-services](../../../../docs/wiki/rules/actions-over-services.md) — la policy violata da `app/Services/`
 - [circular-dependency-prevention](../../../../docs/wiki/rules/circular-dependency-prevention.md) — perché i PHPDoc verso Ptv vanno chiusi ora che sono tre
 - [data-sacred-no-destructive-db](../../../../docs/wiki/rules/data-sacred-no-destructive-db.md) — vincolo su qualunque intervento alle 3 migrazioni

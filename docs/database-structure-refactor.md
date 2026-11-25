@@ -40,7 +40,7 @@ tags: [database, folder-structure, naming-convention, cleanup]
 
 **Database Folder Lowercase Rule**: All subdirectories inside `database/` must use lowercase naming (factories, seeders, migrations). No CamelCase, no underscores.
 
-See: `bashscripts/ai/wiki/concepts/database-folder-lowercase-rule.md`
+See: `bashscripts/ai/wiki/concepts/modules-structure-rules.md#database-folder-lowercase-rule`
 
 ---
 

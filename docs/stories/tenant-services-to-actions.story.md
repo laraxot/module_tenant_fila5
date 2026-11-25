@@ -17,7 +17,7 @@ owned_scope:
   - "laravel/Modules/Tenant/tests/Unit/TenantGapsCoverageTest.php"
   - "laravel/Modules/Tenant/docs/coverage.md"
 related:
-  - ../../../../bashscripts/ai/wiki/rules/no-services-rule.md
+  - ../../../../bashscripts/ai/wiki/rules/actions-business-logic.md
   - ../concepts/tenant-service-to-actions-migration.md
   - ../../../../bashscripts/ai/wiki/rules/multi-agent-same-repo-race.md
   - ../../../../bashscripts/ai/wiki/rules/module-repos-huge-uncommitted-drift.md
@@ -28,7 +28,7 @@ related:
 ## Contesto
 
 Regola di progetto: "RELIGION, NO EXCEPTIONS" —
-`bashscripts/ai/wiki/rules/no-services-rule.md`. Nessuna classe `app/Services/*Service`
+`bashscripts/ai/wiki/rules/actions-business-logic.md`. Nessuna classe `app/Services/*Service`
 per business logic; tutto va in `app/Actions/**` come
 `Spatie\QueueableAction\QueueableAction` con un singolo `execute(...)`. Una classe senza
 un vero `execute()` non vive comunque in `Actions/`: va spostata altrove (Adapters,

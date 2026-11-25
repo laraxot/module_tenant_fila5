@@ -13,9 +13,9 @@ related:
   - ./it/config/modules-statuses.md
   - ../WorkOrder/docs/modules-statuses-workorder.md
   - ../User/docs/wiki/concepts/spatie-permission-table-names.md
-  - ../Xot/docs/wiki/concepts/module-admin-panel-provider-mandatory.md
+  - ../../../../bashscripts/ai/wiki/concepts/modules-structure-rules.md#module-admin-panel-provider-mandatory
   - ../Xot/docs/wiki/concepts/module-filament-panel-triad.md
-  - ../Xot/docs/wiki/concepts/basemodel-connection-religion.md
+  - ../../../../bashscripts/ai/wiki/concepts/architecture-philosophy.md#basemodel-connection-religion
   - ../WorkOrder/docs/profile-schema-ownership.md
 ---
 
@@ -39,7 +39,7 @@ Hub sintetico per agenti: cosa è successo, perché, dove documentare.
 
 **Fix:** audit 38/38 con `config/config.php` completo.
 
-**Doc:** [Xot/module-config-php-religion.md](../Xot/docs/wiki/concepts/module-config-php-religion.md)
+**Doc:** [bashscripts/ai/wiki/concepts/modules-structure-rules.md#module-config-php-religion](../../../../bashscripts/ai/wiki/concepts/modules-structure-rules.md#module-config-php-religion)
 
 ## 3. `permission.php` — `table_names` intoccabile
 
@@ -61,7 +61,7 @@ Hub sintetico per agenti: cosa è successo, perché, dove documentare.
 
 Ogni modulo dichiara `protected $connection = '{snake}'` nel proprio `BaseModel` — mai `null`.
 
-**Doc:** [Xot/basemodel-connection-religion.md](../Xot/docs/wiki/concepts/basemodel-connection-religion.md)
+**Doc:** [bashscripts/ai/wiki/concepts/architecture-philosophy.md#basemodel-connection-religion](../../../../bashscripts/ai/wiki/concepts/architecture-philosophy.md#basemodel-connection-religion)
 
 ## 6. `app/Filament/Pages/Dashboard.php` per ogni modulo
 
@@ -69,7 +69,7 @@ Ogni modulo dichiara `protected $connection = '{snake}'` nel proprio `BaseModel`
 
 **Regola:** classe vuota `extends XotBaseDashboard`.
 
-**Doc:** [Xot/module-dashboard-page-mandatory.md](../Xot/docs/wiki/concepts/module-dashboard-page-mandatory.md)
+**Doc:** [bashscripts/ai/wiki/concepts/modules-structure-rules.md#module-dashboard-page-mandatory](../../../../bashscripts/ai/wiki/concepts/modules-structure-rules.md#module-dashboard-page-mandatory)
 
 ## 7. `AdminPanelProvider` + doppia registrazione
 
@@ -77,7 +77,7 @@ Ogni modulo dichiara `protected $connection = '{snake}'` nel proprio `BaseModel`
 
 **Regola:** `extends XotBasePanelProvider` + `protected string $module` + **stessi provider** in `module.json` e `composer.json`.
 
-**Doc:** [module-admin-panel-provider-mandatory.md](../Xot/docs/wiki/concepts/module-admin-panel-provider-mandatory.md) · [trinità panel](../Xot/docs/wiki/concepts/module-filament-panel-triad.md) · [doppia registrazione](../../Themes/docs/shared-components/module-providers-dual-registration-religion.md)
+**Doc:** [modules-structure-rules.md#module-admin-panel-provider-mandatory](../../../../bashscripts/ai/wiki/concepts/modules-structure-rules.md#module-admin-panel-provider-mandatory) · [trinità panel](../Xot/docs/wiki/concepts/module-filament-panel-triad.md) · [doppia registrazione](../../Themes/docs/shared-components/module-providers-dual-registration-religion.md)
 
 ## Perché gli audit precedenti non bastavano
 

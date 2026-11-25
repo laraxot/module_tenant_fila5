@@ -96,7 +96,7 @@ Error: Non-static method Modules\Xot\Filament\Resources\XotBaseResource::getForm
 ```
 
 **Fix** (pattern gia' documentato in
-`bashscripts/ai/wiki/memories/geo-addressform-schema-reuse-static-call-bug.md` per i
+`bashscripts/ai/wiki/memories/geo-maps-fixcity.md#geo-addressform-schema-reuse-static-call-bug` per i
 chiamanti esterni legittimi): risolvere l'istanza dal container e chiamare il metodo su
 quella, mai sulla classe:
 

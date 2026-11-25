@@ -9,8 +9,8 @@ updated: 2026-07-01
 tags: [tenant, config, incident, ponytail]
 qmd: "tenant config restoration incident accidental delete GetTenantNameAction"
 related:
-  - ../../../../../../docs/wiki/concepts/tenant-config-directory-sacred.md
-  - ../../../../../../docs/wiki/concepts/sacred-artifacts-never-delete.md
+  - ../../../../../../bashscripts/ai/wiki/concepts/modules-structure-rules.md#tenant-config-directory-sacred
+  - ../../../../../../bashscripts/ai/wiki/concepts/modules-structure-rules.md#sacred-artifacts-never-delete
   - ../../../../../../docs/project/incidents/tenant-config-accidental-delete.md
   - ../../../../../../docs/project/incidents/config-directory-mismatch.md
   - ../configurationdistribution.md
@@ -44,7 +44,7 @@ bash bashscripts/tools/guard-tenant-config-delete.sh
 bash bashscripts/tools/audit-tenant-config-inventory.sh
 ```
 
-Hub progetto: [tenant-config-directory-sacred.md](../../../../../../docs/wiki/concepts/tenant-config-directory-sacred.md)
+Hub progetto: [modules-structure-rules.md#tenant-config-directory-sacred](../../../../../../bashscripts/ai/wiki/concepts/modules-structure-rules.md#tenant-config-directory-sacred)
 
 ## Forma canonica
 

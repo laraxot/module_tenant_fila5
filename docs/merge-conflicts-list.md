@@ -20,7 +20,7 @@ Elenco dei file trovati contenenti marker di merge (<<<<<<<, >>>>>>>, .merge_fil
 - memory/MEMORY.md
 - _bmad/bmm/4-implementation/bmad-create-story/stories/1-1-segnalazione-ui-ux-improvement.md
 - laravel/Themes/Sixteen/public/manifest.json
-- docs/wiki/concepts/no-docs-archive-rule.md
+- bashscripts/ai/wiki/concepts/modules-structure-rules.md#no-docs-archive-rule
 - docs/wiki/index.md
 - docs/wiki/log.md
 - laravel/Themes/Sixteen/docs/wiki/index.md

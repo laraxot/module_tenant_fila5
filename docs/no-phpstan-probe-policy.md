@@ -44,5 +44,5 @@ applicati altrove o coprivano un falso problema — pura zavorra.
 
 Vedi anche:
 
-- `bashscripts/ai/wiki/rules/no-phpstan-probe-models.md`
+- `bashscripts/ai/wiki/rules/phpstan.md`
 - `Modules/Xot/docs/phpstan-modules-fix-log.md`

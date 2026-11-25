@@ -13,7 +13,7 @@ issues: []
 discussions: []
 related:
   - "../../../../docs/stories/STORY-001-code-quality-moduli-temi.md"
-  - "../../../../docs/wiki/memories/module-github-remote-discipline.md"
+  - "../../../../bashscripts/ai/wiki/memories/git-sync-fleet-remotes.md#module-github-remote-discipline"
   - "./wiki/memories/github-remote-collision-wrong-base.md"
 ---
 
@@ -94,7 +94,7 @@ Rilevazione del 17 luglio 2026 sul working tree locale; esclusi vendor e dipende
 ## Gate PHPStan (2026-07-27)
 
 - `cd laravel && ./vendor/bin/phpstan analyse Modules --memory-limit=-1` → **0 errori**.
-- Themes: solo insieme a Modules — [phpstan-stale-ignore-pattern](../../../../docs/wiki/troubleshooting/phpstan-stale-ignore-pattern.md).
+- Themes: solo insieme a Modules — [phpstan-stale-ignore-pattern](../../../../bashscripts/ai/wiki/troubleshooting/troubleshooting.md#phpstan-stale-ignore-pattern).
 
 ## Verifica
 
