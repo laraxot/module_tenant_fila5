@@ -81,7 +81,6 @@ Select and maintain the appropriate multi-tenancy database architecture.
 - [ ] Configure connection factory
 - [ ] Create base models with correct table references
 - [ ] Test isolation with multi-tenant data
-- [ ] Document strategy in ARCHITECTURE.md
 - [ ] Document strategy in architecture.md
 - [ ] Implement backup/restore per strategy
 
@@ -329,10 +328,6 @@ public function test_users_isolated_by_tenant()
 
 ## References
 
-- [Architecture](ARCHITECTURE.md) — Detailed system design
-- [Troubleshooting](troubleshooting.md) — Common issues
-- [API Reference](API.md) — Model and service signatures
-- [Contributing Guide](../../docs/wiki/how-to/contributing.md) — Development guidelines
 - [Architecture](architecture.md) — Detailed system design
 - [Troubleshooting](troubleshooting.md) — Common issues
 - [API Reference](api.md) — Model and service signatures
@@ -340,6 +335,6 @@ public function test_users_isolated_by_tenant()
 
 ---
 
-Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
+Navigation: [Documentation Index](./README.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
 ---
-Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
+Navigation: [Documentation Index](./README.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)

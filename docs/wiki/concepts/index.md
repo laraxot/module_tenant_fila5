@@ -2,7 +2,7 @@
 qmd: "Index"
 issues: []
 discussions: []
-title: "concepts index — Tenant"
+title: "Index"
 type: index
 tags: [concepts, Tenant]
 created: 2026-05-11

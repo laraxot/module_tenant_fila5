@@ -22,6 +22,11 @@ status: active
 # Tenant — Brainstorming
 
 > **SUMMARY** — Decisioni prese, questioni aperte e opzioni scartate del modulo `Tenant`,
+> ancorate a file e simboli reali. Il brainstorming di dettaglio per area è negli shard.
+> ancorate a file e simboli reali (riverificate il 2026-11-16: le voci su
+> `ConfigResolverRegistry`, `StandardConfigResolver` e `TenantService` erano obsolete e
+> sono state rimosse — `app/Services` non esiste, la logica è in Action).
+=======
 > ancorate a file e simboli reali (riverificate il 2026-11-16: le voci su
 > `ConfigResolverRegistry`, `StandardConfigResolver` e `TenantService` erano obsolete e
 > sono state rimosse — `app/Services` non esiste, la logica è in Action).
