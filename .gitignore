@@ -230,3 +230,6 @@ docs/**/backup/
 docs/backups/
 docs/**/backups/
 .docs-archive/
+
+# Indice vettoriale locale (non versionare)
+ruvector.db
