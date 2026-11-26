@@ -75,25 +75,12 @@ Select and maintain the appropriate multi-tenancy database architecture.
 - Lowest operational overhead, requires rigorous scoping
 - Suitable for homogeneous tenants
 
-### Implementation Checklist
-
 - [ ] Define strategy in `config/database.php`
 - [ ] Configure connection factory
 - [ ] Create base models with correct table references
 - [ ] Test isolation with multi-tenant data
-<<<<<<< .merge_file_uDEwwm
-<<<<<<< .merge_file_m7eiXt
 - [ ] Document strategy in ARCHITECTURE.md
-=======
 - [ ] Document strategy in architecture.md
->>>>>>> .merge_file_Y9l6b3
-=======
-<<<<<<< .merge_file_iK9zhP
-- [ ] Document strategy in ARCHITECTURE.md
-=======
-- [ ] Document strategy in architecture.md
->>>>>>> .merge_file_qr7tP0
->>>>>>> .merge_file_Fokzjt
 - [ ] Implement backup/restore per strategy
 
 ---
@@ -103,16 +90,12 @@ Select and maintain the appropriate multi-tenancy database architecture.
 ### Purpose
 Establish and validate tenant context at request boundary.
 
-### Implementation Checklist
-
 - [ ] Use middleware in `Http/Middleware/` folder
 - [ ] Resolve tenant from domain/header/request
 - [ ] Validate tenant is active
 - [ ] Store in request container
 - [ ] Clear context on response
 - [ ] Log context switches for audit
-
-### Code Example
 
 ```php
 namespace Modules\Tenant\Http\Middleware;
@@ -146,16 +129,12 @@ class ResolveTenant
 ### Purpose
 Automatically constrain queries to current tenant without manual filtering.
 
-### Implementation Checklist
-
 - [ ] Create `Traits/HasTenant` trait
 - [ ] Apply trait to all multi-tenant models
 - [ ] Use `boot` method to add global scope
 - [ ] Provide `whereTenantId()` method
 - [ ] Test with explicit `without()` scope removal
 - [ ] Document scope behavior in model
-
-### Code Example
 
 ```php
 namespace Modules\Tenant\Models\Traits;
@@ -195,16 +174,12 @@ trait HasTenant
 ### Purpose
 Safely switch tenant context for background jobs, testing, or admin operations.
 
-### Implementation Checklist
-
 - [ ] Create context manager class
 - [ ] Provide `asUser()` or `asTenant()` methods
 - [ ] Use exception-safe scope restoration
 - [ ] Log context switches
 - [ ] Test with nested context switches
 - [ ] Clean up in finally block
-
-### Code Example
 
 ```php
 namespace Modules\Tenant\Services;
@@ -340,40 +315,14 @@ public function test_users_isolated_by_tenant()
 
 ## References
 
-<<<<<<< .merge_file_uDEwwm
-<<<<<<< .merge_file_m7eiXt
-=======
-<<<<<<< .merge_file_iK9zhP
->>>>>>> .merge_file_Fokzjt
 - [Architecture](ARCHITECTURE.md) — Detailed system design
 - [Troubleshooting](troubleshooting.md) — Common issues
 - [API Reference](API.md) — Model and service signatures
 - [Contributing Guide](../../docs/wiki/how-to/contributing.md) — Development guidelines
-=======
 - [Architecture](architecture.md) — Detailed system design
-- [Troubleshooting](troubleshooting.md) — Common issues
-- [API Reference](api.md) — Model and service signatures
 - [Contributing Guide](../../docs/wiki/how-to/CONTRIBUTING.md) — Development guidelines
-<<<<<<< .merge_file_uDEwwm
->>>>>>> .merge_file_Y9l6b3
-=======
->>>>>>> .merge_file_qr7tP0
->>>>>>> .merge_file_Fokzjt
 
 ---
 
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
 ---
-<<<<<<< .merge_file_uDEwwm
-<<<<<<< .merge_file_m7eiXt
-Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
-=======
-Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
->>>>>>> .merge_file_Y9l6b3
-=======
-<<<<<<< .merge_file_iK9zhP
-Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
-=======
-Navigation: [Documentation Index](index.md) | [README](README.md) | [Troubleshooting](troubleshooting.md)
->>>>>>> .merge_file_qr7tP0
->>>>>>> .merge_file_Fokzjt

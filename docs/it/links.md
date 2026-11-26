@@ -18,11 +18,6 @@ section: content
 ### Versione HEAD
 
 ## Collegamenti tra versioni di links.md
-<<<<<<< .merge_file_2ZGG8D
-<<<<<<< .merge_file_id8iBj
-=======
-<<<<<<< .merge_file_nrTkDC
->>>>>>> .merge_file_ured3K
 * [links.md](../../../gdpr/docs/links.md)
 * [links.md](../../../notify/docs/links.md)
 * [links.md](../../../xot/docs/ci/links.md)
@@ -32,21 +27,6 @@ section: content
 * [links.md](../../../job/docs/links.md)
 * [links.md](../../../tenant/docs/it/links/links.md)
 * [links.md](../../../cms/docs/links.md)
-=======
-* [links.md](../../../Gdpr/docs/links.md)
-* [links.md](../../../Notify/docs/links.md)
-* [links.md](../../../xot/docs/ci/links.md)
-* [links.md](../../../xot/docs/open_sources/links.md)
-* [links.md](../../../User/docs/links.md)
-* [links.md](../../../Lang/docs/links.md)
-* [links.md](../../../Job/docs/links.md)
-* [links.md](links/links.md)
-* [links.md](../../../Cms/docs/links.md)
-<<<<<<< .merge_file_2ZGG8D
->>>>>>> .merge_file_FGQlGy
-=======
->>>>>>> .merge_file_EPtrDc
->>>>>>> .merge_file_ured3K
 * [links.md](../../../../themes/one/docs/links.md)
 
 ### Versione Incoming

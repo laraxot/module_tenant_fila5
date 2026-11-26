@@ -102,8 +102,6 @@ Background jobs, queued notifications, or scheduled tasks process data from wron
 - Cache cleared between requests
 - Event listener runs in different context
 
-### Solution (Step-by-Step)
-
 1. **Identify Context Loss Point**
    ```php
    // Add logging to determine where context is lost
@@ -179,8 +177,6 @@ Background jobs, queued notifications, or scheduled tasks process data from wron
 - Cache contains stale domain mapping
 - Subdomain wildcard not configured in DNS
 
-### Solution (Step-by-Step)
-
 1. **Verify Domain Registration**
    ```php
    // Check if domain exists
@@ -254,8 +250,6 @@ Background jobs, queued notifications, or scheduled tasks process data from wron
 - Wrong credentials in connection config
 - Schema not migrated
 
-### Solution (Step-by-Step)
-
 1. **Verify Connection Configuration**
    ```php
    // In config/database.php or config/tenant.php
@@ -318,8 +312,6 @@ Background jobs, queued notifications, or scheduled tasks process data from wron
 - Authorization policy checking wrong tenant
 - Cache contains stale permissions
 - Middleware not setting current tenant
-
-### Solution (Step-by-Step)
 
 1. **Verify Policy Implementation**
    ```php
@@ -387,8 +379,6 @@ Background jobs, queued notifications, or scheduled tasks process data from wron
 - Database constraints violated
 - Concurrent modifications
 - Rollback didn't complete
-
-### Solution (Step-by-Step)
 
 1. **Verify Migration Status**
    ```bash
@@ -485,38 +475,12 @@ php artisan migrate --database=tenant_123
 ## Related Documentation
 
 - [Patterns](patterns.md) — Design patterns to follow
-<<<<<<< .merge_file_DJCV3P
-<<<<<<< .merge_file_SjSWyC
-=======
-<<<<<<< .merge_file_lQpJKz
->>>>>>> .merge_file_CAq0rr
 - [Architecture](ARCHITECTURE.md) — System design
 - [README](README.md) — Overview and usage
 - [API Reference](API.md) — Model and service signatures
-=======
 - [Architecture](architecture.md) — System design
-- [README](README.md) — Overview and usage
-- [API Reference](api.md) — Model and service signatures
-<<<<<<< .merge_file_DJCV3P
->>>>>>> .merge_file_d9pxoM
-=======
->>>>>>> .merge_file_DnlbYy
->>>>>>> .merge_file_CAq0rr
 
 ---
 
 Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](patterns.md)
 ---
-<<<<<<< .merge_file_DJCV3P
-<<<<<<< .merge_file_SjSWyC
-Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Patterns](patterns.md)
-=======
-Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](patterns.md)
->>>>>>> .merge_file_d9pxoM
-=======
-<<<<<<< .merge_file_lQpJKz
-Navigation: [Documentation Index](INDEX.md) | [README](README.md) | [Patterns](patterns.md)
-=======
-Navigation: [Documentation Index](index.md) | [README](README.md) | [Patterns](patterns.md)
->>>>>>> .merge_file_DnlbYy
->>>>>>> .merge_file_CAq0rr

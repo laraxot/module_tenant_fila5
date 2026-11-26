@@ -352,19 +352,10 @@ $this->mock(DomainResolver::class)
 
 ---
 
-<<<<<<< .merge_file_WixvKZ
-<<<<<<< .merge_file_Jzzt59
 <!-- Merged from ARCHITECTURE.md, which collided with this file on case-insensitive filesystems. -->
-=======
 <!-- Merged from architecture.md, which collided with this file on case-insensitive filesystems. -->
->>>>>>> .merge_file_WJNCct
-=======
-<<<<<<< .merge_file_qXV8Np
 <!-- Merged from ARCHITECTURE.md, which collided with this file on case-insensitive filesystems. -->
-=======
 <!-- Merged from architecture.md, which collided with this file on case-insensitive filesystems. -->
->>>>>>> .merge_file_GevPOV
->>>>>>> .merge_file_5wxPfs
 
 ---
 title: "Architecture: Tenant Module"
@@ -539,8 +530,6 @@ Per-tenant configuration files override system defaults, enabling customization 
    └─ Context cleaned up at request end
 ```
 
-## Integration Points
-
 ### Depends On
 - **Xot Module**: Base models, traits, service providers
 - **Laravel Core**: Middleware, service container, config
@@ -596,8 +585,6 @@ Per-tenant configuration files override system defaults, enabling customization 
 // Enforced at middleware level, not model level (more reliable)
 ```
 
-## Performance Considerations
-
 ### Query Scoping Overhead
 - Automatic filtering on every query (negligible if indexed)
 - **Optimization:** Ensure `tenant_id` columns have indexes
@@ -612,24 +599,11 @@ Per-tenant configuration files override system defaults, enabling customization 
 
 ## Related Files
 
-<<<<<<< .merge_file_WixvKZ
-<<<<<<< .merge_file_Jzzt59
-=======
-<<<<<<< .merge_file_qXV8Np
->>>>>>> .merge_file_5wxPfs
 - [API Reference](./API.md)
 - [Setup Guide](./SETUP.md)
 - [Troubleshooting](troubleshooting.md)
 - [Best Practices](./BEST_PRACTICES.md)
-=======
 - [API Reference](./api.md)
-- [Setup Guide](./SETUP.md)
-- [Troubleshooting](troubleshooting.md)
 - [Best Practices](./best_practices.md)
-<<<<<<< .merge_file_WixvKZ
->>>>>>> .merge_file_WJNCct
-=======
->>>>>>> .merge_file_GevPOV
->>>>>>> .merge_file_5wxPfs
 - Module Tests: `tests/Feature/TenantBusinessLogicTest.php`, `tests/Unit/Actions/`
 ---
