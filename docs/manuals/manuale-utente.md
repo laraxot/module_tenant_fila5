@@ -2,78 +2,150 @@
 title: "Manuale utente — Tenant"
 type: user-manual
 status: active
-screenshot: assets/front-office-home.png
+module: Tenant
+updated: 2026-11-25
+qmd: "manuale utente tenant"
 ---
 
-> Screenshot reale del front office FixCity, verificato il 23 novembre 2026. Per questo modulo è una superficie condivisa: il manuale non attribuisce al modulo una UI propria se non documentata dalle fonti.
+# Manuale utente — Modulo Tenant (pannello `tenant/admin`)
 
-![Screenshot reale del front office](assets/front-office-home.png)
+> Ogni schermata di questo manuale è uno screenshot reale catturato dall'istanza di prova
+> isolata (dati sintetici, utente di prova super-admin). Gli elementi non verificati sono
+> dichiarati come tali. Aggiornato 2026-11-25.
 
-# Manuale d'uso per attori — Tenant
+## Scopo
 
-## Scopo e perimetro
+Il modulo Tenant fornisce il pannello di amministrazione `tenant/admin` per l'identità del
+sito e per l'elenco dei domini. Il tenant attivo si ricava dal dominio della richiesta
+(`APP_URL`), quindi il pannello opera sul tenant che lo ospita.
 
-Tenant è il modulo infrastrutturale che rappresenta il contesto tenant:
-identità del tenant, dominio, slug, database, impostazioni, stato attivo e
-associazioni agli utenti. Non è un ruolo e non sostituisce l'autorizzazione
-delle risorse applicative.
+## Accesso
 
-## Attori e capacità effettive
+- Pagina di accesso: `/tenant/admin/login` (pannello Filament `tenant::admin`, provider
+  `Modules/Tenant/app/Providers/Filament/AdminPanelProvider.php`).
+- Richiede un utente autenticato; le pagine del pannello rispondono 200 solo dopo il login.
+- Il pannello mostra il titolo «Tenant · Amministrazione» e due gruppi di menu: **Admin**
+  (Dominio) e **Configurazione** (Impostazioni), più il link «Pannello principale».
+- La voce «Impostazioni» è riservata ai super-admin (`SettingPage`, vedi
+  `Modules/Tenant/app/Filament/Pages/SettingPage.php`); la matrice dei ruoli dipende dalle
+  policy Xot/User e non è stata verificata con account diversi dal super-admin di prova.
 
-| Attore | Capacità nel modulo Tenant |
-|---|---|
-| Ospite | N/A: non amministra tenant. Può vedere un'esperienza pubblica solo se l'applicazione risolve un tenant attivo per quella richiesta. |
-| Utente autenticato | N/A come capacità diretta; può lavorare nel contesto del tenant selezionato quando il pannello lo configura e la sua applicazione lo ammette. |
-| Utente in gruppo/ruolo | N/A come grant automatico: membership, ruolo applicativo e tenant corrente sono concetti distinti. |
-| Admin | N/A salvo il ruolo esplicito `tenant::admin`, che il `TenantBasePolicy` tratta come amministratore del modulo Tenant. |
-| Super-admin | Il `TenantBasePolicy` concede il bypass delle abilità del modulo. Le impostazioni della pagina Tenant risultano comunque esposte esplicitamente al super-admin. |
-| Operatore/moderatore | N/A nel modulo Tenant: non è definita una capacità uniforme per questi nomi di ruolo. |
+## Attori
 
-## Flussi operativi
+| Attore | Cosa vede | Fonte |
+|---|---|---|
+| Ospite | Solo la pagina di accesso (`/tenant/admin/login`) | screenshot `login` |
+| Utente autenticato | Dashboard, lista e form Domini | screenshot `dashboard`, `domini-crea`, `domini-modifica` |
+| Super-admin | Anche Impostazioni | screenshot `impostazioni`; `SettingPage` |
 
-### Selezione del contesto
+## Pagine
 
-Un pannello che abilita la tenancy usa il modello tenant configurato da Xot,
-con `slug` come identificatore e con registrazione/profilo tenant predisposti.
-L'utente opera quindi nel tenant corrente solo in quei pannelli. La tenancy non
-è attiva automaticamente in ogni pannello: il provider base la disattiva di
-default e il pannello deve abilitarla.
+### Accesso
 
-### Amministrazione tenant
+![Pagina di accesso](assets/login.webp)
 
-Il ruolo `tenant::admin` può superare le policy del modulo Tenant; il
-super-admin ha lo stesso bypass in forma globale. La pagina di impostazione
-Tenant è riservata al super-admin e consente le impostazioni esposte dalla
-pagina, come titolo e altezza del logo. Non si deducono da questo manuale
-permessi di gestione delle risorse degli altri moduli.
+Campi: **Email** (obbligatorio), **Password** (obbligatorio, con «Mostra password»),
+**Ricordami**. Link «Hai smarrito la password?» verso
+`/tenant/admin/password-reset/request` (route presente in `route:list`, non aperta a mano).
 
-## Prerequisiti
+### Dashboard
 
-- un tenant esistente e attivo, con slug/configurazione coerenti;
-- un pannello che abbia abilitato esplicitamente la tenancy;
-- autenticazione e ruolo ammesso dalla policy per le operazioni amministrative;
-- configurazione del modello tenant e delle connessioni prevista
-  dall'installazione.
+![Dashboard](assets/dashboard.webp)
 
-## Limiti e casi N/A
+La dashboard mostra solo il titolo «Dashboard»: il template
+`Modules/Tenant/resources/views/filament/pages/dashboard.blade.php` non contiene widget.
+Il badge accanto a «Dominio» nel menu riporta il numero di domini elencati.
 
-- Tenant non attribuisce da solo ruoli, permessi o accesso ai pannelli.
-- Non ogni pannello è tenant-aware; non va promesso isolamento per le pagine che
-  non applicano la tenancy.
-- Il ruolo generico `admin`, `moderator` o `operator` non è sufficiente secondo
-  la policy Tenant, se non esiste anche una regola applicabile.
-- Dominio, database e impostazioni sono dati del contesto tenant: le capacità
-  operative sulle risorse restano responsabilità del modulo che le possiede.
+### Domini (`/tenant/admin/domains`)
 
-## Fonti verificabili
+Lista, creazione e modifica dei domini. I domini **non sono una tabella del database**: la
+risorsa `Domain` è un modello Sushi (`Modules/Tenant/app/Models/Domain.php`) che ricava le
+righe da `GetDomainsArrayAction`, cioè dalle cartelle di `config/`. Un dominio è quindi una
+cartella di configurazione, non un record salvato dall'utente.
 
-- `app/Models/Tenant.php` — attributi, stato attivo, URL e associazioni.
-- `app/Models/Policies/TenantBasePolicy.php` — bypass `super-admin` e
-  `tenant::admin`.
-- `app/Filament/Pages/SettingPage.php` — impostazioni riservate al
-  super-admin.
-- `Modules/Xot/app/Actions/Panel/ApplyTenancyToPanelAction.php` — modello,
-  slug e pagine di registrazione/profilo tenant.
-- `Modules/Xot/app/Providers/Filament/XotBasePanelProvider.php` — tenancy
-  opzionale nei pannelli.
+Colonne della lista (da `Tables/DomainsTable.php`): **Name**, ricercabile e ordinabile;
+**id** nascosta di default (attivabile dal selettore colonne). Il pulsante «Nuovo» è in alto
+a destra; il pulsante «Nuovo» nella barra della tabella è comportamento condiviso di tutte le
+liste Xot (`HasXotTable::getTableHeaderActions` + `XotBaseListRecords::getHeaderActions`),
+non specifico di questo modulo.
 
+Non illustro la lista: i nomi che mostra derivano dai percorsi di `config/` e includono
+segmenti interni e suffissi di host di sviluppo (vedi «Difetti noti», punto 3).
+
+#### Crea dominio (`/tenant/admin/domains/create`)
+
+![Nuovo dominio](assets/domini-crea.webp)
+
+Campi mostrati dal form (`Schemas/DomainForm.php`): **Title**, **Brand**, **Category**,
+**Description** (editor ricco), **Price** (prefisso `$`), **Rating**. Questi campi non
+corrispondono al modello `Domain` (che ha `name`, `domain`, `tenant_id`, `is_primary`,
+`status`, `verification_token`, `verified_at`): vedi «Difetti noti», punto 1. Il salvataggio
+non è stato provato.
+
+#### Modifica dominio (`/tenant/admin/domains/{id}/edit`)
+
+![Modifica dominio](assets/domini-modifica.webp)
+
+Esempio con la riga `localhost`. Il form mostra gli stessi campi della creazione, **tutti
+vuoti**, perché la riga non ha quegli attributi. Il pulsante «Elimina» è presente nell'intestazione
+ma **non è stato premuto**: non è verificato cosa cancella su una riga derivata da `config/`.
+
+### Impostazioni (`/tenant/admin/setting`)
+
+![Impostazioni](assets/impostazioni.webp)
+
+Solo super-admin. Campi (`Filament/Pages/SettingPage.php`):
+
+| Campo | Obbligatorio | Regola | Effetto dichiarato nell'aiuto |
+|---|---|---|---|
+| Nome del sito | sì | max 120 caratteri | nome del brand nei pannelli, titolo del front office |
+| Altezza del logo | sì | `px`, `em` o `rem`, es. `2em`, `32px`; max 16 caratteri | altezza del logo nei pannelli |
+
+Il pulsante **Salva** scrive nel file `config/{tenant}/metatag.php` tramite
+`TenantConfigData` (`Datas/TenantConfigData.php`). Il valore di prova mostrato è
+`Laravel Pizza Meetups` con altezza `2em`. Il salvataggio effettivo non è stato provato.
+
+## Difetti noti
+
+1. **Form Domini non coerente con il modello.** `DomainForm.php` righe 20–37 dichiara
+   `title`, `brand`, `category`, `description`, `price`, `rating`: campi di un catalogo
+   prodotti, non del modello `Domain`. Evidenza: `domini-crea.webp`, `domini-modifica.webp`.
+   Non corretto: richiede di ridisegnare il form, fuori dallo scope di una correzione piccola.
+2. **Modifica con campi vuoti.** Su una riga esistente (`localhost`) il form non mostra
+   nessun valore. Evidenza: `domini-modifica.webp`.
+3. **Lista Domini espone nomi interni.** `GetDomainsArrayAction.php` (metodi `execute()` riga
+   23 e `recurse()` riga 42) produce i nomi dai percorsi di `config/`; nell'istanza di prova
+   compaiono segmenti come `database` e suffissi `.local`, con nomi di host di sviluppo. La
+   pagina è stata rifiutata come illustrazione per questo motivo (nessuno screenshot nel
+   manuale). Da decidere: filtrare le cartelle non-tenant o derivare la lista da una tabella.
+4. **Titoli in inglese.** Le pagine mostrano «Nuovo Domain» e «Modifica Domain» mentre il
+   breadcrumb dice «Dominio». Il titolo viene dall'etichetta del modello (`getModelLabel` di
+   Filament, non tradotta); `lang/it/domain.php` riga 125 ha `'label' => 'Domain'`. Non
+   corretto: il percorso esatto dell'etichetta non è stato confermato con certezza.
+5. **Etichette grezze nel form di modifica.** `lang/it/domain_form.php` ha come valore di ogni
+   campo il nome del campo stesso (`'label' => 'title'`, ecc.): il form di modifica mostra
+   «title», «brand», «category». Il form di creazione mostra invece i nomi inglesi di default.
+   Correzione prevista: testo italiano reale in `lang/it/domain_form.php`; non applicata
+   perché i campi stessi sono da ridisegnare (punto 1).
+6. **Dashboard vuota.** Solo il titolo; nessun widget (`resources/views/filament/pages/dashboard.blade.php`).
+7. **Traduzioni non collegate.** `lang/it/tenant.php` contiene testi di un gestionale
+   immobiliare (Edifici, Unità Immobiliari, Inquilini, Contratti) che non compaiono nelle
+   pagine del pannello. Non rimosso: da confermare prima.
+8. **Pulsante «Nuovo» duplicato** nella lista: comportamento condiviso di Xot, citato una sola
+   volta, dipende da Xot.
+
+## Limiti di questo manuale
+
+- Nessun dato reale: l'istanza di prova non ha record di domini salvati.
+- Non provati: salvataggio dei form, eliminazione di una riga, permessi per utenti non super-admin.
+- La pagina di recupero password è presente nelle route ma non è stata fotografata.
+
+## Fonti
+
+- `laravel/Modules/Tenant/app/Providers/Filament/AdminPanelProvider.php`
+- `laravel/Modules/Tenant/app/Filament/Pages/Dashboard.php`, `SettingPage.php`
+- `laravel/Modules/Tenant/app/Filament/Resources/DomainResource.php` e relativi `Schemas/`, `Tables/`, `Pages/`
+- `laravel/Modules/Tenant/app/Models/Domain.php`, `app/Actions/Domains/GetDomainsArrayAction.php`
+- `laravel/Modules/Tenant/app/Datas/TenantConfigData.php`
+- `laravel/Modules/Tenant/lang/it/` (`domain.php`, `domain_form.php`, `setting.php`, `tenant.php`)
+- `route:list --path=tenant/admin` (9 route)

@@ -1,33 +1,38 @@
 ---
-status: proposed
+status: proposed            # proposed | accepted | rejected | deprecated | superseded by NNNN
 date: YYYY-MM-DD
-decision-makers: []
+decision-makers:
+qmd: "0000 template adr MADR harness NNNN-slug"
 ---
 
-# ADR — <decisione in una riga>
+<!-- File: docs/adr/NNNN-titolo-con-trattini.md · formato MADR breve (harness).
+     Il basename DEVE iniziare con NNNN- (es. 0001-...). Eccezioni: README.md, INDEX.md, 0000-template.md.
+     Scrivi un ADR solo se la decisione è difficile da invertire, sorprendente e frutto di un trade-off reale. -->
 
-## Contesto e problema
+# <!-- Titolo: il problema risolto e la soluzione scelta -->
 
-Quale fatto verificato rende necessaria la decisione? Chiudi con la domanda a cui risponde.
+## Context and Problem Statement
 
-## Driver della decisione
+<!-- 2-3 frasi. Chiudi con la domanda a cui la decisione risponde. -->
 
-- <vincolo, rischio o obiettivo>
+## Decision Drivers
 
-## Alternative considerate
+- <!-- forza o vincolo che pesa sulla scelta -->
 
-- <opzione e motivo per cui è seria>
-- <opzione e motivo per cui è seria>
+## Considered Options
 
-## Decisione
+- <!-- opzione 1 -->
+- <!-- opzione 2 -->
 
-Scelta: **<opzione>**, perché <driver principale>.
+## Decision Outcome
 
-## Conseguenze
+Scelta: **<!-- opzione -->**, perché <!-- driver che la giustifica -->.
 
-- Positiva: <effetto>
-- Negativa/debito: <effetto>
+### Consequences
 
-## Conferma
+- Buono, perché <!-- … -->
+- Cattivo, perché <!-- … -->
 
-Indica test, static check o controllo ripetibile che dimostra il rispetto della decisione.
+### Confirmation
+
+<!-- Come si controlla che il codice rispetti la decisione: un test, un controllo automatico, una voce di revisione. -->

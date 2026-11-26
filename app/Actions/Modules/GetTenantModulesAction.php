@@ -12,6 +12,11 @@ use Throwable;
 
 use function Safe\json_decode;
 
+/**
+ * @see docs/contracts/get-tenant-modules-action.md
+ *
+ * @contract docs/contracts/get-tenant-modules-action.md
+ */
 class GetTenantModulesAction
 {
     use QueueableAction;

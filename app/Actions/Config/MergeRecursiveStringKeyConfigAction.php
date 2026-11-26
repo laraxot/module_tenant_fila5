@@ -6,6 +6,11 @@ namespace Modules\Tenant\Actions\Config;
 
 use Spatie\QueueableAction\QueueableAction;
 
+/**
+ * @see docs/contracts/merge-recursive-string-key-config-action.md
+ *
+ * @contract docs/contracts/merge-recursive-string-key-config-action.md
+ */
 final class MergeRecursiveStringKeyConfigAction
 {
     use QueueableAction;
