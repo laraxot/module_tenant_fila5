@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Schema;
 use Modules\Tenant\Actions\Config\FilterConfigStringKeysAction;
 use Modules\Tenant\Actions\Config\GetTenantConfigNamesAction;
-use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
+use Modules\Tenant\Actions\Config\GetTenantConfigValueAction;
 use Modules\Xot\Datas\XotData;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 use Nwidart\Modules\Facades\Module;
@@ -35,10 +35,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
     {
         parent::boot();
 
-        // Skip complex configuration during testing
-        // if (! $this->app->environment('testing')) {
         $this->mergeConfigs();
-        // }
 
         $this->registerDB();
         $this->registerMorphMap();
@@ -52,7 +49,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
     public function registerMorphMap(): void
     {
-        $map = app(ResolveTenantConfigValueAction::class)->execute('morph_map');
+        $map = app(GetTenantConfigValueAction::class)->execute('morph_map');
         if (! \is_array($map)) {
             $map = [];
         }
@@ -148,7 +145,6 @@ class TenantServiceProvider extends XotBaseServiceProvider
     public function register(): void
     {
         parent::register();
-        // $this->app->register(AdminPanelProvider::class);
     }
 
     public function mergeConfigs(): void
@@ -162,7 +158,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
             $configName = $config['name'];
             if (is_string($configName)) {
-                app(ResolveTenantConfigValueAction::class)->execute($configName);
+                app(GetTenantConfigValueAction::class)->execute($configName);
             }
         }
     }
@@ -187,7 +183,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
      */
     private function loadTenantDatabaseConfig(string $preMergeDefaultConn): array
     {
-        $raw = app(ResolveTenantConfigValueAction::class)->execute('database');
+        $raw = app(GetTenantConfigValueAction::class)->execute('database');
         /** @var array<string, mixed> $data */
         $data = is_array($raw) ? $raw : [];
 

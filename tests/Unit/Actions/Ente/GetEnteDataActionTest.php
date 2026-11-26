@@ -41,7 +41,7 @@ it('treats blank strings, wrong types and unknown keys as missing', function ():
         ->and($ente->phone)->toBe('')
         ->and($ente->toll_free)->toBe('')
         ->and($ente->hasContacts())->toBeFalse();
-});
+})->group('TENANT-ENTE-INV-1');
 
 it('returns trimmed values and builds valid tel and mailto hrefs', function (): void {
     config()->set('ente', [
@@ -94,7 +94,7 @@ it('drops phone numbers that are not numeric so a tel link is never malformed', 
     'too long' => ['1234567890123456'],
     'markup' => ['800 <b>000</b>'],
     'plus inside' => ['800+000000'],
-]);
+])->group('TENANT-ENTE-INV-3');
 
 it('drops email and pec that are malformed or could add mailto parameters', function (string $bad): void {
     config()->set('ente', ['pec' => $bad, 'email' => $bad, 'dpo_email' => $bad]);
@@ -111,7 +111,7 @@ it('drops email and pec that are malformed or could add mailto parameters', func
     'with ampersand' => ['a&b@example.test'],
     'with space' => ['a b@example.test'],
     'markup' => ['<script>@example.test'],
-]);
+])->group('TENANT-ENTE-INV-4');
 
 it('keeps only http and https urls with a host', function (string $bad): void {
     config()->set('ente', ['region_url' => $bad]);
@@ -127,7 +127,7 @@ it('keeps only http and https urls with a host', function (string $bad): void {
     'quote' => ['https://example.test/"onmouseover="x'],
     'space' => ['https://example .test'],
     'angle' => ['https://example.test/<x>'],
-]);
+])->group('TENANT-ENTE-INV-5');
 
 it('keeps only allowed social networks with a valid url and gives them label and icon', function (): void {
     config()->set('ente', ['social' => [
@@ -144,7 +144,7 @@ it('keeps only allowed social networks with a valid url and gives them label and
         ['network' => 'facebook', 'label' => 'Facebook', 'url' => 'https://www.facebook.com/ente.prova', 'icon' => 'it-facebook'],
         ['network' => 'youtube', 'label' => 'Canale video', 'url' => 'https://www.youtube.com/@prova', 'icon' => 'it-youtube'],
     ]);
-});
+})->group('TENANT-ENTE-INV-6');
 
 it('picks the text for the requested locale, then the fallback locale, then the first available', function (): void {
     config()->set('app.fallback_locale', 'it');
@@ -159,7 +159,7 @@ it('picks the text for the requested locale, then the fallback locale, then the 
         ->and(enteAction('es')->hours)->toBe('Orari it')
         ->and(enteAction('it')->address)->toBe('Adresse de')
         ->and(enteAction('es')->region_name)->toBe('Regione unica');
-});
+})->group('TENANT-ENTE-INV-2');
 
 it('uses the application locale when none is passed', function (): void {
     app()->setLocale('en');

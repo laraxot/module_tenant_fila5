@@ -4,21 +4,11 @@ type: audit
 status: review
 updated: 2026-11-16
 module: Tenant
-<<<<<<< .merge_file_MzB2jI
-<<<<<<< .merge_file_4SIseY
-qmd: "audit approfondito Tenant inventario PHPStan Pest policy Filament Actions"
-=======
-qmd: "audit approfondito Tenant risoluzione tenant Host header TrustHosts policy bypass tenant admin DatabaseConfig password sushi PHPStan Pest"
->>>>>>> .merge_file_mNheFg
-=======
-qmd: "audit approfondito Tenant inventario risoluzione tenant Host header TrustHosts policy bypass tenant admin DatabaseConfig password sushi Filament Actions PHPStan Pest"
->>>>>>> .merge_file_MXQlvH
+qmd: "audit approfondito Tenant inventario PHPStan Pest policy Filament Actions risoluzione Host header TrustHosts bypass admin DatabaseConfig password sushi"
 ---
 
 # Audit approfondito — Tenant
 
-<<<<<<< .merge_file_MzB2jI
-<<<<<<< .merge_file_4SIseY
 ## Metodo
 
 Source-first (2026-11-16): inventario filesystem, `rg` su policy/marker/label,
@@ -41,9 +31,8 @@ inventata. Pest dichiarato solo se eseguito.
 | Marker conflitto | 0 |
 | Occorrenze `return true` in Policy | 2 |
 | Ratio test/app | 1.16 |
-=======
+
 SSoT dei finding del modulo. Sintesi: [audit.md](../audit.md) · ECC: [tenant-ecc-audit.md](../../ecc/tenant-ecc-audit.md) · Story: [module-bmad-audit.story.md](../stories/module-bmad-audit.story.md) · Piano: [piano-miglioramento.md](../piano-miglioramento.md).
->>>>>>> .merge_file_MXQlvH
 
 ## Perché esiste (business)
 
@@ -122,11 +111,10 @@ php -d memory_limit=4G ./vendor/bin/phpstan analyse Modules/Tenant --no-progress
 
 ## Prossimi passi
 
-<<<<<<< .merge_file_MzB2jI
 - [audit.md](../audit.md)
 - [ECC](../../ecc/tenant-ecc-audit.md)
 - [Story](../stories/module-bmad-audit.story.md)
-=======
+
 SSoT dei finding del modulo. Sintesi: [audit.md](../audit.md) · ECC: [tenant-ecc-audit.md](../../ecc/tenant-ecc-audit.md) · Story: [module-bmad-audit.story.md](../stories/module-bmad-audit.story.md) · Piano: [piano-miglioramento.md](../piano-miglioramento.md).
 
 ## Perché esiste (business)
@@ -202,7 +190,3 @@ php -d memory_limit=4G ./vendor/bin/phpstan analyse Modules/Tenant --no-progress
 ## Prossimi passi
 
 [epics.md](../epics.md): Epic A (host fidato) → B (perimetro `tenant::admin`) → C (credenziali) → D (pulizia) → E (docs).
->>>>>>> .merge_file_mNheFg
-=======
-[epics.md](../epics.md): Epic A (host fidato) → B (perimetro `tenant::admin`) → C (credenziali) → D (pulizia) → E (docs).
->>>>>>> .merge_file_MXQlvH

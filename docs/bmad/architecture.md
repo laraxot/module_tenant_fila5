@@ -1,35 +1,22 @@
 ---
-<<<<<<< .merge_file_zaafrR
 tags: [documentation]
 created: 2026-09-26
-title: "Tenant — Architettura BMAD"
-type: architecture
 scope: Tenant
 epic: 5.124-bmad-user-module-perfection-study
 bmad_version: v3.30.1
-<<<<<<< .merge_file_mwPhO4
 updated_at: '2026-09-22'
-status: done
 related:
   - ../stories/continuazione-domani.md
-=======
 title: "Tenant — Architettura BMAD"
 type: architecture
-=======
->>>>>>> .merge_file_7aWasF
 status: active
 updated: 2026-11-16
 module: Tenant
 qmd: "architettura Tenant risoluzione tenant host config per ente sushi json provider morph map connessioni database"
-<<<<<<< .merge_file_mwPhO4
->>>>>>> .merge_file_ja9YCm
-=======
->>>>>>> .merge_file_7aWasF
 ---
 
 # Tenant — Architettura
 
-<<<<<<< .merge_file_zaafrR
 ## Scopo
 
 Multi-tenant: più enti da una sola installazione. Scopo e perché: [purpose.md](./purpose.md). Dettaglio risoluzione: [architecture/tenant-config-resolution.md](./architecture/tenant-config-resolution.md), confini: [architecture/module-boundary.md](./architecture/module-boundary.md). Finding: [audits/tenant-audit.md](./audits/tenant-audit.md).
@@ -42,7 +29,6 @@ Multi-tenant: più enti da una sola installazione. Scopo e perché: [purpose.md]
 4. I model Sushi (`SushiToJson`, `SushiToCsv`, `SushiToPhpArray`) leggono la config del tenant come tabella.
 
 ## Componenti
-<<<<<<< .merge_file_mwPhO4
 - `Tenant/Filament/` — interfacce Filament 5 (se applicabile)
 - `Tenant/Actions/` — azioni (Spatie Queueable se richiesto)
 - `Tenant/Models/` — estende XotBase (se applicabile)
@@ -56,7 +42,7 @@ Multi-tenant: più enti da una sola installazione. Scopo e perché: [purpose.md]
 1. Verificare conformità con XotBase
 2. Aggiornare `docs/bmad/stories/continuazione-domani.md` se chiuso
 3. Indicare stato concluso in `docs/sprint-status.yaml`
-=======
+
 Scopo e perché: [purpose.md](./purpose.md). Dettaglio risoluzione: [architecture/tenant-config-resolution.md](./architecture/tenant-config-resolution.md), confini: [architecture/module-boundary.md](./architecture/module-boundary.md). Finding: [audits/tenant-audit.md](./audits/tenant-audit.md).
 
 ## Flusso (verificato sul codice, 2026-11-16)
@@ -67,8 +53,6 @@ Scopo e perché: [purpose.md](./purpose.md). Dettaglio risoluzione: [architectur
 4. I model Sushi (`SushiToJson`, `SushiToCsv`, `SushiToPhpArray`) leggono la config del tenant come tabella.
 
 ## Componenti
-=======
->>>>>>> .merge_file_7aWasF
 
 | Area | N | Note |
 |---|---:|---|
@@ -81,7 +65,3 @@ Scopo e perché: [purpose.md](./purpose.md). Dettaglio risoluzione: [architectur
 ## Rischi architetturali
 
 Host come input (TEN-P1-01), bypass policy (TEN-P1-02), segreti non cifrati (TEN-P1-03), due varianti Sushi JSON (TEN-P2-01). Dettaglio e task: [epics.md](./epics.md).
-<<<<<<< .merge_file_mwPhO4
->>>>>>> .merge_file_ja9YCm
-=======
->>>>>>> .merge_file_7aWasF

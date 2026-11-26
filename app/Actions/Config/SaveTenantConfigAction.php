@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\File;
 use Modules\Xot\Actions\Arr\SaveArrayAction;
 use Spatie\QueueableAction\QueueableAction;
 
+/**
+ * @see docs/contracts/save-tenant-config-action.md
+ *
+ * @contract docs/contracts/save-tenant-config-action.md
+ */
 class SaveTenantConfigAction
 {
     use QueueableAction;

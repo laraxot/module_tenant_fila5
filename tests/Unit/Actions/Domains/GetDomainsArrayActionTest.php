@@ -49,4 +49,4 @@ it('collapses nested directory structure into dot notation', function (): void {
     Assert::assertContains('c.b.a', $result);
     Assert::assertContains('d.a', $result);
     Assert::assertContains('e', $result);
-});
+})->group('TENANT-DOMAINS-INV-2', 'TENANT-DOMAINS-INV-3');
