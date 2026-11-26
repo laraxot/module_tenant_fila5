@@ -17,7 +17,8 @@ use Webmozart\Assert\Assert;
  * @phpstan-ignore trait.unused
  */
 trait SushiToCsv // @phpstan-ignore trait.unused
-{use Sushi;
+{
+    use Sushi;
     use SushiConnectionByName;
 
     /**
