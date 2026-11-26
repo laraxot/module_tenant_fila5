@@ -9,9 +9,9 @@ use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
 /**
- * @see docs/contracts/resolve-tenant-model-instance-action.md
+ * @see docs/contracts/get-tenant-model-instance-action.md
  *
- * @contract docs/contracts/resolve-tenant-model-instance-action.md
+ * @contract docs/contracts/get-tenant-model-instance-action.md
  */
 class GetTenantModelInstanceAction
 {

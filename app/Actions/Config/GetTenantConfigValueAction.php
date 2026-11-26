@@ -11,9 +11,9 @@ use Modules\Tenant\Actions\GetTenantNameAction;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
- * @see docs/contracts/resolve-tenant-config-value-action.md
+ * @see docs/contracts/get-tenant-config-value-action.md
  *
- * @contract docs/contracts/resolve-tenant-config-value-action.md
+ * @contract docs/contracts/get-tenant-config-value-action.md
  */
 class GetTenantConfigValueAction
 {

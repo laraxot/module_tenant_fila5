@@ -14,9 +14,9 @@ use Nwidart\Modules\Laravel\Module as LaravelModule;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
- * @see docs/contracts/resolve-tenant-model-class-action.md
+ * @see docs/contracts/get-tenant-model-class-action.md
  *
- * @contract docs/contracts/resolve-tenant-model-class-action.md
+ * @contract docs/contracts/get-tenant-model-class-action.md
  */
 class GetTenantModelClassAction
 {
