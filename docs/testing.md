@@ -20,7 +20,7 @@ Solo Pest, nel modulo (`laravel/Modules/Tenant/tests/`). Mai PHPUnit diretto, ma
 | `tests/Unit/Actions/{Config,Domains,Ente,Json,Markdown,Models,Translations}` | una Action per file, senza rete e senza web server |
 | `tests/Unit/Models`, `tests/Unit/Datas` | modelli e `EnteData` |
 | `tests/Unit/Traits` | i cinque trait Sushi (`SushiToJson`, `SushiToJsons`, `SushiToCsv`, `SushiToPhpArray`, `SushiConnectionByName`) |
-| `tests/Unit/TenantConfigTrackedTest.php` | guardia: `config/<tenant>` deve essere tracciata da git ([story](bmad/stories/tenant-config-untracked-by-gitignore.story.md)) |
+| `tests/Unit/TenantConfigTrackedTest.php` | guardia: `config/<tenant>` deve essere tracciata da git ([story](bmad/stories/0008-tenant-config-untracked-by-gitignore.story.md)) |
 | `tests/Feature` | alias delle connessioni, scope multi-tenant, routing per dominio, risoluzione del modello |
 | `tests/Integration`, `tests/Performance` | integrazione dei trait con DB; saltano se il DB di test non e' raggiungibile |
 | `tests/Fixtures`, `tests/Unit/Fixtures` | sottoclassi nominate usate dai test dei trait |

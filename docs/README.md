@@ -92,11 +92,10 @@ Le applicazioni SaaS moderne hanno bisogno di multi-tenancy per servire più cli
 Questo README e' l'**unico indice** della cartella `docs/` (rimossi `index.md`, `INDEX.md`, `00-index.md`,
 `index-generated.md`: duplicati o generati).
 
-- [Scopo del modulo](./purpose.md)
-- [BMAD](./bmad/00-index.md) · [Audit](./bmad/audit.md) · [Piano di miglioramento](./bmad/piano-miglioramento.md)
-- [ECC](./ecc/00-index.md)
-- [Regole](./rules-index.md)
+- [Standard config database](./database-config-standard.md) · [Dati dell'ente](./ente-data.md) · [Test del modulo](./testing.md)
+- [BMAD](./bmad/README.md) · [BMAD index](./bmad/index.md) · [CHANGELOG BMAD](./bmad/CHANGELOG.md)
+- [ADR](./adr/README.md) · [Contratti](./contracts/README.md) · [ECC](./ecc/00-index.md)
 - [Story](./stories/) · [Audit qualita' corrente](stories/0011-audit-qualita.story.md)
-- [Wiki](./wiki/)
+- [Wiki](./wiki/) · [Roadmap](./roadmap/README.md) · [Manuale utente](./manuals/manuale-utente.md)
 
 Regole sui nomi: kebab-case, **nessuna data nel nome** di file o cartelle (la data va nel frontmatter).
