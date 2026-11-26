@@ -34,4 +34,4 @@ it('gets tenant config names', function (): void {
     Assert::assertCount(2, $result);
     Assert::assertSame(['id' => 1, 'name' => 'database'], $result[0]);
     Assert::assertSame(['id' => 2, 'name' => 'app'], $result[1]);
-});
+})->group('TENANT-CFG-NAMES-INV-1', 'TENANT-CFG-NAMES-INV-2');

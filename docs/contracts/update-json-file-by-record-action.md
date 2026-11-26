@@ -24,7 +24,7 @@ Sorgente: `app/Actions/Json/UpdateJsonFileByRecordAction.php`. Gemelle: `CreateJ
 
 | ID | Regola | Group Pest |
 |---|---|---|
-| TENANT-JSON-UPDATE-INV-1 | La riga è identificata da `($keyName, $key)` (righe chiavizzate con `Arr::keyBy`) e sostituita; le altre restano. | — (non dimostrato) |
+| TENANT-JSON-UPDATE-INV-1 | La riga è identificata da `($keyName, $key)` (righe chiavizzate con `Arr::keyBy`) e sostituita; le altre restano. | `TENANT-JSON-UPDATE-INV-1` |
 | TENANT-JSON-UPDATE-INV-2 | La chiave può essere intera o stringa (UUID); bool e float sono rifiutati da `Assert::validArrayKey`. | — (non dimostrato) |
 | TENANT-JSON-UPDATE-INV-3 | Se la chiave non esiste nel file la riga viene aggiunta (upsert: `$keyed[$key] = ...`). | — (non dimostrato) |
 | TENANT-JSON-UPDATE-INV-4 | `updated_at` vale `now()`. | — (non dimostrato) |

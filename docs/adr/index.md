@@ -1,16 +1,17 @@
 ---
-title: "INDEX ADR — Tenant"
+title: "Indice degli ADR — Tenant"
 type: index
-owner: Tenant
-updated: 2026-11-24
-qmd: "Tenant ADR INDEX stato decisioni"
+module: Tenant
+status: active
+updated: 2026-11-26
 ---
 
-# INDEX ADR — Tenant
+# Indice degli ADR — Tenant
 
-| ADR | Stato | Sintesi |
-|---|---|---|
-| [tenant-config-is-resolved-by-action](tenant-config-is-resolved-by-action.md) | accepted | La configurazione tenant si risolve con una Action condivisa |
-| [tenant-isolation-is-invariant](tenant-isolation-is-invariant.md) | proposed | La configurazione tenant si risolve come overlay centralizzato (il nome file parla di isolamento, il contenuto di overlay) |
+| ADR | Stato | Perché | Conferma |
+|---|---|---|---|
+| [0001-module-connections-alias-default](0001-module-connections-alias-default.md) | accepted | Ogni modulo ha la sua connessione, alias della default se punta allo stesso database (transazioni tra moduli atomiche). | Sì: `Modules/Tenant/tests/Feature/ModuleConnectionAliasTest.php` |
+| [0002-tenant-json-content-isolated-in-tests](0002-tenant-json-content-isolated-in-tests.md) | accepted | Nei test i JSON del tenant si scrivono in una copia sotto `storage/`, mai in `config/`. | Sì: `--group=TENANT-FILE-PATH-INV-3` |
+| [0003-tenant-name-from-reversed-host](0003-tenant-name-from-reversed-host.md) | accepted | Il tenant è la cartella di config del dominio invertito, risolta da host, `app.url` e symlink. | Sì: `--group=TENANT-FILE-PATH-INV-2`, `TENANT-NAME-INV-2`, `TENANT-NAME-INV-3` |
 
 Formato e regole: [README](README.md).

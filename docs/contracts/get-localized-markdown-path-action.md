@@ -24,9 +24,9 @@ Sorgente: `app/Actions/Markdown/GetLocalizedMarkdownPathAction.php`.
 
 | ID | Regola | Group Pest |
 |---|---|---|
-| TENANT-MD-INV-1 | Vince la versione nella lingua corrente, se esiste. | — (non dimostrato) |
-| TENANT-MD-INV-2 | Se esiste solo il file senza prefisso lingua, vale quello. | — (non dimostrato) |
-| TENANT-MD-INV-3 | Se nessun file esiste il risultato è `'#'`. | — (non dimostrato) |
+| TENANT-MD-INV-1 | Vince la versione nella lingua corrente, se esiste. | `TENANT-MD-INV-1` |
+| TENANT-MD-INV-2 | Se esiste solo il file senza prefisso lingua, vale quello. | `TENANT-MD-INV-2` |
+| TENANT-MD-INV-3 | Se nessun file esiste il risultato è `'#'`. | `TENANT-MD-INV-3` |
 | TENANT-MD-INV-4 | Ogni percorso passa da `GetTenantFilePathAction`: un nome con traversal lancia `InvalidArgumentException`. | — (non dimostrato) |
 ## Effetti collaterali
 

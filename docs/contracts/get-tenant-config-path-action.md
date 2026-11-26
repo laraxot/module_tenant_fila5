@@ -24,7 +24,7 @@ Sorgente: `app/Actions/Config/GetTenantConfigPathAction.php`.
 
 | ID | Regola | Group Pest |
 |---|---|---|
-| TENANT-CFG-PATH-INV-1 | Ogni `/` del nome tenant diventa `.`. | — (non dimostrato) |
+| TENANT-CFG-PATH-INV-1 | Ogni `/` del nome tenant diventa `.`. | `TENANT-CFG-PATH-INV-1` |
 | TENANT-CFG-PATH-INV-2 | `$key` non viene validato né normalizzato. | — (non dimostrato) |
 ## Effetti collaterali
 

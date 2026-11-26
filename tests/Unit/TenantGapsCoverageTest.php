@@ -49,7 +49,7 @@ test('GetTenantNameAction hits shortened parts when nested host config exists', 
     // solo la cartella creata dal test: config/com contiene configurazioni tenant reali
     File::deleteDirectory($cfgRoot.'/com/example');
     $this->setServerNameForTenantTest(null);
-});
+})->group('TENANT-NAME-INV-2', 'TENANT-NAME-INV-3');
 
 test('TranslateTenantKeyAction returns key when lang file missing', function (): void {
     $this->mockAppService(GetTenantFilePathAction::class, static function (MockInterface $mock): void {
@@ -57,7 +57,7 @@ test('TranslateTenantKeyAction returns key when lang file missing', function ():
     });
 
     Assert::assertSame('messages.hello', app(TranslateTenantKeyAction::class)->execute('messages.hello'));
-});
+})->group('TENANT-TRANS-INV-1');
 
 test('TranslateTenantKeyAction returns resolved string translation', function (): void {
     $dir = sys_get_temp_dir().'/tenant_lang_hit_'.uniqid('', true);
@@ -231,7 +231,7 @@ test('GetTenantNameAction covers null parts and default-host miss/hit', function
     Assert::assertSame('test/defaulthost', app(GetTenantNameAction::class)->execute());
     // solo la cartella creata dal test: config/test contiene configurazioni tenant reali
     File::deleteDirectory($cfgRoot.'/test/defaulthost');
-});
+})->group('TENANT-NAME-INV-3');
 
 test('Sushi audit fields with named auth model and csv scalar id', function (): void {
     $base = sys_get_temp_dir().'/sushi_audit_'.uniqid('', true);

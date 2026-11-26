@@ -25,8 +25,8 @@ Sorgente: `app/Actions/Domains/GetDomainsArrayAction.php`.
 | ID | Regola | Group Pest |
 |---|---|---|
 | TENANT-DOMAINS-INV-1 | Le cartelle chiamate `lang` sono escluse a ogni livello (`recurse`). | — (non dimostrato) |
-| TENANT-DOMAINS-INV-2 | Solo le cartelle foglia (senza sottocartelle) producono un dominio (`collapse`: `$v0 === []`). | — (non dimostrato) |
-| TENANT-DOMAINS-INV-3 | Il nome unisce i segmenti con `.` partendo dal più profondo (`a/b/c` dà `c.b.a`). | — (non dimostrato) |
+| TENANT-DOMAINS-INV-2 | Solo le cartelle foglia (senza sottocartelle) producono un dominio (`collapse`: `$v0 === []`). | `TENANT-DOMAINS-INV-2` |
+| TENANT-DOMAINS-INV-3 | Il nome unisce i segmenti con `.` partendo dal più profondo (`a/b/c` dà `c.b.a`). | `TENANT-DOMAINS-INV-3` |
 ## Effetti collaterali
 
 - Solo lettura del filesystem. Nessuna scrittura, evento o cache.

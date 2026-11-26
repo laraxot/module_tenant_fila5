@@ -26,9 +26,9 @@ scrive la coppia nella `morph_map` del tenant. Sorgente: `app/Actions/Models/Get
 | ID | Regola | Group Pest |
 |---|---|---|
 | TENANT-MODEL-CLASS-INV-1 | Il nome è normalizzato con `Str::snake(Str::singular(...))` prima della ricerca. | — (non dimostrato) |
-| TENANT-MODEL-CLASS-INV-2 | Se `morph_map.<name>` è in config, viene restituito senza scansionare i moduli. | — (non dimostrato) |
-| TENANT-MODEL-CLASS-INV-3 | Se il nome non è in `morph_map`, la scansione dei moduli abilitati trova la classe e la coppia viene persistita nella `morph_map` del tenant. | — (non dimostrato) |
-| TENANT-MODEL-CLASS-INV-4 | Un nome sconosciuto lancia `Exception('model unknown [...]')` e non scrive nulla. | — (non dimostrato) |
+| TENANT-MODEL-CLASS-INV-2 | Se `morph_map.<name>` è in config, viene restituito senza scansionare i moduli. | `TENANT-MODEL-CLASS-INV-2` |
+| TENANT-MODEL-CLASS-INV-3 | Se il nome non è in `morph_map`, la scansione dei moduli abilitati trova la classe e la coppia viene persistita nella `morph_map` del tenant. | `TENANT-MODEL-CLASS-INV-3` |
+| TENANT-MODEL-CLASS-INV-4 | Un nome sconosciuto lancia `Exception('model unknown [...]')` e non scrive nulla. | `TENANT-MODEL-CLASS-INV-4` |
 | TENANT-MODEL-CLASS-INV-5 | Un valore di `morph_map` che non è stringa lancia `Exception`. | — (non dimostrato) |
 ## Effetti collaterali
 

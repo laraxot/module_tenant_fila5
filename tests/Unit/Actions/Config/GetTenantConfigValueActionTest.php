@@ -28,14 +28,14 @@ it('resolves tenant config value by merging with tenant overrides', function ():
 
     Assert::assertSame('Tenant App', $action->execute('app.name'));
     Assert::assertSame('UTC', $action->execute('app.timezone'));
-});
+})->group('TENANT-CONFIG-VALUE-INV-2');
 
 it('throws exception for empty config key', function (): void {
     XotBasePest::assertThrows(
         fn (): float|int|string|array|null => app(GetTenantConfigValueAction::class)->execute(''),
         \Exception::class,
     );
-});
+})->group('TENANT-CONFIG-VALUE-INV-1');
 
 it('returns default value if config not found', function (): void {
     /** @var TestCase $this */
@@ -46,4 +46,4 @@ it('returns default value if config not found', function (): void {
     $result = app(GetTenantConfigValueAction::class)->execute('nonexistent.key', 'default');
 
     Assert::assertSame('default', $result);
-});
+})->group('TENANT-CONFIG-VALUE-INV-4');

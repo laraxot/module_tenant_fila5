@@ -30,4 +30,4 @@ it('gets tenant config path with forward slashes replaced', function (): void {
     $result = app(GetTenantConfigPathAction::class)->execute('app');
 
     Assert::assertSame('tenants.test.app', $result);
-});
+})->group('TENANT-CFG-PATH-INV-1');

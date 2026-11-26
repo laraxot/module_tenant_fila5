@@ -27,10 +27,10 @@ del tenant prevalgono. Funziona uguale in web, console, coda e scheduler. `Resol
 
 | ID | Regola | Group Pest |
 |---|---|---|
-| TENANT-CONFIG-VALUE-INV-1 | Chiave vuota o gruppo vuoto lancia `Exception` prima di leggere config o tenant. | — (non dimostrato) |
-| TENANT-CONFIG-VALUE-INV-2 | Il gruppo è fuso con `<tenant>.<gruppo>` (`array_replace_recursive`) e i valori del tenant prevalgono. Se cade, un ente vede la config di un altro o quella base. | — (non dimostrato) |
+| TENANT-CONFIG-VALUE-INV-1 | Chiave vuota o gruppo vuoto lancia `Exception` prima di leggere config o tenant. | `TENANT-CONFIG-VALUE-INV-1` |
+| TENANT-CONFIG-VALUE-INV-2 | Il gruppo è fuso con `<tenant>.<gruppo>` (`array_replace_recursive`) e i valori del tenant prevalgono. Se cade, un ente vede la config di un altro o quella base. | `TENANT-CONFIG-VALUE-INV-2` |
 | TENANT-CONFIG-VALUE-INV-3 | Un valore che non è numerico, stringa, array o `null` (bool, oggetto) lancia `Exception`. | — (non dimostrato) |
-| TENANT-CONFIG-VALUE-INV-4 | Chiave assente = `$_default`, passato a `config()`. | — (non dimostrato) |
+| TENANT-CONFIG-VALUE-INV-4 | Chiave assente = `$_default`, passato a `config()`. | `TENANT-CONFIG-VALUE-INV-4` |
 ## Effetti collaterali
 
 - `Config::set($group, $mergeConf)` sostituisce in memoria l'intero gruppo per il resto del processo: la config base di quel gruppo resta modificata anche per chi non è tenant-aware. Non scrive su disco.

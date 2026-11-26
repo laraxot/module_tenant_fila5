@@ -24,8 +24,8 @@ Sorgente: `app/Actions/Config/GetTenantConfigNamesAction.php`.
 
 | ID | Regola | Group Pest |
 |---|---|---|
-| TENANT-CFG-NAMES-INV-1 | Sono elencati solo file con estensione `php`; la ricerca non è ricorsiva (`File::files`). | — (non dimostrato) |
-| TENANT-CFG-NAMES-INV-2 | `id` è sequenziale da 1 nell'ordine restituito da `File::files`, che l'Action non ordina. | — (non dimostrato) |
+| TENANT-CFG-NAMES-INV-1 | Sono elencati solo file con estensione `php`; la ricerca non è ricorsiva (`File::files`). | `TENANT-CFG-NAMES-INV-1` |
+| TENANT-CFG-NAMES-INV-2 | `id` è sequenziale da 1 nell'ordine restituito da `File::files`, che l'Action non ordina. | `TENANT-CFG-NAMES-INV-2` |
 ## Effetti collaterali
 
 - Legge la cartella. Nessuna scrittura.

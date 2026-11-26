@@ -24,7 +24,7 @@ Sorgente: `app/Actions/Translations/TranslateTenantKeyAction.php`.
 
 | ID | Regola | Group Pest |
 |---|---|---|
-| TENANT-TRANS-INV-1 | Se il file di lingua del tenant non esiste si restituisce la chiave. | — (non dimostrato) |
+| TENANT-TRANS-INV-1 | Se il file di lingua del tenant non esiste si restituisce la chiave. | `TENANT-TRANS-INV-1` |
 | TENANT-TRANS-INV-2 | Se il valore trovato non è una stringa si restituisce la chiave. | — (non dimostrato) |
 | TENANT-TRANS-INV-3 | Se il file esiste ma non restituisce un array, `Assert::isArray` lancia. | — (non dimostrato) |
 ## Effetti collaterali

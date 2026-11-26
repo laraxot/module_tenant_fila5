@@ -26,7 +26,7 @@ it('resolves tenant model class from config', function (): void {
     $result = app(GetTenantModelClassAction::class)->execute('test_model');
 
     Assert::assertSame('Modules\Test\Models\TestModel', $result);
-});
+})->group('TENANT-MODEL-CLASS-INV-2');
 
 it('resolves tenant model class by scanning modules if not in config', function (): void {
     /** @var TestCase $this */
@@ -50,7 +50,7 @@ it('resolves tenant model class by scanning modules if not in config', function 
     $result = app(GetTenantModelClassAction::class)->execute('tenant');
 
     Assert::assertSame(Tenant::class, $result);
-});
+})->group('TENANT-MODEL-CLASS-INV-3');
 
 it('throws exception for unknown model', function (): void {
     /** @var TestCase $this */
@@ -64,4 +64,4 @@ it('throws exception for unknown model', function (): void {
         fn (): string => app(GetTenantModelClassAction::class)->execute('unknown_model'),
         \Exception::class,
     );
-});
+})->group('TENANT-MODEL-CLASS-INV-4');
