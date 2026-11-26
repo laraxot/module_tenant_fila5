@@ -24,22 +24,22 @@ discussions: []
 
 The root level contains strategic documents, analyses, and consolidated guides:
 
-- [00-INDEX.md](00-INDEX.md)
 - [00-index.md](00-index.md)
-- [API.md](API.md)
-- [ARCHITECTURE.md](ARCHITECTURE.md)
-- [LICENSE-full.md](LICENSE-full.md)
-- [METODI_DUPLICATI_ANALISI.md](METODI_DUPLICATI_ANALISI.md)
-- [PRD.md](PRD.md)
-- [PRODUCT_LAUNCH_PLAN.md](PRODUCT_LAUNCH_PLAN.md)
-- [PRODUCT_ROADMAP.md](PRODUCT_ROADMAP.md)
-- [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md)
+- [00-index.md](00-index.md)
+- [API.md](api.md)
+- [architecture.md](architecture.md)
+- [LICENSE-full.md](license-full.md)
+- [metodi_duplicati_analisi.md](metodi_duplicati_analisi.md)
+- [PRD.md](prd.md)
+- [product_launch_plan.md](product_launch_plan.md)
+- [product_roadmap.md](product_roadmap.md)
+- [product_strategy.md](product_strategy.md)
 - [README.md](README.md)
-- [REDUNDANCY_ANALYSIS.md](REDUNDANCY_ANALYSIS.md)
-- [SPRINT_PLANNING.md](SPRINT_PLANNING.md)
-- [SUSHI_TO_JSON_FIX_PLAN.md](SUSHI_TO_JSON_FIX_PLAN.md)
-- [TODO.md](TODO.md)
-- [USER_RESEARCH.md](USER_RESEARCH.md)
+- [redundancy_analysis.md](redundancy_analysis.md)
+- [sprint_planning.md](sprint_planning.md)
+- [SUSHI_TO_JSON_FIX_PLAN.md](sushi_to_json_fix_plan.md)
+- [TODO.md](todo.md)
+- [user_research.md](user_research.md)
 - [about.md](about.md)
 - [activitylog.md](activitylog.md)
 - [ai-methodologies.md](ai-methodologies.md)
@@ -56,7 +56,7 @@ The root level contains strategic documents, analyses, and consolidated guides:
 - [business-logic-deep-dive.md](business-logic-deep-dive.md)
 - [case-sensitivity-rules.md](case-sensitivity-rules.md)
 - [changelog-root.md](changelog-root.md)
-- [changelog.md](changelog.md)
+- [CHANGELOG.md](CHANGELOG.md)
 - [chaos-monkey-tenant-isolation-checklist.md](chaos-monkey-tenant-isolation-checklist.md)
 - [code-quality-improvement-report.md](code-quality-improvement-report.md)
 - [code-quality-report.md](code-quality-report.md)
@@ -86,10 +86,10 @@ Comprehensive wiki system with concepts, how-to guides, rules, and troubleshooti
   - [log.md](wiki/log.md)
   - [bmad-method.md](wiki/bmad-method.md)
   - [README.md](wiki/README.md)
-  - [Architecture.md](wiki/architecture.md)
+  - [architecture.md](wiki/architecture.md)
 
 **Concepts** (16 files)
-  - [INDEX.md](wiki/concepts/INDEX.md)
+  - [index.md](wiki/concepts/index.md)
   - [context-overflow-prevention.md](wiki/concepts/context-overflow-prevention.md)
   - [organizzativa-money.md](wiki/concepts/organizzativa-money.md)
   - [duplicate-method-bodies.md](wiki/concepts/duplicate-method-bodies.md)
@@ -113,7 +113,7 @@ Comprehensive wiki system with concepts, how-to guides, rules, and troubleshooti
   - [phpstan-fixes.md](wiki/troubleshooting/phpstan-fixes.md)
 
 **Memories** (3 files)
-  - [INDEX.md](wiki/memories/INDEX.md)
+  - [index.md](wiki/memories/index.md)
   - [github-remote-collision-wrong-base.md](wiki/memories/github-remote-collision-wrong-base.md)
   - [gitignore-tests-claude-audit.md](wiki/memories/gitignore-tests-claude-audit.md)
 
@@ -127,15 +127,15 @@ Comprehensive wiki system with concepts, how-to guides, rules, and troubleshooti
 
 **Other** (6 files)
   - [overviews/tenant-module.md](wiki/overviews/tenant-module.md)
-  - [commands/INDEX.md](wiki/commands/INDEX.md)
-  - [skills/INDEX.md](wiki/skills/INDEX.md)
-  - [rules/INDEX.md](wiki/rules/INDEX.md)
+  - [commands/index.md](wiki/commands/index.md)
+  - [skills/index.md](wiki/skills/index.md)
+  - [rules/index.md](wiki/rules/index.md)
 
 ### Roadmap (41 files)
 
 Strategic planning and vision documents:
 
-- [00-INDEX.md](roadmap/00-INDEX.md)
+- [00-index.md](roadmap/00-index.md)
 - [00-overview.md](roadmap/00-overview.md)
 - [01-current-state.md](roadmap/01-current-state.md)
 - [01-now.md](roadmap/01-now.md)
@@ -171,7 +171,7 @@ Raw source documents and import sources:
   - [alternatives-1.md](raw/root-import/alternatives-1.md)
   - [changelog-1.md](raw/root-import/changelog-1.md)
   - [changelog-2.md](raw/root-import/changelog-2.md)
-  - [license.md](raw/root-import/license.md)
+  - [LICENSE.md](raw/root-import/license.md)
   - [readme-en-1.md](raw/root-import/readme-en-1.md)
   - [readme.en.md](raw/root-import/readme.en.md)
   - [readme.it.md](raw/root-import/readme.it.md)
@@ -215,11 +215,11 @@ Consolidated root-level markdown documentation:
 - [README.en.md](root-md-files/README.en.md)
 - [README.it.md](root-md-files/README.it.md)
 - [alternatives.md](root-md-files/alternatives.md)
-- [changelog.md](root-md-files/changelog.md)
-- [license.md](root-md-files/license.md)
+- [CHANGELOG.md](root-md-files/CHANGELOG.md)
+- [LICENSE.md](root-md-files/LICENSE.md)
 - [links.md](root-md-files/links.md)
 - [readme-en.md](root-md-files/readme-en.md)
-- [readme-it.md](root-md-files/readme-it.md)
+- [readme-it.md](raw/root-import/readme-it.md)
 - [readme-it-1.md](root-md-files/readme-it-1.md)
 - [readme-it-2.md](root-md-files/readme-it-2.md)
 - [readme.en.md](root-md-files/readme.en.md)
@@ -256,11 +256,11 @@ Legacy and superseded documentation:
 
 - [README.md](archived/README.md)
 - [alternatives.md](archived/alternatives.md)
-- [changelog.md](archived/changelog.md)
-- [license.md](archived/license.md)
+- [CHANGELOG.md](archived/CHANGELOG.md)
+- [LICENSE.md](archived/LICENSE.md)
 - [links.md](archived/links.md)
 - [readme-en.md](archived/readme-en.md)
-- [readme-it.md](archived/readme-it.md)
+- [readme-it.md](raw/root-import/readme-it.md)
 - [readme.en.md](archived/readme.en.md)
 - [readme.it.md](archived/readme.it.md)
 - [tenant.md](archived/tenant.md)
@@ -289,7 +289,7 @@ Machine learning and documentation knowledge base:
 - [AGENTS.md](llm-wiki/AGENTS.md)
 - [index.md](llm-wiki/index.md)
 - [log.md](llm-wiki/log.md)
-- [agents.md](llm-wiki/agents.md)
+- [AGENTS.md](llm-wiki/AGENTS.md)
 - [_templates/concept.md](llm-wiki/_templates/concept.md)
 - [_templates/entity.md](llm-wiki/_templates/entity.md)
 - [_templates/source.md](llm-wiki/_templates/source.md)
@@ -303,7 +303,7 @@ Documents pending integration:
 - [to-integrate.md](_integration/to-integrate.md)
 - [to-integrate-1.md](_integration/to-integrate-1.md)
 - [to-integrate_1.md](_integration/to-integrate_1.md)
-- [to_integrate.md](_integration/to_integrate.md)
+- [to_integrate.md](_integration/archive/to_integrate.md)
 
 ### HTML to PDF (6 files)
 
@@ -312,7 +312,7 @@ Documentation for HTML to PDF conversion:
 - [advanced.md](html2pdf/advanced.md)
 - [index.md](html2pdf/index.md)
 - [laravel.md](html2pdf/laravel.md)
-- [security.md](html2pdf/security.md)
+- [SECURITY.md](html2pdf/security.md)
 - [styling.md](html2pdf/styling.md)
 - [usage.md](html2pdf/usage.md)
 
@@ -398,16 +398,16 @@ discussions: []
 
 | Date | File | Category |
 |------|------|----------|
-| 2026-07-28 | [00-INDEX.md](00-INDEX.md) | root |
-| 2026-07-28 | [API.md](API.md) | root |
-| 2026-07-28 | [ARCHITECTURE.md](ARCHITECTURE.md) | root |
-| 2026-07-28 | [PRD.md](PRD.md) | root |
+| 2026-07-28 | [00-index.md](00-index.md) | root |
+| 2026-07-28 | [API.md](api.md) | root |
+| 2026-07-28 | [architecture.md](architecture.md) | root |
+| 2026-07-28 | [PRD.md](prd.md) | root |
 | 2026-07-28 | [README.md](README.md) | root |
-| 2026-07-28 | [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md) | root |
-| 2026-07-28 | [SPRINT_PLANNING.md](SPRINT_PLANNING.md) | root |
-| 2026-07-28 | [TODO.md](TODO.md) | root |
+| 2026-07-28 | [product_strategy.md](product_strategy.md) | root |
+| 2026-07-28 | [sprint_planning.md](sprint_planning.md) | root |
+| 2026-07-28 | [TODO.md](todo.md) | root |
 | 2026-07-28 | [best-practices.md](best-practices.md) | root |
-| 2026-07-28 | [changelog.md](changelog.md) | root |
+| 2026-07-28 | [CHANGELOG.md](CHANGELOG.md) | root |
 | 2026-07-28 | [configuration.md](configuration.md) | root |
 | 2026-07-28 | [core-functionality.md](core-functionality.md) | root |
 | 2026-07-28 | [design-patterns.md](design-patterns.md) | root |

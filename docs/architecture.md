@@ -352,7 +352,7 @@ $this->mock(DomainResolver::class)
 
 ---
 
-<!-- Merged from ARCHITECTURE.md, which collided with this file on case-insensitive filesystems. -->
+<!-- Merged from architecture.md, which collided with this file on case-insensitive filesystems. -->
 
 ---
 title: "Architecture: Tenant Module"
@@ -600,9 +600,9 @@ Per-tenant configuration files override system defaults, enabling customization 
 
 ## Related Files
 
-- [API Reference](./API.md)
+- [API Reference](./api.md)
 - [Setup Guide](./SETUP.md)
 - [Troubleshooting](troubleshooting.md)
-- [Best Practices](./BEST_PRACTICES.md)
+- [Best Practices](./best_practices.md)
 - Module Tests: `tests/Feature/TenantBusinessLogicTest.php`, `tests/Unit/Actions/`
 ---
