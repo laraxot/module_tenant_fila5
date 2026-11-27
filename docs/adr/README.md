@@ -16,7 +16,7 @@ Scrivere un ADR solo per una scelta difficile da invertire, sorprendente o fonda
 Le decisioni vanno verificate contro codice e test correnti. Una modifica sostanziale crea un nuovo ADR e collega il precedente come superseded/deprecated.
 
 Il **perche'** delle scelte di questo pacchetto: una decisione per file, con le alternative scartate.
-Il nome del file e' l'argomento, senza date ne' numeri (la data sta nella frontmatter).
+Il nome del file e' `NNNN-argomento-in-kebab-case.md`, senza date (la data sta nella frontmatter); eccezioni: `README.md`, `index.md`, `0000-template.md`.
 
 Leggili prima di toccare `GetTenantNameAction`, `GetTenantFilePathAction`, `TenantServiceProvider::registerDB()` o i
 trait Sushi. Formato e regole: `Modules/Xot/docs/rules/action-behavioral-contract.md`.
@@ -80,11 +80,3 @@ Questo indice appartiene a **module_tenant_fila5**: ogni decisione su codice, do
 - **BMAD**: la story owner-local conserva `scope`, `must_not_change`, `evidence`, `approval_required` nei cambi rischiosi.
 - **ECC**: nessun marker di merge; distinguere la prova eseguita dal semplice riferimento a un test; se la conferma non è disponibile segnare `non eseguita`.
 - **Second Brain**: QMD/Graphify e `.harness/memory/{facts,lessons}.md` sono puntatori a evidenza datata, non copie degli ADR. [Runbook](https://github.com/laraxot/base_ptvx_fila5/blob/dev/docs/harness/README.md) · [Rollout #15](https://github.com/laraxot/base_ptvx_fila5/issues/15).
-
-## Documenti del package da riconciliare nell'indice
-
-I seguenti file **esistono nel repository su `dev`** e non erano tutti collegati nel ramo d'indice più recente. Sono preservati come puntatori documentali; il loro stato di approvazione, la copertura e l'eventuale sostituzione con ADR numerati devono essere verificati nell'owner. Nessuna prova di esecuzione è implicita.
-
-- [Connessione per modulo, alias della default](./module-connections-alias-default.md)
-- [Nei test i contenuti JSON vanno in una copia sotto storage](./tenant-json-content-isolated-in-tests.md)
-- [Il tenant è la cartella di config del dominio invertito](./tenant-name-from-reversed-host.md)

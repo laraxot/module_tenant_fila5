@@ -49,7 +49,7 @@ In `TenantServiceProvider::registerDB()`:
 
 - Pro: `DB::transaction()` copre scritture su più moduli; una sola sessione per richiesta nel caso comune.
 - Contro: chi dichiara un modulo su un database diverso perde l'atomicità con gli altri moduli; nessuna FK tra database
-  diversi (vedi l'ADR `user-id-string-columns-without-cross-db-fk` del modulo Employee).
+  diversi (vedi l'ADR `0003-user-id-string-columns-without-cross-db-fk` del modulo Employee).
 
 ## Conferma
 
