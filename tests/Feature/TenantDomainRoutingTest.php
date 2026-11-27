@@ -7,7 +7,10 @@ namespace Modules\Tenant\Tests\Feature;
 use Mockery\MockInterface;
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\TenantDomain;
+use Modules\Tenant\Tests\TestCase;
 use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
 
 describe('Tenant domain routing (sushi registry)', function (): void {
     beforeEach(function (): void {

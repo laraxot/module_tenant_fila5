@@ -49,4 +49,4 @@ it('computes the next id when stored ids are strings', function (): void {
 
     expect($record->getKey())->toBe(12);
     unlink($file);
-});
+})->group('TENANT-JSON-CREATE-INV-1');

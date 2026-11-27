@@ -4,7 +4,11 @@ type: audit
 status: review
 updated: 2026-11-16
 module: Tenant
+<<<<<<< .merge_file_5K2YOA
 qmd: "audit BMAD Tenant sintesi Host header TrustHosts tenant admin bypass DatabaseConfig password PHPStan Pest skip"
+=======
+qmd: "audit BMAD Tenant sintesi source-first qualità Host header TrustHosts tenant admin bypass DatabaseConfig password PHPStan Pest skip"
+>>>>>>> .merge_file_eH8bSk
 ---
 
 # Audit BMAD — Tenant
@@ -16,6 +20,7 @@ SSoT dettagliata: [audits/tenant-audit.md](./audits/tenant-audit.md). Questo fil
 | Metrica | Valore |
 |---|---:|
 | PHP `app/` | 56 |
+<<<<<<< .merge_file_5K2YOA
 | Test | 65 |
 | Resources | 1 |
 | Actions | 19 |
@@ -30,12 +35,19 @@ SSoT dettagliata: [audits/tenant-audit.md](./audits/tenant-audit.md). Questo fil
 - PHPStan modulo / `Modules`: 0 errori (verifica 2026-11-16).
 - Pest: da eseguire in ambiente testing non produttivo.
 - Security/runtime: story figlie su finding P0/P1 dell'audit dettagliato.
+=======
+>>>>>>> .merge_file_eH8bSk
 | Test (file PHP / `*Test.php`) | 65 / 45 |
 | Models top-level | 10 |
 | Resource / Actions / Services / Policy | 1 / 19 / 0 / 2 |
 | Migration | 3 |
 | Marker conflitto | 0 |
-| P0 / P1 / P2 | 0 / 3 / 8 |
+| P0 / P1 / P2 | 0 / 3 / 9 |
+| Policy `return true` | 2 |
+
+## Lo scopo in una frase
+
+**Tenant permette a una sola installazione di servire più enti senza che nessuno veda i dati dell'altro, e di farlo cambiando configurazione invece che codice.**
 
 ## Top finding
 
@@ -46,7 +58,8 @@ SSoT dettagliata: [audits/tenant-audit.md](./audits/tenant-audit.md). Questo fil
 ## Gate
 
 - PHPStan `Modules/Tenant`: **0 errori** (level max, 2026-11-16).
-- Pest: **skip documentato** (bootstrap bloccato, DB test `10.100.200.53` non raggiungibile).
+- Pest: **skip documentato** (bootstrap bloccato, DB test `10.100.200.53` non raggiungibile); da eseguire in ambiente testing non produttivo.
+- Security/runtime: story figlie sui finding P1 dell'audit dettagliato.
 
 ## Riferimenti
 
