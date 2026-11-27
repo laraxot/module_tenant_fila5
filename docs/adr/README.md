@@ -3,20 +3,12 @@ title: "ADR — modulo Tenant"
 type: index
 tags: [adr, decisioni, tenant, multi-sito]
 created: 2026-11-18
-<<<<<<< .merge_file_VgwUgn
-updated: 2026-11-24
-=======
 updated: 2026-11-26
 qmd: "architecture decision records tenant metodo harness formato adr decisione contesto alternative scartate"
->>>>>>> .merge_file_sOrm7W
 ---
 
 # ADR del modulo Tenant
 
-<<<<<<< .merge_file_VgwUgn
-Il **perché** di come lo stesso codice serve più siti: come si sceglie il tenant dall'host, come le connessioni dei
-moduli restano una sola transazione, perché i test non scrivono sui contenuti versionati del sito.
-=======
 ## Metodo Harness
 
 Scrivere un ADR solo per una scelta difficile da invertire, sorprendente o fondata su un trade-off reale. Un ADR deve rendere leggibili contesto, driver, alternative, decisione, conseguenze e una conferma ripetibile; non è un diario né una spiegazione retroattiva inventata.
@@ -25,18 +17,10 @@ Le decisioni vanno verificate contro codice e test correnti. Una modifica sostan
 
 Il **perche'** delle scelte di questo pacchetto: una decisione per file, con le alternative scartate.
 Il nome del file e' l'argomento, senza date ne' numeri (la data sta nella frontmatter).
->>>>>>> .merge_file_sOrm7W
 
 Leggili prima di toccare `GetTenantNameAction`, `GetTenantFilePathAction`, `TenantServiceProvider::registerDB()` o i
 trait Sushi. Formato e regole: `Modules/Xot/docs/rules/action-behavioral-contract.md`.
 
-<<<<<<< .merge_file_VgwUgn
-## Decisioni
-
-- [Il tenant è la cartella di config del dominio invertito](tenant-name-from-reversed-host.md) — host → `config/com/example/foo`, symlink risolti, niente database.
-- [Connessione per modulo, alias della default](module-connections-alias-default.md) — stessa istanza `Connection` finché la config coincide.
-- [Nei test i contenuti JSON vanno in una copia sotto storage](tenant-json-content-isolated-in-tests.md) — `database/content/` mai scritto dai test.
-=======
 ```markdown
 ---
 title: "ADR — <decisione in una riga>"
@@ -68,15 +52,9 @@ Pro, contro, debito che resta, cosa misurare. Chi cambia la decisione scrive un 
 ## Conferma
 Test (percorso e, se c'è, `--group`), comando eseguibile da `laravel/` o regola di review che falliscono se la decisione viene violata. Se non esiste una conferma automatica: «Nessuna conferma automatica oggi; proposta: …». Se il codice contraddice la decisione, prima di Conferma c'è `## Stato attuale`.
 ```
->>>>>>> .merge_file_sOrm7W
 
 ## Decisioni precedenti (formato libero, non ancora ADR)
 
-<<<<<<< .merge_file_VgwUgn
-- [Rimozione del controllo runningInConsole](../runninginconsole-check-decision.md)
-- [arr-first vs collect-first](../arr-first-vs-collect-first-decision.md)
-- [Decision log](../decision-log.md)
-=======
 | ADR | Stato | Perché | Conferma |
 |---|---|---|---|
 | [0001-module-connections-alias-default](0001-module-connections-alias-default.md) | accepted | Ogni modulo ha la sua connessione, alias della default se punta allo stesso database (transazioni tra moduli atomiche). | Sì: `Modules/Tenant/tests/Feature/ModuleConnectionAliasTest.php` |
@@ -93,4 +71,20 @@ ADR: 3. Con conferma automatica (test o comando eseguibile da `laravel/`): 3. AD
 
 - Riscrivere `tests/Unit/Actions/GetTenantNameActionTest.php` con cartelle di config temporanee (ADR 0003, «Stato attuale»).
 - `0000-template.md` è il modello, non una decisione.
->>>>>>> .merge_file_sOrm7W
+
+## Harness minimo: ownership, evidenza e recupero (2026-11-27)
+
+Questo indice appartiene a **module_tenant_fila5**: ogni decisione su codice, dominio o tema va nell'ADR del package owner; il root registra soltanto i vincoli di composizione. Un ADR richiede una scelta reale con alternative e conseguenze, più una **Conferma** ripetibile (oppure la dichiarazione esplicita che manca). Non creare ADR fittizi per riempire un indice.
+
+- [Confine LaravelDay/harness Xot](https://github.com/laraxot/module_xot_fila5/blob/dev/docs/adr/0042-laravel-day-harness-adoption-boundary.md); [ownership root](https://github.com/laraxot/base_ptvx_fila5/blob/dev/docs/adr/0001-harness-minimo-e-ownership.md).
+- **BMAD**: la story owner-local conserva `scope`, `must_not_change`, `evidence`, `approval_required` nei cambi rischiosi.
+- **ECC**: nessun marker di merge; distinguere la prova eseguita dal semplice riferimento a un test; se la conferma non è disponibile segnare `non eseguita`.
+- **Second Brain**: QMD/Graphify e `.harness/memory/{facts,lessons}.md` sono puntatori a evidenza datata, non copie degli ADR. [Runbook](https://github.com/laraxot/base_ptvx_fila5/blob/dev/docs/harness/README.md) · [Rollout #15](https://github.com/laraxot/base_ptvx_fila5/issues/15).
+
+## Documenti del package da riconciliare nell'indice
+
+I seguenti file **esistono nel repository su `dev`** e non erano tutti collegati nel ramo d'indice più recente. Sono preservati come puntatori documentali; il loro stato di approvazione, la copertura e l'eventuale sostituzione con ADR numerati devono essere verificati nell'owner. Nessuna prova di esecuzione è implicita.
+
+- [Connessione per modulo, alias della default](./module-connections-alias-default.md)
+- [Nei test i contenuti JSON vanno in una copia sotto storage](./tenant-json-content-isolated-in-tests.md)
+- [Il tenant è la cartella di config del dominio invertito](./tenant-name-from-reversed-host.md)
