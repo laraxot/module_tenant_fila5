@@ -1,9 +1,13 @@
 ---
+<<<<<<< .merge_file_AY2Kot
 <<<<<<< .merge_file_fKZkuc
 title: "ECC — indice operativo Tenant"
 =======
 title: "Indice ECC — Tenant"
 >>>>>>> .merge_file_UzZmVW
+=======
+title: "ECC — indice operativo Tenant"
+>>>>>>> .merge_file_55tFS2
 type: index
 status: in-progress
 updated: 2026-11-16
@@ -27,6 +31,7 @@ Collega le verifiche ECC al workflow PTVX (BMAD → lock → fix → PHPStan/Pes
 | Security review | pending | story figlie P0/P1 |
 | Docs pack | aggiornato | questo indice + audit ECC |
 
+<<<<<<< .merge_file_AY2Kot
 <<<<<<< .merge_file_fKZkuc
 Dettaglio: [tenant-ecc-audit.md](./tenant-ecc-audit.md)
 title: "Indice ECC — Tenant"
@@ -45,4 +50,7 @@ qmd: "indice ECC Tenant audit checklist"
 
 =======
 >>>>>>> .merge_file_UzZmVW
+=======
+Dettaglio: [tenant-ecc-audit.md](./tenant-ecc-audit.md)
+>>>>>>> .merge_file_55tFS2
 Contratto globale: `laravel/Modules/Xot/docs/ecc/00-index.md`.

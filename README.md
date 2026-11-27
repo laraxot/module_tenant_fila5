@@ -328,6 +328,7 @@ To contribute to the Tenant module:
 4. Keep isolation constraints in mind
 5. Document complex business logic
 
+See [Contributing Guide](../../docs/wiki/how-to/contributing.md) for details.
 See [Contributing Guide](../../docs/wiki/how-to/CONTRIBUTING.md) for details.
 
 ---

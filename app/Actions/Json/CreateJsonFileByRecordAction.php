@@ -19,6 +19,11 @@ use Spatie\QueueableAction\QueueableAction;
  * record riceve `max(id esistenti) + 1`. Lo `0` iniziale copre il file
  * vuoto, dove `max()` su array senza elementi leverebbe una ValueError.
  *
+<<<<<<< .merge_file_Z5RBdA
+=======
+ * @see docs/contracts/create-json-file-by-record-action.md
+ *
+>>>>>>> .merge_file_Dh7nqr
  * @contract docs/contracts/create-json-file-by-record-action.md
  */
 class CreateJsonFileByRecordAction

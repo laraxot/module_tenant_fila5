@@ -14,6 +14,9 @@ qmd: "indice BMAD Tenant audit purpose architecture epics decision log brainstor
 # Indice BMAD — Tenant
 
 - [Purpose](./purpose.md)
+- [Audit](./audit.md)
+- [Audit dettagliato](./audits/tenant-audit.md)
+- [Piano di miglioramento](./piano-miglioramento.md)
 - [Architecture](./architecture.md)
 - [Epics](./epics.md)
 - [Decision log](./decision-log.md)

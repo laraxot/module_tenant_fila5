@@ -1,13 +1,9 @@
 # ==============================================
 # LARAXOT MODULE TENANT - .GITIGNORE
-# ==============================================
 # Modulo Tenant Laraxot - Template standardizzato
 # Ultimo aggiornamento: 2025-01-06
-# ==============================================
 
-# ==============================================
 # DEPENDENCIES & PACKAGES
-# ==============================================
 vendor/
 /vendor/
 node_modules/
@@ -19,9 +15,7 @@ yarn.lock
 yarn-error.log
 composer.lock
 
-# ==============================================
 # BUILD & COMPILED FILES
-# ==============================================
 /build
 /build/
 build/
@@ -29,9 +23,7 @@ dist/
 docs/cache/
 cache/
 
-# ==============================================
 # CACHE & TEMPORARY FILES
-# ==============================================
 *.cache
 *.lock
 *.phar
@@ -46,9 +38,7 @@ v8-compile-cache-*
 .php-cs-fixer.cache
 .phpunit.result.cache
 
-# ==============================================
 # LOG FILES
-# ==============================================
 *.log
 error_log
 npm-debug.log*
@@ -56,9 +46,7 @@ npm-debug.log
 yarn-error.log*
 lerna-debug.log*
 
-# ==============================================
 # LARAVEL SPECIFIC
-# ==============================================
 bootstrap/compiled.php
 app/storage/
 public/storage
@@ -70,25 +58,19 @@ storage/*.key
 .env.*
 !.env.example
 
-# ==============================================
 # ENVIRONMENT & CONFIGURATION
-# ==============================================
 Homestead.yaml
 Homestead.json
 /.vagrant
 /.idea
 .phpintel
 
-# ==============================================
 # GIT SPECIFIC
-# ==============================================
 .git-rewrite/
 .git-rewrite
 .git-blame-ignore-revs
 
-# ==============================================
 # SYSTEM FILES
-# ==============================================
 .DS_Store
 .DS_Store?
 ._*
@@ -97,9 +79,7 @@ Homestead.json
 ehthumbs.db
 Thumbs.db
 
-# ==============================================
 # BACKUP FILES
-# ==============================================
 *.old
 *.old1
 *.old2
@@ -109,21 +89,15 @@ Thumbs.db
 *.bakcup
 *.new
 
-# ==============================================
 # DEVELOPMENT TOOLS
-# ==============================================
 .windsurf/
 .cursor/
 .phpstorm.meta.php
 
-# ==============================================
 # DOCUMENTATION CACHE
-# ==============================================
 docs/phpstan/
 
-# ==============================================
 # OLD DIRECTORIES (LEGACY CLEANUP)
-# ==============================================
 resources/views/Components_old/
 resources/views/Components_old
 database/Migrations_old/
@@ -136,9 +110,7 @@ database/Factories_
 database_old/
 database_old
 
-# ==============================================
 # MODULE SPECIFIC - TENANT
-# ==============================================
 # File di configurazione locale
 config/local.php
 config/development.php
@@ -151,9 +123,7 @@ storage/multi-tenant/
 tenant_test_data.json
 test_tenants.sql
 
-# ==============================================
 # END OF TENANT .GITIGNORE
-# ==============================================
 
 # 🚫 File specifici del progetto
 *.fila2
@@ -165,7 +135,6 @@ Tests/
 
 # -----------------------------------------------------------------------------
 # Copie residue da merge/rebase o editor (mai committare — es. `.agent~HEAD`, `*.md~head`)
-# -----------------------------------------------------------------------------
 *~HEAD
 *~BASE
 *~LOCAL
@@ -173,7 +142,6 @@ Tests/
 *.orig
 *.rej
 *~head
-
 
 # Second brain: no-docs-archive (wiki) — non tracciare albero legacy docs/archive/
 docs/archive/
@@ -188,12 +156,53 @@ rector.php
 phpinsights.php
 .php-cs-fixer.php
 .php-cs-fixer.dist.php
+<<<<<<< .merge_file_f97o1o
 <<<<<<< .merge_file_RJJumv
+=======
+tests/coverage-*.*
+docs/screenshots/
+
+# graphify lanciato su tests/ scrive tests/graphify-out/: output rigenerabile, mai committare
+tests/graphify-out/
+>>>>>>> .merge_file_TSsUWM
 
 # screenshot di comparazione visiva (artefatti locali)
 docs/project/visual-comparison/
 docs/visual-comparison/
+<<<<<<< .merge_file_f97o1o
 =======
 tests/coverage-*.*
 docs/screenshots/
 >>>>>>> .merge_file_8hGECH
+=======
+
+# fila5-guard: mai nel repo di un modulo/tema
+/laravel/
+graphify-out/
+/tests/coverage/
+/tests/coverage.xml/
+/tests/*coverage*.xml
+
+# Niente cartelle di backup/archivio in docs: lo storico e' git (ADR Xot 0041)
+docs/**/archivio/
+docs/**/archive/
+docs/**/_archive/
+docs/**/archived/
+docs/**/*backup*/
+docs/**/wiki-archive/
+docs/**/historical/
+
+# No docs archive folders — restore via Git only (Xot ADR 0041)
+docs/archivio/
+docs/_archive/
+docs/archived/
+docs/historical/
+docs/backup/
+docs/**/backup/
+docs/backups/
+docs/**/backups/
+.docs-archive/
+
+# Indice vettoriale locale (non versionare)
+ruvector.db
+>>>>>>> .merge_file_TSsUWM

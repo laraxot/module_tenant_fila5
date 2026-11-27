@@ -30,7 +30,32 @@ Verificate sul codice il 2026-11-16. Finding: [audits/tenant-audit.md](./audits/
 
 ## Formato delle nuove voci
 
+<<<<<<< .merge_file_b4gHGZ
 - **ID** progressivo `D-NN`, **Decisione** in una riga.
 - **Stato:** PROPOSTA, ATTIVA (approvata), RIFIUTATA, OBSOLETA.
 - **Perché:** motivo e alternative considerate; **Evidenza:** file o simbolo reale.
 >>>>>>> .merge_file_JNeplD
+=======
+### 2026-09-29
+**Decisione:** [Esempio: Utilizzare Filament Widget invece di Livewire per i componenti di UI]
+**Stato:** APPROVATA
+**Impatto:** Alto
+**Alternatives considerate:** 
+- Mantenere Livewire
+- Utilizzare componenti Blade tradizionali
+**Conseguenze:** 
+- Migliore integrazione con Filament
+- Riduzione della complessità del codice
+- Necessità di migrare componenti esistenti
+
+### 2026-09-30
+**Decisione:** [Esempio: Adottare la convenzione "una chiave per riga" per gli array PHP]
+**Stato:** APPROVATA
+**Impatto:** Medio
+**Alternatives considerate:** 
+- Array inline
+- Array multi-linea senza convenzione fissa
+**Conseguenze:** 
+- Migliore leggibilità e gestione dei conflitti in git
+- Necessità di refactor esistente
+>>>>>>> .merge_file_UXREA3

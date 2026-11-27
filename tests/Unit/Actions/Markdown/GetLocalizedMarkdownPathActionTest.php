@@ -34,7 +34,7 @@ it('gets localized markdown path if it exists', function (): void {
     Assert::assertSame($tempFile, $result);
 
     unlink($tempFile);
-});
+})->group('TENANT-MD-INV-1');
 
 it('gets fallback markdown path if localized does not exist', function (): void {
     App::setLocale('it');
@@ -56,7 +56,7 @@ it('gets fallback markdown path if localized does not exist', function (): void 
     Assert::assertSame($tempFile, $result);
 
     unlink($tempFile);
-});
+})->group('TENANT-MD-INV-2');
 
 it('returns hash if no path exists', function (): void {
     /** @var TestCase $this */
@@ -67,4 +67,4 @@ it('returns hash if no path exists', function (): void {
     $result = app(GetLocalizedMarkdownPathAction::class)->execute('none.md');
 
     Assert::assertSame('#', $result);
-});
+})->group('TENANT-MD-INV-3');

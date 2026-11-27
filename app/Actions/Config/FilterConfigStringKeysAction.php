@@ -6,6 +6,11 @@ namespace Modules\Tenant\Actions\Config;
 
 use Spatie\QueueableAction\QueueableAction;
 
+/**
+ * @see docs/contracts/filter-config-string-keys-action.md
+ *
+ * @contract docs/contracts/filter-config-string-keys-action.md
+ */
 final class FilterConfigStringKeysAction
 {
     use QueueableAction;
