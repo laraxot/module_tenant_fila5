@@ -3,21 +3,12 @@ title: "Contratti — modulo Tenant"
 type: index
 tags: [contracts, actions, tenant]
 created: 2026-11-18
-<<<<<<< .merge_file_zPWax0
-updated: 2026-11-24
-=======
 updated: 2026-11-26
 qmd: "contratti tenant metodo harness contratto comportamento action input output invarianti effetti collaterali"
->>>>>>> .merge_file_S6sw58
 ---
 
 # Contratti del modulo Tenant
 
-<<<<<<< .merge_file_zPWax0
-Cosa promettono le Action di Tenant che risolvono o scrivono file del sito: config PHP del tenant e contenuti JSON dei
-modelli Sushi. Ogni invariante ha un ID stabile; il group Pest la prova (`vendor/bin/pest Modules/Tenant/tests --group=<ID>`),
-«—» è debito dichiarato.
-=======
 ## Metodo Harness
 
 Un contratto descrive una singola operazione pubblica con effetti collaterali, chiamate esterne o invarianti di dominio. Documenta il comportamento osservabile, inclusi errori e non-goals, senza trasformare ogni metodo interno in un contratto.
@@ -26,18 +17,10 @@ Ogni invariante ha un ID stabile nel formato `TENANT-<AREA>-INV-N`; il test Pest
 
 Cosa promette la superficie pubblica di questo pacchetto: le Action che scrivono dati, chiamano servizi esterni o hanno
 effetti collaterali, e le interfacce (`app/Contracts`). Regola: `Modules/Xot/docs/rules/action-behavioral-contract.md`.
->>>>>>> .merge_file_S6sw58
 
 Leggili prima di scrivere in `config/<tenant>/` o di toccare le Action `Config/*` e `Json/*`. Formato:
 `Modules/Xot/docs/rules/action-behavioral-contract.md`.
 
-<<<<<<< .merge_file_zPWax0
-## Contratti di Action
-
-- [SaveTenantConfigAction](save-tenant-config-action.md) — fonde e riscrive un file di config del tenant; le liste si sostituiscono.
-- [GetTenantFilePathAction](get-tenant-file-path-action.md) — percorso sicuro di un file del tenant; nei test i contenuti vanno sotto storage.
-- [CreateJsonFileByRecordAction](create-json-file-by-record-action.md) — aggiunge una riga al JSON del tenant con id max+1 (oggi senza chiamanti).
-=======
 Un file per Action, nome in kebab-case della classe (`create-ticket-action.md`), frontmatter `type: contract` e
 `action: <FQCN>`, e queste sei sezioni nell'ordine:
 
@@ -120,4 +103,11 @@ Invarianti senza test con group (da scrivere o da annotare quando un test esiste
 - `TENANT-FILTER-INV-3` (filter-config-string-keys-action)
 - `TENANT-MERGE-INV-1` (merge-recursive-string-key-config-action)
 - `TENANT-MERGE-INV-2` (merge-recursive-string-key-config-action)
->>>>>>> .merge_file_S6sw58
+
+## Harness minimo: ownership, evidenza e recupero (2026-11-27)
+
+I contratti di **module_tenant_fila5** restano accanto alle Action, interfacce o superfici di questo package; root e Xot definiscono lo standard, non copiano le promesse. Un contratto comportamentale esplicita **Input, Output, Invarianti, Effetti collaterali, Errori, Non fa**; ogni ID di invariante punta a un group Pest effettivo oppure segnala `non dimostrata`. Se esiste la classe, il docblock deve rimandare al file con `@contract` e `@see`; per temi senza classi PHP non inventare Action/contratti.
+
+- [Standard Xot](https://github.com/laraxot/module_xot_fila5/blob/dev/docs/contracts/contract-authoring-standard.md) · [ownership root](https://github.com/laraxot/base_ptvx_fila5/blob/dev/docs/adr/0001-harness-minimo-e-ownership.md) · [runbook ECC/Second Brain](https://github.com/laraxot/base_ptvx_fila5/blob/dev/docs/harness/README.md).
+- **BMAD**: prima di cambiare una promessa, fissa nella story owner scope, esclusioni, evidenza e approvazioni richieste.
+- **ECC**: i marker di merge rendono invalido l'indice; citare una suite non significa averla eseguita. Distingui `pass`, `fail`, `non eseguito` e registra il debito in [rollout #15](https://github.com/laraxot/base_ptvx_fila5/issues/15).
